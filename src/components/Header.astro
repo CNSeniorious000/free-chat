@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro'
-import Themetoggle from './Themetoggle.astro'
+import Themetoggle from './Themetoggle.astro';
 ---
 
 <header>
@@ -8,9 +8,13 @@ import Themetoggle from './Themetoggle.astro'
     <Logo />
     <Themetoggle />
   </div>
-  <div class="fi mt-2">
-    <span class="gpt-title">ChatGPT</span>
-    <span class="gpt-subtitle">Demo</span>
+  <div class="fi mt-2 font-mono">
+    <span class="gpt-subtitle dark:filter-sepia">chat</span>
+    <span class="gpt-title dark:gpt-subtitle dark:filter-invert">.bnu120.space</span>
   </div>
-  <p mt-1 op-60>Based on OpenAI API (gpt-3.5-turbo).</p>
+  <p mt-1 font-light font-serif op-80 style="letter-spacing: 0.5pt;">
+    <span op-40>如果你在找原来那个</span><a href="//chat.academic.bnu120.space"> ChatGPT 学术优化</a><span op-40>网站，那个网站迁移到了</span><a href="//chat.academic.bnu120.space">chat.academic.bnu120.space</a>
+    <br />
+    <span op-40>这个网站也不是我做的，也只是部署了一个开源的 UI 大家随便使用哈</span>
+  </p>
 </header>

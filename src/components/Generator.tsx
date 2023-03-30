@@ -219,7 +219,7 @@ export default () => {
             ref={inputRef!}
             disabled={systemRoleEditing()}
             onKeyDown={handleKeydown}
-            placeholder="Enter something..."
+            placeholder="与 ChatGPT 对话"
             autocomplete="off"
             autofocus
             onInput={() => {
@@ -229,8 +229,8 @@ export default () => {
             rows="1"
             class="gen-textarea"
           />
-          <button onClick={handleButtonClick} disabled={systemRoleEditing()} gen-slate-btn>
-            Send
+          <button min-w-fit onClick={handleButtonClick} disabled={systemRoleEditing()} gen-slate-btn>
+            发送
           </button>
           <button title="Clear" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
             <IconClear />
