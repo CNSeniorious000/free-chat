@@ -4,17 +4,25 @@ import Themetoggle from './Themetoggle.astro';
 ---
 
 <header>
-  <div class="fb items-center">
-    <Logo />
+  <div class="fb items-center flex-row">
+    <a href="." onclick="return false" hover:filter-brightness-120 transition-all>
+      <Logo />
+    </a>
     <Themetoggle />
   </div>
   <div class="fi mt-2 font-mono">
-    <span class="gpt-subtitle dark:filter-sepia">chat</span>
-    <span class="gpt-title dark:gpt-subtitle dark:filter-invert">.bnu120.space</span>
+    <a href="." onclick="return false" select-none>
+      <span class="gpt-subtitle dark:filter-sepia">chat</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.bnu120.space</span>
+    </a>
   </div>
   <p mt-1 font-light font-serif op-80 style="letter-spacing: 0.5pt;">
-    <span op-40>如果你在找原来那个</span><a href="//chat.academic.bnu120.space"> ChatGPT 学术优化</a><span op-40>网站，那个网站迁移到了</span><a href="//chat.academic.bnu120.space">chat.academic.bnu120.space</a>
-    <br />
-    <span op-40>这个网站也不是我做的，也只是部署了一个开源的 UI 大家随便使用哈</span>
+    <span op-40>如果你在找原来那个</span>
+    <a b-slate-link href="//chat.academic.bnu120.space">ChatGPT 学术优化</a>
+    <span op-40>网站，那个网站迁移到了</span><a b-slate-link href="//chat.academic.bnu120.space">chat.academic.bnu120.space</a>
+    <div h-2></div>
+    TIPS:
+    <span op-40>如果请求返回</span>
+    <a b-slate-link href="https://platform.openai.com/docs/guides/chat/managing-tokens">context_length_exceeded</a>
+    <span op-40>的字样，那是因为上下文太长了，这是OpenAI对ChatGPT的限制</span>
   </p>
 </header>

@@ -6,19 +6,19 @@ import Generator from '../components/Generator'
 import BackTop from '../components/BackTop.astro'
 import '../message.css'
 import 'katex/dist/katex.min.css'
-import 'highlight.js/styles/atom-one-dark.css'
+import 'highlight.js/styles/atom-one-dark.css';
 ---
 
 <Layout title="chat.bnu120.space">
-  <main >
+  <main class="lg:max-w-80ch xl:max-w-90ch transition-all">
     <Header />
     <Generator client:load />
     <Footer />
-    <BackTop/>
+    <BackTop />
   </main>
 </Layout>
 
-<script>
+<!-- <script>
 async function checkCurrentAuth() {
   const password = localStorage.getItem('pass')
   const response = await fetch('/api/auth', {
@@ -35,4 +35,4 @@ async function checkCurrentAuth() {
     window.location.href = '/password'
 }
 checkCurrentAuth()
-</script>
+</script> -->

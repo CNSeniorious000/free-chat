@@ -17,6 +17,8 @@ export default () => {
   const [loading, setLoading] = createSignal(false)
   const [controller, setController] = createSignal<AbortController>(null)
 
+  let footer = null
+
   onMount(() => {
     try {
       if (localStorage.getItem('messageList'))
@@ -32,6 +34,8 @@ export default () => {
     onCleanup(() => {
       window.removeEventListener('beforeunload', handleBeforeUnload)
     })
+
+    footer = document.querySelector('footer')
   })
 
   const handleBeforeUnload = () => {
@@ -59,7 +63,7 @@ export default () => {
   }
 
   const smoothToBottom = useThrottleFn(() => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+    window.scrollTo({ top: footer.offsetTop - window.innerHeight, behavior: 'smooth' })
   }, 300, false, true)
 
   const requestWithLatestMessage = async() => {
@@ -115,7 +119,7 @@ export default () => {
           if (char)
             setCurrentAssistantMessage(currentAssistantMessage() + char)
 
-          smoothToBottom()
+          // smoothToBottom()
         }
         done = readerDone
       }
@@ -140,7 +144,8 @@ export default () => {
       setCurrentAssistantMessage('')
       setLoading(false)
       setController(null)
-      inputRef.focus()
+      // inputRef.focus()
+      smoothToBottom()
     }
   }
 
@@ -209,7 +214,10 @@ export default () => {
         when={!loading()}
         fallback={() => (
           <div class="gen-cb-wrapper">
-            <span>AI is thinking...</span>
+            <div class="flex flex-row gap-3 items-center">
+              <span i-svg-spinners-ring-resize />
+              <span>等待响应中</span>
+            </div>
             <div class="gen-cb-stop" onClick={stopStreamFetch}>Stop</div>
           </div>
         )}
@@ -227,9 +235,9 @@ export default () => {
               inputRef.style.height = `${inputRef.scrollHeight}px`
             }}
             rows="1"
-            class="gen-textarea"
+            class="gen-textarea select-none"
           />
-          <button min-w-fit onClick={handleButtonClick} disabled={systemRoleEditing()} gen-slate-btn>
+          <button min-w-fit select-none onClick={handleButtonClick} disabled={systemRoleEditing()} gen-slate-btn>
             发送
           </button>
           <button title="Clear" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
