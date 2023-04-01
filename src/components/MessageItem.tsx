@@ -31,7 +31,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       code = decodeURIComponent(el.dataset.code!)
       copy(code)
     }
-    if (el.matches('div > div.copy-btn > svg')) {
+    if (el.matches('div > div.copy-btn > div')) {
       // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
       code = decodeURIComponent(el.parentElement?.dataset.code!)
       copy(code)
@@ -50,11 +50,8 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       const rawCode = fence(...args)
 
       return `<div relative>
-      <div data-code=${encodeURIComponent(token.content)} class="copy-btn gpt-copy-btn group">
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Z" /><path fill="currentColor" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z" /></svg>
-            <div class="group-hover:op-100 gpt-copy-tips">
-              ${copied() ? 'Copied' : 'Copy'}
-            </div>
+      <div data-code=${encodeURIComponent(token.content)} class="copy-btn gpt-copy-btn group hover:filter-brightness-90 dark:hover:filter-brightness-115 active:scale-90 transition-all duration-150">
+        ${copied() ? '<span mr-1 text-sm display-none group-hover:display-inline-block>Copied!</span><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
       </div>
       ${rawCode}
       </div>`
