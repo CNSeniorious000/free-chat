@@ -28,7 +28,7 @@ export default (props: Props) => {
               <Show when={props.canEdit()} fallback={<IconEnv />}>
                 <span onClick={() => props.setCurrentSystemRoleSettings('')} class="sys-edit-btn p-1 rd-50%" > <IconX /> </span>
               </Show>
-              <span>系统消息</span>
+              <div>系统消息</div>
             </div>
             <div class="mt-1">
               {props.currentSystemRoleSettings()}
@@ -46,7 +46,7 @@ export default (props: Props) => {
         <div>
           <div class="fi gap-1 op-50 dark:op-60">
             <IconEnv />
-            <span text-sm ml-1><a b-slate-link href="https://platform.openai.com/docs/guides/chat/instructing-chat-models">系统消息</a></span>
+            <span text-sm ml-1>系统消息</span>
           </div>
           <p class="my-2 leading-normal text-sm op-50 dark:op-60">设置 ChatGPT 的行为模式</p>
           <div>
