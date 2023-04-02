@@ -1,6 +1,10 @@
 ---
 import Logo from './Logo.astro'
-import Themetoggle from './Themetoggle.astro';
+import Themetoggle from './Themetoggle.astro'
+
+let origin = Astro.request.headers.get('host')
+origin = origin.includes('.') ? origin : 'chat.muspimerol.site'
+const { 1: prefix, 2: base } = origin.match(/(.*?)\.(.*)/)
 ---
 
 <header>
@@ -12,22 +16,19 @@ import Themetoggle from './Themetoggle.astro';
   </div>
   <div class="fi mt-2 font-mono">
     <a href="." onclick="return false" select-none>
-      <span class="gpt-subtitle dark:filter-sepia">chat</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.bnu120.space</span>
+      <span class="gpt-subtitle dark:filter-sepia">{prefix}</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.{base}</span>
     </a>
   </div>
+
+  <span block h-2></span>
+
   <p mt-1 font-light font-serif op-80 style="letter-spacing: 0.5pt;">
-    <span op-40>如果你在找原来那个</span>
     <a b-slate-link href="//chat.academic.bnu120.space">ChatGPT 学术优化</a>
-    <span op-40>网站，那个网站迁移到了</span><a b-slate-link href="//chat.academic.bnu120.space">chat.academic.bnu120.space</a>
+    <span op-40>网站已迁移到</span>
+    <a b-slate-link href="//chat.academic.bnu120.space">chat.academic.bnu120.space</a>
 
-    <span block h-2></span>
+    <span block h-1></span>
 
-    <a font-bold b-slate-link href="https://cdn.muspimerol.site/free-chat-tips-01.html">如果你没用什么使用ChatGPT的经验，可以先看看教程➡️</a>
-
-    <span block h-2></span>
-
-    <span op-40>TIPS: 如果请求返回</span>
-    <a b-slate-link href="https://platform.openai.com/docs/guides/chat/managing-tokens">context_length_exceeded</a>
-    <span op-40>的字样，那是因为上下文太长了，这是OpenAI对ChatGPT的限制</span>
+    TIPS: <a font-bold b-slate-link href="https://cdn.muspimerol.site/free-chat-tips-01.html">如果你没有什么使用ChatGPT的经验，建议先看看教程➡️</a>
   </p>
 </header>
