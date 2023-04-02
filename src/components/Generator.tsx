@@ -185,7 +185,7 @@ export default () => {
   }
 
   return (
-    <div my-6>
+    <div class="flex flex-col justify-between h-full flex-grow">
       <SystemRoleSettings
         canEdit={() => messageList().length === 0}
         systemRoleEditing={systemRoleEditing}

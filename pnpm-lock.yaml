@@ -7,6 +7,7 @@ specifiers:
   '@astrojs/vercel': ^3.2.1
   '@evan-yang/eslint-config': ^1.0.9
   '@iconify-json/carbon': ^1.1.16
+  '@julr/unocss-preset-heropatterns': ^1.0.0
   '@types/markdown-it': ^12.2.3
   '@typescript-eslint/parser': ^5.57.0
   '@unocss/preset-attributify': ^0.50.6
@@ -52,6 +53,7 @@ dependencies:
 devDependencies:
   '@evan-yang/eslint-config': 1.0.9_vwh6htx42aidho2qgfca5u5rwm
   '@iconify-json/carbon': 1.1.16
+  '@julr/unocss-preset-heropatterns': 1.0.0_unocss@0.50.6
   '@types/markdown-it': 12.2.3
   '@typescript-eslint/parser': 5.57.0_vwh6htx42aidho2qgfca5u5rwm
   '@unocss/preset-attributify': 0.50.6
@@ -1751,6 +1753,16 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
+  /@julr/unocss-preset-heropatterns/1.0.0_unocss@0.50.6:
+    resolution: {integrity: sha512-6WVOEWEsOwIkxkr3oveaJvuZJnudekofgMpAkb1+gzdl7CIiDFBYx4tTAEfrEglwfRwKKlrKANO+6TKU/rmozA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      unocss: '>= 0.31.13 < 1'
+    dependencies:
+      '@unocss/preset-mini': 0.47.6
+      unocss: 0.50.6_fjvovi6vdlupg4xto2rresy4ji
+    dev: true
+
   /@ljharb/has-package-exports-patterns/0.0.2:
     resolution: {integrity: sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==}
     dev: false
@@ -2239,6 +2251,10 @@ packages:
       unconfig: 0.3.7
     dev: true
 
+  /@unocss/core/0.47.6:
+    resolution: {integrity: sha512-Pjg/NdpuTwZk2Ns3bzI/3XVPuXU+AQ78Sw+9QJyMgA56dArd3TlpNDN6UTOD9XAK6mxdPUu7rNSKpNTLpBW2og==}
+    dev: true
+
   /@unocss/core/0.50.6:
     resolution: {integrity: sha512-WMIp8xr7YSlID2whqfRGLwagp59e6u4ckPACEpoDOW8sTeSPRZm54hxPhuWXD1SQuqcwHPMtM9nzGD8UOnqQxA==}
     dev: true
@@ -2278,6 +2294,12 @@ packages:
       ofetch: 1.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@unocss/preset-mini/0.47.6:
+    resolution: {integrity: sha512-XP7ShDB42WU0xvZA1dG4E3LnzN4TYISm6AKQee3gmITUtE0ELTp9XutMgt0sqTe5FXeTRqw9XH7axv+4EqnE3Q==}
+    dependencies:
+      '@unocss/core': 0.47.6
     dev: true
 
   /@unocss/preset-mini/0.50.6:

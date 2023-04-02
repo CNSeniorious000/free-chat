@@ -8,6 +8,8 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
+import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
+
 export default defineConfig({
   presets: [
     presetUno(),
@@ -24,6 +26,7 @@ export default defineConfig({
         },
       },
     }),
+    presetHeroPatterns(),
   ],
   transformers: [transformerVariantGroup(), transformerDirectives()],
   shortcuts: [{
