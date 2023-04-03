@@ -19,10 +19,15 @@ export default () => {
 
   let footer = null
 
+  const [isStick, setStick] = createSignal(false)
+
   onMount(() => {
     try {
       if (localStorage.getItem('messageList'))
         setMessageList(JSON.parse(localStorage.getItem('messageList')))
+
+      if (localStorage.getItem('stickToBottom') === 'stick')
+        setStick(true)
 
       if (localStorage.getItem('systemRoleSettings'))
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings'))
@@ -41,6 +46,8 @@ export default () => {
   const handleBeforeUnload = () => {
     localStorage.setItem('messageList', JSON.stringify(messageList()))
     localStorage.setItem('systemRoleSettings', currentSystemRoleSettings())
+    if (isStick()) localStorage.setItem('stickToBottom', 'stick')
+    else localStorage.removeItem('stickToBottom')
   }
 
   const handleButtonClick = async() => {
@@ -59,12 +66,19 @@ export default () => {
         content: inputValue,
       },
     ])
+    smoothToBottom()
     requestWithLatestMessage()
   }
 
-  const smoothToBottom = useThrottleFn(() => {
-    window.scrollTo({ top: footer.offsetTop - window.innerHeight, behavior: 'smooth' })
-  }, 300, false, true)
+  const toBottom = (behavior: 'smooth' | 'instant') => {
+    const distanceToBottom = footer.offsetTop - window.innerHeight
+    const currentScrollHeight = window.scrollY
+    if (distanceToBottom > currentScrollHeight)
+      window.scrollTo({ top: distanceToBottom, behavior })
+  }
+
+  const smoothToBottom = useThrottleFn(() => toBottom('smooth'), 300, false, true)
+  const instantToBottom = () => toBottom('instant')
 
   const requestWithLatestMessage = async() => {
     setLoading(true)
@@ -118,10 +132,11 @@ export default () => {
 
           if (char)
             setCurrentAssistantMessage(currentAssistantMessage() + char)
-
-          // smoothToBottom()
         }
         done = readerDone
+
+        if (isStick())
+          instantToBottom()
       }
     } catch (e) {
       console.error(e)
@@ -145,7 +160,7 @@ export default () => {
       setLoading(false)
       setController(null)
       // inputRef.focus()
-      smoothToBottom()
+      isStick() ? instantToBottom() : smoothToBottom()
     }
   }
 
@@ -178,7 +193,7 @@ export default () => {
     if (e.isComposing || e.shiftKey)
       return
 
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
       e.preventDefault()
       handleButtonClick()
     }
@@ -245,6 +260,14 @@ export default () => {
           </button>
         </div>
       </Show>
+      <div class="fixed bottom-5 left-5 rounded-md hover:bg-slate/10 w-fit h-fit transition-colors active:scale-90" class:stick-btn-on={isStick()}>
+        <div>
+          <button class="p-2.5 text-base" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
+            <div i-ph-arrow-line-down-bold />
+          </button>
+        </div>
+      </div>
     </div>
+
   )
 }

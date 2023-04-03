@@ -2,9 +2,7 @@
 import Logo from './Logo.astro'
 import Themetoggle from './Themetoggle.astro'
 
-let origin = Astro.request.headers.get('host')
-origin = origin.includes('.') ? origin : 'chat.muspimerol.site'
-const { 1: prefix, 2: base } = origin.match(/(.*?)\.(.*)/)
+const base = (Astro.request.headers.get('host') === 'chat.bnu120.space') ? 'bnu120.space' : 'muspimerol.site'
 ---
 
 <header>
@@ -16,19 +14,15 @@ const { 1: prefix, 2: base } = origin.match(/(.*?)\.(.*)/)
   </div>
   <div class="fi mt-2 font-mono">
     <a href="." onclick="return false" select-none transition-all>
-      <span class="gpt-subtitle dark:filter-sepia">{prefix}</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.{base}</span>
+      <span class="gpt-subtitle dark:filter-sepia">chat</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.{base}</span>
     </a>
   </div>
 
   <span block h-2></span>
 
-  <p mt-1 font-light font-serif op-80 style="letter-spacing: 0.5pt;">
-    <a b-slate-link href="//chat.academic.bnu120.space">ChatGPT 学术优化</a>
-    <span op-40>网站已迁移到</span>
-    <a b-slate-link href="//chat.academic.bnu120.space">chat.academic.bnu120.space</a>
-
+  <p style="letter-spacing: 0.5pt;">
+    2023-04-04 新增 <span text-white font-bold>Stick To Bottom</span> 功能，点击左下角按钮体验
     <span block h-1></span>
-
-    TIPS: <a font-bold b-slate-link href="https://cdn.muspimerol.site/free-chat-tips-01.html">如果你没有什么使用ChatGPT的经验，建议先看看教程➡️</a>
+    <span op-40>TIPS: <a b-slate-link href="https://cdn.muspimerol.site/free-chat-tips-01.html">如果你没有什么使用ChatGPT的经验，建议先看看教程➡️</a></span>
   </p>
 </header>
