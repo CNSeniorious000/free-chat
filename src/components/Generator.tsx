@@ -1,4 +1,4 @@
-import { Index, Show, createSignal, onCleanup, onMount } from 'solid-js'
+import { Index, Show, createEffect, createSignal, onMount } from 'solid-js'
 import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
 import IconClear from './icons/Clear'
@@ -21,6 +21,23 @@ export default () => {
 
   const [isStick, setStick] = createSignal(false)
 
+  const isHigher = () => {
+    const distanceToBottom = footer.offsetTop - window.innerHeight
+    const currentScrollHeight = window.scrollY
+    return distanceToBottom > currentScrollHeight
+  }
+
+  createEffect(() => {
+    if (isStick()) {
+      localStorage.setItem('stickToBottom', 'stick')
+      smoothToBottom()
+    } else { localStorage.removeItem('stickToBottom') }
+  })
+
+  createEffect(() => {
+    localStorage.setItem('systemRoleSettings', currentSystemRoleSettings())
+  })
+
   onMount(() => {
     try {
       if (localStorage.getItem('messageList'))
@@ -35,20 +52,16 @@ export default () => {
       console.error(err)
     }
 
-    window.addEventListener('beforeunload', handleBeforeUnload)
-    onCleanup(() => {
-      window.removeEventListener('beforeunload', handleBeforeUnload)
-    })
-
     footer = document.querySelector('footer')
-  })
 
-  const handleBeforeUnload = () => {
-    localStorage.setItem('messageList', JSON.stringify(messageList()))
-    localStorage.setItem('systemRoleSettings', currentSystemRoleSettings())
-    if (isStick()) localStorage.setItem('stickToBottom', 'stick')
-    else localStorage.removeItem('stickToBottom')
-  }
+    let lastPostion = window.scrollY
+
+    window.addEventListener('scroll', () => {
+      const nowPostion = window.scrollY
+      if (nowPostion < lastPostion && isHigher()) setStick(false)
+      lastPostion = nowPostion
+    })
+  })
 
   const handleButtonClick = async() => {
     const inputValue = inputRef.value
@@ -160,7 +173,8 @@ export default () => {
       setLoading(false)
       setController(null)
       // inputRef.focus()
-      isStick() ? instantToBottom() : smoothToBottom()
+      isStick() && instantToBottom()
+      localStorage.setItem('messageList', JSON.stringify(messageList()))
     }
   }
 
@@ -169,6 +183,7 @@ export default () => {
     inputRef.style.height = 'auto'
     setMessageList([])
     setCurrentAssistantMessage('')
+    localStorage.setItem('messageList', JSON.stringify([]))
     setCurrentError(null)
   }
 
