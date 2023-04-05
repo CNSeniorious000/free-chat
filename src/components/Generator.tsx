@@ -30,7 +30,7 @@ export default () => {
   createEffect(() => {
     if (isStick()) {
       localStorage.setItem('stickToBottom', 'stick')
-      smoothToBottom()
+      loading() ? instantToBottom() : smoothToBottom()
     } else { localStorage.removeItem('stickToBottom') }
   })
 
@@ -275,8 +275,8 @@ export default () => {
           </button>
         </div>
       </Show>
-      <div class="fixed bottom-5 left-5 rounded-md hover:bg-slate/10 w-fit h-fit transition-colors active:scale-90" class:stick-btn-on={isStick()}>
-        <div>
+      <div class="fixed bottom-5 left-5 active:scale-90">
+        <div class="rounded-md hover:bg-slate/10 w-fit h-fit transition-all" class:stick-btn-on={isStick()}>
           <button class="p-2.5 text-base" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
             <div i-ph-arrow-line-down-bold />
           </button>

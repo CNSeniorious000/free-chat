@@ -28,7 +28,7 @@ export default (props: Props) => {
               <Show when={props.canEdit()} fallback={<IconEnv />}>
                 <span onClick={() => props.setCurrentSystemRoleSettings('')} class="sys-edit-btn p-1 rd-50%" > <IconX /> </span>
               </Show>
-              <div>系统消息</div>
+              <div>自定义场景</div>
             </div>
             <div class="mt-1">
               {props.currentSystemRoleSettings()}
@@ -38,7 +38,7 @@ export default (props: Props) => {
         <Show when={!props.currentSystemRoleSettings() && props.canEdit()}>
           <span onClick={() => props.setSystemRoleEditing(!props.systemRoleEditing())} class="sys-edit-btn">
             <IconEnv />
-            <span>设置系统消息</span>
+            <span>自定义场景</span>
           </span>
         </Show>
       </Show>
@@ -46,9 +46,9 @@ export default (props: Props) => {
         <div>
           <div class="fi gap-1 op-50 dark:op-60">
             <IconEnv />
-            <span text-sm ml-1>系统消息</span>
+            <span text-sm ml-1>自定义场景</span>
           </div>
-          <p class="my-2 leading-normal text-sm op-50 dark:op-60">设置 ChatGPT 的行为模式</p>
+          <p class="my-2 leading-normal text-sm op-50 dark:op-60">通过 system message 设定指令、角色、情境等</p>
           <div>
             <textarea
               ref={systemInputRef!}
