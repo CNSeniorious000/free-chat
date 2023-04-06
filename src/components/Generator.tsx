@@ -6,20 +6,20 @@ import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 import ErrorMessageItem from './ErrorMessageItem'
 import type { ChatMessage, ErrorMessage } from '@/types'
+import type { Setter } from 'solid-js'
 
 export default () => {
   let inputRef: HTMLTextAreaElement
-  const [currentSystemRoleSettings, setCurrentSystemRoleSettings] = createSignal('')
+  const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
   const [systemRoleEditing, setSystemRoleEditing] = createSignal(false)
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
   const [currentError, setCurrentError] = createSignal<ErrorMessage>()
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
   const [loading, setLoading] = createSignal(false)
   const [controller, setController] = createSignal<AbortController>(null)
+  const [isStick, _setStick] = createSignal(false)
 
   let footer = null
-
-  const [isStick, setStick] = createSignal(false)
 
   const isHigher = () => {
     const distanceToBottom = footer.offsetTop - window.innerHeight
@@ -27,15 +27,18 @@ export default () => {
     return distanceToBottom > currentScrollHeight
   }
 
-  createEffect(() => {
-    if (isStick()) {
-      localStorage.setItem('stickToBottom', 'stick')
-      loading() ? instantToBottom() : smoothToBottom()
-    } else { localStorage.removeItem('stickToBottom') }
-  })
+  const setCurrentSystemRoleSettings = (systemRole: string) => {
+    _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
+    return systemRole
+  }
+
+  const setStick = (stick: boolean) => {
+    _setStick(stick) ? localStorage.setItem('stickToBottom', 'stick') : localStorage.removeItem('stickToBottom')
+    return stick
+  }
 
   createEffect(() => {
-    localStorage.setItem('systemRoleSettings', currentSystemRoleSettings())
+    isStick() && loading() ? instantToBottom() : smoothToBottom()
   })
 
   onMount(() => {
@@ -221,7 +224,7 @@ export default () => {
         systemRoleEditing={systemRoleEditing}
         setSystemRoleEditing={setSystemRoleEditing}
         currentSystemRoleSettings={currentSystemRoleSettings}
-        setCurrentSystemRoleSettings={setCurrentSystemRoleSettings}
+        setCurrentSystemRoleSettings={setCurrentSystemRoleSettings as Setter<string>}
       />
       <Index each={messageList()}>
         {(message, index) => (
