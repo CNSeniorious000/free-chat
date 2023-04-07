@@ -2,28 +2,30 @@
 import Logo from './Logo.astro'
 import Themetoggle from './Themetoggle.astro'
 
-const base = (Astro.request.headers.get('host') === 'chat.bnu120.space') ? 'bnu120.space' : 'muspimerol.site'
+const base = Astro.request.headers.get('host') === 'chat.bnu120.space' ? 'bnu120.space' : 'muspimerol.site';
 ---
 
 <header>
   <div class="fb items-center flex-row mt-6rem">
-    <a href="." onclick="return false" hover:filter-brightness-120 transition-all>
-      <Logo />
-    </a>
-    <Themetoggle />
+    <div class="fi">
+      <a href="." onclick="return false" mr-1 select-none transition-all>
+        <span class="gpt-subtitle dark:filter-sepia">chat</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.{base}</span>
+      </a>
+    </div>
+    <div class="flex">
+      <a class="grid place-items-center w-10 h-10 rounded-md transition-background-color hover:bg-slate/10" href="https://cdn.muspimerol.site/group.html">
+        <span class="i-mdi-wechat text-lg"></span>
+      </a>
+      <a class="grid place-items-center w-10 h-10 rounded-md transition-background-color hover:bg-slate/10" href="https://cdn.muspimerol.site/sponsorship.html">
+        <span class="i-mingcute-pig-money-fill text-lg"></span>
+      </a>
+      <a class="grid place-items-center w-10 h-10 rounded-md transition-background-color hover:bg-slate/10" href="https://github.com/CNSeniorious000/free-chat">
+        <span class="i-line-md-github-twotone text-lg"></span>
+      </a>
+      <Themetoggle />
+    </div>
   </div>
-  <div class="fi mt-2 font-mono">
-    <a href="." onclick="return false" select-none transition-all>
-      <span class="gpt-subtitle dark:filter-sepia">chat</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.{base}</span>
-    </a>
+  <div class="w-full bg-slate/10 op-50 py-5 mt-2 mb-1 rounded-sm grid place-items-center">
+    广告位招租 - Ad Space For Rent
   </div>
-
-  <span block h-2></span>
-
-  <p style="letter-spacing: 0.5pt;">
-    <span block h-1></span>
-    2023-04-06 网站访问量陡增，这样下去我们很快将无法维持运营。只要每个人出1毛钱，我们的服务就能维持。如果这个网站帮到了你 <a font-bold b-slate-link text-black dark:text-white href="https://cdn.muspimerol.site/sponsorship.jpg">欢迎赞助</a> 感谢！为防止失联，<a font-bold b-slate-link text-black dark:text-white href="https://cdn.muspimerol.site/group.jpg">欢迎加入我们的用户交流群</a>
-    <span block h-1></span>
-    <span op-40>TIPS: <a b-slate-link href="https://cdn.muspimerol.site/free-chat-tips-01.html">如果你没有什么使用ChatGPT的经验，建议先看看教程➡️</a></span>
-  </p>
 </header>

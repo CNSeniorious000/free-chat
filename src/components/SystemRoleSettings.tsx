@@ -20,7 +20,7 @@ export default (props: Props) => {
   }
 
   return (
-    <div class="my-4 flex-grow">
+    <div class="my-4">
       <Show when={!props.systemRoleEditing()}>
         <Show when={props.currentSystemRoleSettings()}>
           <div>

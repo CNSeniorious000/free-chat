@@ -64,6 +64,17 @@ export default () => {
       if (nowPostion < lastPostion && isHigher()) setStick(false)
       lastPostion = nowPostion
     })
+
+    const textarea = document.querySelector('textarea')
+
+    window.addEventListener('keydown', (event) => {
+      if (document.activeElement === textarea) return
+
+      if (event.code === 'Slash') {
+        event.preventDefault()
+        textarea.focus()
+      } else if (event.code === 'KeyC') { setMessageList([]) } else if (event.code === 'KeyB') { setStick(!isStick()) }
+    }, false)
   })
 
   const handleButtonClick = async() => {
@@ -226,6 +237,17 @@ export default () => {
         currentSystemRoleSettings={currentSystemRoleSettings}
         setCurrentSystemRoleSettings={setCurrentSystemRoleSettings as Setter<string>}
       />
+      <div class="flex-grow w-full grid place-items-center">
+        {
+        messageList().length === 0 && (
+          <div class="flex flex-col gap-5 op-80 font-light">
+            <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">/</span> 聚焦到输入框 </p>
+            <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">C</span> 清空上下文 </p>
+            <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">B</span> 开关跟随底部 </p>
+          </div>
+        )
+        }
+      </div>
       <Index each={messageList()}>
         {(message, index) => (
           <MessageItem
