@@ -65,15 +65,13 @@ export default () => {
       lastPostion = nowPostion
     })
 
-    const textarea = document.querySelector('textarea')
-
     window.addEventListener('keydown', (event) => {
-      if (document.activeElement === textarea) return
+      if ((event.target as HTMLElement).nodeName === 'TEXTAREA') return
 
       if (event.code === 'Slash') {
         event.preventDefault()
-        textarea.focus()
-      } else if (event.code === 'KeyC') { setMessageList([]) } else if (event.code === 'KeyB') { setStick(!isStick()) }
+        document.querySelector('textarea').focus()
+      } else if (event.code === 'KeyB') { setStick(!isStick()) }
     }, false)
   })
 
@@ -242,7 +240,6 @@ export default () => {
         messageList().length === 0 && (
           <div class="flex flex-col gap-5 op-80 font-light">
             <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">/</span> 聚焦到输入框 </p>
-            <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">C</span> 清空上下文 </p>
             <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">B</span> 开关跟随底部 </p>
           </div>
         )
@@ -308,6 +305,5 @@ export default () => {
         </div>
       </div>
     </div>
-
   )
 }

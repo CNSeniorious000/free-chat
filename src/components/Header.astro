@@ -1,15 +1,15 @@
 ---
 import Logo from './Logo.astro'
-import Themetoggle from './Themetoggle.astro'
-
-const base = Astro.request.headers.get('host') === 'chat.bnu120.space' ? 'bnu120.space' : 'muspimerol.site';
+import Themetoggle from './Themetoggle.astro';
 ---
 
 <header>
   <div class="fb items-center flex-row mt-6rem">
     <div class="fi">
-      <a href="." onclick="return false" mr-1 select-none transition-all>
-        <span class="gpt-subtitle dark:filter-sepia">chat</span><span class="gpt-title dark:gpt-subtitle dark:filter-invert">.{base}</span>
+      <a href="." onclick="return false" mr-1 select-none transition-all flex gap-2>
+        <Logo />
+        <span class="gpt-subtitle dark:filter-sepia">Free</span>
+        <span class="gpt-title dark:gpt-subtitle dark:filter-invert">Chat</span>
       </a>
     </div>
     <div class="flex">
@@ -25,7 +25,5 @@ const base = Astro.request.headers.get('host') === 'chat.bnu120.space' ? 'bnu120
       <Themetoggle />
     </div>
   </div>
-  <div class="w-full bg-slate/10 op-50 py-5 mt-2 mb-1 rounded-sm grid place-items-center">
-    广告位招租 - Ad Space For Rent
-  </div>
+  <iframe src="https://cdn.muspimerol.site/ad.html" class="h-20 w-full bg-slate/10 op-50 hover:op-70 transition-opacity mt-2 mb-1 rounded-sm"></iframe>
 </header>
