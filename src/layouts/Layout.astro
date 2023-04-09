@@ -17,14 +17,8 @@ const { title } = Astro.props;
     <meta name="theme-color" content="#212129">
     <meta name="generator" content={Astro.generator}>
     <title>{title}</title>
-    <meta name="description" content="A simple blog">
-    {
-      import.meta.env.HEAD_SCRIPTS
-        ? (
-        <Fragment set:html={import.meta.env.HEAD_SCRIPTS } />
-          )
-        : null
-    }
+    <meta name="description" content="A simple blog" />
+    {import.meta.env.HEAD_SCRIPTS ? <Fragment set:html={import.meta.env.HEAD_SCRIPTS} /> : null}
     <!-- netlify-disable-blocks -->
     {
       import.meta.env.PROD && (
@@ -47,6 +41,19 @@ const { title } = Astro.props;
     --c-scroll: #d9d9d9;
     --c-scroll-hover: #bbbbbb;
     scrollbar-color: var(--c-scrollbar) var(--c-bg);
+
+    --c-fg-2: rgba(68, 68, 68, 0.02);
+    --c-fg-5: rgba(68, 68, 68, 0.05);
+    --c-fg-10: rgba(68, 68, 68, 0.1);
+    --c-fg-15: rgba(68, 68, 68, 0.15);
+    --c-fg-20: rgba(68, 68, 68, 0.2);
+    --c-fg-30: rgba(68, 68, 68, 0.3);
+    --c-fg-40: rgba(68, 68, 68, 0.4);
+    --c-fg-50: rgba(68, 68, 68, 0.5);
+    --c-fg-60: rgba(68, 68, 68, 0.6);
+    --c-fg-70: rgba(68, 68, 68, 0.7);
+    --c-fg-80: rgba(68, 68, 68, 0.8);
+    --c-fg-90: rgba(68, 68, 68, 0.9);
   }
 
   html {
@@ -60,6 +67,19 @@ const { title } = Astro.props;
     --c-fg: #ddddf0;
     --c-scroll: #333333;
     --c-scroll-hover: #555555;
+
+    --c-fg-2: rgba(221, 221, 240, 0.02);
+    --c-fg-5: rgba(221, 221, 240, 0.05);
+    --c-fg-10: rgba(221, 221, 240, 0.1);
+    --c-fg-15: rgba(221, 221, 240, 0.15);
+    --c-fg-20: rgba(221, 221, 240, 0.2);
+    --c-fg-30: rgba(221, 221, 240, 0.3);
+    --c-fg-40: rgba(221, 221, 240, 0.4);
+    --c-fg-50: rgba(221, 221, 240, 0.5);
+    --c-fg-60: rgba(221, 221, 240, 0.6);
+    --c-fg-70: rgba(221, 221, 240, 0.7);
+    --c-fg-80: rgba(221, 221, 240, 0.8);
+    --c-fg-90: rgba(221, 221, 240, 0.9);
   }
 
   main {
@@ -87,18 +107,10 @@ const { title } = Astro.props;
 
 <script>
 const initTheme = () => {
-  const darkSchema
-    = window.matchMedia
-    && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const darkSchema = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
   const storageTheme = localStorage.getItem('theme')
-  if (storageTheme) {
-    document.documentElement.classList.toggle(
-      'dark',
-      storageTheme === 'dark',
-    )
-  } else {
-    document.documentElement.classList.toggle('dark', darkSchema)
-  }
+  if (storageTheme) document.documentElement.classList.toggle('dark', storageTheme === 'dark')
+  else document.documentElement.classList.toggle('dark', darkSchema)
 }
 
 initTheme()

@@ -38,7 +38,7 @@ export default () => {
   }
 
   createEffect(() => {
-    isStick() && loading() ? instantToBottom() : smoothToBottom()
+    isStick() && (loading() ? instantToBottom() : smoothToBottom())
   })
 
   onMount(() => {
@@ -235,12 +235,12 @@ export default () => {
         currentSystemRoleSettings={currentSystemRoleSettings}
         setCurrentSystemRoleSettings={setCurrentSystemRoleSettings as Setter<string>}
       />
-      <div class="flex-grow w-full grid place-items-center">
+      <div class="flex-grow w-full flex items-center justify-center">
         {
         messageList().length === 0 && (
-          <div class="flex flex-col gap-5 op-80 font-light">
-            <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">/</span> 聚焦到输入框 </p>
-            <p><span class="px-2.5 py-1.5 font-mono bg-slate/10 rounded-md">B</span> 开关跟随底部 </p>
+          <div class="flex flex-col gap-5 op-80 text-sm select-none">
+            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">/</span> 聚焦到输入框 </p>
+            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">B</span> 开关跟随底部 </p>
           </div>
         )
         }
@@ -297,12 +297,10 @@ export default () => {
           </button>
         </div>
       </Show>
-      <div class="fixed bottom-5 left-5 active:scale-90">
-        <div class="rounded-md hover:bg-slate/10 w-fit h-fit transition-all" class:stick-btn-on={isStick()}>
-          <button class="p-2.5 text-base" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
-            <div i-ph-arrow-line-down-bold />
-          </button>
-        </div>
+      <div class="fixed z-10 bottom-5 left-5 active:scale-90 rounded-md hover:bg-$c-fg-5 w-fit h-fit transition-colors" class:stick-btn-on={isStick()}>
+        <button class="p-2.5 text-base" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
+          <div i-ph-arrow-line-down-bold />
+        </button>
       </div>
     </div>
   )
