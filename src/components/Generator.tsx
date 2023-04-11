@@ -28,6 +28,7 @@ export default () => {
   }
 
   const setCurrentSystemRoleSettings = (systemRole: string) => {
+    location.hash = systemRole
     _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
     return systemRole
   }
@@ -49,7 +50,9 @@ export default () => {
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
 
-      if (localStorage.getItem('systemRoleSettings'))
+      if (location.hash)
+        setCurrentSystemRoleSettings(decodeURIComponent(location.hash).slice(1))
+      else if (localStorage.getItem('systemRoleSettings'))
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings'))
     } catch (err) {
       console.error(err)
@@ -160,8 +163,7 @@ export default () => {
         }
         done = readerDone
 
-        if (isStick())
-          instantToBottom()
+        isStick() && instantToBottom()
       }
     } catch (e) {
       console.error(e)
@@ -184,7 +186,6 @@ export default () => {
       setCurrentAssistantMessage('')
       setLoading(false)
       setController(null)
-      // inputRef.focus()
       isStick() && instantToBottom()
       localStorage.setItem('messageList', JSON.stringify(messageList()))
     }
