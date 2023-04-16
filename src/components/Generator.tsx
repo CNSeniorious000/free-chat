@@ -10,6 +10,7 @@ import type { Setter } from 'solid-js'
 
 export default () => {
   let inputRef: HTMLTextAreaElement
+  let bgd: HTMLDivElement
   const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
   const [systemRoleEditing, setSystemRoleEditing] = createSignal(false)
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
@@ -29,6 +30,7 @@ export default () => {
 
   const setCurrentSystemRoleSettings = (systemRole: string) => {
     location.hash = systemRole
+    clear()
     _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
     return systemRole
   }
@@ -74,8 +76,14 @@ export default () => {
       if (event.code === 'Slash') {
         event.preventDefault()
         document.querySelector('textarea').focus()
-      } else if (event.code === 'KeyB') { setStick(!isStick()) }
+      } else if (event.code === 'KeyB') { setStick(!isStick()) } else if (event.altKey && event.code === 'KeyC') { clear() }
     }, false)
+
+    new MutationObserver(() => isStick() && instantToBottom()).observe(document.querySelector('astro-island > div'), { childList: true, subtree: true })
+
+    window.addEventListener('scroll', () => {
+      bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
+    })
   })
 
   const handleButtonClick = async() => {
@@ -162,8 +170,6 @@ export default () => {
             setCurrentAssistantMessage(currentAssistantMessage() + char)
         }
         done = readerDone
-
-        isStick() && instantToBottom()
       }
     } catch (e) {
       console.error(e)
@@ -186,7 +192,6 @@ export default () => {
       setCurrentAssistantMessage('')
       setLoading(false)
       setController(null)
-      isStick() && instantToBottom()
       localStorage.setItem('messageList', JSON.stringify(messageList()))
     }
   }
@@ -229,6 +234,7 @@ export default () => {
 
   return (
     <div class="flex flex-col justify-between h-full flex-grow">
+      <div ref={bgd!} class="fixed left-0 top-0 w-full h-1000vh <sm:display-none bg-hero-topography-gray-500/15 bg-top-center z--1 translate-y-$scroll " class:transition-transform={isStick() && loading()} class:duration-400={isStick() && loading()} />
       <SystemRoleSettings
         canEdit={() => messageList().length === 0}
         systemRoleEditing={systemRoleEditing}
@@ -239,9 +245,12 @@ export default () => {
       <div class="flex-grow w-full flex items-center justify-center">
         {
         messageList().length === 0 && (
-          <div class="flex flex-col gap-5 op-80 text-sm select-none">
+          <div id="tips" class="flex relative flex-col gap-6 op-50 text-sm select-none <md:op-0 transition-opacity bg-$c-fg-2 rounded-md p-7">
+            <span class="absolute right-0 top-0 w-fit h-fit px-2 py-1 font-bold text-$c-fg-50 bg-$c-fg-5 rounded-bl-md rounded-rt-md">TIPS</span>
+            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">B</span> 开启/关闭跟随最新消息功能 </p>
             <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">/</span> 聚焦到输入框 </p>
-            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">B</span> 开关跟随底部 </p>
+            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">Alt/Option</span> + <span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">C</span> 清空上下文 </p>
+            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">鼠标中键点击左上标题</span> 新窗口打开新会话 </p>
           </div>
         )
         }
