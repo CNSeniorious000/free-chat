@@ -40,7 +40,7 @@ export default defineConfig({
     'base-focus': 'focus:(bg-op-20 ring-0 outline-none)',
     'b-slate-link': 'border-b border-($c-fg-70 none) hover:border-dashed',
     'gpt-title': 'text-2xl font-extrabold',
-    'gpt-subtitle': 'text-(2xl transparent) font-extrabold bg-(clip-text gradient-to-r) from-sky-400 to-emerald-600',
+    'gpt-subtitle': 'text-(2xl transparent) font-extrabold bg-(clip-text gradient-to-r) from-sky-400 to-sky-500',
     'gpt-copy-btn': 'absolute top-12px right-12px z-3 fcc border b-transparent w-fit min-w-8 h-8 p-2 bg-light-300 dark:bg-dark-300 op-90 cursor-pointer',
     'gpt-copy-tips': 'op-0 h-7 bg-black px-2.5 py-1 box-border text-xs c-white fcc rounded absolute z-1 transition duration-600 whitespace-nowrap -top-8',
     'gpt-retry-btn': 'fi gap-1 px-2 py-0.5 op-70 border border-$c-fg-50 rounded-md text-sm cursor-pointer hover:bg-$c-fg-5',

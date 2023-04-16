@@ -234,7 +234,7 @@ export default () => {
 
   return (
     <div class="flex flex-col justify-between h-full flex-grow">
-      <div ref={bgd!} class="fixed left-0 top-0 w-full h-1000vh <sm:display-none bg-hero-topography-gray-500/15 bg-top-center z--1 translate-y-$scroll " class:transition-transform={isStick() && loading()} class:duration-400={isStick() && loading()} />
+      <div ref={bgd!} class="fixed left-0 top-0 w-full h-1000vh <sm:display-none bg-hero-architect-gray-500/15 bg-top-center z--1 translate-y-$scroll " class:transition-transform={isStick() && loading()} class:duration-400={isStick() && loading()} />
       <SystemRoleSettings
         canEdit={() => messageList().length === 0}
         systemRoleEditing={systemRoleEditing}
