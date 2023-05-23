@@ -49,9 +49,9 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       const token = tokens[idx]
       const rawCode = fence(...args)
 
-      return `<div relative>
-      <div data-code=${encodeURIComponent(token.content)} class="copy-btn gpt-copy-btn group hover:filter-brightness-90 dark:hover:filter-brightness-115 active:scale-90 transition-all duration-150">
-        ${copied() ? '<span mr-1 text-sm display-none group-hover:display-inline-block>Copied!</span><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
+      return `<div class="relative group">
+      <div data-code=${encodeURIComponent(token.content)} class="copy-btn gpt-copy-btn op-0 group-hover:op-100 dark:hover:filter-brightness-115 active:scale-90 transition-all duration-150">
+        ${copied() ? '<span mr-1 text-sm display-inline-block>Copied!</span><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
       </div>
       ${rawCode}
       </div>`

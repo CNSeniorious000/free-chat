@@ -30,7 +30,7 @@ export default (props: Props) => {
               </Show>
               <div>自定义场景</div>
             </div>
-            <div class="mt-1">
+            <div class="mt-0.5">
               {props.currentSystemRoleSettings()}
             </div>
           </div>

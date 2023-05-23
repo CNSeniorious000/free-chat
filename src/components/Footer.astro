@@ -1,14 +1,13 @@
-<footer mb-4rem>
-  <p mt-4 text-xs>
-    <a b-slate-link href="https://xindex.muspimerol.site">xindex</a>
+---
+const origin = Astro.request.headers.get('host')
+---
+<footer mb-4rem text-xs flex flex-col gap-2.5>
+  <p>
+    <a b-slate-link href="https://ic.muspimerol.site/">Free Chat Index</a>
     <span px-1 select-none>|</span>
-    <a b-slate-link href="https://muspimerol.site/blog">muspimerol.site</a>
+    <a b-slate-link href="https://anse.app.bnu120.space/">Anse</a>
     <span px-1 select-none>|</span>
-    <a b-slate-link href="https://bnu120.space">bnu120.space</a>
-    <span px-1 select-none>|</span>
-    <a b-slate-link href="https://chat.academic.bnu120.space">ChatGPT 学术优化</a>
-    <span px-1 select-none>|</span>
-    <a b-slate-link href="https://github.com/ddiu8081/chatgpt-demo">原开源项目</a>
+    <a b-slate-link href="https://github.com/CNSeniorious000">Muspi Merol</a>
   </p>
-  <p mt-4 text-xs><a op-30 hover:op-60 w-fit transition-opacity flex items-center href="mailto:admin@muspimerol.site?subject=❗Site Error Report&body=chat.bnu120.space网站不能正常使用">如遇网站不可用，请联系我，谢谢<span i-line-md-email-twotone-alt mx-1></span>admin@muspimerol.site</a></p>
+  <p><a op-30 hover:op-60 w-fit transition-opacity flex items-center href=`mailto:admin@muspimerol.site?subject=❗${origin} Error Report&body=${origin} 网站不能正常使用`>网站问题请联系<span i-line-md-email-twotone-alt mx-1></span>admin@muspimerol.site</a></p>
 </footer>
