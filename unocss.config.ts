@@ -1,12 +1,4 @@
-import {
-  defineConfig,
-  presetAttributify,
-  presetIcons,
-  presetTypography,
-  presetUno,
-  transformerDirectives,
-  transformerVariantGroup,
-} from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetTypography, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 
@@ -14,22 +6,12 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
-    presetIcons({
-      scale: 1.1,
-      cdn: 'https://esm.sh/',
-    }),
-    presetTypography({
-      cssExtend: {
-        'ul,ol': {
-          'padding-left': '2.25em',
-          'position': 'relative',
-        },
-      },
-    }),
+    presetIcons({ scale: 1.1 }),
+    presetTypography({ cssExtend: { 'ul,ol': { 'padding-left': '2.25em', 'position': 'relative' } } }),
     presetHeroPatterns(),
   ],
   transformers: [transformerVariantGroup(), transformerDirectives()],
-  shortcuts: [{
+  shortcuts: {
     'fc': 'flex justify-center',
     'fi': 'flex items-center',
     'fb': 'flex justify-between',
@@ -55,5 +37,5 @@ export default defineConfig({
     'gen-textarea': 'w-full px-3 py-3 min-h-12 max-h-36 rounded-sm bg-$c-fg-10 resize-none focus:(bg-$c-fg-15 ring-0 outline-none) placeholder:op-50 dark:(placeholder:op-30) scroll-pa-8px',
     'sys-edit-btn': 'inline-fcc gap-1 text-sm bg-$c-fg-10 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-$c-fg-15',
     'stick-btn-on': 'text-$c-bg !bg-$c-fg hover:!bg-$c-fg-80',
-  }],
+  },
 })

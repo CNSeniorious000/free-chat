@@ -233,8 +233,8 @@ export default () => {
   }
 
   return (
-    <div class="flex flex-col justify-between h-full flex-grow">
-      <div ref={bgd!} class="fixed left-0 top-0 w-full h-1000vh <sm:display-none bg-hero-topography-gray-500/15 bg-top-center z--1 translate-y-$scroll " class:transition-transform={isStick() && loading()} class:duration-400={isStick() && loading()} />
+    <div class="flex flex-col flex-grow h-full justify-between">
+      <div ref={bgd!} class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll top-0 left-0 z--1 fixed <sm:display-none " class:transition-transform={isStick() && loading()} class:duration-400={isStick() && loading()} />
       <SystemRoleSettings
         canEdit={() => messageList().length === 0}
         systemRoleEditing={systemRoleEditing}
@@ -242,15 +242,15 @@ export default () => {
         currentSystemRoleSettings={currentSystemRoleSettings}
         setCurrentSystemRoleSettings={setCurrentSystemRoleSettings as Setter<string>}
       />
-      <div class="flex-grow w-full flex items-center justify-center">
+      <div class="flex-grow flex w-full items-center justify-center">
         {
         messageList().length === 0 && (
-          <div id="tips" class="flex relative flex-col gap-6 op-50 text-sm select-none <md:op-0 transition-opacity bg-$c-fg-2 rounded-md p-7">
-            <span class="absolute right-0 top-0 w-fit h-fit px-2 py-1 font-bold text-$c-fg-50 bg-$c-fg-5 rounded-bl-md rounded-rt-md">TIPS</span>
-            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">B</span> 开启/关闭跟随最新消息功能 </p>
-            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">/</span> 聚焦到输入框 </p>
-            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">Alt/Option</span> + <span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">C</span> 清空上下文 </p>
-            <p><span class="px-1.75 py-1 font-mono bg-$c-fg-5 rounded-md">鼠标中键点击左上标题</span> 新窗口打开新会话 </p>
+          <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-6 relative select-none op-50 <md:op-0">
+            <span class="rounded-bl-md rounded-rt-md font-bold h-fit bg-$c-fg-5 w-fit py-1 px-2 top-0 right-0 text-$c-fg-50 absolute">TIPS</span>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">B</span> 开启/关闭跟随最新消息功能 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">/</span> 聚焦到输入框 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">Alt/Option</span> + <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">C</span> 清空上下文 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">鼠标中键点击左上标题</span> 新窗口打开新会话 </p>
           </div>
         )
         }
@@ -307,8 +307,8 @@ export default () => {
           </button>
         </div>
       </Show>
-      <div class="fixed z-10 bottom-5 left-5 active:scale-90 rounded-md hover:bg-$c-fg-5 w-fit h-fit transition-colors" class:stick-btn-on={isStick()}>
-        <button class="p-2.5 text-base" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
+      <div class="rounded-md h-fit w-fit transition-colors bottom-5 left-5 z-10 fixed hover:bg-$c-fg-5 active:scale-90" class:stick-btn-on={isStick()}>
+        <button class="text-base p-2.5" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
           <div i-ph-arrow-line-down-bold />
         </button>
       </div>

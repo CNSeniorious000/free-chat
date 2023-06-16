@@ -50,7 +50,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       const rawCode = fence(...args)
 
       return `<div class="relative group">
-      <div data-code=${encodeURIComponent(token.content)} class="copy-btn gpt-copy-btn op-0 group-hover:op-100 dark:hover:filter-brightness-115 active:scale-90 transition-all duration-150">
+      <div data-code=${encodeURIComponent(token.content)} class="transition-all duration-150 copy-btn gpt-copy-btn op-0 active:scale-90 dark:hover:filter-brightness-115 group-hover:op-100">
         ${copied() ? '<span mr-1 text-sm display-inline-block>Copied!</span><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
       </div>
       ${rawCode}
@@ -66,13 +66,13 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
   }
 
   return (
-    <div class="py-2 -mx-20 px-20 md:(-mx-4 px-4) lg:(-mx-20 px-20) transition-background-color hover:bg-$c-fg-2">
-      <div class="flex gap-3 rounded-lg" class:op-75={role === 'user'}>
+    <div class="-mx-20 py-2 px-20 transition-background-color md:(-mx-4 px-4) lg:(-mx-20 px-20) hover:bg-$c-fg-2 ">
+      <div class="rounded-lg flex gap-3" class:op-75={role === 'user'}>
         <div class={`shrink-0 w-7 h-7 mt-4 rounded-full op-80 ${roleClass[role]}`} />
-        <div class="message prose break-words overflow-hidden max-w-full" innerHTML={htmlString()} />
+        <div class="max-w-full message prose break-words overflow-hidden" innerHTML={htmlString()} />
       </div>
       {showRetry?.() && onRetry && (
-        <div class="fie px-3 mb-2">
+        <div class="mb-2 px-3 fie">
           <div onClick={onRetry} class="gpt-retry-btn">
             <IconRefresh />
             <span select-none>重新生成</span>
