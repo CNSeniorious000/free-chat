@@ -1,26 +1,23 @@
 ---
-import Logo from './Logo.astro'
+// import Logo from './Logo.astro'
 import Themetoggle from './Themetoggle.astro';
 ---
 
 <header>
   <div class="flex-row mt-6rem fb items-center">
     <div class="fi">
-      <a href="." onclick="return false" mr-1 select-none transition-all flex gap-2>
+      <a href="." onclick="return false" mr-1 select-none flex gap-2>
         <!-- <Logo /> -->
-        <span class="gpt-subtitle dark:filter-sepia">Free Chat</span>
-        <span class="gpt-title dark:gpt-subtitle dark:filter-invert">16K✨</span>
+        <span class="gpt-title dark:gpt-subtitle dark:filter-invert">Free Chat</span>
+        <span class="gpt-subtitle dark:filter-sepia">16K✨</span>
       </a>
     </div>
     <div class="flex">
-      <a class="rounded-md h-10 grid transition-background-color w-10 place-items-center hover:bg-$c-fg-5" href="https://cdn.muspimerol.site/group.html">
+      <a class="rounded-md h-10 grid w-10 place-items-center <sm:transition-color hover:bg-$c-fg-5" href="https://cdn.muspimerol.site/group.html">
         <span class="text-lg i-mdi-wechat"></span>
       </a>
-      <a class="rounded-md h-10 grid transition-background-color w-10 place-items-center hover:bg-$c-fg-5" href="https://cdn.muspimerol.site/sponsorship.html">
+      <a class="rounded-md h-10 grid w-10 place-items-center <sm:transition-color hover:bg-$c-fg-5" href="https://cdn.muspimerol.site/sponsorship.html">
         <span class="text-lg i-mingcute-pig-money-fill"></span>
-      </a>
-      <a class="rounded-md h-10 grid transition-background-color w-10 place-items-center hover:bg-$c-fg-5" href="https://github.com/CNSeniorious000/free-chat">
-        <span class="text-lg i-line-md-github-twotone"></span>
       </a>
       <Themetoggle />
     </div>
