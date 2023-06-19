@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import 'reveal.js/dist/reveal.css'
+import 'reveal.js/dist/theme/black.css'
+---
+
+<script>
+import Reveal from 'reveal.js/dist/reveal.esm'
+import Markdown from 'reveal.js/plugin/markdown/markdown.esm'
+const deck = new Reveal({ plugins: [Markdown] })
+deck.initialize({ history: true, mouseWheel: true })
+</script>
+
+<Layout title="tutorial">
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown={import.meta.env.TUTORIAL_MD_URL}></section>
+    </div>
+  </div>
+</Layout>
+
+<script>
+const colorSchema = window.matchMedia('(prefers-color-scheme: dark)')
+let darkMode = localStorage.getItem('theme') === 'dark' || colorSchema.matches
+document.documentElement.classList.toggle('dark', darkMode)
+colorSchema.addEventListener('change', () => {
+  document.documentElement.classList.toggle('dark', (darkMode = colorSchema.matches))
+  localStorage.setItem('theme', darkMode ? 'dark' : 'light')
+})
+</script>
+
+<style is:global>
+  .present :where(p, li) {
+    --uno: animate-fade-in animate-ease-out animate-both;
+  }
+
+  .present :where(p, li):nth-of-type(1) { --uno: animate-delay-150 animate-duration-350; }
+  .present :where(p, li):nth-of-type(2) { --uno: animate-delay-250 animate-duration-450; }
+  .present :where(p, li):nth-of-type(3) { --uno: animate-delay-350 animate-duration-550; }
+  .present :where(p, li):nth-of-type(4) { --uno: animate-delay-450 animate-duration-650; }
+
+  :root {
+    --r-background-color: var(--c-bg) !important;
+    --r-main-color: var(--c-fg) !important;
+    --r-heading-color: var(--c-fg) !important;
+  }
+</style>

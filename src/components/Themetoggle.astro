@@ -1,4 +1,3 @@
-
 <div id="themeToggle" class="rounded-md flex h-10 transition-colors w-10 items-center justify-center hover:bg-$c-fg-5">
   <svg class="theme_toggle_svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" color="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor">
     <mask id="myMask">
@@ -56,9 +55,13 @@
 const themeToggle = document.getElementById('themeToggle')
 const themeCircle1 = document.querySelector('.theme_toggle_circle1')
 const themeCircle2 = document.querySelector('.theme_toggle_circle2')
-const iframe = document.querySelector('iframe')
+const iframes = document.querySelectorAll('iframe')
 
-window.addEventListener('message', (event) => { event.data === 'mounted' && iframe.contentWindow.postMessage({ darkMode: document.documentElement.classList.contains('dark') ?? localStorage.getItem('theme') === 'dark' }, '*') })
+const postDarkMode = (darkMode: Boolean) => {
+  iframes.forEach(iframe => iframe.contentWindow.postMessage({ darkMode }, '*'))
+}
+
+window.addEventListener('message', () => postDarkMode(document.documentElement.classList.contains('dark') ?? localStorage.getItem('theme') === 'dark'))
 
 const toogleThemeCircle = () => {
   const darkMode = document.documentElement.classList.contains('dark') ?? localStorage.getItem('theme') === 'dark'
@@ -69,7 +72,7 @@ const toogleThemeCircle = () => {
     themeCircle1.setAttribute('r', '5')
     themeCircle2.setAttribute('r', '5')
   }
-  iframe.contentWindow.postMessage({ darkMode }, '*')
+  postDarkMode(darkMode)
 }
 
 const listenColorSchema = () => {

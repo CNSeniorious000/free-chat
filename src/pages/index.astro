@@ -36,3 +36,72 @@ async function checkCurrentAuth() {
 }
 checkCurrentAuth()
 </script> -->
+
+<style is:global>
+  :root {
+    --c-fg-2: rgba(68, 68, 68, 0.02);
+    --c-fg-5: rgba(68, 68, 68, 0.05);
+    --c-fg-10: rgba(68, 68, 68, 0.1);
+    --c-fg-15: rgba(68, 68, 68, 0.15);
+    --c-fg-20: rgba(68, 68, 68, 0.2);
+    --c-fg-30: rgba(68, 68, 68, 0.3);
+    --c-fg-40: rgba(68, 68, 68, 0.4);
+    --c-fg-50: rgba(68, 68, 68, 0.5);
+    --c-fg-60: rgba(68, 68, 68, 0.6);
+    --c-fg-70: rgba(68, 68, 68, 0.7);
+    --c-fg-80: rgba(68, 68, 68, 0.8);
+    --c-fg-90: rgba(68, 68, 68, 0.9);
+  }
+
+  html.dark {
+    --c-fg-2: rgba(221, 221, 240, 0.02);
+    --c-fg-5: rgba(221, 221, 240, 0.05);
+    --c-fg-10: rgba(221, 221, 240, 0.1);
+    --c-fg-15: rgba(221, 221, 240, 0.15);
+    --c-fg-20: rgba(221, 221, 240, 0.2);
+    --c-fg-30: rgba(221, 221, 240, 0.3);
+    --c-fg-40: rgba(221, 221, 240, 0.4);
+    --c-fg-50: rgba(221, 221, 240, 0.5);
+    --c-fg-60: rgba(221, 221, 240, 0.6);
+    --c-fg-70: rgba(221, 221, 240, 0.7);
+    --c-fg-80: rgba(221, 221, 240, 0.8);
+    --c-fg-90: rgba(221, 221, 240, 0.9);
+  }
+
+  main {
+    overflow-x: hidden;
+    max-width: 80ch;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--c-scroll);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--c-scroll-hover);
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--c-bg);
+  }
+
+  @media (max-height: 850px) {
+    #tips {
+      opacity: 0;
+    }
+  }
+
+  @media (max-height: 800px) {
+    #tips {
+      display: none;
+    }
+  }
+</style>
