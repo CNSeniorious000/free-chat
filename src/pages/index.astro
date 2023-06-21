@@ -18,25 +18,6 @@ import 'highlight.js/styles/atom-one-dark.css';
   </main>
 </Layout>
 
-<!-- <script>
-async function checkCurrentAuth() {
-  const password = localStorage.getItem('pass')
-  const response = await fetch('/api/auth', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      pass: password,
-    }),
-  })
-  const responseJson = await response.json()
-  if (responseJson.code !== 0)
-    window.location.href = '/password'
-}
-checkCurrentAuth()
-</script> -->
-
 <style is:global>
   :root {
     --c-fg-2: rgba(68, 68, 68, 0.02);
