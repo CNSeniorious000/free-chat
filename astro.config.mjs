@@ -23,6 +23,7 @@ export default defineConfig({
     solidJs(),
     AstroPWA({
       registerType: 'autoUpdate',
+      injectRegister: 'inline',
       manifest: {
         name: 'Free Chat - ChatGPT',
         short_name: 'Free Chat',
