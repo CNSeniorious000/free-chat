@@ -6,11 +6,11 @@ import Generator from '../components/Generator'
 import BackTop from '../components/BackTop.astro'
 import '../message.css'
 import 'katex/dist/katex.min.css'
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/atom-one-dark.css'
 ---
 
 <Layout title="Free Chat">
-  <main class="bg-transparent flex flex-col min-h-screen transition-max-width shadow-2xl justify-between sm:(bg-$c-bg shadow-black/10 dark:shadow-black/15) xl:max-w-95ch 2xl:max-w-105ch ">
+  <main class="bg-transparent flex flex-col min-h-screen transition-max-width justify-between md:(bg-$c-bg shadow-2xl shadow-black/10 dark:shadow-black/15) xl:max-w-95ch 2xl:max-w-105ch ">
     <Header />
     <Generator client:load />
     <Footer />
@@ -51,7 +51,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 
   main {
     overflow-x: hidden;
-    max-width: 80ch;
+    max-width: 85ch;
     margin: 0 auto;
     padding: 0 2rem;
   }
@@ -74,7 +74,7 @@ import 'highlight.js/styles/atom-one-dark.css';
     background-color: var(--c-bg);
   }
 
-  @media (max-height: 850px), (max-width: 750px) {
+  @media (max-height: 850px), (max-width: 700px) {
     #tips {
       opacity: 0;
     }

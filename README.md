@@ -22,6 +22,7 @@ You can control the website through environment variables.
 | `TUTORIAL_MD_URL` | url of the tutorial markdown file | `null` |
 | `AD_IFRAME_URL` | url of the advertisement iframe | `null` |
 | `UNDICI_UA` | user-agent for backend requests | `(forward)` |
+| `PUBLIC_RIGHT_ALIGN_MY_MSG` | whether user messages should be right-aligned | `null` |
 
 ## Contributing
 

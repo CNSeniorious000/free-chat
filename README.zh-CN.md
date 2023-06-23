@@ -22,6 +22,7 @@
 | `TUTORIAL_MD_URL` | 教程页对应的 markdown 文件 url | `null` |
 | `AD_IFRAME_URL` | 通知栏 iframe 横幅的 url | `null` |
 | `UNDICI_UA` | 后端请求的 user-agent | `(forward)` |
+| `PUBLIC_RIGHT_ALIGN_MY_MSG` | 用户消息是否右对齐 | `null` |
 
 ## 参与贡献
 

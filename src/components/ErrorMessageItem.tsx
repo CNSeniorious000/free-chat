@@ -13,9 +13,9 @@ export default ({ data, onRetry }: Props) => {
       <div class="text-red text-sm op-70">{data.message}</div>
       {onRetry && (
         <div class="mb-2 px-3 fie">
-          <div onClick={onRetry} class="border-red/50 text-red gpt-retry-btn">
+          <div onClick={onRetry} class="text-red ring-red/65 gpt-retry-btn <sm:ring-red/40 hover:bg-red/10">
             <IconRefresh />
-            <span>Regenerate</span>
+            <span>重新生成</span>
           </div>
         </div>
       )}

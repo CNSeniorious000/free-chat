@@ -246,7 +246,7 @@ export default () => {
     <div class="flex flex-col flex-grow h-full justify-between">
       <div
         ref={bgd}
-        class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <sm:bg-none <sm:display-none"
+        class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && loading()}
         class:duration-400={isStick() && loading()}
@@ -261,7 +261,7 @@ export default () => {
       <div class="flex-grow flex w-full items-center justify-center">
         {
         messageList().length === 0 && !systemRoleEditing() && (
-          <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-5 relative select-none sm:op-50">
+          <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-5 relative select-none op-50">
             <span class="rounded-bl-md rounded-rt-md font-bold h-fit bg-$c-fg-5 w-fit py-1 px-2 top-0 right-0 text-$c-fg-50 absolute">TIPS</span>
             <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
             <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">/</span> &nbsp;聚焦到输入框 </p>
@@ -291,7 +291,7 @@ export default () => {
       { currentError() && <ErrorMessageItem data={currentError()} onRetry={retryLastFetch} /> }
       <Switch>
         <Match when={!mounted()}>
-          <div class="animate-ease-out animate-fade-in animate-duration-300 gen-cb-wrapper">
+          <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
             <div class="flex flex-row gap-2 items-center">
               <span>加载中</span>
               <span i-svg-spinners-6-dots-scale-middle />
@@ -300,7 +300,7 @@ export default () => {
         </Match>
         <Match when={mounted() && loading()}>
           <div class="gen-cb-wrapper">
-            <div class="flex flex-row animate-ease-out animate-fade-in gap-3 animate-duration-300 items-center">
+            <div class="flex flex-row animate-fade-in gap-3 animate-duration-300 items-center">
               <span i-svg-spinners-ring-resize />
               <span>等待响应中</span>
               <div class="gen-cb-stop" onClick={stopStreamFetch}>Stop</div>
@@ -321,10 +321,10 @@ export default () => {
                 inputRef.style.height = `${inputRef.scrollHeight}px`
               }}
               rows="1"
-              class="gen-textarea select-none"
+              class="gen-textarea"
             />
             <button
-              class="w-10 gen-slate-btn sm:min-w-fit"
+              class="w-10 gen-slate-btn sm:min-w-fit sm:px-3.5"
               onClick={handleButtonClick}
               disabled={systemRoleEditing()}
             >

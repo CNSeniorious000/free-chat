@@ -5,7 +5,8 @@ export interface Props {
   title: string;
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
+const origin = Astro.request.headers.get('host')
 ---
 
 <!DOCTYPE html>
@@ -19,8 +20,8 @@ const { title } = Astro.props;
     <link rel="mask-icon" href="/icon.svg" color="#FFFFFF">
     <meta name="theme-color" content="#212129">
     <meta name="generator" content={Astro.generator}>
-    <title>{title}</title>
-    <meta name="description" content="A simple blog" />
+    <title>{title} - {origin}</title>
+    <meta name="description" content="Chat for free with AI chatbot" />
     { import.meta.env.HEAD_SCRIPTS && <Fragment set:html={import.meta.env.HEAD_SCRIPTS } /> }
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
     { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW.scriptTag} /> }
