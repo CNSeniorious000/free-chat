@@ -23,7 +23,7 @@ const { title } = Astro.props;
     <meta name="description" content="A simple blog" />
     { import.meta.env.HEAD_SCRIPTS && <Fragment set:html={import.meta.env.HEAD_SCRIPTS } /> }
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
-    { pwaInfo && <Fragment set:html={pwaInfo.registerSW.scriptTag} /> }
+    { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW.scriptTag} /> }
   </head>
   <body>
     <slot />

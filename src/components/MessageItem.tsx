@@ -28,12 +28,11 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     let code = null
 
     if (el.matches('div > div.copy-btn')) {
-      code = decodeURIComponent(el.dataset.code!)
+      code = decodeURIComponent(el.dataset.code)
       copy(code)
     }
     if (el.matches('div > div.copy-btn > div')) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-      code = decodeURIComponent(el.parentElement?.dataset.code!)
+      code = decodeURIComponent(el.parentElement?.dataset.code)
       copy(code)
     }
   })
@@ -43,14 +42,14 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       linkify: true,
       breaks: true,
     }).use(mdKatex).use(mdHighlight)
-    const fence = md.renderer.rules.fence!
+    const fence = md.renderer.rules.fence
     md.renderer.rules.fence = (...args) => {
       const [tokens, idx] = args
       const token = tokens[idx]
       const rawCode = fence(...args)
 
       return `<div class="relative group">
-      <div data-code=${encodeURIComponent(token.content)} class="transition-all duration-150 copy-btn gpt-copy-btn op-0 active:scale-90 dark:hover:filter-brightness-115 group-hover:op-100">
+      <div data-code=${encodeURIComponent(token.content)} class="gpt-copy-btn">
         ${copied() ? '<span mr-1 text-sm display-inline-block>Copied!</span><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
       </div>
       ${rawCode}

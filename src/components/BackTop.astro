@@ -1,9 +1,11 @@
-<button id="backtop_btn" class="gpt-back-top-btn">
-  <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 4L6 14l1.41 1.41L15 7.83V28h2V7.83l7.59 7.58L26 14L16 4z"></path></svg>
-</button>
-<button id="backbottom_btn" class="gpt-back-bottom-btn">
-  <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 4L6 14l1.41 1.41L15 7.83V28h2V7.83l7.59 7.58L26 14L16 4z"></path></svg>
-</button>
+<div class="flex flex-col gpt-back-top-btn" >
+  <button id="backtop_btn" class="rounded-md p-2.5 transition-colors animate-duration-100 hover:bg-$c-fg-5">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 4L6 14l1.41 1.41L15 7.83V28h2V7.83l7.59 7.58L26 14L16 4z"></path></svg>
+  </button>
+  <button id="backbottom_btn" class="rounded-md p-2.5 transition-colors rotate-180 animate-duration-100 hover:bg-$c-fg-5">
+    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 4L6 14l1.41 1.41L15 7.83V28h2V7.83l7.59 7.58L26 14L16 4z"></path></svg>
+  </button>
+</div>
 <script>
 const backtop_btn = document.getElementById('backtop_btn') as HTMLElement
 const backbottom_btn = document.getElementById('backbottom_btn') as HTMLElement
@@ -37,4 +39,11 @@ backbottom_btn.onclick = () => {
 backtop_btn.onclick = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+window.addEventListener('keydown', (event) => {
+  if (event.code === 'PageUp') backtop_btn.click()
+  else if (event.code === 'PageDown') backbottom_btn.click()
+  else return
+  event.preventDefault()
+})
 </script>

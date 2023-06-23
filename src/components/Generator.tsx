@@ -1,5 +1,4 @@
 import { Index, Match, Switch, createEffect, createSignal, onMount } from 'solid-js'
-import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
@@ -74,6 +73,13 @@ export default () => {
       lastPostion = nowPostion
     })
 
+    window.addEventListener('resize', () => {
+      requestAnimationFrame(() => {
+        if (isHigher() && isStick()) instantToBottom()
+        lastPostion = window.scrollY
+      })
+    })
+
     window.addEventListener('keydown', (event) => {
       if ((event.target as HTMLElement).nodeName === 'TEXTAREA') return
 
@@ -117,7 +123,7 @@ export default () => {
       window.scrollTo({ top: distanceToBottom, behavior })
   }
 
-  const smoothToBottom = useThrottleFn(() => toBottom('smooth'), 300, false, true)
+  const smoothToBottom = () => toBottom('smooth')
   const instantToBottom = () => toBottom('instant')
 
   const requestWithLatestMessage = async() => {
@@ -239,7 +245,7 @@ export default () => {
   return (
     <div class="flex flex-col flex-grow h-full justify-between">
       <div
-        ref={bgd!}
+        ref={bgd}
         class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <sm:bg-none <sm:display-none"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && loading()}
@@ -255,12 +261,13 @@ export default () => {
       <div class="flex-grow flex w-full items-center justify-center">
         {
         messageList().length === 0 && !systemRoleEditing() && (
-          <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-6 relative select-none op-50 <md:op-0">
+          <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-5 relative select-none sm:op-50">
             <span class="rounded-bl-md rounded-rt-md font-bold h-fit bg-$c-fg-5 w-fit py-1 px-2 top-0 right-0 text-$c-fg-50 absolute">TIPS</span>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">B</span> 开启/关闭跟随最新消息功能 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">/</span> 聚焦到输入框 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">Alt/Option</span> + <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">C</span> 清空上下文 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75">鼠标中键点击左上标题</span> 新窗口打开新会话 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">/</span> &nbsp;聚焦到输入框 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">Alt/Option</span> + <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">C</span> &nbsp;清空上下文 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">鼠标中键点击左上标题</span> &nbsp;新窗口打开新会话 </p>
+            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">PageUp</span> / <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">PageDn</span> &nbsp;回到顶部 / 底部 </p>
           </div>
         )
         }
@@ -303,7 +310,7 @@ export default () => {
         <Match when={mounted() && !loading()}>
           <div class="gen-text-wrapper" class:op-50={systemRoleEditing()}>
             <textarea
-              ref={inputRef!}
+              ref={inputRef}
               disabled={systemRoleEditing()}
               onKeyDown={handleKeydown}
               placeholder="与 ChatGPT 对话"
@@ -316,8 +323,13 @@ export default () => {
               rows="1"
               class="gen-textarea select-none"
             />
-            <button min-w-fit select-none onClick={handleButtonClick} disabled={systemRoleEditing()} gen-slate-btn>
-              发送
+            <button
+              class="w-10 gen-slate-btn sm:min-w-fit"
+              onClick={handleButtonClick}
+              disabled={systemRoleEditing()}
+            >
+              <span class="i-iconamoon-send block sm:hidden" />
+              <span class="<sm:hidden">发送</span>
             </button>
             <button title="Clear" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
               <IconClear />
@@ -326,7 +338,7 @@ export default () => {
 
         </Match>
       </Switch>
-      <div class="rounded-md h-fit w-fit transition-colors bottom-5 left-5 z-10 fixed hover:bg-$c-fg-5 active:scale-90" class:stick-btn-on={isStick()}>
+      <div class="rounded-md h-fit w-fit transition-colors bottom-4.25 left-4.25 z-10 fixed sm:bottom-5 sm:left-5 hover:bg-$c-fg-5 active:scale-90" class:stick-btn-on={isStick()}>
         <button class="text-base p-2.5" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
           <div i-ph-arrow-line-down-bold />
         </button>

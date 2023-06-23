@@ -9,7 +9,7 @@ import 'katex/dist/katex.min.css'
 import 'highlight.js/styles/atom-one-dark.css';
 ---
 
-<Layout title="Chat For Free">
+<Layout title="Free Chat">
   <main class="bg-transparent flex flex-col min-h-screen transition-max-width shadow-2xl justify-between sm:(bg-$c-bg shadow-black/10 dark:shadow-black/15) xl:max-w-95ch 2xl:max-w-105ch ">
     <Header />
     <Generator client:load />
@@ -74,7 +74,7 @@ import 'highlight.js/styles/atom-one-dark.css';
     background-color: var(--c-bg);
   }
 
-  @media (max-height: 850px) {
+  @media (max-height: 850px), (max-width: 750px) {
     #tips {
       opacity: 0;
     }

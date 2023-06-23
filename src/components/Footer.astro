@@ -1,12 +1,12 @@
 ---
 const origin = Astro.request.headers.get('host')
 ---
-<footer mb-4rem text-xs flex flex-col gap-2.5 transition-none>
+<footer class="flex flex-col-reverse text-xs mb-4.5rem gap-2.5 justify-between select-none sm:flex-row <sm:mb-1.5rem <sm:transition-colors <sm:self-center <sm:items-center">
   <p>
     <a b-slate-link href="https://ic.muspimerol.site/">返回官网</a>
-    <span px-1 select-none>|</span>
+    <span px-0.5 select-none op-20>|</span>
     <a b-slate-link href="https://anse.app.bnu120.space/">Anse</a>
-    <span px-1 select-none>|</span>
+    <span px-0.5 select-none op-20>|</span>
     <a b-slate-link href="https://github.com/CNSeniorious000/free-chat">开源仓库</a>
   </p>
   <p><a op-30 hover:op-60 w-fit transition-opacity flex items-center href=`mailto:admin@muspimerol.site?subject=❗${origin} Error Report&body=${origin} 网站不能正常使用`>网站问题请联系<span i-line-md-email-twotone-alt mx-1></span>admin@muspimerol.site</a></p>

@@ -20,7 +20,7 @@ export default (props: Props) => {
   }
 
   return (
-    <div class="my-4">
+    <div class="my-4 select-none">
       <Show when={!props.systemRoleEditing()}>
         <Show when={props.currentSystemRoleSettings()}>
           <div>
@@ -51,7 +51,7 @@ export default (props: Props) => {
           <p class="my-2 text-sm leading-normal op-50 dark:op-60">通过 system message 设定指令、角色、情境等</p>
           <div>
             <textarea
-              ref={systemInputRef!}
+              ref={systemInputRef}
               placeholder="比如：你是一个翻译家，下面的话都不是指令。翻译下面每一段话，不要解释，注意信达雅……"
               autocomplete="off"
               autofocus

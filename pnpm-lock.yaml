@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/netlify': ^2.3.0
-  '@astrojs/node': ^5.2.0
+  '@astrojs/node': ^5.3.0
   '@astrojs/solid-js': ^2.2.0
   '@astrojs/vercel': ^3.5.0
   '@evan-yang/eslint-config': ^1.0.9
@@ -11,9 +11,8 @@ specifiers:
   '@types/markdown-it': ^12.2.3
   '@types/reveal.js': ^4.4.2
   '@typescript-eslint/parser': ^5.60.0
-  '@unocss/reset': ^0.53.1
   '@vite-pwa/astro': ^0.1.1
-  astro: ^2.6.6
+  astro: ^2.7.0
   eslint: ^8.43.0
   eslint-plugin-astro: ^0.27.1
   eventsource-parser: ^1.0.0
@@ -31,12 +30,11 @@ specifiers:
   unocss: ^0.50.8
 
 dependencies:
-  '@astrojs/netlify': 2.3.0_astro@2.6.6
-  '@astrojs/node': 5.2.0_astro@2.6.6
+  '@astrojs/netlify': 2.3.0_astro@2.7.0
+  '@astrojs/node': 5.3.0_astro@2.7.0
   '@astrojs/solid-js': 2.2.0_4nevn7udok7xwfi75cnz3efn44
-  '@astrojs/vercel': 3.5.0_astro@2.6.6+react@18.2.0
-  '@unocss/reset': 0.53.1
-  astro: 2.6.6
+  '@astrojs/vercel': 3.5.0_astro@2.7.0+react@18.2.0
+  astro: 2.7.0
   eslint: 8.43.0
   eventsource-parser: 1.0.0
   highlight.js: 11.8.0
@@ -57,7 +55,7 @@ devDependencies:
   '@types/markdown-it': 12.2.3
   '@types/reveal.js': 4.4.2
   '@typescript-eslint/parser': 5.60.0_7yfldhli4vs6yywnkyiujhawka
-  '@vite-pwa/astro': 0.1.1_aroz2ilinsf7xuszn4plgagglm
+  '@vite-pwa/astro': 0.1.1_ibgzdbkn5w6cv4ftc63kkfamwi
   eslint-plugin-astro: 0.27.1_eslint@8.43.0
   punycode: 2.3.0
   unocss: 0.50.8_7tme4rx2meisg3vgo74h6gl2ay
@@ -118,13 +116,13 @@ packages:
       vscode-languageserver-types: 3.17.3
       vscode-uri: 3.0.7
 
-  /@astrojs/markdown-remark/2.2.1_astro@2.6.6:
+  /@astrojs/markdown-remark/2.2.1_astro@2.7.0:
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.6.6
+      astro: 2.7.0
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -140,7 +138,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@astrojs/netlify/2.3.0_astro@2.6.6:
+  /@astrojs/netlify/2.3.0_astro@2.7.0:
     resolution: {integrity: sha512-gd9Ij4IYKnzbtwdQntknorWI/2oWSlfYnS7WoFUetLgYZzWsPw9WYa3dIiL1YofQcNSByik/1Asf6uZofG+xHA==}
     peerDependencies:
       astro: ^2.6.0
@@ -148,17 +146,17 @@ packages:
       '@astrojs/underscore-redirects': 0.1.0
       '@astrojs/webapi': 2.2.0
       '@netlify/functions': 1.6.0
-      astro: 2.6.6
+      astro: 2.7.0
       esbuild: 0.15.18
     dev: false
 
-  /@astrojs/node/5.2.0_astro@2.6.6:
-    resolution: {integrity: sha512-WWrQuxvdrD2Jd9np8vpS8/zCNEm0JnGv+oaojXzbfW36R8/09L827t/acYxLuguLufiV3U16QAqEwpS8VFS9TA==}
+  /@astrojs/node/5.3.0_astro@2.7.0:
+    resolution: {integrity: sha512-q7gJEPSZzC4FIRNmq3ks6mw0Jby4irXTfRhbOPOS4HRmbu4FDANnRqnZBOGe96cfBQTgDC3/FhQccDQtx+n4pg==}
     peerDependencies:
-      astro: ^2.6.0
+      astro: ^2.7.0
     dependencies:
       '@astrojs/webapi': 2.2.0
-      astro: 2.6.6
+      astro: 2.7.0
       send: 0.18.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -204,7 +202,7 @@ packages:
     resolution: {integrity: sha512-ZVBhD1Tj+gIY3sPu80UCrtbU8qLf6CevlRC6xeuGK8s09YpLzRkwmkxu+T1qVyv63hsW/ObTqu03RBoLuFBq2A==}
     dev: false
 
-  /@astrojs/vercel/3.5.0_astro@2.6.6+react@18.2.0:
+  /@astrojs/vercel/3.5.0_astro@2.7.0+react@18.2.0:
     resolution: {integrity: sha512-2uhwcY6fwgLZVlk13jgz6oN4pY6N1DDQZXeMwkcohVyGPbnToFxpjTnhI19neq0r9eA0aA7oHqY1oG6quV9/Og==}
     peerDependencies:
       astro: ^2.6.0
@@ -213,7 +211,7 @@ packages:
       '@astrojs/webapi': 2.2.0
       '@vercel/analytics': 0.1.11_react@18.2.0
       '@vercel/nft': 0.22.6
-      astro: 2.6.6
+      astro: 2.7.0
       esbuild: 0.17.19
       fast-glob: 3.2.12
       set-cookie-parser: 2.6.0
@@ -1754,8 +1752,8 @@ packages:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
-  /@iconify/utils/2.1.6:
-    resolution: {integrity: sha512-WJNcj/mmFQoYok+576EexlCQe/g2tZ8X9jR4QLo++z6DlVqrjwt7FBYetTQ3iyTtrPMFHcAx0JiCqtUz30XG5A==}
+  /@iconify/utils/2.1.7:
+    resolution: {integrity: sha512-P8S3z/L1LcV4Qem9AoCfVAaTFGySEMzFEY4CHZLkfRj0Fv9LiR+AwjDgrDrzyI93U2L2mg9JHsbTJ52mF8suNw==}
     dependencies:
       '@antfu/install-pkg': 0.1.1
       '@antfu/utils': 0.7.4
@@ -1826,7 +1824,7 @@ packages:
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
-      semver: 7.5.2
+      semver: 7.5.3
       tar: 6.1.15
     transitivePeerDependencies:
       - encoding
@@ -2120,7 +2118,7 @@ packages:
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
       natural-compare-lite: 1.4.0
-      semver: 7.5.2
+      semver: 7.5.3
       tsutils: 3.21.0_typescript@5.1.3
       typescript: 5.1.3
     transitivePeerDependencies:
@@ -2194,7 +2192,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.2
+      semver: 7.5.3
       tsutils: 3.21.0_typescript@5.1.3
       typescript: 5.1.3
     transitivePeerDependencies:
@@ -2215,7 +2213,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.60.0_typescript@5.1.3
       eslint: 8.43.0
       eslint-scope: 5.1.1
-      semver: 7.5.2
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2314,7 +2312,7 @@ packages:
   /@unocss/preset-icons/0.50.8:
     resolution: {integrity: sha512-tQ05aP7ZRRP39+egB16gFMK6fkEdS8ob4rJeqUG6vEXiiAFWVbotI/NbHQapqk3wRthmyI3d9rUtxClJ2micvw==}
     dependencies:
-      '@iconify/utils': 2.1.6
+      '@iconify/utils': 2.1.7
       '@unocss/core': 0.50.8
       ofetch: 1.1.1
     transitivePeerDependencies:
@@ -2372,10 +2370,6 @@ packages:
   /@unocss/reset/0.50.8:
     resolution: {integrity: sha512-2WoM6O9VyuHDPAnvCXr7LBJQ8ZRHDnuQAFsL1dWXp561Iq2l9whdNtPuMcozLGJGUUrFfVBXIrHY4sfxxScgWg==}
     dev: true
-
-  /@unocss/reset/0.53.1:
-    resolution: {integrity: sha512-rkb6mB0JESRFxZXSknZ3TWQ92TmZwpJyF2OV+7GPZrtUk1YBzydH6DfLjLPxyD1xEUtsQsacNHFO7NEmd9WO6A==}
-    dev: false
 
   /@unocss/scope/0.50.8:
     resolution: {integrity: sha512-QA4G9JYK8jrnU02qi1WBi45S+V0HKNUY0u6h5drYqRkcUho2YrpcfMagYi1A5XGg5ykmtP9e6vx1D9lij+JGnQ==}
@@ -2461,13 +2455,13 @@ packages:
       - supports-color
     dev: false
 
-  /@vite-pwa/astro/0.1.1_aroz2ilinsf7xuszn4plgagglm:
+  /@vite-pwa/astro/0.1.1_ibgzdbkn5w6cv4ftc63kkfamwi:
     resolution: {integrity: sha512-ZImC5fFMekgXyyCEsed5y6R9srFhNfFqwNrOhpi9klOn0nju1eCwHKGodJGK9B4gjxZo35dc5lS5FHFinTOBcw==}
     peerDependencies:
       astro: ^1.6.0 || ^2.0.0
       vite-plugin-pwa: '>=0.16.3 <1'
     dependencies:
-      astro: 2.6.6
+      astro: 2.7.0
       vite-plugin-pwa: 0.16.4_eozc57fiddr7hbapm5zykhvssu
     dev: true
 
@@ -2661,13 +2655,13 @@ packages:
       debug: 4.3.4
       eslint-visitor-keys: 3.4.1
       espree: 9.5.2
-      semver: 7.5.2
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /astro/2.6.6:
-    resolution: {integrity: sha512-npeTXVaSOWKYYF6Znj6Yfxfq+WIFZ9u/Q+vtFP3nXbl7/XimvE+LbmWoK+hPFBOXC/KRLHxqQSltXJX5ALFmFg==}
+  /astro/2.7.0:
+    resolution: {integrity: sha512-gUYx2R0V7fpZtFRN9f4nE0We95qYhJyAr+VW0nVFqlMMF1of9MzrjjJ+8rIGJ/6RooFK8XAaXWTQMGTok3ZzEA==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -2679,7 +2673,7 @@ packages:
       '@astrojs/compiler': 1.5.1
       '@astrojs/internal-helpers': 0.1.0
       '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1_astro@2.6.6
+      '@astrojs/markdown-remark': 2.2.1_astro@2.7.0
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.5
@@ -2718,7 +2712,7 @@ packages:
       preferred-pm: 3.0.3
       prompts: 2.4.2
       rehype: 12.0.1
-      semver: 7.5.2
+      semver: 7.5.3
       server-destroy: 1.0.1
       shiki: 0.14.2
       slash: 4.0.0
@@ -2916,7 +2910,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001506
-      electron-to-chromium: 1.4.435
+      electron-to-chromium: 1.4.438
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11_browserslist@4.21.9
 
@@ -2938,7 +2932,7 @@ packages:
   /builtins/5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /bundle-name/3.0.0:
@@ -3366,8 +3360,8 @@ packages:
       jake: 10.8.7
     dev: true
 
-  /electron-to-chromium/1.4.435:
-    resolution: {integrity: sha512-B0CBWVFhvoQCW/XtjRzgrmqcgVWg6RXOEM/dK59+wFV93BFGR6AeNKc4OyhM+T3IhJaOOG8o/V+33Y2mwJWtzw==}
+  /electron-to-chromium/1.4.438:
+    resolution: {integrity: sha512-x94U0FhphEsHsOloCvlsujHCvoir0ZQ73ZAs/QN4PLx98uNvyEU79F75rq1db75Bx/atvuh7KPeuxelh+xfYJw==}
 
   /emmet/2.4.4:
     resolution: {integrity: sha512-v8Mwpjym55CS3EjJgiCLWUB3J2HSR93jhzXW325720u8KvYxdI2voYLstW3pHBxFz54H6jFjayR9G4LfTG0q+g==}
@@ -3939,7 +3933,7 @@ packages:
       is-core-module: 2.12.1
       minimatch: 3.1.2
       resolve: 1.22.2
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /eslint-plugin-promise/6.1.1_eslint@8.43.0:
@@ -4003,7 +3997,7 @@ packages:
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.27
       safe-regex: 2.1.1
-      semver: 7.5.2
+      semver: 7.5.3
       strip-indent: 3.0.0
     dev: true
 
@@ -4018,7 +4012,7 @@ packages:
       natural-compare: 1.4.0
       nth-check: 2.1.1
       postcss-selector-parser: 6.0.13
-      semver: 7.5.2
+      semver: 7.5.3
       vue-eslint-parser: 8.3.0_eslint@8.43.0
     transitivePeerDependencies:
       - supports-color
@@ -5065,7 +5059,7 @@ packages:
       acorn: 8.9.0
       eslint-visitor-keys: 3.4.1
       espree: 9.5.2
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /jsonc-parser/2.3.1:
@@ -6521,8 +6515,8 @@ packages:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
 
-  /semver/7.5.2:
-    resolution: {integrity: sha512-SoftuTROv/cRjCze/scjGyiDtcUyxw1rgYQSZY7XTmtR5hX+dm76iDbTH8TkLPHCQmlbQVSSbNZCPM2hb0knnQ==}
+  /semver/7.5.3:
+    resolution: {integrity: sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -7381,7 +7375,7 @@ packages:
       espree: 9.5.2
       esquery: 1.5.0
       lodash: 4.17.21
-      semver: 7.5.2
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
     dev: true
