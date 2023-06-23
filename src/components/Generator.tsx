@@ -324,6 +324,7 @@ export default () => {
               class="gen-textarea"
             />
             <button
+              title="Send"
               class="w-10 gen-slate-btn sm:min-w-fit sm:px-3.5"
               onClick={handleButtonClick}
               disabled={systemRoleEditing()}

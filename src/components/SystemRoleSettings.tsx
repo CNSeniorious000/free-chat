@@ -59,7 +59,7 @@ export default (props: Props) => {
               gen-textarea
             />
           </div>
-          <button onClick={handleButtonClick} gen-slate-btn>
+          <button onClick={handleButtonClick} class="min-w-fit px-3.5 gen-slate-btn hide-scrollbar">
             保存
           </button>
         </div>
