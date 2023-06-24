@@ -6,6 +6,8 @@ import AstroPWA from '@vite-pwa/astro'
 import node from '@astrojs/node'
 import vercel from '@astrojs/vercel/edge'
 import netlify from '@astrojs/netlify/edge-functions'
+import wasm from 'vite-plugin-wasm'
+import topLevelAwait from 'vite-plugin-top-level-await'
 import disableBlocks from './plugins/disableBlocks'
 
 const envAdapter = () => {
@@ -67,6 +69,6 @@ export default defineConfig({
   output: 'server',
   adapter: envAdapter(),
   vite: {
-    plugins: (process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') ? [disableBlocks()] : [],
+    plugins: [wasm(), topLevelAwait(), ((process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks())],
   },
 })

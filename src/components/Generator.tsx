@@ -1,9 +1,10 @@
-import { Index, Match, Switch, createEffect, createSignal, onMount } from 'solid-js'
+import { Index, Match, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
 import { generateSignature } from '@/utils/auth'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 import ErrorMessageItem from './ErrorMessageItem'
+import TokenCounter from './TokenCounter'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
 
@@ -17,6 +18,7 @@ export default () => {
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
   const [loading, setLoading] = createSignal(false)
   const [controller, setController] = createSignal<AbortController>(null)
+  const [inputValue, setInputValue] = createSignal('')
   const [isStick, _setStick] = createSignal(false)
 
   let footer = null
@@ -59,6 +61,10 @@ export default () => {
         setCurrentSystemRoleSettings(decodeURIComponent(location.hash).slice(1))
       else if (localStorage.getItem('systemRoleSettings'))
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings'))
+
+      createEffect(() => {
+        inputRef.value = inputValue()
+      })
     } catch (err) {
       console.error(err)
     }
@@ -97,21 +103,18 @@ export default () => {
   })
 
   const handleButtonClick = async() => {
-    const inputValue = inputRef.value
-    if (!inputValue)
+    if (!inputValue())
       return
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     if (window?.umami) umami.trackEvent('chat_generate')
-    inputRef.value = ''
-    setMessageList([
-      ...messageList(),
-      {
-        role: 'user',
-        content: inputValue,
-      },
-    ])
+
+    batch(() => {
+      setMessageList([...messageList(), { role: 'user', content: inputValue() }])
+      setInputValue('')
+    })
+
     smoothToBottom()
     requestWithLatestMessage()
   }
@@ -192,14 +195,10 @@ export default () => {
 
   const archiveCurrentMessage = () => {
     if (currentAssistantMessage()) {
-      setMessageList([
-        ...messageList(),
-        {
-          role: 'assistant',
-          content: currentAssistantMessage(),
-        },
-      ])
-      setCurrentAssistantMessage('')
+      batch(() => {
+        setMessageList([...messageList(), { role: 'assistant', content: currentAssistantMessage() }])
+        setCurrentAssistantMessage('')
+      })
       setLoading(false)
       setController(null)
       localStorage.setItem('messageList', JSON.stringify(messageList()))
@@ -209,8 +208,12 @@ export default () => {
   const clear = () => {
     inputRef.value = ''
     inputRef.style.height = 'auto'
-    setMessageList([])
-    setCurrentAssistantMessage('')
+    batch(() => {
+      setInputValue('')
+      setMessageList([])
+      // setCurrentAssistantMessage('')
+      // setCurrentSystemRoleSettings('')
+    })
     localStorage.setItem('messageList', JSON.stringify([]))
     setCurrentError(null)
   }
@@ -243,7 +246,7 @@ export default () => {
   }
 
   return (
-    <div class="flex flex-col flex-grow h-full justify-between">
+    <div class="flex flex-col flex-grow h-full justify-between relative">
       <div
         ref={bgd}
         class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
@@ -277,7 +280,7 @@ export default () => {
           <MessageItem
             role={message().role}
             message={message().content}
-            showRetry={() => (message().role === 'assistant' && index === messageList().length - 1)}
+            showRetry={() => (!loading() && !currentError() && index === messageList().length - 1)}
             onRetry={retryLastFetch}
           />
         )}
@@ -288,7 +291,16 @@ export default () => {
           message={currentAssistantMessage}
         />
       )}
+
       { currentError() && <ErrorMessageItem data={currentError()} onRetry={retryLastFetch} /> }
+
+      <TokenCounter
+        currentSystemRoleSettings={currentSystemRoleSettings}
+        messageList={messageList}
+        textAreaValue={inputValue}
+        currentAssistantMessage={currentAssistantMessage}
+      />
+
       <Switch>
         <Match when={!mounted()}>
           <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
@@ -316,9 +328,10 @@ export default () => {
               placeholder="与 ChatGPT 对话"
               autocomplete="off"
               autofocus
-              onInput={() => {
+              onInput={(e) => {
                 inputRef.style.height = 'auto'
                 inputRef.style.height = `${inputRef.scrollHeight}px`
+                setInputValue((e.target as HTMLTextAreaElement).value)
               }}
               rows="1"
               class="gen-textarea"
