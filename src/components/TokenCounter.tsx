@@ -1,5 +1,4 @@
 import { Show, createEffect, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
-import { encoding_for_model } from 'tiktoken'
 import { countTokens, model } from '../utils/tiktoken'
 import type { Accessor } from 'solid-js'
 import type { ChatMessage } from '@/types'
@@ -22,17 +21,19 @@ export default (props: Props) => {
 
   let enc: Tiktoken
 
-  const [isTiktokenReady, setTiktokenReady] = createSignal(true)
+  const [isTiktokenReady, setTiktokenReady] = createSignal(false)
 
   createEffect(() => isTiktokenReady() && (hideTimer = setTimeout(() => setHide(true), HIDE_TIMEOUT)))
 
-  onMount(() => {
+  onMount(async() => {
+    const { encoding_for_model } = await import('tiktoken')
+
     enc = encoding_for_model(model)
     setTiktokenReady(true)
-  })
 
-  onCleanup(() => {
-    isTiktokenReady() && enc?.free()
+    onCleanup(() => {
+      isTiktokenReady() && enc.free()
+    })
   })
 
   const getTokensUsage = createMemo(() => {
