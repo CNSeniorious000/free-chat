@@ -25,11 +25,11 @@ export default (props: Props) => {
 
   createEffect(() => isTiktokenReady() && (hideTimer = setTimeout(() => setHide(true), HIDE_TIMEOUT)))
 
-  onMount(async() => {
-    const { encoding_for_model } = await import('tiktoken')
-
-    enc = encoding_for_model(model)
-    setTiktokenReady(true)
+  onMount(() => {
+    import('tiktoken').then(({ encoding_for_model }) => {
+      enc = encoding_for_model(model)
+      setTiktokenReady(true)
+    })
 
     onCleanup(() => {
       isTiktokenReady() && enc.free()
