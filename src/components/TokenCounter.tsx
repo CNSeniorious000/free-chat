@@ -1,4 +1,4 @@
-import { Show, createEffect, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
+import { Show, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
 import { countTokens } from '../utils/tiktoken'
 import type { Accessor } from 'solid-js'
 import type { ChatMessage } from '@/types'
@@ -23,15 +23,13 @@ export default (props: Props) => {
 
   const [isTiktokenReady, setTiktokenReady] = createSignal(false)
 
-  createEffect(() => isTiktokenReady() && (hideTimer = setTimeout(() => setHide(true), HIDE_TIMEOUT)))
-
   onMount(() => {
     (async() => {
       const { Tiktoken, init } = await import('tiktoken/lite/init')
-      const { bpe_ranks, special_tokens, pat_str } = await Promise.all([
+      const { bpe_ranks, special_tokens, pat_str } = (await Promise.all([
         fetch('https://dogecloud.muspimerol.site/cl100k_base.json').then(r => r.json()),
         fetch('https://dogecloud.muspimerol.site/tiktoken_bg.wasm').then(r => r.arrayBuffer()).then(wasm => init(imports => WebAssembly.instantiate(wasm, imports))),
-      ])[0]
+      ]))[0]
       enc = new Tiktoken(bpe_ranks, special_tokens, pat_str)
       setTiktokenReady(true)
     })()
