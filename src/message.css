@@ -1,7 +1,16 @@
 .message pre {
-  background-color: #64748b10;
+  background-color: #24242d;
   font-size: 0.8rem;
   padding: 0.4rem 1rem;
+}
+
+.dark .message pre {
+  background-color: var(--c-fg-2);
+}
+
+.message code:not(pre code) {
+  @apply font-500 text-cyan-700 dark:font-400 dark:text-green-200;
+  @apply mx-0.3 <md:transition-colors;
 }
 
 .message .hljs {
