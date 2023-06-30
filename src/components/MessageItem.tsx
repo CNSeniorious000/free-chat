@@ -70,7 +70,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       <div class="py-0.5 transition-padding md:py-1 2xl:py-2">
         <div class="rounded-lg flex gap-3.5" class:op-75={role === 'user'} class:reverse-self-msg={role === 'user' && alignRightMine}>
           <div class={`shrink-0 w-7 h-7 my-4 rounded-full op-80 ${roleClass[role]} <sm:w-1 <sm:h-auto <md:transition-background-color`} />
-          <div class="max-w-full relative message prose break-words overflow-hidden [&_li_p]:my-0 [&_li]:my-1 <sm:text-3.6  <sm:[&_pre]:!my-0 <sm:not-first:[&>*]:!mt-2 <sm:not-last:[&>*]:!mb-2" innerHTML={htmlString()} />
+          <div class="max-w-full relative message prose break-words overflow-hidden <sm:text-3.6" innerHTML={htmlString()} />
         </div>
         {showRetry?.() && onRetry && (
         <div class="mb-2 px-3 fie">
