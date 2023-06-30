@@ -30,8 +30,6 @@ export default () => {
   }
 
   const setCurrentSystemRoleSettings = (systemRole: string) => {
-    location.hash = systemRole
-    clear()
     _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
     return systemRole
   }
@@ -57,9 +55,7 @@ export default () => {
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
 
-      if (location.hash)
-        setCurrentSystemRoleSettings(decodeURIComponent(location.hash).slice(1))
-      else if (localStorage.getItem('systemRoleSettings'))
+      if (localStorage.getItem('systemRoleSettings'))
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings'))
 
       createEffect(() => {
@@ -87,12 +83,13 @@ export default () => {
     })
 
     window.addEventListener('keydown', (event) => {
-      if ((event.target as HTMLElement).nodeName === 'TEXTAREA') return
-
-      if (event.code === 'Slash') {
-        event.preventDefault()
-        document.querySelector('textarea').focus()
-      } else if (event.code === 'KeyB') { setStick(!isStick()) } else if (event.altKey && event.code === 'KeyC') { clear() }
+      if ((event.target as HTMLElement).nodeName !== 'TEXTAREA') {
+        if (event.code === 'Slash') {
+          event.preventDefault()
+          document.querySelector('textarea').focus()
+        } else if (event.code === 'KeyB') { setStick(!isStick()) }
+      }
+      if (event.altKey && event.code === 'KeyC') clear()
     }, false)
 
     new MutationObserver(() => isStick() && instantToBottom()).observe(document.querySelector('astro-island > div'), { childList: true, subtree: true })

@@ -37,6 +37,6 @@ export default defineConfig({
     'sys-edit-btn': 'inline-fcc gap-1 text-sm bg-$c-fg-10 px-2 py-1 rounded-md transition-colors md:transition-background-color cursor-pointer hover:bg-$c-fg-15',
     'stick-btn-on': 'text-$c-bg !bg-$c-fg hover:!bg-$c-fg-80',
     'reverse-self-msg': 'flex-row-reverse text-left',
-    'message': '[&_code]:font-fira [&_pre>code]:font-mono <md:[&_pre]:transition-background-color ![&_strong>code]:(font-700 dark:font-600)',
+    'message': '[&_code]:font-fira [&_pre>code]:font-mono <md:[&_pre]:transition-background-color ![&_strong>code]:(font-700 dark:font-600) [&_li_p]:my-0 [&_li]:my-1 <sm:not-first:[&>*]:mt-2 <sm:not-last:[&>*]:mb-2',
   },
 })
