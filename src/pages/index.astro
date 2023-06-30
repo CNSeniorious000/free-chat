@@ -16,7 +16,7 @@ import 'highlight.js/styles/atom-one-dark.css'
     <Generator client:load />
     <Footer />
     <BackTop />
-    { Astro.cookies.get('privacyPolicy').value !== 'confirmed' && <Popup /> }
+    <Popup />
   </main>
 </Layout>
 
