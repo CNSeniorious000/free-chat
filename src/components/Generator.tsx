@@ -2,17 +2,14 @@ import { Index, Match, Switch, batch, createEffect, createSignal, onMount } from
 import { generateSignature } from '@/utils/auth'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
-import SystemRoleSettings from './SystemRoleSettings'
 import ErrorMessageItem from './ErrorMessageItem'
 import TokenCounter from './TokenCounter'
 import type { ChatMessage, ErrorMessage } from '@/types'
-import type { Setter } from 'solid-js'
 
 export default () => {
   let inputRef: HTMLTextAreaElement
   let bgd: HTMLDivElement
   const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
-  const [systemRoleEditing, setSystemRoleEditing] = createSignal(false)
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
   const [currentError, setCurrentError] = createSignal<ErrorMessage>()
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
@@ -102,10 +99,6 @@ export default () => {
   const handleButtonClick = async() => {
     if (!inputValue())
       return
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    if (window?.umami) umami.trackEvent('chat_generate')
 
     batch(() => {
       setMessageList([...messageList(), { role: 'user', content: inputValue() }])
@@ -208,8 +201,6 @@ export default () => {
     batch(() => {
       setInputValue('')
       setMessageList([])
-      // setCurrentAssistantMessage('')
-      // setCurrentSystemRoleSettings('')
     })
     localStorage.setItem('messageList', JSON.stringify([]))
     setCurrentError(null)
@@ -243,35 +234,15 @@ export default () => {
   }
 
   return (
-    <div class="flex flex-col flex-grow h-full justify-between relative">
+    <div class="flex flex-col flex-grow h-full justify-end relative">
       <div
         ref={bgd}
-        class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
+        class="bg-top-center bg-hero-floating-cogs-gray-500/10 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && loading()}
         class:duration-400={isStick() && loading()}
       />
-      <SystemRoleSettings
-        canEdit={() => messageList().length === 0}
-        systemRoleEditing={systemRoleEditing}
-        setSystemRoleEditing={setSystemRoleEditing}
-        currentSystemRoleSettings={currentSystemRoleSettings}
-        setCurrentSystemRoleSettings={setCurrentSystemRoleSettings as Setter<string>}
-      />
-      <div class="flex-grow flex w-full items-center justify-center">
-        {
-        messageList().length === 0 && !systemRoleEditing() && (
-          <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-5 relative select-none op-50">
-            <span class="rounded-bl-md rounded-rt-md font-bold h-fit bg-$c-fg-5 w-fit py-1 px-2 top-0 right-0 text-$c-fg-50 absolute">TIPS</span>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">/</span> &nbsp;聚焦到输入框 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">Alt/Option</span> + <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">C</span> &nbsp;清空上下文 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">鼠标中键点击左上标题</span> &nbsp;新窗口打开新会话 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">PageUp</span> / <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">PageDn</span> &nbsp;回到顶部 / 底部 </p>
-          </div>
-        )
-        }
-      </div>
+
       <Index each={messageList()}>
         {(message, index) => (
           <MessageItem
@@ -317,10 +288,9 @@ export default () => {
           </div>
         </Match>
         <Match when={mounted() && !loading()}>
-          <div class="gen-text-wrapper" class:op-50={systemRoleEditing()}>
+          <div class="gen-text-wrapper">
             <textarea
               ref={inputRef}
-              disabled={systemRoleEditing()}
               onKeyDown={handleKeydown}
               placeholder="与 ChatGPT 对话"
               autocomplete="off"
@@ -337,12 +307,11 @@ export default () => {
               title="Send"
               class="w-10 gen-slate-btn sm:min-w-fit sm:px-3.5"
               onClick={handleButtonClick}
-              disabled={systemRoleEditing()}
             >
               <span class="i-iconamoon-send block sm:hidden" />
               <span class="<sm:hidden">发送</span>
             </button>
-            <button title="Clear" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
+            <button title="Clear" onClick={clear} gen-slate-btn>
               <IconClear />
             </button>
           </div>

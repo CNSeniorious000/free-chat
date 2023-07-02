@@ -1,23 +1,18 @@
 ---
-// import Logo from './Logo.astro'
 import Themetoggle from './Themetoggle.astro';
 ---
 
 <header>
   <div class="flex-row mt-2.5rem transition-margin fb items-center select-none md:mt-3.5rem">
     <div class="fi">
-      <a href="." onclick="return false" mr-1 flex gap-2>
-        <!-- <Logo /> -->
-        <span class="gpt-title <md:transition-all">Free Chat</span>
-        <span class="gpt-subtitle">✨</span>
+      <a href="." onclick="return false" mr-1 flex items-center gap-2>
+        <img h-8 src="/logo.png" alt="logo">
+        <span class="tracking-wider gpt-title <md:transition-all">知了同行</span>
       </a>
     </div>
     <div class="flex">
-      <a class="rounded-md h-10 grid transition-background-color w-10 place-items-center <md:transition-colors hover:bg-$c-fg-5" href="https://cdn.muspimerol.site/group.html">
-        <span class="text-lg i-mdi-wechat"></span>
-      </a>
-      <a class="rounded-md h-10 grid transition-background-color w-10 place-items-center <md:transition-colors hover:bg-$c-fg-5" href="https://cdn.muspimerol.site/sponsorship.html">
-        <span class="text-lg i-mingcute-pig-money-fill"></span>
+      <a class="rounded-md h-10 grid transition-background-color w-10 place-items-center <md:transition-colors hover:bg-$c-fg-5" href="https://github.com/CNSeniorious000/zhiliao">
+        <span class="text-lg i-carbon-logo-github"></span>
       </a>
       <Themetoggle />
     </div>

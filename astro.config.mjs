@@ -27,32 +27,14 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
       manifest: {
-        name: 'Free Chat',
-        short_name: 'Free Chat',
-        description: 'Chat for free with AI chatbot',
+        name: '知了同行',
         theme_color: '#212129',
         background_color: '#212129',
         icons: [
           {
-            src: 'apple-touch-icon.png',
-            sizes: '180x180',
+            src: 'logo.png',
+            sizes: '272x272',
             type: 'image/png',
-            purpose: 'maskable',
-          },
-          {
-            src: 'pwa-192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: 'pwa-512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: 'icon.svg',
-            sizes: '32x32',
-            type: 'image/svg',
             purpose: 'any',
           },
         ],
