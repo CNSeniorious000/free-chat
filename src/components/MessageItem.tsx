@@ -18,8 +18,9 @@ const alignRightMine = !!import.meta.env.PUBLIC_RIGHT_ALIGN_MY_MSG
 
 export default ({ role, message, showRetry, onRetry }: Props) => {
   const roleClass = {
+    system: 'bg-$c-fg',
     user: 'bg-$c-fg-30',
-    assistant: 'bg-[#bfd858] dark:bg-$c-fg dark:sm:(bg-[#bfd858] ring-2 ring-inset ring-white)',
+    assistant: 'bg-[#bfd858] dark:bg-[#e5ff6a]',
   }
   const [source] = createSignal('')
   const { copy, copied } = useClipboard({ source, copiedDuring: 1000 })

@@ -1,4 +1,4 @@
-import { Index, Match, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
+import { For, Index, Match, Show, Switch, batch, createEffect, createMemo, createSignal, onMount } from 'solid-js'
 import { generateSignature } from '@/utils/auth'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
@@ -9,7 +9,6 @@ import type { ChatMessage, ErrorMessage } from '@/types'
 export default () => {
   let inputRef: HTMLTextAreaElement
   let bgd: HTMLDivElement
-  const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
   const [currentError, setCurrentError] = createSignal<ErrorMessage>()
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
@@ -17,6 +16,9 @@ export default () => {
   const [controller, setController] = createSignal<AbortController>(null)
   const [inputValue, setInputValue] = createSignal('')
   const [isStick, _setStick] = createSignal(false)
+  const [mounted, setMounted] = createSignal(false)
+  const [presets, setPresets] = createSignal(null)
+  const [selectedPresetId, setSelectedPresetId] = createSignal(null)
 
   let footer = null
 
@@ -24,11 +26,6 @@ export default () => {
     const distanceToBottom = footer.offsetTop - window.innerHeight
     const currentScrollHeight = window.scrollY
     return distanceToBottom > currentScrollHeight
-  }
-
-  const setCurrentSystemRoleSettings = (systemRole: string) => {
-    _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
-    return systemRole
   }
 
   const setStick = (stick: boolean) => {
@@ -40,7 +37,9 @@ export default () => {
     isStick() && (loading() ? instantToBottom() : smoothToBottom())
   })
 
-  const [mounted, setMounted] = createSignal(false)
+  const preset = createMemo(() => presets() && selectedPresetId() && presets()[selectedPresetId()])
+
+  const fullMessageList = createMemo(() => selectedPresetId() ? preset().messages.concat(messageList()) : messageList())
 
   onMount(() => {
     setMounted(true)
@@ -51,9 +50,6 @@ export default () => {
 
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
-
-      if (localStorage.getItem('systemRoleSettings'))
-        setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings'))
 
       createEffect(() => {
         inputRef.value = inputValue()
@@ -94,6 +90,8 @@ export default () => {
     window.addEventListener('scroll', () => {
       bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
     })
+
+    fetch('/api/presets').then(res => res.json()).then(data => setPresets(data))
   })
 
   const handleButtonClick = async() => {
@@ -127,13 +125,7 @@ export default () => {
     try {
       const controller = new AbortController()
       setController(controller)
-      const requestMessageList = [...messageList()]
-      if (currentSystemRoleSettings()) {
-        requestMessageList.unshift({
-          role: 'system',
-          content: currentSystemRoleSettings(),
-        })
-      }
+      const requestMessageList = [...fullMessageList()]
       const timestamp = Date.now()
       const response = await fetch('/api/generate', {
         method: 'POST',
@@ -234,7 +226,7 @@ export default () => {
   }
 
   return (
-    <div class="flex flex-col flex-grow h-full justify-end relative">
+    <div class="flex flex-col flex-grow h-full justify-end">
       <div
         ref={bgd}
         class="bg-top-center bg-hero-floating-cogs-gray-500/10 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
@@ -242,6 +234,37 @@ export default () => {
         class:transition-transform={isStick() && loading()}
         class:duration-400={isStick() && loading()}
       />
+
+      <Switch>
+        <Match when={selectedPresetId()}>
+          <Index each={preset().messages}>
+            {message => (
+              <MessageItem
+                role={message().role}
+                message={message().content}
+              />
+            )}
+          </Index>
+          <div class="flex flex-row h-full gap-4 justify-between items-center">
+            <hr class="border-dashed border-$c-fg-10 my-4 w-full" />
+            <button class="border-transparent border-y-1 text-xs tracking-wider whitespace-nowrap hover:border-b-$c-fg-30" onClick={() => setSelectedPresetId(null)} type="button">切换课堂</button>
+            <hr class="border-dashed border-$c-fg-10 my-4 w-full" />
+          </div>
+        </Match>
+        <Match when={presets()}>
+          <div class="grid gap-2 sm:grid-cols-2">
+            <For each={Object.entries(presets()) as [string, { title, messages, examples }][]}>
+              {([presetId, { title, messages, examples }]) => (
+                <button onClick={() => setSelectedPresetId(presetId)} class="rounded-md flex flex-row py-2 px-2.5 transition-background-color gap-2 whitespace-nowrap overflow-hidden items-center group justify-between !bg-$c-fg-2 hover:!bg-$c-fg-5" type="button">
+                  <span>{title}</span>
+                  <span class="font-bold font-mono text-xs transition-opacity op-0 group-hover:op-70">{messages.length} + {examples.length}</span>
+                </button>
+              )}
+            </For>
+          </div>
+          {messageList().length !== 0 && <hr class="border-dashed border-$c-fg-10 my-4 w-full" />}
+        </Match>
+      </Switch>
 
       <Index each={messageList()}>
         {(message, index) => (
@@ -262,12 +285,19 @@ export default () => {
 
       { currentError() && <ErrorMessageItem data={currentError()} onRetry={retryLastFetch} /> }
 
-      <TokenCounter
-        currentSystemRoleSettings={currentSystemRoleSettings}
-        messageList={messageList}
-        textAreaValue={inputValue}
-        currentAssistantMessage={currentAssistantMessage}
-      />
+      <Show when={selectedPresetId() && !inputValue() && !loading()}>
+        <div class="flex flex-col mt-4 gap-2">
+
+          <For each={preset().examples as string[]}>
+            {message => (
+              <button onClick={() => [setInputValue(message)]} class="rounded-md py-2 px-2.5 transition-background-color gap-2 whitespace-nowrap overflow-hidden !bg-$c-fg-2 hover:!bg-$c-fg-5" type="button">
+                {message}
+              </button>
+            )}
+
+          </For>
+        </div>
+      </Show>
 
       <Switch>
         <Match when={!mounted()}>
@@ -318,6 +348,13 @@ export default () => {
 
         </Match>
       </Switch>
+
+      <TokenCounter
+        messageList={fullMessageList}
+        textAreaValue={inputValue}
+        currentAssistantMessage={currentAssistantMessage}
+      />
+
       <div class="rounded-md h-fit w-fit transition-colors bottom-4.25 left-4.25 z-10 fixed sm:bottom-5 sm:left-5 hover:bg-$c-fg-5 active:scale-90" class:stick-btn-on={isStick()}>
         <button class="text-base p-2.5" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
           <div i-ph-arrow-line-down-bold />
