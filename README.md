@@ -1,6 +1,6 @@
 <h1 align="center">Free Chat</h1>
 
-<div align="center">English | <a href="./README.zh-CN.md">简体中文</div>
+<div align="center">English | <a href="./README.zh-CN.md">简体中文</a></div>
 
 <br>
 
