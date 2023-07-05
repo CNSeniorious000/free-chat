@@ -11,17 +11,18 @@ import type { Setter } from 'solid-js'
 export default () => {
   let inputRef: HTMLTextAreaElement
   let bgd: HTMLDivElement
+  let footer: HTMLElement
+
   const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
   const [systemRoleEditing, setSystemRoleEditing] = createSignal(false)
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
-  const [currentError, setCurrentError] = createSignal<ErrorMessage>()
+  const [currentError, setCurrentError] = createSignal<ErrorMessage | null>(null)
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
   const [loading, setLoading] = createSignal(false)
-  const [controller, setController] = createSignal<AbortController>(null)
+  const [controller, setController] = createSignal<AbortController | null>(null)
   const [inputValue, setInputValue] = createSignal('')
   const [isStick, _setStick] = createSignal(false)
-
-  let footer = null
+  const [mounted, setMounted] = createSignal(false)
 
   const isHigher = () => {
     const distanceToBottom = footer.offsetTop - window.innerHeight
@@ -43,20 +44,18 @@ export default () => {
     isStick() && (loading() ? instantToBottom() : smoothToBottom())
   })
 
-  const [mounted, setMounted] = createSignal(false)
-
   onMount(() => {
     setMounted(true)
 
     try {
       if (localStorage.getItem('messageList'))
-        setMessageList(JSON.parse(localStorage.getItem('messageList')))
+        setMessageList(JSON.parse(localStorage.getItem('messageList') ?? '[]'))
 
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
 
       if (localStorage.getItem('systemRoleSettings'))
-        setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings'))
+        setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings') ?? '')
 
       createEffect(() => {
         inputRef.value = inputValue()
@@ -65,7 +64,7 @@ export default () => {
       console.error(err)
     }
 
-    footer = document.querySelector('footer')
+    footer = document.querySelector('footer')!
 
     let lastPostion = window.scrollY
 
@@ -86,13 +85,13 @@ export default () => {
       if ((event.target as HTMLElement).nodeName !== 'TEXTAREA') {
         if (event.code === 'Slash') {
           event.preventDefault()
-          document.querySelector('textarea').focus()
+          inputRef.focus()
         } else if (event.code === 'KeyB') { setStick(!isStick()) }
       }
       if (event.altKey && event.code === 'KeyC') clear()
     }, false)
 
-    new MutationObserver(() => isStick() && instantToBottom()).observe(document.querySelector('astro-island > div'), { childList: true, subtree: true })
+    new MutationObserver(() => isStick() && instantToBottom()).observe(document.querySelector('astro-island > div')!, { childList: true, subtree: true })
 
     window.addEventListener('scroll', () => {
       bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
@@ -217,7 +216,7 @@ export default () => {
 
   const stopStreamFetch = () => {
     if (controller()) {
-      controller().abort()
+      controller()!.abort()
       archiveCurrentMessage()
     }
   }
@@ -245,7 +244,7 @@ export default () => {
   return (
     <div class="flex flex-col flex-grow h-full justify-between relative">
       <div
-        ref={bgd}
+        ref={bgd!}
         class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && loading()}
@@ -289,7 +288,7 @@ export default () => {
         />
       )}
 
-      { currentError() && <ErrorMessageItem data={currentError()} onRetry={retryLastFetch} /> }
+      { currentError() && <ErrorMessageItem data={currentError()!} onRetry={retryLastFetch} /> }
 
       <TokenCounter
         currentSystemRoleSettings={currentSystemRoleSettings}
@@ -319,7 +318,7 @@ export default () => {
         <Match when={mounted() && !loading()}>
           <div class="gen-text-wrapper" class:op-50={systemRoleEditing()}>
             <textarea
-              ref={inputRef}
+              ref={inputRef!}
               disabled={systemRoleEditing()}
               onKeyDown={handleKeydown}
               placeholder="与 ChatGPT 对话"
@@ -335,6 +334,7 @@ export default () => {
             />
             <button
               title="Send"
+              type="button"
               class="w-10 gen-slate-btn sm:min-w-fit sm:px-3.5"
               onClick={handleButtonClick}
               disabled={systemRoleEditing()}
@@ -342,7 +342,7 @@ export default () => {
               <span class="i-iconamoon-send block sm:hidden" />
               <span class="<sm:hidden">发送</span>
             </button>
-            <button title="Clear" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
+            <button title="Clear" type="button" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
               <IconClear />
             </button>
           </div>

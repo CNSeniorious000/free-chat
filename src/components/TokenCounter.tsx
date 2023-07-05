@@ -1,8 +1,8 @@
 import { Show, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
-import { countTokens } from '../utils/tiktoken'
+import { countTokens, initTikToken } from '../utils/tiktoken'
+import type { Tiktoken } from 'tiktoken/lite'
 import type { Accessor } from 'solid-js'
 import type { ChatMessage } from '@/types'
-import type { Tiktoken } from 'tiktoken/lite'
 
 interface Props {
   currentSystemRoleSettings: Accessor<string>
@@ -24,15 +24,10 @@ export default (props: Props) => {
   const [isTiktokenReady, setTiktokenReady] = createSignal(false)
 
   onMount(() => {
-    (async() => {
-      const { Tiktoken, init } = await import('tiktoken/lite/init')
-      const { bpe_ranks, special_tokens, pat_str } = (await Promise.all([
-        fetch('https://dogecloud.muspimerol.site/cl100k_base.json').then(r => r.json()),
-        fetch('https://dogecloud.muspimerol.site/tiktoken_bg.wasm').then(r => r.arrayBuffer()).then(wasm => init(imports => WebAssembly.instantiate(wasm, imports))),
-      ]))[0]
-      enc = new Tiktoken(bpe_ranks, special_tokens, pat_str)
+    initTikToken().then((tiktoken) => {
+      enc = tiktoken
       setTiktokenReady(true)
-    })()
+    })
 
     onCleanup(() => {
       isTiktokenReady() && enc.free()
@@ -57,7 +52,7 @@ export default (props: Props) => {
 
     setHide(false)
 
-    clearTimeout(hideTimer)
+    clearTimeout(hideTimer!)
     hideTimer = setTimeout(() => setHide(true), HIDE_TIMEOUT)
 
     return result

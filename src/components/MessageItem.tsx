@@ -18,6 +18,7 @@ const alignRightMine = !!import.meta.env.PUBLIC_RIGHT_ALIGN_MY_MSG
 
 export default ({ role, message, showRetry, onRetry }: Props) => {
   const roleClass = {
+    system: '',
     user: 'bg-$c-fg-30',
     assistant: 'bg-emerald-600/50 dark:bg-emerald-300 sm:(bg-gradient-to-br from-cyan-200 to-green-200)',
   }
@@ -29,11 +30,11 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     let code = null
 
     if (el.matches('[data-code]')) {
-      code = decodeURIComponent(el.dataset.code)
+      code = decodeURIComponent(el.dataset.code!)
       copy(code)
     }
     if (el.matches('[data-code] > div')) {
-      code = decodeURIComponent(el.parentElement?.dataset.code)
+      code = decodeURIComponent(el.parentElement!.dataset.code!)
       copy(code)
     }
   })
@@ -43,7 +44,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       linkify: true,
       breaks: true,
     }).use(mdKatex).use(mdHighlight)
-    const fence = md.renderer.rules.fence
+    const fence = md.renderer.rules.fence!
     md.renderer.rules.fence = (...args) => {
       const [tokens, idx] = args
       const token = tokens[idx]
