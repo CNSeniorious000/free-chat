@@ -13,9 +13,9 @@ export const countTokens = (enc: Tiktoken, messages: ChatMessage[]) => {
   const lastMsg = messages.at(-1)
   const context = messages.slice(0, -1)
 
-  const countTokens: (message?: ChatMessage) => number = countTokensSingleMessage.bind(null, enc)
+  const countTokens: (message: ChatMessage) => number = countTokensSingleMessage.bind(null, enc)
 
-  const countLastMsg = countTokens(lastMsg)
+  const countLastMsg = countTokens(lastMsg!)
   const countContext = context.map(countTokens).reduce((a, b) => a + b, 3) // im_start, "assistant", "\n"
 
   return { countContext, countLastMsg, total: countContext + countLastMsg }
