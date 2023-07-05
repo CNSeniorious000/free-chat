@@ -13,6 +13,7 @@
 | 名称 | 描述 | 默认 |
 | --- | --- | --- |
 | `OPENAI_API_KEY` | 你的 OpenAI API Key | `null` |
+| `OPENAI_API_TEMPERATURE` | 传给模型的 `temperature` 参数 | `1.0` |
 | `HTTPS_PROXY` | 为 OpenAI API 提供代理. | `null` |
 | `OPENAI_API_BASE_URL` | 请求 OpenAI API 的自定义 Base URL. | `https://api.openai.com` |
 | `HEAD_SCRIPTS` | 在页面的 `</head>` 之前注入分析或其他脚本 | `null` |
