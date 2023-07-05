@@ -1,6 +1,6 @@
 <h1 align="center">Free Chat</h1>
 
-<div align="center">English | <a href="./README.zh-CN.md">简体中文</div>
+<div align="center">English | <a href="./README.zh-CN.md">简体中文</a></div>
 
 <br>
 
@@ -13,6 +13,7 @@ You can control the website through environment variables.
 | Name | Description | Default |
 | --- | --- | --- |
 | `OPENAI_API_KEY` | Your API Key for OpenAI. | `null` |
+| `OPENAI_API_TEMPERATURE` | Default `temperature` parameter for model. | `1.0` |
 | `HTTPS_PROXY` | Provide proxy for OpenAI API. | `null` |
 | `OPENAI_API_BASE_URL` | Custom base url for OpenAI API. | `https://api.openai.com` |
 | `HEAD_SCRIPTS` | Inject analytics or other scripts before `</head>` of the page | `null` |
