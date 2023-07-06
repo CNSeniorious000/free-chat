@@ -18,6 +18,7 @@ export const parseOpenAIStream = (rawResponse: Response) => {
 
   const headers = Object.fromEntries(rawResponse.headers)
   delete headers['content-type']
+  delete headers['content-encoding']
 
   const initOptions = {
     status: rawResponse.status,
