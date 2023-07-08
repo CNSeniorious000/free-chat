@@ -9,6 +9,7 @@ const apiKey = import.meta.env.OPENAI_API_KEY
 const httpsProxy = import.meta.env.HTTPS_PROXY
 const baseUrl = ((import.meta.env.OPENAI_API_BASE_URL) || 'https://api.openai.com').trim().replace(/\/$/, '')
 const sitePassword = import.meta.env.SITE_PASSWORD
+const ua = import.meta.env.UNDICI_UA
 
 const FORWARD_HEADERS = ['origin', 'referer', 'cookie', 'user-agent', 'via']
 
@@ -37,20 +38,18 @@ export const post: APIRoute = async({ request }) => {
     }), { status: 401 })
   }
 
-  const initOptions = generatePayload(request.headers.get('Authorization') || `Bearer ${apiKey}`, messages)
+  const initOptions = generatePayload(request.headers.get('Authorization') ?? `Bearer ${apiKey}`, messages)
 
-  import.meta.env.OPENAI_API_BASE_URL && request.headers.forEach((val, key) => {
-    if (FORWARD_HEADERS.includes(key) || key.startsWith('sec-') || key.startsWith('x-')) initOptions[key] = val
-  })
+  const headers = initOptions.headers
 
-  import.meta.env.UNDICI_UA && (initOptions['user-agent'] = import.meta.env.UNDICI_UA)
+  if (baseUrl) request.headers.forEach((val, key) => (FORWARD_HEADERS.includes(key) || key.startsWith('sec-') || key.startsWith('x-')) && (headers[key] = val))
+
+  if (ua) headers['user-agent'] = ua
 
   // #vercel-disable-blocks
   if (httpsProxy) initOptions.dispatcher = new ProxyAgent(httpsProxy)
   // #vercel-end
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
   const response = await fetch(`${baseUrl}/v1/chat/completions`, initOptions).catch((err: Error) => {
     console.error(err)
     return new Response(JSON.stringify({
@@ -61,5 +60,5 @@ export const post: APIRoute = async({ request }) => {
     }), { status: 500 })
   }) as Response
 
-  return parseOpenAIStream(response) as Response
+  return parseOpenAIStream(response)
 }

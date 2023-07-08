@@ -1,4 +1,4 @@
-<h1 align="center">Free Chat</h1>
+<h1 align="center">知了 Chat</h1>
 
 <div align="center"><a href="./README.md">English</a> | 简体中文</div>
 

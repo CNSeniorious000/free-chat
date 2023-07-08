@@ -4,23 +4,23 @@ import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import ErrorMessageItem from './ErrorMessageItem'
 import TokenCounter from './TokenCounter'
-import type { ChatMessage, ErrorMessage } from '@/types'
+import type { ChatMessage, ErrorMessage, Message, Preset } from '@/types'
 
 export default () => {
   let inputRef: HTMLTextAreaElement
   let bgd: HTMLDivElement
+  let footer: HTMLElement
+
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
-  const [currentError, setCurrentError] = createSignal<ErrorMessage>()
+  const [currentError, setCurrentError] = createSignal<ErrorMessage | null>(null)
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
   const [loading, setLoading] = createSignal(false)
-  const [controller, setController] = createSignal<AbortController>(null)
+  const [controller, setController] = createSignal<AbortController | null>(null)
   const [inputValue, setInputValue] = createSignal('')
   const [isStick, _setStick] = createSignal(false)
   const [mounted, setMounted] = createSignal(false)
-  const [presets, setPresets] = createSignal(null)
-  const [selectedPresetId, setSelectedPresetId] = createSignal(null)
-
-  let footer = null
+  const [presets, setPresets] = createSignal<Record<string, Preset> | null>(null)
+  const [selectedPresetId, setSelectedPresetId] = createSignal<string | null>(null)
 
   const isHigher = () => {
     const distanceToBottom = footer.offsetTop - window.innerHeight
@@ -37,16 +37,16 @@ export default () => {
     isStick() && (loading() ? instantToBottom() : smoothToBottom())
   })
 
-  const preset = createMemo(() => presets() && selectedPresetId() && presets()[selectedPresetId()])
+  const preset = createMemo(() => presets() && selectedPresetId() && presets()![selectedPresetId()!])
 
-  const fullMessageList = createMemo(() => selectedPresetId() ? preset().messages.concat(messageList()) : messageList())
+  const fullMessageList = createMemo(() => selectedPresetId() ? (preset() as Preset).messages.concat(messageList()) : messageList())
 
   onMount(() => {
     setMounted(true)
 
     try {
       if (localStorage.getItem('messageList'))
-        setMessageList(JSON.parse(localStorage.getItem('messageList')))
+        setMessageList(JSON.parse(localStorage.getItem('messageList') ?? '[]'))
 
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
@@ -58,7 +58,7 @@ export default () => {
       console.error(err)
     }
 
-    footer = document.querySelector('footer')
+    footer = document.querySelector('footer')!
 
     let lastPostion = window.scrollY
 
@@ -79,13 +79,13 @@ export default () => {
       if ((event.target as HTMLElement).nodeName !== 'TEXTAREA') {
         if (event.code === 'Slash') {
           event.preventDefault()
-          document.querySelector('textarea').focus()
+          inputRef.focus()
         } else if (event.code === 'KeyB') { setStick(!isStick()) }
       }
       if (event.altKey && event.code === 'KeyC') clear()
     }, false)
 
-    new MutationObserver(() => isStick() && instantToBottom()).observe(document.querySelector('astro-island > div'), { childList: true, subtree: true })
+    new MutationObserver(() => isStick() && instantToBottom()).observe(document.querySelector('astro-island > div')!, { childList: true, subtree: true })
 
     window.addEventListener('scroll', () => {
       bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
@@ -200,7 +200,7 @@ export default () => {
 
   const stopStreamFetch = () => {
     if (controller()) {
-      controller().abort()
+      controller()!.abort()
       archiveCurrentMessage()
     }
   }
@@ -228,7 +228,7 @@ export default () => {
   return (
     <div class="flex flex-col flex-grow h-full justify-end">
       <div
-        ref={bgd}
+        ref={bgd!}
         class="bg-top-center bg-hero-floating-cogs-gray-500/10 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && loading()}
@@ -237,14 +237,16 @@ export default () => {
 
       <Switch>
         <Match when={selectedPresetId()}>
-          <Index each={preset().messages}>
-            {message => (
-              <MessageItem
-                role={message().role}
-                message={message().content}
-              />
-            )}
-          </Index>
+          <Show when={!((preset() as Preset).hideContext)}>
+            <Index each={(preset() as Preset).messages}>
+              {message => (
+                <MessageItem
+                  role={message().role}
+                  message={message().content}
+                />
+              )}
+            </Index>
+          </Show>
           <div class="flex flex-row h-full gap-4 justify-between items-center">
             <hr class="border-dashed border-$c-fg-10 my-4 w-full" />
             <button class="border-transparent border-y-1 text-xs tracking-wider whitespace-nowrap hover:border-b-$c-fg-30" onClick={() => setSelectedPresetId(null)} type="button">切换课堂</button>
@@ -253,7 +255,7 @@ export default () => {
         </Match>
         <Match when={presets()}>
           <div class="grid gap-2 sm:grid-cols-2">
-            <For each={Object.entries(presets()) as [string, { title, messages, examples }][]}>
+            <For each={Object.entries((presets() as Record<string, Preset>))}>
               {([presetId, { title, messages, examples }]) => (
                 <button onClick={() => setSelectedPresetId(presetId)} class="rounded-md flex flex-row py-2 px-2.5 transition-background-color gap-2 whitespace-nowrap overflow-hidden items-center group justify-between !bg-$c-fg-2 hover:!bg-$c-fg-5" type="button">
                   <span>{title}</span>
@@ -283,12 +285,12 @@ export default () => {
         />
       )}
 
-      { currentError() && <ErrorMessageItem data={currentError()} onRetry={retryLastFetch} /> }
+      { currentError() && <ErrorMessageItem data={currentError()!} onRetry={retryLastFetch} /> }
 
       <Show when={selectedPresetId() && !inputValue() && !loading()}>
         <div class="flex flex-col mt-4 gap-2">
 
-          <For each={preset().examples as string[]}>
+          <For each={(preset() as Preset).examples}>
             {message => (
               <button onClick={() => [setInputValue(message)]} class="rounded-md py-2 px-2.5 transition-background-color gap-2 whitespace-nowrap overflow-hidden !bg-$c-fg-2 hover:!bg-$c-fg-5" type="button">
                 {message}
@@ -320,7 +322,7 @@ export default () => {
         <Match when={mounted() && !loading()}>
           <div class="gen-text-wrapper">
             <textarea
-              ref={inputRef}
+              ref={inputRef!}
               onKeyDown={handleKeydown}
               placeholder="与 ChatGPT 对话"
               autocomplete="off"
@@ -335,13 +337,14 @@ export default () => {
             />
             <button
               title="Send"
+              type="button"
               class="w-10 gen-slate-btn sm:min-w-fit sm:px-3.5"
               onClick={handleButtonClick}
             >
               <span class="i-iconamoon-send block sm:hidden" />
               <span class="<sm:hidden">发送</span>
             </button>
-            <button title="Clear" onClick={clear} gen-slate-btn>
+            <button title="Clear" type="button" onClick={clear} gen-slate-btn>
               <IconClear />
             </button>
           </div>

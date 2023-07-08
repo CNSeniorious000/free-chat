@@ -1,9 +1,9 @@
 import { Show, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { countTokens, model } from '../utils/tiktoken'
+import { countTokens, initTikToken } from '../utils/tiktoken'
+import type { Tiktoken } from 'tiktoken/lite'
 import type { Accessor } from 'solid-js'
 import type { ChatMessage } from '@/types'
-import type { Tiktoken } from 'tiktoken'
 
 interface Props {
   messageList: Accessor<ChatMessage[]>
@@ -24,8 +24,8 @@ export default (props: Props) => {
   const [isTiktokenReady, setTiktokenReady] = createSignal(false)
 
   onMount(() => {
-    import('tiktoken').then(({ encoding_for_model }) => {
-      enc = encoding_for_model(model)
+    initTikToken().then((tiktoken) => {
+      enc = tiktoken
       setTiktokenReady(true)
     })
 
@@ -48,7 +48,7 @@ export default (props: Props) => {
 
     const result = countTokens(enc, messages)
 
-    clearTimeout(hideTimer)
+    clearTimeout(hideTimer!)
 
     if (result) {
       setHide(false)
