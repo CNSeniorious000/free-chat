@@ -118,6 +118,7 @@ export default () => {
   const instantToBottom = () => toBottom('instant')
 
   const requestWithLatestMessage = async() => {
+    syncRecord()
     setLoading(true)
     setCurrentAssistantMessage('')
     setCurrentError(null)
@@ -173,6 +174,7 @@ export default () => {
       return
     }
     archiveCurrentMessage()
+    await syncRecord()
   }
 
   const archiveCurrentMessage = () => {
@@ -187,15 +189,33 @@ export default () => {
     }
   }
 
+  let recordId = null
+
+  const syncRecord = async() => {
+    if (messageList().length === 0) return
+
+    if (localStorage.getItem('recordId')) {
+      recordId = localStorage.getItem('recordId')
+      await fetch(`/api/records?recordId=${recordId}`, { method: 'PUT', body: JSON.stringify(messageList()), headers: { 'content-type': 'application/json' } })
+    } else {
+      const r = await fetch('/api/records', { method: 'POST', body: JSON.stringify(messageList()), headers: { 'content-type': 'application/json' } })
+      recordId = await r.text()
+      localStorage.setItem('recordId', recordId)
+    }
+  }
+
   const clear = () => {
     inputRef.value = ''
     inputRef.style.height = 'auto'
-    batch(() => {
-      setInputValue('')
-      setMessageList([])
+    syncRecord().then(() => {
+      batch(() => {
+        setInputValue('')
+        setMessageList([])
+        setCurrentError(null)
+      })
+      localStorage.setItem('messageList', JSON.stringify([]))
+      localStorage.removeItem('recordId')
     })
-    localStorage.setItem('messageList', JSON.stringify([]))
-    setCurrentError(null)
   }
 
   const stopStreamFetch = () => {
