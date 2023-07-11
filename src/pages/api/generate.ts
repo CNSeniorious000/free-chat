@@ -5,7 +5,7 @@ import { generatePayload, parseOpenAIStream } from '@/utils/openAI'
 import { verifySignature } from '@/utils/auth'
 import type { APIRoute } from 'astro'
 
-const apiKey = import.meta.env.OPENAI_API_KEY
+const apiKeys = import.meta.env.OPENAI_API_KEY.split(',')
 const httpsProxy = import.meta.env.HTTPS_PROXY
 const baseUrl = ((import.meta.env.OPENAI_API_BASE_URL) || 'https://api.openai.com').trim().replace(/\/$/, '')
 const sitePassword = import.meta.env.SITE_PASSWORD
@@ -38,7 +38,11 @@ export const post: APIRoute = async({ request }) => {
     }), { status: 401 })
   }
 
-  const initOptions = generatePayload(request.headers.get('Authorization') ?? `Bearer ${apiKey}`, messages)
+  function getApiKey() {
+    return apiKeys[Math.floor(Math.random() * apiKeys.length)]
+  }
+
+  const initOptions = generatePayload(request.headers.get('Authorization') ?? `Bearer ${getApiKey()}`, messages)
 
   const headers = initOptions.headers
 
