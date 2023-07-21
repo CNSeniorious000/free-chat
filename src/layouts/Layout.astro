@@ -25,11 +25,8 @@ const origin = Astro.request.headers.get('host')
     { import.meta.env.HEAD_SCRIPTS && <Fragment set:html={import.meta.env.HEAD_SCRIPTS } /> }
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
     { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW.scriptTag} /> }
-    <link rel="prefetch" href="https://wechat-group.bnu120.space/">
-    <link rel="prefetch" href="https://cdn.muspimerol.site/sponsorship.html">
-    <link rel="prefetch" href="https://ic.muspimerol.site/">
+    <link rel="prefetch" href="https://ic.free-chat.asia/">
     <link rel="prefetch" href="https://www.keyanyuedu.com/?channel=freechat">
-    <link rel="prefetch" href="https://cdn.muspimerol.site/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">
   </head>
   <body>
     <slot />
