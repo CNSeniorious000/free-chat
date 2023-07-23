@@ -29,7 +29,7 @@ export default defineConfig({
     'gpt-back-top-btn': 'fcc text-base fixed bottom-17px right-17px sm:(bottom-20px right-20px) z-10 cursor-pointer',
     'gpt-password-input': 'px-4 py-3 h-12 rounded-sm bg-(slate op-15) base-focus',
     'gpt-password-submit': 'fcc h-12 w-12 bg-slate cursor-pointer bg-op-20 hover:bg-op-50',
-    'gen-slate-btn': 'min-w-12 max-w-12 min-h-12 p-0 grid place-items-center bg-$c-fg-10 hover:bg-$c-fg-15 focus-visible:ring-1.5 ring-$c-fg-40 rounded-sm <sm:min-h-10 <sm:min-w-10 select-none transition-background-color outline-none',
+    'gen-slate-btn': 'min-w-12 max-w-12 min-h-12 p-0 grid place-items-center !bg-$c-fg-10 hover:!bg-$c-fg-15 focus-visible:ring-1.5 ring-$c-fg-40 rounded-sm <sm:min-h-10 <sm:min-w-10 select-none transition-background-color outline-none',
     'gen-cb-wrapper': 'h-12 my-4 fcc gap-4 bg-$c-fg-10 rounded-sm <sm:h-10 <sm:text-sm select-none',
     'gen-cb-stop': 'px-2 py-0.5 ring-1.2 ring-$c-fg-50 rounded-md text-sm op-70 cursor-pointer hover:bg-$c-fg-5 <sm:text-xs <sm:ring-$c-fg-30 <sm:px-1 <sm:px-1.5 <sm:py-0.4 transition-background-color',
     'gen-text-wrapper': 'my-4 fc gap-2 transition-opacity items-end',
