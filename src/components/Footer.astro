@@ -4,11 +4,11 @@ const origin = Astro.request.headers.get('host')
 
 <footer class="flex flex-col text-xs mb-4.5rem gap-2.5 justify-between select-none sm:flex-row <sm:mb-1.5rem <sm:self-center <sm:items-center <md:transition-colors">
   <p>
-    <a b-slate-link href="https://free-chat.asia/">返回官网</a>
+    <a b-slate-link href="https://ic.free-chat.asia/">返回 Free Chat 主页</a>
     <span px-0.5 select-none op-20>|</span>
-    <a b-slate-link href="https://anse.free-chat.asia/">Anse</a>
+    <a b-slate-link href=`mailto:kilo.meter@foxmail.com?subject=❗${origin} Error Report&body=${origin} 网站问题`>问题反馈</a>
     <span px-0.5 select-none op-20>|</span>
-    <a b-slate-link href="https://cdn.muspimerol.site/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">隐私协议</a>
+    <a b-slate-link href="https://tips.free-chat.asia/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">隐私协议</a>
   </p>
   <p><a op-30 hover:op-60 w-fit transition-opacity flex items-center href=`mailto:kilo.meter@foxmail.com?subject=❗${origin} Error Report&body=${origin} 网站不能正常使用`>网站问题请联系<span i-line-md-email-twotone-alt mx-1></span>kilo.meter@foxmail.com</a></p>
 </footer>
