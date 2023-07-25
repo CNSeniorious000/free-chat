@@ -16,15 +16,14 @@ const origin = Astro.request.headers.get('host')
     <meta name="X-Frame-Options" content="sameorigin">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
     <link rel="icon" type="image/svg+xml" href="/icon.svg">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-    <link rel="mask-icon" href="/icon.svg" color="#FFFFFF">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="320x320">
     <meta name="theme-color" content="#212129">
     <meta name="generator" content={Astro.generator}>
     <title>{title} - {origin}</title>
     <meta name="description" content="Chat for free with AI chatbot" />
     { import.meta.env.HEAD_SCRIPTS && <Fragment set:html={import.meta.env.HEAD_SCRIPTS } /> }
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
-    { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW.scriptTag} /> }
+    { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW!.scriptTag} /> }
     <link rel="prefetch" href="https://ic.free-chat.asia/">
     <link rel="prefetch" href="https://www.keyanyuedu.com/?channel=freechat">
   </head>
