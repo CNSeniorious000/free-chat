@@ -55,10 +55,11 @@
 const themeToggle = document.getElementById('themeToggle')
 const themeCircle1 = document.querySelector('.theme_toggle_circle1')
 const themeCircle2 = document.querySelector('.theme_toggle_circle2')
+const themeColorTag = document.querySelector('meta[name="theme-color"]')
 const iframes = document.querySelectorAll('iframe')
 
 const postDarkMode = (darkMode: Boolean) => {
-  iframes.forEach(iframe => iframe.contentWindow.postMessage({ darkMode }, '*'))
+  iframes.forEach(iframe => iframe.contentWindow?.postMessage({ darkMode }, '*'))
 }
 
 window.addEventListener('message', () => postDarkMode(document.documentElement.classList.contains('dark') ?? localStorage.getItem('theme') === 'dark'))
@@ -66,11 +67,13 @@ window.addEventListener('message', () => postDarkMode(document.documentElement.c
 const toogleThemeCircle = () => {
   const darkMode = document.documentElement.classList.contains('dark') ?? localStorage.getItem('theme') === 'dark'
   if (darkMode) {
-    themeCircle1.setAttribute('r', '9')
-    themeCircle2.setAttribute('r', '9')
+    themeCircle1?.setAttribute('r', '9')
+    themeCircle2?.setAttribute('r', '9')
+    themeColorTag?.setAttribute('content', '#212129')
   } else {
-    themeCircle1.setAttribute('r', '5')
-    themeCircle2.setAttribute('r', '5')
+    themeCircle1?.setAttribute('r', '5')
+    themeCircle2?.setAttribute('r', '5')
+    themeColorTag?.setAttribute('content', '#fbfbfb')
   }
   postDarkMode(darkMode)
 }
@@ -93,5 +96,5 @@ const handleToggleClick = () => {
   localStorage.setItem('theme', isDark ? 'dark' : 'light')
   toogleThemeCircle()
 }
-themeToggle.addEventListener('click', handleToggleClick)
+themeToggle?.addEventListener('click', handleToggleClick)
 </script>
