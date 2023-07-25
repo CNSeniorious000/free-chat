@@ -4,7 +4,7 @@ import type { ChatMessage } from '@/types'
 import type { RequestInit } from 'undici'
 
 const model = import.meta.env.OPENAI_API_MODEL || 'gpt-3.5-turbo-16k'
-const temperature = import.meta.env.OPENAI_API_TEMPERATURE || 1
+const temperature = Number(import.meta.env.OPENAI_API_TEMPERATURE) || 1
 
 export const generatePayload = (authorization: string, messages: ChatMessage[]): RequestInit & { headers: Record<string, string> } => ({
   headers: { 'Content-Type': 'application/json', authorization },

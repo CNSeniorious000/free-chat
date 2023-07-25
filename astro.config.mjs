@@ -27,16 +27,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
       manifest: {
+        id: '/',
         name: '知了同行',
         theme_color: '#212129',
         background_color: '#212129',
-        icons: [
-          {
-            src: 'logo.png',
-            sizes: '272x272',
-            type: 'image/png',
-            purpose: 'any',
-          },
+        icons: [{ src: 'logo.png', sizes: '272x272', type: 'image/png' },
         ],
       },
       client: {
