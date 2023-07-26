@@ -18,6 +18,19 @@ import 'highlight.js/styles/atom-one-dark.css'
   </main>
 </Layout>
 
+<script>
+import Lenis from '@studio-freight/lenis'
+
+const lenis = new Lenis({ lerp: 0.3 })
+
+function raf(time: number) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+</script>
+
 <style is:global>
   :root {
     --c-fg-2: rgba(68, 68, 68, 0.02);
@@ -87,6 +100,6 @@ import 'highlight.js/styles/atom-one-dark.css'
   }
 
   code::-webkit-scrollbar {
-    display: none
+    display: none;
   }
 </style>
