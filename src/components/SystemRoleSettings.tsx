@@ -20,17 +20,17 @@ export default (props: Props) => {
   }
 
   return (
-    <div class="my-4">
+    <div class="my-4 select-none">
       <Show when={!props.systemRoleEditing()}>
         <Show when={props.currentSystemRoleSettings()}>
           <div>
-            <div class="fi gap-1 op-50 dark:op-60">
+            <div class="gap-1 fi op-50 dark:op-60">
               <Show when={props.canEdit()} fallback={<IconEnv />}>
-                <span onClick={() => props.setCurrentSystemRoleSettings('')} class="sys-edit-btn p-1 rd-50%" > <IconX /> </span>
+                <span onClick={() => props.setCurrentSystemRoleSettings('')} class="p-1 sys-edit-btn rd-50%" > <IconX /> </span>
               </Show>
               <div>自定义场景</div>
             </div>
-            <div class="mt-1">
+            <div class="mt-0.5">
               {props.currentSystemRoleSettings()}
             </div>
           </div>
@@ -44,11 +44,11 @@ export default (props: Props) => {
       </Show>
       <Show when={props.systemRoleEditing() && props.canEdit()}>
         <div>
-          <div class="fi gap-1 op-50 dark:op-60">
+          <div class="gap-1 fi op-50 dark:op-60">
             <IconEnv />
             <span text-sm ml-1>自定义场景</span>
           </div>
-          <p class="my-2 leading-normal text-sm op-50 dark:op-60">通过 system message 设定指令、角色、情境等</p>
+          <p class="my-2 text-sm leading-normal op-50 dark:op-60">通过 system message 设定指令、角色、情境等</p>
           <div>
             <textarea
               ref={systemInputRef!}
@@ -59,7 +59,7 @@ export default (props: Props) => {
               gen-textarea
             />
           </div>
-          <button onClick={handleButtonClick} gen-slate-btn>
+          <button onClick={handleButtonClick} class="min-w-fit px-3.5 gen-slate-btn hide-scrollbar">
             保存
           </button>
         </div>

@@ -1,0 +1,27 @@
+<div id="backdrop" class="bg-black/10 inset-0 transition-opacity z-100 duration-800 fixed pointer-events-none op-0 dark:bg-black/50"></div>
+
+<section id="popup" class="flex flex-row transition-opacity right-0 bottom-0 left-0 z-1000 duration-500 fixed select-none justify-center pointer-events-none op-0">
+    <div class="bg-$c-bg rounded-lg flex flex-col max-w-xl shadow-xl m-5vw p-5 gap-3 backdrop-blur-15 dark:bg-#212129c0">
+        <div flex flex-row items-center gap-3 text-4xl relative>
+            <div class="right-1/2 translate-x-1/2 -translate-y-1/2 i-fluent-emoji-cookie absolute"></div>
+            <div class="right-1/2 scale-60 translate-x-1/2 -translate-y-1/4 i-fluent-emoji-cookie absolute blur-15"></div>
+        </div>
+        <div>我们使用cookie来提供并改善您的使用体验。匿名的数据可能在服务端留存一段时间。继续使用本网站即表示您同意我们使用 cookies 以及在服务端留存数据。点此查看我们的<a class="border-b-1 border-$c-fg-20 mx-1 dark:border-$c-fg" href="https://cdn.muspimerol.site/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">隐私协议</a>。</div>
+        <div>
+            <button class="rounded-md h-fit bg-$c-fg-5 mt-1 w-full p-2 transition-all ease-out hover:bg-$c-fg hover:text-$c-bg hover:scale-98 active:scale-96">同意</button>
+        </div>
+    </div>
+</section>
+
+<script>
+if (!document.cookie.includes('privacyPolicy=confirmed')) {
+  document.getElementById('popup').classList.remove('op-0', 'pointer-events-none')
+  document.getElementById('backdrop').classList.remove('op-0', 'pointer-events-none')
+
+  document.querySelector('#popup button').addEventListener('click', () => {
+    document.getElementById('popup').classList.add('op-0', 'pointer-events-none')
+    document.getElementById('backdrop').classList.add('op-0', 'pointer-events-none')
+    document.cookie = `privacyPolicy=confirmed; expires=${new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000).toUTCString()}`
+  })
+}
+</script>

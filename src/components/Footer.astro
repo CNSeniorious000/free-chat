@@ -1,14 +1,14 @@
-<footer mb-3rem>
-  <p mt-4 text-xs>
-    <a b-slate-link href="https://xindex.muspimerol.site">xindex</a>
-    <span px-1 select-none>|</span>
-    <a b-slate-link href="https://muspimerol.site/blog">muspimerol.site</a>
-    <span px-1 select-none>|</span>
-    <a b-slate-link href="https://bnu120.space">bnu120.space</a>
-    <span px-1 select-none>|</span>
-    <a b-slate-link href="https://chat.academic.bnu120.space">ChatGPT 学术优化</a>
-    <span px-1 select-none>|</span>
-    <a b-slate-link href="https://github.com/ddiu8081/chatgpt-demo">原开源项目</a>
+---
+const origin = Astro.request.headers.get('host')
+---
+
+<footer class="flex flex-col text-xs mb-4.5rem gap-2.5 justify-between select-none sm:flex-row <sm:mb-1.5rem <sm:self-center <sm:items-center <md:transition-colors">
+  <p>
+    <a b-slate-link href="https://ic.free-chat.asia/">返回 Free Chat 主页</a>
+    <span px-0.5 select-none op-20>|</span>
+    <a b-slate-link href=`mailto:kilo.meter@foxmail.com?subject=❗${origin} Error Report&body=${origin} 网站问题`>问题反馈</a>
+    <span px-0.5 select-none op-20>|</span>
+    <a b-slate-link href="https://tips.free-chat.asia/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">隐私协议</a>
   </p>
-  <p mt-4 text-xs><a op-30 hover:op-60 w-fit transition-opacity flex items-center href="mailto:admin@muspimerol.site?subject=❗Site Error Report&body=chat.bnu120.space网站不能正常使用">如遇网站不可用，请联系我，谢谢<span i-line-md-email-twotone-alt mx-1></span>admin@muspimerol.site</a></p>
+  <p><a class="rounded-full flex bg-$c-fg-5 -my-1 w-fit py-1 px-2 transition-opacity items-center op-80 hover:op-100" style="letter-spacing: 0.75pt" href='https://www.keyanyuedu.com/?channel=freechat' onclick="gtag('event', 'clickAdAtFooter')"><span op-30>本项目由</span><span>上海守扣科技</span><span op-30>独家赞助</span></a></p>
 </footer>

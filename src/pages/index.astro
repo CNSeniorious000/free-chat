@@ -1,4 +1,5 @@
 ---
+import Popup from '../components/Popup.astro'
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
@@ -6,19 +7,22 @@ import Generator from '../components/Generator'
 import BackTop from '../components/BackTop.astro'
 import '../message.css'
 import 'katex/dist/katex.min.css'
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/atom-one-dark.css'
 ---
 
-<Layout title="Chat For Free">
-  <main class="flex flex-col justify-between min-h-screen lg:max-w-80ch xl:max-w-90ch transition-max-width bg-transparent sm:bg-$c-bg shadow-2xl sm:(shadow-black/10 dark:shadow-black/15)">
+<Layout title="Endless Chat">
+  <main class="bg-transparent flex flex-col min-h-screen transition-max-width justify-between md:(bg-$c-bg shadow-2xl shadow-black/10 dark:shadow-black/15) xl:max-w-95ch 2xl:max-w-105ch ">
     <Header />
     <Generator client:load />
     <Footer />
     <BackTop />
+    <Popup />
   </main>
 </Layout>
 
 <script>
+import Lenis from '@studio-freight/lenis'
+
 async function checkCurrentAuth() {
   const password = localStorage.getItem('pass')
   const response = await fetch('/api/auth', {
@@ -35,4 +39,86 @@ async function checkCurrentAuth() {
     window.location.href = '/password'
 }
 checkCurrentAuth()
+
+const lenis = new Lenis({ lerp: 0.3 })
+
+function raf(time: number) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
 </script>
+
+<style is:global>
+  :root {
+    --c-fg-2: rgba(68, 68, 68, 0.02);
+    --c-fg-5: rgba(68, 68, 68, 0.05);
+    --c-fg-10: rgba(68, 68, 68, 0.1);
+    --c-fg-15: rgba(68, 68, 68, 0.15);
+    --c-fg-20: rgba(68, 68, 68, 0.2);
+    --c-fg-30: rgba(68, 68, 68, 0.3);
+    --c-fg-40: rgba(68, 68, 68, 0.4);
+    --c-fg-50: rgba(68, 68, 68, 0.5);
+    --c-fg-60: rgba(68, 68, 68, 0.6);
+    --c-fg-70: rgba(68, 68, 68, 0.7);
+    --c-fg-80: rgba(68, 68, 68, 0.8);
+    --c-fg-90: rgba(68, 68, 68, 0.9);
+  }
+
+  html.dark {
+    --c-fg-2: rgba(221, 221, 240, 0.02);
+    --c-fg-5: rgba(221, 221, 240, 0.05);
+    --c-fg-10: rgba(221, 221, 240, 0.1);
+    --c-fg-15: rgba(221, 221, 240, 0.15);
+    --c-fg-20: rgba(221, 221, 240, 0.2);
+    --c-fg-30: rgba(221, 221, 240, 0.3);
+    --c-fg-40: rgba(221, 221, 240, 0.4);
+    --c-fg-50: rgba(221, 221, 240, 0.5);
+    --c-fg-60: rgba(221, 221, 240, 0.6);
+    --c-fg-70: rgba(221, 221, 240, 0.7);
+    --c-fg-80: rgba(221, 221, 240, 0.8);
+    --c-fg-90: rgba(221, 221, 240, 0.9);
+  }
+
+  main {
+    overflow-x: hidden;
+    max-width: 85ch;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--c-scroll);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--c-scroll-hover);
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--c-bg);
+  }
+
+  @media (max-height: 850px), (max-width: 700px) {
+    #tips {
+      opacity: 0;
+    }
+  }
+
+  @media (max-height: 800px) {
+    #tips {
+      display: none;
+    }
+  }
+
+  code::-webkit-scrollbar {
+    display: none;
+  }
+</style>

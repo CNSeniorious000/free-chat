@@ -14,11 +14,13 @@ interface Props {
   onRetry?: () => void
 }
 
+const alignRightMine = !!import.meta.env.PUBLIC_RIGHT_ALIGN_MY_MSG
+
 export default ({ role, message, showRetry, onRetry }: Props) => {
   const roleClass = {
-    system: 'bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300',
-    user: 'bg-gradient-to-r from-purple-400 to-yellow-400',
-    assistant: 'bg-gradient-to-r from-yellow-200 via-green-200 to-green-300',
+    system: '',
+    user: 'bg-$c-fg-30',
+    assistant: 'bg-emerald-600/50 dark:bg-emerald-300 sm:(bg-gradient-to-br from-cyan-200 to-green-200)',
   }
   const [source] = createSignal('')
   const { copy, copied } = useClipboard({ source, copiedDuring: 1000 })
@@ -27,13 +29,12 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     const el = e.target as HTMLElement
     let code = null
 
-    if (el.matches('div > div.copy-btn')) {
+    if (el.matches('[data-code]')) {
       code = decodeURIComponent(el.dataset.code!)
       copy(code)
     }
-    if (el.matches('div > div.copy-btn > div')) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-      code = decodeURIComponent(el.parentElement?.dataset.code!)
+    if (el.matches('[data-code] > div')) {
+      code = decodeURIComponent(el.parentElement!.dataset.code!)
       copy(code)
     }
   })
@@ -49,11 +50,11 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       const token = tokens[idx]
       const rawCode = fence(...args)
 
-      return `<div relative>
-      <div data-code=${encodeURIComponent(token.content)} class="copy-btn gpt-copy-btn group hover:filter-brightness-90 dark:hover:filter-brightness-115 active:scale-90 transition-all duration-150">
-        ${copied() ? '<span mr-1 text-sm display-none group-hover:display-inline-block>Copied!</span><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
-      </div>
-      ${rawCode}
+      return `<div class="relative group">
+        <div data-code=${encodeURIComponent(token.content)} class="gpt-copy-btn">
+          ${copied() ? '<div mr-1 text-sm display-inline-block>Copied!</div><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
+        </div>
+        ${rawCode}
       </div>`
     }
 
@@ -66,19 +67,21 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
   }
 
   return (
-    <div class="py-2 -mx-20 px-20 md:(-mx-4 px-4) lg:(-mx-20 px-20) transition-background-color hover:bg-$c-fg-2">
-      <div class="flex gap-3 rounded-lg" class:op-75={role === 'user'}>
-        <div class={`shrink-0 w-7 h-7 mt-4 rounded-full op-80 ${roleClass[role]}`} />
-        <div class="message prose break-words overflow-hidden max-w-full" innerHTML={htmlString()} />
-      </div>
-      {showRetry?.() && onRetry && (
-        <div class="fie px-3 mb-2">
+    <div class="-mx-20 px-20 transition-colors md:(-mx-5 px-5) md:transition-background-color 2xl:(-mx-20 px-20) hover:bg-$c-fg-2 ">
+      <div class="py-0.5 transition-padding md:py-1 2xl:py-2">
+        <div class="rounded-lg flex gap-3.5" class:op-75={role === 'user'} class:reverse-self-msg={role === 'user' && alignRightMine}>
+          <div class={`shrink-0 w-7 h-7 my-4 rounded-full op-80 ${roleClass[role]} <sm:w-1 <sm:h-auto <md:transition-background-color`} />
+          <div class="max-w-full relative message prose break-words overflow-hidden <sm:text-3.6" innerHTML={htmlString()} />
+        </div>
+        {showRetry?.() && onRetry && (
+        <div class="mb-2 px-3 fie">
           <div onClick={onRetry} class="gpt-retry-btn">
             <IconRefresh />
             <span select-none>重新生成</span>
           </div>
         </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
