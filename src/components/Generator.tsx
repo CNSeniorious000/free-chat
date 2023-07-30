@@ -4,7 +4,7 @@ import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 import ErrorMessageItem from './ErrorMessageItem'
-import TokenCounter from './TokenCounter'
+import TokenCounter, { encoder } from './TokenCounter'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
 
@@ -298,7 +298,7 @@ export default () => {
       />
 
       <Switch>
-        <Match when={!mounted()}>
+        <Match when={!mounted() || !encoder()}>
           <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
             <div class="flex flex-row gap-2 items-center">
               <span>加载中</span>
