@@ -1,5 +1,6 @@
 import { Index, Match, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
 import { generateSignature } from '@/utils/auth'
+import { countTokens } from '@/utils/tiktoken'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
@@ -7,6 +8,9 @@ import ErrorMessageItem from './ErrorMessageItem'
 import TokenCounter, { encoder } from './TokenCounter'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
+
+export const minMessages = Number(import.meta.env.PUBLIC_MIN_MESSAGES ?? 3)
+export const maxTokens = Number(import.meta.env.PUBLIC_MAX_TOKENS ?? 3000)
 
 export default () => {
   let inputRef: HTMLTextAreaElement
@@ -134,12 +138,23 @@ export default () => {
       const controller = new AbortController()
       setController(controller)
       const requestMessageList = [...messageList()]
-      if (currentSystemRoleSettings()) {
-        requestMessageList.unshift({
-          role: 'system',
-          content: currentSystemRoleSettings(),
-        })
-      }
+
+      let limit = maxTokens
+
+      const systemMsg = currentSystemRoleSettings()
+        ? {
+            role: 'system',
+            content: currentSystemRoleSettings(),
+          } as ChatMessage
+        : null
+
+      systemMsg && (limit -= countTokens(encoder()!, [systemMsg])!.total)
+
+      while (requestMessageList.length > minMessages && countTokens(encoder()!, requestMessageList)!.total > limit)
+        requestMessageList.shift()
+
+      systemMsg && requestMessageList.unshift(systemMsg)
+
       const timestamp = Date.now()
       const response = await fetch('/api/generate', {
         method: 'POST',
