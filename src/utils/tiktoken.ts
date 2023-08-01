@@ -20,7 +20,7 @@ export const countTokens = (enc: Tiktoken, messages: ChatMessage[]) => {
 }
 
 const cl100k_base_json = import.meta.env.PUBLIC_CL100K_BASE_JSON_URL
-const tiktoken_bg_wasm = 'https://cdn.jsdelivr.net/npm/tiktoken/lite/tiktoken_bg.wasm'
+const tiktoken_bg_wasm = import.meta.env.PUBLIC_TIKTOKEN_BG_WASM_URL ?? 'https://esm.sh/tiktoken/lite/tiktoken_bg.wasm'
 
 async function getBPE() {
   return cl100k_base_json ? fetch(cl100k_base_json).then(r => r.json()) : import('tiktoken/encoders/cl100k_base.json')
