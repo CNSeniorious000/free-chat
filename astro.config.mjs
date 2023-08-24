@@ -28,7 +28,7 @@ export default defineConfig({
       injectRegister: 'inline',
       manifest: {
         id: '/',
-        name: 'Endless Chat (Legacy)',
+        name: 'Endless Chat',
         short_name: 'Endless Chat',
         description: 'Chat for free with AI chatbot',
         theme_color: '#212129',
