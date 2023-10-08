@@ -24,6 +24,8 @@ You can control the website through environment variables.
 | `AD_IFRAME_URL` | url of the advertisement iframe | `null` |
 | `UNDICI_UA` | user-agent for backend requests | `(forward)` |
 | `PUBLIC_RIGHT_ALIGN_MY_MSG` | whether user messages should be right-aligned | `null` |
+| `PUBLIC_CL100K_BASE_JSON_URL` | CDN url for `cl100k_base.json`, such as [file at jsdelivr.net](https://cdn.jsdelivr.net/npm/tiktoken@1.0.10/encoders/cl100k_base.json) | `null` |
+| `PUBLIC_TIKTOKEN_BG_WASM_URL` | CDN url for `tiktoken_bg.wasm`, such as [file at esm.sh](https://esm.sh/tiktoken/lite/tiktoken_bg.wasm) | `null` |
 
 ## Contributing
 
