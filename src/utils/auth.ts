@@ -1,18 +1,13 @@
-import { sha256 } from 'js-sha256'
 interface AuthPayload {
   t: number
   m: string
 }
 
 async function digestMessage(message: string) {
-  if (typeof crypto !== 'undefined' && crypto?.subtle?.digest) {
-    const msgUint8 = new TextEncoder().encode(message)
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8)
-    const hashArray = Array.from(new Uint8Array(hashBuffer))
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
-  } else {
-    return sha256(message).toString()
-  }
+  const msgUint8 = new TextEncoder().encode(message)
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 }
 
 export const generateSignature = async(payload: AuthPayload) => {

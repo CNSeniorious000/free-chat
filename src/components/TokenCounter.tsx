@@ -12,6 +12,7 @@ interface Props {
 }
 
 const HIDE_TIMEOUT = 5000
+const [encoder, setEncoder] = createSignal<Tiktoken | null>(null)
 
 export default (props: Props) => {
   const [isHide, setHide] = createSignal(false)
@@ -19,23 +20,19 @@ export default (props: Props) => {
 
   const { currentSystemRoleSettings, messageList, textAreaValue, currentAssistantMessage } = props
 
-  let enc: Tiktoken
-
-  const [isTiktokenReady, setTiktokenReady] = createSignal(false)
-
   onMount(() => {
     initTikToken().then((tiktoken) => {
-      enc = tiktoken
-      setTiktokenReady(true)
+      setEncoder(tiktoken)
+      hideTimer = setTimeout(() => setHide(true), HIDE_TIMEOUT)
     })
 
     onCleanup(() => {
-      isTiktokenReady() && enc.free()
+      encoder()?.free()
     })
   })
 
   const getTokensUsage = createMemo(() => {
-    if (!isTiktokenReady()) return
+    if (!encoder()) return
 
     const messages: ChatMessage[] = []
     // begin with a unique system message
@@ -48,7 +45,7 @@ export default (props: Props) => {
     // (streaming and typing may be at the same time in the future)
     else if (textAreaValue()) messages.push({ role: 'user', content: textAreaValue() })
 
-    const result = countTokens(enc, messages)
+    const result = countTokens(encoder()!, messages)
 
     setHide(false)
 
@@ -61,7 +58,7 @@ export default (props: Props) => {
   return (
     <section class="transition-opacity bottom-17 animate-fade-in duration-400 animate-duration-400 select-none absolute self-center sm:bottom-20" class:op-0={isHide()}>
       <div class="rounded-full bg-[#e5e5e5a0] text-xs py-1.9 px-2.8 gap-1 fcc !backdrop-blur-20 <md:transition-background-color dark:bg-[#373740a0]">
-        <Show when={isTiktokenReady()} fallback={<span i-svg-spinners-3-dots-fade />}>
+        <Show when={encoder()} fallback={<span i-svg-spinners-3-dots-fade />}>
           <span class="translate-y-0.2">{getTokensUsage()?.total ?? 0}</span>
           <span class="translate-y-0.2">tokens</span>
         </Show>
