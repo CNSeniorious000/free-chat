@@ -19,27 +19,19 @@ export const countTokens = (enc: Tiktoken, messages: ChatMessage[]) => {
   return { countContext, countLastMsg, total: countContext + countLastMsg }
 }
 
-const cl100k_base_json = import.meta.env.PUBLIC_CL100K_BASE_JSON_URL
-const tiktoken_bg_wasm = import.meta.env.PUBLIC_TIKTOKEN_BG_WASM_URL // required for serverless platforms
+const cl100k_base_json = import.meta.env.PUBLIC_CL100K_BASE_JSON_URL || '/cl100k_base.json'
+const tiktoken_bg_wasm = import.meta.env.PUBLIC_TIKTOKEN_BG_WASM_URL || '/tiktoken_bg.wasm'
 
 async function getBPE() {
-  return cl100k_base_json ? fetch(cl100k_base_json).then(r => r.json()) : import('tiktoken/encoders/cl100k_base.json')
+  return fetch(cl100k_base_json).then(r => r.json())
 }
 
-export const initTikToken = tiktoken_bg_wasm
-  ? async() => {
-    const { init } = await import('tiktoken/lite/init')
-    const [{ bpe_ranks, special_tokens, pat_str }, { Tiktoken }] = await Promise.all([
-      getBPE(),
-      import('tiktoken/lite/init'),
-      fetch(tiktoken_bg_wasm).then(r => r.arrayBuffer()).then(wasm => init(imports => WebAssembly.instantiate(wasm, imports))),
-    ])
-    return new Tiktoken(bpe_ranks, special_tokens, pat_str)
-  }
-  : async() => {
-    const [{ bpe_ranks, special_tokens, pat_str }, { Tiktoken }] = await Promise.all([
-      getBPE(),
-      import('tiktoken/lite'), // currently this will cause ssr error on netlify
-    ])
-    return new Tiktoken(bpe_ranks, special_tokens, pat_str)
-  }
+export const initTikToken = async() => {
+  const { init } = await import('tiktoken/lite/init')
+  const [{ bpe_ranks, special_tokens, pat_str }, { Tiktoken }] = await Promise.all([
+    getBPE(),
+    import('tiktoken/lite/init'),
+    fetch(tiktoken_bg_wasm).then(r => r.arrayBuffer()).then(wasm => init(imports => WebAssembly.instantiate(wasm, imports))),
+  ])
+  return new Tiktoken(bpe_ranks, special_tokens, pat_str)
+}

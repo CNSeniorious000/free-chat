@@ -2,11 +2,8 @@
   "name": "free-chat",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "build:vercel": "OUTPUT=vercel astro build",
-    "build:netlify": "OUTPUT=netlify astro build",
+    "dev": "node prepare.js & astro dev",
+    "build": "node prepare.js & astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
