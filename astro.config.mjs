@@ -21,7 +21,7 @@ const envAdapter = () => {
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    unocss(),
+    unocss({ injectReset: true }),
     solidJs(),
     AstroPWA({
       registerType: 'autoUpdate',

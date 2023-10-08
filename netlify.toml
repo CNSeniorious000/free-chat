@@ -3,7 +3,7 @@
   NODE_VERSION = "18"
 
 [build]
-  command = "OUTPUT=netlify astro build"
+  command = "node prepare.js & OUTPUT=netlify astro build"
   publish = "dist"
 
 [[headers]]
