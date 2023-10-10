@@ -24,6 +24,8 @@
 | `AD_IFRAME_URL` | 通知栏 iframe 横幅的 url | `null` |
 | `UNDICI_UA` | 后端请求的 user-agent | `(forward)` |
 | `PUBLIC_RIGHT_ALIGN_MY_MSG` | 用户消息是否右对齐 | `null` |
+| `PUBLIC_CL100K_BASE_JSON_URL` | 从 CDN 加载 `cl100k_base.json`，比如可以设为 [jsdelivr.net](https://cdn.jsdelivr.net/npm/tiktoken@1.0.10/encoders/cl100k_base.json) | `null` |
+| `PUBLIC_TIKTOKEN_BG_WASM_URL` | 从 CDN 加载 `tiktoken_bg.wasm`，比如可设为 [esm.sh](https://esm.sh/tiktoken/lite/tiktoken_bg.wasm) | `null` |
 
 ## 参与贡献
 
