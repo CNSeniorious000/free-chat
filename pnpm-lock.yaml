@@ -97,9 +97,6 @@ devDependencies:
   unocss:
     specifier: ^0.56.5
     version: 0.56.5(postcss@8.4.31)(rollup@2.79.1)(vite@4.4.11)
-  vite-plugin-wasm:
-    specifier: ^3.2.2
-    version: 3.2.2(vite@4.4.11)
 
 packages:
 
@@ -7902,14 +7899,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
-
-  /vite-plugin-wasm@3.2.2(vite@4.4.11):
-    resolution: {integrity: sha512-cdbBUNR850AEoMd5nvLmnyeq63CSfoP1ctD/L2vLk/5+wsgAPlAVAzUK5nGKWO/jtehNlrSSHLteN+gFQw7VOA==}
-    peerDependencies:
-      vite: ^2 || ^3 || ^4
-    dependencies:
-      vite: 4.4.11
-    dev: true
 
   /vite@4.4.11:
     resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}

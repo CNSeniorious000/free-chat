@@ -6,7 +6,6 @@ import AstroPWA from '@vite-pwa/astro'
 import node from '@astrojs/node'
 import vercel from '@astrojs/vercel/serverless'
 import netlify from '@astrojs/netlify'
-import wasm from 'vite-plugin-wasm'
 import disableBlocks from './plugins/disableBlocks'
 
 const envAdapter = () => {
@@ -50,6 +49,6 @@ export default defineConfig({
   output: 'server',
   adapter: envAdapter(),
   vite: {
-    plugins: [wasm(), ((process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks())],
+    plugins: [((process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks())],
   },
 })
