@@ -7,7 +7,6 @@ import node from '@astrojs/node'
 import vercel from '@astrojs/vercel/serverless'
 import netlify from '@astrojs/netlify'
 import wasm from 'vite-plugin-wasm'
-import topLevelAwait from 'vite-plugin-top-level-await'
 import disableBlocks from './plugins/disableBlocks'
 
 const envAdapter = () => {
@@ -51,6 +50,6 @@ export default defineConfig({
   output: 'server',
   adapter: envAdapter(),
   vite: {
-    plugins: [wasm(), topLevelAwait(), ((process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks())],
+    plugins: [wasm(), ((process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks())],
   },
 })
