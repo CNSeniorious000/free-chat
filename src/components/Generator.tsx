@@ -105,7 +105,7 @@ export default () => {
   const setPageTitle = (title = 'Endless Chat') => {
     document.title = title
     const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
-    titleRef && (titleRef.innerHTML = title)
+    titleRef && (titleRef.innerHTML = (title === 'Endless Chat' ? 'Endless' : title))
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', title !== 'Endless Chat')
   }
