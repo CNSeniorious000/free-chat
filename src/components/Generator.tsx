@@ -102,16 +102,30 @@ export default () => {
     })
   })
 
-  const handleButtonClick = async() => {
-    if (!inputValue())
-      return
+  const setPageTitle = (title = 'Endless Chat') => {
+    document.title = title
+    const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
+    titleRef && (titleRef.innerHTML = title)
+    const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
+    subTitleRef?.classList.toggle('hidden', title !== 'Endless Chat')
+  }
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    if (window?.umami) umami.trackEvent('chat_generate')
+  const updatePageTitle = async(input: string) => {
+    const englishTitle = await fetch('/api/title-gen', { method: 'POST', body: input }).then(res => res.text())
+    setPageTitle(englishTitle)
+    const translatedTitle = await fetch('/api/translate', { method: 'POST', body: englishTitle }).then(res => res.text())
+    setPageTitle(translatedTitle)
+  }
+
+  const handleButtonClick = async() => {
+    const input = inputValue()
+
+    if (!input) return
+
+    if (messageList().length === 0) updatePageTitle(input)
 
     batch(() => {
-      setMessageList([...messageList(), { role: 'user', content: inputValue() }])
+      setMessageList([...messageList(), { role: 'user', content: input }])
       setInputValue('')
     })
 
@@ -227,6 +241,7 @@ export default () => {
     })
     localStorage.setItem('messageList', JSON.stringify([]))
     setCurrentError(null)
+    setPageTitle()
   }
 
   const stopStreamFetch = () => {
