@@ -1,5 +1,8 @@
 import { Index, Match, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
+import { Toaster, toast } from 'solid-toast'
+import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
+import { fetchModeration, fetchSummarization, fetchTranslation } from '@/utils/misc'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
@@ -106,10 +109,26 @@ export default () => {
     subTitleRef?.classList.toggle('hidden', title !== 'Free Chat')
   }
 
+  const moderationCache: Record<string, string[]> = {}
+
+  const moderate = async(input: string) => {
+    const flags = moderationCache[input] ?? (await fetchModeration(input)).flags
+    moderationCache[input] = flags
+    if (!flags.length) return
+
+    toast.error(`${flags.join(', ')} detected!`, { position: 'top-center' })
+  }
+
+  const throttledModerate = useThrottleFn((input: string) => { moderate(input) }, 1000)
+
+  createEffect(() => throttledModerate(currentSystemRoleSettings()))
+  createEffect(() => throttledModerate(inputValue()))
+  createEffect(() => throttledModerate(currentAssistantMessage()))
+
   const updatePageTitle = async(input: string) => {
-    const englishTitle = await fetch('/api/title-gen', { method: 'POST', body: input }).then(res => res.text())
+    const englishTitle = await fetchSummarization(input)
     setPageTitle(englishTitle)
-    const translatedTitle = await fetch('/api/translate', { method: 'POST', body: englishTitle }).then(res => res.text())
+    const translatedTitle = await fetchTranslation(englishTitle)
     setPageTitle(translatedTitle)
   }
 
@@ -119,6 +138,8 @@ export default () => {
     if (!input) return
 
     if (messageList().length === 0) updatePageTitle(input)
+
+    moderate(input)
 
     batch(() => {
       setMessageList([...messageList(), { role: 'user', content: input }])
@@ -369,6 +390,8 @@ export default () => {
           <div i-ph-arrow-line-down-bold />
         </button>
       </div>
+
+      <Toaster />
     </div>
   )
 }
