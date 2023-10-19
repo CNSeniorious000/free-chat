@@ -1,5 +1,8 @@
 import { Index, Match, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
+import { Toaster, toast } from 'solid-toast'
+import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
+import { fetchModeration, fetchSummarization, fetchTranslation } from '@/utils/misc'
 import { countTokens } from '@/utils/tiktoken'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
@@ -110,10 +113,33 @@ export default () => {
     subTitleRef?.classList.toggle('hidden', title !== 'Endless Chat')
   }
 
+  const moderationCache: Record<string, string[]> = {}
+
+  let hasBeenInformed = 0
+
+  const moderate = async(input: string) => {
+    if (!input.length) return
+    const flags = moderationCache[input] ?? (await fetchModeration(input)).flags
+    moderationCache[input] = flags
+    if (!flags.length) return
+    toast.error(`${flags.join(', ')} detected!`, { position: 'top-center' })
+    if (hasBeenInformed++ <= 2) {
+      setTimeout(() => toast.error('现在暂时没有影响，未来可能会强制合规', { position: 'top-center', iconTheme: { primary: 'SandyBrown' } }), 500)
+      setTimeout(() => toast.error('如有异议可通过页面下方问题反馈联系我', { position: 'top-center', iconTheme: { primary: 'SandyBrown' } }), 700)
+    }
+    toast.error(await fetchTranslation(`detect ${flags.join(', ')} which violates our policy`), { position: 'top-center' })
+  }
+
+  const throttledModerate = useThrottleFn((input: string) => { moderate(input) }, 2000)
+
+  createEffect(() => throttledModerate(currentSystemRoleSettings()))
+  createEffect(() => throttledModerate(inputValue()))
+  createEffect(() => throttledModerate(currentAssistantMessage()))
+
   const updatePageTitle = async(input: string) => {
-    const englishTitle = await fetch('/api/title-gen', { method: 'POST', body: input }).then(res => res.text())
+    const englishTitle = await fetchSummarization(input)
     setPageTitle(englishTitle)
-    const translatedTitle = await fetch('/api/translate', { method: 'POST', body: englishTitle }).then(res => res.text())
+    const translatedTitle = await fetchTranslation(englishTitle)
     setPageTitle(translatedTitle)
   }
 
@@ -123,6 +149,8 @@ export default () => {
     if (!input) return
 
     if (messageList().length === 0) updatePageTitle(input)
+
+    moderate(input)
 
     batch(() => {
       setMessageList([...messageList(), { role: 'user', content: input }])
@@ -384,6 +412,8 @@ export default () => {
           <div i-ph-arrow-line-down-bold />
         </button>
       </div>
+
+      <Toaster />
     </div>
   )
 }

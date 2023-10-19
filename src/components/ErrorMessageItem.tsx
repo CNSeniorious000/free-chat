@@ -1,4 +1,5 @@
 import { createSignal, onMount } from 'solid-js'
+import { fetchTranslation } from '@/utils/misc'
 import IconRefresh from './icons/Refresh'
 import type { ErrorMessage } from '@/types'
 
@@ -12,8 +13,8 @@ export default ({ data, onRetry }: Props) => {
   const [description, setDescription] = createSignal(data.message)
 
   onMount(() => {
-    fetch('/api/translate', { method: 'POST', body: data.code }).then(res => res.text()).then(setTitle)
-    fetch('/api/translate', { method: 'POST', body: data.message }).then(res => res.text()).then(setDescription)
+    fetchTranslation(data.code).then(setTitle)
+    fetchTranslation(data.message).then(setDescription)
   })
 
   return (
