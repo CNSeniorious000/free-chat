@@ -61,7 +61,7 @@ export default () => {
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings') ?? '')
 
       createEffect(() => {
-        inputRef.value = inputValue()
+        inputRef && (inputRef.value = inputValue())
       })
     } catch (err) {
       console.error(err)
