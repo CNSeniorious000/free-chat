@@ -9,6 +9,10 @@ export async function startRecording() {
   mediaRecorder.addEventListener('dataavailable', (event) => {
     audioChunks.push(event.data)
   })
+
+  mediaRecorder.addEventListener('stop', () => {
+    stream.getTracks().forEach(track => track.stop())
+  })
 }
 
 export function stopRecording() {
