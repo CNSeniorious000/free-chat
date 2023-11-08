@@ -1,8 +1,9 @@
-import { Index, Match, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
+import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
 import { fetchModeration, fetchSummarization, fetchTranslation } from '@/utils/misc'
+import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
@@ -21,11 +22,12 @@ export default () => {
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
   const [currentError, setCurrentError] = createSignal<ErrorMessage | null>(null)
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
-  const [loading, setLoading] = createSignal(false)
+  const [streaming, setStreaming] = createSignal(false)
   const [controller, setController] = createSignal<AbortController | null>(null)
   const [inputValue, setInputValue] = createSignal('')
   const [isStick, _setStick] = createSignal(false)
   const [mounted, setMounted] = createSignal(false)
+  const [recording, setRecording] = createSignal<'recording' | 'processing' | false>(false)
 
   const isHigher = () => {
     const distanceToBottom = footer.offsetTop - window.innerHeight
@@ -44,8 +46,15 @@ export default () => {
   }
 
   createEffect(() => {
-    isStick() && (loading() ? instantToBottom() : smoothToBottom())
+    isStick() && (streaming() ? instantToBottom() : smoothToBottom())
   })
+
+  const resetTextInputHeight = () => {
+    if (inputRef) {
+      inputRef.style.height = 'auto'
+      inputRef.style.height = `${inputRef.scrollHeight}px`
+    }
+  }
 
   onMount(() => {
     setMounted(true)
@@ -63,6 +72,11 @@ export default () => {
       createEffect(() => {
         inputRef && (inputRef.value = inputValue())
       })
+
+      createEffect(() => {
+        inputValue()
+        resetTextInputHeight()
+      })
     } catch (err) {
       console.error(err)
     }
@@ -78,6 +92,7 @@ export default () => {
     })
 
     window.addEventListener('resize', () => {
+      resetTextInputHeight()
       requestAnimationFrame(() => {
         if (isHigher() && isStick()) instantToBottom()
         lastPostion = window.scrollY
@@ -132,10 +147,35 @@ export default () => {
     setPageTitle(translatedTitle)
   }
 
-  const handleButtonClick = async() => {
+  const errorHelper = (e: any) => {
+    return toast.error(String(e), { position: 'top-center' })
+  }
+
+  const handleSubmit = async() => {
+    if (recording()) {
+      stopRecording()
+      setRecording('processing')
+      const blob = await getAudioBlob()
+      audioChunks.length = 0
+
+      const res = await fetch('/api/transcript', { body: blob, method: 'POST', headers: { 'Content-Type': 'audio/webm' } })
+      const text = await res.text()
+
+      setRecording(false)
+
+      if (!res.ok) {
+        errorHelper(`Error processing audio: ${res.statusText}`)
+      } else if (text) {
+        setInputValue(text)
+        handleSubmit()
+      }
+
+      return
+    }
+
     const input = inputValue()
 
-    if (!input) return
+    if (!input) return startRecording().then(() => setRecording('recording')).catch(errorHelper)
 
     if (messageList().length === 0) updatePageTitle(input)
 
@@ -161,7 +201,7 @@ export default () => {
   const instantToBottom = () => toBottom('instant')
 
   const requestWithLatestMessage = async() => {
-    setLoading(true)
+    setStreaming(true)
     setCurrentAssistantMessage('')
     setCurrentError(null)
     const storagePassword = localStorage.getItem('pass')
@@ -217,7 +257,7 @@ export default () => {
       }
     } catch (e) {
       console.error(e)
-      setLoading(false)
+      setStreaming(false)
       setController(null)
       return
     }
@@ -230,7 +270,7 @@ export default () => {
         setMessageList([...messageList(), { role: 'assistant', content: currentAssistantMessage() }])
         setCurrentAssistantMessage('')
       })
-      setLoading(false)
+      setStreaming(false)
       setController(null)
       localStorage.setItem('messageList', JSON.stringify(messageList()))
     }
@@ -273,7 +313,7 @@ export default () => {
 
     if (e.key === 'Enter') {
       e.preventDefault()
-      handleButtonClick()
+      handleSubmit()
     }
   }
 
@@ -283,8 +323,8 @@ export default () => {
         ref={bgd!}
         class="bg-top-center bg-hero-topography-gray-500/15 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
         class:op-0={!mounted()}
-        class:transition-transform={isStick() && loading()}
-        class:duration-400={isStick() && loading()}
+        class:transition-transform={isStick() && streaming()}
+        class:duration-400={isStick() && streaming()}
       />
       <SystemRoleSettings
         canEdit={() => messageList().length === 0}
@@ -295,7 +335,7 @@ export default () => {
       />
       <div class="flex-grow flex w-full items-center justify-center">
         {
-        messageList().length === 0 && !systemRoleEditing() && (
+        !streaming() && messageList().length === 0 && !systemRoleEditing() && (
           <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-5 relative select-none op-50">
             <span class="rounded-bl-md rounded-rt-md font-bold h-fit bg-$c-fg-5 w-fit py-1 px-2 top-0 right-0 text-$c-fg-50 absolute">TIPS</span>
             <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
@@ -312,7 +352,7 @@ export default () => {
           <MessageItem
             role={message().role}
             message={message().content}
-            showRetry={() => (!loading() && !currentError() && index === messageList().length - 1)}
+            showRetry={() => (!streaming() && !currentError() && index === messageList().length - 1)}
             onRetry={retryLastFetch}
           />
         )}
@@ -342,7 +382,7 @@ export default () => {
             </div>
           </div>
         </Match>
-        <Match when={mounted() && loading()}>
+        <Match when={mounted() && streaming()}>
           <div class="gen-cb-wrapper">
             <div class="flex flex-row animate-fade-in gap-3 animate-duration-300 items-center">
               <span i-svg-spinners-ring-resize />
@@ -351,36 +391,46 @@ export default () => {
             </div>
           </div>
         </Match>
-        <Match when={mounted() && !loading()}>
+        <Match when={mounted() && !streaming()}>
           <div class="gen-text-wrapper" class:op-50={systemRoleEditing()}>
             <textarea
               ref={inputRef!}
-              disabled={systemRoleEditing()}
+              disabled={systemRoleEditing() || recording() as boolean}
               onKeyDown={handleKeydown}
-              placeholder="与 ChatGPT 对话"
+              placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
               autocomplete="off"
               autofocus
-              onInput={(e) => {
-                inputRef.style.height = 'auto'
-                inputRef.style.height = `${inputRef.scrollHeight}px`
-                setInputValue((e.target as HTMLTextAreaElement).value)
-              }}
+              onInput={() => setInputValue(inputRef.value)}
               rows="1"
               class="gen-textarea"
             />
             <button
-              title="Send"
+              title={inputValue() ? 'Send' : 'Record'}
               type="button"
               class="w-10 gen-slate-btn sm:min-w-fit sm:px-3.5"
-              onClick={handleButtonClick}
-              disabled={systemRoleEditing()}
+              onClick={handleSubmit}
+              disabled={systemRoleEditing() || recording() === 'processing'}
             >
-              <span class="i-iconamoon-send block sm:hidden" />
-              <span class="<sm:hidden">发送</span>
+              <Switch>
+                <Match when={inputValue()}>
+                  <span class="i-iconamoon-send" />
+                </Match>
+                <Match when={recording() === false}>
+                  <span class="i-iconamoon-microphone-fill" />
+                </Match>
+                <Match when={recording() === 'recording'}>
+                  <span class="i-iconamoon-player-stop-fill" />
+                </Match>
+                <Match when={recording() === 'processing'}>
+                  <span class="i-svg-spinners-90-ring-with-bg" />
+                </Match>
+              </Switch>
             </button>
-            <button title="Clear" type="button" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
-              <IconClear />
-            </button>
+            <Show when={messageList().length && !inputValue()}>
+              <button title="Clear" type="button" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
+                <IconClear />
+              </button>
+            </Show>
           </div>
 
         </Match>
