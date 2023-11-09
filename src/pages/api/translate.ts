@@ -7,7 +7,7 @@ const target_lang = import.meta.env.TRANSLATE_TARGET_LANG ?? (useDeepL ? 'ZH' : 
 
 export const post: APIRoute = async(context) => {
   if (useDeepL) {
-    const host = deeplAuthKey.endsWith(':fx') ? 'api-free.deepl.com' : 'api.deepl.com'
+    const host = import.meta.env.DEEPL_API_HOST ?? (deeplAuthKey.endsWith(':fx') ? 'api-free.deepl.com' : 'api.deepl.com')
     const headers = { 'Authorization': `DeepL-Auth-Key ${deeplAuthKey}`, 'Content-Type': 'application/json' }
     const { translations: [{ text, detected_source_language }] } = await fetch(`https://${host}/v2/translate`, { method: 'POST', headers, body: JSON.stringify({ text: [await context.request.text()], target_lang }) }).then(res => res.json())
     return new Response(text, { headers: { 'x-detected-source-language': detected_source_language } })
