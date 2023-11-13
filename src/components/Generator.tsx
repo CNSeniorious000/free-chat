@@ -340,10 +340,10 @@ export default () => {
   }
 
   return (
-    <div class="flex flex-col flex-grow h-full justify-between relative">
+    <div class="relative h-full flex flex-grow flex-col justify-between">
       <div
         ref={bgd!}
-        class="bg-top-center bg-hero-yyy-gray-500/10 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
+        class="<md:hiddern fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll bg-top-center op-100 transition-opacity duration-1000 bg-hero-yyy-gray-500/10 <md:bg-none"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && streaming()}
         class:duration-400={isStick() && streaming()}
@@ -355,16 +355,16 @@ export default () => {
         currentSystemRoleSettings={currentSystemRoleSettings}
         setCurrentSystemRoleSettings={setCurrentSystemRoleSettings as Setter<string>}
       />
-      <div class="flex-grow flex w-full items-center justify-center">
+      <div class="w-full flex flex-grow items-center justify-center">
         {
         !streaming() && messageList().length === 0 && !systemRoleEditing() && (
-          <div id="tips" class="rounded-md flex flex-col bg-$c-fg-2 text-sm p-7 transition-opacity gap-5 relative select-none op-50">
-            <span class="rounded-bl-md rounded-rt-md font-bold h-fit bg-$c-fg-5 w-fit py-1 px-2 top-0 right-0 text-$c-fg-50 absolute">TIPS</span>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">/</span> &nbsp;聚焦到输入框 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">Alt/Option</span> + <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">C</span> &nbsp;清空上下文 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">鼠标中键点击左上标题</span> &nbsp;新窗口打开新会话 </p>
-            <p><span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">PageUp</span> / <span class="rounded-md font-mono bg-$c-fg-5 py-1 px-1.75 ring-1.2 ring-$c-fg-20">PageDn</span> &nbsp;回到顶部 / 底部 </p>
+          <div id="tips" class="relative flex flex-col select-none gap-5 rounded-md bg-$c-fg-2 p-7 text-sm op-50 transition-opacity">
+            <span class="absolute right-0 top-0 h-fit w-fit rounded-bl-md rounded-rt-md bg-$c-fg-5 px-2 py-1 font-bold text-$c-fg-50">TIPS</span>
+            <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
+            <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">/</span> &nbsp;聚焦到输入框 </p>
+            <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">Alt/Option</span> + <span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">C</span> &nbsp;清空上下文 </p>
+            <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">鼠标中键点击左上标题</span> &nbsp;新窗口打开新会话 </p>
+            <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">PageUp</span> / <span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">PageDn</span> &nbsp;回到顶部 / 底部 </p>
           </div>
         )
         }
@@ -398,7 +398,7 @@ export default () => {
       <Switch>
         <Match when={!mounted() || !encoder()}>
           <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
-            <div class="flex flex-row gap-2 items-center">
+            <div class="flex flex-row items-center gap-2">
               <span>加载中</span>
               <span i-svg-spinners-6-dots-scale-middle />
             </div>
@@ -406,7 +406,7 @@ export default () => {
         </Match>
         <Match when={mounted() && streaming()}>
           <div class="gen-cb-wrapper">
-            <div class="flex flex-row animate-fade-in gap-3 animate-duration-300 items-center">
+            <div class="flex flex-row animate-fade-in animate-duration-300 items-center gap-3">
               <span i-svg-spinners-ring-resize />
               <span>等待响应中</span>
               <div class="gen-cb-stop" onClick={stopStreamFetch}>Stop</div>
@@ -429,7 +429,7 @@ export default () => {
             <button
               title={inputValue() ? 'Send' : 'Record'}
               type="button"
-              class="w-10 gen-slate-btn sm:min-w-fit sm:px-3.5"
+              class="w-10 sm:min-w-fit sm:px-3.5 gen-slate-btn"
               onClick={handleSubmit}
               disabled={systemRoleEditing() || recording() === 'processing'}
             >
@@ -457,8 +457,8 @@ export default () => {
 
         </Match>
       </Switch>
-      <div class="rounded-md h-fit w-fit transition-colors bottom-4.25 left-4.25 z-10 fixed sm:bottom-5 sm:left-5 hover:bg-$c-fg-5 active:scale-90" class:stick-btn-on={isStick()}>
-        <button class="text-base p-2.5" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
+      <div class="fixed bottom-4.25 left-4.25 z-10 h-fit w-fit rounded-md transition-colors sm:bottom-5 sm:left-5 active:scale-90 hover:bg-$c-fg-5" class:stick-btn-on={isStick()}>
+        <button class="p-2.5 text-base" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
           <div i-ph-arrow-line-down-bold />
         </button>
       </div>

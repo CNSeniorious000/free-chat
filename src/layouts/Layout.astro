@@ -10,7 +10,7 @@ const origin = Astro.request.headers.get('host')
 ---
 
 <!DOCTYPE html>
-<html class="transition-background-color ease-out duration-200">
+<html class="transition-background-color duration-200 ease-out">
   <head>
     <meta charset="UTF-8" />
     <meta name="X-Frame-Options" content="sameorigin">
@@ -32,7 +32,7 @@ const origin = Astro.request.headers.get('host')
   <body>
     <slot />
   </body>
-  <script defer src="https://visit-count.muspimerol.site/"></script>
+  <script defer src="https://visit-count.muspimerol.site/" />
 </html>
 
 <style is:global>

@@ -1,16 +1,11 @@
-import type { AttributifyAttributes } from 'unocss/preset-attributify'
+declare namespace svelteHTML {
+  import type { AttributifyAttributes } from 'unocss/preset-attributify'
+  type HTMLAttributes = AttributifyAttributes
+}
 
-// declare module 'solid-js' {
-//   namespace JSX {
-//     interface HTMLAttributes<T> extends AttributifyAttributes {}
-//   }
-// }
-
-declare global {
-  namespace astroHTML.JSX {
-    interface HTMLAttributes extends AttributifyAttributes { }
-  }
+declare namespace global {
   namespace JSX {
-    interface HTMLAttributes<> extends AttributifyAttributes {}
+    import type { AttributifyAttributes } from 'unocss/preset-attributify'
+    interface HTMLAttributes<>extends AttributifyAttributes {}
   }
 }

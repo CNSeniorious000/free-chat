@@ -1,12 +1,20 @@
 module.exports = {
-  extends: ['@evan-yang', 'plugin:astro/recommended'],
+  extends: ['@evan-yang', 'plugin:astro/recommended', 'plugin:svelte/recommended', '@unocss'],
   rules: {
     'no-console': ['error', { allow: ['error'] }],
     'react/display-name': 'off',
     'react-hooks/rules-of-hooks': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
+    'import/no-mutable-exports': 'off',
   },
   overrides: [
+    {
+      files: ['*.svelte'],
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      },
+    },
     {
       files: ['*.astro'],
       parser: 'astro-eslint-parser',

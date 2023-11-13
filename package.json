@@ -6,13 +6,14 @@
     "build": "node prepare.js & astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro,.svelte",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro,.svelte --fix"
   },
   "dependencies": {
     "@astrojs/netlify": "^2.6.0",
     "@astrojs/node": "^5.3.6",
     "@astrojs/solid-js": "^2.2.1",
+    "@astrojs/svelte": "^3.1.1",
     "@astrojs/vercel": "^3.8.2",
     "@studio-freight/lenis": "^1.0.27",
     "astro": "^2.10.15",
@@ -28,6 +29,7 @@
     "solid-js": "^1.8.5",
     "solid-toast": "^0.5.0",
     "solidjs-use": "^2.3.0",
+    "svelte": "^4.2.3",
     "tiktoken": "^1.0.10",
     "undici": "^5.27.2"
   },
@@ -39,9 +41,12 @@
     "@types/reveal.js": "^4.4.6",
     "@typescript-eslint/parser": "^6.10.0",
     "@unocss/core": "^0.57.2",
+    "@unocss/eslint-config": "^0.57.3",
+    "@unocss/extractor-svelte": "^0.57.3",
     "@unocss/reset": "^0.57.2",
     "@vite-pwa/astro": "^0.1.4",
     "eslint-plugin-astro": "^0.29.1",
+    "eslint-plugin-svelte": "^2.35.0",
     "punycode": "^2.3.1",
     "unocss": "^0.57.2"
   }
