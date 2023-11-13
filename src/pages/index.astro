@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
+import Header from '../components/Header.svelte'
+import Footer from '../components/Footer.svelte'
 import Generator from '../components/Generator'
 import BackTop from '../components/BackTop.astro'
 import '../message.css'
@@ -11,9 +11,9 @@ import 'highlight.js/styles/atom-one-dark.css'
 
 <Layout title="Free Chat">
   <main class="bg-transparent flex flex-col min-h-screen transition-max-width justify-between md:(bg-$c-bg shadow-2xl shadow-black/10 dark:shadow-black/15) xl:max-w-95ch 2xl:max-w-105ch ">
-    <Header />
+    <Header client:load />
     <Generator client:load />
-    <Footer />
+    <Footer origin={Astro.request.headers.get('host') || ''} />
     <BackTop />
   </main>
 </Layout>

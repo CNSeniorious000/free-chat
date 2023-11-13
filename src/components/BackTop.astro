@@ -30,7 +30,7 @@ function handleMove() {
 window.addEventListener('scroll', handleMove)
 window.addEventListener('resize', handleMove)
 const observer = new MutationObserver(handleMove)
-observer.observe(document.querySelector('astro-island > div'), { childList: true, subtree: true })
+observer.observe(document.querySelector('astro-island[data-solid-render-id] > div'), { childList: true, subtree: true })
 
 backbottom_btn.onclick = () => {
   const scrollHeight = document.documentElement.scrollHeight

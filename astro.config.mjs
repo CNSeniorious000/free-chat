@@ -6,6 +6,7 @@ import AstroPWA from '@vite-pwa/astro'
 import node from '@astrojs/node'
 import vercel from '@astrojs/vercel/edge'
 import netlify from '@astrojs/netlify/edge-functions'
+import svelte, { vitePreprocess } from '@astrojs/svelte'
 import disableBlocks from './plugins/disableBlocks'
 
 const envAdapter = () => {
@@ -45,10 +46,11 @@ export default defineConfig({
         enabled: true,
       },
     }),
+    svelte({ preprocess: vitePreprocess() }),
   ],
   output: 'server',
   adapter: envAdapter(),
   vite: {
-    plugins: [((process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks())],
+    plugins: [(process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks()],
   },
 })

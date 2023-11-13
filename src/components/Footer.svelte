@@ -1,6 +1,6 @@
----
-const origin = Astro.request.headers.get('host')
----
+<script lang="ts">
+  export let origin: string = "";
+</script>
 
 <footer class="flex flex-col-reverse text-xs mb-4.5rem gap-2.5 justify-between select-none sm:flex-row <sm:mb-1.5rem <sm:self-center <sm:items-center <md:transition-colors">
   <p>
@@ -10,5 +10,5 @@ const origin = Astro.request.headers.get('host')
     <span px-0.5 select-none op-20>|</span>
     <a b-slate-link href="https://github.com/CNSeniorious000/free-chat">开源仓库</a>
   </p>
-  <p><a op-30 hover:op-60 w-fit transition-opacity flex items-center href=`mailto:admin@muspimerol.site?subject=❗${origin} Error Report&body=${origin} 网站不能正常使用`>网站问题请联系<span i-line-md-email-twotone-alt mx-1></span>admin@muspimerol.site</a></p>
+  <p><a op-30 hover=op-60 w-fit transition-opacity flex items-center href="mailto:admin@muspimerol.site?subject=❗{origin} Error Report&body={origin} 网站不能正常使用">网站问题请联系<span i-line-md-email-twotone-alt mx-1 />admin@muspimerol.site</a></p>
 </footer>

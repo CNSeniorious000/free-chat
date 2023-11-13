@@ -1,7 +1,6 @@
----
-// import Logo from './Logo.astro'
-import Themetoggle from './Themetoggle.astro';
----
+<script>
+import Themetoggle from './Themetoggle.svelte';
+</script>
 
 <header>
   <div class="flex-row mt-2.5rem transition-margin fb items-center select-none md:mt-3.5rem">
@@ -22,9 +21,9 @@ import Themetoggle from './Themetoggle.astro';
       <Themetoggle />
     </div>
   </div>
-  {
-    import.meta.env.AD_IFRAME_URL && <div class="h-22 transition-all overflow-hidden sm:h-27">
-      <iframe src={import.meta.env.AD_IFRAME_URL} class="rounded-lg bg-$c-fg-2 h-25 ring-inset mt-2 mb-1 w-full transition-all ring-$c-fg-40 select-none <sm:mt-3 <sm:w-125% <sm:scale-80% <sm:translate-x--1/10 <sm:translate-y--4 hover:bg-$c-fg-5 hover:ring-1.75"></iframe>
-    </div>
-  }
+  {#if import.meta.env.AD_IFRAME_URL}
+  <div class="h-22 transition-all overflow-hidden sm:h-27">
+    <iframe src={import.meta.env.AD_IFRAME_URL} class="rounded-lg bg-$c-fg-2 h-25 ring-inset mt-2 mb-1 w-full transition-all ring-$c-fg-40 select-none <sm:mt-3 <sm:w-125% <sm:scale-80% <sm:translate-x--1/10 <sm:translate-y--4 hover:bg-$c-fg-5 hover:ring-1.75" title="embedded advertisement"></iframe>
+  </div>
+  {/if}  
 </header>

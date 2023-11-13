@@ -1,5 +1,5 @@
 import { defineConfig, presetAttributify, presetIcons, presetTypography, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from 'unocss'
-
+import extractorSvelte from '@unocss/extractor-svelte'
 import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 
 export default defineConfig({
@@ -11,6 +11,7 @@ export default defineConfig({
     presetTypography({ cssExtend: { 'ul,ol': { 'padding-left': '2.25em', 'position': 'relative' } } }),
     presetHeroPatterns(),
   ],
+  extractors: [extractorSvelte()],
   transformers: [transformerVariantGroup(), transformerDirectives()],
   shortcuts: {
     'fc': 'flex justify-center',

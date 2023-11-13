@@ -26,7 +26,7 @@
   .theme_toggle_circle1 {
     transition: cx .5s, cy .5s;
     cx: 100%;
-    cy: 0%
+    cy: 0%;
   }
   .theme_toggle_circle2 {
     transition: r .3s;
@@ -35,7 +35,7 @@
     transition: transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     transform: rotate(90deg);
   }
- .theme_toggle_g {
+  .theme_toggle_g {
     transition: opacity .5s;
     opacity: 1;
   }
@@ -51,7 +51,10 @@
   }
 </style>
 
-<script>
+<script lang="ts">
+import { onMount } from 'svelte'
+
+onMount(() => {
 const themeToggle = document.getElementById('themeToggle')
 const themeCircle1 = document.querySelector('.theme_toggle_circle1')
 const themeCircle2 = document.querySelector('.theme_toggle_circle2')
@@ -97,4 +100,5 @@ const handleToggleClick = () => {
   toogleThemeCircle()
 }
 themeToggle?.addEventListener('click', handleToggleClick)
+})
 </script>
