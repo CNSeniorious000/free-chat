@@ -21,7 +21,7 @@ You can control the website through environment variables.
 | `SITE_PASSWORD` | Set password for site. If not set, site will be public | `null` |
 | `OPENAI_API_MODEL` | ID of the model to use. [Model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-3.5-turbo-1106` |
 | `TUTORIAL_MD_URL` | url of the tutorial markdown file | `null` |
-| `AD_IFRAME_URL` | url of the advertisement iframe | `null` |
+| `PUBLIC_IFRAME_URL` | url of the advertisement iframe | `null` |
 | `UNDICI_UA` | user-agent for backend requests | `(forward)` |
 | `PUBLIC_RIGHT_ALIGN_MY_MSG` | whether user messages should be right-aligned | `null` |
 | `PUBLIC_CL100K_BASE_JSON_URL` | CDN url for `cl100k_base.json`, such as [file at jsdelivr.net](https://cdn.jsdelivr.net/npm/tiktoken@1.0.10/encoders/cl100k_base.json) | `null` |

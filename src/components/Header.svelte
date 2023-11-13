@@ -22,9 +22,9 @@
     </div>
   </div>
   <div text-3 ml-0.2 select-none>Free Chat 分支，使用上下文滑动窗口</div>
-  {#if import.meta.env.AD_IFRAME_URL}
+  {#if import.meta.env.PUBLIC_IFRAME_URL}
     <div class="h-22 overflow-hidden transition-all sm:h-27">
-      <iframe src={import.meta.env.AD_IFRAME_URL} class="mb-1 mt-2 h-25 w-full select-none rounded-lg bg-$c-fg-2 ring-$c-fg-40 ring-inset transition-all <sm:mt-3 <sm:w-125% <sm:translate-x--1/10 <sm:translate-y--4 <sm:scale-80% hover:bg-$c-fg-5 hover:ring-1.75" title="embedded advertisement" />
+      <iframe src={import.meta.env.PUBLIC_IFRAME_URL} class="mb-1 mt-2 h-25 w-full select-none rounded-lg bg-$c-fg-2 ring-$c-fg-40 ring-inset transition-all <sm:mt-3 <sm:w-125% <sm:translate-x--1/10 <sm:translate-y--4 <sm:scale-80% hover:bg-$c-fg-5 hover:ring-1.75" title="embedded advertisement" />
     </div>
   {/if}
 </header>
