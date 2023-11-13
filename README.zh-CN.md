@@ -21,7 +21,7 @@
 | `SITE_PASSWORD` | 为网站设置密码。如果未设置，则该网站将是公开的 | `null` |
 | `OPENAI_API_MODEL` | 使用的 [Chat 模型](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-3.5-turbo-1106` |
 | `TUTORIAL_MD_URL` | 教程页对应的 markdown 文件 url | `null` |
-| `AD_IFRAME_URL` | 通知栏 iframe 横幅的 url | `null` |
+| `PUBLIC_IFRAME_URL` | 通知栏 iframe 横幅的 url | `null` |
 | `UNDICI_UA` | 后端请求的 user-agent | `(forward)` |
 | `PUBLIC_RIGHT_ALIGN_MY_MSG` | 用户消息是否右对齐 | `null` |
 | `PUBLIC_CL100K_BASE_JSON_URL` | 从 CDN 加载 `cl100k_base.json`，比如可以设为 [jsdelivr.net](https://cdn.jsdelivr.net/npm/tiktoken@1.0.10/encoders/cl100k_base.json) | `null` |
