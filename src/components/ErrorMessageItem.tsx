@@ -18,12 +18,12 @@ export default ({ data, onRetry }: Props) => {
   })
 
   return (
-    <div class="border bg-red/10 border-red/50 my-4 py-3 px-4">
-      {data.code && <div class="text-red mb-1">{title()}</div>}
-      <div class="text-red text-sm op-70">{description()}</div>
+    <div class="my-4 border border-red/50 bg-red/10 px-4 py-3">
+      {data.code && <div class="mb-1 text-red">{title()}</div>}
+      <div class="text-sm text-red op-70">{description()}</div>
       {onRetry && (
-        <div class="mb-2 px-3 fie">
-          <div onClick={onRetry} class="text-red ring-red/65 gpt-retry-btn <sm:ring-red/40 hover:bg-red/10">
+        <div class="mb-2 fie px-3">
+          <div onClick={onRetry} class="text-red ring-red/65 gpt-retry-btn hover:bg-red/10 <sm:ring-red/40">
             <IconRefresh />
             <span>重新生成</span>
           </div>

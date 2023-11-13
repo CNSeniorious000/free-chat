@@ -56,8 +56,8 @@ export default (props: Props) => {
   })
 
   return (
-    <section class="transition-opacity bottom-17 animate-fade-in duration-400 animate-duration-400 select-none absolute self-center sm:bottom-20" class:op-0={isHide()}>
-      <div class="rounded-full bg-[#e5e5e5a0] text-xs py-1.9 px-2.8 gap-1 fcc !backdrop-blur-20 <md:transition-background-color dark:bg-[#373740a0]">
+    <section class="absolute bottom-17 animate-fade-in animate-duration-400 select-none self-center transition-opacity duration-400 sm:bottom-20" class:op-0={isHide()}>
+      <div class="fcc gap-1 rounded-full bg-[#e5e5e5a0] px-2.8 py-1.9 text-xs dark:bg-[#373740a0] !backdrop-blur-20 <md:transition-background-color">
         <Show when={encoder()} fallback={<span i-svg-spinners-3-dots-fade />}>
           <span class="translate-y-0.2">{getTokensUsage()?.total ?? 0}</span>
           <span class="translate-y-0.2">tokens</span>
