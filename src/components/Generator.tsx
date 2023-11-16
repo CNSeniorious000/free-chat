@@ -399,7 +399,7 @@ export default () => {
       />
 
       <Switch>
-        <Match when={!mounted() || !encoder()}>
+        <Match when={!mounted()}>
           <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
             <div class="flex flex-row items-center gap-2">
               <span>加载中</span>

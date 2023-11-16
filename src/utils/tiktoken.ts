@@ -5,8 +5,10 @@ const countTokensSingleMessage = (enc: Tiktoken, message: ChatMessage) => {
   return 4 + enc.encode(message.content).length // im_start, im_end, role/name, "\n"
 }
 
-export const countTokens = (enc: Tiktoken, messages: ChatMessage[]) => {
+export const countTokens = (enc: Tiktoken | null, messages: ChatMessage[]) => {
   if (messages.length === 0) return
+
+  if (!enc) return { total: Infinity }
 
   const lastMsg = messages.at(-1)
   const context = messages.slice(0, -1)
@@ -29,7 +31,7 @@ async function getBPE() {
 export const initTikToken = async() => {
   const { init } = await import('tiktoken/lite/init')
   const [{ bpe_ranks, special_tokens, pat_str }, { Tiktoken }] = await Promise.all([
-    getBPE(),
+    getBPE().catch(console.error),
     import('tiktoken/lite/init'),
     fetch(tiktoken_bg_wasm).then(r => r.arrayBuffer()).then(wasm => init(imports => WebAssembly.instantiate(wasm, imports))),
   ])
