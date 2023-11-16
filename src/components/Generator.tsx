@@ -13,6 +13,7 @@ import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
 
 export default () => {
+  let rootRef: HTMLDivElement
   let inputRef: HTMLTextAreaElement
   let bgd: HTMLDivElement
   let footer: HTMLElement
@@ -109,7 +110,7 @@ export default () => {
       if (event.altKey && event.code === 'KeyC') clear()
     }, false)
 
-    new MutationObserver(() => isStick() && instantToBottom()).observe(document.querySelector('astro-island > div')!, { childList: true, subtree: true })
+    new MutationObserver(() => isStick() && instantToBottom()).observe(rootRef!, { childList: true, subtree: true })
 
     window.addEventListener('scroll', () => {
       bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
@@ -318,7 +319,7 @@ export default () => {
   }
 
   return (
-    <div class="relative h-full flex flex-grow flex-col justify-between">
+    <div ref={rootRef!} class="relative h-full flex flex-grow flex-col justify-between">
       <div
         ref={bgd!}
         class="<md:hiddern fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll bg-top-center op-100 transition-opacity duration-1000 bg-hero-topography-gray-500/15 <md:bg-none"
