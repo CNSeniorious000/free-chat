@@ -5,6 +5,7 @@ import { generateSignature } from '@/utils/auth'
 import { fetchModeration, fetchSummarization, fetchTranslation } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens } from '@/utils/tiktoken'
+import { MessagesEvent } from '@/utils/events'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
@@ -299,6 +300,7 @@ export default () => {
   }
 
   const clear = () => {
+    document.dispatchEvent(new MessagesEvent('clearMessages', messageList().length + Number(Boolean(currentSystemRoleSettings()))))
     inputRef.value = ''
     inputRef.style.height = 'auto'
     batch(() => {
@@ -429,7 +431,7 @@ export default () => {
             <button
               title={inputValue() ? 'Send' : 'Record'}
               type="button"
-              class="w-10 sm:min-w-fit sm:px-3.5 gen-slate-btn"
+              class="w-10 sm:px-3.5 gen-slate-btn"
               onClick={handleSubmit}
               disabled={systemRoleEditing() || recording() === 'processing'}
             >
