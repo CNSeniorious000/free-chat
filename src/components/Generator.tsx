@@ -431,7 +431,7 @@ export default () => {
             <button
               title={inputValue() ? 'Send' : 'Record'}
               type="button"
-              class="w-10 sm:px-3.5 gen-slate-btn"
+              class="w-10 gen-slate-btn"
               onClick={handleSubmit}
               disabled={systemRoleEditing() || recording() === 'processing'}
             >
