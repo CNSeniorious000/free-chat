@@ -65,6 +65,9 @@ dependencies:
   svelte:
     specifier: ^4.2.3
     version: 4.2.3
+  svelte-sonner:
+    specifier: ^0.3.3
+    version: 0.3.3(svelte@4.2.3)
   tiktoken:
     specifier: ^1.0.11
     version: 1.0.11
@@ -7616,6 +7619,14 @@ packages:
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.3
+    dev: false
+
+  /svelte-sonner@0.3.3(svelte@4.2.3):
+    resolution: {integrity: sha512-fUPHh5X88GctOjUBXflfXWplJxErDDm2erYh3EUjMWdfYiT9SGMpAv5NGDGbmKfZ+qUKOiTFrJ2P/iahYrTvhA==}
+    peerDependencies:
+      svelte: '>=3 <5'
     dependencies:
       svelte: 4.2.3
     dev: false

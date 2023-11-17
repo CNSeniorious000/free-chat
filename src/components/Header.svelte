@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import { fade, fly, slide } from 'svelte/transition'
   import { quintIn, quintOut } from 'svelte/easing'
+  import { Toaster, toast } from 'svelte-sonner'
   import { MessagesEvent } from '@/utils/events'
   import Themetoggle from './Themetoggle.svelte'
   import Modal from './Modal.svelte'
@@ -25,16 +26,19 @@
   onMount(() => {
     document.addEventListener('clearMessages', (ev: Event) => {
       const { length } = (ev as MessagesEvent).detail
-      if (length >= 5 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24)
-        showSponsorship = true
+      if (length >= 5 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24) showSponsorship = true
     })
   })
 
   function handleClick() {
     showSponsorship = false
     localStorage.setItem('lastTime', String(Number(new Date())))
+    toast.success('感谢您的支持！24h 内将不会再弹窗~')
+    setTimeout(() => toast.info('因为持续捐赠是我们运营的动力，所以我们最多在24h弹出一次，且仅会发生在一次有效的对话之后'), 1000)
   }
 </script>
+
+<Toaster position="top-center" closeButton />
 
 <header>
   <div class="mt-2.5rem fb flex-row select-none items-center transition-margin md:mt-3.5rem">
