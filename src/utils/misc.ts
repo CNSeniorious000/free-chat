@@ -1,4 +1,4 @@
-export const fetchSummarization = (input: string) => (fetch('/api/title-gen', { method: 'POST', body: input }).then(res => res.text()))
+export const fetchTitle = (input: string) => (fetch('/api/title-gen', { method: 'POST', body: input }).then(res => res.text()))
 
 export const fetchTranslation = (input: string) => (fetch(`/api/translate?text=${encodeURIComponent(input)}`).then(res => res.text()))
 
