@@ -217,6 +217,7 @@ export default () => {
       const response = await fetch('/api/generate', {
         method: 'POST',
         body: JSON.stringify({
+          model: localStorage.getItem('model') || 'gpt-3.5-turbo-1106',
           messages: requestMessageList,
           time: timestamp,
           pass: storagePassword,
@@ -226,6 +227,7 @@ export default () => {
           }),
         }),
         signal: controller.signal,
+        headers: { authorization: `Bearer ${localStorage.getItem('apiKey')}` },
       })
       if (!response.ok) {
         const error = await response.json()

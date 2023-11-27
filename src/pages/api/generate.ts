@@ -15,7 +15,7 @@ const FORWARD_HEADERS = ['origin', 'referer', 'cookie', 'user-agent', 'via']
 
 export const post: APIRoute = async({ request }) => {
   const body = await request.json()
-  const { sign, time, messages, pass } = body
+  const { sign, time, messages, pass, model } = body
   if (!messages) {
     return new Response(JSON.stringify({
       error: {
@@ -38,7 +38,7 @@ export const post: APIRoute = async({ request }) => {
     }), { status: 401 })
   }
 
-  const initOptions = generatePayload(request.headers.get('Authorization') ?? `Bearer ${apiKey}`, messages)
+  const initOptions = generatePayload(request.headers.get('Authorization') ?? `Bearer ${apiKey}`, messages, model)
 
   const headers = initOptions.headers
 

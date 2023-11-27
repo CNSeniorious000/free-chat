@@ -1,5 +1,8 @@
 <script>
+  import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
+
+  let showSettings = false
 </script>
 
 <header>
@@ -12,12 +15,9 @@
       </a>
     </div>
     <div class="flex">
-      <a class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" href="https://free-chat.asia/group.html">
-        <span class="i-mdi-wechat text-lg" />
-      </a>
-      <a class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" href="https://free-chat.asia/sponsorship.html">
-        <span class="i-mingcute-pig-money-fill text-lg" />
-      </a>
+      <button class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" on:click={() => (showSettings = !showSettings)}>
+        <span class="i-ph-gear-six-fill text-lg transition-transform duration-300" class:rotate-30={showSettings} />
+      </button>
       <Themetoggle />
     </div>
   </div>
@@ -27,3 +27,5 @@
     </div>
   {/if}
 </header>
+
+<Settings bind:show={showSettings}></Settings>
