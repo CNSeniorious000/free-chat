@@ -4,6 +4,7 @@
   import { quintIn, quintOut } from 'svelte/easing'
   import { Toaster, toast } from 'svelte-sonner'
   import { MessagesEvent } from '@/utils/events'
+  import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
   import Modal from './Modal.svelte'
 
@@ -36,6 +37,8 @@
     toast.success('感谢您的支持！24h 内将不会再弹窗~')
     setTimeout(() => toast.info('因为持续捐赠是我们运营的动力，所以我们最多在24h弹出一次，且仅会发生在一次有效的对话之后'), 1000)
   }
+
+  let showSettings = false
 </script>
 
 <Toaster position="top-center" closeButton />
@@ -50,12 +53,9 @@
       </a>
     </div>
     <div class="flex">
-      <a class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" href="https://tips.free-chat.asia/group.html">
-        <span class="i-mdi-wechat text-lg" />
-      </a>
-      <a class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" href="https://tips.free-chat.asia/sponsorship.html">
-        <span class="i-mingcute-pig-money-fill text-lg" />
-      </a>
+      <button class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" on:click={() => (showSettings = !showSettings)}>
+        <span class="i-ph-gear-six-fill text-lg transition-transform duration-300" class:rotate-30={showSettings} />
+      </button>
       <Themetoggle />
     </div>
   </div>
@@ -67,7 +67,7 @@
   {/if}
 </header>
 
-<Modal showButton={false} icon="i-fluent-emoji-folded-hands" bind:show={showSponsorship}>
+<Modal icon="i-fluent-emoji-folded-hands" bind:show={showSponsorship}>
   {#if showSponsorship}
     <div in:slide|global={{ duration: 800, easing: quintOut }} out:fade|global={{ delay: 300, easing: quintIn }} class="flex flex-col gap-1.5 -mt-3 dark:gap-2.5">
       <strong in:fly|global={{ delay: 50, duration: 500, x: -10, easing: quintOut }}>亲爱的用户：</strong>
@@ -103,3 +103,5 @@
     --uno: inline-block translate-y-0.8 mr-0.7;
   }
 </style>
+
+<Settings bind:show={showSettings}></Settings>
