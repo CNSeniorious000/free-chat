@@ -1,24 +1,41 @@
 import type { ChatMessage } from '@/types'
 import type { Tiktoken } from 'tiktoken'
 
-const countTokensSingleMessage = (enc: Tiktoken, message: ChatMessage) => {
-  return 4 + enc.encode(message.content).length // im_start, im_end, role/name, "\n"
+const countTokensSingleMessage = (encoder: Tiktoken, chatMessage: ChatMessage) => {
+  // Calculate the token count, accounting for metadata tokens: im_start, im_end, role/name, and newline
+  const metadataTokenCount = 4;
+  const messageTokenCount = encoder.encode(chatMessage.content).length;
+  return metadataTokenCount + messageTokenCount;
 }
 
-export const countTokens = (enc: Tiktoken | null, messages: ChatMessage[]) => {
-  if (messages.length === 0) return
+export const countTokens = (encoder: Tiktoken | null, messages: ChatMessage[]) => {
+  // Ensure the encoder and messages are valid
+  if (!encoder || !Array.isArray(messages) || messages.some(msg => typeof msg !== 'object' || msg === null)) {
+    throw new Error('Invalid encoder or messages array');
+  }
+  // Return early if there are no messages
+  if (messages.length === 0) return { total: 0 };
 
-  if (!enc) return { total: Infinity }
+  // Use a more descriptive function name and documentation
+  const getTokenCountForMessage = countTokensSingleMessage.bind(null, encoder);
+  // Batch the token counting for all but the last message (context)
+  const contextTokenCounts = messages.slice(0, -1).map(getTokenCountForMessage);
+  // Use a batch process instead of individual map calls to optimize performance
+  const contextTotalTokens = contextTokenCounts.length > 0 ? contextTokenCounts.reduce((total, count) => total + count, 3) : 3; // Account for metadata tokens
+  // Count tokens for the last message separately
+  const lastMessage = messages[messages.length - 1];
+  const lastMessageTokenCount = lastMessage ? getTokenCountForMessage(lastMessage) : 0;
 
-  const lastMsg = messages.at(-1)
-  const context = messages.slice(0, -1)
-
-  const countTokens: (message: ChatMessage) => number = countTokensSingleMessage.bind(null, enc)
-
-  const countLastMsg = countTokens(lastMsg!)
-  const countContext = context.map(countTokens).reduce((a, b) => a + b, 3) // im_start, "assistant", "\n"
-
-  return { countContext, countLastMsg, total: countContext + countLastMsg }
+    // Separate counts for user and assistant messages
+  const userMessagesTokenCount = messages.filter(msg => msg.role === 'user').map(getTokenCountForMessage).reduce((a, b) => a + b, 0);
+  const assistantMessagesTokenCount = messages.filter(msg => msg.role === 'assistant').map(getTokenCountForMessage).reduce((a, b) => a + b, 0);
+  return {
+    contextTotalTokens,
+    lastMessageTokenCount,
+    userMessagesTokenCount,
+    assistantMessagesTokenCount,
+    total: contextTotalTokens + lastMessageTokenCount
+  };
 }
 
 const cl100k_base_json = import.meta.env.PUBLIC_CL100K_BASE_JSON_URL || '/cl100k_base.json'
@@ -37,3 +54,10 @@ export const initTikToken = async() => {
   ])
   return new Tiktoken(bpe_ranks, special_tokens, pat_str)
 }
+
+// TODO: Add or update tests to cover the following new cases:
+// 1. Test input validation for countTokens - should throw errors on invalid encoder or messages.
+// 2. Test for empty message array - should return total: 0.
+// 3. Test for processing a mix of user and assistant messages - should separate userMessagesTokenCount and assistantMessagesTokenCount.
+// 4. Test for edge cases: very large datasets, messages without 'role' property, malformed message objects, etc.
+// Fabricate test data as necessary for these scenarios.
