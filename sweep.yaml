@@ -1,29 +1,21 @@
 
-# 规则
 rules:
 - "All new business logic should have corresponding unit tests."
 - "Refactor large functions to be more modular."
 - "Add docstrings to all functions and file headers."
 
-# 分支
-branch: 'main'
+branch: 'endless'
 
-# 启用 GitHub Actions
 gha_enabled: True
 
-# 描述
-description: 'The project is forked from @anse-app/chatgpt-demo, with an index site at https://free-chat.asia. The repository is mainly a TypeScript application using Svelte for the front end and UnoCSS for styling.'
+description: 'The project is forked from @anse-app/chatgpt-demo, with an index site at https://free-chat.asia. The repository is mainly a TypeScript application using SolidJS more than Svelte for the front end and UnoCSS for styling.'
 
-# 草案
 draft: False
 
-# 阻止目录
 blocked_dirs: []
 
-# 文档
 docs: []
 
-# 沙箱
 sandbox:
   install:
     - trunk init
