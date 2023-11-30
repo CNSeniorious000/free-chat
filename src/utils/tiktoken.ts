@@ -1,3 +1,4 @@
+
 import type { ChatMessage } from '@/types'
 import type { Tiktoken } from 'tiktoken'
 
@@ -26,7 +27,7 @@ export const countTokens = (encoder: Tiktoken | null, messages: ChatMessage[]) =
   const lastMessage = messages[messages.length - 1];
   const lastMessageTokenCount = lastMessage ? getTokenCountForMessage(lastMessage) : 0;
 
-  // The userMessagesTokenCount and assistantMessagesTokenCount have been removed as per user request.
+    // Separate counts for user and assistant messages
   return {
     contextTotalTokens,
     lastMessageTokenCount,
@@ -35,11 +36,6 @@ export const countTokens = (encoder: Tiktoken | null, messages: ChatMessage[]) =
 }
 
 const cl100k_base_json = import.meta.env.PUBLIC_CL100K_BASE_JSON_URL || '/cl100k_base.json'
-const tiktoken_bg_wasm = import.meta.env.PUBLIC_TIKTOKEN_BG_WASM_URL || '/tiktoken_bg.wasm'
-
-async function getBPE() {
-  return fetch(cl100k_base_json).then(r => r.json())
-}
 
 export const initTikToken = async() => {
   const { init } = await import('tiktoken/lite/init')
@@ -50,5 +46,3 @@ export const initTikToken = async() => {
   ])
   return new Tiktoken(bpe_ranks, special_tokens, pat_str)
 }
-
-
