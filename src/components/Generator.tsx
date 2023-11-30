@@ -227,7 +227,7 @@ export default () => {
           }),
         }),
         signal: controller.signal,
-        headers: { authorization: `Bearer ${localStorage.getItem('apiKey')}` },
+        headers: localStorage.getItem('apiKey') ? { authorization: `Bearer ${localStorage.getItem('apiKey')}` } : {},
       })
       if (!response.ok) {
         const error = await response.json()
@@ -243,6 +243,52 @@ export default () => {
       const decoder = new TextDecoder('utf-8')
       let done = false
 
+      let realValue = ''
+      let displayValue = ''
+      let lastTime = Date.now()
+      const intervals = [0]
+
+      const N = 5
+      const MAX = 500
+      const FACTOR = 50
+
+      const getProperInterval = () => {
+        const slidingWindowMean = intervals.slice(-N).reduce((a, b) => a + b, 0) / Math.min(intervals.length, N)
+        return Math.min(slidingWindowMean, MAX / (realValue.length - displayValue.length))
+      }
+
+      const update = async() => {
+        if (!streaming()) return fastForward()
+
+        const distance = realValue.length - displayValue.length
+        if (!done) {
+          const num = Math.round(distance / FACTOR) || 1
+          displayValue = realValue.slice(0, displayValue.length + num)
+          setCurrentAssistantMessage(displayValue)
+          //
+          realValue !== displayValue ? setTimeout(update, Math.round(getProperInterval())) : requestAnimationFrame(update)
+        }
+      }
+
+      const fastForward = () => {
+        const distance = realValue.length - displayValue.length
+        if (distance) {
+          const num = Math.round(distance / FACTOR) || 1
+          displayValue = realValue.slice(0, displayValue.length + num)
+          setCurrentAssistantMessage(displayValue)
+          //
+          if (realValue === displayValue) return archiveCurrentMessage()
+
+          const interval = Math.floor(10 / (realValue.length - displayValue.length))
+
+          interval ? setTimeout(fastForward, interval) : requestAnimationFrame(fastForward)
+        } else {
+          return archiveCurrentMessage()
+        }
+      }
+
+      update()
+
       while (!done) {
         const { value, done: readerDone } = await reader.read()
         if (value) {
@@ -250,18 +296,20 @@ export default () => {
           if (char === '\n' && currentAssistantMessage().endsWith('\n'))
             continue
 
-          if (char)
-            setCurrentAssistantMessage(currentAssistantMessage() + char)
+          if (char) {
+            realValue += char
+            intervals.push(Date.now() - lastTime)
+            lastTime = Date.now()
+          }
         }
         done = readerDone
+        done && fastForward()
       }
     } catch (e) {
       console.error(e)
       setStreaming(false)
       setController(null)
-      return
     }
-    archiveCurrentMessage()
   }
 
   const archiveCurrentMessage = () => {
@@ -293,7 +341,7 @@ export default () => {
   const stopStreamFetch = () => {
     if (controller()) {
       controller()!.abort()
-      archiveCurrentMessage()
+      setStreaming(false)
     }
   }
 
