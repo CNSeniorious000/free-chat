@@ -55,9 +55,4 @@ export const initTikToken = async() => {
   return new Tiktoken(bpe_ranks, special_tokens, pat_str)
 }
 
-// TODO: Add or update tests to cover the following new cases:
-// 1. Test input validation for countTokens - should throw errors on invalid encoder or messages.
-// 2. Test for empty message array - should return total: 0.
-// 3. Test for processing a mix of user and assistant messages - should separate userMessagesTokenCount and assistantMessagesTokenCount.
-// 4. Test for edge cases: very large datasets, messages without 'role' property, malformed message objects, etc.
-// Fabricate test data as necessary for these scenarios.
+
