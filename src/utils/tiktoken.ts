@@ -27,6 +27,8 @@ export const countTokens = (encoder: Tiktoken | null, messages: ChatMessage[]) =
   const lastMessageTokenCount = lastMessage ? getTokenCountForMessage(lastMessage) : 0;
 
     // Separate counts for user and assistant messages
+    // userMessagesTokenCount: The total number of tokens in all user messages. This can be used for analytics or to limit the number of tokens a user can send.
+    // assistantMessagesTokenCount: The total number of tokens in all assistant messages. This can be used for analytics or to limit the number of tokens an assistant can send.
   const userMessagesTokenCount = messages.filter(msg => msg.role === 'user').map(getTokenCountForMessage).reduce((a, b) => a + b, 0);
   const assistantMessagesTokenCount = messages.filter(msg => msg.role === 'assistant').map(getTokenCountForMessage).reduce((a, b) => a + b, 0);
   return {
