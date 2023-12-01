@@ -38,7 +38,29 @@ export const post: APIRoute = async({ request }) => {
     }), { status: 401 })
   }
 
-  const initOptions = generatePayload(request.headers.get('Authorization') ?? `Bearer ${apiKey}`, messages, model)
+  
+// Initialize tiktoken-js and obtain an encoder instance
+const encoder = new Encoder('en');  // Assuming 'en' is the language code used
+
+// Define minMessages and maxTokens
+const minMessages = 5;  // Example value, adjust as needed
+const maxTokens = 1024;  // Example value, adjust as needed
+
+// Function to count tokens for a message using tiktoken-js
+function countTokens(message) {
+    return encoder.encode(message).length;
+}
+
+// Message truncation logic
+// Ensure to trim messages from the start but keep at least minMessages
+let totalTokens = messages.reduce((sum, msg) => sum + countTokens(msg.content), 0);
+while (totalTokens > maxTokens && messages.length > minMessages) {
+    totalTokens -= countTokens(messages[0].content);  // Subtract tokens of the first message
+    messages.shift();  // Remove the first message from the array
+}
+
+const initOptions = generatePayload(request.headers.get('Authorization') ?? `Bearer ${apiKey}`, messages, model);
+
 
   const headers = initOptions.headers
 
