@@ -17,7 +17,7 @@ You can control the website through environment variables.
 | `HTTPS_PROXY` | Provide proxy for OpenAI API. | `null` |
 | `OPENAI_API_BASE_URL` | Custom base url for OpenAI API. | `https://api.openai.com` |
 | `HEAD_SCRIPTS` | Inject analytics or other scripts before `</head>` of the page | `null` |
-| `PUBLIC_SECRET_KEY` | Secret string for the project. Use for generating signatures for API calls | `null` |
+| `SECRET_KEY` | Secret string for the project. Use for generating signatures for API calls | `null` |
 | `SITE_PASSWORD` | Set password for site. If not set, site will be public | `null` |
 | `OPENAI_API_MODEL` | ID of the model to use. [Model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-3.5-turbo-1106` |
 | `TUTORIAL_MD_URL` | url of the tutorial markdown file | `null` |
@@ -38,3 +38,16 @@ Thank you to all our supporters!🙏
 ## License
 
 MIT © [Muspi Merol](./LICENSE)
+| `PUBLIC_MIN_MESSAGES` | Minimum number of messages for the UI | `null` |
+| `PUBLIC_MAX_TOKENS` | Maximum tokens to use in OpenAI API call | `null` |
+| `TRANSCRIPT_TARGET_LANG` | Target language for transcription | `null` |
+| `TRANSCRIPT_PROMPT` | Initial prompt for transcription | `null` |
+| `DEEPL_AUTH_TOKEN` | Auth token for DeepL API | `null` |
+| `TRANSLATE_PROVIDER` | Provider for translation services | `null` |
+| `TRANSLATE_TARGET_LANG` | Target language for translation | `null` |
+| `DEEPL_API_HOST` | Host for DeepL API | `null` |
+| `PROD` | Production environment flag | `null` |
+| `CF_ACCOUNT_ID` | Cloudflare account ID | `null` |
+| `CF_API_TOKEN` | Cloudflare API token | `null` |
+| `PUBLIC_CL100K_BASE_JSON_URL` | Base JSON URL for CL100K data | `null` |
+| `PUBLIC_TIKTOKEN_BG_WASM_URL` | URL for TikToken background WASM | `null` |
