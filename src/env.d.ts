@@ -8,6 +8,10 @@ interface ImportMetaEnv {
   readonly SECRET_KEY: string
   readonly SITE_PASSWORD: string
   readonly OPENAI_API_MODEL: string
+readonly OPENAI_API_TEMPERATURE: string
+readonly TUTORIAL_MD_URL: string
+readonly PUBLIC_IFRAME_URL: string
+readonly UNDICI_UA: string
 }
 
 interface ImportMeta {
