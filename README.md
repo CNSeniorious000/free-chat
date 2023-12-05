@@ -38,3 +38,6 @@ Thank you to all our supporters!🙏
 ## License
 
 MIT © [Muspi Merol](./LICENSE)
+| `SECRET_KEY` | Secret key for the application. | `null` |
+| `SITE_PASSWORD` | Password for the site. If not set, the site will be public. | `null` |
+| `OPENAI_API_MODEL` | ID of the model to use. | `null` |
