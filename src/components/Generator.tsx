@@ -2,7 +2,7 @@ import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount 
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
-import { fetchModeration, fetchTitle } from '@/utils/misc'
+import { fetchModeration, fetchTitle, fetchTranslation } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
@@ -125,7 +125,7 @@ export default () => {
   const setPageTitle = (title = 'Endless Chat') => {
     document.title = title
     const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
-    titleRef && (titleRef.innerHTML = (title === 'Endless Chat' ? 'Endless' : title))
+    titleRef && (titleRef.innerHTML = title)
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', title !== 'Endless Chat')
   }
@@ -409,7 +409,7 @@ export default () => {
         {
         !streaming() && messageList().length === 0 && !systemRoleEditing() && (
           <div id="tips" class="relative flex flex-col select-none gap-5 rounded-md bg-$c-fg-2 p-7 text-sm op-50 transition-opacity">
-            <span class="absolute right-0 top-0 h-fit w-fit rounded-bl-md rounded-rt-md bg-$c-fg-5 px-2 py-1 font-bold text-$c-fg-50">TIPS</span>
+            <span class="absolute right-0 top-0 h-fit w-fit rounded-bl-md rounded-rt-md bg-$c-fg-5 px-2 py-1 text-$c-fg-50 font-bold">TIPS</span>
             <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
             <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">/</span> &nbsp;聚焦到输入框 </p>
             <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">Alt/Option</span> + <span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">C</span> &nbsp;清空上下文 </p>
