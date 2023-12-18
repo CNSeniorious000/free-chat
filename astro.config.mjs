@@ -4,8 +4,8 @@ import solidJs from '@astrojs/solid-js'
 import AstroPWA from '@vite-pwa/astro'
 
 import node from '@astrojs/node'
-import vercel from '@astrojs/vercel/edge'
-import netlify from '@astrojs/netlify/edge-functions'
+import vercel from '@astrojs/vercel/serverless'
+import netlify from '@astrojs/netlify/functions'
 import svelte, { vitePreprocess } from '@astrojs/svelte'
 import disableBlocks from './plugins/disableBlocks'
 

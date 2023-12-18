@@ -13,7 +13,7 @@ const ua = import.meta.env.UNDICI_UA
 
 const FORWARD_HEADERS = ['origin', 'referer', 'cookie', 'user-agent', 'via']
 
-export const post: APIRoute = async({ request }) => {
+export const POST: APIRoute = async({ request }) => {
   const body = await request.json()
   const { sign, time, messages, pass, model } = body
   if (!messages) {

@@ -11,7 +11,7 @@ You should respond in valid JSON format, with a single string field \`title\`.
 The title shoud be in Chinese if you think the user is Chinese.
 `.trim()
 
-export const post: APIRoute = async(context) => {
+export const POST: APIRoute = async(context) => {
   const content = await context.request.text()
 
   const res = await openai.chat.completions.create({

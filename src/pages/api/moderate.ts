@@ -5,7 +5,7 @@ const ua = import.meta.env.UNDICI_UA
 
 const FORWARD_HEADERS = ['origin', 'referer', 'cookie', 'user-agent', 'via']
 
-export const post: APIRoute = async({ request }) => {
+export const POST: APIRoute = async({ request }) => {
   const input = await request.text()
 
   const headers: Record<string, string> = { 'Content-Type': 'application/json', 'Authorization': request.headers.get('Authorization') ?? '' }

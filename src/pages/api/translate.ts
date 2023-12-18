@@ -5,7 +5,7 @@ const deeplAuthKey = import.meta.env.DEEPL_AUTH_TOKEN
 const useDeepL = deeplAuthKey && import.meta.env.TRANSLATE_PROVIDER !== 'cf'
 const target_lang = import.meta.env.TRANSLATE_TARGET_LANG ?? (useDeepL ? 'ZH' : 'chinese')
 
-export const get: APIRoute = async(context) => {
+export const GET: APIRoute = async(context) => {
   const text = context.url.searchParams.get('text')
   if (useDeepL) {
     const host = import.meta.env.DEEPL_API_HOST ?? (deeplAuthKey.endsWith(':fx') ? 'api-free.deepl.com' : 'api.deepl.com')
