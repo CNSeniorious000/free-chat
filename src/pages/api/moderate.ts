@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro'
 
 const baseUrl = ((import.meta.env.OPENAI_API_BASE_URL) || 'https://api.openai.com').trim().replace(/\/$/, '')
-const ua = import.meta.env.UNDICI_UA
 
 const FORWARD_HEADERS = ['origin', 'referer', 'cookie', 'user-agent', 'via']
 
@@ -11,8 +10,6 @@ export const POST: APIRoute = async({ request }) => {
   const headers: Record<string, string> = { 'Content-Type': 'application/json', 'Authorization': request.headers.get('Authorization') ?? '' }
 
   if (baseUrl) request.headers.forEach((val, key) => (FORWARD_HEADERS.includes(key) || key.startsWith('sec-') || key.startsWith('x-')) && (headers[key] = val))
-
-  if (ua) headers['user-agent'] = ua
 
   const body = JSON.stringify({ model: 'text-moderation-latest', input })
 

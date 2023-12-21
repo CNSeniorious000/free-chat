@@ -1,8 +1,7 @@
 import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
-import { generateSignature } from '@/utils/auth'
-import { fetchModeration, fetchTitle } from '@/utils/misc'
+import { fetchModeration, fetchTitle, fetchTranslation } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
@@ -214,7 +213,6 @@ export default () => {
     setStreaming(true)
     setCurrentAssistantMessage('')
     setCurrentError(null)
-    const storagePassword = localStorage.getItem('pass')
     try {
       const controller = new AbortController()
       setController(controller)
@@ -236,21 +234,19 @@ export default () => {
 
       systemMsg && requestMessageList.unshift(systemMsg)
 
-      const timestamp = Date.now()
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        body: JSON.stringify({
-          model: localStorage.getItem('model') || 'gpt-3.5-turbo-1106',
-          messages: requestMessageList,
-          time: timestamp,
-          pass: storagePassword,
-          sign: await generateSignature({
-            t: timestamp,
-            m: requestMessageList?.[requestMessageList.length - 1]?.content || '',
-          }),
-        }),
+      const headers: Record<string, any> = { 'content-type': 'application/json' }
+      if (localStorage.getItem('apiKey')) headers.authorization = `Bearer ${localStorage.getItem('apiKey')}`
+
+      const payload: Record<string, any> = { messages: requestMessageList }
+      if (localStorage.getItem('model')) payload.model = localStorage.getItem('model')
+
+      const baseUrl = import.meta.env.PUBLIC_PROMPLATE_DEMO_BASE_URL.replace(/\/$/, '')
+
+      const response = await fetch(`${baseUrl}/single/chat_messages`, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
         signal: controller.signal,
-        headers: localStorage.getItem('apiKey') ? { authorization: `Bearer ${localStorage.getItem('apiKey')}` } : {},
+        headers,
       })
       if (!response.ok) {
         const error = await response.json()
@@ -409,7 +405,7 @@ export default () => {
         {
         !streaming() && messageList().length === 0 && !systemRoleEditing() && (
           <div id="tips" class="relative flex flex-col select-none gap-5 rounded-md bg-$c-fg-2 p-7 text-sm op-50 transition-opacity">
-            <span class="absolute right-0 top-0 h-fit w-fit rounded-bl-md rounded-rt-md bg-$c-fg-5 px-2 py-1 font-bold text-$c-fg-50">TIPS</span>
+            <span class="absolute right-0 top-0 h-fit w-fit rounded-bl-md rounded-rt-md bg-$c-fg-5 px-2 py-1 text-$c-fg-50 font-bold">TIPS</span>
             <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">B</span> &nbsp;开启/关闭跟随最新消息功能 </p>
             <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">/</span> &nbsp;聚焦到输入框 </p>
             <p><span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">Alt/Option</span> + <span class="rounded-md bg-$c-fg-5 px-1.75 py-1 font-mono ring-1.2 ring-$c-fg-20">C</span> &nbsp;清空上下文 </p>
@@ -471,7 +467,6 @@ export default () => {
               onKeyDown={handleKeydown}
               placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
               autocomplete="off"
-              autofocus
               onInput={() => setInputValue(inputRef.value)}
               rows="1"
               class="gen-textarea"
