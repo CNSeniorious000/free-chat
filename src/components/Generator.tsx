@@ -5,6 +5,7 @@ import { fetchModeration, fetchTitle, fetchTranslation } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
+import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
@@ -248,8 +249,6 @@ export default () => {
 
       const payload: Record<string, any> = { messages: requestMessageList }
       if (localStorage.getItem('model')) payload.model = localStorage.getItem('model')
-
-      const baseUrl = import.meta.env.PUBLIC_PROMPLATE_DEMO_BASE_URL.replace(/\/$/, '')
 
       const response = await fetch(`${baseUrl}/single/chat_messages`, {
         method: 'PUT',

@@ -4,6 +4,7 @@
   import { quintIn, quintOut } from 'svelte/easing'
   import { Toaster, toast } from 'svelte-sonner'
   import { MessagesEvent } from '@/utils/events'
+  import CheckStatus from './CheckStatus.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
   import Modal from './Modal.svelte'
@@ -42,6 +43,8 @@
 </script>
 
 <Toaster position="top-center" closeButton />
+
+<CheckStatus />
 
 <header>
   <div class="mt-2.5rem fb flex-row select-none items-center transition-margin md:mt-3.5rem">
