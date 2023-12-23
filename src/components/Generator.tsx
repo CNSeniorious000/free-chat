@@ -3,7 +3,7 @@ import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
 import { fetchModeration, fetchTitle, fetchTranslation } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
-import { countTokens } from '@/utils/tiktoken'
+import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
@@ -45,6 +45,10 @@ export default () => {
     return systemRole
   }
 
+  const syncMessageList = () => {
+    localStorage.setItem('messageList', JSON.stringify(messageList()))
+  }
+
   const setStick = (stick: boolean) => {
     _setStick(stick) ? localStorage.setItem('stickToBottom', 'stick') : localStorage.removeItem('stickToBottom')
     return stick
@@ -65,8 +69,11 @@ export default () => {
     setMounted(true)
 
     try {
-      if (localStorage.getItem('messageList'))
+      if (localStorage.getItem('messageList')) {
         setMessageList(JSON.parse(localStorage.getItem('messageList') ?? '[]'))
+        if (localStorage.getItem('title')) setPageTitle(localStorage.getItem('title')!)
+        else updatePageTitle(messageList()[0].content)
+      }
 
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
@@ -127,6 +134,7 @@ export default () => {
     titleRef && (titleRef.innerHTML = title)
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', title !== 'Endless Chat')
+    title !== 'Endless Chat' ? localStorage.setItem('title', title) : localStorage.removeItem('title')
   }
 
   const moderationCache: Record<string, string[]> = {}
@@ -197,6 +205,7 @@ export default () => {
 
     smoothToBottom()
     requestWithLatestMessage()
+    syncMessageList()
   }
 
   const toBottom = (behavior: 'smooth' | 'instant') => {
@@ -339,7 +348,7 @@ export default () => {
       })
       setStreaming(false)
       setController(null)
-      localStorage.setItem('messageList', JSON.stringify(messageList()))
+      syncMessageList()
     }
   }
 
@@ -347,13 +356,16 @@ export default () => {
     document.dispatchEvent(new MessagesEvent('clearMessages', messageList().length + Number(Boolean(currentSystemRoleSettings()))))
     inputRef.value = ''
     inputRef.style.height = 'auto'
+    tokenCountCache.clear()
     batch(() => {
       setInputValue('')
       setMessageList([])
       // setCurrentAssistantMessage('')
       // setCurrentSystemRoleSettings('')
     })
-    localStorage.setItem('messageList', JSON.stringify([]))
+
+    setMessageList([])
+    syncMessageList()
     setCurrentError(null)
     setPageTitle()
   }
@@ -372,6 +384,7 @@ export default () => {
         setMessageList(messageList().slice(0, -1))
 
       requestWithLatestMessage()
+      syncMessageList()
     }
   }
 
