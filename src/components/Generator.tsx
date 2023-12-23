@@ -62,8 +62,11 @@ export default () => {
     setMounted(true)
 
     try {
-      if (localStorage.getItem('messageList'))
+      if (localStorage.getItem('messageList')) {
         setMessageList(JSON.parse(localStorage.getItem('messageList') ?? '[]'))
+        if (localStorage.getItem('title')) setPageTitle(localStorage.getItem('title')!)
+        else updatePageTitle(messageList()[0].content)
+      }
 
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
@@ -124,6 +127,7 @@ export default () => {
     titleRef && (titleRef.innerHTML = title)
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', title !== 'Free Chat')
+    title !== 'Free Chat' ? localStorage.setItem('title', title) : localStorage.removeItem('title')
   }
 
   const moderationCache: Record<string, string[]> = {}
