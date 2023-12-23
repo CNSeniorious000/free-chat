@@ -1,8 +1,18 @@
 import type { ChatMessage } from '@/types'
 import type { Tiktoken } from 'tiktoken'
 
+export const tokenCountCache = new Map<string, number>()
+
 const countTokensSingleMessage = (enc: Tiktoken, message: ChatMessage) => {
   return 4 + enc.encode(message.content).length // im_start, im_end, role/name, "\n"
+}
+
+const countTokensSingleMessageWithCache = (enc: Tiktoken, cacheIt: boolean, message: ChatMessage) => {
+  if (tokenCountCache.has(message.content)) return tokenCountCache.get(message.content)!
+
+  const count = countTokensSingleMessage(enc, message)
+  if (cacheIt) tokenCountCache.set(message.content, count)
+  return count
 }
 
 export const countTokens = (enc: Tiktoken, messages: ChatMessage[]) => {
@@ -11,10 +21,10 @@ export const countTokens = (enc: Tiktoken, messages: ChatMessage[]) => {
   const lastMsg = messages.at(-1)
   const context = messages.slice(0, -1)
 
-  const countTokens: (message: ChatMessage) => number = countTokensSingleMessage.bind(null, enc)
+  const countTokens: (cacheIt: boolean, message: ChatMessage) => number = countTokensSingleMessageWithCache.bind(null, enc)
 
-  const countLastMsg = countTokens(lastMsg!)
-  const countContext = context.map(countTokens).reduce((a, b) => a + b, 3) // im_start, "assistant", "\n"
+  const countLastMsg = countTokens(false, lastMsg!)
+  const countContext = context.map(countTokens.bind(null, true)).reduce((a, b) => a + b, 3) // im_start, "assistant", "\n"
 
   return { countContext, countLastMsg, total: countContext + countLastMsg }
 }
