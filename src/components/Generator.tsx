@@ -42,6 +42,10 @@ export default () => {
     return systemRole
   }
 
+  const syncMessageList = () => {
+    localStorage.setItem('messageList', JSON.stringify(messageList()))
+  }
+
   const setStick = (stick: boolean) => {
     _setStick(stick) ? localStorage.setItem('stickToBottom', 'stick') : localStorage.removeItem('stickToBottom')
     return stick
@@ -191,6 +195,7 @@ export default () => {
 
     smoothToBottom()
     requestWithLatestMessage()
+    syncMessageList()
   }
 
   const toBottom = (behavior: 'smooth' | 'instant') => {
@@ -325,7 +330,7 @@ export default () => {
       })
       setStreaming(false)
       setController(null)
-      localStorage.setItem('messageList', JSON.stringify(messageList()))
+      syncMessageList()
     }
   }
 
@@ -339,7 +344,9 @@ export default () => {
       // setCurrentAssistantMessage('')
       // setCurrentSystemRoleSettings('')
     })
-    localStorage.setItem('messageList', JSON.stringify([]))
+
+    setMessageList([])
+    syncMessageList()
     setCurrentError(null)
     setPageTitle()
   }
@@ -358,6 +365,7 @@ export default () => {
         setMessageList(messageList().slice(0, -1))
 
       requestWithLatestMessage()
+      syncMessageList()
     }
   }
 
