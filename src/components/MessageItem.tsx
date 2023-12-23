@@ -39,6 +39,15 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     }
   })
 
+  function heuristicPatch(markdown: string) {
+    const pattern = /(^|\n)```\S*$/
+    const matches = markdown.match(/```/g)
+
+    return (matches && matches.length % 2 === 1 && pattern.test(markdown))
+      ? markdown.replace(pattern, '\n```')
+      : markdown
+  }
+
   const htmlString = () => {
     const md = MarkdownIt({
       linkify: true,
@@ -58,12 +67,14 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       </div>`
     }
 
-    if (typeof message === 'function')
-      return md.render(message())
-    else if (typeof message === 'string')
-      return md.render(message)
-
-    return ''
+    switch (typeof message) {
+      case 'function':
+        return md.render(heuristicPatch(message()))
+      case 'string':
+        return md.render(heuristicPatch(message))
+      default:
+        return ''
+    }
   }
 
   return (
