@@ -8,7 +8,7 @@
       fetch(`${baseUrl}/heartbeat`).then(res => res.text()),
       {
         loading: 'Checking backend status...',
-        success: data => `Receive server heartbeat: ${data}`,
+        success: 'Receive backend greeting.',
         error: data => `Error: ${data.message}`,
       },
     )
