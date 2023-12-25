@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-0613' | 'gpt-3.5-turbo-1106' | 'chatglm_turbo';
+  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-0613' | 'gpt-3.5-turbo-1106' | 'chatglm_turbo' | 'claude-instant-1.2' | 'claude-2.1';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') as Model) || 'gpt-3.5-turbo-1106'))
@@ -27,8 +27,17 @@
   <input type="radio" name="model" id="glm" hidden on:click={() => (model = 'chatglm_turbo')} checked={model === 'chatglm_turbo'} />
   <label for="glm">
     <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">chatglm-turbo</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">由智谱 AI 提供服务</h5>
+    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">不支持自定义场景</h5>
   </label>
+  <input type="radio" name="model" id="claude-1.2" hidden on:click={() => (model = 'claude-instant-1.2')} checked={model === 'claude-instant-1.2'} />
+  <label for="claude-1.2">
+    <h4>claude-instant-1.2</h4>
+    <h5>最快，但不支持自定义场景</h5>
+  </label>
+  <input type="radio" name="model" id="claude-2.1" hidden on:click={() => (model = 'claude-2.1')} checked={model === 'claude-2.1'} />
+  <label for="claude-2.1">
+    <h4>claude-2.1</h4>
+    <h5>支持 200K 输入，限时免费</h5>
 </div>
 
 <style>
