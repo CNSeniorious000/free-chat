@@ -27,6 +27,8 @@ export const post: APIRoute = async({ request }) => {
     }), { status: 500 })
   })
 
+  if (!response.ok) return response
+
   const { results: [{ categories, category_scores }] } = await response.json()
 
   const flags = Object.keys(categories).filter(key => categories[key])
