@@ -3,13 +3,14 @@ import type { ParsedEvent, ReconnectInterval } from 'eventsource-parser'
 import type { ChatMessage } from '@/types'
 import type { RequestInit } from 'undici'
 
-const default_model = import.meta.env.OPENAI_API_MODEL || 'gpt-3.5-turbo-1106'
+const default_model = import.meta.env.OPENAI_API_DEFAULT_MODEL || 'gpt-3.5-turbo-1106'
+const force_model = import.meta.env.OPENAI_API_MODEL
 const temperature = Number(import.meta.env.OPENAI_API_TEMPERATURE) || 1
 
 export const generatePayload = (authorization: string, messages: ChatMessage[], model: string): RequestInit & { headers: Record<string, string> } => ({
   headers: { 'Content-Type': 'application/json', authorization },
   method: 'POST',
-  body: JSON.stringify({ model: model || default_model, messages, temperature, stream: true }),
+  body: JSON.stringify({ model: force_model ?? (model || default_model), messages, temperature, stream: true }),
 })
 
 export const parseOpenAIStream = (rawResponse: Response) => {
