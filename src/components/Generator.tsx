@@ -70,7 +70,7 @@ export default () => {
     setMounted(true)
 
     try {
-      if (localStorage.getItem('messageList')) {
+      if (JSON.parse(localStorage.getItem('messageList') ?? '[]').length) {
         setMessageList(JSON.parse(localStorage.getItem('messageList') ?? '[]'))
         if (localStorage.getItem('title')) setPageTitle(localStorage.getItem('title')!)
         else updatePageTitle(messageList()[0].content)
