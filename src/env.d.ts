@@ -1,4 +1,5 @@
 /// <reference types="astro/client" />
+/// <reference types="svelte" />
 
 interface ImportMetaEnv {
   readonly PUBLIC_PROMPLATE_DEMO_BASE_URL: string
@@ -8,6 +9,7 @@ interface ImportMetaEnv {
   readonly SECRET_KEY: string
   readonly PUBLIC_MAX_TOKENS: string
   readonly PUBLIC_MIN_MESSAGES: string
+  readonly PUBLIC_DEFAULT_MODEL: string
 }
 
 interface ImportMeta {
