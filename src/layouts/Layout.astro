@@ -19,8 +19,6 @@ const origin = Astro.request.headers.get('host')
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="320x320">
     <meta name="theme-color" content="#212129">
     <meta name="generator" content={Astro.generator}>
-    <link rel="preload" href={import.meta.env.PUBLIC_CL100K_BASE_JSON_URL ?? '/cl100k_base.json'} as="fetch" type="application/json">
-    <link rel="preload" href={import.meta.env.PUBLIC_TIKTOKEN_BG_WASM_URL ?? '/tiktoken_bg.wasm'} as="fetch" type="application/wasm">
     <title>{title} - {origin}</title>
     <meta name="description" content="Chat for free with AI chatbot" />
     { import.meta.env.HEAD_SCRIPTS && <Fragment set:html={import.meta.env.HEAD_SCRIPTS } /> }
@@ -30,7 +28,6 @@ const origin = Astro.request.headers.get('host')
   <body>
     <slot />
   </body>
-  <script defer src="https://visit-count.muspimerol.site/" />
 </html>
 
 <style is:global>
