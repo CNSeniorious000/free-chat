@@ -35,6 +35,8 @@ export default () => {
   const [mounted, setMounted] = createSignal(false)
   const [recording, setRecording] = createSignal<'recording' | 'processing' | false>(false)
 
+  const moderationInterval = Number(import.meta.env.PUBLIC_MODERATION_INTERVAL ?? '2000')
+
   const isHigher = () => {
     const distanceToBottom = footer.offsetTop - window.innerHeight
     const currentScrollHeight = window.scrollY
@@ -144,6 +146,7 @@ export default () => {
 
   const moderate = async(input: string) => {
     if (!input.length) return
+    if (!moderationInterval) return
     const flags = moderationCache[input] ?? (await fetchModeration(input)).flags
     moderationCache[input] = flags
     if (!flags.length) return
@@ -155,7 +158,7 @@ export default () => {
     toast.error(await fetchTranslation(`detect ${flags.join(', ')} which violates our policy`), { position: 'top-center' })
   }
 
-  const throttledModerate = useThrottleFn((input: string) => { moderate(input) }, 2000)
+  const throttledModerate = useThrottleFn((input: string) => { moderate(input) }, moderationInterval)
 
   createEffect(() => throttledModerate(currentSystemRoleSettings()))
   createEffect(() => throttledModerate(inputValue()))

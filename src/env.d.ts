@@ -10,6 +10,7 @@ interface ImportMetaEnv {
   readonly PUBLIC_MAX_TOKENS: string
   readonly PUBLIC_MIN_MESSAGES: string
   readonly PUBLIC_DEFAULT_MODEL: string
+  readonly PUBLIC_MODERATION_INTERVAL: string
 }
 
 interface ImportMeta {

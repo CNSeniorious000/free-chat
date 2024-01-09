@@ -38,6 +38,6 @@ export default defineConfig({
     'sys-edit-btn': 'inline-fcc gap-1 text-sm bg-$c-fg-10 px-2 py-1 rounded-md transition-colors md:transition-background-color cursor-pointer hover:bg-$c-fg-15',
     'stick-btn-on': 'text-$c-bg !bg-$c-fg hover:!bg-$c-fg-80',
     'reverse-self-msg': 'flex-row-reverse text-left',
-    'message': '[&_code]:font-fira [&_pre>code]:font-mono <md:[&_pre]:transition-background-color ![&_strong>code]:(font-700 dark:font-600) [&_li_p]:my-0 [&_li]:my-1 <sm:not-first:[&>*]:mt-2 <sm:not-last:[&>*]:mb-2',
+    'message': '[&_code]:font-fira [&_pre>code]:font-mono <md:[&_pre]:transition-background-color ![&_strong>code]:(font-700 dark:font-600) [&_li_p]:my-0 [&_li]:my-1 <sm:not-first:[&>*]:mt-2 <sm:not-last:[&>*]:mb-2 [&_li]:relative [&_ul]:pl-7 [&_ol]:pl-7 [&_ul>li]:(pl-1.5 list-none before:absolute before:-left-3.8 before:top-sm before:-translate-y-1/2 before:rounded-full before:bg-$c-fg-50 before:px-0.8 before:py-0.36 before:content-empty) [&_ol>li]:(marker:text-$c-fg-70 pl-1.5) overflow-x-overlay',
   },
 })

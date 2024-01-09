@@ -6,6 +6,12 @@
 
 > 源于 [chatgpt-demo](https://github.com/anse-app/chatgpt-demo). 部署方式参见原仓库
 
+## 分支
+
+- `main`: 基础分支，包含全部的样式
+- `endless`: 加上了基于 token 上限的消息列表裁剪
+- `promplate-demo`: 积极开发中，用于展示 [`promplate`](http://promplate.dev/) 库的用途
+
 ## 环境变量
 
 配置本地或者部署的环境变量
