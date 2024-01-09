@@ -6,6 +6,12 @@
 
 > Forked from [chatgpt-demo](https://github.com/anse-app/chatgpt-demo). Find deployment instructions in the original repository.
 
+## Branches
+
+- `main`: the base branch containing all the styles
+- `endless`: includes token-based message list trimming
+- `promplate-demo`: active developed, for demostrating the usage of [`promplate`](http://promplate.dev/)
+
 ## Environment Variables
 
 You can control the website through environment variables.
