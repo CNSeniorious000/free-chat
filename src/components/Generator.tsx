@@ -6,6 +6,7 @@ import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/util
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
 import { promplateBaseUrl as baseUrl } from '@/utils/constants'
+import { trackEvent } from '@/utils/track'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
@@ -119,7 +120,10 @@ export default () => {
         if (event.code === 'Slash') {
           event.preventDefault()
           inputRef.focus()
-        } else if (event.code === 'KeyB') { setStick(!isStick()) }
+        } else if (event.code === 'KeyB') {
+          trackEvent('stick-to-bottom', { stick: isStick() ? 'switch off' : 'switch on', trigger: 'key' })
+          setStick(!isStick())
+        }
       }
       if (event.altKey && event.code === 'KeyC') clear()
     }, false)
@@ -173,6 +177,8 @@ export default () => {
   }
 
   const handleSubmit = async() => {
+    trackEvent(inputValue() ? 'send' : `${recording() ? 'end' : 'start'}Record`, recording() ? undefined : { length: messageList().length })
+
     if (recording()) {
       stopRecording()
       setRecording('processing')
@@ -359,6 +365,7 @@ export default () => {
     inputRef.value = ''
     inputRef.style.height = 'auto'
     tokenCountCache.clear()
+    trackEvent('clear', { length: messageList().length })
     batch(() => {
       setInputValue('')
       setMessageList([])
@@ -381,6 +388,7 @@ export default () => {
 
   const retryLastFetch = () => {
     if (messageList().length > 0) {
+      trackEvent('retry', { length: messageList().length, lastMessage: messageList().at(-1)!.role })
       const lastMessage = messageList()[messageList().length - 1]
       if (lastMessage.role === 'assistant')
         setMessageList(messageList().slice(0, -1))
@@ -518,7 +526,15 @@ export default () => {
         </Match>
       </Switch>
       <div class="fixed bottom-4.25 left-4.25 z-10 h-fit w-fit rounded-md transition-colors sm:bottom-5 sm:left-5 active:scale-90 hover:bg-$c-fg-5" class:stick-btn-on={isStick()}>
-        <button class="p-2.5 text-base" title="stick to bottom" type="button" onClick={() => setStick(!isStick())}>
+        <button
+          class="p-2.5 text-base"
+          title="stick to bottom"
+          type="button"
+          onClick={() => {
+            setStick(!isStick())
+            trackEvent('stick-to-bottom', { stick: isStick() ? 'switch off' : 'switch on', trigger: 'mouse' })
+          }}
+        >
           <div i-ph-arrow-line-down-bold />
         </button>
       </div>

@@ -53,6 +53,7 @@
 
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { trackEvent } from '@/utils/track'
 
   let themeToggle: HTMLDivElement, themeCircle1: SVGElement, themeCircle2: SVGElement
 
@@ -99,6 +100,7 @@
       const isDark = classList.contains('dark')
       localStorage.setItem('theme', isDark ? 'dark' : 'light')
       toggleThemeCircle()
+      trackEvent('toggle-theme', { theme: isDark ? 'dark' : 'light' })
     }
     themeToggle.addEventListener('click', handleToggleClick)
   })

@@ -4,11 +4,11 @@
 
 <footer class="mb-4.5rem flex flex-col select-none justify-between gap-2.5 text-xs <sm:mb-1.5rem sm:flex-row <sm:items-center <sm:self-center <md:transition-colors">
   <p>
-    <a b-slate-link href="https://ic.free-chat.asia/">返回 Free Chat 主页</a>
+    <a b-slate-link href="https://ic.free-chat.asia/" data-umami-event="homepage-link">返回 Free Chat 主页</a>
     <span px-0.5 select-none op-20>|</span>
-    <a b-slate-link href="mailto:admin@muspimerol.site?subject=❗{origin} Error Report&body={origin} 网站不能正常使用">问题反馈</a>
+    <a b-slate-link href="mailto:admin@muspimerol.site?subject=❗{origin} Error Report&body={origin} 网站不能正常使用" data-umami-event="bug-report">问题反馈</a>
     <span px-0.5 select-none op-20>|</span>
-    <a b-slate-link href="https://tips.free-chat.asia/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">隐私协议</a>
+    <a b-slate-link href="https://tips.free-chat.asia/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE" data-umami-event="privacy-page">隐私协议</a>
   </p>
   <p>
     <a class="w-fit flex items-center gap-1 rounded-full bg-$c-fg-5 px-2 py-1 op-80 transition-opacity -my-1 hover:op-100" href='https://promplate.dev/' data-umami-event="tagline-clicked">
