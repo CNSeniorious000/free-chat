@@ -1,4 +1,5 @@
 import { Show } from 'solid-js'
+import { trackEvent } from '@/utils/track'
 import IconEnv from './icons/Env'
 import IconX from './icons/X'
 import type { Accessor, Setter } from 'solid-js'
@@ -17,6 +18,7 @@ export default (props: Props) => {
   const handleButtonClick = () => {
     props.setCurrentSystemRoleSettings(systemInputRef.value)
     props.setSystemRoleEditing(false)
+    trackEvent('set-system-role', { empty: systemInputRef.value === '' })
   }
 
   return (
