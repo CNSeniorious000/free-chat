@@ -7,6 +7,8 @@
   </button>
 </div>
 <script>
+import { trackEvent } from '../utils/track'
+
 const backtop_btn = document.getElementById('backtop_btn') as HTMLElement
 const backbottom_btn = document.getElementById('backbottom_btn') as HTMLElement
 backtop_btn.style.display = 'none'
@@ -35,9 +37,11 @@ observer.observe(document.querySelector('astro-island[data-solid-render-id] > di
 backbottom_btn.onclick = () => {
   const scrollHeight = document.documentElement.scrollHeight
   window.scrollTo({ top: scrollHeight, behavior: 'smooth' })
+  trackEvent('backbottom')
 }
 backtop_btn.onclick = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
+  trackEvent('backtop')
 }
 
 window.addEventListener('keydown', (event) => {

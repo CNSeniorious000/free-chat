@@ -1,4 +1,5 @@
 <script>
+  import { trackEvent } from '@/utils/track'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
 
@@ -15,7 +16,7 @@
       </a>
     </div>
     <div class="flex">
-      <button class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" on:click={() => (showSettings = !showSettings)}>
+      <button class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" on:click={() => { showSettings = !showSettings; trackEvent('open-settings') }}>
         <span class="i-ph-gear-six-fill text-lg transition-transform duration-300" class:rotate-30={showSettings} />
       </button>
       <Themetoggle />
