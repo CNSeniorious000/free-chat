@@ -25,7 +25,7 @@ const origin = Astro.request.headers.get('host')
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
     { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW!.scriptTag} /> }
     <link rel="prefetch" href="https://ic.free-chat.asia/">
-    <link rel="prefetch" href="https://www.keyanyuedu.com/?channel=freechat">
+    <link rel="prefetch" href="https://promplate.dev/">
   </head>
   <body>
     <slot />
