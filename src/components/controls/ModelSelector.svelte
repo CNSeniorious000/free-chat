@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-0613' | 'gpt-3.5-turbo-1106' | 'gpt-4-1106-preview' | 'chatglm_turbo' | 'claude-instant-1.2' | 'claude-2.1' | 'mixtral-8x7b-instruct-fp16';
+  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-0613' | 'gpt-3.5-turbo-1106' | 'gpt-4-0125-preview' | 'chatglm_turbo' | 'claude-instant-1.2' | 'claude-2.1' | 'mixtral-8x7b-instruct-fp16';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-1106')) as Model))
@@ -30,9 +30,9 @@
     <h4>gpt-3.5-turbo-0301</h4>
     <h5>最旧，最高只支持 4K 上下文</h5>
   </label>
-  <input type="radio" name="model" id="gpt4" hidden on:click={() => setModel('gpt-4-1106-preview')} checked={model === 'gpt-4-1106-preview'} />
+  <input type="radio" name="model" id="gpt4" hidden on:click={() => setModel('gpt-4-0125-preview')} checked={model === 'gpt-4-0125-preview'} />
   <label for="gpt4">
-    <h4>gpt-4-1106-preview</h4>
+    <h4>gpt-4-0125-preview</h4>
     <h5>填写自己的 API Key 以使用</h5>
   </label>
   <input type="radio" name="model" id="moe" hidden on:click={() => setModel('mixtral-8x7b-instruct-fp16')} checked={model === 'mixtral-8x7b-instruct-fp16'} />
@@ -45,12 +45,12 @@
     <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">chatglm-turbo</h4>
     <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">不支持自定义场景</h5>
   </label>
-  <input type="radio" name="model" id="claude-1.2" hidden on:click={() => setModel('claude-instant-1.2')} checked={model === 'claude-instant-1.2'} />
+  <input type="radio" name="model" id="claude-1.2" disabled hidden on:click={() => setModel('claude-instant-1.2')} checked={model === 'claude-instant-1.2'} />
   <label for="claude-1.2">
     <h4>claude-instant-1.2</h4>
     <h5>最快，但不支持自定义场景</h5>
   </label>
-  <input type="radio" name="model" id="claude-2.1" hidden on:click={() => setModel('claude-2.1')} checked={model === 'claude-2.1'} />
+  <input type="radio" name="model" id="claude-2.1" disabled hidden on:click={() => setModel('claude-2.1')} checked={model === 'claude-2.1'} />
   <label for="claude-2.1">
     <h4>claude-2.1</h4>
     <h5>支持 200K 输入，限时免费</h5>

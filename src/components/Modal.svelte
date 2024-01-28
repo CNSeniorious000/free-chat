@@ -3,9 +3,9 @@
   export let icon: string
 </script>
 
-<div class="pointer-events-none fixed inset-0 z-100 bg-black/10 transition-opacity duration-800 dark:bg-black/50" class:pointer-events-none={!show} class:op-0={!show} />
-<section class="pointer-events-none fixed bottom-0 left-0 right-0 z-1000 flex flex-row select-none justify-center tracking-wide transition-opacity duration-500" class:pointer-events-none={!show} class:op-0={!show}>
-  <div class="m-5vw w-xl flex flex-col gap-3 rounded-lg bg-$c-bg p-5 shadow-xl backdrop-blur-15 [&_a]:(mx-1 border-b-1.5 border-$c-fg-20 pb-0.3 transition-border-color dark:border-$c-fg) [&_a:hover]:(border-$c-fg-60 dark:border-$c-fg-40) dark:bg-#212129c0">
+<div role="none" on:click={() => (show = false)} class="fixed inset-0 z-100 bg-black/10 transition-opacity duration-800 dark:bg-black/40" class:pointer-events-none={!show} class:op-0={!show} />
+<section class="pointer-events-none fixed bottom-0 left-0 right-0 z-1000 flex flex-row select-none justify-center tracking-wide transition duration-400" class:[&_*]:pointer-events-auto={show} class:op-0={!show} class:translate-y-10={!show} class:ease-out={show} class:ease-in={!show}>
+  <div class="m-5vw w-xl flex flex-col gap-3 rounded-lg bg-$c-bg p-5 shadow-xl [&_a]:(mx-1 border-b-1.5 border-$c-fg-20 pb-0.3 transition-border-color dark:border-$c-fg) [&_a:hover]:(border-$c-fg-60 dark:border-$c-fg-40)">
     <div class="relative flex flex-row items-center gap-3 text-4xl">
       <div class="{icon} absolute right-1/2 translate-x-1/2 -translate-y-1/2" />
       <div class="{icon} absolute right-1/2 translate-x-1/2 scale-60 blur-15 -translate-y-1/4" />
