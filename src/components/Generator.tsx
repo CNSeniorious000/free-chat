@@ -2,7 +2,7 @@ import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount 
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
-import { fetchModeration, fetchTitle } from '@/utils/misc'
+import { fetchModeration, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { tokenCountCache } from '@/utils/tiktoken'
 import { trackEvent } from '@/utils/track'
@@ -158,7 +158,8 @@ export default () => {
   createEffect(() => throttledModerate(currentAssistantMessage()))
 
   const updatePageTitle = async(input: string) => {
-    setPageTitle(await fetchTitle(input))
+    for await (const title of iterateTitle(input))
+      setPageTitle(title)
   }
 
   const errorHelper = (e: any) => {

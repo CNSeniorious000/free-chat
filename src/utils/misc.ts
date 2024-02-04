@@ -1,15 +1,37 @@
+import { parse } from 'partial-json'
+import { responseToAsyncIterator } from './streaming'
+
+function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
+  return obj?.constructor?.name === 'AsyncGeneratorFunction'
+}
+
 function retry(times: number) {
   return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value
-    descriptor.value = async function(...args: any[]) {
-      for (let i = 0; i < times; i++) {
-        try {
-          return await originalMethod.apply(this, args)
-        } catch (error) {
-          console.error(`Attempt ${i + 1} failed. Retrying...`)
+
+    if (isAsyncGeneratorFunction(originalMethod)) {
+      descriptor.value = async function *(...args: any[]) {
+        for (let i = 0; i < times; i++) {
+          try {
+            yield * originalMethod.apply(this, args)
+            return
+          } catch (error) {
+            console.error(`Attempt ${i + 1} failed. Retrying...`)
+          }
         }
+        throw new Error(`Function ${propertyKey} failed after ${times} attempts.`)
       }
-      throw new Error(`Function ${propertyKey} failed after ${times} attempts.`)
+    } else {
+      descriptor.value = async function(...args: any[]) {
+        for (let i = 0; i < times; i++) {
+          try {
+            return await originalMethod.apply(this, args)
+          } catch (error) {
+            console.error(`Attempt ${i + 1} failed. Retrying...`)
+          }
+        }
+        throw new Error(`Function ${propertyKey} failed after ${times} attempts.`)
+      }
     }
     return descriptor
   }
@@ -17,14 +39,19 @@ function retry(times: number) {
 
 class API {
   @retry(3)
-  async fetchTitle(input: string) {
+  async *iterateTitle(input: string) {
     const res = await fetch('/api/title-gen', {
       method: 'POST',
       body: input,
       headers: localStorage.getItem('apiKey') ? { authorization: `Bearer ${localStorage.getItem('apiKey')}` } : {},
     })
     if (!res.ok) throw new Error(await res.text())
-    return await res.text() as string
+    let whole = ''
+    for await (const delta of responseToAsyncIterator(res)) {
+      whole += delta
+      const { title }: { title?: string } = parse(whole)
+      if (title) yield title
+    }
   }
 
   @retry(3)
@@ -44,6 +71,6 @@ class API {
 
 const api = new API()
 
-export const fetchTitle = api.fetchTitle.bind(api)
+export const iterateTitle = api.iterateTitle.bind(api)
 export const fetchTranslation = api.fetchTranslation.bind(api)
 export const fetchModeration = api.fetchModeration.bind(api)
