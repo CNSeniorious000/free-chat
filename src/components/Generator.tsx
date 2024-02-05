@@ -2,7 +2,7 @@ import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount 
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
 import { generateSignature } from '@/utils/auth'
-import { fetchModeration, fetchTitle, fetchTranslation } from '@/utils/misc'
+import { fetchModeration, fetchTranslation, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { trackEvent } from '@/utils/track'
@@ -170,7 +170,8 @@ export default () => {
   createEffect(() => throttledModerate(currentAssistantMessage()))
 
   const updatePageTitle = async(input: string) => {
-    setPageTitle(await fetchTitle(input))
+    for await (const title of iterateTitle(input))
+      setPageTitle(title)
   }
 
   const errorHelper = (e: any) => {
@@ -259,7 +260,7 @@ export default () => {
       const response = await fetch('/api/generate', {
         method: 'POST',
         body: JSON.stringify({
-          model: localStorage.getItem('model') || 'gpt-3.5-turbo-1106',
+          model: localStorage.getItem('model'),
           messages: requestMessageList,
           time: timestamp,
           pass: storagePassword,

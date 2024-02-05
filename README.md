@@ -25,7 +25,7 @@ You can control the website through environment variables.
 | `HEAD_SCRIPTS` | Inject analytics or other scripts before `</head>` of the page | `null` |
 | `PUBLIC_SECRET_KEY` | Secret string for the project. Use for generating signatures for API calls | `null` |
 | `SITE_PASSWORD` | Set password for site. If not set, site will be public | `null` |
-| `OPENAI_API_MODEL` | ID of the model to use. [Model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-3.5-turbo-1106` |
+| `OPENAI_API_MODEL` | ID of the model to use. [Model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-3.5-turbo-0125` |
 | `TUTORIAL_MD_URL` | url of the tutorial markdown file | `null` |
 | `PUBLIC_IFRAME_URL` | url of the advertisement iframe | `null` |
 | `UNDICI_UA` | user-agent for backend requests | `(forward)` |

@@ -1,6 +1,13 @@
-import { parse } from 'partial-json'
 import { openai } from '@/utils/client'
+import type { Stream } from 'openai/streaming'
+import type { ChatCompletionChunk } from 'openai/resources/chat/completions'
+
 import type { APIRoute } from 'astro'
+
+async function *iterateRes(res: Stream<ChatCompletionChunk>) {
+  for await (const msg of res)
+    if (msg.choices[0].delta.content) yield msg.choices[0].delta.content
+}
 
 const systemPrompt = `
 Summarize a short and relevant title of input text in 5 - 10 words.
@@ -20,12 +27,25 @@ export const post: APIRoute = async(context) => {
         { role: 'system', content: systemPrompt },
         { role: 'user', content: `"""\n${content}\n"""` },
       ],
-      model: 'gpt-3.5-turbo-1106',
+      model: 'gpt-3.5-turbo-0125',
       temperature: 0,
       response_format: { type: 'json_object' },
+      stream: true,
     })
 
-    return new Response(parse(res.choices[0].message.content!).title)
+    const stream = new ReadableStream({
+      async start(controller) {
+        const iterator = iterateRes(res)
+        let result = await iterator.next()
+        while (!result.done) {
+          controller.enqueue(result.value)
+          result = await iterator.next()
+        }
+        controller.close()
+      },
+    })
+
+    return new Response(stream, { headers: { 'content-type': 'application/json' } })
   } catch (error) {
     console.error(error)
     return new Response(JSON.stringify(error), { status: 500 })
