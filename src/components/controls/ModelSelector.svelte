@@ -2,10 +2,10 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-0613' | 'gpt-3.5-turbo-1106' | 'gpt-4-0125-preview' | 'chatglm_turbo' | 'claude-instant-1.2' | 'claude-2.1' | 'mixtral-8x7b-instruct-fp16';
+  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'chatglm_turbo' | 'claude-instant-1.2' | 'claude-2.1' | 'mixtral-8x7b-instruct-fp16';
   let model: Model
 
-  onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-1106')) as Model))
+  onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
   $: typeof localStorage !== 'undefined' && model && localStorage.setItem('model', model)
 
   function setModel(newModel: Model) {
@@ -15,15 +15,15 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 rounded-md bg-$c-fg-2 p-1.5 text-sm">
+  <input type="radio" name="model" id="0125" hidden on:click={() => setModel('gpt-3.5-turbo-0125')} checked={model === 'gpt-3.5-turbo-0125'} />
+  <label for="0125">
+    <h4>gpt-3.5-turbo-0125</h4>
+    <h5>最新，更加服从格式要求</h5>
+  </label>
   <input type="radio" name="model" id="1106" hidden on:click={() => setModel('gpt-3.5-turbo-1106')} checked={model === 'gpt-3.5-turbo-1106'} />
   <label for="1106">
     <h4>gpt-3.5-turbo-1106</h4>
-    <h5>最新，偶尔会无缘无故拒绝回答</h5>
-  </label>
-  <input type="radio" name="model" id="0613" hidden on:click={() => setModel('gpt-3.5-turbo-0613')} checked={model === 'gpt-3.5-turbo-0613'} />
-  <label for="0613">
-    <h4>gpt-3.5-turbo-0613</h4>
-    <h5>次新</h5>
+    <h5>次新，偶尔会无缘无故拒绝回答</h5>
   </label>
   <input type="radio" name="model" id="0301" hidden on:click={() => setModel('gpt-3.5-turbo-0301')} checked={model === 'gpt-3.5-turbo-0301'} />
   <label for="0301">
