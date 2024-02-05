@@ -25,7 +25,7 @@
 | `HEAD_SCRIPTS` | 在页面的 `</head>` 之前注入分析或其他脚本 | `null` |
 | `PUBLIC_SECRET_KEY` | 项目的秘密字符串。用于生成 API 调用的签名 | `null` |
 | `SITE_PASSWORD` | 为网站设置密码。如果未设置，则该网站将是公开的 | `null` |
-| `OPENAI_API_MODEL` | 使用的 [Chat 模型](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-3.5-turbo-1106` |
+| `OPENAI_API_MODEL` | 使用的 [Chat 模型](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-3.5-turbo-0125` |
 | `TUTORIAL_MD_URL` | 教程页对应的 markdown 文件 url | `null` |
 | `PUBLIC_IFRAME_URL` | 通知栏 iframe 横幅的 url | `null` |
 | `UNDICI_UA` | 后端请求的 user-agent | `(forward)` |

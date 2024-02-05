@@ -27,7 +27,7 @@ export const post: APIRoute = async(context) => {
         { role: 'system', content: systemPrompt },
         { role: 'user', content: `"""\n${content}\n"""` },
       ],
-      model: 'gpt-3.5-turbo-1106',
+      model: 'gpt-3.5-turbo-0125',
       temperature: 0,
       response_format: { type: 'json_object' },
       stream: true,

@@ -3,7 +3,7 @@ import type { ParsedEvent, ReconnectInterval } from 'eventsource-parser'
 import type { ChatMessage } from '@/types'
 import type { RequestInit } from 'undici'
 
-const default_model = import.meta.env.OPENAI_API_DEFAULT_MODEL || 'gpt-3.5-turbo-1106'
+const default_model = import.meta.env.OPENAI_API_DEFAULT_MODEL || 'gpt-3.5-turbo-0125'
 const force_model = import.meta.env.OPENAI_API_MODEL
 const temperature = Number(import.meta.env.OPENAI_API_TEMPERATURE) || 1
 

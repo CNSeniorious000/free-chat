@@ -237,7 +237,7 @@ export default () => {
       const response = await fetch('/api/generate', {
         method: 'POST',
         body: JSON.stringify({
-          model: localStorage.getItem('model') || 'gpt-3.5-turbo-1106',
+          model: localStorage.getItem('model'),
           messages: requestMessageList,
           time: timestamp,
           pass: storagePassword,
