@@ -7,7 +7,7 @@
   let checked = true
 
   function save() {
-    checked ? localStorage.removeItem(key) : localStorage.setItem(key, 'false')
+    localStorage.setItem(key, JSON.stringify(checked))
   }
 
   function load() {

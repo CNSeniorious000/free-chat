@@ -1,7 +1,7 @@
 import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
-import { fetchModeration, iterateTitle, fetchTranslation } from '@/utils/misc'
+import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
@@ -35,6 +35,8 @@ export default () => {
   const [isStick, _setStick] = createSignal(false)
   const [mounted, setMounted] = createSignal(false)
   const [recording, setRecording] = createSignal<'recording' | 'processing' | false>(false)
+  const [suggestions, setSuggestions] = createSignal<string[]>([])
+  const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
 
   const moderationInterval = Number(import.meta.env.PUBLIC_MODERATION_INTERVAL ?? '2000')
 
@@ -69,8 +71,29 @@ export default () => {
     }
   }
 
+  const updateSuggestions = async() => {
+    if (messageList().length === 0) return
+
+    for await (const suggestions of iterateSuggestion([...messageList()]))
+      setSuggestions(suggestions as string[])
+  }
+
+  createEffect(() => {
+    if (messageList().at(-1)?.role === 'assistant')updateSuggestions()
+    else if (messageList().length === 0) setSuggestions([])
+  })
+
   onMount(() => {
     setMounted(true)
+
+    setSuggestionFeature(JSON.parse(localStorage.getItem('suggestion') ?? 'true'))
+
+    const setItem = localStorage.setItem.bind(localStorage)
+
+    localStorage.setItem = function(key: string, value: string) {
+      setItem(key, value)
+      setSuggestionFeature(JSON.parse(localStorage.getItem('suggestion') ?? 'true'))
+    }
 
     try {
       if (JSON.parse(localStorage.getItem('messageList') ?? '[]').length) {
@@ -200,6 +223,8 @@ export default () => {
 
       return
     }
+
+    setSuggestions([])
 
     const input = inputValue()
 
@@ -464,6 +489,14 @@ export default () => {
         textAreaValue={inputValue}
         currentAssistantMessage={currentAssistantMessage}
       />
+
+      <Show when={suggestionFeatureOn() && !streaming() && suggestions().length}>
+        <div class="flex flex-row flex-wrap translate-y-1.5 gap-2 [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
+          <Index each={suggestions()}>
+            {item => <button type="button" onClick={() => setInputValue(item())} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
+          </Index>
+        </div>
+      </Show>
 
       <Switch>
         <Match when={!mounted()}>

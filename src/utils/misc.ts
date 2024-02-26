@@ -1,5 +1,7 @@
 import { parse } from 'partial-json'
 import { responseToAsyncIterator } from './streaming'
+import { promplateBaseUrl } from './constants'
+import type { ChatMessage } from '@/types'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
   return obj?.constructor?.name === 'AsyncGeneratorFunction'
@@ -54,11 +56,28 @@ class API {
     }
   }
 
+  async *iterateSuggestion(messages: ChatMessage[]) {
+    if (messages.length === 0 || messages.at(-1)?.role === 'user') return
+
+    const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
+      method: 'PUT',
+      body: JSON.stringify({ messages }),
+      headers: { 'content-type': 'application/json' },
+    })
+
+    let json = ''
+
+    for await (const delta of responseToAsyncIterator(res)) {
+      json += delta
+      yield parse(json) as string[]
+    }
+  }
+
   @retry(3)
   async fetchTranslation(input: string) {
     const res = await fetch(`/api/translate?text=${encodeURIComponent(input)}`)
     if (!res.ok) throw new Error(await res.text())
-    return await res.text() as string
+    return res.text()
   }
 
   @retry(3)
@@ -74,3 +93,4 @@ const api = new API()
 export const iterateTitle = api.iterateTitle.bind(api)
 export const fetchTranslation = api.fetchTranslation.bind(api)
 export const fetchModeration = api.fetchModeration.bind(api)
+export const iterateSuggestion = api.iterateSuggestion.bind(api)
