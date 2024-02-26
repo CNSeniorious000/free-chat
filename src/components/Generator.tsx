@@ -493,7 +493,7 @@ export default () => {
       <Show when={suggestionFeatureOn() && !streaming() && suggestions().length}>
         <div class="flex flex-row flex-wrap translate-y-1.5 gap-2 [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
           <Index each={suggestions()}>
-            {item => <button type="button" onClick={() => setInputValue(item())} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
+            {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
           </Index>
         </div>
       </Show>

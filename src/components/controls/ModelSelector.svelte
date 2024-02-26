@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'chatglm_turbo' | 'claude-instant-1.2' | 'claude-2.1' | 'mixtral-8x7b-instruct-fp16';
+  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'qwen-max' | 'claude-instant-1.2' | 'claude-2.1' | 'mixtral-8x7b-instruct-fp16';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
@@ -40,10 +40,10 @@
     <h4>mixtral-8x7b-instruct-fp16</h4>
     <h5>时下最火的 MOE 模型，最快</h5>
   </label>
-  <input type="radio" name="model" id="glm" hidden on:click={() => setModel('chatglm_turbo')} checked={model === 'chatglm_turbo'} />
-  <label for="glm">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">chatglm-turbo</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">不支持自定义场景</h5>
+  <input type="radio" name="model" id="qwen" hidden on:click={() => setModel('qwen-max')} checked={model === 'qwen-max'} />
+  <label for="qwen">
+    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">qwen-max-6k</h4>
+    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">通义千问 最强大的中文模型</h5>
   </label>
   <input type="radio" name="model" id="claude-1.2" disabled hidden on:click={() => setModel('claude-instant-1.2')} checked={model === 'claude-instant-1.2'} />
   <label for="claude-1.2">
