@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'qwen-max' | 'claude-instant-1.2' | 'claude-2.1' | 'mixtral-8x7b-instruct-fp16';
+  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'qwen-max' | 'claude-instant-1.2' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'abab5.5s-chat' | 'abab5.5-chat' | 'abab6-chat';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
@@ -35,25 +35,39 @@
     <h4>gpt-4-0125-preview</h4>
     <h5>填写自己的 API Key 以使用</h5>
   </label>
-  <input type="radio" name="model" id="moe" hidden on:click={() => setModel('mixtral-8x7b-instruct-fp16')} checked={model === 'mixtral-8x7b-instruct-fp16'} />
+  <input type="radio" name="model" id="moe" hidden on:click={() => setModel('nous-hermes-2-mixtral-8x7b-dpo')} checked={model === 'nous-hermes-2-mixtral-8x7b-dpo'} />
   <label for="moe">
-    <h4>mixtral-8x7b-instruct-fp16</h4>
-    <h5>时下最火的 MOE 模型，最快</h5>
+    <h4>nous-hermes-2</h4>
+    <h5>基于 Mixtral 的 MOE 模型✨</h5>
   </label>
   <input type="radio" name="model" id="qwen" hidden on:click={() => setModel('qwen-max')} checked={model === 'qwen-max'} />
   <label for="qwen">
     <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">qwen-max-6k</h4>
     <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">通义千问 最强大的中文模型</h5>
   </label>
+
+  <input type="radio" name="model" id="abab5.5s" hidden on:click={() => setModel('abab5.5s-chat')} checked={model === 'abab5.5s-chat'} />
+  <label for="abab5.5s">
+    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">abab5.5s</h4>
+    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">MiniMax 人设对话场景大模型</h5>
+  </label>
+
+  <input type="radio" name="model" id="abab5.5" hidden on:click={() => setModel('abab5.5-chat')} checked={model === 'abab5.5-chat'} />
+  <label for="abab5.5">
+    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">abab5.5</h4>
+    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">MiniMax 生产力场景大模型</h5>
+  </label>
+
+  <input type="radio" name="model" id="abab6" hidden on:click={() => setModel('abab6-chat')} checked={model === 'abab6-chat'} />
+  <label for="abab6">
+    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">abab6</h4>
+    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">国内首个自研 MoE 大模型✨</h5>
+  </label>
+
   <input type="radio" name="model" id="claude-1.2" disabled hidden on:click={() => setModel('claude-instant-1.2')} checked={model === 'claude-instant-1.2'} />
   <label for="claude-1.2">
     <h4>claude-instant-1.2</h4>
     <h5>最快，但不支持自定义场景</h5>
-  </label>
-  <input type="radio" name="model" id="claude-2.1" disabled hidden on:click={() => setModel('claude-2.1')} checked={model === 'claude-2.1'} />
-  <label for="claude-2.1">
-    <h4>claude-2.1</h4>
-    <h5>支持 200K 输入，限时免费</h5>
   </label>
 </div>
 

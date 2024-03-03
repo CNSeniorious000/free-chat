@@ -29,7 +29,7 @@
   onMount(() => {
     document.addEventListener('clearMessages', (ev: Event) => {
       const { length } = (ev as MessagesEvent).detail
-      if (length >= 5 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24) showSponsorship = true
+      if (length >= 7 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24) showSponsorship = true
     })
   })
 
@@ -37,7 +37,7 @@
     showSponsorship = false
     localStorage.setItem('lastTime', String(Number(new Date())))
     toast.success('感谢您的支持！24h 内将不会再弹窗~')
-    setTimeout(() => toast.info('因为持续捐赠是我们运营的动力，所以我们最多在24h弹出一次，且仅会发生在一次有效的对话之后'), 1000)
+    setTimeout(() => toast.info('因为持续捐赠是我们运营的动力，所以我们最多在24h弹出一次，且仅会发生在一次有效的长对话之后'), 1000)
   }
 
   let showSettings = false
@@ -63,7 +63,7 @@
       <Themetoggle />
     </div>
   </div>
-  <div class="mb-0.6 ml-0.2 mt-0.3 select-none text-2.3 transition-font-size sm:text-3">执行代码、联网搜索、浏览指定网页等功能一周内即将上线，敬请期待！</div>
+  <div class="mb-0.6 ml-0.2 mt-0.3 select-none text-2.6 tracking-wider transition-font-size sm:text-3">最近上新了几个 LLM 供选择，欢迎点击右侧设置挑选~</div>
   {#if import.meta.env.PUBLIC_IFRAME_URL}
     <div class="h-22 overflow-hidden transition-all sm:h-27">
       <iframe src={import.meta.env.PUBLIC_IFRAME_URL} class="mb-1 mt-2 h-25 w-full select-none rounded-lg bg-$c-fg-2 ring-$c-fg-40 ring-inset transition-all <sm:mt-3 <sm:w-125% <sm:translate-x--1/10 <sm:translate-y--4 <sm:scale-80% hover:bg-$c-fg-5 hover:ring-1.75" title="embedded advertisement" />
@@ -89,9 +89,9 @@
         /
         <a href="https://t.me/+bIGN2w-toQJjZWRl"><span class="icon i-uim-telegram-alt" />Telegram 群组</a>联系我。
       </div>
-      <div in:fly|global={{ delay: 150, duration: 500, x: -10, easing: quintOut }}><strong>本人最近在开发 Agent 的一些基础设施和应用，但 Free Chat 这边免费的服务仍然离不开大家持续的的捐赠支持。如果这个软件成功帮到你了，希望你能不吝赐赠。</strong>无论轻重，每个人的支持对我同等重要。</div>
-      <div in:fly|global={{ delay: 200, duration: 500, x: -10, easing: quintOut }}>我自己白天有实习工作在身，这个项目纯粹是业余时间在维护，整体上处于贴钱提供存量服务的状态。大家的捐赠鼓励是我开发新的产品和优化现有的功能的动力之一。</div>
-      <div in:fly|global={{ delay: 250, duration: 500, x: -10, easing: quintOut }}>总之，希望大家不吝捐赠、欢迎大家多多反馈！不出意外的话，圣诞节前能有新功能出来！</div>
+      <div in:fly|global={{ delay: 150, duration: 500, x: -10, easing: quintOut }}><strong>本人最近在开发 <a href="https://zh.promplate.dev/">一个提示工程框架</a></strong>欢迎了解</div>
+      <div in:fly|global={{ delay: 200, duration: 500, x: -10, easing: quintOut }}>大家的捐赠鼓励是我开发新的产品和优化现有的功能的动力之一。</div>
+      <div in:fly|global={{ delay: 250, duration: 500, x: -10, easing: quintOut }}>总之，希望大家不吝捐赠、欢迎大家多多反馈！最近在忙学校事务，所以可能不会积极更新，见谅~</div>
       {#await import('./Sponsor.svelte') then QR}
         {#if showQR}
           <div in:slide|global={{ duration: 800, easing: quintOut }} class="group relative grid mb-0.5 mt-1.5 h-70 w-full place-items-center rounded-md bg-$c-fg-2 transition-background-color duration-200 hover:bg-$c-fg-5">

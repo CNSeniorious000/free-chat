@@ -72,14 +72,14 @@ export default () => {
   }
 
   const updateSuggestions = async() => {
-    if (messageList().length === 0) return
+    if (messageList().length === 0 || !suggestionFeatureOn()) return
 
     for await (const suggestions of iterateSuggestion([...messageList()]))
-      setSuggestions(suggestions as string[])
+      setSuggestions(suggestions)
   }
 
   createEffect(() => {
-    if (messageList().at(-1)?.role === 'assistant')updateSuggestions()
+    if (messageList().at(-1)?.role === 'assistant') updateSuggestions()
     else if (messageList().length === 0) setSuggestions([])
   })
 
