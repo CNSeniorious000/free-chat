@@ -5,7 +5,12 @@
   type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'qwen-turbo' | 'claude-3-haiku-20240307' |'mixtral-8x7b-32768' |'gemma-7b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'abab5.5s-chat' | 'abab5.5-chat' | 'abab6-chat';
   let model: Model
 
-  onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
+  onMount(() => {
+    (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model)
+    if ( model.startsWith("abab") ||  model.startsWith("gpt") && !model.startsWith("gpt-4")) {
+      model = "gemma-7b-it"
+    }
+  })
   $: typeof localStorage !== 'undefined' && model && localStorage.setItem('model', model)
 
   function setModel(newModel: Model) {
@@ -30,21 +35,6 @@
     <h4>claude-3-haiku</h4>
     <h5>崭新 Claude 3 系列</h5>
   </label>
-  <input type="radio" name="model" id="0125" hidden on:click={() => setModel('gpt-3.5-turbo-0125')} checked={model === 'gpt-3.5-turbo-0125'} />
-  <label for="0125">
-    <h4>gpt-3.5-turbo-0125</h4>
-    <h5>最新，更加服从格式要求</h5>
-  </label>
-  <input type="radio" name="model" id="1106" hidden on:click={() => setModel('gpt-3.5-turbo-1106')} checked={model === 'gpt-3.5-turbo-1106'} />
-  <label for="1106">
-    <h4>gpt-3.5-turbo-1106</h4>
-    <h5>次新，偶尔会无缘无故拒绝回答</h5>
-  </label>
-  <input type="radio" name="model" id="0301" hidden on:click={() => setModel('gpt-3.5-turbo-0301')} checked={model === 'gpt-3.5-turbo-0301'} />
-  <label for="0301">
-    <h4>gpt-3.5-turbo-0301</h4>
-    <h5>最旧，最高只支持 4K 上下文</h5>
-  </label>
   <input type="radio" name="model" id="gpt4" hidden on:click={() => setModel('gpt-4-0125-preview')} checked={model === 'gpt-4-0125-preview'} />
   <label for="gpt4">
     <h4>gpt-4-0125-preview</h4>
@@ -59,21 +49,6 @@
   <label for="qwen">
     <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">qwen-turbo</h4>
     <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">通义千问</h5>
-  </label>
-  <input type="radio" name="model" id="abab5.5s" hidden on:click={() => setModel('abab5.5s-chat')} checked={model === 'abab5.5s-chat'} />
-  <label for="abab5.5s">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">abab5.5s</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">MiniMax 人设对话场景大模型</h5>
-  </label>
-  <input type="radio" name="model" id="abab5.5" hidden on:click={() => setModel('abab5.5-chat')} checked={model === 'abab5.5-chat'} />
-  <label for="abab5.5">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">abab5.5</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">MiniMax 生产力场景大模型</h5>
-  </label>
-  <input type="radio" name="model" id="abab6" hidden on:click={() => setModel('abab6-chat')} checked={model === 'abab6-chat'} />
-  <label for="abab6">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">abab6</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">国内首个自研 MoE 大模型✨</h5>
   </label>
 </div>
 
