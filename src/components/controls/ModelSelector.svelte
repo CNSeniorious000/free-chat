@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'qwen-turbo' | 'claude-3-haiku-20240307' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'abab5.5s-chat' | 'abab5.5-chat' | 'abab6-chat';
+  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'qwen-turbo' | 'claude-3-haiku-20240307' |'mixtral-8x7b-32768' |'gemma-7b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'abab5.5s-chat' | 'abab5.5-chat' | 'abab6-chat';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
@@ -15,6 +15,16 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 rounded-md bg-$c-fg-2 p-1.5 text-sm">
+  <input type="radio" name="model" id="mixtral" hidden on:click={() => setModel("mixtral-8x7b-32768")} checked={model === "mixtral-8x7b-32768"} />
+  <label for="mixtral">
+    <h4>mixtral-8x7b</h4>
+    <h5>Groq 提供的 Mixtral 🚀</h5>
+  </label>
+  <input type="radio" name="model" id="gemma" hidden on:click={() => setModel("gemma-7b-it")} checked={model === "gemma-7b-it"} />
+  <label for="gemma">
+    <h4>gemma-7b-it</h4>
+    <h5>Groq 提供的 Gemma 7B 🚀</h5>
+  </label>
   <input type="radio" name="model" id="claude" hidden on:click={() => setModel('claude-3-haiku-20240307')} checked={model === 'claude-3-haiku-20240307'} />
   <label for="claude">
     <h4>claude-3-haiku</h4>
