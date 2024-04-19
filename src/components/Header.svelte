@@ -63,7 +63,11 @@
       <Themetoggle />
     </div>
   </div>
-  <div class="mb-0.6 ml-0.2 mt-0.3 select-none text-2.6 tracking-wider transition-font-size sm:text-3">最近上新了几个 LLM 供选择，欢迎点击右侧设置挑选~</div>
+  <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size sm:text-3">
+    已支持
+    <div class="i-logos-meta-icon" />
+    最新发布的 Llama3 系列大模型🦙
+  </div>
   {#if import.meta.env.PUBLIC_IFRAME_URL}
     <div class="h-22 overflow-hidden transition-all sm:h-27">
       <iframe src={import.meta.env.PUBLIC_IFRAME_URL} class="mb-1 mt-2 h-25 w-full select-none rounded-lg bg-$c-fg-2 ring-$c-fg-40 ring-inset transition-all <sm:mt-3 <sm:w-125% <sm:translate-x--1/10 <sm:translate-y--4 <sm:scale-80% hover:bg-$c-fg-5 hover:ring-1.75" title="embedded advertisement" />
