@@ -73,7 +73,7 @@ export default () => {
 
   const updateSuggestions = async() => {
     if (messageList().length === 0 || !suggestionFeatureOn()) return
-
+    setSuggestions([])
     for await (const suggestions of iterateSuggestion([...messageList()]))
       setSuggestions(suggestions)
   }
