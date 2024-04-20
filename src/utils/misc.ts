@@ -61,7 +61,7 @@ class API {
 
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
       method: 'PUT',
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ messages, model: 'llama3-70b-8192' }),
       headers: { 'content-type': 'application/json' },
     })
 

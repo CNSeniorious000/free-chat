@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0301' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-0125' | 'gpt-4-0125-preview' | 'gpt-4-turbo-2024-04-09' | 'qwen-turbo' | 'claude-3-haiku-20240307' | 'mixtral-8x7b-32768' |'gemma-7b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
+  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-2024-05-13' | 'gpt-4-0125-preview' | 'gpt-4-turbo-2024-04-09' | 'qwen-turbo' | 'claude-3-haiku-20240307' | 'mixtral-8x7b-32768' | 'gemma-7b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
@@ -38,15 +38,15 @@
     <h5>Meta 最新发布的 Llama3 ✨</h5>
   </label>
 
-  <input type="radio" name="model" id="claude" hidden on:click={() => setModel('claude-3-haiku-20240307')} checked={model === 'claude-3-haiku-20240307'} />
-  <label for="claude">
-    <h4>claude-3-haiku</h4>
-    <h5>崭新 Claude 3 系列</h5>
-  </label>
   <input type="radio" name="model" id="0125" hidden on:click={() => setModel('gpt-3.5-turbo-0125')} checked={model === 'gpt-3.5-turbo-0125'} />
   <label for="0125">
     <h4>gpt-3.5-turbo</h4>
-    <h5>免费 OpenAI ChatGPT</h5>
+    <h5>填写自己的 API Key 以使用</h5>
+  </label>
+  <input type="radio" name="model" id="gpt4-omni" hidden on:click={() => setModel('gpt-4o-2024-05-13')} checked={model === 'gpt-4o-2024-05-13'} />
+  <label for="gpt4-omni">
+    <h4>gpt-4-omni</h4>
+    <h5>填写自己的 API Key 以使用</h5>
   </label>
   <input type="radio" name="model" id="gpt4-0409" hidden on:click={() => setModel('gpt-4-turbo-2024-04-09')} checked={model === 'gpt-4-turbo-2024-04-09'} />
   <label for="gpt4-0409">
