@@ -122,19 +122,19 @@ export default () => {
 
     footer = document.querySelector('footer')!
 
-    let lastPostion = window.scrollY
+    let lastPosition = window.scrollY
 
     window.addEventListener('scroll', () => {
-      const nowPostion = window.scrollY
-      if (nowPostion < lastPostion && isHigher()) setStick(false)
-      lastPostion = nowPostion
+      const nowPosition = window.scrollY
+      if (nowPosition < lastPosition && isHigher()) setStick(false)
+      lastPosition = nowPosition
     })
 
     window.addEventListener('resize', () => {
       resetTextInputHeight()
       requestAnimationFrame(() => {
         if (isHigher() && isStick()) instantToBottom()
-        lastPostion = window.scrollY
+        lastPosition = window.scrollY
       })
     })
 

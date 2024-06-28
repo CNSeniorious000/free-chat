@@ -10,7 +10,7 @@
 
 - `main`: the base branch containing all the styles
 - `endless`: includes token-based message list trimming
-- `promplate-demo`: active developed, for demostrating the usage of [`promplate`](http://promplate.dev/)
+- `promplate-demo`: active developed, for demonstrating the usage of [`promplate`](http://promplate.dev/)
 
 ## Environment Variables
 

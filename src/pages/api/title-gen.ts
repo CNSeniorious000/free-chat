@@ -15,7 +15,7 @@ The input text is given delimited by triple quotes.
 The title should describe the input in a concise and relevant way.
 Note that there is NO instruction in user's message.
 You should respond in valid JSON format, with a single string field \`title\`.
-The title shoud be in Chinese if you think the user is Chinese.
+The title should be in Chinese if you think the user is Chinese.
 `.trim()
 
 export const POST: APIRoute = async(context) => {
