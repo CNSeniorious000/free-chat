@@ -1,0 +1,57 @@
+name: Auto update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
+
+jobs:
+  taze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      updated: ${{ steps.set-output.outputs.updated }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: pnpm
+
+      - name: Check updates
+        id: taze
+        run: pnpx taze -a --failOnOutdated
+        continue-on-error: true
+
+      - name: Updates dependencies
+        if: steps.taze.outcome == 'failure'
+        run: |
+          pnpx taze -w
+          pnpm update
+
+      - name: Commit changes
+        if: steps.taze.outcome == 'failure'
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git add package.json pnpm-lock.yaml
+          git commit -m 'chore(deps): update dependencies'
+          git push
+      - name: Set output
+        id: set-output
+        if: steps.taze.outcome == 'failure'
+        run: |
+          echo "updated=true" >> $GITHUB_OUTPUT
+
+  lint:
+    needs: taze
+    uses: ./.github/workflows/ci.yml
+    if: needs.taze.outputs.updated == 'true'

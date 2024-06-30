@@ -1,6 +1,6 @@
 name: CI
 
-on: [push, fork, pull_request, workflow_dispatch]
+on: [push, fork, pull_request, workflow_dispatch, workflow_call]
 
 jobs:
 
@@ -18,6 +18,9 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Pull changes
+        run: git pull
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
