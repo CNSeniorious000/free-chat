@@ -23,7 +23,7 @@
 </script>
 
 <label class="flex items-center space-x-2">
-  <input type="checkbox" class="form-togggle hidden" bind:checked />
+  <input type="checkbox" class="hidden" bind:checked />
   <button class="h-5 w-10 rounded-full bg-$c-fg-20 p-1 transition-colors duration-350" class:!bg-$c-fg-80={checked} on:click={toggle}>
     <div class="pointer-events-none relative h-3 w-3 translate-x-0 rounded-full bg-white shadow transition-transform duration-350" class:translate-x-5={checked}>
       {#if checked}
