@@ -285,19 +285,19 @@ export default () => {
       const payload: Record<string, any> = { messages: requestMessageList }
       if (localStorage.getItem('model')) payload.model = localStorage.getItem('model')
 
-      const response = await fetch(`${baseUrl}/single/chat_messages`, {
+      const res = await fetch(`${baseUrl}/single/chat_messages`, {
         method: 'PUT',
         body: JSON.stringify(payload),
         signal: controller.signal,
         headers,
       })
-      if (!response.ok) {
-        const error = await response.json()
-        console.error(error.error)
-        setCurrentError(error.error)
+      if (!res.ok) {
+        const message = await res.text()
+        console.error(message)
+        setCurrentError({ code: `${res.status} ${res.statusText}`, message })
         throw new Error('Request failed')
       }
-      const data = response.body
+      const data = res.body
       if (!data)
         throw new Error('No data')
 
