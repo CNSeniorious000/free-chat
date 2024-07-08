@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-2024-05-13' | 'Qwen/Qwen2-57B-A14B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/deepseek-llm-67b-chat' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma-7b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
+  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-2024-05-13' | 'Qwen/Qwen2-57B-A14B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/deepseek-llm-67b-chat' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
@@ -20,10 +20,10 @@
     <h4>mixtral-8x7b</h4>
     <h5>🚀 来自法国的明星大模型 Mixtral</h5>
   </label>
-  <input type="radio" name="model" id="gemma" hidden on:click={() => setModel('gemma-7b-it')} checked={model === 'gemma-7b-it'} />
+  <input type="radio" name="model" id="gemma" hidden on:click={() => setModel('gemma2-9b-it')} checked={model === 'gemma2-9b-it'} />
   <label for="gemma">
-    <h4>gemma-7b-it</h4>
-    <h5>🚀 Google 的开源大模型 Gemma</h5>
+    <h4>gemma2-9b-it</h4>
+    <h5>🚀 Google 最新发布的 Gemma 2</h5>
   </label>
 
   <input type="radio" name="model" id="llama3-70b" hidden on:click={() => setModel('llama3-70b-8192')} checked={model === 'llama3-70b-8192'} />
