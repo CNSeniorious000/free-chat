@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-2024-05-13' | 'Qwen/Qwen2-57B-A14B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/deepseek-llm-67b-chat' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
+  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2-57B-A14B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/deepseek-llm-67b-chat' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
@@ -37,10 +37,10 @@
     <h4>gpt-3.5-turbo</h4>
     <h5>填写自己的 API Key 以使用</h5>
   </label>
-  <input type="radio" name="model" id="gpt4-omni" hidden on:click={() => setModel('gpt-4o-2024-05-13')} checked={model === 'gpt-4o-2024-05-13'} />
+  <input type="radio" name="model" id="gpt4-omni" hidden on:click={() => setModel('gpt-4o-mini-2024-07-18')} checked={model === 'gpt-4o-mini-2024-07-18'} />
   <label for="gpt4-omni">
-    <h4>gpt-4-omni</h4>
-    <h5>填写自己的 API Key 以使用</h5>
+    <h4>gpt-4-omni-mini</h4>
+    <h5>🔥 OpenAI 最新的全能模型</h5>
   </label>
   <input type="radio" name="model" id="moe" hidden on:click={() => setModel('nous-hermes-2-mixtral-8x7b-dpo')} checked={model === 'nous-hermes-2-mixtral-8x7b-dpo'} />
   <label for="moe">
