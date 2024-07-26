@@ -16,10 +16,10 @@ importers:
         version: 8.3.2(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))
       '@astrojs/solid-js':
         specifier: ^4.4.0
-        version: 4.4.0(solid-js@1.8.19)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+        version: 4.4.0(solid-js@1.8.19)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
       '@astrojs/svelte':
         specifier: ^5.7.0
-        version: 5.7.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(svelte@4.2.18)(typescript@5.4.5)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+        version: 5.7.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(svelte@4.2.18)(typescript@5.4.5)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
       '@astrojs/vercel':
         specifier: ^7.7.2
         version: 7.7.2(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))
@@ -80,13 +80,13 @@ importers:
         version: 1.0.9(eslint@8.57.0)(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.230
+        version: 2.2.231
       '@julr/unocss-preset-heropatterns':
         specifier: ^1.0.2
-        version: 1.0.2(unocss@0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3)))
+        version: 1.0.2(unocss@0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3)))
       '@types/markdown-it':
-        specifier: ^14.1.1
-        version: 14.1.1
+        specifier: ^14.1.2
+        version: 14.1.2
       '@types/reveal.js':
         specifier: ^5.0.3
         version: 5.0.3
@@ -107,7 +107,7 @@ importers:
         version: 0.61.5
       '@vite-pwa/astro':
         specifier: ^0.4.0
-        version: 0.4.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
+        version: 0.4.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
       eslint-plugin-astro:
         specifier: ^1.2.3
         version: 1.2.3(eslint@8.57.0)(typescript@5.4.5)
@@ -115,14 +115,14 @@ importers:
         specifier: ^2.43.0
         version: 2.43.0(eslint@8.57.0)(svelte@4.2.18)
       openai:
-        specifier: ^4.53.0
-        version: 4.53.0
+        specifier: ^4.53.1
+        version: 4.53.1
       punycode:
         specifier: ^2.3.1
         version: 2.3.1
       unocss:
         specifier: ^0.61.5
-        version: 0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+        version: 0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
 
 packages:
 
@@ -1134,8 +1134,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.230':
-    resolution: {integrity: sha512-SbwqcrYfHMnH7Na3S5RNNUdZvX0cLqgkONVMzI8BOfgVCQSY3tXHyHqeu2VkVoxJX9OcHMmfjeavpno7/y3Mfw==}
+  '@iconify/json@2.2.231':
+    resolution: {integrity: sha512-+KlOkI3CuwSuG8H3EIeC7f5LTsm73aggoh1GA9Uh4YCl65zvTgYyFwCxJXnR2vVeCoAlO2UtCtjHjNwOWchf4g==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1442,8 +1442,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@shikijs/core@1.11.1':
-    resolution: {integrity: sha512-Qsn8h15SWgv5TDRoDmiHNzdQO2BxDe86Yq6vIHf5T0cCvmfmccJKIzHtep8bQO9HMBZYCtCBzaXdd1MnxZBPSg==}
+  '@shikijs/core@1.11.2':
+    resolution: {integrity: sha512-9IBY31lvOo2uhrZjqRt2wTqfqfrXJnddnIx0PFL5E8a5RQUNOhkx+PD11PogZtyrIHlL4aTYDVlb+eyryzy+pQ==}
 
   '@solidjs-use/shared@2.3.0':
     resolution: {integrity: sha512-xuPNzZ9fwigkmYXTO+a8kaT45XQCPt6jVlyiDDYCD9NRZheRJOZWiUcVjYHzjececbWTctcY8NFdsXVyxARHKg==}
@@ -1505,8 +1505,8 @@ packages:
   '@types/linkify-it@5.0.0':
     resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
 
-  '@types/markdown-it@14.1.1':
-    resolution: {integrity: sha512-4NpsnpYl2Gt1ljyBGrKMxFYAYvpqbnnkgP/i/g+NLpjEUa3obn1XJCur9YbEXKDAkaXqsR1LbDnGEJ0MmKFxfg==}
+  '@types/markdown-it@14.1.2':
+    resolution: {integrity: sha512-promo4eFwuiW+TfGxhi+0x3czqTYJkG8qB17ZUJiVF10Xm7NLVRSLUsfRTU/6h1e24VvRnXCx+hG7li58lkzog==}
 
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
@@ -2366,8 +2366,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.0:
-    resolution: {integrity: sha512-Vb3xHHYnLseK8vlMJQKJYXJ++t4u1/qJ3vykuVrVjvdiOEhYyT1AuP4x03G8EnPmYvYOhe9T+dADTmthjRQMkA==}
+  electron-to-chromium@1.5.1:
+    resolution: {integrity: sha512-FKbOCOQ5QRB3VlIbl1LZQefWIYwszlBloaXcY2rbfpu9ioJnNh3TK03YtIDKDo3WKBi8u+YV4+Fn2CkEozgf4w==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -3816,8 +3816,8 @@ packages:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
 
-  openai@4.53.0:
-    resolution: {integrity: sha512-XoMaJsSLuedW5eoMEMmZbdNoXgML3ujcU5KfwRnC6rnbmZkHE2Q4J/SArwhqCxQRqJwHnQUj1LpiROmKPExZJA==}
+  openai@4.53.1:
+    resolution: {integrity: sha512-BFj9e0jfzqd2GAGRY9hj6PU7VrGyl3LPhUdji7QvZCVxlqusoLR5qBzH5wjrJZ4d1BBDic/t5yvTdk023fM7+w==}
     hasBin: true
 
   optionator@0.9.4:
@@ -4259,8 +4259,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@1.11.1:
-    resolution: {integrity: sha512-VHD3Q0EBXaaa245jqayBe5zQyMQUdXBFjmGr9MpDaDpAKRMYn7Ff00DM5MLk26UyKjnml3yQ0O2HNX7PtYVNFQ==}
+  shiki@1.11.2:
+    resolution: {integrity: sha512-WEHfKf+JWEKm/p8BoiE5F4m6VwV6LzY7nFfwRz0nAj+sVD1sRyWiODYScDu3Q8P/Dpi7xKe1TDJF3ZOQnhfT1g==}
 
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -4748,8 +4748,8 @@ packages:
       '@testing-library/jest-dom':
         optional: true
 
-  vite@5.3.4:
-    resolution: {integrity: sha512-Cw+7zL3ZG9/NZBB8C+8QbQZmR54GwqIz+WMI4b3JgdYJvX+ny9AjJXqkGQlDXSXRP9rP0B4tbciRMOVEKulVOA==}
+  vite@5.3.5:
+    resolution: {integrity: sha512-MdjglKR6AQXQb9JGiS7Rc2wC6uMjcm7Go/NHNO63EwiJXfuk9PgqiP/n5IDJCziMkfw9n4Ubp7lttNwz+8ZVKA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4792,10 +4792,6 @@ packages:
 
   web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
-
-  web-streams-polyfill@3.3.3:
-    resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
-    engines: {node: '>= 8'}
 
   web-streams-polyfill@4.0.0-beta.3:
     resolution: {integrity: sha512-QW95TCTaHmsYfHDybGMwO5IJIM93I/6vTRk+daHTWFPhwh+C8Cg7j7XyKrwrj8Ib6vYXe0ocYNrmzY4xAAN6ug==}
@@ -4988,7 +4984,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.0
       remark-smartypants: 3.0.2
-      shiki: 1.11.1
+      shiki: 1.11.2
       unified: 11.0.5
       unist-util-remove-position: 5.0.0
       unist-util-visit: 5.0.0
@@ -5021,18 +5017,18 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/solid-js@4.4.0(solid-js@1.8.19)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))':
+  '@astrojs/solid-js@4.4.0(solid-js@1.8.19)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))':
     dependencies:
       solid-js: 1.8.19
-      vite-plugin-solid: 2.10.2(solid-js@1.8.19)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      vite-plugin-solid: 2.10.2(solid-js@1.8.19)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - supports-color
       - vite
 
-  '@astrojs/svelte@5.7.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(svelte@4.2.18)(typescript@5.4.5)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))':
+  '@astrojs/svelte@5.7.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(svelte@4.2.18)(typescript@5.4.5)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@4.2.18)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
       astro: 4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5)
       svelte: 4.2.18
       svelte2tsx: 0.7.13(svelte@4.2.18)(typescript@5.4.5)
@@ -6106,7 +6102,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.230':
+  '@iconify/json@2.2.231':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -6222,10 +6218,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@julr/unocss-preset-heropatterns@1.0.2(unocss@0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3)))':
+  '@julr/unocss-preset-heropatterns@1.0.2(unocss@0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3)))':
     dependencies:
       '@unocss/preset-mini': 0.52.7
-      unocss: 0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      unocss: 0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
 
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
@@ -6368,7 +6364,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.19.0':
     optional: true
 
-  '@shikijs/core@1.11.1':
+  '@shikijs/core@1.11.2':
     dependencies:
       '@types/hast': 3.0.4
 
@@ -6385,26 +6381,26 @@ snapshots:
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.11
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3)))(svelte@4.2.18)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))':
+  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3)))(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@4.2.18)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      '@sveltejs/vite-plugin-svelte': 3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
       debug: 4.3.5
       svelte: 4.2.18
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))':
+  '@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3)))(svelte@4.2.18)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3)))(svelte@4.2.18)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
       debug: 4.3.5
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.10
       svelte: 4.2.18
       svelte-hmr: 0.16.0(svelte@4.2.18)
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
-      vitefu: 0.2.5(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
+      vitefu: 0.2.5(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
     transitivePeerDependencies:
       - supports-color
 
@@ -6449,7 +6445,7 @@ snapshots:
 
   '@types/linkify-it@5.0.0': {}
 
-  '@types/markdown-it@14.1.1':
+  '@types/markdown-it@14.1.2':
     dependencies:
       '@types/linkify-it': 5.0.0
       '@types/mdurl': 2.0.0
@@ -6638,13 +6634,13 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@unocss/astro@0.61.5(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))':
+  '@unocss/astro@0.61.5(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))':
     dependencies:
       '@unocss/core': 0.61.5
       '@unocss/reset': 0.61.5
-      '@unocss/vite': 0.61.5(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      '@unocss/vite': 0.61.5(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
     optionalDependencies:
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
     transitivePeerDependencies:
       - rollup
 
@@ -6808,7 +6804,7 @@ snapshots:
     dependencies:
       '@unocss/core': 0.61.5
 
-  '@unocss/vite@0.61.5(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))':
+  '@unocss/vite@0.61.5(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@rollup/pluginutils': 5.1.0(rollup@2.79.1)
@@ -6820,7 +6816,7 @@ snapshots:
       chokidar: 3.6.0
       fast-glob: 3.3.2
       magic-string: 0.30.10
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
     transitivePeerDependencies:
       - rollup
 
@@ -6848,10 +6844,10 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vite-pwa/astro@0.4.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
+  '@vite-pwa/astro@0.4.0(astro@4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
     dependencies:
       astro: 4.12.2(@types/node@20.14.12)(terser@5.31.3)(typescript@5.4.5)
-      vite-plugin-pwa: 0.19.8(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0)
+      vite-plugin-pwa: 0.19.8(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0)
 
   abbrev@1.1.1: {}
 
@@ -7079,14 +7075,14 @@ snapshots:
       prompts: 2.4.2
       rehype: 13.0.1
       semver: 7.6.3
-      shiki: 1.11.1
+      shiki: 1.11.2
       string-width: 7.2.0
       strip-ansi: 7.1.0
       tsconfck: 3.1.1(typescript@5.4.5)
       unist-util-visit: 5.0.0
       vfile: 6.0.2
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
-      vitefu: 0.2.5(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
+      vitefu: 0.2.5(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
       which-pm: 3.0.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -7208,7 +7204,7 @@ snapshots:
   browserslist@4.23.2:
     dependencies:
       caniuse-lite: 1.0.30001643
-      electron-to-chromium: 1.5.0
+      electron-to-chromium: 1.5.1
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
@@ -7525,7 +7521,7 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
-  electron-to-chromium@1.5.0: {}
+  electron-to-chromium@1.5.1: {}
 
   emoji-regex@10.3.0: {}
 
@@ -9392,7 +9388,7 @@ snapshots:
     dependencies:
       mimic-fn: 4.0.0
 
-  openai@4.53.0:
+  openai@4.53.1:
     dependencies:
       '@types/node': 18.19.42
       '@types/node-fetch': 2.6.11
@@ -9401,7 +9397,6 @@ snapshots:
       form-data-encoder: 1.7.2
       formdata-node: 4.4.1
       node-fetch: 2.7.0
-      web-streams-polyfill: 3.3.3
     transitivePeerDependencies:
       - encoding
 
@@ -9952,9 +9947,9 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@1.11.1:
+  shiki@1.11.2:
     dependencies:
-      '@shikijs/core': 1.11.1
+      '@shikijs/core': 1.11.2
       '@types/hast': 3.0.4
 
   side-channel@1.0.6:
@@ -10423,9 +10418,9 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss@0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3)):
+  unocss@0.61.5(postcss@8.4.40)(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3)):
     dependencies:
-      '@unocss/astro': 0.61.5(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      '@unocss/astro': 0.61.5(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
       '@unocss/cli': 0.61.5(rollup@2.79.1)
       '@unocss/core': 0.61.5
       '@unocss/extractor-arbitrary-variants': 0.61.5
@@ -10444,9 +10439,9 @@ snapshots:
       '@unocss/transformer-compile-class': 0.61.5
       '@unocss/transformer-directives': 0.61.5
       '@unocss/transformer-variant-group': 0.61.5
-      '@unocss/vite': 0.61.5(rollup@2.79.1)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      '@unocss/vite': 0.61.5(rollup@2.79.1)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
     optionalDependencies:
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
     transitivePeerDependencies:
       - postcss
       - rollup
@@ -10491,18 +10486,18 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite-plugin-pwa@0.19.8(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0):
+  vite-plugin-pwa@0.19.8(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0):
     dependencies:
       debug: 4.3.5
       fast-glob: 3.3.2
       pretty-bytes: 6.1.1
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
       workbox-build: 7.0.0(@types/babel__core@7.20.5)
       workbox-window: 7.0.0
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-solid@2.10.2(solid-js@1.8.19)(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3)):
+  vite-plugin-solid@2.10.2(solid-js@1.8.19)(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3)):
     dependencies:
       '@babel/core': 7.24.9
       '@types/babel__core': 7.20.5
@@ -10510,12 +10505,12 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.8.19
       solid-refresh: 0.6.3(solid-js@1.8.19)
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
-      vitefu: 0.2.5(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3))
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
+      vitefu: 0.2.5(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3))
     transitivePeerDependencies:
       - supports-color
 
-  vite@5.3.4(@types/node@20.14.12)(terser@5.31.3):
+  vite@5.3.5(@types/node@20.14.12)(terser@5.31.3):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.40
@@ -10525,9 +10520,9 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.31.3
 
-  vitefu@0.2.5(vite@5.3.4(@types/node@20.14.12)(terser@5.31.3)):
+  vitefu@0.2.5(vite@5.3.5(@types/node@20.14.12)(terser@5.31.3)):
     optionalDependencies:
-      vite: 5.3.4(@types/node@20.14.12)(terser@5.31.3)
+      vite: 5.3.5(@types/node@20.14.12)(terser@5.31.3)
 
   vue-eslint-parser@8.3.0(eslint@8.57.0):
     dependencies:
@@ -10543,8 +10538,6 @@ snapshots:
       - supports-color
 
   web-namespaces@2.0.1: {}
-
-  web-streams-polyfill@3.3.3: {}
 
   web-streams-polyfill@4.0.0-beta.3: {}
 
