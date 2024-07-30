@@ -18,6 +18,8 @@ You should respond in valid JSON format, with a single string field \`title\`.
 The title should be in Chinese if you think the user is Chinese.
 `.trim()
 
+const model = import.meta.env.TITLE_GEN_MODEL ?? import.meta.env.OPENAI_API_MODEL ?? 'gpt-4o-mini'
+
 export const POST: APIRoute = async(context) => {
   const content = await context.request.text()
 
@@ -27,7 +29,7 @@ export const POST: APIRoute = async(context) => {
         { role: 'system', content: systemPrompt },
         { role: 'user', content: `"""\n${content}\n"""` },
       ],
-      model: 'gpt-3.5-turbo-0125',
+      model,
       temperature: 0,
       response_format: { type: 'json_object' },
       stream: true,
