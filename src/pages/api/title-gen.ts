@@ -31,7 +31,7 @@ export const POST: APIRoute = async(context) => {
       ],
       model,
       temperature: 0,
-      response_format: { type: 'json_object' },
+      response_format: model.startsWith('gpt') ? { type: 'json_object' } : undefined,
       stream: true,
     })
 
