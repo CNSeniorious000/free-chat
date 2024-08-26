@@ -5,7 +5,7 @@
   type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2-57B-A14B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/deepseek-llm-67b-chat' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
   let model: Model
 
-  onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-3.5-turbo-0125')) as Model))
+  onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-4o-mini')) as Model))
   $: typeof localStorage !== 'undefined' && model && localStorage.setItem('model', model)
 
   function setModel(newModel: Model) {
