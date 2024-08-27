@@ -527,6 +527,7 @@ export default () => {
               onInput={() => setInputValue(inputRef.value)}
               rows="1"
               class="gen-textarea"
+              data-lenis-prevent
             />
             <button
               title={inputValue() ? 'Send' : 'Record'}
