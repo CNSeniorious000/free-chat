@@ -23,7 +23,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 <script>
 import Lenis from 'lenis'
 
-const lenis = new Lenis({ duration: 0.4 })
+const lenis = new Lenis({ lerp: 0.3 })
 
 function raf(time: number) {
   lenis.raf(time)
