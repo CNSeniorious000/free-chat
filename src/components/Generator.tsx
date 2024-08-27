@@ -488,6 +488,7 @@ export default () => {
         messageList={messageList}
         textAreaValue={inputValue}
         currentAssistantMessage={currentAssistantMessage}
+        hide={suggestionFeatureOn() && !streaming() && !!suggestions().length}
       />
 
       <Show when={suggestionFeatureOn() && !streaming() && suggestions().length}>
