@@ -80,7 +80,7 @@ importers:
         version: 1.0.9(eslint@8.57.0)(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.243
+        version: 2.2.244
       '@julr/unocss-preset-heropatterns':
         specifier: ^1.0.2
         version: 1.0.2(unocss@0.62.3(postcss@8.4.44)(rollup@2.79.1)(vite@5.4.3(@types/node@22.5.2)(terser@5.31.6)))
@@ -106,8 +106,8 @@ importers:
         specifier: ^0.62.3
         version: 0.62.3
       '@vite-pwa/astro':
-        specifier: ^0.4.1
-        version: 0.4.1(astro@4.15.2(@types/node@22.5.2)(rollup@2.79.1)(terser@5.31.6)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.3(@types/node@22.5.2)(terser@5.31.6))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
+        specifier: ^0.4.2
+        version: 0.4.2(astro@4.15.2(@types/node@22.5.2)(rollup@2.79.1)(terser@5.31.6)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.3(@types/node@22.5.2)(terser@5.31.6))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
       eslint-plugin-astro:
         specifier: ^1.2.3
         version: 1.2.3(eslint@8.57.0)(typescript@5.4.5)
@@ -1274,8 +1274,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.243':
-    resolution: {integrity: sha512-92pXEKdjDmH8sV3fZwJTxifKpJtp3ie8KD7oCqHRJh/Z+CoGm3bzDcK5UnWs5G5EDbu00kYVcSGM4jRnY9HgGQ==}
+  '@iconify/json@2.2.244':
+    resolution: {integrity: sha512-l5wLZMzsyOo1M7aptt5m6Oyh3FMyQvmsEXmca+iojhEt/9V9DkH4rLWsinCqMC+QU401YlwXJx4mesK4QDncNQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1944,12 +1944,12 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  '@vite-pwa/astro@0.4.1':
-    resolution: {integrity: sha512-E7JAo3XPap8sj3jlYz+mUBt8I+cfvzogjVX3qnwZakQEgLT9cj3DvcicQu6CRE5NhP8YjNHClsvD8sQ9yxPpkA==}
+  '@vite-pwa/astro@0.4.2':
+    resolution: {integrity: sha512-K+e31TMBd3FdPm33OZjVLb09ML6DsQWtPfv+sWLctrQyRWIdkC12kNWgoKllo2j0wxd80yYVWcUAcDkeKEdiCg==}
     peerDependencies:
-      '@vite-pwa/assets-generator': ^0.2.4
+      '@vite-pwa/assets-generator': ^0.2.6
       astro: ^1.6.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
-      vite-plugin-pwa: '>=0.20.3 <1'
+      vite-plugin-pwa: '>=0.20.4 <1'
     peerDependenciesMeta:
       '@vite-pwa/assets-generator':
         optional: true
@@ -6359,7 +6359,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.243':
+  '@iconify/json@2.2.244':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -7144,7 +7144,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vite-pwa/astro@0.4.1(astro@4.15.2(@types/node@22.5.2)(rollup@2.79.1)(terser@5.31.6)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.3(@types/node@22.5.2)(terser@5.31.6))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
+  '@vite-pwa/astro@0.4.2(astro@4.15.2(@types/node@22.5.2)(rollup@2.79.1)(terser@5.31.6)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.3(@types/node@22.5.2)(terser@5.31.6))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
     dependencies:
       astro: 4.15.2(@types/node@22.5.2)(rollup@2.79.1)(terser@5.31.6)(typescript@5.4.5)
       vite-plugin-pwa: 0.19.8(vite@5.4.3(@types/node@22.5.2)(terser@5.31.6))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0)
