@@ -25,6 +25,9 @@ export default defineConfig({
     AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
+      workbox: {
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+      },
       manifest: {
         id: '/',
         name: 'Endless Chat',
