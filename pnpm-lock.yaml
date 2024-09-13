@@ -115,8 +115,8 @@ importers:
         specifier: ^2.43.0
         version: 2.43.0(eslint@8.57.0)(svelte@4.2.19)
       openai:
-        specifier: ^4.60.0
-        version: 4.60.0(zod@3.23.8)
+        specifier: ^4.60.1
+        version: 4.60.1(zod@3.23.8)
       punycode:
         specifier: ^2.3.1
         version: 2.3.1
@@ -3818,8 +3818,8 @@ packages:
   oniguruma-to-js@0.4.0:
     resolution: {integrity: sha512-GwNFPQygkpDjO9MOr54Rqi01dGS+h9VAS//Qxz9lTN5B09CxqiIc7rydvdV+Ex2Z8Vk+zqfHH7hU6ePn8uf+Mg==}
 
-  openai@4.60.0:
-    resolution: {integrity: sha512-U/wNmrUPdfsvU1GrKRP5mY5YHR3ev6vtdfNID6Sauz+oquWD8r+cXPL1xiUlYniosPKajy33muVHhGS/9/t6KA==}
+  openai@4.60.1:
+    resolution: {integrity: sha512-j7aZOpgN0MtflPgNaBlSnOyok4jwto0GVOxVC5g0jCfa0lvywYx+LhlFim/dXzPtyi8MjKozyLshSj93617vNQ==}
     hasBin: true
     peerDependencies:
       zod: ^3.23.8
@@ -6540,7 +6540,7 @@ snapshots:
 
   '@types/node-fetch@2.6.11':
     dependencies:
-      '@types/node': 18.19.50
+      '@types/node': 22.5.4
       form-data: 4.0.0
 
   '@types/node@18.19.50':
@@ -9462,7 +9462,7 @@ snapshots:
     dependencies:
       regex: 4.3.2
 
-  openai@4.60.0(zod@3.23.8):
+  openai@4.60.1(zod@3.23.8):
     dependencies:
       '@types/node': 18.19.50
       '@types/node-fetch': 2.6.11
