@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/netlify':
-        specifier: ^5.5.2
-        version: 5.5.2(@types/node@22.5.5)(astro@4.15.6(@types/node@22.5.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.4.5))(terser@5.32.0)
+        specifier: ^5.5.3
+        version: 5.5.3(@types/node@22.5.5)(astro@4.15.6(@types/node@22.5.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.4.5))(terser@5.32.0)
       '@astrojs/node':
         specifier: ^8.3.3
         version: 8.3.3(astro@4.15.6(@types/node@22.5.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.4.5))
@@ -151,8 +151,8 @@ packages:
   '@astrojs/markdown-remark@5.2.0':
     resolution: {integrity: sha512-vWGM24KZXz11jR3JO+oqYU3T2qpuOi4uGivJ9SQLCAI01+vEkHC60YJMRvHPc+hwd60F7euNs1PeOEixIIiNQw==}
 
-  '@astrojs/netlify@5.5.2':
-    resolution: {integrity: sha512-J8a5Uz04156i8WN38iLQSLKAUKNJH+cGNbizRLoVdqRcfHY5cTwnZzXSSjjrvNNmErk0wsHlmJEA3SYXqCqXEw==}
+  '@astrojs/netlify@5.5.3':
+    resolution: {integrity: sha512-MDbbJY/Qp02WY9TFusXGA9TFSfaRwc/nlyYhk0YZ2ll2KW2DKrXLCJLC17kdhGqKDyg6w4P6juOOgbcGEpfaUw==}
     peerDependencies:
       astro: ^4.2.0
 
@@ -5009,7 +5009,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@5.5.2(@types/node@22.5.5)(astro@4.15.6(@types/node@22.5.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.4.5))(terser@5.32.0)':
+  '@astrojs/netlify@5.5.3(@types/node@22.5.5)(astro@4.15.6(@types/node@22.5.5)(rollup@2.79.1)(terser@5.32.0)(typescript@5.4.5))(terser@5.32.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
