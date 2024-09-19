@@ -10,22 +10,22 @@ importers:
     dependencies:
       '@astrojs/netlify':
         specifier: ^5.5.3
-        version: 5.5.3(@types/node@22.5.5)(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(terser@5.33.0)
+        version: 5.5.3(@types/node@22.5.5)(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(terser@5.33.0)
       '@astrojs/node':
         specifier: ^8.3.3
-        version: 8.3.3(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))
+        version: 8.3.3(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))
       '@astrojs/solid-js':
         specifier: ^4.4.2
         version: 4.4.2(solid-js@1.8.22)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))
       '@astrojs/svelte':
         specifier: ^5.7.1
-        version: 5.7.1(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))
+        version: 5.7.1(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))
       '@astrojs/vercel':
         specifier: ^7.8.1
-        version: 7.8.1(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))
+        version: 7.8.1(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))
       astro:
-        specifier: ^4.15.7
-        version: 4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
+        specifier: ^4.15.8
+        version: 4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -107,7 +107,7 @@ importers:
         version: 0.62.4
       '@vite-pwa/astro':
         specifier: ^0.4.3
-        version: 0.4.3(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
+        version: 0.4.3(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
       eslint-plugin-astro:
         specifier: ^1.2.4
         version: 1.2.4(eslint@8.57.1)(typescript@5.4.5)
@@ -1904,8 +1904,8 @@ packages:
     resolution: {integrity: sha512-AGsGgcg7Jg9UpyCDgvl/EkdYpe1oMkFdmC2Zl+KWneoieLCtQIFjmcY8yt41gcNx4mby0w8BBJQcBmPuf8UAoQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro@4.15.7:
-    resolution: {integrity: sha512-RGZjGpLcR3jcnXA1+g56i73O77krmqs7VjpoBOfk9UVP8Js5T2YSeUBAyComOUb6vj31wEw1vgRgOEN0MzYc8w==}
+  astro@4.15.8:
+    resolution: {integrity: sha512-pdXjtRF6O1xChiPAUF32R7oVRTW7AK1/Oy/JqPNhLfbelO0l6C7cLdSEuSLektwOEnMhOVXqccetjBs7HPaoxA==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -3880,9 +3880,6 @@ packages:
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
-  path-to-regexp@6.2.2:
-    resolution: {integrity: sha512-GQX3SSMokngb36+whdpRXE+3f9V8UzyAorlYvOGx87ufGHehNTn5lCxrKtLyZ4Yl/wEKnNnr98ZzOwwDZV5ogw==}
-
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
@@ -5005,13 +5002,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@5.5.3(@types/node@22.5.5)(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(terser@5.33.0)':
+  '@astrojs/netlify@5.5.3(@types/node@22.5.5)(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(terser@5.33.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
       '@netlify/functions': 2.8.1
       '@vercel/nft': 0.27.4
-      astro: 4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
+      astro: 4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
       esbuild: 0.21.5
       vite: 5.4.6(@types/node@22.5.5)(terser@5.33.0)
     transitivePeerDependencies:
@@ -5026,9 +5023,9 @@ snapshots:
       - supports-color
       - terser
 
-  '@astrojs/node@8.3.3(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))':
+  '@astrojs/node@8.3.3(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))':
     dependencies:
-      astro: 4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
+      astro: 4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
       send: 0.18.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -5047,10 +5044,10 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/svelte@5.7.1(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))':
+  '@astrojs/svelte@5.7.1(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))
-      astro: 4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
+      astro: 4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
       svelte: 4.2.19
       svelte2tsx: 0.7.19(svelte@4.2.19)(typescript@5.4.5)
       typescript: 5.4.5
@@ -5072,13 +5069,13 @@ snapshots:
 
   '@astrojs/underscore-redirects@0.3.4': {}
 
-  '@astrojs/vercel@7.8.1(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))':
+  '@astrojs/vercel@7.8.1(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@vercel/analytics': 1.3.1
       '@vercel/edge': 1.1.2
       '@vercel/nft': 0.27.4
-      astro: 4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
+      astro: 4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
       esbuild: 0.21.5
       fast-glob: 3.3.2
       web-vitals: 3.5.2
@@ -6853,9 +6850,9 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vite-pwa/astro@0.4.3(astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
+  '@vite-pwa/astro@0.4.3(astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
     dependencies:
-      astro: 4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
+      astro: 4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5)
       vite-plugin-pwa: 0.19.8(vite@5.4.6(@types/node@22.5.5)(terser@5.33.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0)
 
   abbrev@1.1.1: {}
@@ -7030,7 +7027,7 @@ snapshots:
       - supports-color
       - typescript
 
-  astro@4.15.7(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5):
+  astro@4.15.8(@types/node@22.5.5)(rollup@2.79.1)(terser@5.33.0)(typescript@5.4.5):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -7078,7 +7075,6 @@ snapshots:
       ora: 8.1.0
       p-limit: 6.1.0
       p-queue: 8.0.1
-      path-to-regexp: 6.2.2
       preferred-pm: 4.0.0
       prompts: 2.4.2
       rehype: 13.0.1
@@ -9501,8 +9497,6 @@ snapshots:
   path-key@3.1.1: {}
 
   path-parse@1.0.7: {}
-
-  path-to-regexp@6.2.2: {}
 
   path-type@4.0.0: {}
 
