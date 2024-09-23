@@ -19,16 +19,6 @@ deck.initialize({ history: true, mouseWheel: true })
   </div>
 </Layout>
 
-<script>
-const colorSchema = window.matchMedia('(prefers-color-scheme: dark)')
-let darkMode = localStorage.getItem('theme') === 'dark' || colorSchema.matches
-document.documentElement.classList.toggle('dark', darkMode)
-colorSchema.addEventListener('change', () => {
-  document.documentElement.classList.toggle('dark', (darkMode = colorSchema.matches))
-  localStorage.setItem('theme', darkMode ? 'dark' : 'light')
-})
-</script>
-
 <style is:global>
   .present :where(p, li) {
     --uno: animate-fade-in animate-ease-out animate-both;

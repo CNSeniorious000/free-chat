@@ -12,7 +12,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 
 <Layout title="Endless Chat">
   <main class="min-h-screen flex flex-col justify-between bg-transparent transition-max-width !min-h-100dvh 2xl:max-w-105ch xl:max-w-95ch md:(bg-$c-bg shadow-2xl shadow-black/10 dark:shadow-black/15)">
-    <Header client:load />
+    <Header client:load dark={Astro.cookies.get('dark')?.boolean()} />
     <Generator client:load />
     <Footer origin={Astro.request.headers.get('host') || ''} />
     <BackTop />

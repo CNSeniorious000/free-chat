@@ -10,7 +10,7 @@ const origin = Astro.request.headers.get('host')
 ---
 
 <!DOCTYPE html>
-<html class="transition-background-color duration-200 ease-out">
+<html class="transition-background-color duration-200 ease-out" class:list={Astro.cookies.get('dark')?.boolean() ? ['dark'] : []}>
   <head>
     <meta charset="UTF-8" />
     <meta name="X-Frame-Options" content="sameorigin">
@@ -55,13 +55,12 @@ const origin = Astro.request.headers.get('host')
   }
 </style>
 
-<script>
-const initTheme = () => {
-  const darkSchema = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-  const storageTheme = localStorage.getItem('theme')
-  if (storageTheme) document.documentElement.classList.toggle('dark', storageTheme === 'dark')
-  else document.documentElement.classList.toggle('dark', darkSchema)
+{ Astro.cookies.get('dark') === undefined
+  && <script is:inline>
+    if (localStorage.getItem('theme') !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark')
+      for (const element of document.querySelectorAll('circle[r]'))
+        element.setAttribute('r', 9)
+    }
+  </script>
 }
-
-initTheme()
-</script>
