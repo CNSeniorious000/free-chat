@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2-57B-A14B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/deepseek-llm-67b-chat' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
+  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2.5-32B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/DeepSeek-V2.5' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-4o-mini')) as Model))
@@ -47,9 +47,9 @@
     <h4>nous-hermes-2</h4>
     <h5>基于 Mixtral 的 MOE 模型</h5>
   </label>
-  <input type="radio" name="model" id="qwen" hidden on:click={() => setModel('Qwen/Qwen2-57B-A14B-Instruct')} checked={model === 'Qwen/Qwen2-57B-A14B-Instruct'} />
+  <input type="radio" name="model" id="qwen" hidden on:click={() => setModel('Qwen/Qwen2.5-32B-Instruct')} checked={model === 'Qwen/Qwen2.5-32B-Instruct'} />
   <label for="qwen">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">Qwen2-57B-A14B-Instruct</h4>
+    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">Qwen2.5-32B-Instruct</h4>
     <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 通义千问</h5>
   </label>
   <input type="radio" name="model" id="Yi" hidden on:click={() => setModel('01-ai/Yi-1.5-34B-Chat-16K')} checked={model === '01-ai/Yi-1.5-34B-Chat-16K'} />
@@ -62,9 +62,9 @@
     <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">glm-4-9b-chat</h4>
     <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 智谱 AI</h5>
   </label>
-  <input type="radio" name="model" id="deepseek" hidden on:click={() => setModel('deepseek-ai/deepseek-llm-67b-chat')} checked={model === 'deepseek-ai/deepseek-llm-67b-chat'} />
+  <input type="radio" name="model" id="deepseek" hidden on:click={() => setModel('deepseek-ai/DeepSeek-V2.5')} checked={model === 'deepseek-ai/DeepSeek-V2.5'} />
   <label for="deepseek">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">deepseek-67b-chat</h4>
+    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">DeepSeek-V2.5</h4>
     <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 深度求索</h5>
   </label>
 </div>
