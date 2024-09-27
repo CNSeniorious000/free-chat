@@ -67,8 +67,8 @@
   </div>
   <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size sm:text-3">
     已支持
-    <div class="i-simple-icons-openai mx-0.1em" />
-    最新的 GPT-4o mini
+    <div class="i-logos-meta-icon text-0.8em" />
+    最新的 llama 3.2
   </div>
   {#if import.meta.env.PUBLIC_IFRAME_URL}
     <div class="h-22 overflow-hidden transition-all sm:h-27">

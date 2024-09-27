@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { trackEvent } from '@/utils/track'
 
-  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2.5-32B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/DeepSeek-V2.5' | 'THUDM/glm-4-9b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama3-8b-8192' | 'llama3-70b-8192';
+  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2.5-32B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/DeepSeek-V2.5' | 'THUDM/glm-4-9b-chat' | 'internlm/internlm2_5-20b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama-3.2-90b-text-preview' | 'llama3.1-70b';
   let model: Model
 
   onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-4o-mini')) as Model))
@@ -15,6 +15,16 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 rounded-md bg-$c-fg-2 p-1.5 text-sm">
+  <input type="radio" name="model" id="llama3.2-90b" hidden on:click={() => setModel('llama-3.2-90b-text-preview')} checked={model === 'llama-3.2-90b-text-preview'} />
+  <label for="llama3.2-90b">
+    <h4>llama3.2-90b</h4>
+    <h5>🚀 Meta 最新发布的 Llama3.2</h5>
+  </label>
+  <input type="radio" name="model" id="llama3.1-70b" hidden on:click={() => setModel('llama3.1-70b')} checked={model === 'llama3.1-70b'} />
+  <label for="llama3.1-70b">
+    <h4>llama3.1-70b</h4>
+    <h5>🚀 Cerebras 提供的超快 Llama3.1</h5>
+  </label>
   <input type="radio" name="model" id="mixtral" hidden on:click={() => setModel('mixtral-8x7b-32768')} checked={model === 'mixtral-8x7b-32768'} />
   <label for="mixtral">
     <h4>mixtral-8x7b</h4>
@@ -25,13 +35,6 @@
     <h4>gemma2-9b-it</h4>
     <h5>🚀 Google 最新发布的 Gemma 2</h5>
   </label>
-
-  <input type="radio" name="model" id="llama3-70b" hidden on:click={() => setModel('llama3-70b-8192')} checked={model === 'llama3-70b-8192'} />
-  <label for="llama3-70b">
-    <h4>llama3-70b-8192</h4>
-    <h5>🚀 Meta 最新发布的 Llama3</h5>
-  </label>
-
   <input type="radio" name="model" id="0125" hidden on:click={() => setModel('gpt-3.5-turbo-0125')} checked={model === 'gpt-3.5-turbo-0125'} />
   <label for="0125">
     <h4>gpt-3.5-turbo</h4>
@@ -46,6 +49,11 @@
   <label for="moe">
     <h4>nous-hermes-2</h4>
     <h5>基于 Mixtral 的 MOE 模型</h5>
+  </label>
+  <input type="radio" name="model" id="internlm" hidden on:click={() => setModel('internlm/internlm2_5-20b-chat')} checked={model === 'internlm/internlm2_5-20b-chat'} />
+  <label for="internlm">
+    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">InternLM2.5-20b</h4>
+    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 书生·浦语</h5>
   </label>
   <input type="radio" name="model" id="qwen" hidden on:click={() => setModel('Qwen/Qwen2.5-32B-Instruct')} checked={model === 'Qwen/Qwen2.5-32B-Instruct'} />
   <label for="qwen">
