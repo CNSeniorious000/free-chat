@@ -1,96 +1,18 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { trackEvent } from '@/utils/track'
-
-  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2.5-32B-Instruct' | '01-ai/Yi-1.5-34B-Chat-16K' | 'deepseek-ai/DeepSeek-V2.5' | 'THUDM/glm-4-9b-chat' | 'internlm/internlm2_5-20b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama-3.2-90b-text-preview' | 'llama3.1-70b';
-  let model: Model
-
-  onMount(() => (model = (localStorage.getItem('model') || (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-4o-mini')) as Model))
-  $: typeof localStorage !== 'undefined' && model && localStorage.setItem('model', model)
-
-  function setModel(newModel: Model) {
-    model = newModel
-    trackEvent('model', { model })
-  }
+  import ModelItem from './ModelItem.svelte'
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 rounded-md bg-$c-fg-2 p-1.5 text-sm">
-  <input type="radio" name="model" id="llama3.2-90b" hidden on:click={() => setModel('llama-3.2-90b-text-preview')} checked={model === 'llama-3.2-90b-text-preview'} />
-  <label for="llama3.2-90b">
-    <h4>llama3.2-90b</h4>
-    <h5>🚀 Meta 最新发布的 Llama3.2</h5>
-  </label>
-  <input type="radio" name="model" id="llama3.1-70b" hidden on:click={() => setModel('llama3.1-70b')} checked={model === 'llama3.1-70b'} />
-  <label for="llama3.1-70b">
-    <h4>llama3.1-70b</h4>
-    <h5>🚀 Cerebras 提供的超快 Llama3.1</h5>
-  </label>
-  <input type="radio" name="model" id="mixtral" hidden on:click={() => setModel('mixtral-8x7b-32768')} checked={model === 'mixtral-8x7b-32768'} />
-  <label for="mixtral">
-    <h4>mixtral-8x7b</h4>
-    <h5>🚀 来自法国的明星大模型 Mixtral</h5>
-  </label>
-  <input type="radio" name="model" id="gemma" hidden on:click={() => setModel('gemma2-9b-it')} checked={model === 'gemma2-9b-it'} />
-  <label for="gemma">
-    <h4>gemma2-9b-it</h4>
-    <h5>🚀 Google 最新发布的 Gemma 2</h5>
-  </label>
-  <input type="radio" name="model" id="0125" hidden on:click={() => setModel('gpt-3.5-turbo-0125')} checked={model === 'gpt-3.5-turbo-0125'} />
-  <label for="0125">
-    <h4>gpt-3.5-turbo</h4>
-    <h5>填写自己的 API Key 以使用</h5>
-  </label>
-  <input type="radio" name="model" id="gpt4-omni" hidden on:click={() => setModel('gpt-4o-mini-2024-07-18')} checked={model === 'gpt-4o-mini-2024-07-18'} />
-  <label for="gpt4-omni">
-    <h4>gpt-4-omni-mini</h4>
-    <h5>🔥 OpenAI 最新的全能模型</h5>
-  </label>
-  <input type="radio" name="model" id="moe" hidden on:click={() => setModel('nous-hermes-2-mixtral-8x7b-dpo')} checked={model === 'nous-hermes-2-mixtral-8x7b-dpo'} />
-  <label for="moe">
-    <h4>nous-hermes-2</h4>
-    <h5>基于 Mixtral 的 MOE 模型</h5>
-  </label>
-  <input type="radio" name="model" id="internlm" hidden on:click={() => setModel('internlm/internlm2_5-20b-chat')} checked={model === 'internlm/internlm2_5-20b-chat'} />
-  <label for="internlm">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">InternLM2.5-20b</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 书生·浦语</h5>
-  </label>
-  <input type="radio" name="model" id="qwen" hidden on:click={() => setModel('Qwen/Qwen2.5-32B-Instruct')} checked={model === 'Qwen/Qwen2.5-32B-Instruct'} />
-  <label for="qwen">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">Qwen2.5-32B-Instruct</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 通义千问</h5>
-  </label>
-  <input type="radio" name="model" id="Yi" hidden on:click={() => setModel('01-ai/Yi-1.5-34B-Chat-16K')} checked={model === '01-ai/Yi-1.5-34B-Chat-16K'} />
-  <label for="Yi">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">Yi-1.5-34B-Chat</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 零一万物</h5>
-  </label>
-  <input type="radio" name="model" id="glm-4" hidden on:click={() => setModel('THUDM/glm-4-9b-chat')} checked={model === 'THUDM/glm-4-9b-chat'} />
-  <label for="glm-4">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">glm-4-9b-chat</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 智谱 AI</h5>
-  </label>
-  <input type="radio" name="model" id="deepseek" hidden on:click={() => setModel('deepseek-ai/DeepSeek-V2.5')} checked={model === 'deepseek-ai/DeepSeek-V2.5'} />
-  <label for="deepseek">
-    <h4 class="rounded-sm text-xs tracking-widest font-mono uppercase">DeepSeek-V2.5</h4>
-    <h5 class="text-3.1 line-height-1.4em -translate-y-0.5">✨ 深度求索</h5>
-  </label>
+  <ModelItem id="llama-3.2-90b-text-preview" name="llama3.2-90b" title="🚀 Meta 最新发布的 Llama3.2" />
+  <ModelItem id="llama3.1-70b" name="llama3.1-70b" title="🚀 Cerebras 提供的超快 Llama3.1" />
+  <ModelItem id="mixtral-8x7b-32768" name="mixtral-8x7b" title="🚀 来自法国的明星大模型 Mixtral" />
+  <ModelItem id="gemma2-9b-it" name="gemma2-9b-it" title="🚀 Google 最新发布的 Gemma 2" />
+  <ModelItem id="gpt-3.5-turbo-0125" name="gpt-3.5-turbo" title="填写自己的 API Key 以使用" />
+  <ModelItem id="gpt-4o-mini-2024-07-18" name="gpt-4o-mini" title="🔥 OpenAI 最新的全能模型" />
+  <ModelItem id="nous-hermes-2-mixtral-8x7b-dpo" name="nous-hermes-2" title="基于 Mixtral 的 MOE 模型" />
+  <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" />
+  <ModelItem id="Qwen/Qwen2.5-32B-Instruct" name="Qwen2.5-32B-Instruct" title="✨ 通义千问" />
+  <ModelItem id="01-ai/Yi-1.5-34B-Chat-16K" name="Yi-1.5-34B-Chat" title="✨ 零一万物" />
+  <ModelItem id="THUDM/glm-4-9b-chat" name="glm-4-9b-chat" title="✨ 智谱 AI" />
+  <ModelItem id="deepseek-ai/DeepSeek-V2.5" name="DeepSeek-V2.5" title="✨ 深度求索" />
 </div>
-
-<style>
-  h4 {
-    --uno: rounded-sm text-xs tracking-widest font-mono uppercase op-50;
-  }
-
-  h5 {
-    --uno: text-3.1 line-height-1.4em -translate-y-0.5;
-  }
-
-  input:disabled ~ label {
-    --uno: op-15;
-  }
-
-  label {
-    --uno: w-full flex flex-col gap-0.5 rounded p-1.5 ring-$c-fg ring-inset transition-all duration-100 ease-out active:scale-97 bg-$c-fg-5 hover:bg-$c-fg-15 hover:ring-1.2 [:checked+&]:(\!bg-$c-fg text-$c-bg hover:op-80);
-  }
-</style>

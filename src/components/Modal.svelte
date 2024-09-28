@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { ripple } from 'svelte-ripple-action'
   export let show = true
   export let icon: string
 </script>
@@ -17,7 +18,7 @@
 
         {#if $$slots.inside}
           <div>
-            <button type="button" class="grid mt-1 h-fit w-full place-items-center rounded-md bg-$c-fg-5 p-2 outline-none transition-all ease-out active:scale-96 hover:scale-98 hover:bg-$c-fg hover:text-$c-bg focus:(ring-1.5 ring-$c-fg-20) hover:!ring-transparent" on:click={() => (show = !show)}>
+            <button use:ripple type="button" class="grid mt-1 h-fit w-full place-items-center rounded-md bg-$c-fg-5 p-2 outline-none transition-all ease-out active:scale-96 hover:scale-98 [&>.ripple]:(bg-$c-fg op-20) hover:bg-$c-fg hover:text-$c-bg focus-visible:(ring-1.5 ring-$c-fg-20) [&:hover>.ripple]:!bg-$c-bg hover:!ring-transparent" on:click={() => (show = !show)}>
               <slot name="inside" />
             </button>
           </div>
