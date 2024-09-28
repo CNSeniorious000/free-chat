@@ -3,12 +3,14 @@
   import { fade, fly, slide } from 'svelte/transition'
   import { quintIn, quintOut } from 'svelte/easing'
   import { Toaster, toast } from 'svelte-sonner'
+  import { ripple } from 'svelte-ripple-action'
   import { MessagesEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
   import CheckStatus from './CheckStatus.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
   import Modal from './Modal.svelte'
+  import 'svelte-ripple-action/ripple.css'
 
   export let dark: boolean | undefined
 
@@ -59,7 +61,7 @@
       </a>
     </div>
     <div class="flex">
-      <button class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-5 <md:transition-colors" on:click={() => { showSettings = !showSettings; trackEvent('open-settings') }}>
+      <button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-2 <md:transition-colors" on:click={() => { showSettings = !showSettings; trackEvent('open-settings') }}>
         <span class="i-ph-gear-six-fill text-lg transition-transform duration-300" class:rotate-30={showSettings} />
       </button>
       <Themetoggle {dark} />
