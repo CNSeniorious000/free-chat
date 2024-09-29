@@ -20,15 +20,20 @@
   export let name: string
   export let title: string
 
-  function setModel(newModel: Model) {
-    $model = newModel
+  function choose() {
+    $model = id
     trackEvent('model', { model })
   }
 </script>
 
-<input type="radio" name="model" {id} hidden on:click={() => setModel(id)} checked={$model === id}/>
+<input type="radio" name="model" {id} class="sr-only" on:select={choose} checked={$model === id} />
 
-<label use:ripple={{ color: 'var(--c-fg-70)' }} for={id}>
+<button use:ripple={{ color: 'var(--c-fg)' }} on:click={choose} class="cursor-auto text-left" aria-hidden="true">
+  <h4>{name}</h4>
+  <h5>{title}</h5>
+</button>
+
+<label for={id} class="sr-only">
   <h4>{name}</h4>
   <h5>{title}</h5>
 </label>
@@ -42,23 +47,19 @@
     --uno: text-3.1 line-height-1.4em -translate-y-0.5;
   }
 
-  input:disabled ~ label {
-    --uno: op-15;
-  }
-
-  label {
+  button {
     --uno: w-full flex flex-col gap-0.5 rounded bg-$c-fg-5 p-1.5 ring-($c-fg inset) transition-all duration-100 ease-out active:scale-97 @hover:(bg-$c-fg-15 ring-1.2);
   }
 
-  :checked + label {
+  :checked + button {
     --uno: \!bg-$c-fg text-$c-bg @hover:op-80
   }
 
-  label > :global(.ripple) {
-    --uno: op-20;
+  button > :global(.ripple) {
+    --uno: op-15;
   }
 
-  :checked + label > :global(.ripple) {
+  :checked + button > :global(.ripple) {
     --ripple-color: var(--c-bg);
   }
 </style>
