@@ -2,13 +2,13 @@
   import { onMount } from 'svelte'
   import { ripple } from 'svelte-ripple-action'
   import { trackEvent } from '@/utils/track'
+  import ThemeColor, { setThemeColor } from './ThemeColor.svelte'
 
   let themeToggle: HTMLButtonElement
 
   export let dark: boolean | undefined
 
   onMount(() => {
-    const themeColorTag = document.querySelector('meta[name="theme-color"]')
     const iframes = document.querySelectorAll('iframe')
     const classList = document.documentElement.classList
 
@@ -21,7 +21,7 @@
     const chooseDarkMode = (isDark: boolean) => {
       dark = isDark
       dark ? classList.add('dark') : classList.remove('dark')
-      themeColorTag?.setAttribute('content', dark ? '#212129' : '#fbfbfb')
+      setThemeColor('var(--c-bg)')
       postDarkMode(!!dark)
       document.cookie = `dark=${dark}; path=/; max-age=31536000`
     }
@@ -39,6 +39,8 @@
 
   $: r = dark ? 9 : 5
 </script>
+
+<ThemeColor />
 
 <button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} bind:this={themeToggle} id="themeToggle" class="h-10 w-10 flex items-center justify-center rounded-md transition-colors hover:bg-$c-fg-2">
   <svg class="theme_toggle_svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" color="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor">
