@@ -12,6 +12,7 @@ import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
 import ErrorMessageItem from './ErrorMessageItem'
 import TokenCounter, { encoder } from './TokenCounter'
+import type { LocalStorageSetEvent } from '@/utils/events'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
 
@@ -88,12 +89,9 @@ export default () => {
 
     setSuggestionFeature(JSON.parse(localStorage.getItem('suggestion') ?? 'true'))
 
-    const setItem = localStorage.setItem.bind(localStorage)
-
-    localStorage.setItem = function(key: string, value: string) {
-      setItem(key, value)
-      setSuggestionFeature(JSON.parse(localStorage.getItem('suggestion') ?? 'true'))
-    }
+    document.addEventListener('localStorageSet', (({ detail: { key, value } }: LocalStorageSetEvent) => {
+      if (key === 'suggestion') setSuggestionFeature(JSON.parse(value) ?? 'true')
+    }) as EventListener)
 
     try {
       if (JSON.parse(localStorage.getItem('messageList') ?? '[]').length) {

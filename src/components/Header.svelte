@@ -4,7 +4,7 @@
   import { quintIn, quintOut } from 'svelte/easing'
   import { Toaster, toast } from 'svelte-sonner'
   import { ripple } from 'svelte-ripple-action'
-  import { MessagesEvent } from '@/utils/events'
+  import { LocalStorageSetEvent, MessagesEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
   import CheckStatus from './CheckStatus.svelte'
   import Settings from './Settings.svelte'
@@ -35,6 +35,13 @@
       const { length } = (ev as MessagesEvent).detail
       if (length >= 7 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24) showSponsorship = true
     })
+
+    const setItem = localStorage.setItem.bind(localStorage)
+
+    localStorage.setItem = function(key: string, value: string) {
+      setItem(key, value)
+      document.dispatchEvent(new LocalStorageSetEvent('localStorageSet', key, value))
+    }
   })
 
   function handleClick() {
