@@ -54,7 +54,7 @@
   let showSettings = false
 </script>
 
-<Toaster position="top-center" closeButton />
+<Toaster position="top-center" />
 
 <CheckStatus />
 
