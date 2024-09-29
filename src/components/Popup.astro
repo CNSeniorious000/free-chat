@@ -1,27 +1,26 @@
-<div id="backdrop" class="pointer-events-none fixed inset-0 z-100 bg-black/10 op-0 transition-opacity duration-800 dark:bg-black/50"></div>
+<div id="backdrop" class="fixed inset-0 top-5rem z-10 bg-gradient-(from-transparent to-black/10 to-b) transition-opacity duration-800 md:top-6rem dark:bg-gradient-(via-black/35 to-black/40)"></div>
 
-<section id="popup" class="pointer-events-none fixed bottom-0 left-0 right-0 z-1000 flex flex-row select-none justify-center op-0 transition-opacity duration-500">
+<section id="popup" class="fixed bottom-0 left-0 right-0 z-100 flex flex-row justify-center transition-opacity duration-500">
     <div class="m-5vw max-w-xl flex flex-col gap-3 rounded-lg bg-$c-bg p-5 shadow-xl backdrop-blur-15 dark:bg-#212129c0">
         <div class="relative flex flex-row items-center gap-3 text-4xl">
             <div class="i-fluent-emoji-cookie absolute right-1/2 translate-x-1/2 -translate-y-1/2"></div>
             <div class="i-fluent-emoji-cookie absolute right-1/2 translate-x-1/2 scale-60 blur-15 -translate-y-1/4"></div>
         </div>
-        <div>我们使用cookie来提供并改善您的使用体验。匿名的数据可能在服务端留存一段时间。继续使用本网站即表示您同意我们使用 cookies 以及在服务端留存数据。点此查看我们的<a class="mx-1 border-b-1 border-$c-fg-20 dark:border-$c-fg" href="https://cdn.muspimerol.site/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">隐私协议</a>。</div>
+        <div>我们使用cookie来提供并改善您的使用体验。匿名的数据可能在服务端留存一段时间。继续使用本网站即表示您同意我们使用 cookies 以及在服务端留存数据。点此查看我们的<a class="mx-1 border-b-1 border-$c-fg-20 transition-opacity dark:border-$c-fg hover:op-70 dark:hover:op-80" href="https://cdn.muspimerol.site/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE">隐私协议</a>。</div>
         <div>
-            <button tabindex="1" type="button" class="mt-1 h-fit w-full rounded-md bg-$c-fg-5 p-2 outline-none transition-all ease-out active:scale-96 hover:scale-98 hover:bg-$c-fg hover:text-$c-bg focus:(ring-2 ring-$c-fg-20) hover:!ring-transparent">同意</button>
+            <button tabindex="1" type="button" class="mt-1 h-fit w-full select-none rounded-md bg-$c-fg-5 p-2 outline-none transition-all ease-out active:scale-96 hover:scale-98 hover:bg-$c-fg hover:text-$c-bg focus:(ring-2 ring-$c-fg-20) hover:!ring-transparent">同意</button>
         </div>
     </div>
 </section>
 
-<script>
-if (!document.cookie.includes('privacyPolicy=confirmed')) {
-  document.getElementById('popup')?.classList.remove('op-0', 'pointer-events-none')
-  document.getElementById('backdrop')?.classList.remove('op-0', 'pointer-events-none')
-
+<script is:inline>
   document.querySelector('#popup button')?.addEventListener('click', () => {
-    document.getElementById('popup')?.classList.add('op-0', 'pointer-events-none')
+    document.getElementById('popup')?.classList.add('op-0', 'pointer-events-none', 'select-none')
     document.getElementById('backdrop')?.classList.add('op-0', 'pointer-events-none')
     document.cookie = `privacyPolicy=confirmed; expires=${new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000).toUTCString()}`
+    document.getElementById('backdrop')?.addEventListener('transitionend', () => {
+      document.getElementById('popup')?.remove()
+      document.getElementById('backdrop')?.remove()
+    })
   })
-}
 </script>
