@@ -26,17 +26,12 @@
   }
 </script>
 
-<input type="radio" name="model" {id} class="sr-only" on:select={choose} checked={$model === id} />
+<input tabindex="-1" type="radio" name="model" {id} class="sr-only" on:select={choose} checked={$model === id} />
 
-<button use:ripple={{ color: 'var(--c-fg)' }} on:click={choose} class="cursor-auto text-left" aria-hidden="true">
+<button use:ripple={{ color: 'var(--c-fg)' }} on:click={choose} class="cursor-auto text-left">
   <h4>{name}</h4>
   <h5>{title}</h5>
 </button>
-
-<label for={id} class="sr-only">
-  <h4>{name}</h4>
-  <h5>{title}</h5>
-</label>
 
 <style>
   h4 {
@@ -48,11 +43,11 @@
   }
 
   button {
-    --uno: w-full flex flex-col gap-0.5 rounded bg-$c-fg-5 p-1.5 ring-($c-fg inset) transition-all duration-100 ease-out active:scale-97 @hover:(bg-$c-fg-15 ring-1.2);
+    --uno: w-full flex flex-col gap-0.5 rounded bg-$c-fg-5 p-1.5 outline-none ring-($c-fg inset) transition-all duration-100 ease-out active:scale-97 @hover:(bg-$c-fg-15 ring-1.2) focus:ring-1.2;
   }
 
   :checked + button {
-    --uno: \!bg-$c-fg text-$c-bg @hover:op-80
+    --uno: \!bg-$c-fg text-$c-bg @hover:op-80;
   }
 
   button > :global(.ripple) {
