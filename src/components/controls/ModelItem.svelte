@@ -15,6 +15,7 @@
 <script lang="ts">
   import { ripple } from 'svelte-ripple-action'
   import { trackEvent } from '@/utils/track'
+  import { setBanner } from '../Banner.svelte'
 
   export let id: Model
   export let name: string
@@ -22,6 +23,7 @@
 
   function choose() {
     $model = id
+    setBanner(id, 600)
     trackEvent('model', { model })
   }
 </script>

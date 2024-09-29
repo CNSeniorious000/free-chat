@@ -6,6 +6,7 @@
   import { ripple } from 'svelte-ripple-action'
   import { LocalStorageSetEvent, MessagesEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
+  import Banner from './Banner.svelte'
   import CheckStatus from './CheckStatus.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
@@ -91,6 +92,8 @@
     <link rel="preload" href="avatar.png" as="image" />
   {/if}
 </svelte:head>
+
+<Banner />
 
 <Modal icon="i-fluent-emoji-folded-hands" bind:show={showSponsorship}>
   {#if showSponsorship}
