@@ -17,7 +17,7 @@ const origin = Astro.request.headers.get('host')
     <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover,interactive-widget=resizes-content">
     <link rel="icon" type="image/svg+xml" href="/icon.svg">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="320x320">
-    <meta name="theme-color" content="#212129">
+    <meta name="theme-color" content={Astro.cookies.get('dark')?.boolean() ? '#212129' : '#fbfbfb'}>
     <meta name="generator" content={Astro.generator}>
     <title>{title} - {origin}</title>
     <meta name="description" content="Chat for free with AI chatbot" />
@@ -61,6 +61,7 @@ const origin = Astro.request.headers.get('host')
       document.documentElement.classList.add('dark')
       for (const element of document.querySelectorAll('circle[r]'))
         element.setAttribute('r', 9)
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#212129')
     }
   </script>
 }
