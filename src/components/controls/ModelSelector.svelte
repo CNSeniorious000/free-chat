@@ -3,7 +3,7 @@
   import Hr from './Hr.svelte'
 </script>
 
-<div class="grid grid-cols-2 w-full justify-between gap-1.5 rounded-md bg-$c-fg-2 p-1.5 text-sm">
+<div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
   <ModelItem id="llama-3.2-90b-text-preview" name="llama3.2-90b" title="🚀 Meta 最新发布的 Llama3.2" />
   <ModelItem id="llama3.1-70b" name="llama3.1-70b" title="🚀 Cerebras 提供的超快 Llama3.1" />
   <ModelItem id="mixtral-8x7b-32768" name="mixtral-8x7b" title="🚀 来自法国的明星大模型 Mixtral" />

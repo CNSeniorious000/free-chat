@@ -10,5 +10,5 @@
       {text}
     </div>
   {/if}
-  <Separator.Root class="col-span-2 h-0.1em w-full bg-$c-fg-20" />
+  <Separator.Root class="col-span-2 h-0.9 w-full rounded-full bg-gradient-(from-$c-fg-10 to-transparent to-l)" />
 </div>

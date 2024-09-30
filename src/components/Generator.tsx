@@ -280,7 +280,8 @@ export default () => {
       const headers: Record<string, any> = { 'content-type': 'application/json' }
       if (localStorage.getItem('apiKey')) headers.authorization = `Bearer ${localStorage.getItem('apiKey')}`
 
-      const payload: Record<string, any> = { messages: requestMessageList }
+      const t = localStorage.getItem('temperature') ?? 'undefined'
+      const payload: Record<string, any> = { messages: requestMessageList, temperature: t === 'undefined' ? undefined : JSON.parse(t) }
       if (localStorage.getItem('model')) payload.model = localStorage.getItem('model')
 
       const res = await fetch(`${baseUrl}/single/chat_messages`, {
