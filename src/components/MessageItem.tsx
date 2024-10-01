@@ -2,10 +2,8 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
-import { SolidMarkdown } from 'solid-markdown'
 import remarkBreaks from 'remark-breaks'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
+import { SolidMarkdown } from 'solid-markdown'
 import IconRefresh from './icons/Refresh'
 import CodeBlock from './CodeBlock'
 import type { Accessor } from 'solid-js'
@@ -35,8 +33,6 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       ? markdown.replace(pattern, '\n```')
       : markdown
   }
-
-  unified().use(remarkParse) // a weird workaround to fix a strange bug in solid-markdown that "setting on undefined" error
 
   return (
     <div class="px-20 transition-colors -mx-20 hover:bg-$c-fg-2 2xl:(px-20 -mx-20) md:(px-5 transition-background-color -mx-5)">
