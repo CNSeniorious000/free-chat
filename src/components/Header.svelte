@@ -6,6 +6,7 @@
   import { ripple } from 'svelte-ripple-action'
   import { LocalStorageSetEvent, MessagesEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
+  import Ad from './Ad.svelte'
   import CheckStatus from './CheckStatus.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
@@ -74,17 +75,17 @@
       <Themetoggle {dark} />
     </div>
   </div>
-  <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size sm:text-3">
-    已支持
-    <div class="i-logos-meta-icon text-0.8em" />
-    最新的 llama 3.2
-  </div>
-  {#if import.meta.env.PUBLIC_IFRAME_URL}
-    <div class="h-22 overflow-hidden transition-all sm:h-27">
-      <iframe src={import.meta.env.PUBLIC_IFRAME_URL} class="mb-1 mt-2 h-25 w-full select-none rounded-lg bg-$c-fg-2 ring-$c-fg-40 ring-inset transition-all <sm:mt-3 <sm:w-125% <sm:translate-x--1/10 <sm:translate-y--4 <sm:scale-80% hover:bg-$c-fg-5 hover:ring-1.75" title="embedded advertisement" />
-    </div>
-  {/if}
 </header>
+
+<div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size sm:text-3">
+  已支持
+  <div class="i-logos-meta-icon text-0.8em" />
+  最新的 llama 3.2
+</div>
+
+{#if import.meta.env.PUBLIC_IFRAME_URL}
+  <Ad src={import.meta.env.PUBLIC_IFRAME_URL} />
+{/if}
 
 <svelte:head>
   {#if showSponsorship}
