@@ -5,6 +5,7 @@
   import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
   import Ad from './Ad.svelte'
+  import Inview from './Inview.svelte'
   import CheckStatus from './CheckStatus.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
@@ -22,19 +23,25 @@
   })
 
   let showSettings = false
+
+  let inView = true
 </script>
 
 <Toaster position="top-center" />
 
 <CheckStatus />
 
-<header>
-  <div class="mt-2.5rem fb flex-row select-none items-center transition-margin md:mt-3.5rem">
-    <div class="max-w-2/3 fi">
-      <a href="." on:click|preventDefault class="mr-1 w-full flex gap-2">
+<Inview bind:inView class="absolute left-0 right-0 top-0 h-2rem md:h-3rem" />
+
+<header class="sticky top-0 z-1 mt-2rem select-none transition-margin md:mt-3rem">
+  <div class="relative fb flex-row items-center overflow-hidden px-2rem py-0.5rem -mx-2rem -mb-0.6rem" class:backdrop-blur-lg={!inView}>
+    <div class="absolute bottom-1px bg-$c-bg op-85 ring-(0.3 $c-fg-10) -left-1px -right-1px -top-1px -z-1 <md:transition-background-color" role="presentation" class:hidden={inView} />
+
+    <div class="max-w-[calc(100%-5rem-1ch)]">
+      <a href="." on:click|preventDefault class="w-full fcc gap-1 *:transition-font-size">
         <!-- <Logo /> -->
-        <span class="overflow-hidden text-ellipsis whitespace-nowrap gpt-title <sm:text-xl <md:transition-all">Endless Chat</span>
-        <span class="gpt-subtitle transition-font-size <sm:text-xl">✨</span>
+        <span class="overflow-hidden text-ellipsis whitespace-nowrap gpt-title">Endless Chat</span>
+        <span class="transition-font-size gpt-subtitle">✨</span>
       </a>
     </div>
     <div class="flex">
@@ -46,7 +53,7 @@
   </div>
 </header>
 
-<div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size sm:text-3">
+<div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8">
   已支持
   <div class="i-logos-meta-icon text-0.8em" />
   最新的 llama 3.2

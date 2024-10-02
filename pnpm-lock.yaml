@@ -123,6 +123,9 @@ importers:
       punycode:
         specifier: ^2.3.1
         version: 2.3.1
+      svelte-inview:
+        specifier: ^4.0.4
+        version: 4.0.4(svelte@4.2.19)
       svelte-persisted-store:
         specifier: ^0.11.0
         version: 0.11.0(svelte@4.2.19)
@@ -4568,6 +4571,11 @@ packages:
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+
+  svelte-inview@4.0.4:
+    resolution: {integrity: sha512-PlXNSHHijvQ6MhmSYUj6cMyS+39NttoTffk7W5WYF8T2tsyLgJnKhyuAF+/hSujbY0vpsmqXaMd2nolEKvR8Kw==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^5.0.0-next
 
   svelte-persisted-store@0.11.0:
     resolution: {integrity: sha512-9RgJ5DrawGyyfK22A80cfu8Jose3CV8YjEZKz9Tn94rQ0tWyEmYr+XI+wrVF6wjRbW99JMDSVcFRiM3XzVJj/w==}
@@ -10552,6 +10560,10 @@ snapshots:
       svelte: 4.2.19
 
   svelte-hmr@0.16.0(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
+
+  svelte-inview@4.0.4(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
 
