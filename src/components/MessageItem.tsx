@@ -1,7 +1,6 @@
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
-import rehypeHighlight from 'rehype-highlight'
 import remarkBreaks from 'remark-breaks'
 import { SolidMarkdown } from 'solid-markdown'
 import IconRefresh from './icons/Refresh'
@@ -42,7 +41,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
           <SolidMarkdown
             renderingStrategy="reconcile"
             remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
-            rehypePlugins={[rehypeHighlight, rehypeKatex]}
+            rehypePlugins={[rehypeKatex]}
             class="relative max-w-full overflow-hidden break-words prose <sm:text-3.6 message"
             components={{
               code: CodeBlock,
