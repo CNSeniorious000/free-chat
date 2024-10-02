@@ -78,7 +78,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
   }
 
   return (
-    <div class="px-20 transition-colors -mx-20 hover:bg-$c-fg-2 2xl:(px-20 -mx-20) md:(px-5 transition-background-color -mx-5)">
+    <div class="px-2rem transition-colors -mx-2rem hover:bg-$c-fg-2 2xl:(px-2rem -mx-2rem) md:(px-5 transition-background-color -mx-5)">
       <div class="py-0.5 transition-padding 2xl:py-2 md:py-1">
         <div class="flex gap-3.5 rounded-lg" class:op-75={role === 'user'} class:reverse-self-msg={role === 'user' && alignRightMine}>
           <div class={`shrink-0 w-7 h-7 my-4 rounded-full op-80 ${roleClass[role]} <sm:w-1 <sm:h-auto <md:transition-background-color`} />
