@@ -27,7 +27,7 @@ export default defineConfig({
     'b-slate-link': 'border-b border-($c-fg-70 none) hover:border-dashed',
     'gpt-title': 'text-lg font-extrabold md:text-2xl sm:text-xl',
     'gpt-subtitle': 'bg-gradient-(from-emerald-400 to-sky-200 to-r) bg-clip-text text-lg text-transparent font-extrabold md:text-2xl sm:text-xl',
-    'gpt-copy-btn': 'absolute top-12px right-12px z-3 fcc border b-transparent w-fit min-w-8 h-8 p-2 bg-white/4 hover:bg-white/8 text-white/85 dark:(bg-$c-fg-5 hover:bg-$c-fg-10 text-$c-fg-90) cursor-pointer transition-all duration-150 active:scale-90 op-0 group-hover:op-100 rounded-1.1 backdrop-blur-10',
+    'gpt-copy-btn': 'absolute top-12px right-12px z-3 fcc border b-transparent h-8 p-2 bg-white/4 hover:bg-white/8 text-white/85 dark:(bg-$c-fg-5 hover:bg-$c-fg-10 text-$c-fg-90) transition-all duration-150 active:scale-90 op-0 group-hover:op-100 rounded-1.1 backdrop-blur-10',
     'gpt-retry-btn': 'fi gap-1 px-2 py-0.5 op-70 ring-1.2 ring-$c-fg-50 rounded-md text-sm <sm:text-xs <sm:ring-$c-fg-30 cursor-pointer hover:bg-$c-fg-5 transition-background-color',
     'gpt-back-top-btn': 'fcc text-base fixed bottom-17px right-17px sm:(bottom-20px right-20px) z-10 cursor-pointer',
     'gpt-password-input': 'px-4 py-3 h-12 rounded-sm bg-(slate op-15) base-focus',
