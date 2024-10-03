@@ -11,13 +11,13 @@ import 'highlight.js/styles/atom-one-dark.css'
 ---
 
 <Layout title="Endless Chat">
-  <main class="min-h-screen flex flex-col justify-between bg-transparent transition-max-width !min-h-100dvh 2xl:max-w-105ch xl:max-w-95ch md:(bg-$c-bg shadow-2xl shadow-black/10 dark:shadow-black/15)">
+  <div class="relative mx-auto max-w-85ch min-h-screen flex flex-col flex-col justify-between bg-transparent px-2rem transition-max-width !min-h-100dvh 2xl:max-w-105ch xl:max-w-95ch md:(bg-$c-bg shadow-2xl shadow-black/10 dark:shadow-black/15)">
     <Header client:load dark={Astro.cookies.get('dark')?.boolean()} />
     <Generator client:load />
     <Footer origin={Astro.request.headers.get('host') || ''} />
     <BackTop />
     { Astro.cookies.get('privacyPolicy')?.value !== 'confirmed' && <Popup /> }
-  </main>
+  </div>
 </Layout>
 
 <script>
@@ -62,13 +62,6 @@ requestAnimationFrame(raf)
     --c-fg-70: rgba(221, 221, 240, 0.7);
     --c-fg-80: rgba(221, 221, 240, 0.8);
     --c-fg-90: rgba(221, 221, 240, 0.9);
-  }
-
-  main {
-    overflow-x: hidden;
-    max-width: 85ch;
-    margin: 0 auto;
-    padding: 0 2rem;
   }
 
   ::-webkit-scrollbar {

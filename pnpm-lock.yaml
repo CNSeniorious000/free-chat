@@ -100,16 +100,16 @@ importers:
         specifier: ^8.8.0
         version: 8.8.0(eslint@8.57.1)(typescript@5.4.5)
       '@unocss/core':
-        specifier: ^0.63.1
+        specifier: ^0.63.2
         version: 0.63.2
       '@unocss/eslint-config':
-        specifier: ^0.63.1
+        specifier: ^0.63.2
         version: 0.63.2(eslint@8.57.1)(typescript@5.4.5)
       '@unocss/extractor-svelte':
-        specifier: ^0.63.1
+        specifier: ^0.63.2
         version: 0.63.2
       '@unocss/reset':
-        specifier: ^0.63.1
+        specifier: ^0.63.2
         version: 0.63.2
       '@vite-pwa/astro':
         specifier: ^0.4.3
@@ -124,11 +124,14 @@ importers:
         specifier: ^2.44.1
         version: 2.44.1(eslint@8.57.1)(svelte@4.2.19)
       openai:
-        specifier: ^4.67.0
-        version: 4.67.0(zod@3.23.8)
+        specifier: ^4.67.1
+        version: 4.67.1(zod@3.23.8)
       punycode:
         specifier: ^2.3.1
         version: 2.3.1
+      svelte-inview:
+        specifier: ^4.0.4
+        version: 4.0.4(svelte@4.2.19)
       svelte-persisted-store:
         specifier: ^0.11.0
         version: 0.11.0(svelte@4.2.19)
@@ -136,7 +139,7 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6(svelte@4.2.19)
       unocss:
-        specifier: ^0.63.1
+        specifier: ^0.63.2
         version: 0.63.2(postcss@8.4.47)(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))
       unocss-preset-scrollbar:
         specifier: ^0.3.1
@@ -3922,8 +3925,8 @@ packages:
   oniguruma-to-js@0.4.3:
     resolution: {integrity: sha512-X0jWUcAlxORhOqqBREgPMgnshB7ZGYszBNspP+tS9hPD3l13CdaXcHbgImoHUHlrvGx/7AvFEkTRhAGYh+jzjQ==}
 
-  openai@4.67.0:
-    resolution: {integrity: sha512-jdsPSEdZbUNVtvEFE/eeL4FjKavyVMJJEdGMZk9vExglqUrblEcFxi3LK2WhskhrYKAU1MgJAI+dK9pDcA5z5w==}
+  openai@4.67.1:
+    resolution: {integrity: sha512-2YbRFy6qaYRJabK2zLMn4txrB2xBy0KP5g/eoqeSPTT31mIJMnkT75toagvfE555IKa2RdrzJrZwdDsUipsAMw==}
     hasBin: true
     peerDependencies:
       zod: ^3.23.8
@@ -4591,6 +4594,11 @@ packages:
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
+
+  svelte-inview@4.0.4:
+    resolution: {integrity: sha512-PlXNSHHijvQ6MhmSYUj6cMyS+39NttoTffk7W5WYF8T2tsyLgJnKhyuAF+/hSujbY0vpsmqXaMd2nolEKvR8Kw==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^5.0.0-next
 
   svelte-persisted-store@0.11.0:
     resolution: {integrity: sha512-9RgJ5DrawGyyfK22A80cfu8Jose3CV8YjEZKz9Tn94rQ0tWyEmYr+XI+wrVF6wjRbW99JMDSVcFRiM3XzVJj/w==}
@@ -6297,7 +6305,7 @@ snapshots:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)(typescript@5.4.5)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.4.5)
       eslint: 8.57.1
-      eslint-config-standard: 17.1.0(eslint-plugin-import@2.30.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
+      eslint-config-standard: 17.1.0(eslint-plugin-import@2.30.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
       eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.30.0)(eslint@8.57.1)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.1)
       eslint-plugin-html: 6.2.0
@@ -6761,7 +6769,7 @@ snapshots:
 
   '@types/node-fetch@2.6.11':
     dependencies:
-      '@types/node': 18.19.54
+      '@types/node': 22.7.4
       form-data: 4.0.0
 
   '@types/node@18.19.54':
@@ -8064,7 +8072,7 @@ snapshots:
       eslint: 8.57.1
       semver: 7.6.3
 
-  eslint-config-standard@17.1.0(eslint-plugin-import@2.30.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
+  eslint-config-standard@17.1.0(eslint-plugin-import@2.30.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-import: 2.30.0(@typescript-eslint/parser@8.8.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)
@@ -9807,7 +9815,7 @@ snapshots:
     dependencies:
       regex: 4.3.2
 
-  openai@4.67.0(zod@3.23.8):
+  openai@4.67.1(zod@3.23.8):
     dependencies:
       '@types/node': 18.19.54
       '@types/node-fetch': 2.6.11
@@ -10640,6 +10648,10 @@ snapshots:
       svelte: 4.2.19
 
   svelte-hmr@0.16.0(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
+
+  svelte-inview@4.0.4(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
 
