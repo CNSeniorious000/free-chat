@@ -501,16 +501,15 @@ export default () => {
               </Index>
             </Show>
           </div>
-          <div class="pointer-events-none absolute inset-0 z-1 w-full flex flex-row justify-between" role="presentation">
+          <div class:op-0={!inview()} class="pointer-events-none absolute inset-0 w-full flex flex-row justify-between transition-opacity" role="presentation">
             <div class="w-2rem bg-gradient-(from-$c-bg to-transparent to-r) <md:transition-all" />
             <div class="w-2rem bg-gradient-(from-$c-bg to-transparent to-l) <md:transition-all" />
           </div>
         </div>
-
       </Show>
 
-      <div class="relative sticky bottom-0 px-2rem backdrop-blur-lg -mx-2rem">
-        <div class="absolute top-1px bg-$c-bg op-85 ring-$c-fg-10 -bottom-1px -left-1px -right-1px -z-1 <md:transition-background-color" classList={{ 'ring-0.3': !inview() }} />
+      <div class="relative sticky bottom-0 px-2rem backdrop-blur-20 -mx-2rem">
+        <div class="absolute inset-0 b-t-$c-fg-10 bg-$c-bg op-70 -z-1 <md:transition-background-color" class:b-t-1={!inview()} />
         <Switch>
           <Match when={!mounted()}>
             <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
