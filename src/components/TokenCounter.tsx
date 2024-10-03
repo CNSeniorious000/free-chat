@@ -57,7 +57,7 @@ export default (props: Props) => {
 
   return (
     <Show when={encoder()}>
-      <section class="absolute bottom-17 select-none self-center transition-opacity duration-400 sm:bottom-20" class:op-0={isHide() || props.hide || !(messageList().length || textAreaValue())}>
+      <section class="absolute bottom-17 z-1 select-none self-center transition-opacity duration-400 sm:bottom-20" class:op-0={isHide() || props.hide || !(messageList().length || textAreaValue())}>
         <div class="fcc gap-1 rounded-full bg-[#e5e5e5a0] px-2.8 py-1.9 text-xs dark:bg-[#373740a0] !backdrop-blur-20 <md:transition-background-color">
           <span class="translate-y-0.2">{getTokensUsage()?.total ?? 0}</span>
           <span class="translate-y-0.2">tokens</span>

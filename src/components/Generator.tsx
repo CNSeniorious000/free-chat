@@ -7,6 +7,7 @@ import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
 import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 import { trackEvent } from '@/utils/track'
+import Inview from './Inview'
 import IconClear from './icons/Clear'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
@@ -38,6 +39,7 @@ export default () => {
   const [recording, setRecording] = createSignal<'recording' | 'processing' | false>(false)
   const [suggestions, setSuggestions] = createSignal<string[]>([])
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
+  const [inview, setInview] = createSignal(true)
 
   const moderationInterval = Number(import.meta.env.PUBLIC_MODERATION_INTERVAL ?? '2000')
 
@@ -434,7 +436,7 @@ export default () => {
   }
 
   return (
-    <div ref={rootRef!} class="relative h-full flex flex-grow flex-col justify-between">
+    <main ref={rootRef!} class="relative h-full flex flex-grow flex-col justify-between">
       <div
         ref={bgd!}
         class="<md:hiddern fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll bg-top-center op-100 transition-opacity duration-1000 bg-hero-jigsaw-gray-500/10 <md:bg-none"
@@ -487,79 +489,95 @@ export default () => {
         messageList={messageList}
         textAreaValue={inputValue}
         currentAssistantMessage={currentAssistantMessage}
-        hide={suggestionFeatureOn() && !streaming() && !!suggestions().length}
+        hide={!inview() || (suggestionFeatureOn() && !streaming() && !!suggestions().length)}
       />
 
-      <Show when={suggestionFeatureOn() && !streaming() && suggestions().length}>
-        <div class="flex flex-row flex-wrap translate-y-1.5 gap-2 [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
-          <Index each={suggestions()}>
-            {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
-          </Index>
-        </div>
-      </Show>
-
-      <Switch>
-        <Match when={!mounted()}>
-          <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
-            <div class="flex flex-row items-center gap-2">
-              <span>加载中</span>
-              <span i-svg-spinners-6-dots-scale-middle />
-            </div>
-          </div>
-        </Match>
-        <Match when={mounted() && streaming()}>
-          <div class="gen-cb-wrapper">
-            <div class="flex flex-row animate-fade-in animate-duration-300 items-center gap-3">
-              <span i-svg-spinners-ring-resize />
-              <span>等待响应中</span>
-              <div class="gen-cb-stop" onClick={stopStreamFetch}>Stop</div>
-            </div>
-          </div>
-        </Match>
-        <Match when={mounted() && !streaming()}>
-          <div class="gen-text-wrapper" class:op-50={systemRoleEditing()}>
-            <textarea
-              ref={inputRef!}
-              disabled={systemRoleEditing() || recording() as boolean}
-              onKeyDown={handleKeydown}
-              placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
-              autocomplete="off"
-              onInput={() => setInputValue(inputRef.value)}
-              rows="1"
-              class="gen-textarea"
-              data-lenis-prevent
-            />
-            <button
-              title={inputValue() ? 'Send' : 'Record'}
-              type="button"
-              class="w-10 gen-slate-btn"
-              onClick={handleSubmit}
-              disabled={systemRoleEditing() || recording() === 'processing'}
-            >
-              <Switch>
-                <Match when={inputValue()}>
-                  <span class="i-iconamoon-send" />
-                </Match>
-                <Match when={recording() === false}>
-                  <span class="i-iconamoon-microphone-fill" />
-                </Match>
-                <Match when={recording() === 'recording'}>
-                  <span class="i-iconamoon-player-stop-fill" />
-                </Match>
-                <Match when={recording() === 'processing'}>
-                  <span class="i-svg-spinners-90-ring-with-bg" />
-                </Match>
-              </Switch>
-            </button>
-            <Show when={messageList().length && !inputValue()}>
-              <button title="Clear" type="button" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
-                <IconClear />
-              </button>
+      <Show when={suggestionFeatureOn() && !streaming()}>
+        <div class="relative z-1 translate-y-1.5 px-2rem -mx-2rem">
+          <div classList={{ 'op-0 pointer-events-none': !inview() }} class="mt-1 flex flex-row gap-2 overflow-x-scroll ws-nowrap px-2rem transition-opacity scrollbar-none -mx-2rem [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
+            <Show when={suggestions().length} fallback={<button disabled role="presentation" class="invisible">&nbsp;</button>} >
+              <Index each={suggestions()}>
+                {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
+              </Index>
             </Show>
           </div>
+          <div class="pointer-events-none absolute inset-0 z-1 w-full flex flex-row justify-between" role="presentation">
+            <div class="w-2rem bg-gradient-(from-$c-bg to-transparent to-r) <md:transition-all" />
+            <div class="w-2rem bg-gradient-(from-$c-bg to-transparent to-l) <md:transition-all" />
+          </div>
+        </div>
 
-        </Match>
-      </Switch>
+      </Show>
+
+      <div class="relative sticky bottom-0 px-2rem backdrop-blur-lg -mx-2rem">
+        <div class="absolute top-1px bg-$c-bg op-85 ring-$c-fg-10 -bottom-1px -left-1px -right-1px -z-1 <md:transition-background-color" classList={{ 'ring-0.3': !inview() }} />
+        <Switch>
+          <Match when={!mounted()}>
+            <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
+              <div class="flex flex-row items-center gap-2">
+                <span>加载中</span>
+                <span i-svg-spinners-6-dots-scale-middle />
+              </div>
+            </div>
+          </Match>
+          <Match when={mounted() && streaming()}>
+            <div class="gen-cb-wrapper">
+              <div class="flex flex-row animate-fade-in animate-duration-300 items-center gap-3">
+                <span i-svg-spinners-ring-resize />
+                <span>等待响应中</span>
+                <div class="gen-cb-stop" onClick={stopStreamFetch}>Stop</div>
+              </div>
+            </div>
+          </Match>
+          <Match when={mounted() && !streaming()}>
+
+            <div class="gen-text-wrapper" class:op-50={systemRoleEditing()}>
+              <textarea
+                ref={inputRef!}
+                disabled={systemRoleEditing() || recording() as boolean}
+                onKeyDown={handleKeydown}
+                placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
+                autocomplete="off"
+                onInput={() => setInputValue(inputRef.value)}
+                rows="1"
+                class="gen-textarea"
+                data-lenis-prevent
+              />
+              <button
+                title={inputValue() ? 'Send' : 'Record'}
+                type="button"
+                class="w-10 gen-slate-btn"
+                onClick={handleSubmit}
+                disabled={systemRoleEditing() || recording() === 'processing'}
+              >
+                <Switch>
+                  <Match when={inputValue()}>
+                    <span class="i-iconamoon-send" />
+                  </Match>
+                  <Match when={recording() === false}>
+                    <span class="i-iconamoon-microphone-fill" />
+                  </Match>
+                  <Match when={recording() === 'recording'}>
+                    <span class="i-iconamoon-player-stop-fill" />
+                  </Match>
+                  <Match when={recording() === 'processing'}>
+                    <span class="i-svg-spinners-90-ring-with-bg" />
+                  </Match>
+                </Switch>
+              </button>
+              <Show when={messageList().length && !inputValue()}>
+                <button title="Clear" type="button" onClick={clear} disabled={systemRoleEditing()} gen-slate-btn>
+                  <IconClear />
+                </button>
+              </Show>
+            </div>
+
+          </Match>
+        </Switch>
+      </div>
+
+      <Inview class="invisible absolute bottom-0 left-0 right-0 h-1" setInview={setInview} />
+
       <div class="fixed bottom-4.25 left-4.25 z-10 h-fit w-fit rounded-md transition-colors sm:bottom-5 sm:left-5 active:scale-90 hover:bg-$c-fg-5" class:stick-btn-on={isStick()}>
         <button
           class="p-2.5 text-base"
@@ -575,6 +593,6 @@ export default () => {
       </div>
 
       <Toaster />
-    </div>
+    </main>
   )
 }
