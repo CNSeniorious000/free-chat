@@ -18,8 +18,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2(solid-js@1.9.1)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))
       '@astrojs/svelte':
-        specifier: ^5.7.1
-        version: 5.7.1(astro@4.15.11(@types/node@22.7.4)(rollup@2.79.2)(terser@5.34.1)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))
+        specifier: ^5.7.2
+        version: 5.7.2(astro@4.15.11(@types/node@22.7.4)(rollup@2.79.2)(terser@5.34.1)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))
       '@astrojs/vercel':
         specifier: ^7.8.1
         version: 7.8.1(astro@4.15.11(@types/node@22.7.4)(rollup@2.79.2)(terser@5.34.1)(typescript@5.4.5))
@@ -80,7 +80,7 @@ importers:
         version: 1.0.9(eslint@8.57.1)(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.256
+        version: 2.2.257
       '@julr/unocss-preset-heropatterns':
         specifier: ^1.0.2
         version: 1.0.2(unocss@0.63.3(postcss@8.4.47)(rollup@2.79.2)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1)))
@@ -190,8 +190,8 @@ packages:
       solid-devtools:
         optional: true
 
-  '@astrojs/svelte@5.7.1':
-    resolution: {integrity: sha512-VIxEdkrnGMoxjs/heI0SWAwQy9+aHxVrsK5QUmsFihXKeYB9OhbZHUzsRJEmoW3IPpKZn/DEallyr1/4a1zZxQ==}
+  '@astrojs/svelte@5.7.2':
+    resolution: {integrity: sha512-d3nfPe7OMoDqdw7SXfvYlyCSB4p84p92IIvEsu5E1jDPFbS1mlC76hjAlr0nJHQfV1MZPWifEmmfgDBWLCuS8g==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       astro: ^4.0.0
@@ -1133,8 +1133,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.256':
-    resolution: {integrity: sha512-u2RwfBUuDE3A8qx3vnXdcJMtirHc9QrRRULfGY6Il6/K76Odfrm4yVqS/fYIh+wXwWl/fZdAZEozqxpZftfnIQ==}
+  '@iconify/json@2.2.257':
+    resolution: {integrity: sha512-IqjXD7BrtORxEK1eRq77550zMztRnwTn8Qyid+WuGspYP+wn5PUEoNPvF3bOJkWiq14QqPphi339nEKuomgR2A==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2717,6 +2717,7 @@ packages:
   eslint@8.57.1:
     resolution: {integrity: sha512-ypowyDxpVSYpkXr9WPv2PAZCtNip1Mv5KTW0SCurXv/9iOpcrH9PaqUElksqEB6pChqHGDRCFTyrZlGhnLNGiA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@10.2.0:
@@ -5268,7 +5269,7 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@astrojs/svelte@5.7.1(astro@4.15.11(@types/node@22.7.4)(rollup@2.79.2)(terser@5.34.1)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))':
+  '@astrojs/svelte@5.7.2(astro@4.15.11(@types/node@22.7.4)(rollup@2.79.2)(terser@5.34.1)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))
       astro: 4.15.11(@types/node@22.7.4)(rollup@2.79.2)(terser@5.34.1)(typescript@5.4.5)
@@ -6274,7 +6275,7 @@ snapshots:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)(typescript@5.4.5)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.4.5)
       eslint: 8.57.1
-      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
+      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
       eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.31.0)(eslint@8.57.1)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.1)
       eslint-plugin-html: 6.2.0
@@ -6319,7 +6320,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.256':
+  '@iconify/json@2.2.257':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -8039,7 +8040,7 @@ snapshots:
       eslint: 8.57.1
       semver: 7.6.3
 
-  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
+  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.8.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)
