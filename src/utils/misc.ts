@@ -1,4 +1,4 @@
-import { parse } from 'partial-json'
+import { Allow, parse } from 'partial-json'
 import { responseToAsyncIterator } from './streaming'
 import { promplateBaseUrl } from './constants'
 import type { ChatMessage } from '@/types'
@@ -61,7 +61,7 @@ class API {
 
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
       method: 'PUT',
-      body: JSON.stringify({ messages, model: 'llama3-70b-8192', prefill: true }),
+      body: JSON.stringify({ messages, model: 'Qwen/Qwen2.5-7B-Instruct' }),
       headers: { 'content-type': 'application/json' },
     })
 
@@ -69,7 +69,7 @@ class API {
 
     for await (const delta of responseToAsyncIterator(res)) {
       json += delta
-      yield parse(json) as string[]
+      yield parse(json, Allow.ARR) as string[]
     }
   }
 
