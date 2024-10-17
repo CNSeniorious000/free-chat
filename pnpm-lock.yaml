@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/netlify':
-        specifier: ^5.5.3
-        version: 5.5.3(@types/node@22.7.6)(astro@4.16.5(@types/node@22.7.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)
+        specifier: ^5.5.4
+        version: 5.5.4(@types/node@22.7.6)(astro@4.16.5(@types/node@22.7.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)
       '@astrojs/node':
         specifier: ^8.3.4
         version: 8.3.4(astro@4.16.5(@types/node@22.7.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))
@@ -166,8 +166,8 @@ packages:
   '@astrojs/markdown-remark@5.3.0':
     resolution: {integrity: sha512-r0Ikqr0e6ozPb5bvhup1qdWnSPUvQu6tub4ZLYaKyG50BXZ0ej6FhGz3GpChKpH7kglRFPObJd/bDyf2VM9pkg==}
 
-  '@astrojs/netlify@5.5.3':
-    resolution: {integrity: sha512-MDbbJY/Qp02WY9TFusXGA9TFSfaRwc/nlyYhk0YZ2ll2KW2DKrXLCJLC17kdhGqKDyg6w4P6juOOgbcGEpfaUw==}
+  '@astrojs/netlify@5.5.4':
+    resolution: {integrity: sha512-nIjD8cC/lGCxTtBUDrG50YEwmsgNxGB1nMZS0wwT7tFlmT2iBpYkTz3G+wmpxH89Hzs1xuMs1s21IcITyuKqEw==}
     peerDependencies:
       astro: ^4.2.0
 
@@ -5035,7 +5035,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@5.5.3(@types/node@22.7.6)(astro@4.16.5(@types/node@22.7.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)':
+  '@astrojs/netlify@5.5.4(@types/node@22.7.6)(astro@4.16.5(@types/node@22.7.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
@@ -5981,7 +5981,7 @@ snapshots:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)(typescript@5.4.5)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.4.5)
       eslint: 8.57.1
-      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
+      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
       eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.31.0)(eslint@8.57.1)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.1)
       eslint-plugin-html: 6.2.0
@@ -7716,7 +7716,7 @@ snapshots:
       eslint: 8.57.1
       semver: 7.6.3
 
-  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
+  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.9.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)
