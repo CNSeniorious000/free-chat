@@ -13,7 +13,7 @@
   <ModelItem id="nous-hermes-2-mixtral-8x7b-dpo" name="nous-hermes-2" title="基于 Mixtral 的 MOE 模型" />
   <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" />
   <ModelItem id="Qwen/Qwen2.5-32B-Instruct" name="Qwen2.5-32B-Instruct" title="✨ 通义千问" />
-  <ModelItem id="01-ai/Yi-1.5-34B-Chat-16K" name="Yi-1.5-34B-Chat" title="✨ 零一万物" />
+  <ModelItem id="yi-lightning" name="yi-lightning" title="⭐ 零一万物的霸榜 SOTA 模型" />
   <ModelItem id="THUDM/glm-4-9b-chat" name="glm-4-9b-chat" title="✨ 智谱 AI" />
   <ModelItem id="deepseek-ai/DeepSeek-V2.5" name="DeepSeek-V2.5" title="✨ 深度求索" />
   <Hr text="低可用性模型（延迟较大）" />
