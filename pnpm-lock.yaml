@@ -10,22 +10,22 @@ importers:
     dependencies:
       '@astrojs/netlify':
         specifier: ^5.5.4
-        version: 5.5.4(@types/node@22.8.6)(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)
+        version: 5.5.4(@types/node@22.8.6)(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)
       '@astrojs/node':
         specifier: ^8.3.4
-        version: 8.3.4(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))
+        version: 8.3.4(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))
       '@astrojs/solid-js':
         specifier: ^4.4.2
         version: 4.4.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))
       '@astrojs/svelte':
         specifier: ^5.7.2
-        version: 5.7.2(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))
+        version: 5.7.2(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))
       '@astrojs/vercel':
         specifier: ^7.8.2
-        version: 7.8.2(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))
+        version: 7.8.2(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))
       astro:
-        specifier: ^4.16.8
-        version: 4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
+        specifier: ^4.16.9
+        version: 4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -80,7 +80,7 @@ importers:
         version: 1.0.9(eslint@8.57.1)(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.266
+        version: 2.2.267
       '@julr/unocss-preset-heropatterns':
         specifier: ^1.0.2
         version: 1.0.2(unocss@0.63.6(postcss@8.4.47)(rollup@2.79.2)(typescript@5.4.5)(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0)))
@@ -107,7 +107,7 @@ importers:
         version: 0.63.6
       '@vite-pwa/astro':
         specifier: ^0.4.3
-        version: 0.4.3(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
+        version: 0.4.3(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))
       bits-ui:
         specifier: ^0.21.16
         version: 0.21.16(svelte@4.2.19)
@@ -1054,8 +1054,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.266':
-    resolution: {integrity: sha512-lv+lmPjhDh5/sCaom8AX39USmneRMcQRT/SKoDsxizOjVKycZ8PRk7kNKi776YkKzuksb0Xv5Tfi/Mrr3YLQgQ==}
+  '@iconify/json@2.2.267':
+    resolution: {integrity: sha512-mM+W8HES8J78wNFRWimpfT+D2YhLzZ9AKD/PiDqiW/QsMmROa2iK0Bx+RwTYYWosmRCzPXPH9y08X4VgfkqZuw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1899,8 +1899,8 @@ packages:
     resolution: {integrity: sha512-AGsGgcg7Jg9UpyCDgvl/EkdYpe1oMkFdmC2Zl+KWneoieLCtQIFjmcY8yt41gcNx4mby0w8BBJQcBmPuf8UAoQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro@4.16.8:
-    resolution: {integrity: sha512-BRWFP0UQ8gkOr90KQW7oooedtgCk/j91pyv1WQUmgZwMUZk/v0HJRiddAZgvGCECOnmZFc9ZqRZnBsAMUgApNQ==}
+  astro@4.16.9:
+    resolution: {integrity: sha512-DFYzPZooVArKSGu969BBByUV44tJMVDPGKxgqWNFBaIrkvGljdVUqQSVwD+/iPYACoSkI8BRYvDMEBDkathIUQ==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -5006,13 +5006,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@5.5.4(@types/node@22.8.6)(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)':
+  '@astrojs/netlify@5.5.4(@types/node@22.8.6)(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(terser@5.36.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
       '@netlify/functions': 2.8.2
       '@vercel/nft': 0.27.5
-      astro: 4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
+      astro: 4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
       esbuild: 0.21.5
       vite: 5.4.10(@types/node@22.8.6)(terser@5.36.0)
     transitivePeerDependencies:
@@ -5027,9 +5027,9 @@ snapshots:
       - supports-color
       - terser
 
-  '@astrojs/node@8.3.4(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))':
+  '@astrojs/node@8.3.4(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))':
     dependencies:
-      astro: 4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
+      astro: 4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
       send: 0.19.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -5048,10 +5048,10 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/svelte@5.7.2(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))':
+  '@astrojs/svelte@5.7.2(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))
-      astro: 4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
+      astro: 4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
       svelte: 4.2.19
       svelte2tsx: 0.7.22(svelte@4.2.19)(typescript@5.4.5)
       typescript: 5.4.5
@@ -5073,13 +5073,13 @@ snapshots:
 
   '@astrojs/underscore-redirects@0.3.4': {}
 
-  '@astrojs/vercel@7.8.2(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))':
+  '@astrojs/vercel@7.8.2(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@vercel/analytics': 1.3.2
       '@vercel/edge': 1.1.2
       '@vercel/nft': 0.27.5
-      astro: 4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
+      astro: 4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
       esbuild: 0.21.5
       fast-glob: 3.3.2
       web-vitals: 3.5.2
@@ -5952,7 +5952,7 @@ snapshots:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)(typescript@5.4.5)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.4.5)
       eslint: 8.57.1
-      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
+      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
       eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.31.0)(eslint@8.57.1)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.1)
       eslint-plugin-html: 6.2.0
@@ -5997,7 +5997,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.266':
+  '@iconify/json@2.2.267':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -6804,9 +6804,9 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vite-pwa/astro@0.4.3(astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
+  '@vite-pwa/astro@0.4.3(astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(vite-plugin-pwa@0.19.8(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0))':
     dependencies:
-      astro: 4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
+      astro: 4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
       vite-plugin-pwa: 0.19.8(vite@5.4.10(@types/node@22.8.6)(terser@5.36.0))(workbox-build@7.0.0(@types/babel__core@7.20.5))(workbox-window@7.0.0)
 
   '@vue/compiler-core@3.5.12':
@@ -7027,7 +7027,7 @@ snapshots:
       - supports-color
       - typescript
 
-  astro@4.16.8(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5):
+  astro@4.16.9(@types/node@22.8.6)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -7688,7 +7688,7 @@ snapshots:
       eslint: 8.57.1
       semver: 7.6.3
 
-  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
+  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.12.2(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)
