@@ -18,8 +18,8 @@ importers:
         specifier: ^4.4.2
         version: 4.4.2(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       '@astrojs/svelte':
-        specifier: ^5.7.2
-        version: 5.7.2(astro@4.16.9(@types/node@22.9.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
+        specifier: ^5.7.3
+        version: 5.7.3(astro@4.16.9(@types/node@22.9.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       '@astrojs/vercel':
         specifier: ^7.8.2
         version: 7.8.2(astro@4.16.9(@types/node@22.9.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))
@@ -187,8 +187,8 @@ packages:
       solid-devtools:
         optional: true
 
-  '@astrojs/svelte@5.7.2':
-    resolution: {integrity: sha512-d3nfPe7OMoDqdw7SXfvYlyCSB4p84p92IIvEsu5E1jDPFbS1mlC76hjAlr0nJHQfV1MZPWifEmmfgDBWLCuS8g==}
+  '@astrojs/svelte@5.7.3':
+    resolution: {integrity: sha512-0PAwn2KLVpGsJppG8dWM1P9+/VrjAdhMWgEgwC1PjY2xFG565bTw7OuGaS5zh5Fu4AcjVoBkVQKjW/N3mLnrJA==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       astro: ^4.0.0
@@ -5047,7 +5047,7 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/svelte@5.7.2(astro@4.16.9(@types/node@22.9.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))':
+  '@astrojs/svelte@5.7.3(astro@4.16.9(@types/node@22.9.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(typescript@5.4.5)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       astro: 4.16.9(@types/node@22.9.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
