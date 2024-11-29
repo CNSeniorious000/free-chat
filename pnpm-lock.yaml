@@ -24,8 +24,8 @@ importers:
         specifier: ^7.8.2
         version: 7.8.2(astro@4.16.16(@types/node@22.10.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5))(svelte@4.2.19)(vue@3.5.12(typescript@5.4.5))
       '@lobehub/icons-static-svg':
-        specifier: ^1.6.0
-        version: 1.6.0
+        specifier: ^1.8.0
+        version: 1.8.0
       astro:
         specifier: ^4.16.16
         version: 4.16.16(@types/node@22.10.0)(rollup@2.79.2)(terser@5.36.0)(typescript@5.4.5)
@@ -83,7 +83,7 @@ importers:
         version: 1.0.9(eslint@8.57.1)(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.276
+        version: 2.2.277
       '@julr/unocss-preset-heropatterns':
         specifier: ^1.0.2
         version: 1.0.2(unocss@0.64.1(postcss@8.4.49)(rollup@2.79.2)(vite@5.4.11(@types/node@22.10.0)(terser@5.36.0))(vue@3.5.12(typescript@5.4.5)))
@@ -1054,8 +1054,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.276':
-    resolution: {integrity: sha512-YXCcFQSgFTj/3rlK6Vlv9T5suFjWBQu5dt9k/aYbje/U21jNp7P2xf0CPiAn8iItU/9uDj9mi3UsITMShqeCug==}
+  '@iconify/json@2.2.277':
+    resolution: {integrity: sha512-hNBnGD2djNgsdB4Yq5dBhP2CI0PLt+4EamozKSAD+hsbFAzVUN6sMj5FUiBFu8BKUOBIYcrX8ri7C7Qe3K10ew==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1198,8 +1198,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13 < 1'
 
-  '@lobehub/icons-static-svg@1.6.0':
-    resolution: {integrity: sha512-YxefrJILiAGiGri6D4u2pIcf3dZsnrdcudeOAUyMOGU8vzXDmCgzTw4Ly2Hzh8xSOIo7/dret65MvBKGAm55JQ==}
+  '@lobehub/icons-static-svg@1.8.0':
+    resolution: {integrity: sha512-SNw/Dput+GKJAT9Hbr8EkcU9PJrDokxoIw/wDIDA21jP7PwIDlefLg9NXMOcbuUa3wTb0mVYDeDVMkS4Pt1MFg==}
 
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -6062,7 +6062,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.276':
+  '@iconify/json@2.2.277':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -6187,7 +6187,7 @@ snapshots:
       '@unocss/preset-mini': 0.52.7
       unocss: 0.64.1(postcss@8.4.49)(rollup@2.79.2)(vite@5.4.11(@types/node@22.10.0)(terser@5.36.0))(vue@3.5.12(typescript@5.4.5))
 
-  '@lobehub/icons-static-svg@1.6.0': {}
+  '@lobehub/icons-static-svg@1.8.0': {}
 
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
