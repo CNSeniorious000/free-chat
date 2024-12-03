@@ -83,7 +83,7 @@ importers:
         version: 1.0.9(eslint@8.57.1)(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.278
+        version: 2.2.279
       '@julr/unocss-preset-heropatterns':
         specifier: ^1.0.2
         version: 1.0.2(unocss@0.64.1(postcss@8.4.49)(rollup@2.79.2)(vite@5.4.11(@types/node@22.10.1)(terser@5.36.0))(vue@3.5.12(typescript@5.4.5)))
@@ -121,8 +121,8 @@ importers:
         specifier: ^2.46.1
         version: 2.46.1(eslint@8.57.1)(svelte@4.2.19)
       openai:
-        specifier: ^4.74.0
-        version: 4.74.0(zod@3.23.8)
+        specifier: ^4.75.0
+        version: 4.75.0(zod@3.23.8)
       svelte-inview:
         specifier: ^4.0.4
         version: 4.0.4(svelte@4.2.19)
@@ -1054,8 +1054,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.278':
-    resolution: {integrity: sha512-qlCSLKYt54GX3crtQ2tSvwukA0DswXkBI/XH4HFq49Mg7uyy1o9/AEWrUdN3csODJN6ge8QT38mvMiL9/XlodQ==}
+  '@iconify/json@2.2.279':
+    resolution: {integrity: sha512-9HJWOos32Qik+Mg0fTgP/FgoCpswQPAsFAJtGQv7PN3KQ3Dwta5DDfpEj/QSwdNB9xJ/gI+aFhSlULgeah7eFA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3812,8 +3812,8 @@ packages:
   oniguruma-to-es@0.7.0:
     resolution: {integrity: sha512-HRaRh09cE0gRS3+wi2zxekB+I5L8C/gN60S+vb11eADHUaB/q4u8wGGOX3GvwvitG8ixaeycZfeoyruKQzUgNg==}
 
-  openai@4.74.0:
-    resolution: {integrity: sha512-pQ8t1jchUymw5WB5jZPchuBtWvxul7RyVxa+9RWfiCQyzvzUyI2sKvUYfpEDI/ouaRLcik3K6psj15ByCefeNA==}
+  openai@4.75.0:
+    resolution: {integrity: sha512-8cWaK3td0qLspaflKWD6AvpQnl0gynWFbHg7sMAgiu//F20I4GJlCCpllDrECO6WFSuY8HXJj8gji3urw2BGGg==}
     hasBin: true
     peerDependencies:
       zod: ^3.23.8
@@ -6063,7 +6063,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.278':
+  '@iconify/json@2.2.279':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -6477,7 +6477,7 @@ snapshots:
 
   '@types/node-fetch@2.6.12':
     dependencies:
-      '@types/node': 18.19.67
+      '@types/node': 22.10.1
       form-data: 4.0.1
 
   '@types/node@18.19.67':
@@ -9435,7 +9435,7 @@ snapshots:
       regex: 5.0.2
       regex-recursion: 4.3.0
 
-  openai@4.74.0(zod@3.23.8):
+  openai@4.75.0(zod@3.23.8):
     dependencies:
       '@types/node': 18.19.67
       '@types/node-fetch': 2.6.12
