@@ -50,7 +50,7 @@ export const post: APIRoute = async({ request }) => {
   if (httpsProxy) initOptions.dispatcher = new ProxyAgent(httpsProxy)
   // #vercel-end
 
-  const response = await fetch(`${baseUrl}/v1/chat/completions`, initOptions).catch((err: Error) => {
+  const response = await fetch(`${baseUrl}/chat/completions`, initOptions).catch((err: Error) => {
     console.error(err)
     return new Response(JSON.stringify({
       error: {

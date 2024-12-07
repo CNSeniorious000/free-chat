@@ -260,7 +260,7 @@ export default () => {
     <div class="flex flex-col flex-grow h-full justify-between relative">
       <div
         ref={bgd!}
-        class="bg-top-center bg-hero-yyy-gray-500/10 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
+        class="bg-top-center bg-hero-i-like-food-gray-500/10 h-1000vh w-full translate-y-$scroll transition-opacity top-0 left-0 z--1 duration-1000 fixed op-100 <md:bg-none <md:hiddern"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && loading()}
         class:duration-400={isStick() && loading()}
