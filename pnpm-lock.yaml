@@ -24,8 +24,8 @@ importers:
         specifier: ^7.8.2
         version: 7.8.2(astro@4.16.17(@types/node@22.10.1)(rollup@2.79.2)(terser@5.37.0)(typescript@5.4.5))(rollup@2.79.2)(svelte@4.2.19)(vue@3.5.12(typescript@5.4.5))
       '@lobehub/icons-static-svg':
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^1.11.0
+        version: 1.11.0
       astro:
         specifier: ^4.16.17
         version: 4.16.17(@types/node@22.10.1)(rollup@2.79.2)(terser@5.37.0)(typescript@5.4.5)
@@ -1201,8 +1201,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13 < 1'
 
-  '@lobehub/icons-static-svg@1.10.0':
-    resolution: {integrity: sha512-9FESljHz9W8ZyL/2RaWtdxoI39ejxZjfSl+ONlU+yJW0UldwXNj1qpfrYZ4LO6LtFsPbZLzOZJy4vEYk3bTPLQ==}
+  '@lobehub/icons-static-svg@1.11.0':
+    resolution: {integrity: sha512-Q+KZSFmneUZtNyclpKuPauaeW5GlbzOaJcVmCXj4b94Ze58X9l8l7/BdQswEg42Iy1VqNSb/xGSAZNM/ghr+8Q==}
 
   '@mapbox/node-pre-gyp@2.0.0-rc.0':
     resolution: {integrity: sha512-nhSMNprz3WmeRvd8iUs5JqkKr0Ncx46JtPxM3AhXes84XpSJfmIwKeWXRpsr53S7kqPkQfPhzrMFUxSNb23qSA==}
@@ -5997,7 +5997,7 @@ snapshots:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)(typescript@5.4.5)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.4.5)
       eslint: 8.57.1
-      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
+      eslint-config-standard: 17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1)
       eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.31.0)(eslint@8.57.1)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.1)
       eslint-plugin-html: 6.2.0
@@ -6182,7 +6182,7 @@ snapshots:
       '@unocss/preset-mini': 0.52.7
       unocss: 0.64.1(postcss@8.4.49)(rollup@2.79.2)(vite@5.4.11(@types/node@22.10.1)(terser@5.37.0))(vue@3.5.12(typescript@5.4.5))
 
-  '@lobehub/icons-static-svg@1.10.0': {}
+  '@lobehub/icons-static-svg@1.11.0': {}
 
   '@mapbox/node-pre-gyp@2.0.0-rc.0':
     dependencies:
@@ -7750,7 +7750,7 @@ snapshots:
       eslint: 8.57.1
       semver: 7.6.3
 
-  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0)(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
+  eslint-config-standard@17.1.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.4.5))(eslint-import-resolver-typescript@2.7.1)(eslint@8.57.1))(eslint-plugin-n@15.7.0(eslint@8.57.1))(eslint-plugin-promise@6.6.0(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.18.0(eslint@8.57.1)(typescript@5.4.5))(eslint@8.57.1)
