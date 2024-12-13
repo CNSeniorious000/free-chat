@@ -4,9 +4,13 @@
   import { trackEvent } from '@/utils/track'
   import ThemeColor, { setThemeColor } from './ThemeColor.svelte'
 
-  let themeToggle: HTMLButtonElement
+  let themeToggle: HTMLButtonElement = $state()
 
-  export let dark: boolean | undefined
+  interface Props {
+    dark: boolean | undefined;
+  }
+
+  let { dark = $bindable() }: Props = $props()
 
   onMount(() => {
     const iframes = document.querySelectorAll('iframe')
@@ -37,7 +41,7 @@
     chooseDarkMode(classList.contains('dark'))
   })
 
-  $: r = dark ? 9 : 5
+  const r = $derived(dark ? 9 : 5)
 </script>
 
 <ThemeColor />

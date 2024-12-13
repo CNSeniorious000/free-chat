@@ -1,4 +1,4 @@
-<script context=module lang="ts">
+<script module lang="ts">
   import { spring } from 'svelte/motion'
   import { derived, writable } from 'svelte/store'
   import { type RGB, getRgb } from '@/utils/color'
@@ -30,15 +30,21 @@
 </script>
 
 <script lang="ts">
+  import { run } from 'svelte/legacy'
+
 import { onMount } from 'svelte'
 
-let tag: HTMLMetaElement
+let tag: HTMLMetaElement = $state()
 
 onMount(() => {
   tag = document.querySelector('meta[name="theme-color"]')!
 })
 
-$: if (tag) $rgb = $overrideColor ?? $themeColor
+run(() => {
+  if (tag) $rgb = $overrideColor ?? $themeColor
+})
 
-$: $color && tag?.setAttribute('content', $color)
+run(() => {
+  $color && tag?.setAttribute('content', $color)
+})
 </script>

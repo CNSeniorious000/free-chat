@@ -2,8 +2,12 @@
   import { scale } from 'svelte/transition'
   import { persisted } from 'svelte-persisted-store'
 
-  export let key: string
-  export let initial = true
+  interface Props {
+    key: string;
+    initial?: boolean;
+  }
+
+  const { key, initial = true }: Props = $props()
 
   const checked = persisted(key, initial)
 
@@ -14,7 +18,7 @@
 
 <label class="flex items-center space-x-2">
   <input type="checkbox" class="hidden" bind:checked={$checked} />
-  <button class="h-4 w-8 rounded-full bg-$c-fg-20 p-0.8 transition-colors duration-350" class:!bg-$c-fg-80={$checked} on:click={toggle}>
+  <button class="h-4 w-8 rounded-full bg-$c-fg-20 p-0.8 transition-colors duration-350" class:!bg-$c-fg-80={$checked} onclick={toggle}>
     <div class="pointer-events-none relative h-2.4 w-2.4 translate-x-0 rounded-full bg-white shadow transition-transform duration-350" class:translate-x-4={$checked}>
       {#if $checked}
         <div transition:scale={{ start: 0, duration: 350 }} class="i-bi-check absolute h-full w-full bg-$c-fg-60 dark:!bg-$c-bg"></div>
