@@ -7,11 +7,17 @@
   import Group from './controls/Group.svelte'
   import Section from './controls/Section.svelte'
 
-  export let show: boolean
+  interface Props {
+    show: boolean;
+  }
+
+  let { show = $bindable() }: Props = $props()
 </script>
 
 <Modal bind:show icon="i-fluent-emoji-flat-eight-pointed-star">
-  <div class="i-fluent-thumb-like-24-filled text-lg" slot="inside"></div>
+  {#snippet inside()}
+    <div class="i-fluent-thumb-like-24-filled text-lg" ></div>
+  {/snippet}
   <div class="w-full flex flex-col gap-5 -translate-y-3">
     <Section title="选择 LLM" tips="不同的模型响应速度也有区别，由供应商服务压力决定，可能会有波动">
       <Selector />

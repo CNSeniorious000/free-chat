@@ -1,4 +1,4 @@
-<script context="module" lang=ts>
+<script module lang=ts>
   import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
   import { persisted } from 'svelte-persisted-store'
 
@@ -17,9 +17,13 @@
   import { ripple } from 'svelte-ripple-action'
   import { trackEvent } from '@/utils/track'
 
-  export let id: Model
-  export let name: string
-  export let title: string
+  interface Props {
+    id: Model;
+    name: string;
+    title: string;
+  }
+
+  const { id, name, title }: Props = $props()
 
   function choose() {
     $model = id
@@ -27,9 +31,9 @@
   }
 </script>
 
-<input tabindex="-1" type="radio" name="model" {id} class="sr-only" on:select={choose} checked={$model === id} />
+<input tabindex="-1" type="radio" name="model" {id} class="sr-only" onselect={choose} checked={$model === id} />
 
-<button use:ripple={{ color: 'var(--c-fg)' }} on:click={choose} class="cursor-auto text-left">
+<button use:ripple={{ color: 'var(--c-fg)' }} onclick={choose} class="cursor-auto text-left">
   <h4>{name}</h4>
   <h5>{title}</h5>
 </button>

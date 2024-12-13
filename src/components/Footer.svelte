@@ -1,5 +1,9 @@
 <script lang="ts">
-  export let origin: string = ''
+  interface Props {
+    origin?: string;
+  }
+
+  const { origin = '' }: Props = $props()
 </script>
 
 <footer class="mb-4.5rem flex flex-col select-none justify-between gap-2.5 text-xs <sm:mb-1.5rem sm:flex-row <sm:items-center <sm:self-center <md:transition-colors">
