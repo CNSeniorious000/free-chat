@@ -1,9 +1,10 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "strict": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": ["vite-plugin-pwa/info"],

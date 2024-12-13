@@ -1,6 +1,8 @@
+import { OPENAI_API_BASE_URL, TRANSCRIPT_PROMPT, TRANSCRIPT_TARGET_LANG } from 'astro:env/server'
 import { getHeaders } from '@/utils/header'
 import type { APIRoute } from 'astro'
-const baseUrl = ((import.meta.env.OPENAI_API_BASE_URL) || 'https://api.openai.com').trim().replace(/\/$/, '')
+
+const baseUrl = (OPENAI_API_BASE_URL).trim().replace(/\/$/, '')
 
 export const POST: APIRoute = async(context) => {
   const headers = getHeaders(context.request)
@@ -9,9 +11,9 @@ export const POST: APIRoute = async(context) => {
 
   const formData = new FormData()
   formData.append('model', 'whisper-1')
-  formData.append('language', import.meta.env.TRANSCRIPT_TARGET_LANG ?? 'zh')
+  formData.append('language', TRANSCRIPT_TARGET_LANG)
   formData.append('response_format', 'text')
-  formData.append('prompt', import.meta.env.TRANSCRIPT_PROMPT ?? prompt)
+  formData.append('prompt', TRANSCRIPT_PROMPT ?? prompt)
   formData.append('file', await context.request.blob(), 'file.webm')
 
   const text = await fetch(`${baseUrl}/v1/audio/transcriptions`, { method: 'POST', headers, body: formData }).then(res => res.text())

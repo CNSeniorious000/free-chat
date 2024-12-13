@@ -1,3 +1,4 @@
+import { OPENAI_API_MODEL, TITLE_GEN_MODEL } from 'astro:env/server'
 import { openai } from '@/utils/client'
 import type { Stream } from 'openai/streaming'
 import type { ChatCompletionChunk } from 'openai/resources/chat/completions'
@@ -18,7 +19,7 @@ You should respond in valid JSON format, with a single string field \`title\`.
 The title should be in Chinese if you think the user is Chinese.
 `.trim()
 
-const model = import.meta.env.TITLE_GEN_MODEL ?? import.meta.env.OPENAI_API_MODEL ?? 'gpt-4o-mini'
+const model = TITLE_GEN_MODEL ?? OPENAI_API_MODEL
 
 export const POST: APIRoute = async(context) => {
   const content = await context.request.text()

@@ -1,3 +1,7 @@
+import { OPENAI_API_BASE_URL, OPENAI_API_KEY, OPENAI_BASE_URL } from 'astro:env/server'
+
 import { OpenAI } from 'openai'
-import { openaiBaseUrl } from './constants'
-export const openai = new OpenAI({ apiKey: import.meta.env.OPENAI_API_KEY ?? '', baseURL: openaiBaseUrl, timeout: 10000, maxRetries: 5 })
+
+const openaiBaseUrl = (OPENAI_BASE_URL ?? `${OPENAI_API_BASE_URL.trim().replace(/\/$/, '')}/v1`).trim().replace(/\/$/, '')
+
+export const openai = new OpenAI({ apiKey: OPENAI_API_KEY ?? '', baseURL: openaiBaseUrl, timeout: 10000, maxRetries: 5 })

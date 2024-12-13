@@ -1,5 +1,6 @@
 ---
 import { pwaInfo } from 'virtual:pwa-info'
+import { HEAD_SCRIPTS } from 'astro:env/client'
 
 export interface Props {
   title: string;
@@ -21,7 +22,7 @@ const origin = Astro.request.headers.get('host')
     <meta name="generator" content={Astro.generator}>
     <title>{title} - {origin}</title>
     <meta name="description" content="Chat for free with AI chatbot" />
-    { import.meta.env.HEAD_SCRIPTS && <Fragment set:html={import.meta.env.HEAD_SCRIPTS } /> }
+    { HEAD_SCRIPTS && <Fragment set:html={HEAD_SCRIPTS} /> }
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
     { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW!.scriptTag} /> }
     <link rel="prefetch" href="https://ic.free-chat.asia/">

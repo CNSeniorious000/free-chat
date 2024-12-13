@@ -1,9 +1,10 @@
 <script context="module" lang=ts>
+  import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
   import { persisted } from 'svelte-persisted-store'
 
   type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini-2024-07-18' | 'Qwen/Qwen2.5-32B-Instruct' | 'deepseek-ai/DeepSeek-V2.5' | 'THUDM/glm-4-9b-chat' | 'internlm/internlm2_5-20b-chat' | 'mixtral-8x7b-32768' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama-3.2-90b-vision-preview' | 'llama-3.3-70b-versatile' | 'llama3.1-70b' | 'azure:gpt-4o' | 'azure:gpt-4o-mini' | 'AI21-Jamba-1.5-Large' | 'AI21-Jamba-1.5-Mini' | 'Phi-3.5-MoE-instruct' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-Nemo' | 'Mistral-large-2407' | 'yi-lightning' | 'grok-beta';
 
-  const defaultModel = (import.meta.env.PUBLIC_DEFAULT_MODEL ?? 'gpt-4o-mini') as Model
+  const defaultModel = PUBLIC_DEFAULT_MODEL as Model
 
   function asIs(value: Model) {
     return value

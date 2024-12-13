@@ -3,6 +3,7 @@
   import { Toaster } from 'svelte-sonner'
   import { ripple } from 'svelte-ripple-action'
   import meta from '@lobehub/icons-static-svg/icons/meta-brand-color.svg?raw'
+  import { PUBLIC_IFRAME_URL } from 'astro:env/client'
   import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
   import Ad from './Ad.svelte'
@@ -63,8 +64,8 @@
   </div>
 </div>
 
-{#if import.meta.env.PUBLIC_IFRAME_URL}
-  <Ad src={import.meta.env.PUBLIC_IFRAME_URL} />
+{#if PUBLIC_IFRAME_URL}
+  <Ad src={PUBLIC_IFRAME_URL} />
 {/if}
 
 {#await import('./Sponsorship.svelte') then { default: Sponsorship }}

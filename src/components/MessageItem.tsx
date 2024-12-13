@@ -2,6 +2,7 @@ import { createSignal } from 'solid-js'
 import MarkdownIt from 'markdown-it'
 import mdKatex from 'markdown-it-katex'
 import mdHighlight from 'markdown-it-highlightjs'
+import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
 import { useClipboard, useEventListener } from 'solidjs-use'
 import IconRefresh from './icons/Refresh'
 import type { Accessor } from 'solid-js'
@@ -14,7 +15,7 @@ interface Props {
   onRetry?: () => void
 }
 
-const alignRightMine = !!import.meta.env.PUBLIC_RIGHT_ALIGN_MY_MSG
+const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
 export default ({ role, message, showRetry, onRetry }: Props) => {
   const roleClass = {
