@@ -1,6 +1,7 @@
 import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
+import { PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
 import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
@@ -17,8 +18,8 @@ import type { LocalStorageSetEvent } from '@/utils/events'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
 
-export const minMessages = Number(import.meta.env.PUBLIC_MIN_MESSAGES ?? 3)
-export const maxTokens = Number(import.meta.env.PUBLIC_MAX_TOKENS ?? 3000)
+export const minMessages = PUBLIC_MIN_MESSAGES
+export const maxTokens = PUBLIC_MAX_TOKENS
 
 export default () => {
   let rootRef: HTMLDivElement
@@ -41,7 +42,7 @@ export default () => {
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
 
-  const moderationInterval = Number(import.meta.env.PUBLIC_MODERATION_INTERVAL ?? '2000')
+  const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
   createEffect(() => currentError() && trackEvent('error', { code: currentError()!.code }))
 

@@ -1,6 +1,7 @@
+import { OPENAI_API_BASE_URL } from 'astro:env/server'
 import type { APIRoute } from 'astro'
 
-const baseUrl = ((import.meta.env.OPENAI_API_BASE_URL) || 'https://api.openai.com').trim().replace(/\/$/, '')
+const baseUrl = OPENAI_API_BASE_URL.trim().replace(/\/$/, '')
 
 const FORWARD_HEADERS = ['origin', 'referer', 'cookie', 'user-agent', 'via']
 
