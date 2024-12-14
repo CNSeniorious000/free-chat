@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js'
 import MarkdownIt from 'markdown-it'
+// @ts-expect-error missing types
 import mdKatex from 'markdown-it-katex'
 import mdHighlight from 'markdown-it-highlightjs'
 import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'

@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy'
-
   import { fade, fly, slide } from 'svelte/transition'
   import { quintIn, quintOut } from 'svelte/easing'
   import { toast } from 'svelte-sonner'
@@ -12,7 +10,7 @@
   let showQR = $state(false)
   let showButton = $state(false)
 
-  run(() => {
+  $effect(() => {
     if (showModal) {
       setTimeout(() => {
         if (showModal) {

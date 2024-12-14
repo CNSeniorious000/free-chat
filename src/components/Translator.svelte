@@ -93,16 +93,16 @@
         {/each}
       </div>
       <div class="absolute bottom-0 right-0 justify-end gap-3 [&>button:disabled]:op-40">
-        <UseCopy text={parsed.reduce((acc, { translated }) => acc + translated ?? '', '')} >
+        <UseCopy text={parsed.reduce((acc, { translated }) => acc + (translated ?? ''), '')}>
           {#snippet children({ handleClick, displayText })}
-                    <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!parsed.length}>
+            <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!parsed.length}>
               <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
                 <div i-iconamoon-copy-duotone></div>
                 <span class="text-sm">{displayText}</span>
               </div>
             </button>
-                            {/snippet}
-                </UseCopy>
+          {/snippet}
+        </UseCopy>
       </div>
     </div>
   </div>

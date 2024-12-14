@@ -32,19 +32,19 @@
 <script lang="ts">
   import { run } from 'svelte/legacy'
 
-import { onMount } from 'svelte'
+  import { onMount } from 'svelte'
 
-let tag: HTMLMetaElement = $state()
+  let tag = $state<HTMLMetaElement>()
 
-onMount(() => {
-  tag = document.querySelector('meta[name="theme-color"]')!
-})
+  onMount(() => {
+    tag = document.querySelector('meta[name="theme-color"]')! as HTMLMetaElement
+  })
 
-run(() => {
-  if (tag) $rgb = $overrideColor ?? $themeColor
-})
+  run(() => {
+    if (tag) $rgb = $overrideColor ?? $themeColor
+  })
 
-run(() => {
-  $color && tag?.setAttribute('content', $color)
-})
+  run(() => {
+    $color && tag?.setAttribute('content', $color)
+  })
 </script>

@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy'
-
   import { ripple } from 'svelte-ripple-action'
   import { setThemeColor } from './ThemeColor.svelte'
   interface Props {
@@ -38,7 +36,7 @@
       timeoutId = setTimeout(() => setThemeColor(color), 200)
   }
 
-  run(() => {
+  $effect(() => {
     darkenThemeColor(show)
   })
 </script>

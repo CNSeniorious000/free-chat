@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy'
-
   import { onMount } from 'svelte'
 
-  let apiKey: string = $state()
+  let apiKey = $state<string>()
 
   onMount(() => (apiKey = localStorage.getItem('apiKey') ?? ''))
-  run(() => {
+  $effect(() => {
     typeof localStorage !== 'undefined' && typeof apiKey !== 'undefined' && localStorage.setItem('apiKey', apiKey)
   })
 </script>

@@ -4,7 +4,7 @@
   import { trackEvent } from '@/utils/track'
   import ThemeColor, { setThemeColor } from './ThemeColor.svelte'
 
-  let themeToggle: HTMLButtonElement = $state()
+  let themeToggle = $state<HTMLButtonElement>()
 
   interface Props {
     dark: boolean | undefined;
@@ -33,7 +33,7 @@
     const colorSchema = window.matchMedia('(prefers-color-scheme: dark)')
     colorSchema.addEventListener('change', ({ matches }) => { chooseDarkMode(matches) })
 
-    themeToggle.addEventListener('click', () => {
+    themeToggle!.addEventListener('click', () => {
       chooseDarkMode(!dark)
       trackEvent('toggle-theme', { theme: dark ? 'dark' : 'light' })
     })

@@ -71,7 +71,7 @@ export default () => {
   })
 
   const resetTextInputHeight = () => {
-    if (inputRef) {
+    if (inputRef!) {
       inputRef.style.height = 'auto'
       inputRef.style.height = `${inputRef.scrollHeight}px`
     }
@@ -112,7 +112,7 @@ export default () => {
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings') ?? '')
 
       createEffect(() => {
-        inputRef && (inputRef.value = inputValue())
+        inputRef! && (inputRef.value = inputValue())
       })
 
       createEffect(() => {
@@ -145,7 +145,7 @@ export default () => {
       if ((event.target as HTMLElement).nodeName !== 'TEXTAREA') {
         if (event.code === 'Slash') {
           event.preventDefault()
-          inputRef.focus()
+          inputRef!.focus()
         } else if (event.code === 'KeyB') {
           trackEvent('stick-to-bottom', { stick: isStick() ? 'switch off' : 'switch on', trigger: 'key' })
           setStick(!isStick())
@@ -157,7 +157,7 @@ export default () => {
     new MutationObserver(() => isStick() && instantToBottom()).observe(rootRef!, { childList: true, subtree: true })
 
     window.addEventListener('scroll', () => {
-      bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
+      bgd!.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
     })
   })
 
@@ -401,8 +401,8 @@ export default () => {
 
   const clear = () => {
     document.dispatchEvent(new MessagesEvent('clearMessages', messageList().length + Number(Boolean(currentSystemRoleSettings()))))
-    inputRef.value = ''
-    inputRef.style.height = 'auto'
+    inputRef!.value = ''
+    inputRef!.style.height = 'auto'
     trackEvent('clear', { totalTokenCount: formatTokenCount(messageList()) })
     tokenCountCache.clear()
     batch(() => {
@@ -509,7 +509,7 @@ export default () => {
           <div classList={{ 'op-0 pointer-events-none': !inview() }} class="mt-1 flex flex-row gap-2 overflow-x-scroll ws-nowrap px-2rem transition-opacity scrollbar-none -mx-2rem [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
             <Show when={suggestions().length} fallback={<button disabled role="presentation" class="invisible">&nbsp;</button>} >
               <Index each={suggestions()}>
-                {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
+                {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef!.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
               </Index>
             </Show>
           </div>
@@ -549,7 +549,7 @@ export default () => {
                 onKeyDown={handleKeydown}
                 placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
                 autocomplete="off"
-                onInput={() => setInputValue(inputRef.value)}
+                onInput={() => setInputValue(inputRef!.value)}
                 rows="1"
                 class="gen-textarea"
                 data-lenis-prevent
