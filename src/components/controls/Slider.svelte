@@ -11,7 +11,7 @@
   const value = persisted(key, initial)
 </script>
 
-<button onclick={() => value.set(undefined)} disabled={$value === undefined} title="reset" class="rounded-full bg-$c-fg-10 p-1 transition-background-color disabled:op-30 hover:not-disabled:bg-$c-fg-20">
+<button onclick={() => value.set(undefined)} disabled={$value === undefined} title="reset" class="rounded-full bg-$c-fg-10 p-1 transition-background-color disabled:op-30 hover:not-disabled:bg-$c-fg-20" aria-label="reset">
   <div class="i-ci-redo"></div>
 </button>
 

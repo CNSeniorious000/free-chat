@@ -10,12 +10,8 @@
     inside?: import('svelte').Snippet;
   }
 
-  let {
-    show = $bindable(true),
-    icon,
-    children,
-    inside,
-  }: Props = $props()
+  // eslint-disable-next-line prefer-const
+  let { show = $bindable(true), icon, children, inside }: Props = $props()
 
   let timeoutId: ReturnType<typeof setTimeout>
   let transitioning = $state(false)
