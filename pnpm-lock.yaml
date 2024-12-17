@@ -39,8 +39,8 @@ importers:
         specifier: ^11.11.0
         version: 11.11.0
       katex:
-        specifier: ^0.16.15
-        version: 0.16.15
+        specifier: ^0.16.17
+        version: 0.16.17
       lenis:
         specifier: ^1.1.18
         version: 1.1.18(vue@3.5.12(typescript@5.4.5))
@@ -83,7 +83,7 @@ importers:
         version: 1.0.9(eslint@8.57.1)(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.284
+        version: 2.2.285
       '@julr/unocss-preset-heropatterns':
         specifier: ^1.0.2
         version: 1.0.2(unocss@0.65.1(postcss@8.4.49)(rollup@2.79.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.6)(terser@5.37.0)(tsx@4.19.2))(vue@3.5.12(typescript@5.4.5)))
@@ -1187,8 +1187,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify/json@2.2.284':
-    resolution: {integrity: sha512-s+DpI5CWkLwnRIwF5wg32OJBitqwD0PvVxVRj5WvBO6v8wLJvkxjOG0G/UmS8sWhwyMjfLsAK6NL71LPBNjsvw==}
+  '@iconify/json@2.2.285':
+    resolution: {integrity: sha512-oyH9NQ3aMdPuBl7miNcX7IavISwv5o07O6MBTQhW+X1mvyzrGwTxFf5bZmGYOsH3yB0MDGZkir3v+JiQE3UInA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3442,8 +3442,8 @@ packages:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
 
-  katex@0.16.15:
-    resolution: {integrity: sha512-yE9YJIEAk2aZ+FL/G8r+UGw0CTUzEA8ZFy6E+8tc3spHUKq3qBnzCkI1CQwGoI9atJhVyFPEypQsTY7mJ1Pi9w==}
+  katex@0.16.17:
+    resolution: {integrity: sha512-OyzSrXBllz+Jdc9Auiw0kt21gbZ4hkz8Q5srVAb2U9INcYIfGKbxe+bvNvEz1bQ/NrDeRRho5eLCyk/L03maAw==}
     hasBin: true
 
   katex@0.6.0:
@@ -6212,7 +6212,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify/json@2.2.284':
+  '@iconify/json@2.2.285':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -8950,7 +8950,7 @@ snapshots:
       object.assign: 4.1.5
       object.values: 1.2.0
 
-  katex@0.16.15:
+  katex@0.16.17:
     dependencies:
       commander: 8.3.0
 
