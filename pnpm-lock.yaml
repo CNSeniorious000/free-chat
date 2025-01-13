@@ -15,8 +15,8 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0(astro@5.1.5(@types/node@22.10.5)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))
       '@astrojs/solid-js':
-        specifier: ^5.0.1
-        version: 5.0.1(@types/node@22.10.5)(jiti@2.4.2)(solid-js@1.9.4)(terser@5.37.0)(tsx@4.19.2)
+        specifier: ^5.0.2
+        version: 5.0.2(@types/node@22.10.5)(jiti@2.4.2)(solid-js@1.9.4)(terser@5.37.0)(tsx@4.19.2)
       '@astrojs/svelte':
         specifier: ^7.0.3
         version: 7.0.3(@types/node@22.10.5)(astro@5.1.5(@types/node@22.10.5)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))(jiti@2.4.2)(svelte@5.17.3)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5)
@@ -183,8 +183,8 @@ packages:
     resolution: {integrity: sha512-GilTHKGCW6HMq7y3BUv9Ac7GMe/MO9gi9GW62GzKtth0SwukCu/qp2wLiGpEujhY+VVhaG9v7kv/5vFzvf4NYw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/solid-js@5.0.1':
-    resolution: {integrity: sha512-8II1SIEgV0uyeijntAmNgUZu/n1e/A7OW2ofzp0MLYoxCRSOuu5QlQB3A4QOSCqRFtgrT03rvhMDmEd/JRPgUA==}
+  '@astrojs/solid-js@5.0.2':
+    resolution: {integrity: sha512-qNCJr8o6iy0+5MK6VspCpDiz1NqDIHMNxRS+kJj12m5X+ZTN2eMZmq1n827zF1ctPN3gDlfl1NvR0MvqIxiZpg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       solid-devtools: ^0.30.1
@@ -5297,7 +5297,7 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/solid-js@5.0.1(@types/node@22.10.5)(jiti@2.4.2)(solid-js@1.9.4)(terser@5.37.0)(tsx@4.19.2)':
+  '@astrojs/solid-js@5.0.2(@types/node@22.10.5)(jiti@2.4.2)(solid-js@1.9.4)(terser@5.37.0)(tsx@4.19.2)':
     dependencies:
       solid-js: 1.9.4
       vite: 6.0.7(@types/node@22.10.5)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)
