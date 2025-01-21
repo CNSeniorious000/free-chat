@@ -121,8 +121,8 @@ importers:
         specifier: ^2.46.1
         version: 2.46.1(eslint@8.57.1)(svelte@5.19.0)
       openai:
-        specifier: ^4.79.1
-        version: 4.79.1(zod@3.24.1)
+        specifier: ^4.79.3
+        version: 4.79.3(zod@3.24.1)
       svelte-inview:
         specifier: ^4.0.4
         version: 4.0.4(svelte@5.19.0)
@@ -3780,8 +3780,8 @@ packages:
   oniguruma-to-es@2.2.0:
     resolution: {integrity: sha512-EEsso27ri0sf+t4uRFEj5C5gvXQj0d0w1Y2qq06b+hDLBnvzO1rWTwEW4C7ytan6nhg4WPwE26eLoiPhHUbvKg==}
 
-  openai@4.79.1:
-    resolution: {integrity: sha512-M7P5/PKnT/S/B5v0D64giC9mjyxFYkqlCuQFzR5hkdzMdqUuHf8T1gHhPGPF5oAvu4+PO3TvJv/qhZoS2bqAkw==}
+  openai@4.79.3:
+    resolution: {integrity: sha512-0yAnr6oxXAyVrYwLC1jA0KboyU7DjEmrfTXQX+jSpE+P4i72AI/Lxx5pvR3r9i5X7G33835lL+ZrnQ+MDvyuUg==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -6558,7 +6558,7 @@ snapshots:
 
   '@types/node-fetch@2.6.12':
     dependencies:
-      '@types/node': 18.19.71
+      '@types/node': 22.10.7
       form-data: 4.0.1
 
   '@types/node@18.19.71':
@@ -9525,7 +9525,7 @@ snapshots:
       regex: 5.1.1
       regex-recursion: 5.1.1
 
-  openai@4.79.1(zod@3.24.1):
+  openai@4.79.3(zod@3.24.1):
     dependencies:
       '@types/node': 18.19.71
       '@types/node-fetch': 2.6.12
