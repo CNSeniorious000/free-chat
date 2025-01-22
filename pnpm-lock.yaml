@@ -21,8 +21,8 @@ importers:
         specifier: ^7.0.4
         version: 7.0.4(@types/node@22.10.7)(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))(jiti@2.4.2)(svelte@5.19.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5)
       '@astrojs/vercel':
-        specifier: ^8.0.2
-        version: 8.0.2(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))(rollup@2.79.2)(svelte@5.19.1)(vue@3.5.12(typescript@5.4.5))
+        specifier: ^8.0.3
+        version: 8.0.3(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))(rollup@2.79.2)(svelte@5.19.1)(vue@3.5.12(typescript@5.4.5))
       '@lobehub/icons-static-svg':
         specifier: ^1.14.0
         version: 1.14.0
@@ -208,8 +208,8 @@ packages:
   '@astrojs/underscore-redirects@0.6.0':
     resolution: {integrity: sha512-dnJgFpaM955IFNIkEEmMaaIdWXRdeZs1ID6mlGBqdjh6NiCXfKmOdq7L4fd9Dd/tr18fkLrOJ25IUJSxRAEhjQ==}
 
-  '@astrojs/vercel@8.0.2':
-    resolution: {integrity: sha512-JiH9A/uSBqV/XHsfp/wghXs6yBpCNh4iQs8kNIcjKRZXLaO54+PWKar/6d69sUl+ugGXjSWhZjnB5hY4CC3tDg==}
+  '@astrojs/vercel@8.0.3':
+    resolution: {integrity: sha512-nftg5PSg8zCsJOWSBs50V2ALI6tb5Fhhw+hSb8hJELMBXteoYntupEtyVaQeRb5EY+ayoC/xdVVUL5WrCSPnMg==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -5213,7 +5213,7 @@ snapshots:
 
   '@astrojs/underscore-redirects@0.6.0': {}
 
-  '@astrojs/vercel@8.0.2(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))(rollup@2.79.2)(svelte@5.19.1)(vue@3.5.12(typescript@5.4.5))':
+  '@astrojs/vercel@8.0.3(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))(rollup@2.79.2)(svelte@5.19.1)(vue@3.5.12(typescript@5.4.5))':
     dependencies:
       '@astrojs/internal-helpers': 0.4.2
       '@vercel/analytics': 1.4.1(svelte@5.19.1)(vue@3.5.12(typescript@5.4.5))
