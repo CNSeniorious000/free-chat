@@ -12,8 +12,8 @@ importers:
         specifier: ^6.1.0
         version: 6.1.0(@types/node@22.10.7)(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)
       '@astrojs/node':
-        specifier: ^9.0.1
-        version: 9.0.1(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))
+        specifier: ^9.0.2
+        version: 9.0.2(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))
       '@astrojs/solid-js':
         specifier: ^5.0.4
         version: 5.0.4(@types/node@22.10.7)(jiti@2.4.2)(solid-js@1.9.4)(terser@5.37.0)(tsx@4.19.2)
@@ -174,8 +174,8 @@ packages:
     peerDependencies:
       astro: ^5.0.0
 
-  '@astrojs/node@9.0.1':
-    resolution: {integrity: sha512-vIKmKYhzK9o3NXANkHyjcFqi9e9N84mhgCESC/+rQ8danWnktu9uR6rGvbj3bdTb9+Dn5LDsmEm123P2Cun9nQ==}
+  '@astrojs/node@9.0.2':
+    resolution: {integrity: sha512-MFFYRa5yQEBegKrSUPMeKnjDMB4okTrkVRA40/mU3ADKrKY5VV3af0LS+NYkH9pFOvj/OsPbdeQVxQ0jI3f6aQ==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -5145,7 +5145,7 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/node@9.0.1(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))':
+  '@astrojs/node@9.0.2(astro@5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5))':
     dependencies:
       astro: 5.1.8(@types/node@22.10.7)(jiti@2.4.2)(rollup@2.79.2)(terser@5.37.0)(tsx@4.19.2)(typescript@5.4.5)
       send: 1.1.0
