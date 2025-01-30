@@ -44,7 +44,7 @@
     <div class="absolute inset-0 b-b-(1 $c-fg-10) bg-$c-bg op-70 -z-1 <md:transition-background-color" role="presentation" class:hidden={inView}></div>
 
     <div class="max-w-[calc(100%-5rem-1ch)]">
-      <a href="." onclick={() => false} class="w-full fcc gap-1 *:transition-font-size">
+      <a href="." onclick={(e: Event) => e.preventDefault()} class="w-full fcc gap-1 *:transition-font-size">
         <!-- <Logo /> -->
         <span class="overflow-hidden text-ellipsis whitespace-nowrap gpt-title">Endless Chat</span>
         <span class="transition-font-size gpt-subtitle">✨</span>
