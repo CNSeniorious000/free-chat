@@ -51,6 +51,13 @@ class API {
     let whole = ''
     for await (const delta of responseToAsyncIterator(res)) {
       whole += delta
+      if (!whole) continue
+      if (!whole.startsWith('{')) {
+        if (whole.includes('{'))
+          whole = whole.slice(whole.indexOf('{'))
+        else
+          continue
+      }
       const { title }: { title?: string } = parse(whole)
       if (title) yield title
     }
