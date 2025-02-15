@@ -85,8 +85,8 @@ importers:
         specifier: latest
         version: 2.2.306
       '@julr/unocss-preset-heropatterns':
-        specifier: ^1.0.2
-        version: 1.0.2(unocss@65.4.3(postcss@8.5.2)(rollup@2.79.2)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2))(vue@3.5.12(typescript@5.4.5)))
+        specifier: ^2.0.0
+        version: 2.0.0(unocss@65.4.3(postcss@8.5.2)(rollup@2.79.2)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2))(vue@3.5.12(typescript@5.4.5)))
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
@@ -1198,11 +1198,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@julr/unocss-preset-heropatterns@1.0.2':
-    resolution: {integrity: sha512-70HqVl23auu7Qrkkk9ULszxW5BXx3pF9H1209Vc1R0fmEitBYP6zwRdj92vGgUerS9/yCtHBpA58gYroDC9OHQ==}
-    engines: {node: '>=16'}
+  '@julr/unocss-preset-heropatterns@2.0.0':
+    resolution: {integrity: sha512-iVb+GX2HLK7Zm7zMBlaqzy3qro3jHVQNL3dSKbcbJpCFXCIqhmsDV+l+a0shFxeJVezr2isrB4B7eDQaceczMQ==}
+    engines: {node: '>=20'}
     peerDependencies:
-      unocss: '>= 0.31.13 < 1'
+      unocss: '>= 0.31.13'
 
   '@lobehub/icons-static-svg@1.21.0':
     resolution: {integrity: sha512-mJsVRe6HYobnwApupXtOcBka9XIHYMcRX7f8Vg+jp1rQKy6fVD+rB2QXmJR4aGlbObrl/D2OAGkuSXPzS6IMTA==}
@@ -1642,9 +1642,6 @@ packages:
     resolution: {integrity: sha512-Z3tnQ10UjM09Y1yVqfCYfZEh2pXFQlUQ1g188mMWxjXWEIXeei3f9dIApRBgC+xcPE6prqdu3fDC5emU+sqyxw==}
     engines: {node: '>=14'}
 
-  '@unocss/core@0.52.7':
-    resolution: {integrity: sha512-dZonrlfu33SkUMsZXlsyYSM79tr2nLer/hBEU2ZaemRik2KchxIUNlZV6kX1f1k3m+gEtVQOyx1MImpgLS8PWg==}
-
   '@unocss/core@65.4.3':
     resolution: {integrity: sha512-luFgdcchSlNrYSaDvU2176T2PPQZdxqfREVbxEXNXlFEgyEFrx5hOSUXoJtJSZjRhAcE6zkWyLDf/JkQJ5Eeyw==}
 
@@ -1655,9 +1652,6 @@ packages:
   '@unocss/eslint-plugin@65.4.3':
     resolution: {integrity: sha512-uK6WpZPy/zJxunw4lh51KjIO370SRAIFlvg/Knh4Kl5214xiJDezKp7F7NATVBx+JqSf7iHYn2qUdB8Z8I7sXg==}
     engines: {node: '>=14'}
-
-  '@unocss/extractor-arbitrary-variants@0.52.7':
-    resolution: {integrity: sha512-nJ4iE7nIRpoOIQfD8S58yG4qJd6AhVPEfEOf7ksX1u8xLf71rrBIojwraRXvv7aPqNdZiWvXdh/znpA/QC5b9w==}
 
   '@unocss/extractor-arbitrary-variants@65.4.3':
     resolution: {integrity: sha512-RhSOOzOxkNjJl9zeglaBe0U+o39jleCCNPWJ87DDJA3ckbyylIIf21ZwY1Xu76rmdar5DT9ob7ucuPfEpJLN9A==}
@@ -1679,9 +1673,6 @@ packages:
 
   '@unocss/preset-icons@65.4.3':
     resolution: {integrity: sha512-g1WNamvYOIdD8YAOvZ5h4g3peel3rLTtKvB0wX4pVL5exsYsoyc0tmiGm57k+ZmnIucqSzxoUZ/vjHDLAViahw==}
-
-  '@unocss/preset-mini@0.52.7':
-    resolution: {integrity: sha512-c5VRzPwyAmIBWwz2ufEboYwHGiheG+V9SCmJJLHlu/gcW5KndFsxoeJPE6nOfXVmbx4AGq/rkzV35ZXtH8Iecw==}
 
   '@unocss/preset-mini@65.4.3':
     resolution: {integrity: sha512-JajAF18DKJRXgd9usrAYTcHUtZy606mD396ZswDgw/mUSu529tuiT6LOD43aJMYHgPEw7wKYjiGFHkeBTHijuQ==}
@@ -6261,9 +6252,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@julr/unocss-preset-heropatterns@1.0.2(unocss@65.4.3(postcss@8.5.2)(rollup@2.79.2)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2))(vue@3.5.12(typescript@5.4.5)))':
+  '@julr/unocss-preset-heropatterns@2.0.0(unocss@65.4.3(postcss@8.5.2)(rollup@2.79.2)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2))(vue@3.5.12(typescript@5.4.5)))':
     dependencies:
-      '@unocss/preset-mini': 0.52.7
+      '@unocss/preset-mini': 65.4.3
       unocss: 65.4.3(postcss@8.5.2)(rollup@2.79.2)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2))(vue@3.5.12(typescript@5.4.5))
 
   '@lobehub/icons-static-svg@1.21.0': {}
@@ -6770,8 +6761,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@unocss/core@0.52.7': {}
-
   '@unocss/core@65.4.3': {}
 
   '@unocss/eslint-config@65.4.3(eslint@8.57.1)(typescript@5.4.5)':
@@ -6794,10 +6783,6 @@ snapshots:
       - eslint
       - supports-color
       - typescript
-
-  '@unocss/extractor-arbitrary-variants@0.52.7':
-    dependencies:
-      '@unocss/core': 0.52.7
 
   '@unocss/extractor-arbitrary-variants@65.4.3':
     dependencies:
@@ -6838,11 +6823,6 @@ snapshots:
       ofetch: 1.4.1
     transitivePeerDependencies:
       - supports-color
-
-  '@unocss/preset-mini@0.52.7':
-    dependencies:
-      '@unocss/core': 0.52.7
-      '@unocss/extractor-arbitrary-variants': 0.52.7
 
   '@unocss/preset-mini@65.4.3':
     dependencies:
