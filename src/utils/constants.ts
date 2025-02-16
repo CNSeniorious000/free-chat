@@ -1,2 +1,3 @@
-export const openaiBaseUrl = (import.meta.env.OPENAI_BASE_URL ?? `${(import.meta.env.OPENAI_API_BASE_URL ?? 'https://api.openai.com').trim().replace(/\/$/, '')}/v1`).trim().replace(/\/$/, '')
-export const promplateBaseUrl = import.meta.env.PUBLIC_PROMPLATE_DEMO_BASE_URL.replace(/\/$/, '')
+import { PUBLIC_PROMPLATE_DEMO_BASE_URL } from 'astro:env/client'
+
+export const promplateBaseUrl = PUBLIC_PROMPLATE_DEMO_BASE_URL.replace(/\/$/, '')

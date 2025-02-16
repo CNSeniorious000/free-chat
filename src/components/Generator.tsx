@@ -1,6 +1,7 @@
 import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
+import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
 import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
@@ -17,8 +18,8 @@ import type { LocalStorageSetEvent } from '@/utils/events'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
 
-export const minMessages = Number(import.meta.env.PUBLIC_MIN_MESSAGES ?? 3)
-export const maxTokens = Number(import.meta.env.PUBLIC_MAX_TOKENS ?? 3000)
+export const minMessages = PUBLIC_MIN_MESSAGES
+export const maxTokens = PUBLIC_MAX_TOKENS
 
 export default () => {
   let rootRef: HTMLDivElement
@@ -41,7 +42,9 @@ export default () => {
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
 
-  const moderationInterval = Number(import.meta.env.PUBLIC_MODERATION_INTERVAL ?? '2000')
+  const moderationInterval = PUBLIC_MODERATION_INTERVAL
+
+  createEffect(() => currentError() && trackEvent('error', { code: currentError()!.code }))
 
   const isHigher = () => {
     const distanceToBottom = footer.offsetTop - window.innerHeight
@@ -68,7 +71,7 @@ export default () => {
   })
 
   const resetTextInputHeight = () => {
-    if (inputRef) {
+    if (inputRef!) {
       inputRef.style.height = 'auto'
       inputRef.style.height = `${inputRef.scrollHeight}px`
     }
@@ -109,7 +112,7 @@ export default () => {
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings') ?? '')
 
       createEffect(() => {
-        inputRef && (inputRef.value = inputValue())
+        inputRef! && (inputRef.value = inputValue())
       })
 
       createEffect(() => {
@@ -142,7 +145,7 @@ export default () => {
       if ((event.target as HTMLElement).nodeName !== 'TEXTAREA') {
         if (event.code === 'Slash') {
           event.preventDefault()
-          inputRef.focus()
+          inputRef!.focus()
         } else if (event.code === 'KeyB') {
           trackEvent('stick-to-bottom', { stick: isStick() ? 'switch off' : 'switch on', trigger: 'key' })
           setStick(!isStick())
@@ -154,7 +157,7 @@ export default () => {
     new MutationObserver(() => isStick() && instantToBottom()).observe(rootRef!, { childList: true, subtree: true })
 
     window.addEventListener('scroll', () => {
-      bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
+      bgd!.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
     })
   })
 
@@ -201,7 +204,7 @@ export default () => {
   }
 
   const handleSubmit = async() => {
-    trackEvent(inputValue() ? 'send' : `${recording() ? 'end' : 'start'}Record`, recording() ? undefined : { length: messageList().length })
+    !inputValue() && trackEvent(`${recording() ? 'end' : 'start'}-record`)
 
     if (recording()) {
       stopRecording()
@@ -254,6 +257,8 @@ export default () => {
   const smoothToBottom = () => toBottom('smooth')
   const instantToBottom = () => toBottom('instant')
 
+  const formatTokenCount = (messages: ChatMessage[]) => encoder() && `<=${Math.ceil(countTokens(encoder()!, messages)!.total / 1000)}k`
+
   const requestWithLatestMessage = async() => {
     setStreaming(true)
     setCurrentAssistantMessage('')
@@ -283,8 +288,7 @@ export default () => {
       if (localStorage.getItem('apiKey')) headers.authorization = `Bearer ${localStorage.getItem('apiKey')}`
 
       const t = localStorage.getItem('temperature') ?? 'undefined'
-      const payload: Record<string, any> = { messages: requestMessageList, temperature: t === 'undefined' ? undefined : JSON.parse(t) }
-      if (localStorage.getItem('model')) payload.model = localStorage.getItem('model')
+      const payload: Record<string, any> = { messages: requestMessageList, temperature: t === 'undefined' ? undefined : JSON.parse(t), model: localStorage.getItem('model') ?? PUBLIC_DEFAULT_MODEL }
 
       const res = await fetch(`${baseUrl}/single/chat_messages`, {
         method: 'PUT',
@@ -298,6 +302,13 @@ export default () => {
         setCurrentError({ code: `${res.status} ${res.statusText}`, message })
         throw new Error('Request failed')
       }
+
+      trackEvent('send', {
+        model: payload.model,
+        temperature: payload.temperature,
+        originalTokenCont: formatTokenCount((systemMsg ? [systemMsg, ...messageList()] : messageList())),
+        tokenCount: formatTokenCount(requestMessageList),
+      })
       const data = res.body
       if (!data)
         throw new Error('No data')
@@ -389,10 +400,10 @@ export default () => {
 
   const clear = () => {
     document.dispatchEvent(new MessagesEvent('clearMessages', messageList().length + Number(Boolean(currentSystemRoleSettings()))))
-    inputRef.value = ''
-    inputRef.style.height = 'auto'
+    inputRef!.value = ''
+    inputRef!.style.height = 'auto'
+    trackEvent('clear', { totalTokenCount: formatTokenCount(messageList()) })
     tokenCountCache.clear()
-    trackEvent('clear', { length: messageList().length })
     batch(() => {
       setInputValue('')
       setMessageList([])
@@ -415,7 +426,7 @@ export default () => {
 
   const retryLastFetch = () => {
     if (messageList().length > 0) {
-      trackEvent('retry', { length: messageList().length, lastMessage: messageList().at(-1)!.role })
+      trackEvent('retry', { lastMessage: messageList().at(-1)!.role })
       const lastMessage = messageList()[messageList().length - 1]
       if (lastMessage.role === 'assistant')
         setMessageList(messageList().slice(0, -1))
@@ -497,7 +508,7 @@ export default () => {
           <div classList={{ 'op-0 pointer-events-none': !inview() }} class="mt-1 flex flex-row gap-2 overflow-x-scroll ws-nowrap px-2rem transition-opacity scrollbar-none -mx-2rem [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
             <Show when={suggestions().length} fallback={<button disabled role="presentation" class="invisible">&nbsp;</button>} >
               <Index each={suggestions()}>
-                {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
+                {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef!.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
               </Index>
             </Show>
           </div>
@@ -537,7 +548,7 @@ export default () => {
                 onKeyDown={handleKeydown}
                 placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
                 autocomplete="off"
-                onInput={() => setInputValue(inputRef.value)}
+                onInput={() => setInputValue(inputRef!.value)}
                 rows="1"
                 class="gen-textarea"
                 data-lenis-prevent

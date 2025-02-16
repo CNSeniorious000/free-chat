@@ -4,9 +4,9 @@
   import UseCopy from './UseCopy.svelte'
 
   const placeholder = 'type or paste your text here'
-  let text = ''
-  let loading = false
-  let parsed: { translated: string; original: string }[] = []
+  let text = $state('')
+  let loading = $state(false)
+  let parsed: { translated: string; original: string }[] = $state([])
   const language = 'native English'
   const headers = { 'Content-Type': 'application/json' }
 
@@ -29,15 +29,16 @@
 
   async function sync() {
     loading = true
-    const parser = createParser((event) => {
-      if (event.type !== 'event') return
-      if (event.event === 'finish') return (loading = false)
-      if (event.event === 'error') {
-        console.error(event.data)
-        return (loading = false)
-      }
+    const parser = createParser({
+      onEvent(event) {
+        if (event.event === 'finish') return (loading = false)
+        if (event.event === 'error') {
+          console.error(event.data)
+          return (loading = false)
+        }
 
-      parsed = JSON.parse(event.data)
+        parsed = JSON.parse(event.data)
+      },
     })
 
     const body = await fetch(`${promplateBaseUrl}/stream/translate`, { method: 'POST', body: JSON.stringify({ text, language }), headers }).then(r => r.body)
@@ -57,21 +58,23 @@
   <div class="w-full rounded-md bg-white/3 p-2 ring-white/50 transition-all focus-within:(bg-white/7 ring-1.7) lg:p-4 sm:p-3">
     <textarea {placeholder} bind:value={text} class="h-fit min-h-50vh w-full select-none resize-none bg-transparent outline-none md:min-h-80vh placeholder:(text-unset op-30)"></textarea>
     <div class="flex flex-row self-end justify-end gap-3 [&>button:disabled]:op-40">
-      <UseCopy {text} let:handleClick let:displayText>
-        <button on:click={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!text}>
-          <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
-            <div i-iconamoon-copy-duotone></div>
-            <span class="text-sm">{displayText}</span>
-          </div>
-        </button>
-      </UseCopy>
-      <button on:click={sync} class="not-disabled:(active:scale-95 not-focus-visible:bg-$c-fg not-focus-visible:text-$c-bg hover:op-85)" disabled={!text || loading}>
+      <UseCopy {text} >
+        {#snippet children({ handleClick, displayText })}
+                <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!text}>
+            <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
+              <div i-iconamoon-copy-duotone></div>
+              <span class="text-sm">{displayText}</span>
+            </div>
+          </button>
+                      {/snippet}
+            </UseCopy>
+      <button onclick={sync} class="not-disabled:(active:scale-95 not-focus-visible:bg-$c-fg not-focus-visible:text-$c-bg hover:op-85)" disabled={!text || loading}>
         <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
           {#if loading}
-            <div i-svg-spinners-ring-resize text-xs />
+            <div i-svg-spinners-ring-resize text-xs></div>
             <span class="text-sm">Generating</span>
           {:else}
-            <div i-fluent-translate-auto-24-regular />
+            <div i-fluent-translate-auto-24-regular></div>
             <span class="text-sm">Translate to {language}</span>
           {/if}
         </div>
@@ -90,13 +93,15 @@
         {/each}
       </div>
       <div class="absolute bottom-0 right-0 justify-end gap-3 [&>button:disabled]:op-40">
-        <UseCopy text={parsed.reduce((acc, { translated }) => acc + translated ?? '', '')} let:handleClick let:displayText>
-          <button on:click={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!parsed.length}>
-            <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
-              <div i-iconamoon-copy-duotone></div>
-              <span class="text-sm">{displayText}</span>
-            </div>
-          </button>
+        <UseCopy text={parsed.reduce((acc, { translated }) => acc + (translated ?? ''), '')}>
+          {#snippet children({ handleClick, displayText })}
+            <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!parsed.length}>
+              <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
+                <div i-iconamoon-copy-duotone></div>
+                <span class="text-sm">{displayText}</span>
+              </div>
+            </button>
+          {/snippet}
         </UseCopy>
       </div>
     </div>

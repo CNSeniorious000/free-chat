@@ -1,4 +1,4 @@
-import { parse } from 'partial-json'
+import { Allow, parse } from 'partial-json'
 import { responseToAsyncIterator } from './streaming'
 import { promplateBaseUrl } from './constants'
 import type { ChatMessage } from '@/types'
@@ -51,6 +51,13 @@ class API {
     let whole = ''
     for await (const delta of responseToAsyncIterator(res)) {
       whole += delta
+      if (!whole) continue
+      if (!whole.startsWith('{')) {
+        if (whole.includes('{'))
+          whole = whole.slice(whole.indexOf('{'))
+        else
+          continue
+      }
       const { title }: { title?: string } = parse(whole)
       if (title) yield title
     }
@@ -61,7 +68,7 @@ class API {
 
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
       method: 'PUT',
-      body: JSON.stringify({ messages, model: 'llama-3.2-90b-text-preview', prefill: true }),
+      body: JSON.stringify({ messages, model: 'Qwen/Qwen2.5-7B-Instruct' }),
       headers: { 'content-type': 'application/json' },
     })
 
@@ -69,7 +76,7 @@ class API {
 
     for await (const delta of responseToAsyncIterator(res)) {
       json += delta
-      yield parse(json) as string[]
+      yield parse(json, Allow.ARR) as string[]
     }
   }
 

@@ -2,6 +2,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkBreaks from 'remark-breaks'
+import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
 import { SolidMarkdown } from 'solid-markdown'
 import IconRefresh from './icons/Refresh'
 import CodeBlock from './CodeBlock'
@@ -15,7 +16,7 @@ interface Props {
   onRetry?: () => void
 }
 
-const alignRightMine = !!import.meta.env.PUBLIC_RIGHT_ALIGN_MY_MSG
+const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
 export default ({ role, message, showRetry, onRetry }: Props) => {
   const roleClass = {

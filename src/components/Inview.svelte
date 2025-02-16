@@ -1,7 +1,17 @@
 <script lang="ts">
-  import { inview } from 'svelte-inview'
+  import { type ObserverEventDetails, inview } from 'svelte-inview'
 
-  export let inView: boolean
+  interface Props {
+    inView: boolean;
+    [key: string]: any
+  }
+
+  // eslint-disable-next-line prefer-const
+  let { inView = $bindable(), ...rest }: Props = $props()
+
+  function oninview_change({ detail }: CustomEvent<ObserverEventDetails>) {
+    inView = detail.inView
+  }
 </script>
 
-<div use:inview on:inview_change={({ detail }) => { inView = detail.inView }} {...$$restProps} role="presentation" />
+<div use:inview {oninview_change} {...rest} role="presentation"></div>

@@ -4,9 +4,13 @@
   import { trackEvent } from '@/utils/track'
   import ThemeColor, { setThemeColor } from './ThemeColor.svelte'
 
-  let themeToggle: HTMLButtonElement
+  let themeToggle = $state<HTMLButtonElement>()
 
-  export let dark: boolean | undefined
+  interface Props {
+    dark: boolean | undefined;
+  }
+
+  let { dark = $bindable() }: Props = $props()
 
   onMount(() => {
     const iframes = document.querySelectorAll('iframe')
@@ -29,7 +33,7 @@
     const colorSchema = window.matchMedia('(prefers-color-scheme: dark)')
     colorSchema.addEventListener('change', ({ matches }) => { chooseDarkMode(matches) })
 
-    themeToggle.addEventListener('click', () => {
+    themeToggle!.addEventListener('click', () => {
       chooseDarkMode(!dark)
       trackEvent('toggle-theme', { theme: dark ? 'dark' : 'light' })
     })
@@ -37,12 +41,12 @@
     chooseDarkMode(classList.contains('dark'))
   })
 
-  $: r = dark ? 9 : 5
+  const r = $derived(dark ? 9 : 5)
 </script>
 
 <ThemeColor />
 
-<button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} bind:this={themeToggle} id="themeToggle" class="h-10 w-10 flex items-center justify-center rounded-md transition-colors hover:bg-$c-fg-2">
+<button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} bind:this={themeToggle} id="themeToggle" class="h-10 w-10 flex items-center justify-center rounded-md transition-colors hover:bg-$c-fg-2" aria-label="toggle dark mode">
   <svg class="theme_toggle_svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" color="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor">
     <mask id="myMask">
       <rect x="0" y="0" width="100%" height="100%" fill="white" />

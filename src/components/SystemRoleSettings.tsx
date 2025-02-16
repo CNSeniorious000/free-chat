@@ -16,9 +16,9 @@ export default (props: Props) => {
   let systemInputRef: HTMLTextAreaElement
 
   const handleButtonClick = () => {
-    props.setCurrentSystemRoleSettings(systemInputRef.value)
+    props.setCurrentSystemRoleSettings(systemInputRef!.value)
     props.setSystemRoleEditing(false)
-    trackEvent('set-system-role', { empty: systemInputRef.value === '' })
+    trackEvent('set-system-role', { empty: systemInputRef!.value === '' })
   }
 
   return (

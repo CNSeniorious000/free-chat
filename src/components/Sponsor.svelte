@@ -1,6 +1,10 @@
-<script>
+<script lang="ts">
   import { scale } from 'svelte/transition'
-  export let show = false
+  interface Props {
+    show?: boolean;
+  }
+
+  const { show = false }: Props = $props()
 </script>
 
 {#if show}

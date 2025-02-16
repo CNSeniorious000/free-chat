@@ -1,7 +1,12 @@
 <script lang="ts">
-  export let text: string
+  interface Props {
+    text: string;
+    children?: import('svelte').Snippet<[any]>;
+  }
 
-  let displayText = 'Copy'
+  const { text, children }: Props = $props()
+
+  let displayText = $state('Copy')
 
   const handleClick = () => {
     navigator.clipboard.writeText(text)
@@ -12,4 +17,4 @@
   }
 </script>
 
-<slot {handleClick} {displayText} />
+{@render children?.({ handleClick, displayText })}
