@@ -15,9 +15,9 @@
     <a b-slate-link href="https://tips.free-chat.asia/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE" data-umami-event="privacy-page">隐私协议</a>
   </p>
   <p>
-    <a class="w-fit flex items-center gap-1 rounded-full bg-$c-fg-5 px-2 py-1 op-80 transition-opacity -my-1 hover:op-100" href='https://promplate.dev/' data-umami-event="tagline-clicked">
+    <a class="w-fit flex items-center gap-1 rounded-full bg-$c-fg-5 px-2 py-1 op-80 transition-opacity -my-1 hover:op-100" href="https://promplate.dev/" data-umami-event="tagline-clicked">
       <span op-30>Powered by</span>
-      <span font-fira><span>{'</Promplate/>'}</span></span>
+      <span font-fira><span>&lt;/Promplate/&gt;</span></span>
     </a>
   </p>
 </footer>

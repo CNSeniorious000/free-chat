@@ -87,12 +87,12 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
           <div class="relative max-w-full overflow-hidden break-words prose <sm:text-3.6 message" innerHTML={htmlString()} />
         </div>
         {showRetry?.() && onRetry && (
-        <div class="mb-2 fie px-3">
-          <div onClick={onRetry} class="gpt-retry-btn">
-            <IconRefresh />
-            <span select-none>重新生成</span>
+          <div class="mb-2 fie px-3">
+            <div onClick={onRetry} class="gpt-retry-btn">
+              <IconRefresh />
+              <span select-none>重新生成</span>
+            </div>
           </div>
-        </div>
         )}
       </div>
     </div>

@@ -10,7 +10,8 @@ export default (props: {
     const observer = new IntersectionObserver(
       ([entry]) => {
         props.setInview(entry.isIntersecting)
-      }, {
+      },
+      {
         threshold: 0,
       },
     )

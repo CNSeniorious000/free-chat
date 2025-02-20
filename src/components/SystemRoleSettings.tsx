@@ -28,7 +28,7 @@ export default (props: Props) => {
           <div>
             <div class="fi gap-1 op-50 dark:op-60">
               <Show when={props.canEdit()} fallback={<IconEnv />}>
-                <span onClick={() => props.setCurrentSystemRoleSettings('')} class="rd-50% p-1 sys-edit-btn" > <IconX /> </span>
+                <span onClick={() => props.setCurrentSystemRoleSettings('')} class="rd-50% p-1 sys-edit-btn"> <IconX /> </span>
               </Show>
               <div>自定义场景</div>
             </div>
