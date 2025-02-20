@@ -18,7 +18,7 @@ function retry(times: number) {
             yield * originalMethod.apply(this, args)
             return
           } catch (error) {
-            console.error(`Attempt ${i + 1} failed. Retrying...`)
+            console.error(`Attempt ${i + 1} failed. Retrying...`, error)
           }
         }
         throw new Error(`Function ${propertyKey} failed after ${times} attempts.`)
@@ -29,7 +29,7 @@ function retry(times: number) {
           try {
             return await originalMethod.apply(this, args)
           } catch (error) {
-            console.error(`Attempt ${i + 1} failed. Retrying...`)
+            console.error(`Attempt ${i + 1} failed. Retrying...`, error)
           }
         }
         throw new Error(`Function ${propertyKey} failed after ${times} attempts.`)
