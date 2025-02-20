@@ -1,12 +1,12 @@
+import netlify from '@astrojs/netlify/functions'
+import node from '@astrojs/node'
+import solidJs from '@astrojs/solid-js'
+import svelte, { vitePreprocess } from '@astrojs/svelte'
+
+import vercel from '@astrojs/vercel/serverless'
+import AstroPWA from '@vite-pwa/astro'
 import { defineConfig, envField } from 'astro/config'
 import unocss from 'unocss/astro'
-import solidJs from '@astrojs/solid-js'
-import AstroPWA from '@vite-pwa/astro'
-
-import node from '@astrojs/node'
-import vercel from '@astrojs/vercel/serverless'
-import netlify from '@astrojs/netlify/functions'
-import svelte, { vitePreprocess } from '@astrojs/svelte'
 import disableBlocks from './plugins/disableBlocks'
 
 const envAdapter = () => {
