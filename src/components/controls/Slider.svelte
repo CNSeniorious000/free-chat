@@ -1,6 +1,7 @@
 <script lang="ts">
   import { persisted } from 'svelte-persisted-store'
   import { Slider } from 'bits-ui'
+
   interface Props {
     key: string;
     initial: number | undefined;

@@ -13,7 +13,7 @@ export function getRgb(color: string): RGB {
   document.body.removeChild(div)
 
   // Match the RGB or RGBA format using a regular expression
-  const rgbMatch = computedColor.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:.*)?\)$/)
+  const rgbMatch = computedColor.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+).*\)$/)
   if (rgbMatch) {
     // Return an RGB object with parsed red, green, and blue values
     return [

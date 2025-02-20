@@ -58,16 +58,16 @@
   <div class="w-full rounded-md bg-white/3 p-2 ring-white/50 transition-all focus-within:(bg-white/7 ring-1.7) lg:p-4 sm:p-3">
     <textarea {placeholder} bind:value={text} class="h-fit min-h-50vh w-full select-none resize-none bg-transparent outline-none md:min-h-80vh placeholder:(text-unset op-30)"></textarea>
     <div class="flex flex-row self-end justify-end gap-3 [&>button:disabled]:op-40">
-      <UseCopy {text} >
+      <UseCopy {text}>
         {#snippet children({ handleClick, displayText })}
-                <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!text}>
+          <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!text}>
             <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
               <div i-iconamoon-copy-duotone></div>
               <span class="text-sm">{displayText}</span>
             </div>
           </button>
-                      {/snippet}
-            </UseCopy>
+        {/snippet}
+      </UseCopy>
       <button onclick={sync} class="not-disabled:(active:scale-95 not-focus-visible:bg-$c-fg not-focus-visible:text-$c-bg hover:op-85)" disabled={!text || loading}>
         <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
           {#if loading}

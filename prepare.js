@@ -1,4 +1,4 @@
-const fs = require('fs').promises
+const fs = require('node:fs').promises
 
 async function saveCl100kBaseJson() {
   const cl100k_base_path = require.resolve('tiktoken/encoders/cl100k_base.json')

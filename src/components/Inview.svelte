@@ -6,7 +6,6 @@
     [key: string]: any
   }
 
-  // eslint-disable-next-line prefer-const
   let { inView = $bindable(), ...rest }: Props = $props()
 
   function oninview_change({ detail }: CustomEvent<ObserverEventDetails>) {

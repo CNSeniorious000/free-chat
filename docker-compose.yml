@@ -6,6 +6,6 @@ services:
     container_name: chatgpt-demo
     restart: always
     ports:
-        - "3000:3000"
+      - "3000:3000"
     volumes:
       - .env:/usr/src/.env

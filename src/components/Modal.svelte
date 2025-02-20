@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ripple } from 'svelte-ripple-action'
   import { setThemeColor } from './ThemeColor.svelte'
+
   interface Props {
     show?: boolean;
     icon: string;
@@ -8,7 +9,6 @@
     inside?: import('svelte').Snippet;
   }
 
-  // eslint-disable-next-line prefer-const
   let { show = $bindable(true), icon, children, inside }: Props = $props()
 
   let timeoutId: ReturnType<typeof setTimeout>
