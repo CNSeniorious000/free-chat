@@ -3,9 +3,7 @@ declare namespace svelteHTML {
   type HTMLAttributes = AttributifyAttributes
 }
 
-declare namespace global {
-  namespace JSX {
-    import type { AttributifyAttributes } from 'unocss/preset-attributify'
-    interface HTMLAttributes<>extends AttributifyAttributes {}
-  }
+declare namespace JSX {
+  import type { AttributifyAttributes } from 'unocss/preset-attributify'
+  interface HTMLAttributes extends AttributifyAttributes {}
 }
