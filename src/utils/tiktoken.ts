@@ -5,7 +5,7 @@ import type { Tiktoken } from 'tiktoken'
 export const tokenCountCache = new Map<string, number>()
 
 const countTokensSingleMessage = (enc: Tiktoken, message: ChatMessage) => {
-  return 4 + enc.encode(message.content).length // im_start, im_end, role/name, "\n"
+  return 4 + enc.encode(message.content, 'all').length // im_start, im_end, role/name, "\n"
 }
 
 const countTokensSingleMessageWithCache = (enc: Tiktoken, cacheIt: boolean, message: ChatMessage) => {
