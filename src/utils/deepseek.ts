@@ -6,7 +6,7 @@ export function splitReasoningPart(message: string): [string, string] {
       const match = /<think>\n(.*?)\n<\/think>(.*)/s.exec(message)
       return match ? [match[1].trim(), match[2].trim()] : ['', message.trim()]
     } else {
-      const reasoning = message.replace(/^<think>\n/, '')
+      return [message.replace(/^<think>\n/, '')
         .replace(/\n<\/think>/, '')
         .replace(/\n<\/think/, '')
         .replace(/\n<\/thin/, '')
@@ -15,7 +15,7 @@ export function splitReasoningPart(message: string): [string, string] {
         .replace(/\n<\/t/, '')
         .replace(/\n<\//, '')
         .replace(/\n</, '')
-      return [reasoning, '']
+        .trim(), '']
     }
   } else {
     return ['', message]
