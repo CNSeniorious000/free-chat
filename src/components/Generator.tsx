@@ -1,4 +1,4 @@
-import { Index, Match, Show, Switch, batch, createEffect, createSignal, onMount } from 'solid-js'
+import { Index, Match, Show, Switch, batch, createEffect, createMemo, createSignal, onMount } from 'solid-js'
 import { Toaster, toast } from 'solid-toast'
 import { useThrottleFn } from 'solidjs-use'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
@@ -78,10 +78,16 @@ export default () => {
     }
   }
 
+  const messagesWithoutReasoning = createMemo(() => messageList().map((msg) => {
+    if (msg.role === 'assistant')
+      msg.content = splitReasoningPart(msg.content)[1]
+    return msg
+  }))
+
   const updateSuggestions = async() => {
     if (messageList().length === 0 || !suggestionFeatureOn()) return
     setSuggestions([])
-    for await (const suggestions of iterateSuggestion([...messageList()]))
+    for await (const suggestions of iterateSuggestion([...messagesWithoutReasoning()]))
       setSuggestions(suggestions)
   }
 
@@ -267,13 +273,7 @@ export default () => {
     try {
       const controller = new AbortController()
       setController(controller)
-      const requestMessageList = [...messageList()]
-
-      requestMessageList.forEach((msg) => {
-        if (msg.role === 'assistant') {
-          msg.content = splitReasoningPart(msg.content)[1]
-        }
-      })
+      const requestMessageList = [...messagesWithoutReasoning()]
 
       let limit = maxTokens
 
