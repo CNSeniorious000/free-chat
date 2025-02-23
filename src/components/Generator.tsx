@@ -17,6 +17,7 @@ import TokenCounter, { encoder } from './TokenCounter'
 import type { LocalStorageSetEvent } from '@/utils/events'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
+import { splitReasoningPart } from '@/utils/deepseek'
 
 export const minMessages = PUBLIC_MIN_MESSAGES
 export const maxTokens = PUBLIC_MAX_TOKENS
@@ -267,6 +268,12 @@ export default () => {
       const controller = new AbortController()
       setController(controller)
       const requestMessageList = [...messageList()]
+
+      requestMessageList.forEach((msg) => {
+        if (msg.role === 'assistant') {
+          msg.content = splitReasoningPart(msg.content)[1]
+        }
+      })
 
       let limit = maxTokens
 
