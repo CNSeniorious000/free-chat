@@ -513,8 +513,8 @@ export default () => {
             </Show>
           </div>
           <div class:op-0={!inview()} class="pointer-events-none absolute inset-0 w-full flex flex-row justify-between transition-opacity" role="presentation">
-            <div class="w-2rem bg-gradient-(from-$c-bg to-transparent to-r) <md:transition-all" />
-            <div class="w-2rem bg-gradient-(from-$c-bg to-transparent to-l) <md:transition-all" />
+            <div class="w-2rem bg-gradient-(from-$c-bg to-op-0 to-r) <md:transition-all" style={{ '--un-gradient-shape': 'to right' }} />
+            <div class="w-2rem bg-gradient-(from-$c-bg to-op-0 to-l) <md:transition-all" style={{ '--un-gradient-shape': 'to left' }} />
           </div>
         </div>
       </Show>
