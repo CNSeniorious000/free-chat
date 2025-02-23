@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js'
+import { createMemo, createSignal, Index, Show } from 'solid-js'
 import MarkdownIt from 'markdown-it'
 // @ts-expect-error missing types
 import mdKatex from 'markdown-it-katex'
@@ -8,6 +8,7 @@ import { useClipboard, useEventListener } from 'solidjs-use'
 import IconRefresh from './icons/Refresh'
 import type { Accessor } from 'solid-js'
 import type { ChatMessage } from '@/types'
+import { splitReasoningPart } from '@/utils/deepseek'
 
 interface Props {
   role: ChatMessage['role']
@@ -41,6 +42,10 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
     }
   })
 
+  const result = createMemo(() => splitReasoningPart(typeof message === 'function' ? message() : message))
+  const reasoningContent = () => result()[0]
+  const content = () => result()[1]
+
   function heuristicPatch(markdown: string) {
     const pattern = /(^|\n)```\S*$/
     const matches = markdown.match(/```/g)
@@ -69,14 +74,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       </div>`
     }
 
-    switch (typeof message) {
-      case 'function':
-        return md.render(heuristicPatch(message()))
-      case 'string':
-        return md.render(heuristicPatch(message))
-      default:
-        return ''
-    }
+    return md.render(heuristicPatch(content()))
   }
 
   return (
@@ -84,7 +82,18 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       <div class="py-0.5 transition-padding 2xl:py-2 md:py-1">
         <div class="flex gap-3.5 rounded-lg" class:op-75={role === 'user'} class:reverse-self-msg={role === 'user' && alignRightMine}>
           <div class={`shrink-0 w-7 h-7 my-4 rounded-full op-80 ${roleClass[role]} <sm:w-1 <sm:h-auto <md:transition-background-color`} />
-          <div class="relative max-w-full overflow-hidden break-words prose <sm:text-3.6 message" innerHTML={htmlString()} />
+          <div class="break-words message">
+            <Show when={reasoningContent()}>
+              <div class="mt-1em flex flex-col gap-1.3 ws-pre-wrap rounded bg-$c-fg-2 px-2.5 py-2 text-(0.8em $c-fg-70) ring-(1 $c-fg-5 inset)">
+                <Index each={reasoningContent().split('\n\n')}>
+                  {line => (
+                    <div class="px-2.5 py-0.7 -mx-2.5 -my-0.7 hover:(bg-$c-fg-10)">{line()}</div>
+                  )}
+                </Index>
+              </div>
+            </Show>
+            <div class="relative max-w-full overflow-hidden prose <sm:text-3.6 message" innerHTML={htmlString()} />
+          </div>
         </div>
         {showRetry?.() && onRetry && (
           <div class="mb-2 fie px-3">
