@@ -80,7 +80,7 @@ export default () => {
 
   const messagesWithoutReasoning = createMemo(() => messageList().map((msg) => {
     if (msg.role === 'assistant')
-      msg.content = splitReasoningPart(msg.content)[1]
+      return { ...msg, content: splitReasoningPart(msg.content)[1] }
     return msg
   }))
 
