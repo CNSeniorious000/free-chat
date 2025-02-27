@@ -21,8 +21,8 @@ importers:
         specifier: ^7.0.4
         version: 7.0.4(@types/node@22.13.4)(astro@5.3.1(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(jiti@2.4.2)(svelte@5.20.4)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0)
       '@astrojs/vercel':
-        specifier: ^8.0.8
-        version: 8.0.8(astro@5.3.1(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(rollup@2.79.2)(svelte@5.20.4)(vue@3.5.12(typescript@5.4.5))
+        specifier: ^8.1.0
+        version: 8.1.0(astro@5.3.1(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(rollup@2.79.2)(svelte@5.20.4)(vue@3.5.12(typescript@5.4.5))
       '@lobehub/icons-static-svg':
         specifier: ^1.25.0
         version: 1.25.0
@@ -83,7 +83,7 @@ importers:
         version: 4.3.0(@typescript-eslint/utils@8.25.0(eslint@9.21.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.21.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.1)(eslint-plugin-astro@1.3.1(eslint@9.21.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.21.0(jiti@2.4.2)))(eslint-plugin-svelte@3.0.2(eslint@9.21.0(jiti@2.4.2))(svelte@5.20.4))(eslint@9.21.0(jiti@2.4.2))(svelte-eslint-parser@1.0.0(svelte@5.20.4))(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.310
+        version: 2.2.311
       '@julr/unocss-preset-heropatterns':
         specifier: ^2.0.0
         version: 2.0.0(unocss@66.0.0(postcss@8.5.3)(vite@6.2.0(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.12(typescript@5.4.5)))
@@ -212,6 +212,9 @@ packages:
   '@astrojs/internal-helpers@0.5.1':
     resolution: {integrity: sha512-M7rAge1n2+aOSxNvKUFa0u/KFn0W+sZy7EW91KOSERotm2Ti8qs+1K0xx3zbOxtAVrmJb5/J98eohVvvEqtNkw==}
 
+  '@astrojs/internal-helpers@0.6.0':
+    resolution: {integrity: sha512-XgHIJDQaGlFnTr0sDp1PiJrtqsWzbHP2qkTU+JpQ8SnBewKP2IKOe/wqCkl0CyfyRXRu3TSWu4t/cpYMVfuBNA==}
+
   '@astrojs/markdown-remark@6.1.0':
     resolution: {integrity: sha512-emZNNSTPGgPc3V399Cazpp5+snogjaF04ocOSQn9vy3Kw/eIC4vTQjXOrWDEoSEy+AwPDZX9bQ4wd3bxhpmGgQ==}
 
@@ -254,8 +257,8 @@ packages:
   '@astrojs/underscore-redirects@0.6.0':
     resolution: {integrity: sha512-dnJgFpaM955IFNIkEEmMaaIdWXRdeZs1ID6mlGBqdjh6NiCXfKmOdq7L4fd9Dd/tr18fkLrOJ25IUJSxRAEhjQ==}
 
-  '@astrojs/vercel@8.0.8':
-    resolution: {integrity: sha512-NQs2HSPbjRyHeUu74VuxP52Ephw61t7jPxYLK7cGxrscqBoBf4wV+dQGUkg0cvJnWCH+6JBR34oUAuivHAgm7Q==}
+  '@astrojs/vercel@8.1.0':
+    resolution: {integrity: sha512-qaztQ0WCg8epe9+3PS7+eTbukNcwDtfjgN/QeWk0+wmmWHpEBlhzUA17Vmk5OINBX/Tf0bzXgydDWrAVG+/irQ==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -1310,8 +1313,8 @@ packages:
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/json@2.2.310':
-    resolution: {integrity: sha512-CPmueT0VYi5uqQpro1HabpgLr9lcft4h1qJZu9591shJS6nKLx1TO22IMdK+NhVn1npXV3sEeqAb2t/EXSLvcg==}
+  '@iconify/json@2.2.311':
+    resolution: {integrity: sha512-Qt9Q9MuyEfKpd+3027fzbCMhEkhNpUTc9mnUQImbVYr5BiyFxgAxwGcTl+oD6WEblzdnGU3KIXqH/Laekud35w==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -5208,6 +5211,8 @@ snapshots:
 
   '@astrojs/internal-helpers@0.5.1': {}
 
+  '@astrojs/internal-helpers@0.6.0': {}
+
   '@astrojs/markdown-remark@6.1.0':
     dependencies:
       '@astrojs/prism': 3.2.0
@@ -5329,15 +5334,15 @@ snapshots:
 
   '@astrojs/underscore-redirects@0.6.0': {}
 
-  '@astrojs/vercel@8.0.8(astro@5.3.1(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(rollup@2.79.2)(svelte@5.20.4)(vue@3.5.12(typescript@5.4.5))':
+  '@astrojs/vercel@8.1.0(astro@5.3.1(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(rollup@2.79.2)(svelte@5.20.4)(vue@3.5.12(typescript@5.4.5))':
     dependencies:
-      '@astrojs/internal-helpers': 0.5.1
+      '@astrojs/internal-helpers': 0.6.0
       '@vercel/analytics': 1.5.0(svelte@5.20.4)(vue@3.5.12(typescript@5.4.5))
       '@vercel/edge': 1.2.1
       '@vercel/nft': 0.29.2(rollup@2.79.2)
       '@vercel/routing-utils': 5.0.4
       astro: 5.3.1(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0)
-      esbuild: 0.24.2
+      esbuild: 0.25.0
       tinyglobby: 0.2.12
     transitivePeerDependencies:
       - '@remix-run/react'
@@ -6348,7 +6353,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
-  '@iconify/json@2.2.310':
+  '@iconify/json@2.2.311':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
