@@ -23,9 +23,9 @@ export const minMessages = PUBLIC_MIN_MESSAGES
 export const maxTokens = PUBLIC_MAX_TOKENS
 
 export default () => {
-  let rootRef: HTMLDivElement
-  let inputRef: HTMLTextAreaElement
-  let bgd: HTMLDivElement
+  let rootRef!: HTMLDivElement
+  let inputRef!: HTMLTextAreaElement
+  let bgd!: HTMLDivElement
   let footer: HTMLElement
 
   const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
@@ -72,10 +72,8 @@ export default () => {
   })
 
   const resetTextInputHeight = () => {
-    if (inputRef!) {
-      inputRef.style.height = 'auto'
-      inputRef.style.height = `${inputRef.scrollHeight}px`
-    }
+    inputRef.style.height = 'auto'
+    inputRef.style.height = `${inputRef.scrollHeight}px`
   }
 
   const messagesWithoutReasoning = createMemo(() => messageList().map((msg) => {
@@ -119,7 +117,7 @@ export default () => {
         setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings') ?? '')
 
       createEffect(() => {
-        inputRef! && (inputRef.value = inputValue())
+        inputRef && (inputRef.value = inputValue())
       })
 
       createEffect(() => {
@@ -152,7 +150,7 @@ export default () => {
       if ((event.target as HTMLElement).nodeName !== 'TEXTAREA') {
         if (event.code === 'Slash') {
           event.preventDefault()
-          inputRef!.focus()
+          inputRef.focus()
         } else if (event.code === 'KeyB') {
           trackEvent('stick-to-bottom', { stick: isStick() ? 'switch off' : 'switch on', trigger: 'key' })
           setStick(!isStick())
@@ -161,10 +159,10 @@ export default () => {
       if (event.altKey && event.code === 'KeyC') clear()
     }, false)
 
-    new MutationObserver(() => isStick() && instantToBottom()).observe(rootRef!, { childList: true, subtree: true })
+    new MutationObserver(() => isStick() && instantToBottom()).observe(rootRef, { childList: true, subtree: true })
 
     window.addEventListener('scroll', () => {
-      bgd!.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
+      bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
     })
   })
 
@@ -407,8 +405,8 @@ export default () => {
 
   const clear = () => {
     document.dispatchEvent(new MessagesEvent('clearMessages', messageList().length + Number(Boolean(currentSystemRoleSettings()))))
-    inputRef!.value = ''
-    inputRef!.style.height = 'auto'
+    inputRef.value = ''
+    inputRef.style.height = 'auto'
     trackEvent('clear', { totalTokenCount: formatTokenCount(messageList()) })
     tokenCountCache.clear()
     batch(() => {
@@ -454,9 +452,9 @@ export default () => {
   }
 
   return (
-    <main ref={rootRef!} class="relative h-full flex flex-grow flex-col justify-between">
+    <main ref={rootRef} class="relative h-full flex flex-grow flex-col justify-between">
       <div
-        ref={bgd!}
+        ref={bgd}
         class="<md:hiddern fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll bg-top-center op-100 transition-opacity duration-1000 bg-hero-jigsaw-gray-500/10 <md:bg-none"
         class:op-0={!mounted()}
         class:transition-transform={isStick() && streaming()}
@@ -515,7 +513,7 @@ export default () => {
           <div class="mt-1 flex flex-row gap-2 overflow-x-scroll ws-nowrap px-2rem scrollbar-none -mx-2rem [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
             <Show when={suggestions().length} fallback={<button disabled role="presentation" class="invisible">&nbsp;</button>}>
               <Index each={suggestions()}>
-                {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef!.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
+                {(item, index) => <button type="button" onClick={() => [setInputValue(item()), inputRef.focus(), trackEvent('accept-suggestion', { index })]} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
               </Index>
             </Show>
           </div>
@@ -550,12 +548,12 @@ export default () => {
 
             <div class="gen-text-wrapper" class:op-50={systemRoleEditing()}>
               <textarea
-                ref={inputRef!}
+                ref={inputRef}
                 disabled={systemRoleEditing() || recording() as boolean}
                 onKeyDown={handleKeydown}
                 placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
                 autocomplete="off"
-                onInput={() => setInputValue(inputRef!.value)}
+                onInput={() => setInputValue(inputRef.value)}
                 rows="1"
                 class="gen-textarea"
                 data-lenis-prevent
