@@ -10,7 +10,7 @@
   const language = 'native English'
   const headers = { 'Content-Type': 'application/json' }
 
-  async function *streamAsyncIterator(stream: ReadableStream<Uint8Array>) {
+  async function* streamAsyncIterator(stream: ReadableStream<Uint8Array>) {
     const reader = stream.getReader()
     const decoder = new TextDecoder()
 

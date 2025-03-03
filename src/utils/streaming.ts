@@ -1,4 +1,4 @@
-export async function *responseToAsyncIterator(response: Response): AsyncGenerator<string, void, undefined> {
+export async function* responseToAsyncIterator(response: Response): AsyncGenerator<string, void, undefined> {
   const { body } = response
   if (!body) throw new Error('No data')
   const reader = body.getReader()
