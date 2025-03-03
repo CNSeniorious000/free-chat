@@ -5,7 +5,7 @@ import type { ChatCompletionChunk } from 'openai/resources/chat/completions'
 
 import type { APIRoute } from 'astro'
 
-async function *iterateRes(res: Stream<ChatCompletionChunk>) {
+async function* iterateRes(res: Stream<ChatCompletionChunk>) {
   for await (const msg of res)
     if (msg.choices[0].delta.content) yield msg.choices[0].delta.content
 }

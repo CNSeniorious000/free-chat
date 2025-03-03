@@ -12,10 +12,10 @@ function retry(times: number) {
     const originalMethod = descriptor.value
 
     if (isAsyncGeneratorFunction(originalMethod)) {
-      descriptor.value = async function *(...args: any[]) {
+      descriptor.value = async function* (...args: any[]) {
         for (let i = 0; i < times; i++) {
           try {
-            yield * originalMethod.apply(this, args)
+            yield* originalMethod.apply(this, args)
             return
           } catch (error) {
             console.error(`Attempt ${i + 1} failed. Retrying...`, error)
@@ -41,7 +41,7 @@ function retry(times: number) {
 
 class API {
   @retry(3)
-  async *iterateTitle(input: string) {
+  async* iterateTitle(input: string) {
     const res = await fetch('/api/title-gen', {
       method: 'POST',
       body: input,
@@ -63,7 +63,7 @@ class API {
     }
   }
 
-  async *iterateSuggestion(messages: ChatMessage[]) {
+  async* iterateSuggestion(messages: ChatMessage[]) {
     if (messages.length === 0 || messages.at(-1)?.role === 'user') return
 
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
