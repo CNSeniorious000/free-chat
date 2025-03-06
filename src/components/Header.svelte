@@ -2,7 +2,8 @@
   import { onMount } from 'svelte'
   import { Toaster } from 'svelte-sonner'
   import { ripple } from 'svelte-ripple-action'
-  import deepseek from '@lobehub/icons-static-svg/icons/deepseek-text.svg?raw'
+  import qwen from '@lobehub/icons-static-svg/icons/qwen.svg?raw'
+  import qwenText from '@lobehub/icons-static-svg/icons/qwen-text.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
   import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
@@ -63,8 +64,8 @@
   <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8">
     已支持
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html deepseek}
-    的推理模型 DeepSeek R1
+    {@html qwen} {@html qwenText}
+    最新的推理模型 QwQ 32b
   </div>
 </div>
 

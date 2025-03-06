@@ -2,7 +2,7 @@
   import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
   import { persisted } from 'svelte-persisted-store'
 
-  type Model = 'gpt-3.5-turbo-0125' | 'gpt-4o-mini' | 'qwen-2.5-32b' | 'QwQ-32B-Preview' | 'deepseek-ai/DeepSeek-V3' | 'DeepSeek-R1-Distill-Llama-70B' | 'deepseek-r1-distill-qwen-32b' | 'THUDM/glm-4-9b-chat' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama-3.2-90b-vision-preview' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4o' | 'azure:gpt-4o-mini' | 'AI21-Jamba-1.5-Large' | 'AI21-Jamba-1.5-Mini' | 'Phi-3.5-MoE-instruct' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-Nemo' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-2-1212'
+  type Model = 'gpt-4o-mini' | 'qwen-qwq-32b' | 'deepseek-ai/DeepSeek-V3' | 'DeepSeek-R1-Distill-Llama-70B' | 'deepseek-r1-distill-qwen-32b' | 'THUDM/glm-4-9b-chat' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'llama-3.2-90b-vision-preview' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4o' | 'azure:gpt-4o-mini' | 'AI21-Jamba-1.5-Large' | 'AI21-Jamba-1.5-Mini' | 'Phi-3.5-MoE-instruct' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-Nemo' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-2-1212'
 
   const defaultModel = PUBLIC_DEFAULT_MODEL as Model
 
