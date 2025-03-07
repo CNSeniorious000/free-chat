@@ -42,8 +42,8 @@ importers:
         specifier: ^0.16.21
         version: 0.16.21
       lenis:
-        specifier: ^1.2.1
-        version: 1.2.1(vue@3.5.12(typescript@5.4.5))
+        specifier: ^1.2.3
+        version: 1.2.3(vue@3.5.12(typescript@5.4.5))
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
@@ -3303,8 +3303,8 @@ packages:
   kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
 
-  lenis@1.2.1:
-    resolution: {integrity: sha512-JhlMTYFMoRbBv20dzYa/xCMfczhZ7gpRiJl7CuVaUAP6x4v/EaQvQvdYgIXO5TERuPfjQcuhE1iBJ473zU6UVQ==}
+  lenis@1.2.3:
+    resolution: {integrity: sha512-H3VUn62jvQPfyxGW2F0STJPhP1VzX5r05KtiZ0uxHYD9xtbfTvj2eX/Km26+x13zlaKfHacEe1DTC3ouFrxw+g==}
     peerDependencies:
       '@nuxt/kit': '>=3.0.0'
       react: '>=17.0.0'
@@ -8673,7 +8673,7 @@ snapshots:
 
   kolorist@1.8.0: {}
 
-  lenis@1.2.1(vue@3.5.12(typescript@5.4.5)):
+  lenis@1.2.3(vue@3.5.12(typescript@5.4.5)):
     optionalDependencies:
       vue: 3.5.12(typescript@5.4.5)
 
