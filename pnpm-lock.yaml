@@ -80,10 +80,10 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^4.8.1
-        version: 4.8.1(@typescript-eslint/utils@8.26.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.1)(eslint-plugin-astro@1.3.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-svelte@3.0.3(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6))(eslint@9.22.0(jiti@2.4.2))(svelte-eslint-parser@1.0.1(svelte@5.22.6))(typescript@5.4.5)
+        version: 4.8.1(@typescript-eslint/utils@8.26.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.1)(eslint-plugin-astro@1.3.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-svelte@3.1.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6))(eslint@9.22.0(jiti@2.4.2))(svelte-eslint-parser@1.0.1(svelte@5.22.6))(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.314
+        version: 2.2.315
       '@julr/unocss-preset-heropatterns':
         specifier: ^2.0.0
         version: 2.0.0(unocss@66.0.0(postcss@8.5.3)(vite@6.2.1(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.12(typescript@5.4.5)))
@@ -121,8 +121,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-svelte:
-        specifier: ^3.0.3
-        version: 3.0.3(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6)
+        specifier: ^3.1.0
+        version: 3.1.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6)
       openai:
         specifier: ^4.86.2
         version: 4.86.2(zod@3.24.2)
@@ -1164,8 +1164,8 @@ packages:
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/json@2.2.314':
-    resolution: {integrity: sha512-yikVmts2jl9Z5ozNekFhEv5ovZBGOC24ugMrcobOr6gnOHuRrr9XCZvpY5lmUT2TIT0NGWKVAaPbhmRkJIukUw==}
+  '@iconify/json@2.2.315':
+    resolution: {integrity: sha512-ST+F6ZF+IpKm2eaABWftJ4stWbB8pcEd9Q5bshW8hcIW/kcvzwit3fI/5x3tFFscWUCxHGNU3JNVMtNlodHweQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2592,8 +2592,8 @@ packages:
     peerDependencies:
       eslint: '>=8.44.0'
 
-  eslint-plugin-svelte@3.0.3:
-    resolution: {integrity: sha512-R7HSKkLN33P6WwYhVbO+5xPT0YIpO+YAZfWxow7I1IvjVgZOxuI7zReqxFL3B7F028u16Megx+hn8SEXDNcDvw==}
+  eslint-plugin-svelte@3.1.0:
+    resolution: {integrity: sha512-hSQyLDkuuHPJby1ixZfUVrfLON42mT0Odf18MbwAgFUPuyIwJlhy3acUY1/bxt+Njucq/dQxR543zYDqkBNLmw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.1 || ^9.0.0
@@ -5002,7 +5002,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@antfu/eslint-config@4.8.1(@typescript-eslint/utils@8.26.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.1)(eslint-plugin-astro@1.3.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-svelte@3.0.3(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6))(eslint@9.22.0(jiti@2.4.2))(svelte-eslint-parser@1.0.1(svelte@5.22.6))(typescript@5.4.5)':
+  '@antfu/eslint-config@4.8.1(@typescript-eslint/utils@8.26.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.1)(eslint-plugin-astro@1.3.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-svelte@3.1.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6))(eslint@9.22.0(jiti@2.4.2))(svelte-eslint-parser@1.0.1(svelte@5.22.6))(typescript@5.4.5)':
     dependencies:
       '@antfu/install-pkg': 1.0.0
       '@clack/prompts': 0.10.0
@@ -5046,7 +5046,7 @@ snapshots:
       astro-eslint-parser: 1.2.1
       eslint-plugin-astro: 1.3.1(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-format: 1.0.1(eslint@9.22.0(jiti@2.4.2))
-      eslint-plugin-svelte: 3.0.3(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6)
+      eslint-plugin-svelte: 3.1.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6)
       svelte-eslint-parser: 1.0.1(svelte@5.22.6)
     transitivePeerDependencies:
       - '@eslint/json'
@@ -6142,7 +6142,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
-  '@iconify/json@2.2.314':
+  '@iconify/json@2.2.315':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -7880,7 +7880,7 @@ snapshots:
       regexp-ast-analysis: 0.7.1
       scslre: 0.3.0
 
-  eslint-plugin-svelte@3.0.3(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6):
+  eslint-plugin-svelte@3.1.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.22.6):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.22.0(jiti@2.4.2))
       '@jridgewell/sourcemap-codec': 1.5.0
