@@ -10,6 +10,10 @@
   const { key, initial }: Props = $props()
 
   const value = persisted(key, initial)
+
+  $effect(() => {
+    $value === undefined && localStorage.removeItem(key)
+  })
 </script>
 
 <button onclick={() => value.set(undefined)} disabled={$value === undefined} title="reset" class="rounded-full bg-$c-fg-10 p-1 transition-background-color disabled:op-30 hover:not-disabled:bg-$c-fg-20" aria-label="reset">

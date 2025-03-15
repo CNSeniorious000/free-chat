@@ -1,9 +1,9 @@
-import netlify from '@astrojs/netlify/functions'
+import netlify from '@astrojs/netlify'
 import node from '@astrojs/node'
 import solidJs from '@astrojs/solid-js'
 import svelte, { vitePreprocess } from '@astrojs/svelte'
 
-import vercel from '@astrojs/vercel/serverless'
+import vercel from '@astrojs/vercel'
 import AstroPWA from '@vite-pwa/astro'
 import { defineConfig, envField } from 'astro/config'
 import unocss from 'unocss/astro'
