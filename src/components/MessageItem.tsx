@@ -56,7 +56,6 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
               </div>
             </Show>
             <SolidMarkdown
-              renderingStrategy="reconcile"
               remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
               rehypePlugins={[rehypeKatex]}
               class="relative max-w-full overflow-hidden prose <sm:text-3.6 message"

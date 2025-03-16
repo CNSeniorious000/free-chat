@@ -66,8 +66,8 @@ importers:
         specifier: ^1.9.5
         version: 1.9.5
       solid-markdown:
-        specifier: ^2.0.14
-        version: 2.0.14(solid-js@1.9.5)
+        specifier: https://pkg.pr.new/promplate/solid-markdown@29d56bd
+        version: https://pkg.pr.new/promplate/solid-markdown@29d56bd(solid-js@1.9.5)
       solid-toast:
         specifier: ^0.5.0
         version: 0.5.0(solid-js@1.9.5)
@@ -4179,9 +4179,9 @@ packages:
   solid-js@1.9.5:
     resolution: {integrity: sha512-ogI3DaFcyn6UhYhrgcyRAMbu/buBJitYQASZz5WzfQVPP10RD2AbCoRZ517psnezrasyCbWzIxZ6kVqet768xw==}
 
-  solid-markdown@2.0.14:
-    resolution: {integrity: sha512-Ln8R4TsNWySXvKkS80OHV+CSR/mwjk5XfGvC5UjZo/y/rAbbkBoxt6FXoWsfCkTW6GH9yxYvahSMXsUJU/ov4Q==}
-    engines: {node: '>=18', pnpm: '>=8.6.0'}
+  solid-markdown@https://pkg.pr.new/promplate/solid-markdown@29d56bd:
+    resolution: {tarball: https://pkg.pr.new/promplate/solid-markdown@29d56bd}
+    version: 2.0.14
     peerDependencies:
       solid-js: ^1.6.0
 
@@ -9824,7 +9824,7 @@ snapshots:
       seroval: 1.2.1
       seroval-plugins: 1.2.1(seroval@1.2.1)
 
-  solid-markdown@2.0.14(solid-js@1.9.5):
+  solid-markdown@https://pkg.pr.new/promplate/solid-markdown@29d56bd(solid-js@1.9.5):
     dependencies:
       comma-separated-tokens: 2.0.3
       property-information: 6.5.0
