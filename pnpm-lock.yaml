@@ -112,8 +112,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(astro@5.5.2(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(vite-plugin-pwa@0.21.1(vite@6.2.1(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
       bits-ui:
-        specifier: ^1.3.12
-        version: 1.3.12(svelte@5.23.1)
+        specifier: ^1.3.13
+        version: 1.3.13(svelte@5.23.1)
       eslint-plugin-astro:
         specifier: ^1.3.1
         version: 1.3.1(eslint@9.22.0(jiti@2.4.2))
@@ -2059,8 +2059,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@1.3.12:
-    resolution: {integrity: sha512-RhPvg2e7mTQSXR9WMdsyR5eTC2DSa4ch5MT/TjIaN3suMJ3RGlbzYPNvf4n56Lgck3W4Xm+L4jSgrzTdynuM8Q==}
+  bits-ui@1.3.13:
+    resolution: {integrity: sha512-0ysKdvHBIArfFBe+MYVAvu5OANOsivk+UJftdiW+e6lGHzf+EW/TZpLh69Vf0n8pYTjkH+33CHlVIImxTZRIMQ==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.11.0
@@ -7173,7 +7173,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@1.3.12(svelte@5.23.1):
+  bits-ui@1.3.13(svelte@5.23.1):
     dependencies:
       '@floating-ui/core': 1.6.9
       '@floating-ui/dom': 1.6.13
