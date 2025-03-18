@@ -24,8 +24,8 @@ importers:
         specifier: ^8.1.2
         version: 8.1.2(astro@5.5.2(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(rollup@2.79.2)(svelte@5.23.1)(vue@3.5.12(typescript@5.4.5))
       '@lobehub/icons-static-svg':
-        specifier: ^1.30.0
-        version: 1.30.0
+        specifier: ^1.39.0
+        version: 1.39.0
       astro:
         specifier: ^5.5.2
         version: 5.5.2(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0)
@@ -83,7 +83,7 @@ importers:
         version: 4.10.1(@typescript-eslint/utils@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.1)(eslint-plugin-astro@1.3.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.22.0(jiti@2.4.2)))(eslint-plugin-svelte@3.3.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.23.1))(eslint@9.22.0(jiti@2.4.2))(svelte-eslint-parser@1.1.0(svelte@5.23.1))(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
-        version: 2.2.317
+        version: 2.2.318
       '@julr/unocss-preset-heropatterns':
         specifier: ^2.0.0
         version: 2.0.0(unocss@66.0.0(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.12(typescript@5.4.5)))
@@ -1170,8 +1170,8 @@ packages:
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/json@2.2.317':
-    resolution: {integrity: sha512-RMf7b3Wd4FMKR7roYmJ8mO6Lwm1JCzuuuVCi0aPcBvBwZkgoWSNHEOFG504L3GMz95cid5KS5Yc4Gt1TPA5bJA==}
+  '@iconify/json@2.2.318':
+    resolution: {integrity: sha512-8hmJxD/l322LLyQzt9s6aPCE6O+p86H9GVFhoH3hEQ9PRrU5O3Ptf8tlzFKzkBrBoEqdSzkAG5j8bwGt47Ragw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1322,8 +1322,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13'
 
-  '@lobehub/icons-static-svg@1.30.0':
-    resolution: {integrity: sha512-hb5XNClogtrgYQs5ThXRXMnWLjjoi2Rvguu0d0DP4Rg6wO42t94Vd1cPjN0hKc/CvhpjKKGIvY6tFEGFGf4a5A==}
+  '@lobehub/icons-static-svg@1.39.0':
+    resolution: {integrity: sha512-8aymaSp4EKLnqNwAKbLRRK992fQFTc98/wmPl2yVsPGiBkLvIj7zm7qzFh2+ugoKdoHGFtr7clD51D50l7bkpg==}
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -6157,7 +6157,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
-  '@iconify/json@2.2.317':
+  '@iconify/json@2.2.318':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -6296,7 +6296,7 @@ snapshots:
       '@unocss/preset-mini': 65.5.0
       unocss: 66.0.0(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.12(typescript@5.4.5))
 
-  '@lobehub/icons-static-svg@1.30.0': {}
+  '@lobehub/icons-static-svg@1.39.0': {}
 
   '@mapbox/node-pre-gyp@2.0.0':
     dependencies:
