@@ -124,8 +124,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2(eslint@9.22.0(jiti@2.4.2))(svelte@5.23.2)
       openai:
-        specifier: ^4.88.0
-        version: 4.88.0(zod@3.24.2)
+        specifier: ^4.89.0
+        version: 4.89.0(zod@3.24.2)
       svelte-inview:
         specifier: ^4.0.4
         version: 4.0.4(svelte@5.23.2)
@@ -3723,8 +3723,8 @@ packages:
   oniguruma-to-es@4.1.0:
     resolution: {integrity: sha512-SNwG909cSLo4vPyyPbU/VJkEc9WOXqu2ycBlfd1UCXLqk1IijcQktSBb2yRQ2UFPsDhpkaf+C1dtT3PkLK/yWA==}
 
-  openai@4.88.0:
-    resolution: {integrity: sha512-Ll2ZJCdX/56WcCF/wLtAFou+zWRyLeneoXy+qya5T5/wm5LkIr6heJfSn53c5ujXWPB+24cgumiOetbFqcppFA==}
+  openai@4.89.0:
+    resolution: {integrity: sha512-XNI0q2l8/Os6jmojxaID5EhyQjxZgzR2gWcpEjYWK5hGKwE7AcifxEY7UNwFDDHJQXqeiosQ0CJwQN+rvnwdjA==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -6615,7 +6615,7 @@ snapshots:
 
   '@types/node-fetch@2.6.12':
     dependencies:
-      '@types/node': 18.19.80
+      '@types/node': 22.13.4
       form-data: 4.0.2
 
   '@types/node@18.19.80':
@@ -6625,7 +6625,6 @@ snapshots:
   '@types/node@22.13.4':
     dependencies:
       undici-types: 6.20.0
-    optional: true
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -9252,7 +9251,7 @@ snapshots:
       regex: 6.0.1
       regex-recursion: 6.0.2
 
-  openai@4.88.0(zod@3.24.2):
+  openai@4.89.0(zod@3.24.2):
     dependencies:
       '@types/node': 18.19.80
       '@types/node-fetch': 2.6.12
@@ -10263,8 +10262,7 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  undici-types@6.20.0:
-    optional: true
+  undici-types@6.20.0: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
