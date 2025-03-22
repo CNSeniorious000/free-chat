@@ -18,7 +18,7 @@
   <Hr text="低可用性模型（延迟较大）" />
   <!-- <ModelItem id="azure:gpt-4o" name="gpt-4o" title="GPT 4o (Azure)" /> -->
   <!-- <ModelItem id="azure:gpt-4o-mini" name="gpt-4o-mini" title="GPT 4o mini (Azure)" /> -->
-  <ModelItem id="Mistral-Nemo" name="Mistral-Nemo" title="Mistral 最新发布的轻快版" />
+  <ModelItem id="Mistral-small-2503" name="Mistral-Small" title="Mistral 最新发布的轻快版" />
   <ModelItem id="Mistral-large-2411" name="Mistral-large" title="Mistral 旗舰款" />
   <!-- <ModelItem id="Phi-3.5-MoE-instruct" name="Phi-3.5-MoE-instruct" title="微软的开源模型" /> -->
   <!-- <ModelItem id="Meta-Llama-3.1-405B-Instruct" name="llama-3.1-405b" title="Llama-3.1 405B 超大杯" /> -->
