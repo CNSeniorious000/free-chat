@@ -24,8 +24,8 @@ importers:
         specifier: ^8.1.3
         version: 8.1.3(astro@5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(rollup@2.79.2)(svelte@5.25.2)(vue@3.5.12(typescript@5.4.5))
       '@lobehub/icons-static-svg':
-        specifier: ^1.39.0
-        version: 1.39.0
+        specifier: ^1.40.0
+        version: 1.40.0
       astro:
         specifier: ^5.5.4
         version: 5.5.4(@netlify/blobs@8.1.1)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0)
@@ -79,8 +79,8 @@ importers:
         version: 1.0.20
     devDependencies:
       '@antfu/eslint-config':
-        specifier: ^4.10.2
-        version: 4.10.2(@typescript-eslint/utils@8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-svelte@3.3.3(eslint@9.23.0(jiti@2.4.2))(svelte@5.25.2))(eslint@9.23.0(jiti@2.4.2))(svelte-eslint-parser@1.1.0(svelte@5.25.2))(typescript@5.4.5)
+        specifier: ^4.11.0
+        version: 4.11.0(@typescript-eslint/utils@8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-svelte@3.3.3(eslint@9.23.0(jiti@2.4.2))(svelte@5.25.2))(eslint@9.23.0(jiti@2.4.2))(svelte-eslint-parser@1.1.0(svelte@5.25.2))(typescript@5.4.5)
       '@iconify/json':
         specifier: latest
         version: 2.2.319
@@ -148,8 +148,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@antfu/eslint-config@4.10.2':
-    resolution: {integrity: sha512-/cqQ+uQKyeEuZcverR1+r0a6IUO1cwIFZSIaTPchxcWNXEK8CD7hB6DPFALDnDwwM1ItFB/GKSQWlGkaxxmM0w==}
+  '@antfu/eslint-config@4.11.0':
+    resolution: {integrity: sha512-KMLIrZflEFsOEF/N0Xl8iVaheLTdgT3gAwXVzdG5Ng8ieNhBsRsaThnqI7of10kh6psSBLJ6SkNK+ZF98fQIXQ==}
     hasBin: true
     peerDependencies:
       '@eslint-react/eslint-plugin': ^1.19.0
@@ -159,10 +159,11 @@ packages:
       eslint: ^9.10.0
       eslint-plugin-astro: ^1.2.0
       eslint-plugin-format: '>=0.1.0'
-      eslint-plugin-react-hooks: ^5.0.0
-      eslint-plugin-react-refresh: ^0.4.4
+      eslint-plugin-react-hooks: ^5.2.0
+      eslint-plugin-react-refresh: ^0.4.19
       eslint-plugin-solid: ^0.14.3
       eslint-plugin-svelte: '>=2.35.1'
+      eslint-plugin-vuejs-accessibility: ^2.4.1
       prettier-plugin-astro: ^0.14.0
       prettier-plugin-slidev: ^1.0.5
       svelte-eslint-parser: '>=0.37.0'
@@ -186,6 +187,8 @@ packages:
       eslint-plugin-solid:
         optional: true
       eslint-plugin-svelte:
+        optional: true
+      eslint-plugin-vuejs-accessibility:
         optional: true
       prettier-plugin-astro:
         optional: true
@@ -1322,8 +1325,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13'
 
-  '@lobehub/icons-static-svg@1.39.0':
-    resolution: {integrity: sha512-8aymaSp4EKLnqNwAKbLRRK992fQFTc98/wmPl2yVsPGiBkLvIj7zm7qzFh2+ugoKdoHGFtr7clD51D50l7bkpg==}
+  '@lobehub/icons-static-svg@1.40.0':
+    resolution: {integrity: sha512-UnVp8UfNzrNTCL4x10fCoJlmVctXDJ7wZF1vf9pu8XF1tEBw7N3509KRJMJXnpGoqjlrHfoTAfRDs1SIH08uXw==}
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -4971,8 +4974,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  yocto-queue@1.2.0:
-    resolution: {integrity: sha512-KHBC7z61OJeaMGnF3wqNZj+GGNXOyypZviiKpQeiHirG5Ib1ImwcLBH70rbMSkKfSmUNBsdf2PwaEJtKvgmkNw==}
+  yocto-queue@1.2.1:
+    resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
 
   yocto-spinner@0.2.1:
@@ -5010,7 +5013,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@antfu/eslint-config@4.10.2(@typescript-eslint/utils@8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-svelte@3.3.3(eslint@9.23.0(jiti@2.4.2))(svelte@5.25.2))(eslint@9.23.0(jiti@2.4.2))(svelte-eslint-parser@1.1.0(svelte@5.25.2))(typescript@5.4.5)':
+  '@antfu/eslint-config@4.11.0(@typescript-eslint/utils@8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@unocss/eslint-plugin@66.0.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.4.5))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.23.0(jiti@2.4.2)))(eslint-plugin-svelte@3.3.3(eslint@9.23.0(jiti@2.4.2))(svelte@5.25.2))(eslint@9.23.0(jiti@2.4.2))(svelte-eslint-parser@1.1.0(svelte@5.25.2))(typescript@5.4.5)':
     dependencies:
       '@antfu/install-pkg': 1.0.0
       '@clack/prompts': 0.10.0
@@ -6300,7 +6303,7 @@ snapshots:
       '@unocss/preset-mini': 65.5.0
       unocss: 66.0.0(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(vue@3.5.12(typescript@5.4.5))
 
-  '@lobehub/icons-static-svg@1.39.0': {}
+  '@lobehub/icons-static-svg@1.40.0': {}
 
   '@mapbox/node-pre-gyp@2.0.0':
     dependencies:
@@ -9290,7 +9293,7 @@ snapshots:
 
   p-limit@6.2.0:
     dependencies:
-      yocto-queue: 1.2.0
+      yocto-queue: 1.2.1
 
   p-locate@5.0.0:
     dependencies:
@@ -10720,7 +10723,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  yocto-queue@1.2.0: {}
+  yocto-queue@1.2.1: {}
 
   yocto-spinner@0.2.1:
     dependencies:
