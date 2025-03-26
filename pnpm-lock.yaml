@@ -15,8 +15,8 @@ importers:
         specifier: ^9.1.3
         version: 9.1.3(astro@5.5.4(@netlify/blobs@8.1.2)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))
       '@astrojs/solid-js':
-        specifier: ^5.0.5
-        version: 5.0.5(@types/node@22.13.4)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)
+        specifier: ^5.0.6
+        version: 5.0.6(@types/node@22.13.4)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)
       '@astrojs/svelte':
         specifier: ^7.0.7
         version: 7.0.7(@types/node@22.13.4)(astro@5.5.4(@netlify/blobs@8.1.2)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0))(jiti@2.4.2)(svelte@5.25.3)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.0)
@@ -232,8 +232,8 @@ packages:
     resolution: {integrity: sha512-GilTHKGCW6HMq7y3BUv9Ac7GMe/MO9gi9GW62GzKtth0SwukCu/qp2wLiGpEujhY+VVhaG9v7kv/5vFzvf4NYw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/solid-js@5.0.5':
-    resolution: {integrity: sha512-i+hsqm5u4Jaf+2CznCMh/oHFiBlmZz3jpTqQS1x5gilCzX3SOtVMLmbHHEpQ3wiZF1QToa4gcgEDqmeUqwW2Ow==}
+  '@astrojs/solid-js@5.0.6':
+    resolution: {integrity: sha512-jtO12tvjWYvzgBJa6tuq2igZadwyhUzczFCxY/2VzBl5+Va7b5gnRlpgHceJzcpravWxcKzWtwpVTyj1DZfVwg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       solid-devtools: ^0.30.1
@@ -1598,8 +1598,8 @@ packages:
   '@types/babel__template@7.4.4':
     resolution: {integrity: sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==}
 
-  '@types/babel__traverse@7.20.6':
-    resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
+  '@types/babel__traverse@7.20.7':
+    resolution: {integrity: sha512-dkO5fhS7+/oos4ciWxyEyjWe48zmG6wbCheo/G2ZnHx4fs3EU6YC6UM8rk56gAjNJ9P3MTH2jo5jb92/K6wbng==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -5163,7 +5163,7 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/solid-js@5.0.5(@types/node@22.13.4)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)':
+  '@astrojs/solid-js@5.0.6(@types/node@22.13.4)(jiti@2.4.2)(solid-js@1.9.5)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)':
     dependencies:
       solid-js: 1.9.5
       vite: 6.2.3(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)
@@ -6577,7 +6577,7 @@ snapshots:
       '@babel/types': 7.27.0
       '@types/babel__generator': 7.6.8
       '@types/babel__template': 7.4.4
-      '@types/babel__traverse': 7.20.6
+      '@types/babel__traverse': 7.20.7
 
   '@types/babel__generator@7.6.8':
     dependencies:
@@ -6588,7 +6588,7 @@ snapshots:
       '@babel/parser': 7.27.0
       '@babel/types': 7.27.0
 
-  '@types/babel__traverse@7.20.6':
+  '@types/babel__traverse@7.20.7':
     dependencies:
       '@babel/types': 7.27.0
 
