@@ -1,6 +1,7 @@
 import { Allow, parse } from 'partial-json'
 import { responseToAsyncIterator } from './streaming'
 import { promplateBaseUrl } from './constants'
+import { SUGGEST_MODEL } from 'astro:env/client'
 import type { ChatMessage } from '@/types'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
@@ -68,7 +69,7 @@ class API {
 
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
       method: 'PUT',
-      body: JSON.stringify({ messages, model: 'Qwen/Qwen2.5-7B-Instruct' }),
+      body: JSON.stringify({ messages, model: SUGGEST_MODEL }),
       headers: { 'content-type': 'application/json' },
     })
 
