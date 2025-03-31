@@ -31,6 +31,7 @@ export default defineConfig({
       HEAD_SCRIPTS: envField.string({ context: 'client', access: 'public', optional: true }),
       UNDICI_UA: envField.string({ context: 'server', access: 'secret', optional: true }),
       OPENAI_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      SUGGEST_MODEL: envField.string({ context: 'client', access: 'public', default: 'Qwen/Qwen2.5-7B-Instruct' }),
       TITLE_GEN_MODEL: envField.string({ context: 'server', access: 'secret', optional: true }),
       OPENAI_API_MODEL: envField.string({ context: 'server', access: 'secret' }),
       OPENAI_BASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
