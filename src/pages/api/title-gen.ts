@@ -1,4 +1,4 @@
-import { OPENAI_API_MODEL, TITLE_GEN_MODEL } from 'astro:env/server'
+import { OPENAI_API_MODEL, TITLE_GEN_MODEL, TITLE_GEN_JSON_MODE } from 'astro:env/server'
 import { openai } from '@/utils/client'
 import type { Stream } from 'openai/streaming'
 import type { ChatCompletionChunk } from 'openai/resources/chat/completions'
@@ -32,7 +32,7 @@ export const POST: APIRoute = async(context) => {
       ],
       model,
       temperature: 0,
-      response_format: model.startsWith('gpt') ? { type: 'json_object' } : undefined,
+      response_format: TITLE_GEN_JSON_MODE ? { type: 'json_object' } : undefined,
       stream: true,
     })
 
@@ -48,7 +48,7 @@ export const POST: APIRoute = async(context) => {
       },
     })
 
-    return new Response(stream, { headers: { 'content-type': 'application/json' } })
+    return new Response(stream, { headers: { 'content-type': TITLE_GEN_JSON_MODE ? 'application/json' : 'text/markdown;charset=utf-8' } })
   } catch (error) {
     console.error(error)
     return new Response(JSON.stringify(error), { status: 500 })
