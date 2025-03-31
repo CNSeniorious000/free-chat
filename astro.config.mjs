@@ -84,5 +84,8 @@ export default defineConfig({
   adapter: envAdapter(),
   vite: {
     plugins: [(process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks()],
+    build: {
+      sourcemap: true,
+    },
   },
 })
