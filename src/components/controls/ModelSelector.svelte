@@ -7,7 +7,7 @@
   <ModelItem id="deepseek-r1-distill-qwen-32b" name="deepseek-r1-qwen-32b" title="🧠 DeepSeek 的推理模型 R1" />
   <ModelItem id="DeepSeek-R1-Distill-Llama-70B" name="deepseek-r1-llama-70b" title="🧠 DeepSeek 的推理模型 R1" />
   <ModelItem id="qwen-qwq-32b" name="qwen-qwq-32b" title="⭐ Qwen 最新的推理模型 QwQ 正式版" />
-  <ModelItem id="deepseek-ai/DeepSeek-V3" name="deepseek-v3" title="✨ 深度求索最新发布的 DeepSeek v3" />
+  <ModelItem id="DeepSeek-V3-0324" name="deepseek-v3" title="✨ 深度求索最新发布的 DeepSeek v3" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 Meta 最新发布的 Llama3.3 70b" />
   <ModelItem id="llama-3.2-90b-vision-preview" name="llama3.2-90b" title="🚀 Meta 最新发布的 Llama3.2 90b" />
   <ModelItem id="grok-2-1212" name="grok-2-1212" title="🚀 xAI 的第二代 Grok" />
