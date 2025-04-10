@@ -25,7 +25,7 @@ importers:
         version: 8.1.3(astro@5.6.1(@netlify/blobs@8.1.2)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.1))(rollup@2.79.2)(svelte@5.25.10)(vue@3.5.12(typescript@5.4.5))
       '@lobehub/icons-static-svg':
         specifier: ^1.44.0
-        version: 1.44.0
+        version: 1.45.0
       astro:
         specifier: ^5.6.1
         version: 5.6.1(@netlify/blobs@8.1.2)(@types/node@22.13.4)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.4.5)(yaml@2.7.1)
@@ -1329,8 +1329,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13'
 
-  '@lobehub/icons-static-svg@1.44.0':
-    resolution: {integrity: sha512-CVIsErmfU9gnrGyb37Zbz0CQRfR8ALSlJYsFSU91fjcZ4CgwBhhZ02ikmskslPOezfS8+I4R3NQuaHDa4yOGeQ==}
+  '@lobehub/icons-static-svg@1.45.0':
+    resolution: {integrity: sha512-YqEP9KUXw7hhYJoL2C+wjTPYBNHGg4tCgJxA6SdPhMVxC+X41iuY4LVOlIimbs/aBTJNSVpho6BcbO0jWBEcqQ==}
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -6338,7 +6338,7 @@ snapshots:
       '@unocss/preset-mini': 65.5.0
       unocss: 66.0.0(postcss@8.5.3)(vite@6.2.5(@types/node@22.13.4)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(vue@3.5.12(typescript@5.4.5))
 
-  '@lobehub/icons-static-svg@1.44.0': {}
+  '@lobehub/icons-static-svg@1.45.0': {}
 
   '@mapbox/node-pre-gyp@2.0.0':
     dependencies:
