@@ -9,8 +9,8 @@
   <ModelItem id="qwen-qwq-32b" name="qwen-qwq-32b" title="⭐ Qwen 最新的推理模型 QwQ 正式版" />
   <ModelItem id="DeepSeek-V3-0324" name="deepseek-v3" title="✨ 深度求索最新发布的 DeepSeek v3" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
-  <ModelItem id="meta-llama/llama-4-scout-17b-16e-instruct" name="llama4-scout" title="🚀 Meta 最新发布的 Llama 4 Scout" />
-  <ModelItem id="grok-2-1212" name="grok-2-1212" title="🚀 xAI 的第二代 Grok" />
+  <ModelItem id="llama-4-scout-17b-16e-instruct" name="llama4-scout" title="🚀 Meta 最新发布的 Llama 4 Scout" />
+  <ModelItem id="grok-3-beta" name="grok-3-beta" title="🚀 xAI 最新的 Grok 3" />
   <ModelItem id="gemma-3-27b-it" name="gemma 3" title="Google 最新的开源模型" />
   <ModelItem id="gemini-2.0-flash-lite" name="gemini 2.0 flash lite" title="Google 最新一代 Gemini" />
   <ModelItem id="gemini-2.0-flash-thinking-exp" name="gemini 2.0 flash thinking" title="Google 的推理模型" />
