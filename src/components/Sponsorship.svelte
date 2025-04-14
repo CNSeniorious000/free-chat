@@ -30,15 +30,15 @@
   onMount(() => {
     document.addEventListener('clearMessages', (ev: Event) => {
       const { length } = (ev as MessagesEvent).detail
-      if (length >= 7 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24) showModal = true
+      if (length >= 7 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24 * 7) showModal = true
     })
   })
 
   function handleClick() {
     showModal = false
     localStorage.setItem('lastTime', String(Number(new Date())))
-    toast.success('感谢您的支持！24h 内将不会再弹窗~')
-    setTimeout(() => toast.info('因为持续捐赠是我们运营的动力，所以我们最多在24h弹出一次，且仅会发生在一次有效的长对话之后'), 1000)
+    toast.success('感谢您的支持！一周内将不会再弹窗~')
+    setTimeout(() => toast.info('因为持续捐赠是我们运营的动力，所以我们每周在检测到一次长对话之后会提示一次捐赠。谢谢理解！'), 1000)
   }
 
 </script>
