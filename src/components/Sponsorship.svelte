@@ -7,6 +7,8 @@
   import Modal from './Modal.svelte'
 
   let showModal = $state(false)
+  let pngReady = $state(false)
+  let svgReady = $state(false)
   let showQR = $state(false)
   let showButton = $state(false)
 
@@ -18,9 +20,9 @@
           setTimeout(() => {
             if (showModal)
               showButton = true
-          }, 3000)
+          }, 1500)
         }
-      }, 2000)
+      }, 1000)
     } else {
       showQR = false
       showButton = false
@@ -30,24 +32,32 @@
   onMount(() => {
     document.addEventListener('clearMessages', (ev: Event) => {
       const { length } = (ev as MessagesEvent).detail
-      if (length >= 7 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24) showModal = true
+      if (length >= 7 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24 * 7) showModal = true
     })
   })
 
   function handleClick() {
     showModal = false
+    showQR = false
+    showButton = false
     localStorage.setItem('lastTime', String(Number(new Date())))
-    toast.success('感谢您的支持！24h 内将不会再弹窗~')
-    setTimeout(() => toast.info('因为持续捐赠是我们运营的动力，所以我们最多在24h弹出一次，且仅会发生在一次有效的长对话之后'), 1000)
+    toast.success('感谢您的支持！一周内将不会再弹窗~')
   }
 
 </script>
 
 <Modal icon="i-fluent-emoji-folded-hands" bind:show={showModal}>
   {#if showModal}
-    <div in:slide|global={{ duration: 800, easing: quintOut }} out:fade|global={{ delay: 300, easing: quintIn }} class="flex flex-col gap-1.5 -mt-3 dark:gap-2.5">
-      <strong in:fly|global={{ delay: 50, duration: 500, x: -10, easing: quintOut }}>亲爱的用户：</strong>
+    <div in:slide|global={{ duration: 800, easing: quintOut }} out:fade|global={{ delay: 300, easing: quintIn }} class="flex flex-col select-text gap-1.5 px-3 leading-relaxed -mx-3 -mt-3 dark:gap-2.5">
+      <strong in:fly|global={{ delay: 50, duration: 500, x: -10, easing: quintOut }}>大家好！</strong>
       <div in:fly|global={{ delay: 100, duration: 500, x: -10, easing: quintOut }}>
+        我，<a href="https://muspimerol.site/"><strong>Muspi Merol</strong><span class="icon i-line-md-external-link translate-x-0.7 op-50 dark:op-80"></span></a>
+        是一名学生、一位活跃但 opinionated 的开源开发者，一 opinionated 的理想主义者，半个 e/acc，典型的 ENFP，欢迎交朋友~
+      </div>
+      <div in:fly|global={{ delay: 200, duration: 500, x: -10, easing: quintOut }}>我关注 <strong>LLM</strong> 及其应用、<strong>开发者工具</strong>、<strong>教育</strong><span class="px-0.5">以及</span><strong>设计</strong>。</div>
+      <div in:fly|global={{ delay: 300, duration: 500, x: -10, easing: quintOut }}>大家的持续捐赠鼓励是我维护该免费产品的重要动力，所以我每周在检测到一次长对话之后会提示一次捐赠。谢谢理解！</div>
+
+      <div in:fly|global={{ delay: 400, duration: 500, x: -10, easing: quintOut }}>
         感谢您的使用！我们非常喜欢听到大家的意见，因此有任何问题 / 建议 / 合作意向，欢迎提给我！您可以通过
         <a href="mailto:kilo.meter@foxmail.com"><span class="icon i-ic-twotone-mail"></span>邮件</a>
         /
@@ -55,11 +65,8 @@
         /
         <a href="https://t.me/+bIGN2w-toQJjZWRl"><span class="icon i-uim-telegram-alt"></span>Telegram 群组</a>联系我。
       </div>
-      <div in:fly|global={{ delay: 150, duration: 500, x: -10, easing: quintOut }}><strong>本人最近在开发 <a href="https://zh.promplate.dev/">一个提示工程框架</a></strong>欢迎了解</div>
-      <div in:fly|global={{ delay: 200, duration: 500, x: -10, easing: quintOut }}>大家的捐赠鼓励是我开发新的产品和优化现有的功能的动力之一。</div>
-      <div in:fly|global={{ delay: 250, duration: 500, x: -10, easing: quintOut }}>总之，希望大家不吝捐赠、欢迎大家多多反馈！最近在忙学校事务，所以可能不会积极更新，见谅~</div>
-      {#await import('./Sponsor.svelte') then QR}
-        {#if showQR}
+      {#await import('./Sponsor.svelte').finally(() => { svgReady = true }) then QR}
+        {#if showQR && pngReady && svgReady}
           <div in:slide|global={{ duration: 800, easing: quintOut }} class="group relative grid mb-0.5 mt-1.5 h-70 w-full place-items-center rounded-md bg-$c-fg-2 transition-background-color duration-200 hover:bg-$c-fg-5">
             <QR.default show={showQR} />
           </div>
@@ -76,7 +83,7 @@
 
 <svelte:head>
   {#if showModal}
-    <link rel="preload" href="avatar.png" as="image" />
+    <link rel="preload" onload={() => pngReady = true} href="avatar.png" as="image" />
   {/if}
 </svelte:head>
 
