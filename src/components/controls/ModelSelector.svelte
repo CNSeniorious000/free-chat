@@ -24,7 +24,7 @@
   <ModelItem id="Mistral-large-2411" name="Mistral-large" title="Mistral 旗舰款" />
   <!-- <ModelItem id="Phi-3.5-MoE-instruct" name="Phi-3.5-MoE-instruct" title="微软的开源模型" /> -->
   <!-- <ModelItem id="Meta-Llama-3.1-405B-Instruct" name="llama-3.1-405b" title="Llama-3.1 405B 超大杯" /> -->
-  <ModelItem id="azure:gpt-4.1" name="gpt-4.1" title="🔥 OpenAI 最新的 GPT 4.1" />
+  <ModelItem id="azure:gpt-4.1-mini" name="gpt-4.1-mini" title="🔥 OpenAI 最新的 GPT 4.1" />
   <ModelItem id="MAI-DS-R1" name="MAI-DS-R1" title="微软魔改版 DeepSeek R1" />
   <ModelItem id="Cohere-command-a" name="Cohere Command A" title="🔥 Cohere 最新的模型 111B 模型" />
   <ModelItem id="Phi-4" name="Phi 4" title="微软 Phi 系列最新款" />
