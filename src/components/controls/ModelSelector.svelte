@@ -4,7 +4,7 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
-  <ModelItem id="DeepSeek-R1-Distill-Llama-70B" name="deepseek-r1-llama-70b" title="🧠 DeepSeek 的推理模型 R1" />
+  <ModelItem id="deepseek-r1-distill-llama-70b" name="deepseek-r1-llama-70b" title="🧠 DeepSeek 的推理模型 R1" />
   <ModelItem id="qwen-qwq-32b" name="qwen-qwq-32b" title="⭐ Qwen 最新的推理模型 QwQ 正式版" />
   <ModelItem id="meta-llama/llama-4-maverick-17b-128e-instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
