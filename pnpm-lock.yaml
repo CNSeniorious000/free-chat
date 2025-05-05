@@ -83,7 +83,7 @@ importers:
         version: 4.12.0(@typescript-eslint/utils@8.31.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(@unocss/eslint-plugin@66.1.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.12)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.26.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.26.0(jiti@2.4.2)))(eslint-plugin-svelte@3.5.1(eslint@9.26.0(jiti@2.4.2))(svelte@5.28.2))(eslint@9.26.0(jiti@2.4.2))(svelte-eslint-parser@1.1.3(svelte@5.28.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@22.15.3)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))
       '@iconify/json':
         specifier: latest
-        version: 2.2.334
+        version: 2.2.335
       '@julr/unocss-preset-heropatterns':
         specifier: ^2.0.0
         version: 2.0.0(unocss@66.1.0(postcss@8.5.3)(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(vue@3.5.12(typescript@5.8.3)))
@@ -113,7 +113,7 @@ importers:
         version: 1.1.0(astro@5.7.10(@netlify/blobs@8.2.0)(@types/node@22.15.3)(jiti@2.4.2)(rollup@2.79.2)(terser@5.39.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.7.1))(vite-plugin-pwa@0.21.1(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.1))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
       bits-ui:
         specifier: ^1.4.4
-        version: 1.4.4(svelte@5.28.2)
+        version: 1.4.6(svelte@5.28.2)
       eslint-plugin-astro:
         specifier: ^1.3.1
         version: 1.3.1(eslint@9.26.0(jiti@2.4.2))
@@ -1332,8 +1332,8 @@ packages:
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/json@2.2.334':
-    resolution: {integrity: sha512-VcnEHMZs1VT8QvU5dzT1Eau35nGSZdIcJlBRHkxe/HLS1kKkyuFFrsA5aIaHeM7vvU6Y8rPS4DDD2xDmnNgP3g==}
+  '@iconify/json@2.2.335':
+    resolution: {integrity: sha512-EOUM9843cxiwA19cORaz6t+fpn1LhZr5la+Oot7gzt8M5SRjOqvXfMZKcc/VkytRHaaNd2y0dKhA8H7/sP1stQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2486,8 +2486,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@1.4.4:
-    resolution: {integrity: sha512-62hTW3LRJzb/lU4SAEr+x9GLVTS7lBH+0onOT+UHMghfyQc5TbeuoYBsmKbsLwVnEzCwjAfWBVz51kFYgBJ74w==}
+  bits-ui@1.4.6:
+    resolution: {integrity: sha512-EN2niBF9iBe03GzSJ64I369DA/pRdoC7sCKVAqIxMkxrk/ClfDurzNJkf4RMK6EFOxeqWzTVFJTGyPdmBAy6Lw==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.11.0
@@ -7491,7 +7491,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
-  '@iconify/json@2.2.334':
+  '@iconify/json@2.2.335':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -8968,7 +8968,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@1.4.4(svelte@5.28.2):
+  bits-ui@1.4.6(svelte@5.28.2):
     dependencies:
       '@floating-ui/core': 1.7.0
       '@floating-ui/dom': 1.7.0
