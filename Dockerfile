@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:23.11.1-alpine3.21
 WORKDIR /usr/src
 RUN npm install -g pnpm
 COPY package.json pnpm-lock.yaml ./
