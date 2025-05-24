@@ -5,7 +5,7 @@
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
   <ModelItem id="deepseek-r1-distill-llama-70b" name="deepseek-r1-llama-70b" title="🧠 DeepSeek 的推理模型 R1" />
-  <ModelItem id="qwen-qwq-32b" name="qwen-qwq-32b" title="🧠 Qwen 最新的推理模型 QwQ 正式版" />
+  <ModelItem id="qwen-3-32b" name="qwen-3-32b" title="🧠 旗舰混合推理模型 Qwen 3" />
   <ModelItem id="meta-llama/llama-4-maverick-17b-128e-instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
   <ModelItem id="grok-3-mini-beta" name="grok-3-mini-beta" title="⭐ xAI 的推理模型" />
