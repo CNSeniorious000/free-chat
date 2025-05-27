@@ -1,10 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { Toaster } from 'svelte-sonner'
+  import { toast, Toaster } from 'svelte-sonner'
   import { ripple } from 'svelte-ripple-action'
-  import xai from '@lobehub/icons-static-svg/icons/xai.svg?raw'
-  import grok from '@lobehub/icons-static-svg/icons/grok.svg?raw'
-  import grokText from '@lobehub/icons-static-svg/icons/grok-text.svg?raw'
   import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
   import Inview from './Inview.svelte'
@@ -12,6 +9,7 @@
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
   import 'svelte-ripple-action/ripple.css'
+  import UseCopy from './UseCopy.svelte'
 
   interface Props {
     dark: boolean | undefined;
@@ -60,11 +58,14 @@
 </header>
 
 <div class="transition-opacity" class:op-0={!inView} class:duration-400={inView}>
-  <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
-    已支持
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html xai} 的 SOTA 模型 {@html grok} {@html grokText} 3
-  </div>
+  <UseCopy text="3593665471">
+    {#snippet children({ handleClick })}
+      <button onclick={() => [handleClick(), toast.success('已复制 QQ 号到剪贴板')]} class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
+        <div class="i-basil-qq-outline"></div>
+        客服QQ: 3593665471
+      </button>
+    {/snippet}
+  </UseCopy>
 </div>
 
 <Settings bind:show={showSettings}></Settings>
