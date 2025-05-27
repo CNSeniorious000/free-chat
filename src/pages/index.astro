@@ -34,10 +34,6 @@ requestAnimationFrame(raf)
 
 async function checkPassword() {
   const savedPassword = localStorage.getItem('pass');
-  if (!savedPassword) {
-    window.location.href = '/login';
-    return;
-  }
   
   const response = await fetch('/api/auth', {
     method: 'POST',
@@ -45,9 +41,13 @@ async function checkPassword() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      pass: savedPassword,
+      pass: savedPassword || '',
     }),
   });
+  
+  if (response.status === 404) {
+    return;
+  }
   
   const responseJson = await response.json();
   if (responseJson.code !== 0) {
