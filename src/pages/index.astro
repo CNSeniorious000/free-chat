@@ -35,7 +35,7 @@ requestAnimationFrame(raf)
 async function checkPassword() {
   const savedPassword = localStorage.getItem('pass');
   if (!savedPassword) {
-    window.location.href = '/password';
+    window.location.href = '/login';
     return;
   }
   
@@ -51,7 +51,7 @@ async function checkPassword() {
   
   const responseJson = await response.json();
   if (responseJson.code !== 0) {
-    window.location.href = '/password';
+    window.location.href = '/login';
   }
 }
 
