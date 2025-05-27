@@ -5,10 +5,8 @@
   import xai from '@lobehub/icons-static-svg/icons/xai.svg?raw'
   import grok from '@lobehub/icons-static-svg/icons/grok.svg?raw'
   import grokText from '@lobehub/icons-static-svg/icons/grok-text.svg?raw'
-  import { PUBLIC_IFRAME_URL } from 'astro:env/client'
   import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
-  import Ad from './Ad.svelte'
   import Inview from './Inview.svelte'
   import CheckStatus from './CheckStatus.svelte'
   import Settings from './Settings.svelte'
@@ -68,13 +66,5 @@
     {@html xai} 的 SOTA 模型 {@html grok} {@html grokText} 3
   </div>
 </div>
-
-{#if PUBLIC_IFRAME_URL}
-  <Ad src={PUBLIC_IFRAME_URL} />
-{/if}
-
-{#await import('./Sponsorship.svelte') then { default: Sponsorship }}
-  <Sponsorship />
-{/await}
 
 <Settings bind:show={showSettings}></Settings>
