@@ -31,6 +31,31 @@ function raf(time: number) {
 }
 
 requestAnimationFrame(raf)
+
+async function checkPassword() {
+  const savedPassword = localStorage.getItem('pass');
+  if (!savedPassword) {
+    window.location.href = '/password';
+    return;
+  }
+  
+  const response = await fetch('/api/auth', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      pass: savedPassword,
+    }),
+  });
+  
+  const responseJson = await response.json();
+  if (responseJson.code !== 0) {
+    window.location.href = '/password';
+  }
+}
+
+checkPassword();
 </script>
 
 <style is:global>
