@@ -22,9 +22,8 @@ export default defineConfig({
   env: {
     schema: {
       PUBLIC_DEFAULT_MODEL: envField.string({ context: 'client', access: 'public', default: 'gpt-4o-mini' }),
-      PUBLIC_MIN_MESSAGES: envField.number({ context: 'client', access: 'public', default: 3 }),
-      PUBLIC_MAX_TOKENS: envField.number({ context: 'client', access: 'public', default: 3000 }),
-      PUBLIC_MODERATION_INTERVAL: envField.number({ context: 'client', access: 'public', default: 2000 }),
+      PUBLIC_MIN_MESSAGES: envField.number({ context: 'client', access: 'public', default: 9 }),
+      PUBLIC_MAX_TOKENS: envField.number({ context: 'client', access: 'public', default: 128000 }),
       PUBLIC_IFRAME_URL: envField.string({ context: 'client', access: 'public', optional: true }),
       PUBLIC_PROMPLATE_DEMO_BASE_URL: envField.string({ context: 'client', access: 'public', default: 'https://demo.promplate.dev' }),
       PUBLIC_RIGHT_ALIGN_MY_MSG: envField.boolean({ context: 'client', access: 'public', default: false }),
