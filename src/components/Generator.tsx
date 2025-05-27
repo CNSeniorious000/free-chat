@@ -1,8 +1,6 @@
 import { Index, Match, Show, Switch, batch, createEffect, createMemo, createSignal, onMount } from 'solid-js'
-import { Toaster, toast } from 'solid-toast'
-import { useThrottleFn } from 'solidjs-use'
-import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
-import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
+import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES } from 'astro:env/client'
+import { iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { MessagesEvent } from '@/utils/events'
@@ -42,8 +40,6 @@ export default () => {
   const [suggestions, setSuggestions] = createSignal<string[]>([])
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
-
-  const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
   createEffect(() => currentError() && trackEvent('error', { code: currentError()!.code }))
 
@@ -175,37 +171,9 @@ export default () => {
     title !== 'Endless Chat' ? localStorage.setItem('title', title) : localStorage.removeItem('title')
   }
 
-  const moderationCache: Record<string, string[]> = {}
-
-  let hasBeenInformed = 0
-
-  const moderate = async(input: string) => {
-    if (!input.length) return
-    if (!moderationInterval) return
-    const flags = moderationCache[input] ?? (await fetchModeration(input)).flags
-    moderationCache[input] = flags
-    if (!flags.length) return
-    toast.error(`${flags.join(', ')} detected!`, { position: 'top-center' })
-    if (hasBeenInformed++ <= 2) {
-      setTimeout(() => toast.error('现在暂时没有影响，未来可能会强制合规', { position: 'top-center', iconTheme: { primary: 'SandyBrown' } }), 500)
-      setTimeout(() => toast.error('如有异议可通过页面下方问题反馈联系我', { position: 'top-center', iconTheme: { primary: 'SandyBrown' } }), 700)
-    }
-    toast.error(await fetchTranslation(`detect ${flags.join(', ')} which violates our policy`), { position: 'top-center' })
-  }
-
-  const throttledModerate = useThrottleFn((input: string) => { moderate(input) }, moderationInterval)
-
-  createEffect(() => throttledModerate(currentSystemRoleSettings()))
-  createEffect(() => throttledModerate(inputValue()))
-  createEffect(() => throttledModerate(currentAssistantMessage()))
-
   const updatePageTitle = async(input: string) => {
     for await (const title of iterateTitle(input))
       setPageTitle(title)
-  }
-
-  const errorHelper = (e: any) => {
-    return toast.error(String(e), { position: 'top-center' })
   }
 
   const handleSubmit = async() => {
@@ -223,7 +191,8 @@ export default () => {
       setRecording(false)
 
       if (!res.ok) {
-        errorHelper(`Error processing audio: ${res.statusText}`)
+        // eslint-disable-next-line no-alert
+        alert(`Error processing audio: ${res.statusText}`)
       } else if (text) {
         setInputValue(text)
         handleSubmit()
@@ -236,11 +205,9 @@ export default () => {
 
     const input = inputValue()
 
-    if (!input) return startRecording().then(() => setRecording('recording')).catch(errorHelper)
+    if (!input) return startRecording().then(() => setRecording('recording')).catch(alert)
 
     if (messageList().length === 0) updatePageTitle(input)
-
-    moderate(input)
 
     batch(() => {
       setMessageList([...messageList(), { role: 'user', content: input }])
@@ -607,7 +574,6 @@ export default () => {
         </button>
       </div>
 
-      <Toaster />
     </main>
   )
 }

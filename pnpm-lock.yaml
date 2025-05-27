@@ -62,9 +62,6 @@ importers:
       solid-js:
         specifier: ~1.9.7
         version: 1.9.7
-      solid-toast:
-        specifier: ^0.5.0
-        version: 0.5.0(solid-js@1.9.7)
       solidjs-use:
         specifier: ~2.3.0
         version: 2.3.0
@@ -4943,11 +4940,6 @@ packages:
     resolution: {integrity: sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==}
     peerDependencies:
       solid-js: ^1.3
-
-  solid-toast@0.5.0:
-    resolution: {integrity: sha512-t770JakjyS2P9b8Qa1zMLOD51KYKWXbTAyJePVUoYex5c5FH5S/HtUBUbZAWFcqRCKmAE8KhyIiCvDZA8bOnxQ==}
-    peerDependencies:
-      solid-js: ^1.5.4
 
   solidjs-use@2.3.0:
     resolution: {integrity: sha512-ZyH2jiUSQU+5S5vd8zyvqz9X2ikhMjJhDeh/TjRzjLDJlZ1RuZaMxdM+jGsrJxo3X/xBW9kDpYNONXs6wYrQCQ==}
@@ -11584,10 +11576,6 @@ snapshots:
       solid-js: 1.9.7
     transitivePeerDependencies:
       - supports-color
-
-  solid-toast@0.5.0(solid-js@1.9.7):
-    dependencies:
-      solid-js: 1.9.7
 
   solidjs-use@2.3.0:
     dependencies:
