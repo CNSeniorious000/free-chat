@@ -2,9 +2,7 @@
   import { onMount } from 'svelte'
   import { Toaster } from 'svelte-sonner'
   import { ripple } from 'svelte-ripple-action'
-  import xai from '@lobehub/icons-static-svg/icons/xai.svg?raw'
-  import grok from '@lobehub/icons-static-svg/icons/grok.svg?raw'
-  import grokText from '@lobehub/icons-static-svg/icons/grok-text.svg?raw'
+  import deepseek from '@lobehub/icons-static-svg/icons/deepseek-color.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
   import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
@@ -65,7 +63,7 @@
   <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
     已支持
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html xai} 的 SOTA 模型 {@html grok} {@html grokText} 3
+    {@html deepseek} 最新发布的 DeepSeek R1 0528
   </div>
 </div>
 

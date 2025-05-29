@@ -23,12 +23,12 @@
 <Slider.Root type="single" min={0} max={1} step={0.05} class="relative mx-1 h-full w-full" value={$value ?? 1} onValueChange={value.set}>
   <div class="absolute top-1/2 h-0.8 rounded-full bg-$c-fg-10 -left-1 -right-1 -translate-y-1/2"></div>
   {#if $value !== undefined}
-    <Slider.Range class="top-1/2 h-0.8 rounded-full bg-$c-fg-20 -translate-y-1/2 !-left-1" />
+    <Slider.Range class="top-1/2 h-0.8 rounded-full bg-$c-fg-30 -translate-y-1/2 !-left-1" />
   {/if}
   <Slider.Thumb index={0}>
     {#snippet child({ props })}
-      <div class:hidden={$value === undefined} class="relative top-1/2 h-fit rounded-full bg-#f7f7f7 outline-none -translate-y-1/2 dark:bg-#24242d focus-visible:bg-$c-fg-20" {...props}>
-        <div class="m-0.9 h-3.2 w-0.9 rounded-full bg-$c-fg-80"></div>
+      <div class:hidden={$value === undefined} class="top-1/2 h-fit w-0 rounded-full outline-none -translate-y-1/2" {...props}>
+        <div class="h-3.2 w-0.8 rounded-full bg-$c-fg ring-0.2rem ring-#f7f7f7 -translate-x-1/2 dark:ring-#24242d focus-visible:ring-$c-fg-20"></div>
       </div>
     {/snippet}
   </Slider.Thumb>
