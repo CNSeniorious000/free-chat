@@ -1,14 +1,8 @@
 import { OPENAI_API_MODEL, TITLE_GEN_MODEL, TITLE_GEN_JSON_MODE } from 'astro:env/server'
-import { openai } from '@/utils/client'
-import type { Stream } from 'openai/streaming'
-import type { ChatCompletionChunk } from 'openai/resources/chat/completions'
+import { streamText } from '@xsai/stream-text'
+import { openaiApiParams } from '@/utils/client'
 
 import type { APIRoute } from 'astro'
-
-async function* iterateRes(res: Stream<ChatCompletionChunk>) {
-  for await (const msg of res)
-    if (msg.choices[0].delta.content) yield msg.choices[0].delta.content
-}
 
 const systemPrompt = `
 Summarize a short and relevant title of input text in 5 - 10 words.
@@ -25,7 +19,7 @@ export const POST: APIRoute = async(context) => {
   const content = await context.request.text()
 
   try {
-    const res = await openai.chat.completions.create({
+    const { textStream } = await streamText({
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: `"""\n${content}\n"""` },
@@ -33,17 +27,13 @@ export const POST: APIRoute = async(context) => {
       model,
       temperature: 0,
       response_format: TITLE_GEN_JSON_MODE ? { type: 'json_object' } : undefined,
-      stream: true,
+      ...openaiApiParams,
     })
 
     const stream = new ReadableStream({
       async start(controller) {
-        const iterator = iterateRes(res)
-        let result = await iterator.next()
-        while (!result.done) {
-          controller.enqueue(result.value)
-          result = await iterator.next()
-        }
+        for await (const chunk of textStream)
+          controller.enqueue(chunk)
         controller.close()
       },
     })
