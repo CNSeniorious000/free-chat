@@ -86,6 +86,9 @@ importers:
       tiktoken:
         specifier: ~1.0.21
         version: 1.0.21
+      xsfetch:
+        specifier: 0.2.2
+        version: 0.2.2
     devDependencies:
       '@antfu/eslint-config':
         specifier: ~4.13.2
@@ -5784,6 +5787,9 @@ packages:
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
     engines: {node: '>=12'}
+
+  xsfetch@0.2.2:
+    resolution: {integrity: sha512-4+v+N00vjdKjz9zFrqQJ2oTZ3hDkbLJloqR0v2fchxL/fCRtC2M06GTrkUMSTHl/XgvDBkeg9iw33vDkCN0iHw==}
 
   xxhash-wasm@1.1.0:
     resolution: {integrity: sha512-147y/6YNh+tlp6nd/2pWq38i9h6mz/EuQ6njIrmW8D1BS5nCqs0P6DG+m6zTGnNz5I+uhZ0SHxBs9BsPrwcKDA==}
@@ -12642,6 +12648,8 @@ snapshots:
       signal-exit: 4.1.0
 
   xml-name-validator@4.0.0: {}
+
+  xsfetch@0.2.2: {}
 
   xxhash-wasm@1.1.0: {}
 

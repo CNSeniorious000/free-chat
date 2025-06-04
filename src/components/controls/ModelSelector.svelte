@@ -18,7 +18,7 @@
   <ModelItem id="yi-lightning" name="yi-lightning" title="零一万物" />
   <ModelItem id="THUDM/GLM-4-32B-0414" name="glm-4-32b-chat" title="✨ 智谱 AI 四月上新" />
   <Hr text="低可用性模型（延迟较大）" />
-  <ModelItem id="Mistral-small-2503" name="Mistral-Small" title="Mistral 最新发布的轻快版" />
+  <ModelItem id="Mistral-medium-2505" name="Mistral-Medium" title="Mistral 五月上新" />
   <ModelItem id="Mistral-large-2411" name="Mistral-large" title="Mistral 旗舰款" />
   <!-- <ModelItem id="Phi-3.5-MoE-instruct" name="Phi-3.5-MoE-instruct" title="微软的开源模型" /> -->
   <!-- <ModelItem id="Meta-Llama-3.1-405B-Instruct" name="llama-3.1-405b" title="Llama-3.1 405B 超大杯" /> -->

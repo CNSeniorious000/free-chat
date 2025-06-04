@@ -2,7 +2,7 @@
   import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
   import { persisted } from 'svelte-persisted-store'
 
-  type Model = 'qwen-3-32b' | 'DeepSeek-V3-0324' | 'deepseek-r1-distill-llama-70b' | 'THUDM/GLM-4-32B-0414' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'meta-llama/llama-4-maverick-17b-128e-instruct' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4.1' | 'azure:o3' | 'azure:o4-mini' | 'Phi-4' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-small-2503' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-3-beta' | 'grok-3-mini-beta' | 'gemma-3-27b-it' | 'gemini-2.0-flash' | 'gemini-2.0-flash-thinking-exp' | 'MAI-DS-R1' | 'Cohere-command-a' | 'deepseek/deepseek-r1-0528:free' | 'microsoft/mai-ds-r1:free'
+  type Model = 'qwen-3-32b' | 'DeepSeek-V3-0324' | 'deepseek-r1-distill-llama-70b' | 'THUDM/GLM-4-32B-0414' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'meta-llama/llama-4-maverick-17b-128e-instruct' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4.1' | 'azure:o3' | 'azure:o4-mini' | 'Phi-4' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-medium-2505' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-3-beta' | 'grok-3-mini-beta' | 'gemma-3-27b-it' | 'gemini-2.0-flash' | 'gemini-2.0-flash-thinking-exp' | 'MAI-DS-R1' | 'Cohere-command-a' | 'deepseek/deepseek-r1-0528:free' | 'microsoft/mai-ds-r1:free'
 
   const defaultModel = PUBLIC_DEFAULT_MODEL as Model
 
