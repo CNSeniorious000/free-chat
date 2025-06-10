@@ -17,6 +17,7 @@ import TokenCounter, { encoder } from './TokenCounter'
 import type { LocalStorageSetEvent } from '@/utils/events'
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { Setter } from 'solid-js'
+import type { Plugin } from 'turndown'
 import { splitReasoningPart } from '@/utils/deepseek'
 
 export const minMessages = PUBLIC_MIN_MESSAGES
@@ -551,6 +552,31 @@ export default () => {
                 ref={inputRef}
                 disabled={systemRoleEditing() || recording() as boolean}
                 onKeyDown={handleKeydown}
+                onPaste={async(e) => {
+                  const html = e.clipboardData?.getData('text/html')
+                  if (html) {
+                    e.preventDefault()
+                    const [{ default: TurndownService }, { gfm }] = await Promise.all([
+                      import('turndown'),
+                      // @ts-expect-error no types
+                      import('@joplin/turndown-plugin-gfm') as Promise<{ gfm: Plugin }>,
+                    ])
+                    const turndown = new TurndownService({
+                      headingStyle: 'atx',
+                      bulletListMarker: '-',
+                      codeBlockStyle: 'fenced',
+                      emDelimiter: '_',
+                      strongDelimiter: '**',
+                      preformattedCode: true,
+                    }).use(gfm)
+                    const markdown = turndown.turndown(html)
+                    const index = inputRef.selectionStart + markdown.length
+                    // use execCommand to support undo/redo
+                    document.execCommand('insertText', false, markdown)
+                    setInputValue(inputRef.value)
+                    inputRef.setSelectionRange(index, index)
+                  }
+                }}
                 placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
                 autocomplete="off"
                 onInput={() => setInputValue(inputRef.value)}
