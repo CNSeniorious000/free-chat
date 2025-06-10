@@ -23,6 +23,9 @@ importers:
       '@astrojs/vercel':
         specifier: ~8.1.5
         version: 8.1.5(astro@5.9.2(@netlify/blobs@8.2.0)(@types/node@22.15.30)(jiti@2.4.2)(rollup@2.79.2)(terser@5.42.0)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.33.18)(vue@3.5.12(typescript@5.8.3))
+      '@joplin/turndown-plugin-gfm':
+        specifier: ^1.0.62
+        version: 1.0.62
       '@lobehub/icons-static-svg':
         specifier: ~1.47.0
         version: 1.47.0
@@ -80,6 +83,9 @@ importers:
       tiktoken:
         specifier: ~1.0.21
         version: 1.0.21
+      turndown:
+        specifier: ^7.2.0
+        version: 7.2.0
       xsfetch:
         specifier: 0.2.2
         version: 0.2.2
@@ -99,6 +105,9 @@ importers:
       '@types/reveal.js':
         specifier: ~5.2.0
         version: 5.2.0
+      '@types/turndown':
+        specifier: ^5.0.5
+        version: 5.0.5
       '@typescript-eslint/parser':
         specifier: ^8.34.0
         version: 8.34.0(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
@@ -1312,6 +1321,9 @@ packages:
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
 
+  '@joplin/turndown-plugin-gfm@1.0.62':
+    resolution: {integrity: sha512-Ts7cZ0Y9rIRgNkPtpXYB3BVjjSP2eeWzrPnQvJgNTC+FpopSjoaYjLQvPcEj1d6JcTMegnYoZK98/WJhm02Uaw==}
+
   '@jridgewell/gen-mapping@0.3.8':
     resolution: {integrity: sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==}
     engines: {node: '>=6.0.0'}
@@ -1346,6 +1358,9 @@ packages:
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@mixmark-io/domino@2.2.0':
+    resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
 
   '@netlify/binary-info@1.0.0':
     resolution: {integrity: sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw==}
@@ -1697,6 +1712,9 @@ packages:
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+
+  '@types/turndown@5.0.5':
+    resolution: {integrity: sha512-TL2IgGgc7B5j78rIccBtlYAnkuv8nUQqhQc+DSYV5j9Be9XOcm/SKOVRuA47xAVI3680Tk9B1d8flK2GWT2+4w==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -5113,6 +5131,9 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
+  turndown@7.2.0:
+    resolution: {integrity: sha512-eCZGBN4nNNqM9Owkv9HAtWRYfLA4h909E/WGAWWBpmB275ehNhZyk87/Tpvjbp0jjNl9XwCsbe6bm6CqFsgD+A==}
+
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -6978,6 +6999,8 @@ snapshots:
     dependencies:
       minipass: 7.1.2
 
+  '@joplin/turndown-plugin-gfm@1.0.62': {}
+
   '@jridgewell/gen-mapping@0.3.8':
     dependencies:
       '@jridgewell/set-array': 1.2.1
@@ -7019,6 +7042,8 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@mixmark-io/domino@2.2.0': {}
 
   '@netlify/binary-info@1.0.0': {}
 
@@ -7408,6 +7433,8 @@ snapshots:
   '@types/triple-beam@1.3.5': {}
 
   '@types/trusted-types@2.0.7': {}
+
+  '@types/turndown@5.0.5': {}
 
   '@types/unist@3.0.3': {}
 
@@ -11629,6 +11656,10 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
     optional: true
+
+  turndown@7.2.0:
+    dependencies:
+      '@mixmark-io/domino': 2.2.0
 
   type-check@0.4.0:
     dependencies:
