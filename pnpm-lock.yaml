@@ -78,8 +78,8 @@ importers:
         specifier: ~5.33.19
         version: 5.33.19
       svelte-sonner:
-        specifier: ~1.0.4
-        version: 1.0.4(svelte@5.33.19)
+        specifier: ~1.0.5
+        version: 1.0.5(svelte@5.33.19)
       tiktoken:
         specifier: ~1.0.21
         version: 1.0.21
@@ -4654,11 +4654,6 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-  runed@0.26.0:
-    resolution: {integrity: sha512-qWFv0cvLVRd8pdl/AslqzvtQyEn5KaIugEernwg9G98uJVSZcs/ygvPBvF80LA46V8pwRvSKnaVLDI3+i2wubw==}
-    peerDependencies:
-      svelte: ^5.7.0
-
   runed@0.28.0:
     resolution: {integrity: sha512-k2xx7RuO9hWcdd9f+8JoBeqWtYrm5CALfgpkg2YDB80ds/QE4w0qqu34A7fqiAwiBBSBQOid7TLxwxVC27ymWQ==}
     peerDependencies:
@@ -4967,8 +4962,8 @@ packages:
     peerDependencies:
       svelte: ^5.0.0
 
-  svelte-sonner@1.0.4:
-    resolution: {integrity: sha512-ctm9jeV0Rf3im2J6RU1emccrJFjRSdNSPsLlxaF62TLZw9bB1D40U/U7+wqEgohJY/X7FBdghdj0BFQF/IqKPQ==}
+  svelte-sonner@1.0.5:
+    resolution: {integrity: sha512-9dpGPFqKb/QWudYqGnEz93vuY+NgCEvyNvxoCLMVGw6sDN/3oVeKV1xiEirW2E1N3vJEyj5imSBNOGltQHA7mg==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -11090,11 +11085,6 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  runed@0.26.0(svelte@5.33.19):
-    dependencies:
-      esm-env: 1.2.2
-      svelte: 5.33.19
-
   runed@0.28.0(svelte@5.33.19):
     dependencies:
       esm-env: 1.2.2
@@ -11491,9 +11481,9 @@ snapshots:
     dependencies:
       svelte: 5.33.19
 
-  svelte-sonner@1.0.4(svelte@5.33.19):
+  svelte-sonner@1.0.5(svelte@5.33.19):
     dependencies:
-      runed: 0.26.0(svelte@5.33.19)
+      runed: 0.28.0(svelte@5.33.19)
       svelte: 5.33.19
 
   svelte-toolbelt@0.9.1(svelte@5.33.19):
