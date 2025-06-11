@@ -27,8 +27,8 @@ importers:
         specifier: ^1.0.62
         version: 1.0.62
       '@lobehub/icons-static-svg':
-        specifier: ~1.47.0
-        version: 1.47.0
+        specifier: ^1.48.0
+        version: 1.48.0
       '@xsai/stream-text':
         specifier: ^0.2.2
         version: 0.2.2
@@ -1351,8 +1351,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13'
 
-  '@lobehub/icons-static-svg@1.47.0':
-    resolution: {integrity: sha512-aYM0TXWQvrhYG4l6suZiL5en325tlb0RhpV15RUSKcJl2ljmi7f/S+jflDRzrk5Zt6d41H/muXmQuv5z0pnk3g==}
+  '@lobehub/icons-static-svg@1.48.0':
+    resolution: {integrity: sha512-L/IprXxyAw5NpbwabOczcmCQ2B2SkVI+yOuaDTbo67XEyelo5WbcF6oIjLalhoogBx9L9hrV+ZKQ++RUBXZs3g==}
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -2052,11 +2052,11 @@ packages:
     resolution: {integrity: sha512-ueFCcIPaMgtuYDS9u0qlUoEvj6GiSsKrwnOLPp9SshqjtcRaR1IEHRjoReq3sXNydsF5i0ZnmuYgXq9dV53t0g==}
     engines: {node: '>=18.0.0'}
 
-  '@xsai/shared-chat@0.3.0-beta.3':
-    resolution: {integrity: sha512-LtHGPVog0YjZ+lp7FM7MX0BfuEczSGsWC8EIeucdQ3IrZf9MYn23AUnhKZZNSz4cIkywmNGAF1oQzRrRiT/CoA==}
+  '@xsai/shared-chat@0.3.0-beta.4':
+    resolution: {integrity: sha512-7vD3XLl5I3RKntFGJTPRe5fGner+49KwRj7MQAUSjykvQGtJ6CoEGcZcQdhnqrsRZga8b2urpiMRZZCHL4avzg==}
 
-  '@xsai/shared@0.3.0-beta.3':
-    resolution: {integrity: sha512-oEwhwLeh2xXb5J0Wt/K/4zQrdBxBvFV9v3aG5UOr4AoZpXsUm3F6Hf+XB2aMX0KegFVhV2dhXe00f7XBa2vFeg==}
+  '@xsai/shared@0.3.0-beta.4':
+    resolution: {integrity: sha512-Jf/AMvk/MAZu1prsr67mCXwfjjXyDaKgkL/a/3oJ1PKub0VLrtu7W7J8ZE1YOTqPhfiuSjaDxKMoUJe+BY++QA==}
 
   '@xsai/stream-text@0.2.2':
     resolution: {integrity: sha512-GTVGuKEpYBOglPQ7cjO18/v8jiZxY/lejXMt+KsZqyMQo/WmH6gUkYkRME/cTyxlQEUiF0L/0CqRjQvtaDlB+Q==}
@@ -7028,7 +7028,7 @@ snapshots:
       '@unocss/preset-mini': 65.5.0
       unocss: 66.1.4(postcss@8.5.4)(vite@6.3.5(@types/node@24.0.0)(jiti@2.4.2)(terser@5.42.0)(tsx@4.19.2)(yaml@2.8.0))(vue@3.5.12(typescript@5.8.3))
 
-  '@lobehub/icons-static-svg@1.47.0': {}
+  '@lobehub/icons-static-svg@1.48.0': {}
 
   '@mapbox/node-pre-gyp@2.0.0':
     dependencies:
@@ -7945,15 +7945,15 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@xsai/shared-chat@0.3.0-beta.3':
+  '@xsai/shared-chat@0.3.0-beta.4':
     dependencies:
-      '@xsai/shared': 0.3.0-beta.3
+      '@xsai/shared': 0.3.0-beta.4
 
-  '@xsai/shared@0.3.0-beta.3': {}
+  '@xsai/shared@0.3.0-beta.4': {}
 
   '@xsai/stream-text@0.2.2':
     dependencies:
-      '@xsai/shared-chat': 0.3.0-beta.3
+      '@xsai/shared-chat': 0.3.0-beta.4
 
   abbrev@3.0.1: {}
 
