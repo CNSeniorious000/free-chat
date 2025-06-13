@@ -553,6 +553,19 @@ export default () => {
                 disabled={systemRoleEditing() || recording() as boolean}
                 onKeyDown={handleKeydown}
                 onPaste={async(e) => {
+                  const vscodeEditorData = e.clipboardData?.getData('vscode-editor-data')
+                  const text = e.clipboardData?.getData('text/plain').replaceAll('\r', '')
+                  if (vscodeEditorData && text) {
+                    e.preventDefault()
+                    const data = JSON.parse(vscodeEditorData)
+                    const markdown = `\`\`\`${data.mode ?? ''}\n${text}\n\`\`\``
+                    const index = inputRef.selectionStart + markdown.length
+                    // use execCommand to support undo/redo
+                    document.execCommand('insertText', false, markdown)
+                    setInputValue(inputRef.value)
+                    inputRef.setSelectionRange(index, index)
+                    return
+                  }
                   const html = e.clipboardData?.getData('text/html')
                   if (html) {
                     e.preventDefault()
