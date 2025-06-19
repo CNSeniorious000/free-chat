@@ -18,7 +18,7 @@ function retry(times: number) {
           try {
             yield* originalMethod.apply(this, args)
             return
-          } catch (error) {
+          } catch(error) {
             console.error(`Attempt ${i + 1} failed. Retrying...`, error)
           }
         }
@@ -29,7 +29,7 @@ function retry(times: number) {
         for (let i = 0; i < times; i++) {
           try {
             return await originalMethod.apply(this, args)
-          } catch (error) {
+          } catch(error) {
             console.error(`Attempt ${i + 1} failed. Retrying...`, error)
           }
         }

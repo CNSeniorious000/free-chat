@@ -28,7 +28,7 @@ export default (props: Props) => {
           <div>
             <div class="fi gap-1 op-50 dark:op-60">
               <Show when={props.canEdit()} fallback={<IconEnv />}>
-                <span onClick={() => props.setCurrentSystemRoleSettings('')} class="rd-50% p-1 sys-edit-btn"> <IconX /> </span>
+                <span onClick={() => props.setCurrentSystemRoleSettings('')} class="sys-edit-btn rd-50% p-1"> <IconX /> </span>
               </Show>
               <div>自定义场景</div>
             </div>
@@ -61,7 +61,7 @@ export default (props: Props) => {
               gen-textarea
             />
           </div>
-          <button onClick={handleButtonClick} class="hide-scrollbar min-w-fit px-3.5 gen-slate-btn">
+          <button onClick={handleButtonClick} class="hide-scrollbar gen-slate-btn min-w-fit px-3.5">
             保存
           </button>
         </div>

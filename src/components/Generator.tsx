@@ -125,7 +125,7 @@ export default () => {
         inputValue()
         resetTextInputHeight()
       })
-    } catch (err) {
+    } catch(err) {
       console.error(err)
     }
 
@@ -385,7 +385,7 @@ export default () => {
         done = readerDone
         done && fastForward()
       }
-    } catch (e) {
+    } catch(e) {
       console.error(e)
       setStreaming(false)
       setController(null)
@@ -529,7 +529,7 @@ export default () => {
         <div class="absolute inset-0 b-t-$c-fg-10 bg-$c-bg op-70 -z-1 <md:transition-background-color" class:b-t-1={!inview()} />
         <Switch>
           <Match when={!mounted()}>
-            <div class="animate-fade-in animate-duration-300 gen-cb-wrapper">
+            <div class="gen-cb-wrapper animate-fade-in animate-duration-300">
               <div class="flex flex-row items-center gap-2">
                 <span>加载中</span>
                 <span i-svg-spinners-6-dots-scale-middle />
@@ -600,7 +600,7 @@ export default () => {
               <button
                 title={inputValue() ? 'Send' : 'Record'}
                 type="button"
-                class="w-10 gen-slate-btn"
+                class="gen-slate-btn w-10"
                 onClick={handleSubmit}
                 disabled={systemRoleEditing() || recording() === 'processing'}
               >

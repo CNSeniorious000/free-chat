@@ -82,7 +82,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       <div class="py-0.5 transition-padding 2xl:py-2 md:py-1">
         <div class="flex gap-3.5 rounded-lg" class:op-75={role === 'user'} class:reverse-self-msg={role === 'user' && alignRightMine}>
           <div class={`shrink-0 w-7 h-7 my-4 rounded-full op-80 ${roleClass[role]} <sm:w-1 <sm:h-auto <md:transition-background-color`} />
-          <div class="break-words message">
+          <div class="message break-words">
             <Show when={reasoningContent()}>
               <div class="mt-1em flex flex-col gap-1.3 ws-pre-wrap rounded bg-$c-fg-2 px-2.5 py-2 text-(0.8em $c-fg-70) ring-(1 $c-fg-5 inset)">
                 <Index each={reasoningContent().split('\n\n')}>
@@ -92,7 +92,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
                 </Index>
               </div>
             </Show>
-            <div class="relative max-w-full overflow-hidden prose <sm:text-3.6 message" innerHTML={htmlString()} />
+            <div class="message relative max-w-full overflow-hidden prose <sm:text-3.6" innerHTML={htmlString()} />
           </div>
         </div>
         {showRetry?.() && onRetry && (
