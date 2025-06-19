@@ -47,7 +47,7 @@
       <a href="." onclick={(e: Event) => e.preventDefault()} class="w-full fcc gap-1 *:transition-font-size">
         <!-- <Logo /> -->
         <span class="overflow-hidden text-ellipsis whitespace-nowrap gpt-title">Endless Chat</span>
-        <span class="transition-font-size gpt-subtitle">✨</span>
+        <span class="gpt-subtitle transition-font-size">✨</span>
       </a>
     </div>
     <div class="flex">
