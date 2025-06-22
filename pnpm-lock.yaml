@@ -127,8 +127,8 @@ importers:
         specifier: ~1.1.0
         version: 1.1.0(astro@5.10.0(@netlify/blobs@8.2.0)(@types/node@24.0.3)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite-plugin-pwa@1.0.0(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
       bits-ui:
-        specifier: ~2.8.5
-        version: 2.8.5(@internationalized/date@3.8.1)(svelte@5.34.7)
+        specifier: ~2.8.7
+        version: 2.8.7(@internationalized/date@3.8.1)(svelte@5.34.7)
       eslint-plugin-astro:
         specifier: ~1.3.1
         version: 1.3.1(eslint@9.29.0(jiti@2.4.2))
@@ -803,6 +803,10 @@ packages:
 
   '@es-joy/jsdoccomment@0.50.2':
     resolution: {integrity: sha512-YAdE/IJSpwbOTiaURNCKECdAwqrJuFiZhylmesBcIRawtYKnBR2wxPhoIewMg+Yu+QuYvHfJNReWpoxGBKOChA==}
+    engines: {node: '>=18'}
+
+  '@es-joy/jsdoccomment@0.51.1':
+    resolution: {integrity: sha512-fPn7AW/unCg3JRLt8Wg44HLRVkAEfkFIXiGRJbeOIrd7Hgl4iOFwVHpvVR8I5hJYpn5mNFWwIXR6A16ZRA/M9w==}
     engines: {node: '>=18'}
 
   '@esbuild/aix-ppc64@0.23.1':
@@ -2247,8 +2251,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@2.8.5:
-    resolution: {integrity: sha512-GVVDcmc+mziNNWdzlBviN3HjFAIdEFddQFvTA5cjronMan8PnIhpNhc2+DKL5CYdTbrz6kuyt2YvuvnoWYmovw==}
+  bits-ui@2.8.7:
+    resolution: {integrity: sha512-Abw/7onhrBr7v6xRNzOUCZ4/PqBXyCEXn+X0dTdxNv3hh1HjMjf0q7GMFhlnmaHjatOJkim6adMCkrVmHhB2pw==}
     engines: {node: '>=20'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -2878,8 +2882,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-jsdoc@51.0.4:
-    resolution: {integrity: sha512-9IueO9fIj4h2w9pY7iH0/h5oq3Iq6iYuyuLRvPY1+LUDiEVaBh4ceHaHGvfAnUY31e93m7e39sJj1LrQTWjnow==}
+  eslint-plugin-jsdoc@51.1.1:
+    resolution: {integrity: sha512-MU+7rYK2r4frl6Rb/5ebchjBN/jk6iXRMMOd/n3RyAHfaRL+jDfrvXi7b776p5qGaW7dAo8Fxc/s3pwNab9SEw==}
     engines: {node: '>=20.11.0'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -5750,7 +5754,7 @@ snapshots:
       eslint-plugin-antfu: 3.1.1(eslint@9.29.0(jiti@2.4.2))
       eslint-plugin-command: 3.3.0(eslint@9.29.0(jiti@2.4.2))
       eslint-plugin-import-lite: 0.3.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
-      eslint-plugin-jsdoc: 51.0.4(eslint@9.29.0(jiti@2.4.2))
+      eslint-plugin-jsdoc: 51.1.1(eslint@9.29.0(jiti@2.4.2))
       eslint-plugin-jsonc: 2.20.1(eslint@9.29.0(jiti@2.4.2))
       eslint-plugin-n: 17.20.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-plugin-no-only-tests: 3.3.0
@@ -6637,6 +6641,14 @@ snapshots:
     optional: true
 
   '@es-joy/jsdoccomment@0.50.2':
+    dependencies:
+      '@types/estree': 1.0.8
+      '@typescript-eslint/types': 8.34.1
+      comment-parser: 1.4.1
+      esquery: 1.6.0
+      jsdoc-type-pratt-parser: 4.1.0
+
+  '@es-joy/jsdoccomment@0.51.1':
     dependencies:
       '@types/estree': 1.0.8
       '@typescript-eslint/types': 8.34.1
@@ -8256,7 +8268,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@2.8.5(@internationalized/date@3.8.1)(svelte@5.34.7):
+  bits-ui@2.8.7(@internationalized/date@3.8.1)(svelte@5.34.7):
     dependencies:
       '@floating-ui/core': 1.7.1
       '@floating-ui/dom': 1.7.1
@@ -8960,9 +8972,9 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  eslint-plugin-jsdoc@51.0.4(eslint@9.29.0(jiti@2.4.2)):
+  eslint-plugin-jsdoc@51.1.1(eslint@9.29.0(jiti@2.4.2)):
     dependencies:
-      '@es-joy/jsdoccomment': 0.50.2
+      '@es-joy/jsdoccomment': 0.51.1
       are-docs-informative: 0.0.2
       comment-parser: 1.4.1
       debug: 4.4.1
