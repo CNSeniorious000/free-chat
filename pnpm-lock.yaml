@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/netlify':
-        specifier: ~6.4.0
-        version: 6.4.0(@types/node@24.0.10)(astro@5.10.2(@netlify/blobs@8.2.0)(@types/node@24.0.10)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
+        specifier: ~6.4.1
+        version: 6.4.1(@types/node@24.0.10)(astro@5.10.2(@netlify/blobs@8.2.0)(@types/node@24.0.10)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
       '@astrojs/node':
         specifier: ~9.2.2
         version: 9.2.2(astro@5.10.2(@netlify/blobs@8.2.0)(@types/node@24.0.10)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
@@ -230,8 +230,8 @@ packages:
   '@astrojs/markdown-remark@6.3.2':
     resolution: {integrity: sha512-bO35JbWpVvyKRl7cmSJD822e8YA8ThR/YbUsciWNA7yTcqpIAL2hJDToWP5KcZBWxGT6IOdOkHSXARSNZc4l/Q==}
 
-  '@astrojs/netlify@6.4.0':
-    resolution: {integrity: sha512-4XM7FE0kLNZKJMFjbC5IQ/bDoM1VWLFU0ApGK7LAHJIj5GlJvFyXlpmAg59DuSP/FYbw0R1nqouJF0fhugYf5A==}
+  '@astrojs/netlify@6.4.1':
+    resolution: {integrity: sha512-FLo8L2i3IVyELoVA8RCYqF6J5H/Lapf6j8LyRS+OOKZ/nU5smSzSVlhjaWhnzXH6UU7vnHojjEbpPuRCP0jC9A==}
     peerDependencies:
       astro: ^5.3.0
 
@@ -5739,6 +5739,9 @@ packages:
   zod@3.25.69:
     resolution: {integrity: sha512-cjUx+boz8dfYGssYKLGNTF5VUF6NETpcZCDTN3knhUUXQTAAvErzRhV3pgeCZm2YsL4HOwtEHPonlsshPu2I0A==}
 
+  zod@3.25.71:
+    resolution: {integrity: sha512-BsBc/NPk7h8WsUWYWYL+BajcJPY8YhjelaWu2NMLuzgraKAz4Lb4/6K11g9jpuDetjMiqhZ6YaexFLOC0Ogi3Q==}
+
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
@@ -5846,7 +5849,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@6.4.0(@types/node@24.0.10)(astro@5.10.2(@netlify/blobs@8.2.0)(@types/node@24.0.10)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)':
+  '@astrojs/netlify@6.4.1(@types/node@24.0.10)(astro@5.10.2(@netlify/blobs@8.2.0)(@types/node@24.0.10)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/underscore-redirects': 1.0.0
@@ -7184,7 +7187,7 @@ snapshots:
       unixify: 1.0.0
       urlpattern-polyfill: 8.0.2
       yargs: 17.7.2
-      zod: 3.25.69
+      zod: 3.25.71
     transitivePeerDependencies:
       - encoding
       - rollup
@@ -12402,5 +12405,7 @@ snapshots:
       zod: 3.25.69
 
   zod@3.25.69: {}
+
+  zod@3.25.71: {}
 
   zwitch@2.0.4: {}
