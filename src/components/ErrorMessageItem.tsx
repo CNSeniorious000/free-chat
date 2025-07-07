@@ -1,7 +1,10 @@
 import { createSignal, onMount } from 'solid-js'
-import { fetchTranslation } from '@/utils/misc'
-import IconRefresh from './icons/Refresh'
+
 import type { ErrorMessage } from '@/types'
+
+import { fetchTranslation } from '@/utils/misc'
+
+import IconRefresh from './icons/Refresh'
 
 interface Props {
   data: ErrorMessage

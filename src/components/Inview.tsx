@@ -1,4 +1,4 @@
-import { type Setter, onCleanup, onMount } from 'solid-js'
+import { onCleanup, onMount, type Setter } from 'solid-js'
 
 export default (props: {
   setInview: Setter<boolean>

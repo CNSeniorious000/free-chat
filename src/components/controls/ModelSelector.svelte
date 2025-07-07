@@ -1,6 +1,6 @@
 <script lang="ts">
-  import ModelItem from './ModelItem.svelte'
   import Hr from './Hr.svelte'
+  import ModelItem from './ModelItem.svelte'
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">

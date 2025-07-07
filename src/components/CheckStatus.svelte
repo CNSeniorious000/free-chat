@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { toast } from 'svelte-sonner'
+
   import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 
   onMount(async() => {

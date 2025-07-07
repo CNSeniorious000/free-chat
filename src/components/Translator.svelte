@@ -1,6 +1,8 @@
 <script lang="ts">
   import { createParser } from 'eventsource-parser'
+
   import { promplateBaseUrl } from '@/utils/constants'
+
   import UseCopy from './UseCopy.svelte'
 
   const placeholder = 'type or paste your text here'

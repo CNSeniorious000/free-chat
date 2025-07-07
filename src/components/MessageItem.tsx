@@ -1,14 +1,18 @@
-import { createMemo, createSignal, Index, Show } from 'solid-js'
+import type { Accessor } from 'solid-js'
+
+import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
 import MarkdownIt from 'markdown-it'
+import mdHighlight from 'markdown-it-highlightjs'
 // @ts-expect-error missing types
 import mdKatex from 'markdown-it-katex'
-import mdHighlight from 'markdown-it-highlightjs'
-import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
+import { createMemo, createSignal, Index, Show } from 'solid-js'
 import { useClipboard, useEventListener } from 'solidjs-use'
-import IconRefresh from './icons/Refresh'
-import type { Accessor } from 'solid-js'
+
 import type { ChatMessage } from '@/types'
+
 import { splitReasoningPart } from '@/utils/deepseek'
+
+import IconRefresh from './icons/Refresh'
 
 interface Props {
   role: ChatMessage['role']

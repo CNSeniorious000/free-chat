@@ -1,8 +1,10 @@
-import { Allow, parse } from 'partial-json'
-import { responseToAsyncIterator } from './streaming'
-import { promplateBaseUrl } from './constants'
 import { SUGGEST_MODEL } from 'astro:env/client'
+import { Allow, parse } from 'partial-json'
+
 import type { ChatMessage } from '@/types'
+
+import { promplateBaseUrl } from './constants'
+import { responseToAsyncIterator } from './streaming'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
   return obj?.constructor?.name === 'AsyncGeneratorFunction'

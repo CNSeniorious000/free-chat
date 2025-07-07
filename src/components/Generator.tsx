@@ -1,24 +1,28 @@
-import { Index, Match, Show, Switch, batch, createEffect, createMemo, createSignal, onMount } from 'solid-js'
-import { Toaster, toast } from 'solid-toast'
-import { useThrottleFn } from 'solidjs-use'
+import type { Setter } from 'solid-js'
+import type { Plugin } from 'turndown'
+
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
+import { batch, createEffect, createMemo, createSignal, Index, Match, onMount, Show, Switch } from 'solid-js'
+import { toast, Toaster } from 'solid-toast'
+import { useThrottleFn } from 'solidjs-use'
+
+import type { ChatMessage, ErrorMessage } from '@/types'
+import type { LocalStorageSetEvent } from '@/utils/events'
+
+import { promplateBaseUrl as baseUrl } from '@/utils/constants'
+import { splitReasoningPart } from '@/utils/deepseek'
+import { MessagesEvent } from '@/utils/events'
 import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
-import { MessagesEvent } from '@/utils/events'
-import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 import { trackEvent } from '@/utils/track'
-import Inview from './Inview'
+
+import ErrorMessageItem from './ErrorMessageItem'
 import IconClear from './icons/Clear'
+import Inview from './Inview'
 import MessageItem from './MessageItem'
 import SystemRoleSettings from './SystemRoleSettings'
-import ErrorMessageItem from './ErrorMessageItem'
 import TokenCounter, { encoder } from './TokenCounter'
-import type { LocalStorageSetEvent } from '@/utils/events'
-import type { ChatMessage, ErrorMessage } from '@/types'
-import type { Setter } from 'solid-js'
-import type { Plugin } from 'turndown'
-import { splitReasoningPart } from '@/utils/deepseek'
 
 export const minMessages = PUBLIC_MIN_MESSAGES
 export const maxTokens = PUBLIC_MAX_TOKENS
