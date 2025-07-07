@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { scale } from 'svelte/transition'
   import { persisted } from 'svelte-persisted-store'
+  import { scale } from 'svelte/transition'
 
   interface Props {
     key: string;

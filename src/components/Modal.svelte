@@ -1,5 +1,6 @@
 <script lang="ts">
   import { ripple } from 'svelte-ripple-action'
+
   import { setThemeColor } from './ThemeColor.svelte'
 
   interface Props {

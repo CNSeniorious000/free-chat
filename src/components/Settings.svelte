@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Modal from './Modal.svelte'
-  import Selector from './controls/ModelSelector.svelte'
   import APIKeyInput from './controls/APIKeyInput.svelte'
-  import Toggle from './controls/Toggle.svelte'
-  import Slider from './controls/Slider.svelte'
   import Group from './controls/Group.svelte'
+  import Selector from './controls/ModelSelector.svelte'
   import Section from './controls/Section.svelte'
+  import Slider from './controls/Slider.svelte'
+  import Toggle from './controls/Toggle.svelte'
+  import Modal from './Modal.svelte'
 
   interface Props {
     show: boolean;

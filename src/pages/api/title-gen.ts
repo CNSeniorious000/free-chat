@@ -1,8 +1,9 @@
-import { OPENAI_API_MODEL, TITLE_GEN_MODEL, TITLE_GEN_JSON_MODE } from 'astro:env/server'
-import { streamText } from '@xsai/stream-text'
-import { openaiApiParams } from '@/utils/client'
-
 import type { APIRoute } from 'astro'
+
+import { streamText } from '@xsai/stream-text'
+import { OPENAI_API_MODEL, TITLE_GEN_JSON_MODE, TITLE_GEN_MODEL } from 'astro:env/server'
+
+import { openaiApiParams } from '@/utils/client'
 
 const systemPrompt = `
 Summarize a short and relevant title of input text in 5 - 10 words.

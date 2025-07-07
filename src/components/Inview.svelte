@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type ObserverEventDetails, inview } from 'svelte-inview'
+  import { inview, type ObserverEventDetails } from 'svelte-inview'
 
   interface Props {
     inView: boolean;

@@ -1,9 +1,11 @@
 <script lang="ts">
-  import { fade, fly, slide } from 'svelte/transition'
-  import { quintIn, quintOut } from 'svelte/easing'
-  import { toast } from 'svelte-sonner'
   import { onMount } from 'svelte'
+  import { toast } from 'svelte-sonner'
+  import { quintIn, quintOut } from 'svelte/easing'
+  import { fade, fly, slide } from 'svelte/transition'
+
   import { MessagesEvent } from '@/utils/events'
+
   import Modal from './Modal.svelte'
 
   let showModal = $state(false)

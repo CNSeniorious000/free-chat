@@ -1,8 +1,11 @@
+import type { Accessor, Setter } from 'solid-js'
+
 import { Show } from 'solid-js'
+
 import { trackEvent } from '@/utils/track'
+
 import IconEnv from './icons/Env'
 import IconX from './icons/X'
-import type { Accessor, Setter } from 'solid-js'
 
 interface Props {
   canEdit: Accessor<boolean>

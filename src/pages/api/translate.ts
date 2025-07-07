@@ -1,6 +1,8 @@
-import { DEEPL_API_HOST, DEEPL_AUTH_TOKEN, TRANSLATE_PROVIDER, TRANSLATE_TARGET_LANG } from 'astro:env/server'
-import { run } from '../../utils/cf-workers-ai'
 import type { APIRoute } from 'astro'
+
+import { DEEPL_API_HOST, DEEPL_AUTH_TOKEN, TRANSLATE_PROVIDER, TRANSLATE_TARGET_LANG } from 'astro:env/server'
+
+import { run } from '../../utils/cf-workers-ai'
 
 const deeplAuthKey = DEEPL_AUTH_TOKEN
 const useDeepL = deeplAuthKey && TRANSLATE_PROVIDER !== 'cf'

@@ -1,6 +1,8 @@
-import { OPENAI_API_BASE_URL, TRANSCRIPT_PROMPT, TRANSCRIPT_TARGET_LANG } from 'astro:env/server'
-import { getHeaders } from '@/utils/header'
 import type { APIRoute } from 'astro'
+
+import { OPENAI_API_BASE_URL, TRANSCRIPT_PROMPT, TRANSCRIPT_TARGET_LANG } from 'astro:env/server'
+
+import { getHeaders } from '@/utils/header'
 
 const baseUrl = (OPENAI_API_BASE_URL).trim().replace(/\/$/, '')
 

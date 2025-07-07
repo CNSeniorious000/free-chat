@@ -1,8 +1,11 @@
-import { Show, createMemo, createSignal, onCleanup, onMount } from 'solid-js'
-import { countTokens, initTikToken } from '../utils/tiktoken'
-import type { Tiktoken } from 'tiktoken/lite'
 import type { Accessor } from 'solid-js'
+import type { Tiktoken } from 'tiktoken/lite'
+
+import { createMemo, createSignal, onCleanup, onMount, Show } from 'solid-js'
+
 import type { ChatMessage } from '@/types'
+
+import { countTokens, initTikToken } from '../utils/tiktoken'
 
 interface Props {
   currentSystemRoleSettings: Accessor<string>

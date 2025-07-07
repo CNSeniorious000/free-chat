@@ -1,7 +1,8 @@
 <script module lang="ts">
   import { spring } from 'svelte/motion'
   import { derived, writable } from 'svelte/store'
-  import { type RGB, getRgb } from '@/utils/color'
+
+  import { getRgb, type RGB } from '@/utils/color'
 
   const rgb = spring<RGB | undefined>(undefined, {
     stiffness: 0.2,
@@ -30,9 +31,8 @@
 </script>
 
 <script lang="ts">
-  import { run } from 'svelte/legacy'
-
   import { onMount } from 'svelte'
+  import { run } from 'svelte/legacy'
 
   let tag = $state<HTMLMetaElement>()
 

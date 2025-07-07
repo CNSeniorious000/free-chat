@@ -1,7 +1,8 @@
-import { useClipboard } from 'solidjs-use'
-import hljs from 'highlight.js'
-import { Show, createMemo, createSignal } from 'solid-js'
 import type { SolidMarkdownComponents } from 'solid-markdown'
+
+import hljs from 'highlight.js'
+import { createMemo, createSignal, Show } from 'solid-js'
+import { useClipboard } from 'solidjs-use'
 
 const availableLanguages = hljs.listLanguages()
 

@@ -1,15 +1,19 @@
-import { createMemo, Index, Show } from 'solid-js'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
+import type { Accessor } from 'solid-js'
+
+import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
 import rehypeKatex from 'rehype-katex'
 import remarkBreaks from 'remark-breaks'
-import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import { createMemo, Index, Show } from 'solid-js'
 import { SolidMarkdown } from 'solid-markdown'
-import IconRefresh from './icons/Refresh'
-import CodeBlock from './CodeBlock'
-import type { Accessor } from 'solid-js'
+
 import type { ChatMessage } from '@/types'
+
 import { splitReasoningPart } from '@/utils/deepseek'
+
+import CodeBlock from './CodeBlock'
+import IconRefresh from './icons/Refresh'
 
 interface Props {
   role: ChatMessage['role']

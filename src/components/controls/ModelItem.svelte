@@ -15,6 +15,7 @@
 
 <script lang="ts">
   import { ripple } from 'svelte-ripple-action'
+
   import { trackEvent } from '@/utils/track'
 
   interface Props {

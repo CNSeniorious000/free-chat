@@ -1,5 +1,6 @@
-import { OPENAI_API_BASE_URL } from 'astro:env/server'
 import type { APIRoute } from 'astro'
+
+import { OPENAI_API_BASE_URL } from 'astro:env/server'
 
 const baseUrl = OPENAI_API_BASE_URL.trim().replace(/\/$/, '')
 

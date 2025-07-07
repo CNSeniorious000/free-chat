@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { Toaster } from 'svelte-sonner'
-  import { ripple } from 'svelte-ripple-action'
   import deepseek from '@lobehub/icons-static-svg/icons/deepseek-color.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
+  import { onMount } from 'svelte'
+  import { ripple } from 'svelte-ripple-action'
+  import { Toaster } from 'svelte-sonner'
+
   import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
+
   import Ad from './Ad.svelte'
-  import Inview from './Inview.svelte'
   import CheckStatus from './CheckStatus.svelte'
+  import Inview from './Inview.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
   import 'svelte-ripple-action/ripple.css'
