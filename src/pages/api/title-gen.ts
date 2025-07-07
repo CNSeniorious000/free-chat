@@ -39,7 +39,7 @@ export const POST: APIRoute = async(context) => {
     })
 
     return new Response(stream, { headers: { 'content-type': TITLE_GEN_JSON_MODE ? 'application/json' : 'text/markdown;charset=utf-8' } })
-  } catch (error) {
+  } catch(error) {
     console.error(error)
     return new Response(JSON.stringify(error), { status: 500 })
   }

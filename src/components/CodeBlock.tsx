@@ -23,7 +23,7 @@ const CodeBlock: SolidMarkdownComponents['code'] = (props) => {
   return (
     <code class="group hljs block w-full overflow-x-scroll !px-20px !py-18px">
       <Show when={code()}>
-        <button onClick={() => copy(code())} class="gap-1 text-sm gpt-copy-btn">
+        <button onClick={() => copy(code())} class="gpt-copy-btn gap-1 text-sm">
           {copied() && <div class="text-sm font-sans">Copied!</div>}
           <div class={copied() ? 'i-mingcute-copy-2-fill' : 'i-mingcute-copy-2-line'} />
         </button>

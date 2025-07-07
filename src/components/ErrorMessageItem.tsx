@@ -23,7 +23,7 @@ export default ({ data, onRetry }: Props) => {
       <div class="text-sm text-red op-70">{description()}</div>
       {onRetry && (
         <div class="mb-2 fie px-3">
-          <div onClick={onRetry} class="text-red ring-red/65 gpt-retry-btn hover:bg-red/10 <sm:ring-red/40">
+          <div onClick={onRetry} class="gpt-retry-btn text-red ring-red/65 hover:bg-red/10 <sm:ring-red/40">
             <IconRefresh />
             <span>重新生成</span>
           </div>

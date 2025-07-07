@@ -20,7 +20,7 @@
         if (done) break
         yield decoder.decode(value)
       }
-    } catch (e) {
+    } catch(e) {
       console.error('Error reading from stream', e)
     } finally {
       reader.releaseLock()

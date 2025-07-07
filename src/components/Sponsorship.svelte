@@ -52,9 +52,9 @@
       <strong in:fly|global={{ delay: 50, duration: 500, x: -10, easing: quintOut }}>大家好！</strong>
       <div in:fly|global={{ delay: 100, duration: 500, x: -10, easing: quintOut }}>
         我，<a href="https://muspimerol.site/"><strong>Muspi Merol</strong><span class="icon i-line-md-external-link translate-x-0.7 op-50 dark:op-80"></span></a>
-        是一名学生、一位活跃但 opinionated 的开源开发者，一 opinionated 的理想主义者，半个 e/acc，典型的 ENFP，欢迎交朋友~
+        是一名学生、一位活跃的开源开发者，致力于将 JavaScript 的 DX 带给 Python 生态。生活上，我是一个理想主义者，半个 e/acc，典型的 ENFP🐕，欢迎交朋友~
       </div>
-      <div in:fly|global={{ delay: 200, duration: 500, x: -10, easing: quintOut }}>我关注 <strong>LLM</strong> 及其应用、<strong>开发者工具</strong>、<strong>教育</strong><span class="px-0.5">以及</span><strong>设计</strong>。</div>
+      <div in:fly|global={{ delay: 200, duration: 500, x: -10, easing: quintOut }}>我关注 <strong>LLM</strong> 及其应用、<strong>开发者工具</strong>、<strong>社交</strong>、<strong>教育</strong><span class="px-0.5">以及</span><strong>设计</strong>。</div>
       <div in:fly|global={{ delay: 300, duration: 500, x: -10, easing: quintOut }}>大家的持续捐赠鼓励是我维护该免费产品的重要动力，所以我每周在检测到一次长对话之后会提示一次捐赠。谢谢理解！</div>
 
       <div in:fly|global={{ delay: 400, duration: 500, x: -10, easing: quintOut }}>
@@ -63,7 +63,7 @@
         /
         <a href="https://tips.free-chat.asia/49a96f2c2064114328ac72c63d7f10c.jpg"><span class="icon i-ic-round-wechat"></span>微信</a>
         /
-        <a href="https://t.me/+bIGN2w-toQJjZWRl"><span class="icon i-uim-telegram-alt"></span>Telegram 群组</a>联系我。
+        <a href="https://t.me/+bIGN2w-toQJjZWRl"><span class="icon i-uim-telegram-alt"></span>Telegram 群组</a>联系我。<strong>但捐赠留言是没法回复的哦~</strong>
       </div>
       {#await import('./Sponsor.svelte').finally(() => { svgReady = true }) then QR}
         {#if showQR && pngReady && svgReady}
