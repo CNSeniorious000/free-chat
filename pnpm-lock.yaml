@@ -27,8 +27,8 @@ importers:
         specifier: ^1.0.62
         version: 1.0.62
       '@lobehub/icons-static-svg':
-        specifier: ^1.53.0
-        version: 1.53.0
+        specifier: ^1.54.0
+        version: 1.54.0
       '@xsai/stream-text':
         specifier: ^0.2.2
         version: 0.2.2
@@ -1520,8 +1520,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13'
 
-  '@lobehub/icons-static-svg@1.53.0':
-    resolution: {integrity: sha512-caZBP4fRTcEZEnTj2cRc4YaGyydIFKE6ZwY7RrFTsg2FUe/4brW83QPjfs69yx4hiLqYZ4lIZA5G1vqvd+QCBQ==}
+  '@lobehub/icons-static-svg@1.54.0':
+    resolution: {integrity: sha512-HLJygRf5OxlQJuCjSarS5F/1+RXEOCW+QrjzI5wNs73bNesl6yqSjNhIeGyydwxA2yC1WyTV12Und8a+rFeaVw==}
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -2501,9 +2501,9 @@ packages:
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
 
-  chai@5.2.0:
-    resolution: {integrity: sha512-mCuXncKXk5iCLhfhwTc0izo0gtEmpz5CtG2y8GiOINBlMVS6v8TMRc5TaLWKS6692m9+dVVfzgeVxR5UxWHTYw==}
-    engines: {node: '>=12'}
+  chai@5.2.1:
+    resolution: {integrity: sha512-5nFxhUrX0PqtyogoYOA8IPswy5sZFTOsBFl/9bNsmDLgsxYTzSZQJDPppDnZPTQbzSEm0hqGjWPzRemQCYbD6A==}
+    engines: {node: '>=18'}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -7312,7 +7312,7 @@ snapshots:
       '@unocss/preset-mini': 65.5.0
       unocss: 66.3.3(postcss@8.5.6)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(vue@3.5.12(typescript@5.8.3))
 
-  '@lobehub/icons-static-svg@1.53.0': {}
+  '@lobehub/icons-static-svg@1.54.0': {}
 
   '@mapbox/node-pre-gyp@2.0.0':
     dependencies:
@@ -8063,7 +8063,7 @@ snapshots:
     dependencies:
       '@vitest/spy': 3.1.1
       '@vitest/utils': 3.1.1
-      chai: 5.2.0
+      chai: 5.2.1
       tinyrainbow: 2.0.0
     optional: true
 
@@ -8624,7 +8624,7 @@ snapshots:
 
   ccount@2.0.1: {}
 
-  chai@5.2.0:
+  chai@5.2.1:
     dependencies:
       assertion-error: 2.0.1
       check-error: 2.1.1
@@ -12299,7 +12299,7 @@ snapshots:
       '@vitest/snapshot': 3.1.1
       '@vitest/spy': 3.1.1
       '@vitest/utils': 3.1.1
-      chai: 5.2.0
+      chai: 5.2.1
       debug: 4.4.1
       expect-type: 1.2.2
       magic-string: 0.30.17
