@@ -7,7 +7,7 @@
   <ModelItem id="deepseek/deepseek-r1-0528:free" name="deepseek-r1-0528" title="🐋 DeepSeek 最新版 R1" />
   <ModelItem id="microsoft/mai-ds-r1:free" name="mai-ds-r1" title="🪟 微软魔改版 DeepSeek R1" />
   <ModelItem id="deepseek-r1-distill-llama-70b" name="deepseek-r1-llama-70b" title="🧠 DeepSeek 的推理模型 R1" />
-  <ModelItem id="qwen-3-32b" name="qwen-3-32b" title="🧠 旗舰混合推理模型 Qwen 3" />
+  <ModelItem id="qwen-3-235b-a22b" name="qwen-3-235b" title="🧠 旗舰混合推理模型 Qwen 3 235B" />
   <ModelItem id="meta-llama/llama-4-maverick-17b-128e-instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
   <ModelItem id="deepseek/deepseek-chat-v3-0324:free" name="deepseek-v3" title="深度求索 DeepSeek v3.1" />
