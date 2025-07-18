@@ -10,31 +10,31 @@ importers:
     dependencies:
       '@astrojs/netlify':
         specifier: ~6.5.1
-        version: 6.5.1(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
+        version: 6.5.1(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
       '@astrojs/node':
         specifier: ~9.3.0
-        version: 9.3.0(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
+        version: 9.3.0(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))
       '@astrojs/solid-js':
         specifier: ~5.1.0
         version: 5.1.0(@types/node@24.0.14)(jiti@2.4.2)(solid-js@1.9.7)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
       '@astrojs/svelte':
         specifier: ~7.1.0
-        version: 7.1.0(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.36.4)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+        version: 7.1.0(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.36.7)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       '@astrojs/vercel':
         specifier: ~8.2.2
-        version: 8.2.2(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.4)(vue@3.5.12(typescript@5.8.3))
+        version: 8.2.2(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.7)(vue@3.5.12(typescript@5.8.3))
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.62
         version: 1.0.62
       '@lobehub/icons-static-svg':
-        specifier: ^1.56.0
-        version: 1.56.0
+        specifier: ^1.57.0
+        version: 1.57.0
       '@xsai/stream-text':
         specifier: ^0.3.1
         version: 0.3.1
       astro:
         specifier: ~5.11.2
-        version: 5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       eslint:
         specifier: ~9.31.0
         version: 9.31.0(jiti@2.4.2)
@@ -48,8 +48,8 @@ importers:
         specifier: ^0.16.22
         version: 0.16.22
       lenis:
-        specifier: ~1.3.6
-        version: 1.3.6(vue@3.5.12(typescript@5.8.3))
+        specifier: ~1.3.7
+        version: 1.3.7(vue@3.5.12(typescript@5.8.3))
       markdown-it:
         specifier: ~14.1.0
         version: 14.1.0
@@ -75,11 +75,11 @@ importers:
         specifier: ~2.3.0
         version: 2.3.0
       svelte:
-        specifier: ~5.36.4
-        version: 5.36.4
+        specifier: ~5.36.7
+        version: 5.36.7
       svelte-sonner:
         specifier: ~1.0.5
-        version: 1.0.5(svelte@5.36.4)
+        version: 1.0.5(svelte@5.36.7)
       tiktoken:
         specifier: ~1.0.21
         version: 1.0.21
@@ -92,7 +92,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ~4.17.0
-        version: 4.17.0(@unocss/eslint-plugin@66.3.3(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.17)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-svelte@3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.4))(eslint@9.31.0(jiti@2.4.2))(svelte-eslint-parser@1.3.0(svelte@5.36.4))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
+        version: 4.17.0(@unocss/eslint-plugin@66.3.3(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.17)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-svelte@3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.7))(eslint@9.31.0(jiti@2.4.2))(svelte-eslint-parser@1.3.0(svelte@5.36.7))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
       '@iconify/json':
         specifier: latest
         version: 2.2.359
@@ -125,10 +125,10 @@ importers:
         version: 66.3.3
       '@vite-pwa/astro':
         specifier: ~1.1.0
-        version: 1.1.0(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite-plugin-pwa@1.0.0(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
+        version: 1.1.0(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite-plugin-pwa@1.0.0(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
       bits-ui:
         specifier: ~2.8.11
-        version: 2.8.11(@internationalized/date@3.8.1)(svelte@5.36.4)
+        version: 2.8.11(@internationalized/date@3.8.1)(svelte@5.36.7)
       eslint-plugin-astro:
         specifier: ~1.3.1
         version: 1.3.1(eslint@9.31.0(jiti@2.4.2))
@@ -137,16 +137,16 @@ importers:
         version: 1.0.1(eslint@9.31.0(jiti@2.4.2))
       eslint-plugin-svelte:
         specifier: ~3.11.0
-        version: 3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.4)
+        version: 3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.7)
       svelte-inview:
         specifier: ~4.0.4
-        version: 4.0.4(svelte@5.36.4)
+        version: 4.0.4(svelte@5.36.7)
       svelte-persisted-store:
         specifier: ^0.12.0
-        version: 0.12.0(svelte@5.36.4)
+        version: 0.12.0(svelte@5.36.7)
       svelte-ripple-action:
         specifier: ~2.0.0
-        version: 2.0.0(svelte@5.36.4)
+        version: 2.0.0(svelte@5.36.7)
       unocss:
         specifier: ~66.3.3
         version: 66.3.3(postcss@8.5.6)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(vue@3.5.12(typescript@5.8.3))
@@ -1541,8 +1541,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13'
 
-  '@lobehub/icons-static-svg@1.56.0':
-    resolution: {integrity: sha512-yudmkuy/GuDuzDb5jQ1XEk5SvQ1xR65xGLRgqcx5rUJj1Q6m7Qt0bWOuTbSzLlsQqjUGWFBAwqIJx8qPFetXWg==}
+  '@lobehub/icons-static-svg@1.57.0':
+    resolution: {integrity: sha512-z5TMMVRs1ROtC2L78Nl3A5Y5BYgiy3Un0ZDRMT8pXcBzNLRosDa1I9cD80YPH2JHoKjJGZyAC6FVPOxxuP5MXQ==}
 
   '@mapbox/node-pre-gyp@2.0.0':
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
@@ -1559,12 +1559,12 @@ packages:
   '@netlify/binary-info@1.0.0':
     resolution: {integrity: sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw==}
 
-  '@netlify/blobs@10.0.5':
-    resolution: {integrity: sha512-igbARa6gUII83lZdloe0zQzf2YLqJOZ3/3k2GMkEFFNxfLptAjvnh1z6WtFVV6bbO2IR2qOeuS2uaWRXeTNtlw==}
+  '@netlify/blobs@10.0.6':
+    resolution: {integrity: sha512-KP3jSg+ipILXSXq0CfKlMzNNZtJpvkSuDF2A4F0s6w8nSyl+0UrOid9VaFdyrVvSiwBZOEE6eF6qvNqfQKYKnA==}
     engines: {node: ^14.16.0 || >=16.0.0}
 
-  '@netlify/cache@3.0.6':
-    resolution: {integrity: sha512-nDnLz+XrovhF/raTSHJc7xRv6F+wSk5uVVvwAs1lA0uxXitM+yHM8q9orKH2iNJEUZkAk0T3TZ5tK6zsma0INw==}
+  '@netlify/cache@3.0.7':
+    resolution: {integrity: sha512-rbB/XDJMRaReqV3cMV6nQ6KG4YoCDXBtf6O0nNykdRm82rtjTjwuLS8v5ANR6Bir7NPx0zgARn2f5AIr+6EcPg==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/config@23.2.0':
@@ -1572,12 +1572,12 @@ packages:
     engines: {node: '>=18.14.0'}
     hasBin: true
 
-  '@netlify/dev-utils@3.3.0':
-    resolution: {integrity: sha512-bW8akt30XHUY3Yh4x7pB/Yis5yCafQxbfAGAAZgHlOYfG1WqlazFsTd9OvW5d8C3g3Y2H/JA2Oy03pTBFPtSkg==}
+  '@netlify/dev-utils@4.0.0':
+    resolution: {integrity: sha512-WJlP9/2eo3Ij7rNLWrZun8djeoT04DC6Np0xWrzSUAytGgdgCUDAXXK5x0g8GKwSXD7cPT1oMTUvgflBHoECzw==}
     engines: {node: ^18.14.0 || >=20}
 
-  '@netlify/dev@4.4.1':
-    resolution: {integrity: sha512-SOX85hrIcOl3VsugNeMMUB2hSh3vCsmZO0014R/3vZhKinP29Fk7oGWhVgFmJWJWPHDKeDuGRO2egRlcwoDKhg==}
+  '@netlify/dev@4.4.2':
+    resolution: {integrity: sha512-y9xTblEJqlWpWwRG+Sjd1nM92xSprPRA7nP29rs3OhsqkBmnZ1GcHDFgvlkuN8MSbb/jE0DHA5HEL8eLaTTdgg==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/edge-bundler@14.2.2':
@@ -1587,24 +1587,24 @@ packages:
   '@netlify/edge-functions-bootstrap@2.14.0':
     resolution: {integrity: sha512-Fs1cQ+XKfKr2OxrAvmX+S46CJmrysxBdCUCTk/wwcCZikrDvsYUFG7FTquUl4JfAf9taYYyW/tPv35gKOKS8BQ==}
 
-  '@netlify/edge-functions@2.15.7':
-    resolution: {integrity: sha512-VVKxtocaRYBcs/+7ugvtAyTb0V5/qcBrQjWWxEPcotJC2xYat8b63M/+VTayDhbEqmKmGXj6FwSWG96xtODrbQ==}
+  '@netlify/edge-functions@2.15.8':
+    resolution: {integrity: sha512-GA3sD4Muq4d98y9yd8JUOQSdhk/A7FbhtqomQXoQymm55psoQudreNOpBe2+o7ziPl8sve4EuIM2+/+o5ZWjuA==}
     engines: {node: '>=18.0.0'}
 
-  '@netlify/functions@4.1.11':
-    resolution: {integrity: sha512-fa0R9lGvFDVQHcYPb5flWJea/X/umH0xXjB61lYiuDiYlPP0TDr6fIfIupr8JOWePjNod7tXQmIiu5vnHVk0cg==}
+  '@netlify/functions@4.1.12':
+    resolution: {integrity: sha512-btkG/IAvAFdQ8mmw07a+q3fgiPbPq3rKcjsmyS7qaEZDGXnI436MyMq/U5ZNhxNyM9zuiUGuF/gDvN+SS+K5Jw==}
     engines: {node: '>=18.0.0'}
 
   '@netlify/headers-parser@9.0.1':
     resolution: {integrity: sha512-KHKNVNtzWUkUQhttHsLA217xIjUQxBOY5RCMRkR77G5pH1Sca9gqGhnMvk3KfRol/OZK2/1k83ZpYuvMswsK/w==}
     engines: {node: '>=18.14.0'}
 
-  '@netlify/headers@2.0.5':
-    resolution: {integrity: sha512-m8JJipKr1Z42qyroL2VhnyFIxvE9tBDpoiswfpOcl128aV8U4R+qrzGZFm4b0eqnH5fGi+rGR/3/+62xsgvkBw==}
+  '@netlify/headers@2.0.6':
+    resolution: {integrity: sha512-cXPKQL0HknLLOhhSWTvtvioJi3PoSNyrotk+2QOLohydirL4KyM3fKstxQcpOzbuNqjjkUXHwDn6mt4nNOqYwA==}
     engines: {node: '>=20.6.1'}
 
-  '@netlify/images@1.2.1':
-    resolution: {integrity: sha512-vjjIMBM1FJVDuwMl6+wNMO3dFHbm6OFKc0cxHEZjdfHiOmf1HOq8VoQ9GdRy+ae/LmE5uQ5rQQ7Mn1s8eFkcEg==}
+  '@netlify/images@1.2.2':
+    resolution: {integrity: sha512-1CaTqP/fQ6xuKah8+OZ966JYz6kTyY89UgTUrbEHnHmCBNUVcP7fF2jFbcB55ltF7iH/PANTSoM1aghH84x7bg==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/open-api@2.37.0':
@@ -1615,32 +1615,32 @@ packages:
     resolution: {integrity: sha512-zS6qBHpmU7IpHGzrHNPqu+Tjvh1cAJuVEoFUvCp0lRUeNcTdIq9VZM7/34vtIN6MD/OMFg3uv80yefSqInV2nA==}
     engines: {node: '>=18.14.0'}
 
-  '@netlify/redirects@3.0.5':
-    resolution: {integrity: sha512-/M04DYmJ4O+iiPgo1u8FcPVECEJZ0riX5Ft2LqMV4FJCpEQU0jgRZNB0ql40w3uLGdwHb/qj4xbHKPIBa+OEag==}
+  '@netlify/redirects@3.0.6':
+    resolution: {integrity: sha512-9WnSC/1Qy+FKfOGYy8ETDdt+yTMQGISY9qZazqYTkNARZc/UUB40umqCVxdwt4h80uHNAI1BYV91+/PWoiCNWQ==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/runtime-utils@2.1.0':
     resolution: {integrity: sha512-z1h+wjB7IVYUsFZsuIYyNxiw5WWuylseY+eXaUDHBxNeLTlqziy+lz03QkR67CUR4Y790xGIhaHV00aOR2KAtw==}
     engines: {node: ^18.14.0 || >=20}
 
-  '@netlify/runtime@4.0.9':
-    resolution: {integrity: sha512-qv4qbw7V1+lxW/naSmbUvr9Zw1+5OsjyxrJlGRDMbZACrDqs4wxGZ3C6ETgDATXg4is+8XWAotTUdtwq3EKD1w==}
+  '@netlify/runtime@4.0.10':
+    resolution: {integrity: sha512-Gx6SraSkzDhj5HBFSXJ4A2ZZJE8xVZq2XXNDBTm5i5wxNeuJ53sYD84rPzNmLU7E+kQwXaBH+2ezod4zeV0y5Q==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/serverless-functions-api@2.1.3':
     resolution: {integrity: sha512-bNlN/hpND8xFQzpjyKxm6vJayD+bPBlOvs4lWihE7WULrphuH1UuFsoVE5386bNNGH8Rs1IH01AFsl7ALQgOlQ==}
     engines: {node: '>=18.0.0'}
 
-  '@netlify/static@3.0.5':
-    resolution: {integrity: sha512-6gY/kXjBICtbnc8X9CJNWClGoT1esI64E/WhRzwHuRMZ2NbzGY0nsoE6RB3DGRhXXirB70m0E2uk2/FvD7+WiA==}
+  '@netlify/static@3.0.6':
+    resolution: {integrity: sha512-K2rT87dygIKt9KkY+eWL7CYTNlB9ia4GxOKmjy/Qh6vA5WAT9xpa/SsTZ7Zja4voEWejbu1Wiy/1mV2cL1tqtA==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/types@2.0.2':
     resolution: {integrity: sha512-6899BAqehToSAd3hoevqGaIkG0M9epPMLTi6byynNVIzqv2x+b9OtRXqK67G/gCX7XkrtLQ9Xm3QNJmaFNrSXA==}
     engines: {node: ^18.14.0 || >=20}
 
-  '@netlify/vite-plugin@2.4.1':
-    resolution: {integrity: sha512-jU6nmWUOHS9YuQXVCS5voyTG+xlwOkhkVuUrcFdc6nxmndPCgJPVYSIVwHhSiB1yogrHxic5bqwvY6O3RPss/g==}
+  '@netlify/vite-plugin@2.4.2':
+    resolution: {integrity: sha512-AXTy+sLg7vYlFoIYZfKzj+f/Js0EHdCsFsfglF4z8LHzWijHgkrKQSqSSpcxsyUz+8b5EmYDoimizH49BbJfqQ==}
     engines: {node: ^20.6.1 || >=22}
     peerDependencies:
       vite: ^5 || ^6 || ^7
@@ -1921,23 +1921,23 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@shikijs/core@3.8.0':
-    resolution: {integrity: sha512-gWt8NNZFurL6FMESO4lEsmspDh0H1fyUibhx1NnEH/S3kOXgYiWa6ZFqy+dcjBLhZqCXsepuUaL1QFXk6PrpsQ==}
+  '@shikijs/core@3.8.1':
+    resolution: {integrity: sha512-uTSXzUBQ/IgFcUa6gmGShCHr4tMdR3pxUiiWKDm8pd42UKJdYhkAYsAmHX5mTwybQ5VyGDgTjW4qKSsRvGSang==}
 
-  '@shikijs/engine-javascript@3.8.0':
-    resolution: {integrity: sha512-IBULFFpQ1N5Cg/C7jPCGnjIKz72CcRtD0BIbNhSuXPUOxLG0bF1URsP/uLfxQFQ9ORfunCQwL7UuSX1RSRBwUQ==}
+  '@shikijs/engine-javascript@3.8.1':
+    resolution: {integrity: sha512-rZRp3BM1llrHkuBPAdYAzjlF7OqlM0rm/7EWASeCcY7cRYZIrOnGIHE9qsLz5TCjGefxBFnwgIECzBs2vmOyKA==}
 
-  '@shikijs/engine-oniguruma@3.8.0':
-    resolution: {integrity: sha512-Tx7kR0oFzqa+rY7t80LjN8ZVtHO3a4+33EUnBVx2qYP3fGxoI9H0bvnln5ySelz9SIUTsS0/Qn+9dg5zcUMsUw==}
+  '@shikijs/engine-oniguruma@3.8.1':
+    resolution: {integrity: sha512-KGQJZHlNY7c656qPFEQpIoqOuC4LrxjyNndRdzk5WKB/Ie87+NJCF1xo9KkOUxwxylk7rT6nhlZyTGTC4fCe1g==}
 
-  '@shikijs/langs@3.8.0':
-    resolution: {integrity: sha512-mfGYuUgjQ5GgXinB5spjGlBVhG2crKRpKkfADlp8r9k/XvZhtNXxyOToSnCEnF0QNiZnJjlt5MmU9PmhRdwAbg==}
+  '@shikijs/langs@3.8.1':
+    resolution: {integrity: sha512-TjOFg2Wp1w07oKnXjs0AUMb4kJvujML+fJ1C5cmEj45lhjbUXtziT1x2bPQb9Db6kmPhkG5NI2tgYW1/DzhUuQ==}
 
-  '@shikijs/themes@3.8.0':
-    resolution: {integrity: sha512-yaZiLuyO23sXe16JFU76KyUMTZCJi4EMQKIrdQt7okoTzI4yAaJhVXT2Uy4k8yBIEFRiia5dtD7gC1t8m6y3oQ==}
+  '@shikijs/themes@3.8.1':
+    resolution: {integrity: sha512-Vu3t3BBLifc0GB0UPg2Pox1naTemrrvyZv2lkiSw3QayVV60me1ujFQwPZGgUTmwXl1yhCPW8Lieesm0CYruLQ==}
 
-  '@shikijs/types@3.8.0':
-    resolution: {integrity: sha512-I/b/aNg0rP+kznVDo7s3UK8jMcqEGTtoPDdQ+JlQ2bcJIyu/e2iRvl42GLIDMK03/W1YOHOuhlhQ7aM+XbKUeg==}
+  '@shikijs/types@3.8.1':
+    resolution: {integrity: sha512-5C39Q8/8r1I26suLh+5TPk1DTrbY/kn3IdWA5HdizR0FhlhD05zx5nKCqhzSfDHH3p4S0ZefxWd77DLV+8FhGg==}
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
@@ -2376,12 +2376,12 @@ packages:
     resolution: {integrity: sha512-LOtTn+JgJvX8WfBVJtF08TGrdjuFzGJc4mkP8EdDI8ADbvO7kiexYep1o8dwnt0okb0jYclCDXF13xU7Ge4zSw==}
     engines: {node: '>=18.0.0'}
 
-  '@whatwg-node/fetch@0.10.8':
-    resolution: {integrity: sha512-Rw9z3ctmeEj8QIB9MavkNJqekiu9usBCSMZa+uuAvM0lF3v70oQVCXNppMIqaV6OTZbdaHF1M2HLow58DEw+wg==}
+  '@whatwg-node/fetch@0.10.9':
+    resolution: {integrity: sha512-2TaXKmjy53cybNtaAtzbPOzwIPkjXbzvZcimnaJxQwYXKSC8iYnWoZOyT4+CFt8w0KDieg5J5dIMNzUrW/UZ5g==}
     engines: {node: '>=18.0.0'}
 
-  '@whatwg-node/node-fetch@0.7.21':
-    resolution: {integrity: sha512-QC16IdsEyIW7kZd77aodrMO7zAoDyyqRCTLg+qG4wqtP4JV9AA+p7/lgqMdD29XyiYdVvIdFrfI9yh7B1QvRvw==}
+  '@whatwg-node/node-fetch@0.7.22':
+    resolution: {integrity: sha512-h4GGjGF2vH3kGJ/fEOeg9Xfu4ncoyRwFcjGIxr/5dTBgZNVwq888byIsZ+XXRDJnNnRlzVVVQDcqrZpY2yctGA==}
     engines: {node: '>=18.0.0'}
 
   '@whatwg-node/promise-helpers@1.3.2':
@@ -3105,8 +3105,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.185:
-    resolution: {integrity: sha512-dYOZfUk57hSMPePoIQ1fZWl1Fkj+OshhEVuPacNKWzC1efe56OsHY3l/jCfiAgIICOU3VgOIdoq7ahg7r7n6MQ==}
+  electron-to-chromium@1.5.187:
+    resolution: {integrity: sha512-cl5Jc9I0KGUoOoSbxvTywTa40uspGJt/BDBoDLoxJRSBpWh4FFXBsjNRHfQrONsV/OoEjDfHUmZQa2d6Ze4YgA==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -4225,8 +4225,8 @@ packages:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
     engines: {node: '>= 0.6.3'}
 
-  lenis@1.3.6:
-    resolution: {integrity: sha512-WAITXqQ63693q0Bbjd0XBVaTg1ro+aOuVU67ZWKx83cudeh9c9gDC+238rHhgRWj+DRwC9o/hETkjQ/Zydc/7Q==}
+  lenis@1.3.7:
+    resolution: {integrity: sha512-fKwUtSmdGMVrF7DFbSYmbhHb4+FAilk0Y8TxeK6rKhfZteRVCLLxgeW1RjGhwmHQBUny/K4B1szcswWx+nvuOg==}
     peerDependencies:
       '@nuxt/kit': '>=3.0.0'
       react: '>=17.0.0'
@@ -5292,8 +5292,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@3.8.0:
-    resolution: {integrity: sha512-yPqK0y68t20aakv+3aMTpUMJZd6UHaBY2/SBUDowh9M70gVUwqT0bf7Kz5CWG0AXfHtFvXCHhBBHVAzdp0ILoQ==}
+  shiki@3.8.1:
+    resolution: {integrity: sha512-+MYIyjwGPCaegbpBeFN9+oOifI8CKiKG3awI/6h3JeT85c//H2wDW/xCJEGuQ5jPqtbboKNqNy+JyX9PYpGwNg==}
 
   side-channel-list@1.0.0:
     resolution: {integrity: sha512-FCLHtRD/gnpCiCHEiJLOwdmFP+wzCmDEkc9y7NsYxeF4u7Btsn1ZuwgwJGxImImHicJArLP4R0yX4c2KCrMrTA==}
@@ -5527,14 +5527,14 @@ packages:
     peerDependencies:
       svelte: ^5.30.2
 
-  svelte2tsx@0.7.40:
-    resolution: {integrity: sha512-Fgqe2lzC9DWT/kQTIXqN39O2ot9rUqzUu9dqpbuI6EsaEJ6+RSXVmXnxcNYMlKb2LRPDoIg9TVzXYWwi0zhCmQ==}
+  svelte2tsx@0.7.41:
+    resolution: {integrity: sha512-/TUwpyn/Qc1wcGuayf2GSwvZ7htdAOzpo0JFFm96srKnRXoTD0gy4n06g+XgH8w016S3lPtyFVtFAm+0yJ0BZw==}
     peerDependencies:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
       typescript: ^4.9.4 || ^5.0.0
 
-  svelte@5.36.4:
-    resolution: {integrity: sha512-Xp7sT9IFFi92E7wtbJQPjCsG0rr5AeuJTNLKju++JLPsSCAlIz6ILxe75Lh+z9XYO+O4cTOjSDML0pd6gik0Bw==}
+  svelte@5.36.7:
+    resolution: {integrity: sha512-QsaFAxL1PZvo9hwaN+x7Sq2U8oJARmsEuM8TEZVy98nx5D5IKzRi8FKkPvmOx9NXScSYnItDGLErBBn/ieIn2A==}
     engines: {node: '>=18'}
 
   svgo@3.3.2:
@@ -6309,7 +6309,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.12
       '@jridgewell/trace-mapping': 0.3.29
 
-  '@antfu/eslint-config@4.17.0(@unocss/eslint-plugin@66.3.3(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.17)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-svelte@3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.4))(eslint@9.31.0(jiti@2.4.2))(svelte-eslint-parser@1.3.0(svelte@5.36.4))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
+  '@antfu/eslint-config@4.17.0(@unocss/eslint-plugin@66.3.3(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(@vue/compiler-sfc@3.5.17)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-format@1.0.1(eslint@9.31.0(jiti@2.4.2)))(eslint-plugin-svelte@3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.7))(eslint@9.31.0(jiti@2.4.2))(svelte-eslint-parser@1.3.0(svelte@5.36.7))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 0.11.0
@@ -6353,8 +6353,8 @@ snapshots:
       astro-eslint-parser: 1.2.2
       eslint-plugin-astro: 1.3.1(eslint@9.31.0(jiti@2.4.2))
       eslint-plugin-format: 1.0.1(eslint@9.31.0(jiti@2.4.2))
-      eslint-plugin-svelte: 3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.4)
-      svelte-eslint-parser: 1.3.0(svelte@5.36.4)
+      eslint-plugin-svelte: 3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.7)
+      svelte-eslint-parser: 1.3.0(svelte@5.36.7)
     transitivePeerDependencies:
       - '@eslint/json'
       - '@vue/compiler-sfc'
@@ -6396,7 +6396,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-rehype: 11.1.2
       remark-smartypants: 3.0.2
-      shiki: 3.8.0
+      shiki: 3.8.1
       smol-toml: 1.4.1
       unified: 11.0.5
       unist-util-remove-position: 5.0.0
@@ -6406,15 +6406,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@6.5.1(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)':
+  '@astrojs/netlify@6.5.1(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/underscore-redirects': 1.0.0
-      '@netlify/blobs': 10.0.5
-      '@netlify/functions': 4.1.11(rollup@2.79.2)
-      '@netlify/vite-plugin': 2.4.1(rollup@2.79.2)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
+      '@netlify/blobs': 10.0.6
+      '@netlify/functions': 4.1.12(rollup@2.79.2)
+      '@netlify/vite-plugin': 2.4.2(rollup@2.79.2)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
       '@vercel/nft': 0.29.4(rollup@2.79.2)
-      astro: 5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       esbuild: 0.25.6
       tinyglobby: 0.2.14
       vite: 6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
@@ -6451,10 +6451,10 @@ snapshots:
       - uploadthing
       - yaml
 
-  '@astrojs/node@9.3.0(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))':
+  '@astrojs/node@9.3.0(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
-      astro: 5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       send: 1.2.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -6484,12 +6484,12 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/svelte@7.1.0(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.36.4)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)':
+  '@astrojs/svelte@7.1.0(@types/node@24.0.14)(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.36.7)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.36.4)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
-      astro: 5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
-      svelte: 5.36.4
-      svelte2tsx: 0.7.40(svelte@5.36.4)(typescript@5.8.3)
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.36.7)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
+      astro: 5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      svelte: 5.36.7
+      svelte2tsx: 0.7.41(svelte@5.36.7)(typescript@5.8.3)
       typescript: 5.8.3
       vite: 6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
     transitivePeerDependencies:
@@ -6520,14 +6520,14 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.0': {}
 
-  '@astrojs/vercel@8.2.2(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.4)(vue@3.5.12(typescript@5.8.3))':
+  '@astrojs/vercel@8.2.2(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.7)(vue@3.5.12(typescript@5.8.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
-      '@vercel/analytics': 1.5.0(svelte@5.36.4)(vue@3.5.12(typescript@5.8.3))
+      '@vercel/analytics': 1.5.0(svelte@5.36.7)(vue@3.5.12(typescript@5.8.3))
       '@vercel/edge': 1.2.2
       '@vercel/nft': 0.29.4(rollup@2.79.2)
       '@vercel/routing-utils': 5.1.1
-      astro: 5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       esbuild: 0.25.6
       tinyglobby: 0.2.14
     transitivePeerDependencies:
@@ -7751,7 +7751,7 @@ snapshots:
       '@unocss/preset-mini': 65.5.0
       unocss: 66.3.3(postcss@8.5.6)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(vue@3.5.12(typescript@5.8.3))
 
-  '@lobehub/icons-static-svg@1.56.0': {}
+  '@lobehub/icons-static-svg@1.57.0': {}
 
   '@mapbox/node-pre-gyp@2.0.0':
     dependencies:
@@ -7779,12 +7779,12 @@ snapshots:
 
   '@netlify/binary-info@1.0.0': {}
 
-  '@netlify/blobs@10.0.5':
+  '@netlify/blobs@10.0.6':
     dependencies:
-      '@netlify/dev-utils': 3.3.0
+      '@netlify/dev-utils': 4.0.0
       '@netlify/runtime-utils': 2.1.0
 
-  '@netlify/cache@3.0.6':
+  '@netlify/cache@3.0.7':
     dependencies:
       '@netlify/runtime-utils': 2.1.0
 
@@ -7815,7 +7815,7 @@ snapshots:
       yaml: 2.8.0
       yargs: 17.7.2
 
-  '@netlify/dev-utils@3.3.0':
+  '@netlify/dev-utils@4.0.0':
     dependencies:
       '@whatwg-node/server': 0.10.10
       ansis: 4.1.0
@@ -7833,18 +7833,18 @@ snapshots:
       uuid: 11.1.0
       write-file-atomic: 5.0.1
 
-  '@netlify/dev@4.4.1(rollup@2.79.2)':
+  '@netlify/dev@4.4.2(rollup@2.79.2)':
     dependencies:
-      '@netlify/blobs': 10.0.5
+      '@netlify/blobs': 10.0.6
       '@netlify/config': 23.2.0
-      '@netlify/dev-utils': 3.3.0
-      '@netlify/edge-functions': 2.15.7
-      '@netlify/functions': 4.1.11(rollup@2.79.2)
-      '@netlify/headers': 2.0.5
-      '@netlify/images': 1.2.1(@netlify/blobs@10.0.5)
-      '@netlify/redirects': 3.0.5
-      '@netlify/runtime': 4.0.9
-      '@netlify/static': 3.0.5
+      '@netlify/dev-utils': 4.0.0
+      '@netlify/edge-functions': 2.15.8
+      '@netlify/functions': 4.1.12(rollup@2.79.2)
+      '@netlify/headers': 2.0.6
+      '@netlify/images': 1.2.2(@netlify/blobs@10.0.6)
+      '@netlify/redirects': 3.0.6
+      '@netlify/runtime': 4.0.10
+      '@netlify/static': 3.0.6
       ulid: 3.0.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -7894,19 +7894,19 @@ snapshots:
 
   '@netlify/edge-functions-bootstrap@2.14.0': {}
 
-  '@netlify/edge-functions@2.15.7':
+  '@netlify/edge-functions@2.15.8':
     dependencies:
-      '@netlify/dev-utils': 3.3.0
+      '@netlify/dev-utils': 4.0.0
       '@netlify/edge-bundler': 14.2.2
       '@netlify/edge-functions-bootstrap': 2.14.0
       '@netlify/runtime-utils': 2.1.0
       '@netlify/types': 2.0.2
       get-port: 7.1.0
 
-  '@netlify/functions@4.1.11(rollup@2.79.2)':
+  '@netlify/functions@4.1.12(rollup@2.79.2)':
     dependencies:
-      '@netlify/blobs': 10.0.5
-      '@netlify/dev-utils': 3.3.0
+      '@netlify/blobs': 10.0.6
+      '@netlify/dev-utils': 4.0.0
       '@netlify/serverless-functions-api': 2.1.3
       '@netlify/zip-it-and-ship-it': 12.2.1(rollup@2.79.2)
       cron-parser: 4.9.0
@@ -7931,13 +7931,13 @@ snapshots:
       map-obj: 5.0.2
       path-exists: 5.0.0
 
-  '@netlify/headers@2.0.5':
+  '@netlify/headers@2.0.6':
     dependencies:
       '@netlify/headers-parser': 9.0.1
 
-  '@netlify/images@1.2.1(@netlify/blobs@10.0.5)':
+  '@netlify/images@1.2.2(@netlify/blobs@10.0.6)':
     dependencies:
-      ipx: 3.0.3(@netlify/blobs@10.0.5)
+      ipx: 3.0.3(@netlify/blobs@10.0.6)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -7968,7 +7968,7 @@ snapshots:
       is-plain-obj: 4.1.0
       path-exists: 5.0.0
 
-  '@netlify/redirects@3.0.5':
+  '@netlify/redirects@3.0.6':
     dependencies:
       '@netlify/redirect-parser': 15.0.2
       cookie: 1.0.2
@@ -7977,25 +7977,25 @@ snapshots:
 
   '@netlify/runtime-utils@2.1.0': {}
 
-  '@netlify/runtime@4.0.9':
+  '@netlify/runtime@4.0.10':
     dependencies:
-      '@netlify/blobs': 10.0.5
-      '@netlify/cache': 3.0.6
+      '@netlify/blobs': 10.0.6
+      '@netlify/cache': 3.0.7
       '@netlify/runtime-utils': 2.1.0
       '@netlify/types': 2.0.2
 
   '@netlify/serverless-functions-api@2.1.3': {}
 
-  '@netlify/static@3.0.5':
+  '@netlify/static@3.0.6':
     dependencies:
       mime-types: 3.0.1
 
   '@netlify/types@2.0.2': {}
 
-  '@netlify/vite-plugin@2.4.1(rollup@2.79.2)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
+  '@netlify/vite-plugin@2.4.2(rollup@2.79.2)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
     dependencies:
-      '@netlify/dev': 4.4.1(rollup@2.79.2)
-      '@netlify/dev-utils': 3.3.0
+      '@netlify/dev': 4.4.2(rollup@2.79.2)
+      '@netlify/dev-utils': 4.0.0
       chalk: 5.4.1
       vite: 6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
     transitivePeerDependencies:
@@ -8262,33 +8262,33 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.45.1':
     optional: true
 
-  '@shikijs/core@3.8.0':
+  '@shikijs/core@3.8.1':
     dependencies:
-      '@shikijs/types': 3.8.0
+      '@shikijs/types': 3.8.1
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.5
 
-  '@shikijs/engine-javascript@3.8.0':
+  '@shikijs/engine-javascript@3.8.1':
     dependencies:
-      '@shikijs/types': 3.8.0
+      '@shikijs/types': 3.8.1
       '@shikijs/vscode-textmate': 10.0.2
       oniguruma-to-es: 4.3.3
 
-  '@shikijs/engine-oniguruma@3.8.0':
+  '@shikijs/engine-oniguruma@3.8.1':
     dependencies:
-      '@shikijs/types': 3.8.0
+      '@shikijs/types': 3.8.1
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@shikijs/langs@3.8.0':
+  '@shikijs/langs@3.8.1':
     dependencies:
-      '@shikijs/types': 3.8.0
+      '@shikijs/types': 3.8.1
 
-  '@shikijs/themes@3.8.0':
+  '@shikijs/themes@3.8.1':
     dependencies:
-      '@shikijs/types': 3.8.0
+      '@shikijs/types': 3.8.1
 
-  '@shikijs/types@3.8.0':
+  '@shikijs/types@3.8.1':
     dependencies:
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
@@ -8322,23 +8322,23 @@ snapshots:
     dependencies:
       acorn: 8.15.0
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.36.4)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)))(svelte@5.36.4)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.36.7)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)))(svelte@5.36.7)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.36.4)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.36.7)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
       debug: 4.4.1
-      svelte: 5.36.4
+      svelte: 5.36.7
       vite: 6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.36.4)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
+  '@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.36.7)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.36.4)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)))(svelte@5.36.4)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.36.7)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)))(svelte@5.36.7)(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
       debug: 4.4.1
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.17
-      svelte: 5.36.4
+      svelte: 5.36.7
       vite: 6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
       vitefu: 1.1.1(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
     transitivePeerDependencies:
@@ -8722,9 +8722,9 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@vercel/analytics@1.5.0(svelte@5.36.4)(vue@3.5.12(typescript@5.8.3))':
+  '@vercel/analytics@1.5.0(svelte@5.36.7)(vue@3.5.12(typescript@5.8.3))':
     optionalDependencies:
-      svelte: 5.36.4
+      svelte: 5.36.7
       vue: 3.5.12(typescript@5.8.3)
 
   '@vercel/edge@1.2.2': {}
@@ -8755,9 +8755,9 @@ snapshots:
     optionalDependencies:
       ajv: 6.12.6
 
-  '@vite-pwa/astro@1.1.0(astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite-plugin-pwa@1.0.0(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))':
+  '@vite-pwa/astro@1.1.0(astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(vite-plugin-pwa@1.0.0(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))':
     dependencies:
-      astro: 5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       vite-plugin-pwa: 1.0.0(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0)
 
   '@vitest/eslint-plugin@1.3.4(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))':
@@ -8913,12 +8913,12 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@whatwg-node/fetch@0.10.8':
+  '@whatwg-node/fetch@0.10.9':
     dependencies:
-      '@whatwg-node/node-fetch': 0.7.21
+      '@whatwg-node/node-fetch': 0.7.22
       urlpattern-polyfill: 10.1.0
 
-  '@whatwg-node/node-fetch@0.7.21':
+  '@whatwg-node/node-fetch@0.7.22':
     dependencies:
       '@fastify/busboy': 3.1.1
       '@whatwg-node/disposablestack': 0.0.6
@@ -8933,7 +8933,7 @@ snapshots:
     dependencies:
       '@envelop/instrumentation': 1.0.0
       '@whatwg-node/disposablestack': 0.0.6
-      '@whatwg-node/fetch': 0.10.8
+      '@whatwg-node/fetch': 0.10.9
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
@@ -9069,7 +9069,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@5.11.2(@netlify/blobs@10.0.5)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.11.2(@netlify/blobs@10.0.6)(@types/node@24.0.14)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
@@ -9115,14 +9115,14 @@ snapshots:
       prompts: 2.4.2
       rehype: 13.0.2
       semver: 7.7.2
-      shiki: 3.8.0
+      shiki: 3.8.1
       tinyexec: 0.3.2
       tinyglobby: 0.2.14
       tsconfck: 3.1.6(typescript@5.8.3)
       ultrahtml: 1.6.0
       unifont: 0.5.2
       unist-util-visit: 5.0.0
-      unstorage: 1.16.1(@netlify/blobs@10.0.5)
+      unstorage: 1.16.1(@netlify/blobs@10.0.6)
       vfile: 6.0.3
       vite: 6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0)
       vitefu: 1.1.1(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))
@@ -9255,15 +9255,15 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@2.8.11(@internationalized/date@3.8.1)(svelte@5.36.4):
+  bits-ui@2.8.11(@internationalized/date@3.8.1)(svelte@5.36.7):
     dependencies:
       '@floating-ui/core': 1.7.2
       '@floating-ui/dom': 1.7.2
       '@internationalized/date': 3.8.1
       esm-env: 1.2.2
-      runed: 0.29.2(svelte@5.36.4)
-      svelte: 5.36.4
-      svelte-toolbelt: 0.9.3(svelte@5.36.4)
+      runed: 0.29.2(svelte@5.36.7)
+      svelte: 5.36.7
+      svelte-toolbelt: 0.9.3(svelte@5.36.7)
       tabbable: 6.2.0
 
   blob-to-buffer@1.2.9: {}
@@ -9301,7 +9301,7 @@ snapshots:
   browserslist@4.25.1:
     dependencies:
       caniuse-lite: 1.0.30001727
-      electron-to-chromium: 1.5.185
+      electron-to-chromium: 1.5.187
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.1)
 
@@ -9756,7 +9756,7 @@ snapshots:
     dependencies:
       jake: 10.9.2
 
-  electron-to-chromium@1.5.185: {}
+  electron-to-chromium@1.5.187: {}
 
   emoji-regex@10.4.0: {}
 
@@ -10129,7 +10129,7 @@ snapshots:
       regexp-ast-analysis: 0.7.1
       scslre: 0.3.0
 
-  eslint-plugin-svelte@3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.4):
+  eslint-plugin-svelte@3.11.0(eslint@9.31.0(jiti@2.4.2))(svelte@5.36.7):
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0(eslint@9.31.0(jiti@2.4.2))
       '@jridgewell/sourcemap-codec': 1.5.4
@@ -10141,9 +10141,9 @@ snapshots:
       postcss-load-config: 3.1.4(postcss@8.5.6)
       postcss-safe-parser: 7.0.1(postcss@8.5.6)
       semver: 7.7.2
-      svelte-eslint-parser: 1.3.0(svelte@5.36.4)
+      svelte-eslint-parser: 1.3.0(svelte@5.36.7)
     optionalDependencies:
-      svelte: 5.36.4
+      svelte: 5.36.7
     transitivePeerDependencies:
       - ts-node
 
@@ -10791,7 +10791,7 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.1.0
 
-  ipx@3.0.3(@netlify/blobs@10.0.5):
+  ipx@3.0.3(@netlify/blobs@10.0.6):
     dependencies:
       '@fastify/accept-negotiator': 2.0.1
       citty: 0.1.6
@@ -10807,7 +10807,7 @@ snapshots:
       sharp: 0.33.5
       svgo: 3.3.2
       ufo: 1.6.1
-      unstorage: 1.16.1(@netlify/blobs@10.0.5)
+      unstorage: 1.16.1(@netlify/blobs@10.0.6)
       xss: 1.0.15
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -11126,7 +11126,7 @@ snapshots:
     dependencies:
       readable-stream: 2.3.8
 
-  lenis@1.3.6(vue@3.5.12(typescript@5.8.3)):
+  lenis@1.3.7(vue@3.5.12(typescript@5.8.3)):
     optionalDependencies:
       vue: 3.5.12(typescript@5.8.3)
 
@@ -12341,15 +12341,15 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  runed@0.28.0(svelte@5.36.4):
+  runed@0.28.0(svelte@5.36.7):
     dependencies:
       esm-env: 1.2.2
-      svelte: 5.36.4
+      svelte: 5.36.7
 
-  runed@0.29.2(svelte@5.36.4):
+  runed@0.29.2(svelte@5.36.7):
     dependencies:
       esm-env: 1.2.2
-      svelte: 5.36.4
+      svelte: 5.36.7
 
   safe-array-concat@1.1.3:
     dependencies:
@@ -12470,14 +12470,14 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@3.8.0:
+  shiki@3.8.1:
     dependencies:
-      '@shikijs/core': 3.8.0
-      '@shikijs/engine-javascript': 3.8.0
-      '@shikijs/engine-oniguruma': 3.8.0
-      '@shikijs/langs': 3.8.0
-      '@shikijs/themes': 3.8.0
-      '@shikijs/types': 3.8.0
+      '@shikijs/core': 3.8.1
+      '@shikijs/engine-javascript': 3.8.1
+      '@shikijs/engine-oniguruma': 3.8.1
+      '@shikijs/langs': 3.8.1
+      '@shikijs/themes': 3.8.1
+      '@shikijs/types': 3.8.1
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
 
@@ -12719,7 +12719,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-eslint-parser@1.3.0(svelte@5.36.4):
+  svelte-eslint-parser@1.3.0(svelte@5.36.7):
     dependencies:
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1
@@ -12728,40 +12728,40 @@ snapshots:
       postcss-scss: 4.0.9(postcss@8.5.6)
       postcss-selector-parser: 7.1.0
     optionalDependencies:
-      svelte: 5.36.4
+      svelte: 5.36.7
 
-  svelte-inview@4.0.4(svelte@5.36.4):
+  svelte-inview@4.0.4(svelte@5.36.7):
     dependencies:
-      svelte: 5.36.4
+      svelte: 5.36.7
 
-  svelte-persisted-store@0.12.0(svelte@5.36.4):
+  svelte-persisted-store@0.12.0(svelte@5.36.7):
     dependencies:
-      svelte: 5.36.4
+      svelte: 5.36.7
 
-  svelte-ripple-action@2.0.0(svelte@5.36.4):
+  svelte-ripple-action@2.0.0(svelte@5.36.7):
     dependencies:
-      svelte: 5.36.4
+      svelte: 5.36.7
 
-  svelte-sonner@1.0.5(svelte@5.36.4):
+  svelte-sonner@1.0.5(svelte@5.36.7):
     dependencies:
-      runed: 0.28.0(svelte@5.36.4)
-      svelte: 5.36.4
+      runed: 0.28.0(svelte@5.36.7)
+      svelte: 5.36.7
 
-  svelte-toolbelt@0.9.3(svelte@5.36.4):
+  svelte-toolbelt@0.9.3(svelte@5.36.7):
     dependencies:
       clsx: 2.1.1
-      runed: 0.29.2(svelte@5.36.4)
+      runed: 0.29.2(svelte@5.36.7)
       style-to-object: 1.0.9
-      svelte: 5.36.4
+      svelte: 5.36.7
 
-  svelte2tsx@0.7.40(svelte@5.36.4)(typescript@5.8.3):
+  svelte2tsx@0.7.41(svelte@5.36.7)(typescript@5.8.3):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
-      svelte: 5.36.4
+      svelte: 5.36.7
       typescript: 5.8.3
 
-  svelte@5.36.4:
+  svelte@5.36.7:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.4
@@ -13124,7 +13124,7 @@ snapshots:
       pathe: 2.0.3
       picomatch: 4.0.3
 
-  unstorage@1.16.1(@netlify/blobs@10.0.5):
+  unstorage@1.16.1(@netlify/blobs@10.0.6):
     dependencies:
       anymatch: 3.1.3
       chokidar: 4.0.3
@@ -13135,7 +13135,7 @@ snapshots:
       ofetch: 1.4.1
       ufo: 1.6.1
     optionalDependencies:
-      '@netlify/blobs': 10.0.5
+      '@netlify/blobs': 10.0.6
 
   untun@0.1.3:
     dependencies:
