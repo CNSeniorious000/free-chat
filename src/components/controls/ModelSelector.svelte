@@ -4,8 +4,8 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
+  <ModelItem id="moonshotai/kimi-k2:free" name="kimi-k2" title="🧠 月之暗面 Kimi K2" />
   <ModelItem id="DeepSeek-R1-0528" name="deepseek-r1-0528" title="🐋 DeepSeek 最新版 R1" />
-  <ModelItem id="microsoft/mai-ds-r1:free" name="mai-ds-r1" title="🪟 微软魔改版 DeepSeek R1" />
   <ModelItem id="qwen-3-235b-a22b" name="qwen-3-235b" title="🧠 旗舰混合推理模型 Qwen 3 235B" />
   <ModelItem id="DeepSeek-V3-0324" name="deepseek-v3" title="✨ 深度求索最新发布的 DeepSeek v3" />
   <ModelItem id="Llama-4-Maverick-17B-128E-Instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
