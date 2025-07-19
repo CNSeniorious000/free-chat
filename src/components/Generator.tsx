@@ -452,7 +452,7 @@ export default () => {
 
     if (e.key === 'Enter') {
       e.preventDefault()
-      handleSubmit()
+      inputValue() && handleSubmit()
     }
   }
 
