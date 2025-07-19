@@ -1,5 +1,6 @@
 <script lang="ts">
-  import deepseek from '@lobehub/icons-static-svg/icons/deepseek-color.svg?raw'
+  import kimi from '@lobehub/icons-static-svg/icons/kimi-color.svg?raw'
+  import moonshot from '@lobehub/icons-static-svg/icons/moonshot.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
   import { onMount } from 'svelte'
   import { ripple } from 'svelte-ripple-action'
@@ -65,7 +66,7 @@
   <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
     已支持
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html deepseek} 最新发布的 DeepSeek R1 0528
+    {@html moonshot} Moonshot 最新发布的 {@html kimi} Kimi K2
   </div>
 </div>
 
