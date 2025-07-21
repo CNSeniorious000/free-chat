@@ -21,8 +21,8 @@ importers:
         specifier: ~7.1.0
         version: 7.1.0(@types/node@24.0.15)(astro@5.12.0(@netlify/blobs@10.0.6)(@types/node@24.0.15)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(jiti@2.4.2)(svelte@5.36.12)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0)
       '@astrojs/vercel':
-        specifier: ~8.2.2
-        version: 8.2.2(astro@5.12.0(@netlify/blobs@10.0.6)(@types/node@24.0.15)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.12)(vue@3.5.12(typescript@5.8.3))
+        specifier: ~8.2.3
+        version: 8.2.3(astro@5.12.0(@netlify/blobs@10.0.6)(@types/node@24.0.15)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.12)(vue@3.5.12(typescript@5.8.3))
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.62
         version: 1.0.62
@@ -269,8 +269,8 @@ packages:
   '@astrojs/underscore-redirects@1.0.0':
     resolution: {integrity: sha512-qZxHwVnmb5FXuvRsaIGaqWgnftjCuMY+GSbaVZdBmE4j8AfgPqKPxYp8SUERyJcjpKCEmO4wD6ybuGH8A2kVRQ==}
 
-  '@astrojs/vercel@8.2.2':
-    resolution: {integrity: sha512-NXILrYu3XgAtwL3/4Oox8nlpqJkfwO6jEfw4n4q/vpWfMtCdRWkVWo32+SlK8jgAHiPXhYpMgLAsmv0tEW6EHg==}
+  '@astrojs/vercel@8.2.3':
+    resolution: {integrity: sha512-E9VVaClIuzLnrA3jdbF/nQybXfF69kMMZskLGh5yEdAcrioyrXMwF+vRa15DPklEwrviMSITSedDrjzMYn3QiA==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -6681,7 +6681,7 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.0': {}
 
-  '@astrojs/vercel@8.2.2(astro@5.12.0(@netlify/blobs@10.0.6)(@types/node@24.0.15)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.12)(vue@3.5.12(typescript@5.8.3))':
+  '@astrojs/vercel@8.2.3(astro@5.12.0(@netlify/blobs@10.0.6)(@types/node@24.0.15)(jiti@2.4.2)(rollup@2.79.2)(terser@5.43.1)(tsx@4.19.2)(typescript@5.8.3)(yaml@2.8.0))(rollup@2.79.2)(svelte@5.36.12)(vue@3.5.12(typescript@5.8.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
       '@vercel/analytics': 1.5.0(svelte@5.36.12)(vue@3.5.12(typescript@5.8.3))
