@@ -1,4 +1,3 @@
-import { makeAbortable } from '@solid-primitives/resource'
 import { SUGGEST_MODEL } from 'astro:env/client'
 import { Allow, parse } from 'partial-json'
 import { onCleanup } from 'solid-js'
@@ -10,6 +9,12 @@ import { responseToAsyncIterator } from './streaming'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
   return obj?.constructor?.name === 'AsyncGeneratorFunction'
+}
+
+function createAbortSignal() {
+  const controller = new AbortController()
+  onCleanup(() => controller.abort())
+  return controller.signal
 }
 
 function retry(times: number) {
@@ -48,6 +53,7 @@ class API {
   @retry(3)
   async* iterateTitle(input: string) {
     const res = await fetch('/api/title-gen', {
+      signal: createAbortSignal(),
       method: 'POST',
       body: input,
       headers: localStorage.getItem('apiKey') ? { authorization: `Bearer ${localStorage.getItem('apiKey')}` } : {},
@@ -71,10 +77,8 @@ class API {
   async* iterateSuggestion(messages: ChatMessage[]) {
     if (messages.length === 0 || messages.at(-1)?.role === 'user') return
 
-    const [signal, abort] = makeAbortable()
-    onCleanup(abort)
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
-      signal: signal(),
+      signal: createAbortSignal(),
       method: 'PUT',
       body: JSON.stringify({ messages, model: SUGGEST_MODEL }),
       headers: { 'content-type': 'application/json' },
