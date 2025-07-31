@@ -171,13 +171,13 @@ export default () => {
     })
   })
 
-  const setPageTitle = (title = 'Endless Chat') => {
-    document.title = title
+  const setPageTitle = (title?: string) => {
+    document.title = title ?? 'Endless Chat'
     const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
-    titleRef && (titleRef.innerHTML = title)
+    titleRef && (titleRef.innerHTML = title ?? 'Endless Chat')
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', title !== 'Endless Chat')
-    title !== 'Endless Chat' ? localStorage.setItem('title', title) : localStorage.removeItem('title')
+    title ? localStorage.setItem('title', title) : localStorage.removeItem('title')
   }
 
   const moderationCache: Record<string, string[]> = {}
