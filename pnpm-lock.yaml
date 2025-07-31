@@ -29,6 +29,9 @@ importers:
       '@lobehub/icons-static-svg':
         specifier: ^1.60.0
         version: 1.60.0
+      '@solid-primitives/resource':
+        specifier: ^0.4.2
+        version: 0.4.2(solid-js@1.9.7)
       '@xsai/stream-text':
         specifier: ^0.2.2
         version: 0.2.2
@@ -2060,6 +2063,11 @@ packages:
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
+
+  '@solid-primitives/resource@0.4.2':
+    resolution: {integrity: sha512-NY3M4adgLUS/jZLbLOT8N61oIWlCg2XlOBVvRMjNc61JyrzKTiiy9Khurjikxetjm0nt0PZv4R83lwAkbFjRkw==}
+    peerDependencies:
+      solid-js: ^1.6.0
 
   '@solidjs-use/shared@2.3.0':
     resolution: {integrity: sha512-xuPNzZ9fwigkmYXTO+a8kaT45XQCPt6jVlyiDDYCD9NRZheRJOZWiUcVjYHzjececbWTctcY8NFdsXVyxARHKg==}
@@ -8495,6 +8503,10 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@10.0.2': {}
+
+  '@solid-primitives/resource@0.4.2(solid-js@1.9.7)':
+    dependencies:
+      solid-js: 1.9.7
 
   '@solidjs-use/shared@2.3.0':
     dependencies:

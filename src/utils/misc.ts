@@ -1,5 +1,7 @@
+import { makeAbortable } from '@solid-primitives/resource'
 import { SUGGEST_MODEL } from 'astro:env/client'
 import { Allow, parse } from 'partial-json'
+import { onCleanup } from 'solid-js'
 
 import type { ChatMessage } from '@/types'
 
@@ -69,7 +71,10 @@ class API {
   async* iterateSuggestion(messages: ChatMessage[]) {
     if (messages.length === 0 || messages.at(-1)?.role === 'user') return
 
+    const [signal, abort] = makeAbortable()
+    onCleanup(abort)
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
+      signal: signal(),
       method: 'PUT',
       body: JSON.stringify({ messages, model: SUGGEST_MODEL }),
       headers: { 'content-type': 'application/json' },
