@@ -47,6 +47,7 @@ export default () => {
   const [suggestions, setSuggestions] = createSignal<string[]>([])
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
+  const [title, setTitle] = createSignal<string>()
 
   const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
@@ -111,8 +112,7 @@ export default () => {
     try {
       if (JSON.parse(localStorage.getItem('messageList') ?? '[]').length) {
         setMessageList(JSON.parse(localStorage.getItem('messageList') ?? '[]'))
-        if (localStorage.getItem('title')) setPageTitle(localStorage.getItem('title')!)
-        else updatePageTitle(messageList()[0].content)
+        if (localStorage.getItem('title')) setTitle(localStorage.getItem('title')!)
       }
 
       if (localStorage.getItem('stickToBottom') === 'stick')
@@ -180,6 +180,10 @@ export default () => {
     title ? localStorage.setItem('title', title) : localStorage.removeItem('title')
   }
 
+  createEffect(() => {
+    setPageTitle(title())
+  })
+
   const moderationCache: Record<string, string[]> = {}
 
   let hasBeenInformed = 0
@@ -206,8 +210,16 @@ export default () => {
 
   const updatePageTitle = async(input: string) => {
     for await (const title of iterateTitle(input))
-      setPageTitle(title)
+      setTitle(title)
   }
+
+  const firstMessage = createMemo(() => messageList()[0]?.content)
+
+  createEffect(() => {
+    if (firstMessage() && !title()) {
+      updatePageTitle(firstMessage())
+    }
+  })
 
   const errorHelper = (e: any) => {
     return toast.error(String(e), { position: 'top-center' })
@@ -242,8 +254,6 @@ export default () => {
     const input = inputValue()
 
     if (!input) return startRecording().then(() => setRecording('recording')).catch(errorHelper)
-
-    if (messageList().length === 0) updatePageTitle(input)
 
     moderate(input)
 
@@ -424,7 +434,7 @@ export default () => {
     setMessageList([])
     syncMessageList()
     setCurrentError(null)
-    setPageTitle()
+    setTitle()
   }
 
   const stopStreamFetch = () => {

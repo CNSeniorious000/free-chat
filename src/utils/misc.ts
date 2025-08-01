@@ -28,6 +28,9 @@ function retry(times: number) {
             yield* originalMethod.apply(this, args)
             return
           } catch(error) {
+            if (error instanceof Error && error.name === 'AbortError') {
+              throw error // AbortError should not be retried
+            }
             console.error(`Attempt ${i + 1} failed. Retrying...`, error)
           }
         }
