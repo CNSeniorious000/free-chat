@@ -1,5 +1,6 @@
 import { SUGGEST_MODEL } from 'astro:env/client'
 import { Allow, parse } from 'partial-json'
+import { onCleanup } from 'solid-js'
 
 import type { ChatMessage } from '@/types'
 
@@ -8,6 +9,12 @@ import { responseToAsyncIterator } from './streaming'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
   return obj?.constructor?.name === 'AsyncGeneratorFunction'
+}
+
+function createAbortSignal() {
+  const controller = new AbortController()
+  onCleanup(() => controller.abort())
+  return controller.signal
 }
 
 function retry(times: number) {
@@ -21,6 +28,9 @@ function retry(times: number) {
             yield* originalMethod.apply(this, args)
             return
           } catch(error) {
+            if (error instanceof Error && error.name === 'AbortError') {
+              throw error // AbortError should not be retried
+            }
             console.error(`Attempt ${i + 1} failed. Retrying...`, error)
           }
         }
@@ -46,6 +56,7 @@ class API {
   @retry(3)
   async* iterateTitle(input: string) {
     const res = await fetch('/api/title-gen', {
+      signal: createAbortSignal(),
       method: 'POST',
       body: input,
       headers: localStorage.getItem('apiKey') ? { authorization: `Bearer ${localStorage.getItem('apiKey')}` } : {},
@@ -70,6 +81,7 @@ class API {
     if (messages.length === 0 || messages.at(-1)?.role === 'user') return
 
     const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
+      signal: createAbortSignal(),
       method: 'PUT',
       body: JSON.stringify({ messages, model: SUGGEST_MODEL }),
       headers: { 'content-type': 'application/json' },

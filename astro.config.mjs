@@ -6,6 +6,7 @@ import vercel from '@astrojs/vercel'
 import AstroPWA from '@vite-pwa/astro'
 import { defineConfig, envField } from 'astro/config'
 import unocss from 'unocss/astro'
+import devtoolsJson from 'vite-plugin-devtools-json'
 
 import disableBlocks from './plugins/disableBlocks'
 
@@ -85,7 +86,7 @@ export default defineConfig({
   output: 'server',
   adapter: envAdapter(),
   vite: {
-    plugins: [(process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks()],
+    plugins: [(process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks(), devtoolsJson()],
     build: {
       sourcemap: true,
     },
