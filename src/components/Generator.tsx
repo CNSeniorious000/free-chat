@@ -51,6 +51,11 @@ export default () => {
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
   const [title, setTitle] = createSignal<string>()
+  const [displayedLength, setDisplayedLength] = createSpring(0, {
+    stiffness: 0.2,
+    damping: 0.5,
+    precision: 0.01,
+  })
 
   const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
@@ -345,12 +350,6 @@ export default () => {
 
       let realValue = ''
 
-      const [displayedLength, setDisplayedLength] = createSpring(0, {
-        stiffness: 0.2,
-        damping: 0.9,
-        precision: 0.01,
-      })
-
       createEffect(() => {
         if (streaming()) {
           const length = displayedLength()
@@ -388,6 +387,7 @@ export default () => {
         setCurrentAssistantMessage('')
         setStreaming(false)
         setController(null)
+        setDisplayedLength(0, { hard: true })
       })
       syncMessageList()
     }
