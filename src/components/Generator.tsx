@@ -493,6 +493,7 @@ export default () => {
         <MessageItem
           role="assistant"
           message={currentAssistantMessage}
+          incomplete
         />
       )}
 

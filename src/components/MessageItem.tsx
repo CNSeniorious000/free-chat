@@ -17,13 +17,14 @@ import IconRefresh from './icons/Refresh'
 interface Props {
   role: ChatMessage['role']
   message: Accessor<string> | string
+  incomplete?: boolean
   showRetry?: Accessor<boolean>
   onRetry?: () => void
 }
 
 const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
-export default ({ role, message, showRetry, onRetry }: Props) => {
+export default ({ role, message, showRetry, onRetry, incomplete = false }: Props) => {
   const roleClass = {
     system: '',
     user: 'bg-$c-fg-30',
@@ -51,12 +52,18 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
   const content = () => result()[1]
 
   function heuristicPatch(markdown: string) {
-    const pattern = /(^|\n)```\S*$/
-    const matches = markdown.match(/```/g)
-
-    return (matches && matches.length % 2 === 1 && pattern.test(markdown))
-      ? markdown.replace(pattern, '\n```')
-      : markdown
+    const lastNewlineIndex = markdown.lastIndexOf('\n')
+    if (lastNewlineIndex === -1)
+      return markdown
+    const rest = markdown.slice(0, lastNewlineIndex)
+    const lastLine = markdown.slice(lastNewlineIndex + 1)
+    if (!lastLine.trim() || (lastLine.trimStart().startsWith('``') && lastLine.trimStart().length < 20) || /^([*+-])\1*$/.test(lastLine.trim())) {
+      return rest
+    } else if ((lastLine.match(/`/g)?.length || 0) % 2 !== 0 && !lastLine.includes('\\`')) {
+      return lastLine.endsWith('`') ? `${rest}\n${lastLine.slice(0, -1)}` : `${rest}\n${lastLine}\``
+    } else {
+      return `${rest}\n${lastLine}`
+    }
   }
 
   const htmlString = () => {
@@ -78,7 +85,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
       </div>`
     }
 
-    return md.render(heuristicPatch(content()))
+    return md.render(incomplete ? heuristicPatch(content()) : content())
   }
 
   return (
