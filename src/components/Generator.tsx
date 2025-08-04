@@ -416,9 +416,9 @@ export default () => {
       batch(() => {
         setMessageList([...messageList(), { role: 'assistant', content: currentAssistantMessage() }])
         setCurrentAssistantMessage('')
+        setStreaming(false)
+        setController(null)
       })
-      setStreaming(false)
-      setController(null)
       syncMessageList()
     }
   }
@@ -432,14 +432,10 @@ export default () => {
     batch(() => {
       setInputValue('')
       setMessageList([])
-      // setCurrentAssistantMessage('')
-      // setCurrentSystemRoleSettings('')
+      setCurrentError(null)
+      setTitle()
     })
-
-    setMessageList([])
     syncMessageList()
-    setCurrentError(null)
-    setTitle()
   }
 
   const stopStreamFetch = () => {
