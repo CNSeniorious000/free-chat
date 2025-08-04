@@ -1,6 +1,7 @@
 import type { Setter } from 'solid-js'
 import type { Plugin } from 'turndown'
 
+import { createSpring } from '@solid-primitives/spring'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
 import { batch, createEffect, createMemo, createSignal, Index, Match, onMount, Show, Switch } from 'solid-js'
 import { toast, Toaster } from 'solid-toast'
@@ -343,50 +344,27 @@ export default () => {
       let done = false
 
       let realValue = ''
-      let displayValue = ''
-      let lastTime = Date.now()
-      const intervals = [0]
 
-      const N = 5
-      const MAX = 500
-      const FACTOR = 50
+      // Create spring for smooth text animation - tracks displayed character count
+      const [displayedLength, setDisplayedLength] = createSpring(0, {
+        stiffness: 0.2,
+        damping: 0.9,
+        precision: 0.01,
+      })
 
-      const getProperInterval = () => {
-        const slidingWindowMean = intervals.slice(-N).reduce((a, b) => a + b, 0) / Math.min(intervals.length, N)
-        return Math.min(slidingWindowMean, MAX / (realValue.length - displayValue.length))
-      }
-
-      const update = async() => {
-        if (!streaming()) return fastForward()
-
-        const distance = realValue.length - displayValue.length
-        if (!done) {
-          const num = Math.round(distance / FACTOR) || 1
-          displayValue = realValue.slice(0, displayValue.length + num)
+      // Update displayed message based on spring-animated length
+      createEffect(() => {
+        if (realValue) {
+          const length = Math.floor(displayedLength())
+          const displayValue = realValue.slice(0, length)
           setCurrentAssistantMessage(displayValue)
-          //
-          realValue !== displayValue ? setTimeout(update, Math.round(getProperInterval())) : requestAnimationFrame(update)
+
+          // Check if animation is complete and streaming is done
+          if (length >= realValue.length && done) {
+            archiveCurrentMessage()
+          }
         }
-      }
-
-      const fastForward = () => {
-        const distance = realValue.length - displayValue.length
-        if (distance) {
-          const num = Math.round(distance / FACTOR) || 1
-          displayValue = realValue.slice(0, displayValue.length + num)
-          setCurrentAssistantMessage(displayValue)
-          //
-          if (realValue === displayValue) return archiveCurrentMessage()
-
-          const interval = Math.floor(10 / (realValue.length - displayValue.length))
-
-          interval ? setTimeout(fastForward, interval) : requestAnimationFrame(fastForward)
-        } else {
-          return archiveCurrentMessage()
-        }
-      }
-
-      update()
+      })
 
       while (!done) {
         const { value, done: readerDone } = await reader.read()
@@ -397,12 +375,15 @@ export default () => {
 
           if (char) {
             realValue += char
-            intervals.push(Date.now() - lastTime)
-            lastTime = Date.now()
+            // Smoothly animate to show new character count
+            setDisplayedLength(realValue.length)
           }
         }
         done = readerDone
-        done && fastForward()
+        if (done) {
+          // Ensure final animation completes
+          setDisplayedLength(realValue.length)
+        }
       }
     } catch(e) {
       console.error(e)
