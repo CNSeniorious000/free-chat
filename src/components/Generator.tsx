@@ -51,11 +51,8 @@ export default () => {
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
   const [title, setTitle] = createSignal<string>()
-  const [displayedLength, setDisplayedLength] = createSpring(0, {
-    stiffness: 0.2,
-    damping: 0.5,
-    precision: 0.01,
-  })
+  const [done, setDone] = createSignal(true)
+  const [realValue, setRealValue] = createSignal('')
 
   const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
@@ -346,39 +343,53 @@ export default () => {
 
       const reader = data.getReader()
       const decoder = new TextDecoder('utf-8')
-      let done = false
 
-      let realValue = ''
+      setDone(false)
 
-      createEffect(() => {
-        if (streaming()) {
-          const length = displayedLength()
-          setCurrentAssistantMessage(realValue.slice(0, length))
-          if (done && length >= realValue.length) {
-            archiveCurrentMessage()
-          }
-        }
-      })
-
-      while (!done) {
-        const { value, done: readerDone } = await reader.read()
+      while (true) {
+        const { value, done } = await reader.read()
         if (value) {
           const delta = decoder.decode(value)
-
           if (delta) {
-            realValue += delta
-            setDisplayedLength(realValue.length)
+            setRealValue((prev) => {
+              const next = prev + delta
+              delta.trim() && setDisplayedLength(next.length, { soft: true })
+              return next
+            })
           }
         }
-        done = readerDone
-        done && setDisplayedLength(realValue.length)
+        if (done) {
+          break
+        }
       }
     } catch(e) {
       console.error(e)
       setStreaming(false)
-      setController(null)
+    } finally {
+      batch(() => {
+        setDisplayedLength(realValue().length + 7)
+        setDone(true)
+      })
     }
   }
+
+  const damping = 0.3
+  const stiffness = (damping ** 2) / 4
+  console.warn({ damping, stiffness })
+
+  const [_displayedLength, setDisplayedLength] = createSpring(0, { stiffness, damping })
+
+  const displayedLength = createMemo(() => Math.round(_displayedLength()))
+
+  createEffect(() => {
+    if (streaming()) {
+      const length = displayedLength()
+      setCurrentAssistantMessage(realValue().slice(0, length))
+      if (done() && length >= realValue().length) {
+        archiveCurrentMessage()
+      }
+    }
+  })
 
   const archiveCurrentMessage = () => {
     if (currentAssistantMessage()) {
@@ -388,6 +399,7 @@ export default () => {
         setStreaming(false)
         setController(null)
         setDisplayedLength(0, { hard: true })
+        setRealValue('')
       })
       syncMessageList()
     }
