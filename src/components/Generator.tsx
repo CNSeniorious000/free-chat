@@ -331,7 +331,7 @@ export default () => {
       trackEvent('send', {
         model: payload.model,
         temperature: payload.temperature,
-        originalTokenCont: formatTokenCount((systemMsg ? [systemMsg, ...messageList()] : messageList())),
+        originalTokenCont: messageList().length ? formatTokenCount((systemMsg ? [systemMsg, ...messageList()] : messageList())) : undefined,
         tokenCount: formatTokenCount(requestMessageList),
       })
       const data = res.body
