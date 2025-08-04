@@ -373,11 +373,10 @@ export default () => {
     }
   }
 
-  const damping = 0.3
-  const stiffness = (damping ** 2) / 4
-  console.warn({ damping, stiffness })
+  const damping = 0.25
+  const stiffness = (damping ** 2) / 4.1
 
-  const [_displayedLength, setDisplayedLength] = createSpring(0, { stiffness, damping })
+  const [_displayedLength, setDisplayedLength] = createSpring(0, { stiffness, damping, precision: 0.001 })
 
   const displayedLength = createMemo(() => Math.round(_displayedLength()))
 
