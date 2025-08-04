@@ -36,7 +36,7 @@ export default defineConfig({
     'gen-cb-wrapper': 'h-12 my-4 fcc gap-4 bg-$c-fg-10 rounded-sm <sm:h-10 <sm:text-sm select-none',
     'gen-cb-stop': 'px-2 py-0.5 ring-1.2 ring-$c-fg-50 rounded-md text-sm op-70 cursor-pointer hover:bg-$c-fg-5 <sm:text-xs <sm:ring-$c-fg-30 <sm:px-1 <sm:px-1.5 <sm:py-0.4 transition-background-color',
     'gen-text-wrapper': 'my-4 fc gap-2 transition-opacity items-end',
-    'gen-textarea': 'w-full p-3 min-h-12 max-h-40vh rounded-sm bg-$c-fg-10 resize-none focus:(bg-$c-fg-15 outline-none) placeholder:(text-$c-fg-30 dark:text-$c-fg-20 <md:transition-color) scroll-pa-8px <sm:min-h-10 <sm:p-2.2 <sm:text-3.6 transition-background-color',
+    'gen-textarea': 'field-sizing-content w-full p-3 min-h-12 max-h-40vh rounded-sm bg-$c-fg-10 resize-none focus:(bg-$c-fg-15 outline-none) placeholder:(text-$c-fg-30 dark:text-$c-fg-20 <md:transition-color) scroll-pa-8px <sm:min-h-10 <sm:p-2.2 <sm:text-3.6 transition-background-color',
     'sys-edit-btn': 'inline-fcc gap-1 text-sm bg-$c-fg-10 px-2 py-1 rounded-md transition-colors md:transition-background-color cursor-pointer hover:bg-$c-fg-15',
     'stick-btn-on': 'text-$c-bg !bg-$c-fg hover:!bg-$c-fg-80',
     'reverse-self-msg': 'flex-row-reverse text-left',

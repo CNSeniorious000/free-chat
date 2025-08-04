@@ -33,6 +33,8 @@ export default () => {
   let bgd!: HTMLDivElement
   let footer: HTMLElement
 
+  let isFieldSizingSupported = false
+
   const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
   const [systemRoleEditing, setSystemRoleEditing] = createSignal(false)
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
@@ -78,8 +80,10 @@ export default () => {
   })
 
   const resetTextInputHeight = () => {
-    inputRef.style.height = 'auto'
-    inputRef.style.height = `${inputRef.scrollHeight}px`
+    if (!isFieldSizingSupported) {
+      inputRef.style.height = 'auto'
+      inputRef.style.height = `${inputRef.scrollHeight}px`
+    }
   }
 
   const messagesWithoutReasoning = createMemo(() => messageList().map((msg) => {
@@ -102,6 +106,7 @@ export default () => {
 
   onMount(() => {
     setMounted(true)
+    isFieldSizingSupported = CSS.supports('field-sizing', 'content')
 
     setSuggestionFeature(JSON.parse(localStorage.getItem('suggestion') ?? 'true'))
 
@@ -125,7 +130,7 @@ export default () => {
         inputRef && (inputRef.value = inputValue())
       })
 
-      createEffect(() => {
+      if (!isFieldSizingSupported) createEffect(() => {
         inputValue()
         resetTextInputHeight()
       })
