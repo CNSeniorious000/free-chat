@@ -345,22 +345,17 @@ export default () => {
 
       let realValue = ''
 
-      // Create spring for smooth text animation - tracks displayed character count
       const [displayedLength, setDisplayedLength] = createSpring(0, {
         stiffness: 0.2,
         damping: 0.9,
         precision: 0.01,
       })
 
-      // Update displayed message based on spring-animated length
       createEffect(() => {
-        if (realValue) {
-          const length = Math.floor(displayedLength())
-          const displayValue = realValue.slice(0, length)
-          setCurrentAssistantMessage(displayValue)
-
-          // Check if animation is complete and streaming is done
-          if (length >= realValue.length && done) {
+        if (streaming()) {
+          const length = displayedLength()
+          setCurrentAssistantMessage(realValue.slice(0, length))
+          if (done && length >= realValue.length) {
             archiveCurrentMessage()
           }
         }
@@ -369,21 +364,15 @@ export default () => {
       while (!done) {
         const { value, done: readerDone } = await reader.read()
         if (value) {
-          const char = decoder.decode(value)
-          if (char === '\n' && currentAssistantMessage().endsWith('\n'))
-            continue
+          const delta = decoder.decode(value)
 
-          if (char) {
-            realValue += char
-            // Smoothly animate to show new character count
+          if (delta) {
+            realValue += delta
             setDisplayedLength(realValue.length)
           }
         }
         done = readerDone
-        if (done) {
-          // Ensure final animation completes
-          setDisplayedLength(realValue.length)
-        }
+        done && setDisplayedLength(realValue.length)
       }
     } catch(e) {
       console.error(e)
