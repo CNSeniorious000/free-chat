@@ -1,4 +1,6 @@
 import { BaseMarkdown } from '../markdown'
+import { EnhancedMarkdown } from '../markdown/EnhancedMarkdown'
+import CodeBlock from '../CodeBlock'
 
 export default function MarkdownTest() {
   const testMarkdown = `# Hello World
@@ -31,9 +33,19 @@ function greet(name) {
 `
 
   return (
-    <div class="p-4">
-      <h2>Markdown Router Test</h2>
-      <BaseMarkdown text={testMarkdown} />
+    <div class="p-4 space-y-8">
+      <div>
+        <h2 class="text-xl font-bold mb-4">Basic Markdown Router</h2>
+        <BaseMarkdown text={testMarkdown} />
+      </div>
+      
+      <div>
+        <h2 class="text-xl font-bold mb-4">Enhanced Markdown with CodeBlock Integration</h2>
+        <EnhancedMarkdown 
+          text={testMarkdown} 
+          OverrideCode={CodeBlock}
+        />
+      </div>
     </div>
   )
 }

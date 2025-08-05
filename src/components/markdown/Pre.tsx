@@ -6,9 +6,17 @@ interface Props {
 }
 
 export default function Pre({ node, ...props }: Props) {
+  // Format props to match SolidMarkdown's component interface
+  const codeProps = {
+    class: node.lang ? `language-${node.lang}` : undefined,
+    children: () => node.value,
+    inline: false,
+    ...props
+  }
+
   return (
-    <pre class="code-block" {...props}>
-      <code class={node.lang ? `language-${node.lang}` : undefined}>
+    <pre class="group overflow-hidden">
+      <code {...codeProps}>
         {node.value}
       </code>
     </pre>

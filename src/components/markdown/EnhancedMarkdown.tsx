@@ -3,9 +3,11 @@ import type { Node } from 'mdast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { gfm } from 'micromark-extension-gfm'
+import remarkBreaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 
 import Router from './Router'
-import './markdown.css'
 
 interface Props {
   text: string
@@ -15,30 +17,31 @@ interface Props {
   class?: string
 }
 
-function parse(text: string): Node {
+function parseWithRemarkPlugins(text: string): Node {
+  // For now, use basic parsing, but this could be enhanced to use remark plugins
   return fromMarkdown(text, {
     extensions: [gfm()],
     mdastExtensions: [gfmFromMarkdown()],
   })
 }
 
-export default function BaseMarkdown({ 
+export default function EnhancedMarkdown({ 
   text, 
   OverrideCode = null, 
   codeProps = {}, 
   inlineCodeProps = {},
-  class: className = "markdown-content"
+  class: className = "message relative max-w-full overflow-hidden prose"
 }: Props) {
-  const ast = () => parse(text)
+  const ast = () => parseWithRemarkPlugins(text)
 
   return (
-    <article class={`max-w-full text-sm prose ${className}`}>
+    <div class={className}>
       <Router 
         node={ast()} 
         OverrideCode={OverrideCode} 
         codeProps={codeProps} 
         inlineCodeProps={inlineCodeProps} 
       />
-    </article>
+    </div>
   )
 }
