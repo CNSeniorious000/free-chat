@@ -381,12 +381,10 @@ export default () => {
   const displayedLength = createMemo(() => Math.round(_displayedLength()))
 
   createEffect(() => {
-    if (streaming()) {
-      const length = displayedLength()
-      setCurrentAssistantMessage(realValue().slice(0, length))
-      if (done() && length >= realValue().length) {
-        archiveCurrentMessage()
-      }
+    const length = displayedLength()
+    setCurrentAssistantMessage(realValue().slice(0, length))
+    if (done() && length >= realValue().length) {
+      archiveCurrentMessage()
     }
   })
 
@@ -419,12 +417,7 @@ export default () => {
     syncMessageList()
   }
 
-  const stopStreamFetch = () => {
-    if (controller()) {
-      controller()!.abort()
-      setStreaming(false)
-    }
-  }
+  const stopStreamFetch = () => controller()?.abort()
 
   const retryLastFetch = () => {
     if (messageList().length > 0) {

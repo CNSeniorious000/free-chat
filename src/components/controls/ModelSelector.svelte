@@ -8,6 +8,8 @@
   <ModelItem id="moonshotai/kimi-k2:free" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
   <ModelItem id="DeepSeek-R1-0528" name="deepseek-r1-0528" title="🐋 DeepSeek 最新版 R1" />
   <ModelItem id="DeepSeek-V3-0324" name="deepseek-v3" title="✨ 深度求索最新发布的 DeepSeek v3" />
+  <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
+  <ModelItem id="qwen-3-coder-480b" name="qwen-3-coder-480b" title="🧠 旗舰代码模型 Qwen 3 480B" />
   <ModelItem id="qwen-3-235b-a22b-thinking-2507" name="qwen-3-235b-thinking" title="🧠 旗舰混合推理模型 Qwen 3 235B" />
   <ModelItem id="qwen-3-235b-a22b-instruct-2507" name="qwen-3-235b-instruct" title="✨ 通义千问最新模型 Qwen 3 235B" />
   <ModelItem id="Llama-4-Maverick-17B-128E-Instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
