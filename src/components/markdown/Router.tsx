@@ -39,6 +39,7 @@ export default function Router(props: { node: Node }) {
 
   return (
     <Switch fallback={<Fallback node={props.node} />}>
+
       <Match when={props.node.type === 'root'}>
         <Index each={children()}>
           {renderChild}
@@ -65,17 +66,12 @@ export default function Router(props: { node: Node }) {
         <Table node={props.node as any} renderChild={renderChild} />
       </Match>
 
-      <Match when={getTagName(props.node) !== null}>
-        {(() => {
-          const tag = getTagName(props.node)!
-          return (
-            <Dynamic component={tag}>
-              <Index each={children()}>
-                {renderChild}
-              </Index>
-            </Dynamic>
-          )
-        })()}
+      <Match when={getTagName(props.node)}>
+        <Dynamic component={getTagName(props.node)!}>
+          <Index each={children()}>
+            {renderChild}
+          </Index>
+        </Dynamic>
       </Match>
 
       <Match when={props.node.type === 'text'}>

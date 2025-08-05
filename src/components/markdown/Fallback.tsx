@@ -1,13 +1,8 @@
-import type { Node } from 'mdast'
+import type { Node, Root } from 'mdast'
 
-interface Props {
-  node: Node
-}
+import { toHtml } from 'hast-util-to-html'
+import { toHast } from 'mdast-util-to-hast'
 
-export default function Fallback({ node }: Props) {
-  return (
-    <div class="fallback">
-      {JSON.stringify(node)}
-    </div>
-  )
+export default function Fallback(props: { node: Node }) {
+  return toHtml(toHast(props.node as Root))
 }
