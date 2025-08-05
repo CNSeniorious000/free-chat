@@ -57,14 +57,25 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
 
   function heuristicPatch(markdown: string) {
     const lastNewlineIndex = markdown.lastIndexOf('\n')
-    if (lastNewlineIndex === -1)
-      return markdown
-    const rest = markdown.slice(0, lastNewlineIndex)
-    const lastLine = markdown.slice(lastNewlineIndex + 1)
+    let rest: string, lastLine: string
+    if (lastNewlineIndex === -1) {
+      rest = ''
+      lastLine = markdown
+    } else {
+      rest = markdown.slice(0, lastNewlineIndex)
+      lastLine = markdown.slice(lastNewlineIndex + 1)
+    }
     if (!lastLine.trim() || (lastLine.trimStart().startsWith('``') && lastLine.trimStart().length < 20) || /^([*+-])\1*$/.test(lastLine.trim())) {
       return rest
     } else if ((lastLine.match(/`/g)?.length || 0) % 2 !== 0 && !lastLine.includes('\\`')) {
       return lastLine.endsWith('`') ? `${rest}\n${lastLine.slice(0, -1)}` : `${rest}\n${lastLine}\``
+    } else if ((lastLine.replace(/`[^`]*`/g, '').match(/\*\*/g)?.length || 0) % 2 !== 0 && !lastLine.includes('\\*')) {
+      if (lastLine.endsWith('**'))
+        return `${rest}\n${lastLine.slice(0, -2)}`
+      else
+        return `${rest}\n${lastLine}${'*'.repeat(2 - Number(lastLine.endsWith('*')))}`
+    } else if ((lastLine.match(/\*/g)?.length || 0) % 2 !== 0 && lastLine.endsWith('*') && !lastLine.includes('\\*')) {
+      return `${rest}\n${lastLine.slice(0, -1)}`
     } else {
       return `${rest}\n${lastLine}`
     }
