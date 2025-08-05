@@ -1,12 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import MarkdownTest from '../components/MarkdownTest'
 ---
 
 <Layout title="Markdown Router Test">
   <div class="max-w-4xl mx-auto p-4">
     <h1>SolidJS Markdown Router Test</h1>
     <p>This page demonstrates the new SolidJS Markdown Router implementation.</p>
-    <MarkdownTest client:load />
+    
+    <div class="mt-8">
+      <h2 class="text-xl font-bold mb-4">Implementation Status</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>✅ Router.tsx</strong> - Main routing component for markdown AST nodes</li>
+        <li><strong>✅ BaseMarkdown.tsx</strong> - Entry point with markdown parsing</li>
+        <li><strong>✅ Supporting components</strong> - InlineCode, Link, Pre, Table, Fallback</li>
+        <li><strong>✅ EnhancedMarkdown.tsx</strong> - Integration with existing CodeBlock</li>
+        <li><strong>✅ CSS styling</strong> - Complete styling for all markdown elements</li>
+        <li><strong>✅ Documentation</strong> - Comprehensive README and usage examples</li>
+      </ul>
+      
+      <div class="mt-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <h3 class="font-bold mb-2">Architecture Summary</h3>
+        <p>The implementation follows the same pattern as the Svelte version from promplate/pyth-on-line:</p>
+        <ol class="list-decimal pl-6 mt-2 space-y-1">
+          <li><strong>BaseMarkdown</strong> - Entry point, handles parsing</li>
+          <li><strong>Router</strong> - Core component that routes different node types</li>
+          <li><strong>Individual components</strong> - Handle specific markdown elements</li>
+          <li><strong>CSS</strong> - Styling for rendered elements</li>
+        </ol>
+      </div>
+    </div>
   </div>
 </Layout>

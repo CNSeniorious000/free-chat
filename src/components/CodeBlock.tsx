@@ -1,4 +1,4 @@
-import type { SolidMarkdownComponents } from 'solid-markdown'
+import type { SolidMarkdownComponents } from '../solid-markdown'
 
 import hljs from 'highlight.js'
 import { createMemo, createSignal, Show } from 'solid-js'
