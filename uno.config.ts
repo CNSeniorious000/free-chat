@@ -1,6 +1,6 @@
 import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 import extractorSvelte from '@unocss/extractor-svelte'
-import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWebFonts, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetScrollbar } from 'unocss-preset-scrollbar'
 
 export default defineConfig({
@@ -8,7 +8,7 @@ export default defineConfig({
     presetWind3(),
     presetAttributify(),
     presetIcons({ scale: 1.1 }),
-    // presetWebFonts({ provider: 'google', fonts: { mono: 'JetBrains Mono', fira: 'Fira Code:400,500,600,700' } }),
+    presetWebFonts({ provider: 'google', fonts: { mono: 'JetBrains Mono', fira: 'Fira Code:400,500,600,700' } }),
     presetTypography({ cssExtend: { 'ul,ol': { 'padding-left': '2.25em', 'position': 'relative' } } }),
     presetHeroPatterns(),
     presetScrollbar(),
