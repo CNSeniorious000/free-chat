@@ -8,6 +8,7 @@ import type { ChatMessage } from '@/types'
 import { splitReasoningPart } from '@/utils/deepseek'
 
 import IconRefresh from './icons/Refresh'
+import { processLatexBrackets } from './markdown/llm-math-hack'
 import SimpleMarkdown from './markdown/SimpleMarkdown'
 
 interface Props {
@@ -29,7 +30,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
 
   const result = createMemo(() => splitReasoningPart(typeof message === 'function' ? message() : message))
   const reasoningContent = () => result()[0]
-  const content = createMemo(() => incomplete ? heuristicPatch(result()[1]) : result()[1])
+  const content = createMemo(() => processLatexBrackets(incomplete ? heuristicPatch(result()[1]) : result()[1]))
 
   function heuristicPatch(markdown: string) {
     const lastNewlineIndex = markdown.lastIndexOf('\n')
