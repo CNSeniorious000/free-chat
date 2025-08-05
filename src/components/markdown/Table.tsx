@@ -1,26 +1,20 @@
-import type { Node, TableCell, Table as TableNode, TableRow } from 'mdast'
+import type { Node, TableCell, Table as TableNode } from 'mdast'
 
 import { type Accessor, Index, type JSX } from 'solid-js'
 
-interface Props {
+export default function Table(props: {
   node: TableNode
   renderChild: (child: Accessor<Node>) => JSX.Element
-}
-
-export default function Table({ node, renderChild }: Props) {
-  const rows = node.children as TableRow[]
-  const headerRow = rows[0]
-  const bodyRows = rows.slice(1)
-
+}) {
   return (
     <table>
       <thead>
         <tr>
-          <Index each={headerRow.children as TableCell[]}>
+          <Index each={props.node.children[0].children as TableCell[]}>
             {cell => (
               <th>
                 <Index each={cell().children}>
-                  {child => renderChild(child)}
+                  {child => props.renderChild(child)}
                 </Index>
               </th>
             )}
@@ -28,14 +22,14 @@ export default function Table({ node, renderChild }: Props) {
         </tr>
       </thead>
       <tbody>
-        <Index each={bodyRows}>
+        <Index each={props.node.children.slice(1)}>
           {row => (
             <tr>
               <Index each={row().children as TableCell[]}>
                 {cell => (
                   <td>
                     <Index each={cell().children}>
-                      {child => renderChild(child)}
+                      {child => props.renderChild(child)}
                     </Index>
                   </td>
                 )}
