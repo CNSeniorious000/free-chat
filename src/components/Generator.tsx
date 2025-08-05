@@ -1,6 +1,7 @@
 import type { Setter } from 'solid-js'
 import type { Plugin } from 'turndown'
 
+import { createSpring } from '@solid-primitives/spring'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
 import { batch, createEffect, createMemo, createSignal, Index, Match, onMount, Show, Switch } from 'solid-js'
 import { toast, Toaster } from 'solid-toast'
@@ -33,6 +34,8 @@ export default () => {
   let bgd!: HTMLDivElement
   let footer: HTMLElement
 
+  let isFieldSizingSupported = false
+
   const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
   const [systemRoleEditing, setSystemRoleEditing] = createSignal(false)
   const [messageList, setMessageList] = createSignal<ChatMessage[]>([])
@@ -48,6 +51,8 @@ export default () => {
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
   const [title, setTitle] = createSignal<string>()
+  const [done, setDone] = createSignal(true)
+  const [realValue, setRealValue] = createSignal('')
 
   const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
@@ -78,8 +83,10 @@ export default () => {
   })
 
   const resetTextInputHeight = () => {
-    inputRef.style.height = 'auto'
-    inputRef.style.height = `${inputRef.scrollHeight}px`
+    if (!isFieldSizingSupported) {
+      inputRef.style.height = 'auto'
+      inputRef.style.height = `${inputRef.scrollHeight}px`
+    }
   }
 
   const messagesWithoutReasoning = createMemo(() => messageList().map((msg) => {
@@ -102,6 +109,7 @@ export default () => {
 
   onMount(() => {
     setMounted(true)
+    isFieldSizingSupported = CSS.supports('field-sizing', 'content')
 
     setSuggestionFeature(JSON.parse(localStorage.getItem('suggestion') ?? 'true'))
 
@@ -125,7 +133,7 @@ export default () => {
         inputRef && (inputRef.value = inputValue())
       })
 
-      createEffect(() => {
+      if (!isFieldSizingSupported) createEffect(() => {
         inputValue()
         resetTextInputHeight()
       })
@@ -326,7 +334,7 @@ export default () => {
       trackEvent('send', {
         model: payload.model,
         temperature: payload.temperature,
-        originalTokenCont: formatTokenCount((systemMsg ? [systemMsg, ...messageList()] : messageList())),
+        originalTokenCont: messageList().length ? formatTokenCount((systemMsg ? [systemMsg, ...messageList()] : messageList())) : undefined,
         tokenCount: formatTokenCount(requestMessageList),
       })
       const data = res.body
@@ -335,85 +343,63 @@ export default () => {
 
       const reader = data.getReader()
       const decoder = new TextDecoder('utf-8')
-      let done = false
 
-      let realValue = ''
-      let displayValue = ''
-      let lastTime = Date.now()
-      const intervals = [0]
+      setDone(false)
 
-      const N = 5
-      const MAX = 500
-      const FACTOR = 50
-
-      const getProperInterval = () => {
-        const slidingWindowMean = intervals.slice(-N).reduce((a, b) => a + b, 0) / Math.min(intervals.length, N)
-        return Math.min(slidingWindowMean, MAX / (realValue.length - displayValue.length))
-      }
-
-      const update = async() => {
-        if (!streaming()) return fastForward()
-
-        const distance = realValue.length - displayValue.length
-        if (!done) {
-          const num = Math.round(distance / FACTOR) || 1
-          displayValue = realValue.slice(0, displayValue.length + num)
-          setCurrentAssistantMessage(displayValue)
-          //
-          realValue !== displayValue ? setTimeout(update, Math.round(getProperInterval())) : requestAnimationFrame(update)
-        }
-      }
-
-      const fastForward = () => {
-        const distance = realValue.length - displayValue.length
-        if (distance) {
-          const num = Math.round(distance / FACTOR) || 1
-          displayValue = realValue.slice(0, displayValue.length + num)
-          setCurrentAssistantMessage(displayValue)
-          //
-          if (realValue === displayValue) return archiveCurrentMessage()
-
-          const interval = Math.floor(10 / (realValue.length - displayValue.length))
-
-          interval ? setTimeout(fastForward, interval) : requestAnimationFrame(fastForward)
-        } else {
-          return archiveCurrentMessage()
-        }
-      }
-
-      update()
-
-      while (!done) {
-        const { value, done: readerDone } = await reader.read()
+      while (true) {
+        const { value, done } = await reader.read()
         if (value) {
-          const char = decoder.decode(value)
-          if (char === '\n' && currentAssistantMessage().endsWith('\n'))
-            continue
-
-          if (char) {
-            realValue += char
-            intervals.push(Date.now() - lastTime)
-            lastTime = Date.now()
+          const delta = decoder.decode(value)
+          if (delta) {
+            setRealValue((prev) => {
+              const next = prev + delta
+              delta.trim() && setDisplayedLength(next.length, { soft: true })
+              return next
+            })
           }
         }
-        done = readerDone
-        done && fastForward()
+        if (done) {
+          break
+        }
       }
     } catch(e) {
       console.error(e)
       setStreaming(false)
-      setController(null)
+    } finally {
+      batch(() => {
+        setDisplayedLength(realValue().length + 7)
+        setDone(true)
+      })
     }
   }
+
+  const damping = 0.25
+  const stiffness = (damping ** 2) / 4.1
+
+  const [_displayedLength, setDisplayedLength] = createSpring(0, { stiffness, damping, precision: 0.001 })
+
+  const displayedLength = createMemo(() => Math.round(_displayedLength()))
+
+  createEffect(() => {
+    if (streaming()) {
+      const length = displayedLength()
+      setCurrentAssistantMessage(realValue().slice(0, length))
+      if (done() && length >= realValue().length) {
+        archiveCurrentMessage()
+      }
+    }
+  })
 
   const archiveCurrentMessage = () => {
     if (currentAssistantMessage()) {
       batch(() => {
         setMessageList([...messageList(), { role: 'assistant', content: currentAssistantMessage() }])
         setCurrentAssistantMessage('')
+        setStreaming(false)
+        setController(null)
+        setDisplayedLength(0, { hard: true })
+        setRealValue('')
       })
-      setStreaming(false)
-      setController(null)
       syncMessageList()
     }
   }
@@ -427,14 +413,10 @@ export default () => {
     batch(() => {
       setInputValue('')
       setMessageList([])
-      // setCurrentAssistantMessage('')
-      // setCurrentSystemRoleSettings('')
+      setCurrentError(null)
+      setTitle()
     })
-
-    setMessageList([])
     syncMessageList()
-    setCurrentError(null)
-    setTitle()
   }
 
   const stopStreamFetch = () => {
@@ -510,6 +492,7 @@ export default () => {
         <MessageItem
           role="assistant"
           message={currentAssistantMessage}
+          incomplete
         />
       )}
 

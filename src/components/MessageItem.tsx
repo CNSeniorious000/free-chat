@@ -18,13 +18,14 @@ import IconRefresh from './icons/Refresh'
 interface Props {
   role: ChatMessage['role']
   message: Accessor<string> | string
+  incomplete?: boolean
   showRetry?: Accessor<boolean>
   onRetry?: () => void
 }
 
 const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
-export default ({ role, message, showRetry, onRetry }: Props) => {
+export default ({ role, message, showRetry, onRetry, incomplete = false }: Props) => {
   const roleClass = {
     system: '',
     user: 'bg-$c-fg-30',
@@ -33,22 +34,39 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
 
   const result = createMemo(() => splitReasoningPart(typeof message === 'function' ? message() : message))
   const reasoningContent = () => result()[0]
-  const content = () => result()[1]
+  const content = createMemo(() => incomplete ? heuristicPatch(result()[1]) : result()[1])
 
   function heuristicPatch(markdown: string) {
-    const pattern = /(^|\n)```\S*$/
-    const matches = markdown.match(/```/g)
-
-    return (matches && matches.length % 2 === 1 && pattern.test(markdown))
-      ? markdown.replace(pattern, '\n```')
-      : markdown
+    const lastNewlineIndex = markdown.lastIndexOf('\n')
+    let rest: string, lastLine: string
+    if (lastNewlineIndex === -1) {
+      rest = ''
+      lastLine = markdown
+    } else {
+      rest = markdown.slice(0, lastNewlineIndex)
+      lastLine = markdown.slice(lastNewlineIndex + 1)
+    }
+    if (!lastLine.trim() || (lastLine.trimStart().startsWith('``') && lastLine.trimStart().length < 20) || /^([*+-])\1*$/.test(lastLine.trim())) {
+      return rest
+    } else if ((lastLine.match(/`/g)?.length || 0) % 2 !== 0 && !lastLine.includes('\\`')) {
+      return lastLine.endsWith('`') ? `${rest}\n${lastLine.slice(0, -1)}` : `${rest}\n${lastLine}\``
+    } else if ((lastLine.replace(/`[^`]*`/g, '').match(/\*\*/g)?.length || 0) % 2 !== 0 && !lastLine.includes('\\*')) {
+      if (lastLine.endsWith('**'))
+        return `${rest}\n${lastLine.slice(0, -2)}`
+      else
+        return `${rest}\n${lastLine}${'*'.repeat(2 - Number(lastLine.endsWith('*')))}`
+    } else if ((lastLine.match(/\*/g)?.length || 0) % 2 !== 0 && lastLine.endsWith('*') && !lastLine.includes('\\*')) {
+      return `${rest}\n${lastLine.slice(0, -1)}`
+    } else {
+      return `${rest}\n${lastLine}`
+    }
   }
 
   return (
     <div class="px-2rem transition-colors -mx-2rem hover:bg-$c-fg-2 2xl:(px-2rem -mx-2rem) md:(px-5 transition-background-color -mx-5)">
       <div class="py-0.5 transition-padding 2xl:py-2 md:py-1">
         <div class="flex gap-3.5 rounded-lg" class:op-75={role === 'user'} class:reverse-self-msg={role === 'user' && alignRightMine}>
-          <div class={`shrink-0 w-7 h-7 my-4 rounded-full op-80 ${roleClass[role]} <sm:w-1 <sm:h-auto <md:transition-background-color`} />
+          <div class={`my-4 h-7 w-7 shrink-0 rounded-full op-80 ${roleClass[role]} <sm:(h-auto w-1) <md:transition-background-color`} />
           <div class="message break-words">
             <Show when={reasoningContent()}>
               <div class="mt-1em flex flex-col gap-1.3 ws-pre-wrap rounded bg-$c-fg-2 px-2.5 py-2 text-(0.8em $c-fg-70) ring-(1 $c-fg-5 inset)">
@@ -70,7 +88,7 @@ export default ({ role, message, showRetry, onRetry }: Props) => {
                 },
               }}
             >
-              {heuristicPatch(content())}
+              {content()}
             </SolidMarkdown>
           </div>
         </div>
