@@ -6,12 +6,12 @@ import remarkBreaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import { createMemo, Index, Show } from 'solid-js'
-import { SolidMarkdown } from '../solid-markdown'
 
 import type { ChatMessage } from '@/types'
 
 import { splitReasoningPart } from '@/utils/deepseek'
 
+import { SolidMarkdown } from '../solid-markdown'
 import CodeBlock from './CodeBlock'
 import IconRefresh from './icons/Refresh'
 

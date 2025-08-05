@@ -1,7 +1,8 @@
 import type { Heading, List, Node, Parent } from 'mdast'
 import type { Component } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
+
 import { For, Match, Switch } from 'solid-js'
+import { Dynamic } from 'solid-js/web'
 
 import Fallback from './Fallback'
 import InlineCode from './InlineCode'
@@ -37,20 +38,20 @@ function getTagName(node: Node): string | null {
   }
 }
 
-export default function Router({ 
-  node, 
-  OverrideCode = null, 
-  codeProps = {}, 
-  inlineCodeProps = {} 
+export default function Router({
+  node,
+  OverrideCode = null,
+  codeProps = {},
+  inlineCodeProps = {},
 }: Props) {
   const children = () => (node as Parent).children || []
 
   const renderChild = (child: Node) => (
-    <Router 
-      node={child} 
-      OverrideCode={OverrideCode} 
-      codeProps={codeProps} 
-      inlineCodeProps={inlineCodeProps} 
+    <Router
+      node={child}
+      OverrideCode={OverrideCode}
+      codeProps={codeProps}
+      inlineCodeProps={inlineCodeProps}
     />
   )
 

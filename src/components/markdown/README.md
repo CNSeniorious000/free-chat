@@ -10,7 +10,7 @@ The main wrapper component that parses markdown text and renders it using the Ro
 ```tsx
 import { BaseMarkdown } from './components/markdown'
 
-<BaseMarkdown 
+<BaseMarkdown
   text={markdownText}
   OverrideCode={CustomCodeComponent}
   codeProps={{ highlight: true }}
@@ -25,10 +25,10 @@ The core routing component that recursively renders markdown AST nodes.
 An enhanced version that provides better integration with the existing codebase, particularly with the CodeBlock component.
 
 ```tsx
-import { EnhancedMarkdown } from './components/markdown'
 import CodeBlock from './CodeBlock'
+import { EnhancedMarkdown } from './components/markdown'
 
-<EnhancedMarkdown 
+<EnhancedMarkdown
   text={content()}
   OverrideCode={CodeBlock}
   class="message relative max-w-full overflow-hidden prose"
@@ -68,12 +68,12 @@ console.log('Hello from code block')
 ### With Custom Code Component
 
 ```tsx
-import { EnhancedMarkdown } from './components/markdown'
 import CodeBlock from './CodeBlock'
+import { EnhancedMarkdown } from './components/markdown'
 
 export default function ChatMessage({ content }) {
   return (
-    <EnhancedMarkdown 
+    <EnhancedMarkdown
       text={content}
       OverrideCode={CodeBlock}
       class="message prose"
@@ -92,17 +92,12 @@ The new router can replace the existing SolidMarkdown usage:
   remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
   rehypePlugins={[rehypeKatex]}
   class="message relative max-w-full overflow-hidden prose"
-  components={{
-    code: CodeBlock,
-    pre({ children }) {
-      return <pre class="group overflow-hidden">{children}</pre>
-    },
-  }}
+  components={{ code: CodeBlock }}
 >
   {content()}
 </SolidMarkdown>
 
-// After
+// After  
 <EnhancedMarkdown 
   text={content()}
   OverrideCode={CodeBlock}
@@ -127,7 +122,7 @@ The new router can replace the existing SolidMarkdown usage:
 The router uses these packages which are added to package.json:
 
 - `mdast-util-from-markdown` - Markdown parsing
-- `mdast-util-gfm` - GitHub Flavored Markdown support  
+- `mdast-util-gfm` - GitHub Flavored Markdown support
 - `micromark-extension-gfm` - GFM extensions
 - `@types/mdast` - TypeScript types
 

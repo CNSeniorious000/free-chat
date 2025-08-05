@@ -1,11 +1,9 @@
-import type { Component } from 'solid-js'
 import type { Node } from 'mdast'
+import type { Component } from 'solid-js'
+
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { gfm } from 'micromark-extension-gfm'
-import remarkBreaks from 'remark-breaks'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
 
 import Router from './Router'
 
@@ -25,22 +23,22 @@ function parseWithRemarkPlugins(text: string): Node {
   })
 }
 
-export default function EnhancedMarkdown({ 
-  text, 
-  OverrideCode = null, 
-  codeProps = {}, 
+export default function EnhancedMarkdown({
+  text,
+  OverrideCode = null,
+  codeProps = {},
   inlineCodeProps = {},
-  class: className = "message relative max-w-full overflow-hidden prose"
+  class: className = 'message relative max-w-full overflow-hidden prose',
 }: Props) {
   const ast = () => parseWithRemarkPlugins(text)
 
   return (
     <div class={className}>
-      <Router 
-        node={ast()} 
-        OverrideCode={OverrideCode} 
-        codeProps={codeProps} 
-        inlineCodeProps={inlineCodeProps} 
+      <Router
+        node={ast()}
+        OverrideCode={OverrideCode}
+        codeProps={codeProps}
+        inlineCodeProps={inlineCodeProps}
       />
     </div>
   )

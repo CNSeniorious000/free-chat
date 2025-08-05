@@ -9,7 +9,7 @@ interface Props {
 }
 
 // Simple markdown parser for demo purposes
-function parseMarkdown(text: string) {
+function _parseMarkdown(text: string) {
   return {
     type: 'root',
     children: [
@@ -18,17 +18,17 @@ function parseMarkdown(text: string) {
         children: [
           {
             type: 'text',
-            value: text
-          }
-        ]
-      }
-    ]
+            value: text,
+          },
+        ],
+      },
+    ],
   }
 }
 
-export default function SimpleMarkdown({ 
-  text, 
-  class: className = "markdown-content"
+export default function SimpleMarkdown({
+  text,
+  class: className = 'markdown-content',
 }: Props) {
   return (
     <article class={`max-w-full text-sm prose ${className}`}>

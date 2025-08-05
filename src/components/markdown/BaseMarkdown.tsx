@@ -1,5 +1,6 @@
-import type { Component } from 'solid-js'
 import type { Node } from 'mdast'
+import type { Component } from 'solid-js'
+
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { gfm } from 'micromark-extension-gfm'
@@ -22,22 +23,22 @@ function parse(text: string): Node {
   })
 }
 
-export default function BaseMarkdown({ 
-  text, 
-  OverrideCode = null, 
-  codeProps = {}, 
+export default function BaseMarkdown({
+  text,
+  OverrideCode = null,
+  codeProps = {},
   inlineCodeProps = {},
-  class: className = "markdown-content"
+  class: className = 'markdown-content',
 }: Props) {
   const ast = () => parse(text)
 
   return (
     <article class={`max-w-full text-sm prose ${className}`}>
-      <Router 
-        node={ast()} 
-        OverrideCode={OverrideCode} 
-        codeProps={codeProps} 
-        inlineCodeProps={inlineCodeProps} 
+      <Router
+        node={ast()}
+        OverrideCode={OverrideCode}
+        codeProps={codeProps}
+        inlineCodeProps={inlineCodeProps}
       />
     </article>
   )

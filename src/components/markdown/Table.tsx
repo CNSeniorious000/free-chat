@@ -1,5 +1,5 @@
-import type { Table as TableNode, TableRow, TableCell } from 'mdast'
-import type { Component } from 'solid-js'
+import type { TableCell, Table as TableNode, TableRow } from 'mdast'
+
 import { For } from 'solid-js'
 
 interface Props {
@@ -17,10 +17,10 @@ export default function Table({ node, renderChild }: Props) {
       <thead>
         <tr>
           <For each={headerRow.children as TableCell[]}>
-            {(cell) => (
+            {cell => (
               <th>
                 <For each={cell.children}>
-                  {(child) => renderChild(child)}
+                  {child => renderChild(child)}
                 </For>
               </th>
             )}
@@ -29,13 +29,13 @@ export default function Table({ node, renderChild }: Props) {
       </thead>
       <tbody>
         <For each={bodyRows}>
-          {(row) => (
+          {row => (
             <tr>
               <For each={row.children as TableCell[]}>
-                {(cell) => (
+                {cell => (
                   <td>
                     <For each={cell.children}>
-                      {(child) => renderChild(child)}
+                      {child => renderChild(child)}
                     </For>
                   </td>
                 )}

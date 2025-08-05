@@ -11,7 +11,7 @@ export default function Pre({ node, ...props }: Props) {
     class: node.lang ? `language-${node.lang}` : undefined,
     children: () => node.value,
     inline: false,
-    ...props
+    ...props,
   }
 
   return (
