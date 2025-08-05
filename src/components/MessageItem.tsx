@@ -72,19 +72,6 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
                 </Index>
               </div>
             </Show>
-            {/* <SolidMarkdown
-              remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
-              rehypePlugins={[rehypeKatex]}
-              class="message relative max-w-full overflow-hidden prose <sm:text-3.6"
-              components={{
-                code: CodeBlock,
-                pre({ children }) {
-                  return <pre class="group overflow-hidden">{children}</pre>
-                },
-              }}
-            >
-              {content()}
-            </SolidMarkdown> */}
             <div class="message relative max-w-full overflow-hidden prose <sm:text-3.6">
               <SimpleMarkdown text={content()} />
             </div>

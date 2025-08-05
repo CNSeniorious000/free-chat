@@ -1,11 +1,9 @@
-import type { Heading, List, Node, Parent } from 'mdast'
+import type { Heading, InlineCode, Link, List, Node, Parent } from 'mdast'
 
 import { type Accessor, Index, Match, Switch } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 
 import Fallback from './Fallback'
-import InlineCode from './InlineCode'
-import Link from './Link'
 import Pre from './Pre'
 import Table from './Table'
 import Text from './Text'
@@ -52,15 +50,15 @@ export default function Router(props: { node: Node }) {
       </Match>
 
       <Match when={props.node.type === 'inlineCode'}>
-        <InlineCode node={props.node as any} />
+        <code>{(props.node as InlineCode).value}</code>
       </Match>
 
       <Match when={props.node.type === 'link'}>
-        <Link node={props.node as any}>
+        <a href={(props.node as Link).url} title={(props.node as Link).title || undefined}>
           <Index each={children()}>
             {renderChild}
           </Index>
-        </Link>
+        </a>
       </Match>
 
       <Match when={props.node.type === 'table'}>

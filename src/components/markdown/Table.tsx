@@ -13,7 +13,7 @@ export default function Table({ node, renderChild }: Props) {
   const bodyRows = rows.slice(1)
 
   return (
-    <table class="markdown-table">
+    <table>
       <thead>
         <tr>
           <Index each={headerRow.children as TableCell[]}>

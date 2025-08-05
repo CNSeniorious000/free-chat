@@ -4,5 +4,5 @@ import { toHtml } from 'hast-util-to-html'
 import { toHast } from 'mdast-util-to-hast'
 
 export default function Fallback(props: { node: Node }) {
-  return toHtml(toHast(props.node as Root))
+  return <div class="contents" innerHTML={toHtml(toHast(props.node as Root))}></div>
 }
