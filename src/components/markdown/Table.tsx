@@ -1,10 +1,10 @@
-import type { TableCell, Table as TableNode, TableRow } from 'mdast'
+import type { Node, TableCell, Table as TableNode, TableRow } from 'mdast'
 
-import { For } from 'solid-js'
+import { type Accessor, Index, type JSX } from 'solid-js'
 
 interface Props {
   node: TableNode
-  renderChild: (child: any) => any
+  renderChild: (child: Accessor<Node>) => JSX.Element
 }
 
 export default function Table({ node, renderChild }: Props) {
@@ -16,33 +16,33 @@ export default function Table({ node, renderChild }: Props) {
     <table class="markdown-table">
       <thead>
         <tr>
-          <For each={headerRow.children as TableCell[]}>
+          <Index each={headerRow.children as TableCell[]}>
             {cell => (
               <th>
-                <For each={cell.children}>
+                <Index each={cell().children}>
                   {child => renderChild(child)}
-                </For>
+                </Index>
               </th>
             )}
-          </For>
+          </Index>
         </tr>
       </thead>
       <tbody>
-        <For each={bodyRows}>
+        <Index each={bodyRows}>
           {row => (
             <tr>
-              <For each={row.children as TableCell[]}>
+              <Index each={row().children as TableCell[]}>
                 {cell => (
                   <td>
-                    <For each={cell.children}>
+                    <Index each={cell().children}>
                       {child => renderChild(child)}
-                    </For>
+                    </Index>
                   </td>
                 )}
-              </For>
+              </Index>
             </tr>
           )}
-        </For>
+        </Index>
       </tbody>
     </table>
   )

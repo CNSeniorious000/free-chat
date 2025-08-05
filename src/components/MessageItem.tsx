@@ -1,19 +1,14 @@
 import type { Accessor } from 'solid-js'
 
 import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
-import rehypeKatex from 'rehype-katex'
-import remarkBreaks from 'remark-breaks'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
 import { createMemo, Index, Show } from 'solid-js'
 
 import type { ChatMessage } from '@/types'
 
 import { splitReasoningPart } from '@/utils/deepseek'
 
-import { SolidMarkdown } from '../solid-markdown'
-import CodeBlock from './CodeBlock'
 import IconRefresh from './icons/Refresh'
+import SimpleMarkdown from './markdown/SimpleMarkdown'
 
 interface Props {
   role: ChatMessage['role']
@@ -77,7 +72,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
                 </Index>
               </div>
             </Show>
-            <SolidMarkdown
+            {/* <SolidMarkdown
               remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
               rehypePlugins={[rehypeKatex]}
               class="message relative max-w-full overflow-hidden prose <sm:text-3.6"
@@ -89,7 +84,10 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
               }}
             >
               {content()}
-            </SolidMarkdown>
+            </SolidMarkdown> */}
+            <div class="message relative max-w-full overflow-hidden prose <sm:text-3.6">
+              <SimpleMarkdown text={content()} />
+            </div>
           </div>
         </div>
         {showRetry?.() && onRetry && (

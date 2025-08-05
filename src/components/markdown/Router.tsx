@@ -1,7 +1,6 @@
 import type { Heading, List, Node, Parent } from 'mdast'
-import type { Component } from 'solid-js'
 
-import { For, Match, Switch } from 'solid-js'
+import { type Accessor, Index, Match, Switch } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 
 import Fallback from './Fallback'
@@ -9,13 +8,6 @@ import InlineCode from './InlineCode'
 import Link from './Link'
 import Pre from './Pre'
 import Table from './Table'
-
-interface Props {
-  node: Node
-  OverrideCode?: Component<any> | null
-  codeProps?: Record<string, any>
-  inlineCodeProps?: Record<string, any>
-}
 
 function getTagName(node: Node): string | null {
   switch (node.type) {
@@ -38,74 +30,58 @@ function getTagName(node: Node): string | null {
   }
 }
 
-export default function Router({
-  node,
-  OverrideCode = null,
-  codeProps = {},
-  inlineCodeProps = {},
-}: Props) {
-  const children = () => (node as Parent).children || []
+export default function Router(props: { node: Node }) {
+  const children = () => (props.node as Parent).children || []
 
-  const renderChild = (child: Node) => (
-    <Router
-      node={child}
-      OverrideCode={OverrideCode}
-      codeProps={codeProps}
-      inlineCodeProps={inlineCodeProps}
-    />
-  )
+  const renderChild = (child: Accessor<Node>) => {
+    return <Router node={child()} />
+  }
 
   return (
-    <Switch>
-      <Match when={node.type === 'root'}>
-        <For each={children()}>
+    <Switch fallback={<Fallback node={props.node} />}>
+      <Match when={props.node.type === 'root'}>
+        <Index each={children()}>
           {renderChild}
-        </For>
+        </Index>
       </Match>
 
-      <Match when={node.type === 'code'}>
-        {(() => {
-          const CodeComponent = OverrideCode || Pre
-          return <CodeComponent node={node} {...codeProps} />
-        })()}
+      <Match when={props.node.type === 'code'}>
+        <Pre node={props.node as any} />
       </Match>
 
-      <Match when={node.type === 'inlineCode'}>
-        <InlineCode node={node as any} {...inlineCodeProps} />
+      <Match when={props.node.type === 'inlineCode'}>
+        <InlineCode node={props.node as any} />
       </Match>
 
-      <Match when={node.type === 'link'}>
-        <Link node={node as any}>
-          <For each={children()}>
+      <Match when={props.node.type === 'link'}>
+        <Link node={props.node as any}>
+          <Index each={children()}>
             {renderChild}
-          </For>
+          </Index>
         </Link>
       </Match>
 
-      <Match when={node.type === 'table'}>
-        <Table node={node as any} renderChild={renderChild} />
+      <Match when={props.node.type === 'table'}>
+        <Table node={props.node as any} renderChild={renderChild} />
       </Match>
 
-      <Match when={getTagName(node) !== null}>
+      <Match when={getTagName(props.node) !== null}>
         {(() => {
-          const tag = getTagName(node)!
+          const tag = getTagName(props.node)!
           return (
             <Dynamic component={tag}>
-              <For each={children()}>
+              <Index each={children()}>
                 {renderChild}
-              </For>
+              </Index>
             </Dynamic>
           )
         })()}
       </Match>
 
-      <Match when={node.type === 'text'}>
-        {(node as any).value}
+      <Match when={props.node.type === 'text'}>
+        {(props.node as any).value}
       </Match>
 
-      <Match when={true}>
-        <Fallback node={node} />
-      </Match>
     </Switch>
   )
 }
