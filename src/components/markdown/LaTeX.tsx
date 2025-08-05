@@ -6,5 +6,5 @@ export default function LaTeX(props: { value: string, inline: boolean }) {
   createEffect(() => {
     ref() && render(props.value, ref()!, { throwOnError: false, displayMode: !props.inline, trust: true })
   })
-  return <div ref={setRef} class="contents" />
+  return <div ref={setRef} class={props.inline ? 'contents' : 'w-full text-center'} />
 }
