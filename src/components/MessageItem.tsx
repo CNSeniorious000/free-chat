@@ -24,6 +24,10 @@ interface Props {
 
 const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
+const md = MarkdownIt({ linkify: true, breaks: true }).use(mdKatex).use(mdHighlight)
+
+const fence = md.renderer.rules.fence!
+
 export default ({ role, message, showRetry, onRetry, incomplete = false }: Props) => {
   const roleClass = {
     system: '',
@@ -49,7 +53,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
 
   const result = createMemo(() => splitReasoningPart(typeof message === 'function' ? message() : message))
   const reasoningContent = () => result()[0]
-  const content = () => result()[1]
+  const content = createMemo(() => incomplete ? heuristicPatch(result()[1]) : result()[1])
 
   function heuristicPatch(markdown: string) {
     const lastNewlineIndex = markdown.lastIndexOf('\n')
@@ -67,11 +71,6 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
   }
 
   const htmlString = () => {
-    const md = MarkdownIt({
-      linkify: true,
-      breaks: true,
-    }).use(mdKatex).use(mdHighlight)
-    const fence = md.renderer.rules.fence!
     md.renderer.rules.fence = (...args) => {
       const [tokens, idx] = args
       const token = tokens[idx]
@@ -85,7 +84,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
       </div>`
     }
 
-    return md.render(incomplete ? heuristicPatch(content()) : content())
+    return md.render(content())
   }
 
   return (
