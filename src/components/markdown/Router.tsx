@@ -8,6 +8,7 @@ import InlineCode from './InlineCode'
 import Link from './Link'
 import Pre from './Pre'
 import Table from './Table'
+import Text from './Text'
 
 function getTagName(node: Node): string | null {
   switch (node.type) {
@@ -75,7 +76,7 @@ export default function Router(props: { node: Node }) {
       </Match>
 
       <Match when={props.node.type === 'text'}>
-        {(props.node as any).value}
+        <Text text={(props.node as any).value as string} />
       </Match>
 
     </Switch>
