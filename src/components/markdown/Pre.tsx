@@ -22,7 +22,7 @@ export default function Pre(props: { node: Code }) {
   return (
     <pre class="group overflow-hidden">
       <code class="group hljs block w-full overflow-x-scroll !px-20px !py-18px">
-        <Show when={props.node.value}>
+        <Show when={props.node.value && props.node.value.trim().length > 0}>
           <button onClick={() => copy(props.node.value)} class="gpt-copy-btn gap-1 text-sm">
             {copied() && <div class="text-sm font-sans">Copied!</div>}
             <div class={copied() ? 'i-mingcute-copy-2-fill' : 'i-mingcute-copy-2-line'} />
