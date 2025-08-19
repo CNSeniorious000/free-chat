@@ -53,6 +53,7 @@ export default () => {
   const [title, setTitle] = createSignal<string>()
   const [done, setDone] = createSignal(true)
   const [realValue, setRealValue] = createSignal('')
+  const [smoothScrollEnd, setSmoothScrollEnd] = createSignal(true)
 
   const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
@@ -172,10 +173,30 @@ export default () => {
       if (event.altKey && event.code === 'KeyC') clear()
     }, false)
 
-    new MutationObserver(() => isStick() && instantToBottom()).observe(rootRef, { childList: true, subtree: true })
+    new MutationObserver(() => isStick() && streaming() && instantToBottom()).observe(rootRef, { childList: true, subtree: true })
 
-    window.addEventListener('scroll', () => {
-      bgd.style.setProperty('--scroll', `-${document.documentElement.scrollTop / 10}pt`)
+    const damping = 0.5
+    const stiffness = (damping ** 2) / 4.1
+    const [bgdScroll, setBgdScroll] = createSpring(0, { stiffness, damping })
+    const [bgdScrollTarget, setBgdScrollTarget] = createSignal(-document.documentElement.scrollTop / 10)
+
+    window.addEventListener('scroll', () => setBgdScrollTarget(-document.documentElement.scrollTop / 10))
+
+    function applyBgdScroll(value: number) {
+      bgd.style.setProperty('--scroll', `${value}pt`)
+    }
+
+    // if scroll reaches target
+    createEffect(() => {
+      if (Math.round(bgdScroll()) === Math.round(bgdScrollTarget()) && !(isStick() && streaming())) setSmoothScrollEnd(true)
+    })
+    // apply scroll position
+    createEffect(() => {
+      applyBgdScroll(smoothScrollEnd() ? bgdScrollTarget() : bgdScroll())
+    })
+    // if not at target
+    createEffect(() => {
+      if (!smoothScrollEnd()) setBgdScroll(bgdScrollTarget())
     })
   })
 
@@ -353,7 +374,8 @@ export default () => {
           if (delta) {
             setRealValue((prev) => {
               const next = prev + delta
-              delta.trim() && setDisplayedLength(next.length, { soft: true })
+              delta.trim() && setDisplayedLength(next.length)
+              setSmoothScrollEnd(false)
               return next
             })
           }
@@ -420,6 +442,7 @@ export default () => {
   const stopStreamFetch = () => controller()?.abort()
 
   const retryLastFetch = () => {
+    setSmoothScrollEnd(false)
     if (messageList().length > 0) {
       trackEvent('retry', { lastMessage: messageList().at(-1)!.role })
       const lastMessage = messageList()[messageList().length - 1]
@@ -445,10 +468,7 @@ export default () => {
     <main ref={rootRef} class="relative h-full flex flex-grow flex-col justify-between">
       <div
         ref={bgd}
-        class="<md:hiddern fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll bg-top-center op-100 transition-opacity duration-1000 bg-hero-jigsaw-gray-500/10 <md:bg-none"
-        class:op-0={!mounted()}
-        class:transition-transform={isStick() && streaming()}
-        class:duration-400={isStick() && streaming()}
+        class="<md:hiddern fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll animate-fade-in bg-top-center bg-hero-jigsaw-gray-500/10 <md:bg-none"
       />
       <SystemRoleSettings
         canEdit={() => messageList().length === 0}
@@ -622,9 +642,10 @@ export default () => {
 
       <Inview class="invisible absolute bottom-0 left-0 right-0 h-1" setInview={setInview} />
 
-      <div class="fixed bottom-4.25 left-4.25 z-10 h-fit w-fit rounded-md transition-colors sm:bottom-5 sm:left-5 active:scale-90 hover:bg-$c-fg-5" class:stick-btn-on={isStick()}>
+      <div class:op-30={!mounted()} class="fixed bottom-4.25 left-4.25 z-10 h-fit w-fit rounded-md transition sm:bottom-5 sm:left-5 active:scale-90 hover:bg-$c-fg-5" class:stick-btn-on={isStick()}>
         <button
           class="p-2.5 text-base"
+          disabled={!mounted()}
           title="stick to bottom"
           type="button"
           onClick={() => {
