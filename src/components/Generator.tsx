@@ -205,7 +205,7 @@ export default () => {
     const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
     titleRef && (titleRef.innerHTML = title ?? 'Endless Chat')
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
-    subTitleRef?.classList.toggle('hidden', title !== 'Endless Chat')
+    subTitleRef?.classList.toggle('hidden', !!title)
     title ? localStorage.setItem('title', title) : localStorage.removeItem('title')
   }
 
