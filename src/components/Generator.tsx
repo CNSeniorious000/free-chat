@@ -53,7 +53,7 @@ export default () => {
   const [title, setTitle] = createSignal<string>()
   const [done, setDone] = createSignal(true)
   const [realValue, setRealValue] = createSignal('')
-  const [smoothScrollEnd, setSmoothScrollEnd] = createSignal(true)
+  const [bgdAnimating, setBgdAnimating] = createSignal(false)
 
   const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
@@ -177,26 +177,26 @@ export default () => {
 
     const damping = 0.5
     const stiffness = (damping ** 2) / 4.1
-    const [bgdScroll, setBgdScroll] = createSpring(0, { stiffness, damping })
-    const [bgdScrollTarget, setBgdScrollTarget] = createSignal(-document.documentElement.scrollTop / 10)
+    const [bgdOffset, setBgdOffset] = createSpring(0, { stiffness, damping })
+    const [bgdOffsetTarget, setBgdOffsetTarget] = createSignal(-document.documentElement.scrollTop / 10)
 
-    window.addEventListener('scroll', () => setBgdScrollTarget(-document.documentElement.scrollTop / 10))
+    window.addEventListener('scroll', () => setBgdOffsetTarget(-document.documentElement.scrollTop / 10))
 
-    function applyBgdScroll(value: number) {
+    function applyBgdOffset(value: number) {
       bgd.style.setProperty('--scroll', `${value}pt`)
     }
 
     // if scroll reaches target
     createEffect(() => {
-      if (Math.round(bgdScroll()) === Math.round(bgdScrollTarget()) && !(isStick() && streaming())) setSmoothScrollEnd(true)
+      if (Math.round(bgdOffset()) === Math.round(bgdOffsetTarget()) && !(isStick() && streaming())) setBgdAnimating(false)
     })
     // apply scroll position
     createEffect(() => {
-      applyBgdScroll(smoothScrollEnd() ? bgdScrollTarget() : bgdScroll())
+      applyBgdOffset(bgdAnimating() ? bgdOffset() : bgdOffsetTarget())
     })
     // if not at target
     createEffect(() => {
-      if (!smoothScrollEnd()) setBgdScroll(bgdScrollTarget())
+      setBgdOffset(bgdOffsetTarget(), { hard: !bgdAnimating() })
     })
   })
 
@@ -375,7 +375,7 @@ export default () => {
             setRealValue((prev) => {
               const next = prev + delta
               delta.trim() && setDisplayedLength(next.length)
-              setSmoothScrollEnd(false)
+              setBgdAnimating(true)
               return next
             })
           }
@@ -431,6 +431,7 @@ export default () => {
     trackEvent('clear', { totalTokenCount: formatTokenCount(messageList()) })
     tokenCountCache.clear()
     batch(() => {
+      setBgdAnimating(true)
       setInputValue('')
       setMessageList([])
       setCurrentError(null)
@@ -442,7 +443,7 @@ export default () => {
   const stopStreamFetch = () => controller()?.abort()
 
   const retryLastFetch = () => {
-    setSmoothScrollEnd(false)
+    setBgdAnimating(true)
     if (messageList().length > 0) {
       trackEvent('retry', { lastMessage: messageList().at(-1)!.role })
       const lastMessage = messageList()[messageList().length - 1]
@@ -496,7 +497,7 @@ export default () => {
           <MessageItem
             role={message().role}
             message={message().content}
-            showRetry={() => (!streaming() && !currentError() && index === messageList().length - 1)}
+            showRetry={() => (!streaming() && !currentError() && !currentAssistantMessage() && index === messageList().length - 1)}
             onRetry={retryLastFetch}
           />
         )}
