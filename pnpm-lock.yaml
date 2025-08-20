@@ -29,6 +29,9 @@ importers:
       '@lobehub/icons-static-svg':
         specifier: ^1.63.0
         version: 1.63.0
+      '@solid-primitives/scheduled':
+        specifier: ^1.5.2
+        version: 1.5.2(solid-js@1.9.9)
       '@solid-primitives/spring':
         specifier: ^0.1.2
         version: 0.1.2(solid-js@1.9.9)
@@ -2071,6 +2074,11 @@ packages:
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
+
+  '@solid-primitives/scheduled@1.5.2':
+    resolution: {integrity: sha512-/j2igE0xyNaHhj6kMfcUQn5rAVSTLbAX+CDEBm25hSNBmNiHLu2lM7Usj2kJJ5j36D67bE8wR1hBNA8hjtvsQA==}
+    peerDependencies:
+      solid-js: ^1.6.12
 
   '@solid-primitives/spring@0.1.2':
     resolution: {integrity: sha512-t1pI9cIScYBmRFpy50duLVvkTJqulgdxveHNONvzVvwZbjRCEbvHseK6pq6ipzpQxq12nZ2xhK96pDAaoXXg1Q==}
@@ -8516,6 +8524,10 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@10.0.2': {}
+
+  '@solid-primitives/scheduled@1.5.2(solid-js@1.9.9)':
+    dependencies:
+      solid-js: 1.9.9
 
   '@solid-primitives/spring@0.1.2(solid-js@1.9.9)':
     dependencies:

@@ -3,8 +3,8 @@ import Popup from '../components/Popup.astro'
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/Header.svelte'
 import Footer from '../components/Footer.svelte'
-import Generator from '../components/Generator'
 import BackTop from '../components/BackTop.astro'
+import ChatInterface from '../components/ChatInterface'
 import '../message.css'
 import 'katex/dist/katex.min.css'
 import 'highlight.js/styles/atom-one-dark.css'
@@ -13,7 +13,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 <Layout title="Endless Chat">
   <div class="relative mx-auto max-w-85ch min-h-screen flex flex-col flex-col justify-between bg-transparent px-2rem transition-max-width !min-h-100dvh 2xl:max-w-105ch xl:max-w-95ch md:(bg-$c-bg shadow-2xl shadow-black/10 dark:shadow-black/15)">
     <Header client:load dark={Astro.cookies.get('dark')?.boolean()} />
-    <Generator client:load />
+    <ChatInterface client:load />
     <Footer origin={Astro.request.headers.get('host') || ''} />
     <BackTop />
     { Astro.cookies.get('privacyPolicy')?.value !== 'confirmed' && <Popup /> }
