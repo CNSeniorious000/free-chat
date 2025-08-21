@@ -30,7 +30,10 @@ export default (props: Props) => {
     })
 
     onCleanup(() => {
-      encoder()?.free()
+      setEncoder((enc) => {
+        enc?.free()
+        return null
+      })
     })
   })
 

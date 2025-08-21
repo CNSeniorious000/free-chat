@@ -31,7 +31,7 @@ function handleMove() {
 
 window.addEventListener('scroll', handleMove)
 window.addEventListener('resize', handleMove)
-const observer = new MutationObserver(handleMove)
+const observer = new MutationObserver(() => requestAnimationFrame(handleMove))
 observer.observe(document.querySelector('astro-island[data-solid-render-id] > main')!, { childList: true, subtree: true })
 
 backbottom_btn.onclick = () => {
