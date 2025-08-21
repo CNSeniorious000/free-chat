@@ -2,7 +2,7 @@ import type { ParentComponent, Setter } from 'solid-js'
 
 import { throttle } from '@solid-primitives/scheduled'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
-import { batch, createContext, createEffect, createMemo, createSignal, onMount, useContext } from 'solid-js'
+import { batch, createContext, createEffect, createMemo, createSignal, onMount, untrack, useContext } from 'solid-js'
 import { toast } from 'solid-toast'
 
 import type { ChatMessage, ErrorMessage } from '@/types'
@@ -184,7 +184,7 @@ export const ChatProvider: ParentComponent = (props) => {
   const firstMessage = createMemo(() => messageList()[0]?.content)
 
   createEffect(() => {
-    if (firstMessage() && !title()) {
+    if (firstMessage() && untrack(() => !title())) {
       updatePageTitle(firstMessage())
     }
   })
