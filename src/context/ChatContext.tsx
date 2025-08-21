@@ -148,8 +148,7 @@ export const ChatProvider: ParentComponent = (props) => {
   }
 
   createEffect(() => {
-    if (typeof document === 'undefined') return
-    setPageTitle(title())
+    mounted() && setPageTitle(title())
   })
 
   const moderationCache: Record<string, string[]> = {}
@@ -416,9 +415,6 @@ export const ChatProvider: ParentComponent = (props) => {
   }
 
   onMount(() => {
-    // mark mounted on client
-    setMounted(true)
-
     try {
       if (localStorage.getItem('messageList')) {
         const messageListFromStorage = JSON.parse(localStorage.getItem('messageList')!)
@@ -437,6 +433,8 @@ export const ChatProvider: ParentComponent = (props) => {
     } catch(err) {
       console.error(err)
     }
+
+    setMounted(true)
 
     // suggestion feature init and sync with localStorage events
     try {
