@@ -63,9 +63,9 @@
 
 <div class="transition-opacity" class:op-0={!inView} class:duration-400={inView}>
   <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
-    已支持超快的
+    已支持
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html openai} OpenAI 最新开源的 gpt-oss-120b 模型
+    {@html openai} OpenAI 最新的 gpt-5 系列模型
   </div>
 </div>
 
