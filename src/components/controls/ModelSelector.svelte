@@ -5,9 +5,9 @@
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
   <ModelItem id="glm-4.5-flash" name="glm-4.5-flash" title="✨ 智谱清言开源巨作 GLM 4.5" />
+  <ModelItem id="z-ai/glm-4.5-air:free" name="glm-4.5-air" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="moonshotai/kimi-k2:free" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
   <ModelItem id="deepseek/deepseek-r1-0528:free" name="deepseek-r1-0528" title="🐋 DeepSeek 最新版 R1" />
-  <ModelItem id="deepseek-r1-distill-llama-70b" name="deepseek-r1-llama-70b" title="🧠 DeepSeek 的推理模型 R1" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
   <ModelItem id="qwen-3-coder-480b" name="qwen-3-coder-480b" title="🧠 旗舰代码模型 Qwen 3 480B" />
   <ModelItem id="qwen-3-235b-a22b-thinking-2507" name="qwen-3-235b-thinking" title="🧠 旗舰混合推理模型 Qwen 3 235B" />
