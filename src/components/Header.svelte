@@ -1,11 +1,9 @@
 <script lang="ts">
   import openai from '@lobehub/icons-static-svg/icons/openai.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
-  import { onMount } from 'svelte'
   import { ripple } from 'svelte-ripple-action'
   import { Toaster } from 'svelte-sonner'
 
-  import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
 
   import Ad from './Ad.svelte'
@@ -20,15 +18,6 @@
   }
 
   const { dark }: Props = $props()
-
-  onMount(() => {
-    const setItem = localStorage.setItem.bind(localStorage)
-
-    localStorage.setItem = function(key: string, value: string) {
-      setItem(key, value)
-      document.dispatchEvent(new LocalStorageSetEvent('localStorageSet', key, value))
-    }
-  })
 
   let showSettings = $state(false)
 
