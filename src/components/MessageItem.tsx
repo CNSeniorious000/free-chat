@@ -41,21 +41,26 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
   // Use debounce to reset copied state after 1000ms
   const debouncedResetCopied = debounce(() => setCopied(false), 1000)
 
-  const copy = (text: string) => {
+  const copy = async(element: Element) => {
     setCopied(true)
-    writeClipboard(text)
+
+    try {
+      await writeClipboard([
+        new ClipboardItem({ 'text/plain': element.textContent!, 'text/html': element.outerHTML }),
+      ])
+    } catch {
+      writeClipboard(element.textContent!)
+    }
+
     debouncedResetCopied()
   }
 
   let htmlContainer!: HTMLDivElement
 
-  createEventListener(() => htmlContainer, 'click', (e: Event) => {
-    const el = e.target as HTMLElement
-    let code = null
-
-    if (el.matches('button.gpt-copy-btn')) {
-      code = el.nextElementSibling!.textContent // the pre element
-      code && copy(code)
+  createEventListener(() => htmlContainer, 'click', ({ target: el }: MouseEvent) => {
+    if (el instanceof HTMLButtonElement && el.matches('button.gpt-copy-btn')) {
+      const pre = el.nextElementSibling!
+      pre.textContent && copy(pre)
     }
   })
 
