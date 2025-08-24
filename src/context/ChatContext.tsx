@@ -445,7 +445,8 @@ export const ChatProvider: ParentComponent = (props) => {
       // ignore
     }
 
-    makeEventListener(document, 'localStorageSet', ({ detail: { key, value } }: LocalStorageSetEvent) => {
+    makeEventListener(document, 'localStorageSet', (event) => {
+      const { detail: { key, value } } = event as LocalStorageSetEvent
       if (key === 'suggestion') {
         try {
           setSuggestionFeature(JSON.parse(value) ?? true)
