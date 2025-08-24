@@ -1,7 +1,7 @@
 import type { Accessor } from 'solid-js'
 
 import { writeClipboard } from '@solid-primitives/clipboard'
-import { makeEventListener } from '@solid-primitives/event-listener'
+import { createEventListener } from '@solid-primitives/event-listener'
 import { debounce } from '@solid-primitives/scheduled'
 import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
 import MarkdownIt from 'markdown-it'
@@ -47,7 +47,9 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
     debouncedResetCopied()
   }
 
-  makeEventListener(document, 'click', (e: Event) => {
+  let htmlContainer!: HTMLDivElement
+
+  createEventListener(() => htmlContainer, 'click', (e: Event) => {
     const el = e.target as HTMLElement
     let code = null
 
@@ -123,7 +125,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
                 </Index>
               </div>
             </Show>
-            <div class="message relative max-w-full overflow-hidden prose <sm:text-3.6" innerHTML={htmlString()} />
+            <div ref={htmlContainer} class="message relative max-w-full overflow-hidden prose <sm:text-3.6" innerHTML={htmlString()} />
           </div>
         </div>
         {showRetry?.() && onRetry && (
