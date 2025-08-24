@@ -54,11 +54,11 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
     let code = null
 
     if (el.matches('[data-code]')) {
-      code = decodeURIComponent(el.dataset.code!)
+      code = atob(el.dataset.code!)
       copy(code)
     }
     if (el.matches('[data-code] > div')) {
-      code = decodeURIComponent(el.parentElement!.dataset.code!)
+      code = atob(el.parentElement!.dataset.code!)
       copy(code)
     }
   })
@@ -100,7 +100,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
       const rawCode = fence(...args)
 
       return `<div class="relative group">
-        <div data-code=${encodeURIComponent(token.content)} class="gpt-copy-btn">
+        <div data-code=${btoa(token.content)} class="gpt-copy-btn">
           ${copied() ? '<div mr-1 text-sm display-inline-block>Copied!</div><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
         </div>
         ${rawCode}
