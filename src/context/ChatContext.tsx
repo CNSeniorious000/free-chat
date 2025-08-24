@@ -325,6 +325,7 @@ export const ChatProvider: ParentComponent = (props) => {
     } catch(e) {
       console.error(e)
       setStreaming(false)
+      setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     } finally {
       finishStreaming()
     }
