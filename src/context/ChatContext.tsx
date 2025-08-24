@@ -4,6 +4,7 @@ import { throttle } from '@solid-primitives/scheduled'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
 import { batch, createContext, createEffect, createMemo, createSignal, onMount, untrack, useContext } from 'solid-js'
 import { toast } from 'solid-toast'
+import { useEventListener } from 'solidjs-use'
 
 import type { ChatMessage, ErrorMessage } from '@/types'
 import type { LocalStorageSetEvent } from '@/utils/events'
@@ -444,7 +445,7 @@ export const ChatProvider: ParentComponent = (props) => {
       // ignore
     }
 
-    const listener = (({ detail: { key, value } }: LocalStorageSetEvent) => {
+    useEventListener(document, 'localStorageSet', ({ detail: { key, value } }: LocalStorageSetEvent) => {
       if (key === 'suggestion') {
         try {
           setSuggestionFeature(JSON.parse(value) ?? true)
@@ -452,12 +453,7 @@ export const ChatProvider: ParentComponent = (props) => {
           setSuggestionFeature(true)
         }
       }
-    }) as unknown as EventListener
-    document.addEventListener('localStorageSet', listener)
-
-    return () => {
-      document.removeEventListener('localStorageSet', listener)
-    }
+    })
   })
 
   return (
