@@ -53,13 +53,9 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
     const el = e.target as HTMLElement
     let code = null
 
-    if (el.matches('[data-code]')) {
-      code = atob(el.dataset.code!)
-      copy(code)
-    }
-    if (el.matches('[data-code] > div')) {
-      code = atob(el.parentElement!.dataset.code!)
-      copy(code)
+    if (el.matches('button.gpt-copy-btn')) {
+      code = el.nextElementSibling!.textContent // the pre element
+      code && copy(code)
     }
   })
 
@@ -95,14 +91,12 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
 
   const htmlString = () => {
     md.renderer.rules.fence = (...args) => {
-      const [tokens, idx] = args
-      const token = tokens[idx]
       const rawCode = fence(...args)
 
       return `<div class="relative group">
-        <div data-code=${btoa(token.content)} class="gpt-copy-btn">
-          ${copied() ? '<div mr-1 text-sm display-inline-block>Copied!</div><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line></div>'}
-        </div>
+        <button class="gpt-copy-btn">
+          ${copied() ? '<div mr-1 text-sm pointer-events-none>Copied!</div><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line pointer-events-none></div>'}
+        </button>
         ${rawCode}
       </div>`
     }
