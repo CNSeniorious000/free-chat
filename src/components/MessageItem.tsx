@@ -1,12 +1,14 @@
 import type { Accessor } from 'solid-js'
 
+import { writeClipboard } from '@solid-primitives/clipboard'
+import { makeEventListener } from '@solid-primitives/event-listener'
+import { debounce } from '@solid-primitives/scheduled'
 import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
 import MarkdownIt from 'markdown-it'
 import mdHighlight from 'markdown-it-highlightjs'
 // @ts-expect-error missing types
 import mdKatex from 'markdown-it-katex'
 import { createMemo, createSignal, Index, Show } from 'solid-js'
-import { useClipboard, useEventListener } from 'solidjs-use'
 
 import type { ChatMessage } from '@/types'
 
@@ -34,10 +36,18 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
     user: 'bg-$c-fg-30',
     assistant: 'bg-emerald-600/50 dark:bg-emerald-300 sm:(bg-gradient-to-br from-cyan-200 to-green-200)',
   }
-  const [source] = createSignal('')
-  const { copy, copied } = useClipboard({ source, copiedDuring: 1000 })
+  const [copied, setCopied] = createSignal(false)
 
-  useEventListener('click', (e) => {
+  // Use debounce to reset copied state after 1000ms
+  const debouncedResetCopied = debounce(() => setCopied(false), 1000)
+
+  const copy = (text: string) => {
+    setCopied(true)
+    writeClipboard(text)
+    debouncedResetCopied()
+  }
+
+  makeEventListener(document, 'click', (e: Event) => {
     const el = e.target as HTMLElement
     let code = null
 
