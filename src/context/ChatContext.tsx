@@ -3,6 +3,7 @@ import type { ParentComponent, Setter } from 'solid-js'
 import { makeEventListener } from '@solid-primitives/event-listener'
 import { throttle } from '@solid-primitives/scheduled'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
+import MarkdownIt from 'markdown-it'
 import { batch, createContext, createEffect, createMemo, createSignal, onMount, untrack, useContext } from 'solid-js'
 import { toast } from 'solid-toast'
 
@@ -139,10 +140,12 @@ export const ChatProvider: ParentComponent = (props) => {
     else if (messageList().length === 0) setSuggestions([])
   })
 
+  const md = createMemo(() => new MarkdownIt({ html: false }))
+
   const setPageTitle = (title?: string) => {
     document.title = title ?? 'Endless Chat'
     const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
-    titleRef && (titleRef.innerHTML = title ?? 'Endless Chat')
+    titleRef && (titleRef.innerHTML = title ? md().renderInline(title!) : 'Endless Chat')
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', !!title)
     title ? localStorage.setItem('title', title) : localStorage.removeItem('title')
