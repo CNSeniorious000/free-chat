@@ -4,7 +4,7 @@ import { useChat } from '@/context/ChatContext'
 import { trackEvent } from '@/utils/track'
 
 export default () => {
-  const { suggestionFeatureOn, streaming, inview, suggestions, setInputValue, inputRef } = useChat()
+  const { suggestionFeatureOn, streaming, inview, suggestions, setInputValue, inputRef, md } = useChat()
 
   return (
     <Show when={suggestionFeatureOn() && !streaming()}>
@@ -12,7 +12,7 @@ export default () => {
         <div class="mt-1 flex flex-row gap-2 overflow-x-scroll ws-nowrap px-2rem scrollbar-none -mx-2rem [&>button]:(rounded bg-$c-fg-5 px-1 py-1 text-start text-xs text-$c-fg-90 outline-none ring-$c-fg-50 transition-background-color)">
           <Show when={suggestions().length} fallback={<button disabled role="presentation" class="invisible">&nbsp;</button>}>
             <Index each={suggestions()}>
-              {(item, index) => <button type="button" onClick={() => { setInputValue(item()); const el = inputRef(); el?.focus(); trackEvent('accept-suggestion', { index }) }} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3">{item()}</button>}
+              {(item, index) => <button type="button" onClick={() => { setInputValue(item()); const el = inputRef(); el?.focus(); trackEvent('accept-suggestion', { index }) }} class="animate-(fade-in duration-200) hover:bg-$c-fg-10 focus-visible:ring-1.3" innerHTML={md().renderInline(item())}></button>}
             </Index>
           </Show>
         </div>

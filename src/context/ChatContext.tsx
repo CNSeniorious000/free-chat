@@ -43,6 +43,7 @@ interface ChatContextType {
   mounted: () => boolean
   inview: () => boolean
   title: () => string | undefined
+  md: () => MarkdownIt
 
   // Setters
   setInputValue: Setter<string>
@@ -405,6 +406,7 @@ export const ChatProvider: ParentComponent = (props) => {
     mounted,
     inview,
     title,
+    md,
     setInputValue,
     setSystemRoleEditing,
     setStick,
