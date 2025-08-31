@@ -7,14 +7,14 @@
   <ModelItem id="glm-4.5-flash" name="glm-4.5-flash" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="z-ai/glm-4.5-air:free" name="glm-4.5-air" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="moonshotai/kimi-k2:free" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
-  <ModelItem id="deepseek/deepseek-r1-0528:free" name="deepseek-r1-0528" title="🐋 DeepSeek 最新版 R1" />
+  <ModelItem id="DeepSeek-V3.1" name="deepseek-v3.1-fast" title="🐋 最新 DeepSeek v3.1 高速版" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
   <ModelItem id="qwen-3-coder-480b" name="qwen-3-coder-480b" title="🧠 旗舰代码模型 Qwen 3 480B" />
   <ModelItem id="qwen-3-235b-a22b-thinking-2507" name="qwen-3-235b-thinking" title="🧠 旗舰混合推理模型 Qwen 3 235B" />
   <ModelItem id="qwen-3-235b-a22b-instruct-2507" name="qwen-3-235b-instruct" title="✨ 通义千问最新模型 Qwen 3 235B" />
   <ModelItem id="meta-llama/llama-4-maverick-17b-128e-instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
-  <ModelItem id="deepseek/deepseek-chat-v3-0324:free" name="deepseek-v3-0324" title="深度求索 DeepSeek v3" />
+  <ModelItem id="deepseek/deepseek-chat-v3.1:free" name="deepseek-v3.1" title="🐋 八月下旬更新的 DeepSeek v3.1" />
   <ModelItem id="gemma-3-27b-it" name="gemma 3" title="Google 最新的开源模型" />
   <ModelItem id="gemini-2.0-flash-lite" name="gemini 2.0 flash lite" title="Google 最新一代 Gemini" />
   <ModelItem id="gemini-2.0-flash-thinking-exp" name="gemini 2.0 flash thinking" title="Google 的推理模型" />
