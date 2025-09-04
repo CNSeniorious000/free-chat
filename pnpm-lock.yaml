@@ -104,7 +104,7 @@ importers:
         version: 5.2.1(@unocss/eslint-plugin@66.4.2(eslint@9.34.0(jiti@2.5.1))(typescript@5.9.2))(@vue/compiler-sfc@3.5.21)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.34.0(jiti@2.5.1)))(eslint-plugin-format@1.0.1(eslint@9.34.0(jiti@2.5.1)))(eslint-plugin-svelte@3.12.0(eslint@9.34.0(jiti@2.5.1))(svelte@5.38.6))(eslint@9.34.0(jiti@2.5.1))(svelte-eslint-parser@1.3.1(svelte@5.38.6))(typescript@5.9.2)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.3.0)(jiti@2.5.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))
       '@iconify/json':
         specifier: latest
-        version: 2.2.380
+        version: 2.2.381
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.6)(vite@6.3.5(@types/node@24.3.0)(jiti@2.5.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1)))
@@ -1250,8 +1250,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.380':
-    resolution: {integrity: sha512-+Al/Q+mMB/nLz/tawmJEOkCs6+RKKVUS/Yg9I80h2yRpu0kIzxVLQRfF0NifXz/fH92vDVXbS399wio4lMVF4Q==}
+  '@iconify/json@2.2.381':
+    resolution: {integrity: sha512-YXGLVTau1yq44krZmG4hfI4rIBzL2wXg9Yr6WQRoXBZ6ScB6bdoANEoLYKARGNAFyxoNsc1FtTkcHIlBdJc9uQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1800,6 +1800,15 @@ packages:
 
   '@rollup/pluginutils@5.2.0':
     resolution: {integrity: sha512-qWJ2ZTbmumwiLFomfzTyt5Kng4hwPi9rwCYN4SHb6eaRU1KNO4ccxINHr/VhH4GgPlt1XfSTLX2LBTme8ne4Zw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/pluginutils@5.3.0':
+    resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
@@ -2405,11 +2414,11 @@ packages:
     resolution: {integrity: sha512-MQIvvQyPvKGna586MzXhgwnEbGtbm7QtOgJ/KPd/tC70M/jbhd1xHdIQQbh3okBw+MrDF/EvaC2vB5oRC7QdlQ==}
     engines: {node: '>=18.0.0'}
 
-  '@xsai/shared-chat@0.4.0-beta.2':
-    resolution: {integrity: sha512-2+HX5XEiC4x17NvtlIGTA/aOH9/EyJ2bD/gS+nmbiU8zuPykffS5EJ7CwuBt8rWTQUXEDHFA6hRpNLG7Q64EfA==}
+  '@xsai/shared-chat@0.4.0-beta.3':
+    resolution: {integrity: sha512-WL7+j6Yl+6/7otRCGRJ8ADoqlPTOCx9GTZSjuVLxLNn0apYnCs8z5982AMAjptlk+UKYvlWINb1C/qCh5tpoJg==}
 
-  '@xsai/shared@0.4.0-beta.2':
-    resolution: {integrity: sha512-nKdT+/gon1FxkEqv1iKfS2QRWnmYY/2o7Wl+Bcfot45qACE0sK9E4nw2BeLI/MeRYD6w7bTLP2J2U8373aHdYA==}
+  '@xsai/shared@0.4.0-beta.3':
+    resolution: {integrity: sha512-IOqe0CzSdRbaj5vgfL3pAjzOk/u2NCm0RrcsYgvvRc6VyTIPGsgAUuDpWXD+OfWEtCK4t24Q6qhjLkhgo2S9rA==}
 
   '@xsai/stream-text@0.2.2':
     resolution: {integrity: sha512-GTVGuKEpYBOglPQ7cjO18/v8jiZxY/lejXMt+KsZqyMQo/WmH6gUkYkRME/cTyxlQEUiF0L/0CqRjQvtaDlB+Q==}
@@ -7546,7 +7555,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.380':
+  '@iconify/json@2.2.381':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -8189,7 +8198,7 @@ snapshots:
 
   '@rollup/plugin-node-resolve@15.3.1(rollup@2.79.2)':
     dependencies:
-      '@rollup/pluginutils': 5.2.0(rollup@2.79.2)
+      '@rollup/pluginutils': 5.3.0(rollup@2.79.2)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-module: 1.0.0
@@ -8219,6 +8228,14 @@ snapshots:
       rollup: 2.79.2
 
   '@rollup/pluginutils@5.2.0(rollup@2.79.2)':
+    dependencies:
+      '@types/estree': 1.0.8
+      estree-walker: 2.0.2
+      picomatch: 4.0.3
+    optionalDependencies:
+      rollup: 2.79.2
+
+  '@rollup/pluginutils@5.3.0(rollup@2.79.2)':
     dependencies:
       '@types/estree': 1.0.8
       estree-walker: 2.0.2
@@ -8991,15 +9008,15 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@xsai/shared-chat@0.4.0-beta.2':
+  '@xsai/shared-chat@0.4.0-beta.3':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.2
+      '@xsai/shared': 0.4.0-beta.3
 
-  '@xsai/shared@0.4.0-beta.2': {}
+  '@xsai/shared@0.4.0-beta.3': {}
 
   '@xsai/stream-text@0.2.2':
     dependencies:
-      '@xsai/shared-chat': 0.4.0-beta.2
+      '@xsai/shared-chat': 0.4.0-beta.3
 
   abbrev@3.0.1: {}
 
