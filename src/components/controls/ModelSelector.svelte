@@ -6,7 +6,9 @@
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
   <ModelItem id="glm-4.5-flash" name="glm-4.5-flash" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="z-ai/glm-4.5-air:free" name="glm-4.5-air" title="✨ 智谱清言开源巨作 GLM 4.5" />
-  <ModelItem id="moonshotai/kimi-k2:free" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
+  <ModelItem id="openrouter/sonoma-dusk-alpha" name="sonoma-dusk-alpha" title="匿名测试的通用模型" />
+  <ModelItem id="openrouter/sonoma-sky-alpha" name="sonoma-sky-alpha" title="匿名测试的通用模型" />
+  <ModelItem id="moonshotai/kimi-k2-instruct-0905" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
   <ModelItem id="DeepSeek-V3.1" name="deepseek-v3.1-fast" title="🐋 最新 DeepSeek v3.1 高速版" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
   <ModelItem id="qwen-3-coder-480b" name="qwen-3-coder-480b" title="🧠 旗舰代码模型 Qwen 3 480B" />
