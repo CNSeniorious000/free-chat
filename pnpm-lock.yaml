@@ -137,7 +137,7 @@ importers:
         version: 1.1.0(astro@5.13.11(@netlify/blobs@10.0.10)(@types/node@24.5.2)(@vercel/functions@2.2.13)(jiti@2.6.0)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.2)(yaml@2.8.1))(vite-plugin-pwa@1.0.0(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
       bits-ui:
         specifier: ~2.11.0
-        version: 2.11.0(@internationalized/date@3.8.1)(svelte@5.38.10)
+        version: 2.11.3(@internationalized/date@3.8.1)(svelte@5.38.10)
       eslint-plugin-astro:
         specifier: ~1.3.1
         version: 1.3.1(eslint@9.36.0(jiti@2.6.0))
@@ -2742,8 +2742,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@2.11.0:
-    resolution: {integrity: sha512-j/lOFHz6ZDWwj9sOUb6zYSJQdvPc7kr1IRyAdPjln4wOw9UVvKCosbRFEyP4JEzvNFX7HksMG4naDrDHta5bSA==}
+  bits-ui@2.11.3:
+    resolution: {integrity: sha512-XhTuOgcgFatw2qxd+hIlu3EqfYu9R2FFMeJg8srZo3UVKBdOVWHbT0L3GBH46XsaESkTz3aEjU+BiGVoI/2rnQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -9576,7 +9576,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@2.11.0(@internationalized/date@3.8.1)(svelte@5.38.10):
+  bits-ui@2.11.3(@internationalized/date@3.8.1)(svelte@5.38.10):
     dependencies:
       '@floating-ui/core': 1.7.3
       '@floating-ui/dom': 1.7.4
