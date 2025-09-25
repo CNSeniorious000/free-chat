@@ -17,7 +17,7 @@ import Tips from './Tips'
 import TokenCounter from './TokenCounter'
 
 export default () => {
-  const { inputRef, messageList, currentAssistantMessage, streaming, inputValue, currentSystemRoleSettings, systemRoleEditing, suggestions, suggestionFeatureOn, isStick, mounted, inview, setSystemRoleEditing, setStick, setCurrentSystemRoleSettings, setInview, clear, stopStreamFetch, resetTextInputHeight } = useChat()
+  const { inputRef, messageList, currentAssistantMessage, streaming, inputValue, currentSystemRoleSettings, systemRoleEditing, suggestions, suggestionFeatureOn, isStick, mounted, inview, currentError, setSystemRoleEditing, setStick, setCurrentSystemRoleSettings, setInview, clear, stopStreamFetch, resetTextInputHeight } = useChat()
   let rootRef!: HTMLDivElement
   let footer: HTMLElement
 
@@ -47,6 +47,13 @@ export default () => {
       // when a new user message is added, scroll to bottom
       if (messageList().at(-1)?.role === 'user') {
         smoothToBottom()
+      }
+    })
+
+    createEffect(() => {
+      // when error occurs in stick-to-bottom mode, scroll to bottom
+      if (currentError() && isStick()) {
+        instantToBottom()
       }
     })
     // input ref is bound inside ChatInput via setInputRef
@@ -85,7 +92,13 @@ export default () => {
       }
     }, false)
 
-    new MutationObserver(() => isStick() && streaming() && instantToBottom()).observe(rootRef, { childList: true, subtree: true })
+    createEffect(() => {
+      // when message list changes in stick mode and streaming, scroll to bottom instantly
+      if (isStick() && streaming()) {
+        instantToBottom()
+      }
+      currentAssistantMessage() // retrigger when changed
+    })
   })
 
   return (

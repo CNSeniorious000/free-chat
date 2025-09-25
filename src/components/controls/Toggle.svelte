@@ -9,7 +9,15 @@
 
   const { key, initial = true }: Props = $props()
 
-  const checked = persisted(key, initial)
+  const checked = persisted(key, initial, {
+    beforeWrite: (value) => {
+      // Trigger custom event before writing to localStorage
+      document.dispatchEvent(new CustomEvent('localStorageSet', {
+        detail: { key, value: String(value) },
+      }))
+      return value
+    },
+  })
 
   function toggle() {
     $checked = !$checked

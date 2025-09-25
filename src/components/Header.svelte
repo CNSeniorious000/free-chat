@@ -1,11 +1,9 @@
 <script lang="ts">
-  import openai from '@lobehub/icons-static-svg/icons/openai.svg?raw'
+  import grok from '@lobehub/icons-static-svg/icons/grok.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
-  import { onMount } from 'svelte'
   import { ripple } from 'svelte-ripple-action'
   import { Toaster } from 'svelte-sonner'
 
-  import { LocalStorageSetEvent } from '@/utils/events'
   import { trackEvent } from '@/utils/track'
 
   import Ad from './Ad.svelte'
@@ -20,15 +18,6 @@
   }
 
   const { dark }: Props = $props()
-
-  onMount(() => {
-    const setItem = localStorage.setItem.bind(localStorage)
-
-    localStorage.setItem = function(key: string, value: string) {
-      setItem(key, value)
-      document.dispatchEvent(new LocalStorageSetEvent('localStorageSet', key, value))
-    }
-  })
 
   let showSettings = $state(false)
 
@@ -62,11 +51,11 @@
 </header>
 
 <div class="transition-opacity" class:op-0={!inView} class:duration-400={inView}>
-  <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
-    已支持
+  <a href="https://x.ai/news/grok-4-fast" target="_blank" class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
+    已支持 xAI 最新的
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html openai} OpenAI 最新的 gpt-5 系列模型
-  </div>
+    {@html grok} Grok 4 Fast 模型
+  </a>
 </div>
 
 {#if PUBLIC_IFRAME_URL}
