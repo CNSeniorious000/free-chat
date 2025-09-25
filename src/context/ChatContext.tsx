@@ -43,7 +43,7 @@ interface ChatContextType {
   mounted: () => boolean
   inview: () => boolean
   title: () => string | undefined
-  md: () => MarkdownIt
+  md: (markdown: string) => string
 
   // Setters
   setInputValue: Setter<string>
@@ -141,12 +141,13 @@ export const ChatProvider: ParentComponent = (props) => {
     else if (messageList().length === 0) setSuggestions([])
   })
 
-  const md = createMemo(() => new MarkdownIt({ html: false }))
+  const instance = new MarkdownIt({ html: false })
+  const md = (markdown: string) => instance.renderInline(markdown)
 
   const setPageTitle = (title?: string) => {
     document.title = title ?? 'Endless Chat'
     const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
-    titleRef && (titleRef.innerHTML = title ? md().renderInline(title!) : 'Endless Chat')
+    titleRef && (titleRef.innerHTML = title ? md(title!) : 'Endless Chat')
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', !!title)
     title ? localStorage.setItem('title', title) : localStorage.removeItem('title')
