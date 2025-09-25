@@ -18,7 +18,7 @@
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
   <ModelItem id="deepseek/deepseek-chat-v3.1:free" name="deepseek-v3.1" title="🐋 八月下旬更新的 DeepSeek v3.1" />
   <ModelItem id="gemma-3-27b-it" name="gemma 3" title="Google 最新的开源模型" />
-  <ModelItem id="gemini-2.0-flash-lite" name="gemini 2.0 flash lite" title="Google 最新一代 Gemini" />
+  <ModelItem id="gemini-2.5-flash-lite" name="gemini 2.5 flash lite" title="Google 最新一代 Gemini" />
   <ModelItem id="gemini-2.0-flash-thinking-exp" name="gemini 2.0 flash thinking" title="Google 的推理模型" />
   <!-- <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" /> -->
   <ModelItem id="yi-lightning" name="yi-lightning" title="零一万物" />
