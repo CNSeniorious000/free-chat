@@ -1,7 +1,11 @@
 import type { ParentComponent, Setter } from 'solid-js'
 
+import { makeEventListener } from '@solid-primitives/event-listener'
 import { throttle } from '@solid-primitives/scheduled'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
+import rehypeStringify from 'rehype-stringify'
+import { remark } from 'remark'
+import remarkRehype from 'remark-rehype'
 import { batch, createContext, createEffect, createMemo, createSignal, onMount, untrack, useContext } from 'solid-js'
 import { toast } from 'solid-toast'
 
@@ -41,6 +45,7 @@ interface ChatContextType {
   mounted: () => boolean
   inview: () => boolean
   title: () => string | undefined
+  md: (markdown: string) => string
 
   // Setters
   setInputValue: Setter<string>
@@ -138,10 +143,13 @@ export const ChatProvider: ParentComponent = (props) => {
     else if (messageList().length === 0) setSuggestions([])
   })
 
+  const processor = remark().use(remarkRehype).use(rehypeStringify)
+  const md = (markdown: string) => processor.processSync(markdown).toString().match(/<p>(.*)<\/p>/)![1]
+
   const setPageTitle = (title?: string) => {
     document.title = title ?? 'Endless Chat'
     const titleRef: HTMLSpanElement | null = document.querySelector('span.gpt-title')
-    titleRef && (titleRef.innerHTML = title ?? 'Endless Chat')
+    titleRef && (titleRef.innerHTML = title ? md(title!) : 'Endless Chat')
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', !!title)
     title ? localStorage.setItem('title', title) : localStorage.removeItem('title')
@@ -321,6 +329,9 @@ export const ChatProvider: ParentComponent = (props) => {
     } catch(e) {
       console.error(e)
       setStreaming(false)
+      if ((e instanceof Error && e.name === 'AbortError'))
+        return
+      setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     } finally {
       finishStreaming()
     }
@@ -400,6 +411,7 @@ export const ChatProvider: ParentComponent = (props) => {
     mounted,
     inview,
     title,
+    md,
     setInputValue,
     setSystemRoleEditing,
     setStick,
@@ -444,7 +456,8 @@ export const ChatProvider: ParentComponent = (props) => {
       // ignore
     }
 
-    const listener = (({ detail: { key, value } }: LocalStorageSetEvent) => {
+    makeEventListener(document, 'localStorageSet', (event) => {
+      const { detail: { key, value } } = event as LocalStorageSetEvent
       if (key === 'suggestion') {
         try {
           setSuggestionFeature(JSON.parse(value) ?? true)
@@ -452,12 +465,7 @@ export const ChatProvider: ParentComponent = (props) => {
           setSuggestionFeature(true)
         }
       }
-    }) as unknown as EventListener
-    document.addEventListener('localStorageSet', listener)
-
-    return () => {
-      document.removeEventListener('localStorageSet', listener)
-    }
+    })
   })
 
   return (

@@ -4,7 +4,7 @@ import { createEffect, createSignal, onMount } from 'solid-js'
 import { useChat } from '@/context/ChatContext'
 
 export default () => {
-  const { isStick, streaming, messageList } = useChat()
+  const { isStick, streaming, messageList, currentError } = useChat()
 
   let bgd!: HTMLDivElement
   const [bgdAnimating, setBgdAnimating] = createSignal(false)
@@ -40,6 +40,13 @@ export default () => {
     // Animate when new user message is added
     createEffect(() => {
       if (messageList().at(-1)?.role === 'user') {
+        setBgdAnimating(true)
+      }
+    })
+
+    // Animate when error occurs in stick-to-bottom mode
+    createEffect(() => {
+      if (currentError() && isStick()) {
         setBgdAnimating(true)
       }
     })
