@@ -12,8 +12,8 @@ importers:
         specifier: ~6.5.9
         version: 6.5.12(@types/node@24.7.0)(@vercel/functions@2.2.13)(astro@5.14.3(@netlify/blobs@10.0.11)(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1)
       '@astrojs/node':
-        specifier: ~9.4.3
-        version: 9.4.5(astro@5.14.3(@netlify/blobs@10.0.11)(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))
+        specifier: ~9.4.6
+        version: 9.4.6(astro@5.14.3(@netlify/blobs@10.0.11)(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))
       '@astrojs/solid-js':
         specifier: ~5.1.0
         version: 5.1.1(@types/node@24.7.0)(jiti@2.6.1)(solid-js@1.9.9)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1)
@@ -104,7 +104,7 @@ importers:
         version: 5.4.1(@unocss/eslint-plugin@66.4.2(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.22)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-format@1.0.2(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-svelte@3.12.4(eslint@9.37.0(jiti@2.6.1))(svelte@5.39.11))(eslint@9.37.0(jiti@2.6.1))(svelte-eslint-parser@1.3.3(svelte@5.39.11))(typescript@5.9.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.7.0)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))
       '@iconify/json':
         specifier: latest
-        version: 2.2.393
+        version: 2.2.394
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.6)(vite@6.3.6(@types/node@24.7.0)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1)))
@@ -253,10 +253,10 @@ packages:
     peerDependencies:
       astro: ^5.7.0
 
-  '@astrojs/node@9.4.5':
-    resolution: {integrity: sha512-rTfrcZsjZKJUhB8AlWJUa8amEy8I3CZePSjYn0D9+YTn27CBB3v5jHDOuUJQVRc8fm8oEi2uprF79agTGexwcA==}
+  '@astrojs/node@9.4.6':
+    resolution: {integrity: sha512-vyl+GaT20CjullFghaO5/g3ygpzfjQdxjRJev8r33Vi831nCe3yyy4G/V1z6wpq4FHDEduMtT2jdXfJVx1th+A==}
     peerDependencies:
-      astro: ^5.7.0
+      astro: ^5.14.3
 
   '@astrojs/prism@3.3.0':
     resolution: {integrity: sha512-q8VwfU/fDZNoDOf+r7jUnMC2//H2l0TuQ6FkGJL8vD8nw/q5KiL3DS1KKBI3QhI9UQhpJ5dc7AtqfbXWuOgLCQ==}
@@ -1260,8 +1260,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.393':
-    resolution: {integrity: sha512-Bpf0JrndzclsNHp4TPFm8OBjUotAAxE6S6e0Af1Riu5WroiO0cbvRr2UYAqIy58YhFUJNMxgFQV3A+GHexYf6g==}
+  '@iconify/json@2.2.394':
+    resolution: {integrity: sha512-XuI/rTjVO4rOAbRpb2DZSBzRJcWSTO8lhR0jGEzF28ROM8+vwWMpVaZVvZAeCo3Hc4BItxP+c1hOJMS1cRB5RA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2611,6 +2611,10 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
+  baseline-browser-mapping@2.8.16:
+    resolution: {integrity: sha512-OMu3BGQ4E7P1ErFsIPpbJh0qvDudM/UuJeHgkAvfWe+0HFJCXh+t/l8L6fVLR55RI/UbKrVLnAXZSVwd9ysWYw==}
+    hasBin: true
+
   baseline-browser-mapping@2.8.6:
     resolution: {integrity: sha512-wrH5NNqren/QMtKUEEJf7z86YjfqW/2uw3IL3/xpqZUC95SSVIFXYQeeGjL6FT/X68IROu6RMehZQS5foy2BXw==}
     hasBin: true
@@ -2657,6 +2661,11 @@ packages:
 
   browserslist@4.26.2:
     resolution: {integrity: sha512-ECFzp6uFOSB+dcZ5BK/IBaGWssbSYBHvuMeMt3MMFyhI0Z8SqGgEkBLARgpRH3hutIgPVsALcMwbDrJqPxQ65A==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
+  browserslist@4.26.3:
+    resolution: {integrity: sha512-lAUU+02RFBuCKQPj/P6NgjlbCnLBMp4UtgTx7vNHd3XSIJF87s9a5rA3aH2yw3GS9DqZAUbOtZdCCiZeVRqt0w==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -2709,6 +2718,9 @@ packages:
 
   caniuse-lite@1.0.30001743:
     resolution: {integrity: sha512-e6Ojr7RV14Un7dz6ASD0aZDmQPT/A+eZU+nuTNfjqmRrmkmQlnTNWH0SKmqagx9PeW87UVqapSurtAXifmtdmw==}
+
+  caniuse-lite@1.0.30001749:
+    resolution: {integrity: sha512-0rw2fJOmLfnzCRbkm8EyHL8SvI2Apu5UbnQuTsJ0ClgrH8hcwFooJ1s5R0EP8o8aVrFu8++ae29Kt9/gZAZp/Q==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -2879,6 +2891,9 @@ packages:
 
   core-js-compat@3.45.1:
     resolution: {integrity: sha512-tqTt5T4PzsMIZ430XGviK4vzYSoeNJ6CXODi6c/voxOT6IZqBht5/EKaSNnYiEjjRYxjVz7DQIsOsY0XNi8PIA==}
+
+  core-js-compat@3.46.0:
+    resolution: {integrity: sha512-p9hObIIEENxSV8xIu+V68JjSeARg6UVMG5mR+JEUguG3sI6MsiS1njz2jHmyJDvA+8jX/sytkBHup6kxhM9law==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -3135,6 +3150,9 @@ packages:
 
   electron-to-chromium@1.5.222:
     resolution: {integrity: sha512-gA7psSwSwQRE60CEoLz6JBCQPIxNeuzB2nL8vE03GK/OHxlvykbLyeiumQy1iH5C2f3YbRAZpGCMT12a/9ih9w==}
+
+  electron-to-chromium@1.5.234:
+    resolution: {integrity: sha512-RXfEp2x+VRYn8jbKfQlRImzoJU01kyDvVPBmG39eU2iuRVhuS6vQNocB8J0/8GrIMLnPzgz4eW6WiRnJkTuNWg==}
 
   emoji-regex@10.5.0:
     resolution: {integrity: sha512-lb49vf1Xzfx080OKA0o6l8DQQpV+6Vg95zyCJX9VB/BqKYlhG7N4wgROUUHRA+ZPUefLnteQOad7z1kT2bV7bg==}
@@ -4675,6 +4693,9 @@ packages:
 
   node-releases@2.0.21:
     resolution: {integrity: sha512-5b0pgg78U3hwXkCM8Z9b2FJdPZlr9Psr9V2gQPESdGHqbntyFJKFW4r5TeWGFzafGY3hzs1JC62VEQMbl1JFkw==}
+
+  node-releases@2.0.23:
+    resolution: {integrity: sha512-cCmFDMSm26S6tQSDpBCg/NR8NENrVPhAJSf+XbxBG4rPFaaonlEoE9wHQmun+cls499TQGSb7ZyPBRlzgKfpeg==}
 
   node-source-walk@7.0.1:
     resolution: {integrity: sha512-3VW/8JpPqPvnJvseXowjZcirPisssnBuDikk6JIZ8jQzF7KJQX52iPFX4RYYxLycYH7IbMRSPUOga/esVjy5Yg==}
@@ -6505,7 +6526,7 @@ snapshots:
       - uploadthing
       - yaml
 
-  '@astrojs/node@9.4.5(astro@5.14.3(@netlify/blobs@10.0.11)(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))':
+  '@astrojs/node@9.4.6(astro@5.14.3(@netlify/blobs@10.0.11)(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.4
       astro: 5.14.3(@netlify/blobs@10.0.11)(@types/node@24.7.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1)
@@ -7227,7 +7248,7 @@ snapshots:
       babel-plugin-polyfill-corejs2: 0.4.14(@babel/core@7.28.4)
       babel-plugin-polyfill-corejs3: 0.13.0(@babel/core@7.28.4)
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.4)
-      core-js-compat: 3.45.1
+      core-js-compat: 3.46.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -7600,7 +7621,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.393':
+  '@iconify/json@2.2.394':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -9391,7 +9412,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.4
       '@babel/helper-define-polyfill-provider': 0.6.5(@babel/core@7.28.4)
-      core-js-compat: 3.45.1
+      core-js-compat: 3.46.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9418,6 +9439,8 @@ snapshots:
   base-64@1.0.0: {}
 
   base64-js@1.5.1: {}
+
+  baseline-browser-mapping@2.8.16: {}
 
   baseline-browser-mapping@2.8.6: {}
 
@@ -9485,6 +9508,14 @@ snapshots:
       node-releases: 2.0.21
       update-browserslist-db: 1.1.3(browserslist@4.26.2)
 
+  browserslist@4.26.3:
+    dependencies:
+      baseline-browser-mapping: 2.8.16
+      caniuse-lite: 1.0.30001749
+      electron-to-chromium: 1.5.234
+      node-releases: 2.0.23
+      update-browserslist-db: 1.1.3(browserslist@4.26.3)
+
   buffer-crc32@0.2.13: {}
 
   buffer-crc32@1.0.0: {}
@@ -9526,6 +9557,8 @@ snapshots:
   camelcase@8.0.0: {}
 
   caniuse-lite@1.0.30001743: {}
+
+  caniuse-lite@1.0.30001749: {}
 
   ccount@2.0.1: {}
 
@@ -9675,6 +9708,10 @@ snapshots:
   core-js-compat@3.45.1:
     dependencies:
       browserslist: 4.26.2
+
+  core-js-compat@3.46.0:
+    dependencies:
+      browserslist: 4.26.3
 
   core-util-is@1.0.3: {}
 
@@ -9919,6 +9956,8 @@ snapshots:
       jake: 10.9.4
 
   electron-to-chromium@1.5.222: {}
+
+  electron-to-chromium@1.5.234: {}
 
   emoji-regex@10.5.0: {}
 
@@ -11857,6 +11896,8 @@ snapshots:
 
   node-releases@2.0.21: {}
 
+  node-releases@2.0.23: {}
+
   node-source-walk@7.0.1:
     dependencies:
       '@babel/parser': 7.28.4
@@ -13305,6 +13346,12 @@ snapshots:
   update-browserslist-db@1.1.3(browserslist@4.26.2):
     dependencies:
       browserslist: 4.26.2
+      escalade: 3.2.0
+      picocolors: 1.1.1
+
+  update-browserslist-db@1.1.3(browserslist@4.26.3):
+    dependencies:
+      browserslist: 4.26.3
       escalade: 3.2.0
       picocolors: 1.1.1
 
