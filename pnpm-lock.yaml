@@ -104,7 +104,7 @@ importers:
         version: 5.4.1(@unocss/eslint-plugin@66.4.2(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.22)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.3.1(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-format@1.0.2(eslint@9.37.0(jiti@2.6.1)))(eslint-plugin-svelte@3.12.4(eslint@9.37.0(jiti@2.6.1))(svelte@5.39.11))(eslint@9.37.0(jiti@2.6.1))(svelte-eslint-parser@1.3.3(svelte@5.39.11))(typescript@5.9.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.7.1)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))
       '@iconify/json':
         specifier: latest
-        version: 2.2.394
+        version: 2.2.395
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.6)(vite@6.3.6(@types/node@24.7.1)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1)))
@@ -134,7 +134,7 @@ importers:
         version: 66.4.2
       '@vite-pwa/astro':
         specifier: ~1.1.0
-        version: 1.1.0(astro@5.14.4(@netlify/blobs@10.0.11)(@types/node@24.7.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(vite-plugin-pwa@1.0.0(vite@6.3.6(@types/node@24.7.1)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
+        version: 1.1.1(astro@5.14.4(@netlify/blobs@10.0.11)(@types/node@24.7.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(vite-plugin-pwa@1.0.0(vite@6.3.6(@types/node@24.7.1)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))
       bits-ui:
         specifier: ~2.11.0
         version: 2.11.5(@internationalized/date@3.8.1)(svelte@5.39.11)
@@ -1260,8 +1260,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.394':
-    resolution: {integrity: sha512-XuI/rTjVO4rOAbRpb2DZSBzRJcWSTO8lhR0jGEzF28ROM8+vwWMpVaZVvZAeCo3Hc4BItxP+c1hOJMS1cRB5RA==}
+  '@iconify/json@2.2.395':
+    resolution: {integrity: sha512-XSYOnlGqiZhJkFFBUiVK4C5VIiv4rxyKtCmkQ9nS4zfMpS4xT0BF9+qWUKOHYgeCzCLghyWfrm6Eti3Sv5kfqQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2288,12 +2288,12 @@ packages:
   '@vercel/routing-utils@5.2.0':
     resolution: {integrity: sha512-XBexLmd746XkSFa459tJpHd0NtxYEGswBe1o99BmpC4w4/8hoz6/BhlY+XWJh8jakPTP4hcKiE4w3TjOwuUxfw==}
 
-  '@vite-pwa/astro@1.1.0':
-    resolution: {integrity: sha512-LLBhhRaU7jZ93P+Dq79Jxj0HOXlg/Dn2Z8wBvpxoZl/eB4CbbKjNbTnKQ7VcmffqKBrAvAluUJjbp7zkwD3MFQ==}
+  '@vite-pwa/astro@1.1.1':
+    resolution: {integrity: sha512-uOkCwJcx7SR04zqcG+itkN+icQm2gcojRsXHorYUN9Q1uRYQjrtswQGXHQvX7ltJDH4Ec60BmJVE4UdO4f8ulQ==}
     peerDependencies:
       '@vite-pwa/assets-generator': ^1.0.0
       astro: ^1.6.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
-      vite-plugin-pwa: ^1.0.0
+      vite-plugin-pwa: ^1.1.0
     peerDependenciesMeta:
       '@vite-pwa/assets-generator':
         optional: true
@@ -3151,8 +3151,8 @@ packages:
   electron-to-chromium@1.5.222:
     resolution: {integrity: sha512-gA7psSwSwQRE60CEoLz6JBCQPIxNeuzB2nL8vE03GK/OHxlvykbLyeiumQy1iH5C2f3YbRAZpGCMT12a/9ih9w==}
 
-  electron-to-chromium@1.5.234:
-    resolution: {integrity: sha512-RXfEp2x+VRYn8jbKfQlRImzoJU01kyDvVPBmG39eU2iuRVhuS6vQNocB8J0/8GrIMLnPzgz4eW6WiRnJkTuNWg==}
+  electron-to-chromium@1.5.235:
+    resolution: {integrity: sha512-i/7ntLFwOdoHY7sgjlTIDo4Sl8EdoTjWIaKinYOVfC6bOp71bmwenyZthWHcasxgHDNWbWxvG9M3Ia116zIaYQ==}
 
   emoji-regex@10.5.0:
     resolution: {integrity: sha512-lb49vf1Xzfx080OKA0o6l8DQQpV+6Vg95zyCJX9VB/BqKYlhG7N4wgROUUHRA+ZPUefLnteQOad7z1kT2bV7bg==}
@@ -7621,7 +7621,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.394':
+  '@iconify/json@2.2.395':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -8939,7 +8939,7 @@ snapshots:
     optionalDependencies:
       ajv: 6.12.6
 
-  '@vite-pwa/astro@1.1.0(astro@5.14.4(@netlify/blobs@10.0.11)(@types/node@24.7.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(vite-plugin-pwa@1.0.0(vite@6.3.6(@types/node@24.7.1)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))':
+  '@vite-pwa/astro@1.1.1(astro@5.14.4(@netlify/blobs@10.0.11)(@types/node@24.7.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(vite-plugin-pwa@1.0.0(vite@6.3.6(@types/node@24.7.1)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0))':
     dependencies:
       astro: 5.14.4(@netlify/blobs@10.0.11)(@types/node@24.7.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1)
       vite-plugin-pwa: 1.0.0(vite@6.3.6(@types/node@24.7.1)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0)
@@ -9512,7 +9512,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.8.16
       caniuse-lite: 1.0.30001750
-      electron-to-chromium: 1.5.234
+      electron-to-chromium: 1.5.235
       node-releases: 2.0.23
       update-browserslist-db: 1.1.3(browserslist@4.26.3)
 
@@ -9957,7 +9957,7 @@ snapshots:
 
   electron-to-chromium@1.5.222: {}
 
-  electron-to-chromium@1.5.234: {}
+  electron-to-chromium@1.5.235: {}
 
   emoji-regex@10.5.0: {}
 
