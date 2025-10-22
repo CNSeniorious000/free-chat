@@ -21,8 +21,8 @@ importers:
         specifier: ~7.2.0
         version: 7.2.0(@types/node@24.9.0)(astro@5.14.7(@netlify/blobs@10.1.0)(@types/node@24.9.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(jiti@2.6.1)(svelte@5.41.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1)
       '@astrojs/vercel':
-        specifier: ~8.2.7
-        version: 8.2.10(astro@5.14.7(@netlify/blobs@10.1.0)(@types/node@24.9.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(rollup@2.79.2)(svelte@5.41.2)(vue@3.5.12(typescript@5.9.3))
+        specifier: ~8.2.11
+        version: 8.2.11(astro@5.14.7(@netlify/blobs@10.1.0)(@types/node@24.9.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(rollup@2.79.2)(svelte@5.41.2)(vue@3.5.12(typescript@5.9.3))
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.63
         version: 1.0.64
@@ -287,8 +287,8 @@ packages:
   '@astrojs/underscore-redirects@1.0.0':
     resolution: {integrity: sha512-qZxHwVnmb5FXuvRsaIGaqWgnftjCuMY+GSbaVZdBmE4j8AfgPqKPxYp8SUERyJcjpKCEmO4wD6ybuGH8A2kVRQ==}
 
-  '@astrojs/vercel@8.2.10':
-    resolution: {integrity: sha512-pq1CHZF9acBATD+MagFX8XzpVUARFvuGr36pukVbYZqvrc9Wt7IY3mJdQaZoL3SccMSV5K1S6/ELGWV5wYsj8g==}
+  '@astrojs/vercel@8.2.11':
+    resolution: {integrity: sha512-PGtWHvHYMkT8ftSR3yuR7oyf/oPvOv8AfhCFlSQg318hfpalSEPND9mjbdQGpMeZz3KtvvOnHyYwqmu5V8MSHg==}
     peerDependencies:
       astro: ^5.0.0
 
@@ -2589,6 +2589,11 @@ packages:
 
   '@vercel/nft@0.30.1':
     resolution: {integrity: sha512-2mgJZv4AYBFkD/nJ4QmiX5Ymxi+AisPLPcS/KPXVqniyQNqKXX+wjieAbDXQP3HcogfEbpHoRMs49Cd4pfkk8g==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  '@vercel/nft@0.30.3':
+    resolution: {integrity: sha512-UEq+eF0ocEf9WQCV1gktxKhha36KDs7jln5qii6UpPf5clMqDc0p3E7d9l2Smx0i9Pm1qpq4S4lLfNl97bbv6w==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -6997,12 +7002,12 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.0': {}
 
-  '@astrojs/vercel@8.2.10(astro@5.14.7(@netlify/blobs@10.1.0)(@types/node@24.9.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(rollup@2.79.2)(svelte@5.41.2)(vue@3.5.12(typescript@5.9.3))':
+  '@astrojs/vercel@8.2.11(astro@5.14.7(@netlify/blobs@10.1.0)(@types/node@24.9.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1))(rollup@2.79.2)(svelte@5.41.2)(vue@3.5.12(typescript@5.9.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.4
       '@vercel/analytics': 1.5.0(svelte@5.41.2)(vue@3.5.12(typescript@5.9.3))
       '@vercel/functions': 2.2.13
-      '@vercel/nft': 0.30.1(rollup@2.79.2)
+      '@vercel/nft': 0.30.3(rollup@2.79.2)
       '@vercel/routing-utils': 5.2.0
       astro: 5.14.7(@netlify/blobs@10.1.0)(@types/node@24.9.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.0)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.8.1)
       esbuild: 0.25.11
@@ -9537,6 +9542,25 @@ snapshots:
       - supports-color
 
   '@vercel/nft@0.30.1(rollup@2.79.2)':
+    dependencies:
+      '@mapbox/node-pre-gyp': 2.0.0
+      '@rollup/pluginutils': 5.3.0(rollup@2.79.2)
+      acorn: 8.15.0
+      acorn-import-attributes: 1.9.5(acorn@8.15.0)
+      async-sema: 3.1.1
+      bindings: 1.5.0
+      estree-walker: 2.0.2
+      glob: 10.4.5
+      graceful-fs: 4.2.11
+      node-gyp-build: 4.8.4
+      picomatch: 4.0.3
+      resolve-from: 5.0.0
+    transitivePeerDependencies:
+      - encoding
+      - rollup
+      - supports-color
+
+  '@vercel/nft@0.30.3(rollup@2.79.2)':
     dependencies:
       '@mapbox/node-pre-gyp': 2.0.0
       '@rollup/pluginutils': 5.3.0(rollup@2.79.2)
