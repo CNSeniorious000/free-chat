@@ -16,8 +16,8 @@
   <ModelItem id="qwen-3-235b-a22b-instruct-2507" name="qwen-3-235b-instruct" title="✨ 通义千问最新模型 Qwen 3 235B" />
   <ModelItem id="Llama-4-Maverick-17B-128E-Instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
-  <ModelItem id="gemini-2.5-flash-lite" name="gemini 2.5 flash lite" title="Google 最新一代 Gemini" />
-  <ModelItem id="gemini-2.0-flash-thinking-exp" name="gemini 2.0 flash thinking" title="Google 的推理模型" />
+  <ModelItem id="gemini-2.5-flash" name="gemini 2.5 flash" title="Google 最新一代 Gemini" />
+  <ModelItem id="gemini-2.5-pro" name="gemini 2.5 pro" title="Google 的推理模型" />
   <ModelItem id="grok-3-mini-beta" name="grok-3-mini-beta" title="⭐ xAI 的推理模型" />
   <ModelItem id="grok-3-beta" name="grok-3-beta" title="⭐ xAI 最新的 Grok 3" />
   <!-- <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" /> -->
