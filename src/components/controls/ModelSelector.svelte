@@ -4,19 +4,19 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
-  <ModelItem id="x-ai/grok-4-fast:free" name="grok-4-fast" title="🚀 xAI 最新旗舰款限时免费" />
+  <ModelItem id="grok-4-fast-non-reasoning" name="grok-4-fast" title="xAI 最新的旗舰模型" />
+  <ModelItem id="grok-code-fast-1" name="grok-code-fast-1" title="xAI 的编程模型" />
   <ModelItem id="glm-4.5-flash" name="glm-4.5-flash" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="z-ai/glm-4.5-air:free" name="glm-4.5-air" title="✨ 智谱清言开源巨作 GLM 4.5" />
-  <ModelItem id="glm-4.5v" name="glm-4.5v" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="moonshotai/kimi-k2-instruct-0905" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
-  <ModelItem id="DeepSeek-V3.1" name="deepseek-v3.1-fast" title="🐋 最新 DeepSeek v3.1 高速版" />
+  <ModelItem id="DeepSeek-V3.1-Terminus" name="deepseek-v3.1-terminus" title="🐋 最新 DeepSeek v3.1 Terminus" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
   <ModelItem id="qwen-3-coder-480b" name="qwen-3-coder-480b" title="🧠 旗舰代码模型 Qwen 3 480B" />
   <ModelItem id="qwen-3-235b-a22b-thinking-2507" name="qwen-3-235b-thinking" title="🧠 旗舰混合推理模型 Qwen 3 235B" />
   <ModelItem id="qwen-3-235b-a22b-instruct-2507" name="qwen-3-235b-instruct" title="✨ 通义千问最新模型 Qwen 3 235B" />
   <ModelItem id="Llama-4-Maverick-17B-128E-Instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
-  <ModelItem id="gemini-2.0-flash-lite" name="gemini 2.0 flash lite" title="Google 最新一代 Gemini" />
+  <ModelItem id="gemini-2.5-flash-lite" name="gemini 2.5 flash lite" title="Google 最新一代 Gemini" />
   <ModelItem id="gemini-2.0-flash-thinking-exp" name="gemini 2.0 flash thinking" title="Google 的推理模型" />
   <ModelItem id="grok-3-mini-beta" name="grok-3-mini-beta" title="⭐ xAI 的推理模型" />
   <ModelItem id="grok-3-beta" name="grok-3-beta" title="⭐ xAI 最新的 Grok 3" />
