@@ -66,7 +66,15 @@ class API {
     let whole = ''
     for await (const delta of responseToAsyncIterator(res)) {
       whole += delta
-      const { title }: { title?: string } = parse(splitReasoningPart(whole)[1])
+      let json = splitReasoningPart(whole)[1]
+      if (!json) continue
+      if (!json.startsWith('{')) {
+        if (json.includes('{'))
+          json = json.slice(json.indexOf('{'))
+        else
+          continue
+      }
+      const { title }: { title?: string } = parse(json)
       if (title) yield title
     }
   }
