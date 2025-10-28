@@ -190,7 +190,7 @@ export const ChatProvider: ParentComponent = (props) => {
 
   createEffect(() => {
     if (firstMessage() && untrack(() => !title())) {
-      updatePageTitle(firstMessage())
+      updatePageTitle(firstMessage()).catch(console.warn)
     }
   })
 
