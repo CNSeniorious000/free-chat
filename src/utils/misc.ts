@@ -5,6 +5,7 @@ import { onCleanup } from 'solid-js'
 import type { ChatMessage } from '@/types'
 
 import { promplateBaseUrl } from './constants'
+import { splitReasoningPart } from './deepseek'
 import { responseToAsyncIterator } from './streaming'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
@@ -65,14 +66,7 @@ class API {
     let whole = ''
     for await (const delta of responseToAsyncIterator(res)) {
       whole += delta
-      if (!whole) continue
-      if (!whole.startsWith('{')) {
-        if (whole.includes('{'))
-          whole = whole.slice(whole.indexOf('{'))
-        else
-          continue
-      }
-      const { title }: { title?: string } = parse(whole)
+      const { title }: { title?: string } = parse(splitReasoningPart(whole)[1])
       if (title) yield title
     }
   }
@@ -87,11 +81,13 @@ class API {
       headers: { 'content-type': 'application/json' },
     })
 
-    let json = ''
+    let whole = ''
 
     for await (const delta of responseToAsyncIterator(res)) {
-      json += delta
-      yield parse(json, Allow.ARR) as string[]
+      whole += delta
+      const json = splitReasoningPart(whole)[1]
+      if (json)
+        yield parse(json, Allow.ARR) as string[]
     }
   }
 
