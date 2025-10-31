@@ -56,6 +56,7 @@ interface ChatContextType {
   // Actions
   handleSubmit: () => Promise<void>
   clear: () => void
+  deleteLastMessage: () => void
   stopStreamFetch: () => void
   retryLastFetch: () => void
   isFieldSizingSupported: boolean
@@ -383,6 +384,15 @@ export const ChatProvider: ParentComponent = (props) => {
     }
   }
 
+  const deleteLastMessage = () => {
+    if (streaming() || !messageList().length) return
+
+    const lastMessage = messageList().pop()!
+    tokenCountCache.delete(lastMessage.content)
+    _setMessageList(messageList())
+    syncMessageList()
+  }
+
   const stopStreamFetch = () => controller()?.abort()
 
   const retryLastFetch = () => {
@@ -424,6 +434,7 @@ export const ChatProvider: ParentComponent = (props) => {
     setInview,
     handleSubmit,
     clear,
+    deleteLastMessage,
     stopStreamFetch,
     retryLastFetch,
     isFieldSizingSupported,
