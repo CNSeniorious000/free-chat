@@ -17,7 +17,7 @@ import Tips from './Tips'
 import TokenCounter from './TokenCounter'
 
 export default () => {
-  const { inputRef, messageList, currentAssistantMessage, streaming, inputValue, currentSystemRoleSettings, systemRoleEditing, suggestions, suggestionFeatureOn, isStick, mounted, inview, currentError, setSystemRoleEditing, setStick, setCurrentSystemRoleSettings, setInview, clear, stopStreamFetch, resetTextInputHeight } = useChat()
+  const { inputRef, messageList, currentAssistantMessage, streaming, inputValue, currentSystemRoleSettings, systemRoleEditing, suggestions, suggestionFeatureOn, isStick, mounted, inview, currentError, setSystemRoleEditing, setStick, setCurrentSystemRoleSettings, setInview, clear, deleteLastMessage, stopStreamFetch, resetTextInputHeight } = useChat()
   let rootRef!: HTMLDivElement
   let footer: HTMLElement
 
@@ -89,6 +89,9 @@ export default () => {
       }
       if (event.altKey && event.code === 'KeyC') {
         clear()
+      }
+      if (event.altKey && event.code === 'Backspace') {
+        deleteLastMessage()
       }
     }, false)
 
