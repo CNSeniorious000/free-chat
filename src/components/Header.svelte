@@ -4,8 +4,6 @@
   import { ripple } from 'svelte-ripple-action'
   import { Toaster } from 'svelte-sonner'
 
-  import { trackEvent } from '@/utils/track'
-
   import Ad from './Ad.svelte'
   import CheckStatus from './CheckStatus.svelte'
   import Inview from './Inview.svelte'
@@ -42,7 +40,7 @@
       </a>
     </div>
     <div class="flex">
-      <button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-2 <md:transition-colors" onclick={() => { showSettings = !showSettings; trackEvent('open-settings') }} aria-label="open settings">
+      <button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} class="grid h-10 w-10 place-items-center rounded-md transition-background-color hover:bg-$c-fg-2 <md:transition-colors" onclick={() => { showSettings = !showSettings }} aria-label="open settings">
         <span class="i-ph-gear-six-fill text-lg transition-transform duration-300" class:rotate-30={showSettings}></span>
       </button>
       <Themetoggle {dark} />
