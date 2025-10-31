@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { trackEvent } from '@/utils/track'
+
   import APIKeyInput from './controls/APIKeyInput.svelte'
   import Group from './controls/Group.svelte'
   import Selector from './controls/ModelSelector.svelte'
@@ -12,13 +14,38 @@
   }
 
   let { show = $bindable() }: Props = $props()
+
+  function handleKeydown({ altKey, code }: KeyboardEvent) {
+    if (altKey && code === 'KeyO')
+      show = !show
+  }
+
+  let ref: HTMLDivElement
+
+  $effect(() => {
+    if (show) {
+      trackEvent('open-settings')
+      requestAnimationFrame(() => {
+        // find the first focusable element inside the modal
+        const focusable = ref.querySelector(
+          'input, button, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ) as HTMLElement
+        focusable?.focus()
+      })
+    } else {
+      const input = document.querySelector('textarea.gen-textarea') as HTMLElement
+      input?.focus()
+    }
+  })
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <Modal bind:show icon="i-fluent-emoji-flat-eight-pointed-star">
   {#snippet inside()}
     <div class="i-fluent-thumb-like-24-filled text-lg"></div>
   {/snippet}
-  <div class="w-full flex flex-col gap-5 -translate-y-3">
+  <div bind:this={ref} class="w-full flex flex-col gap-5 -translate-y-3">
     <Section title="选择 LLM" tips="不同的模型响应速度也有区别，由供应商服务压力决定，可能会有波动">
       <Selector />
     </Section>
