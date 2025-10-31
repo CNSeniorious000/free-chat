@@ -49,7 +49,6 @@ interface ChatContextType {
   setInputValue: Setter<string>
   setSystemRoleEditing: Setter<boolean>
   setStick: (stick: boolean) => boolean
-  setMessageList: Setter<ChatMessage[]>
   setCurrentSystemRoleSettings: (role: string) => string
   setInview: Setter<boolean>
 
@@ -71,7 +70,7 @@ export const ChatProvider: ParentComponent = (props) => {
 
   const [currentSystemRoleSettings, _setCurrentSystemRoleSettings] = createSignal('')
   const [systemRoleEditing, setSystemRoleEditing] = createSignal(false)
-  const [_messageList, _setMessageList] = createSignal<ChatMessage[]>([])
+  const [_messageList, setMessageList] = createSignal<ChatMessage[]>([])
   const [currentError, setCurrentError] = createSignal<ErrorMessage | null>(null)
   const {
     currentAssistantMessage,
@@ -240,7 +239,7 @@ export const ChatProvider: ParentComponent = (props) => {
     moderate(input)
 
     batch(() => {
-      _setMessageList([...messageList(), { role: 'user', content: input }])
+      setMessageList([...messageList(), { role: 'user', content: input }])
       setInputValue('')
     })
 
@@ -338,7 +337,7 @@ export const ChatProvider: ParentComponent = (props) => {
 
   const archiveCurrentMessage = (content: string) => {
     batch(() => {
-      _setMessageList([...messageList(), { role: 'assistant', content }])
+      setMessageList([...messageList(), { role: 'assistant', content }])
       setStreaming(false)
       setController(null)
     })
@@ -366,7 +365,7 @@ export const ChatProvider: ParentComponent = (props) => {
       // Clear history but do not interrupt current streaming
       batch(() => {
         setInputValue('')
-        _setMessageList([])
+        setMessageList([])
         setCurrentError(null)
         setTitle()
       })
@@ -375,7 +374,7 @@ export const ChatProvider: ParentComponent = (props) => {
       // Not streaming: clear everything including streaming state
       batch(() => {
         setInputValue('')
-        _setMessageList([])
+        setMessageList([])
         setCurrentError(null)
         setTitle()
         clearStreaming()
@@ -389,7 +388,7 @@ export const ChatProvider: ParentComponent = (props) => {
 
     const lastMessage = messageList().pop()!
     tokenCountCache.delete(lastMessage.content)
-    _setMessageList(messageList())
+    setMessageList(messageList())
     syncMessageList()
   }
 
@@ -401,7 +400,7 @@ export const ChatProvider: ParentComponent = (props) => {
       trackEvent('retry', { lastMessage: messageList().at(-1)!.role })
       const lastMessage = messageList()[messageList().length - 1]
       if (lastMessage.role === 'assistant')
-        _setMessageList(messageList().slice(0, -1))
+        setMessageList(messageList().slice(0, -1))
 
       requestWithLatestMessage()
       syncMessageList()
@@ -429,7 +428,6 @@ export const ChatProvider: ParentComponent = (props) => {
     setInputValue,
     setSystemRoleEditing,
     setStick,
-    setMessageList: _setMessageList,
     setCurrentSystemRoleSettings,
     setInview,
     handleSubmit,
@@ -446,7 +444,7 @@ export const ChatProvider: ParentComponent = (props) => {
       if (localStorage.getItem('messageList')) {
         const messageListFromStorage = JSON.parse(localStorage.getItem('messageList')!)
         if (messageListFromStorage.length) {
-          _setMessageList(messageListFromStorage)
+          setMessageList(messageListFromStorage)
           if (localStorage.getItem('title'))
             setTitle(localStorage.getItem('title')!)
         }
