@@ -345,6 +345,12 @@ export const ChatProvider: ParentComponent = (props) => {
   }
 
   const clear = () => {
+    // Check if we should only clear system message
+    if (inputValue() === '' && messageList().length === 0 && currentSystemRoleSettings() !== '') {
+      setCurrentSystemRoleSettings('')
+      return
+    }
+
     // Always allow clear. If streaming, keep streaming and only clear history
     document.dispatchEvent(new MessagesEvent('clearMessages', messageList().length + Number(Boolean(currentSystemRoleSettings()))))
     const el = inputRef()
