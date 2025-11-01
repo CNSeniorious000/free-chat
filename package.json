@@ -2,8 +2,9 @@
   "name": "free-chat",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node prepare.js & astro dev",
-    "build": "node prepare.js & astro build",
+    "prepare": "node prepare.cjs",
+    "dev": "astro dev",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
