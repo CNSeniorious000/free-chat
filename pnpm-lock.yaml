@@ -107,7 +107,7 @@ importers:
         version: 6.2.0(@unocss/eslint-plugin@66.4.2(eslint@9.39.0(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.22)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.4.0(eslint@9.39.0(jiti@2.6.1)))(eslint-plugin-format@1.0.2(eslint@9.39.0(jiti@2.6.1)))(eslint-plugin-svelte@3.13.0(eslint@9.39.0(jiti@2.6.1))(svelte@5.43.2))(eslint@9.39.0(jiti@2.6.1))(svelte-eslint-parser@1.4.0(svelte@5.43.2))(typescript@5.9.3)(vitest@3.1.1(@types/debug@4.1.12)(@types/node@24.9.2)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1))
       '@iconify/json':
         specifier: latest
-        version: 2.2.402
+        version: 2.2.403
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.6)(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(terser@5.44.0)(tsx@4.19.2)(yaml@2.8.1)))
@@ -1425,8 +1425,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.402':
-    resolution: {integrity: sha512-c4fqEUW+JrolUzwQJR5m4BgoAGGlTn8YjelJW1kc0k5b45/PztyNtLC+VT7Rwgc/sPYEDB4gwbQJCiwnJRku7A==}
+  '@iconify/json@2.2.403':
+    resolution: {integrity: sha512-TU27b9pVsbYuTKF7i/OHAB5rUscWhe85AEk0vPkDT1MMqV7ZWWxUk5B7j03JHacX5NCtggB1KiCz985wjc7HVQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2666,11 +2666,11 @@ packages:
     resolution: {integrity: sha512-Otmxo+0mp8az3B48pLI1I4msNOXPIoP7TLm6h5wOEQmynqHt8oP9nR6NJUeJk6iI5OtFpQtkbJFwfGkmplvc3Q==}
     engines: {node: '>=18.0.0'}
 
-  '@xsai/shared-chat@0.4.0-beta.5':
-    resolution: {integrity: sha512-BWnGwPpUy4wH+EjbCN4SAwWcZVbZUYN/vbYelbr+GYlunqk/YuTJIDekUyEnxm9MNgADfA5wukakvqr2g2s0wA==}
+  '@xsai/shared-chat@0.4.0-beta.8':
+    resolution: {integrity: sha512-M24U0vt/zIcAfLLsED+nlf8n7DXxR+KfiSBWfAmwV8lYjtOAWV0hGBCmEanxNioIZLo1j2mxud8RR1BNpunTCw==}
 
-  '@xsai/shared@0.4.0-beta.5':
-    resolution: {integrity: sha512-6oLyXkN8WoXoufNuIVFMrJyhJEEkWnGEi44v5SBd2fnBU7Wx4nT9ZRJT0A+Yfvx2pYWYqgHUQ9KVnG+DFT3VxQ==}
+  '@xsai/shared@0.4.0-beta.8':
+    resolution: {integrity: sha512-z/2s+PPYTYHAZxiFSGFmAIYxZHUUqQlBIxlzTW1LzOz8YF2XNLBSy8GuOI9qQMV+Wh2D851drSIO/vnObEN+OA==}
 
   '@xsai/stream-text@0.2.2':
     resolution: {integrity: sha512-GTVGuKEpYBOglPQ7cjO18/v8jiZxY/lejXMt+KsZqyMQo/WmH6gUkYkRME/cTyxlQEUiF0L/0CqRjQvtaDlB+Q==}
@@ -8006,7 +8006,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.402':
+  '@iconify/json@2.2.403':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -9630,15 +9630,15 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@xsai/shared-chat@0.4.0-beta.5':
+  '@xsai/shared-chat@0.4.0-beta.8':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.5
+      '@xsai/shared': 0.4.0-beta.8
 
-  '@xsai/shared@0.4.0-beta.5': {}
+  '@xsai/shared@0.4.0-beta.8': {}
 
   '@xsai/stream-text@0.2.2':
     dependencies:
-      '@xsai/shared-chat': 0.4.0-beta.5
+      '@xsai/shared-chat': 0.4.0-beta.8
 
   abbrev@3.0.1: {}
 
