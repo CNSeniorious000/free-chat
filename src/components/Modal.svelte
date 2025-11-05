@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Dialog } from 'bits-ui'
   import { ripple } from 'svelte-ripple-action'
 
   import { setThemeColor } from './ThemeColor.svelte'
@@ -43,7 +44,7 @@
 </script>
 
 <div role="none" onclick={() => (show = false)} class="fixed inset-0 z-100 bg-black/10 transition-opacity duration-800 dark:bg-black/40" class:pointer-events-none={!show} class:op-0={!show} ontransitionstart={() => { transitioning = true }} ontransitionend={() => { transitioning = false }}></div>
-<section class="pointer-events-none fixed bottom-0 left-0 right-0 z-1000 flex flex-row select-none justify-center tracking-wide transition duration-400" class:[&_*]:pointer-events-auto={show} class:op-0={!show} class:translate-y-10={!show} class:ease-out={show} class:ease-in={!show}>
+<Dialog.Root bind:open={show}><Dialog.Content forceMount preventScroll={false} class={['!pointer-events-none fixed bottom-0 left-0 right-0 z-1000 flex flex-row select-none justify-center tracking-wide transition duration-400', show ? 'ease-out [&_*]:pointer-events-auto' : 'op-0 translate-y-10 ease-in']}>
   <div class="relative m-5vmin w-xl flex flex-col gap-3 rounded-lg bg-$c-bg p-5 shadow-xl [&_a]:(mx-1 border-b-1.5 border-$c-fg-20 pb-0.3 transition-border-color dark:border-$c-fg) [&_a:hover]:(border-$c-fg-60 dark:border-$c-fg-40)">
     <div class="relative z-1 flex flex-row items-center gap-3 text-4xl">
       <div class="{icon} absolute right-1/2 translate-x-1/2 -translate-y-1/2"></div>
@@ -69,4 +70,4 @@
       </div>
     </div>
   </div>
-</section>
+</Dialog.Content></Dialog.Root>
