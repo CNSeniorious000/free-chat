@@ -10,14 +10,15 @@
   <p>
     <a b-slate-link href="https://ic.free-chat.asia/" data-umami-event="homepage-link">返回 Free Chat 主页</a>
     <span px-0.5 select-none op-20>|</span>
-    <a b-slate-link href="mailto:admin@muspimerol.site?subject=❗{origin} Error Report&body={origin} 网站不能正常使用" data-umami-event="bug-report">问题反馈</a>
+    <a b-slate-link href="mailto:me@promplate.dev?subject=❗{origin} Error Report&body={origin} 网站不能正常使用" data-umami-event="bug-report">问题反馈</a>
     <span px-0.5 select-none op-20>|</span>
     <a b-slate-link href="https://tips.free-chat.asia/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE" data-umami-event="privacy-page">隐私协议</a>
   </p>
-  <p>
-    <a class="w-fit flex items-center gap-1 rounded-full bg-$c-fg-5 px-2 py-1 op-80 transition-opacity -my-1 hover:op-100" href="https://promplate.dev/" data-umami-event="tagline-clicked">
-      <span op-30>Powered by</span>
-      <span font-fira><span>&lt;/Promplate/&gt;</span></span>
+  <p z-1 class="group">
+    <a class="flex items-center gap-1 rounded-full bg-$c-fg-5 px-2 py-1 transition-opacity -my-1 not-hover:op-80" href="https://muspimerol.site/" data-umami-event="tagline-clicked">
+      <span class="mr-0.4 size-1.6 rounded-full bg-current transition group-not-hover:(scale-80 op-25)"></span>
+      <span op-30>Built by</span>
+      <span>Muspi Merol</span>
     </a>
   </p>
 </footer>
