@@ -18,7 +18,36 @@
     <a class="flex items-center gap-1 rounded-full px-2 py-1 transition -my-1 hover:bg-$c-fg-5 not-hover:op-80" href="https://muspimerol.site/" data-umami-event="tagline-clicked">
       <span op-30>Built by</span>
       <span>Muspi Merol</span>
-      <span class="ml-0.4 size-1.6 rounded-full bg-current transition-all group-not-hover:(op-0 -mr-4.7) <sm:hidden"></span>
+      <span class="pulse-load ml-0.4 size-1.6 rounded-full bg-current transition-all group-not-hover:(op-0 -mr-4.7) <sm:hidden"></span>
     </a>
   </p>
 </footer>
+
+<style>
+  @keyframes pulse-load {
+    0% {
+      opacity: 1;
+      margin-right: 0;
+    }
+  }
+
+  @keyframes pulse-load-bg {
+    0% {
+      opacity: 0.9;
+      background-color: var(--c-fg-5);
+    }
+  }
+
+  @media (min-width: 640px) {
+    /* sm: */
+    .pulse-load {
+      animation: pulse-load 0.5s 1s backwards;
+    }
+    a:has(.pulse-load) {
+      animation: pulse-load-bg 0.5s 1s backwards;
+    }
+    p:has(.pulse-load) {
+      will-change: contents;
+    }
+  }
+</style>
