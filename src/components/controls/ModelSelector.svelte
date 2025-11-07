@@ -25,6 +25,8 @@
   <!-- <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" /> -->
   <ModelItem id="yi-lightning" name="yi-lightning" title="零一万物" />
   <ModelItem id="THUDM/GLM-4-9B-0414" name="glm-4-9b-chat" title="✨ 智谱 AI 四月上新" />
+  <Hr text="匿名测试模型（供应商可能也会收集用户数据）" />
+  <ModelItem id="openrouter/polaris-alpha" name="polaris-alpha" title="👋 Polaris Alpha" />
   <Hr text="低可用性模型（延迟较大）" />
   <!-- <ModelItem id="azure:gpt-4o" name="gpt-4o" title="GPT 4o (Azure)" /> -->
   <!-- <ModelItem id="azure:gpt-4o-mini" name="gpt-4o-mini" title="GPT 4o mini (Azure)" /> -->
