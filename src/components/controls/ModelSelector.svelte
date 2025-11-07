@@ -12,8 +12,8 @@
   <ModelItem id="DeepSeek-V3.1-Terminus" name="deepseek-v3.1-terminus" title="🐋 最新 DeepSeek v3.1 Terminus" />
   <ModelItem id="MiniMax-M2" name="MiniMax-M2" title="MiniMax 高效率编码模型" />
   <ModelItem id="deepseek-ai/DeepSeek-V3.2-Exp" name="deepseek-v3.2-exp" title="🐋 DeepSeek 实验模型" />
+  <ModelItem id="zai-glm-4.6" name="glm-4.6" title="🚀 智谱清言开源巨作 GLM 4.6" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
-  <ModelItem id="qwen-3-coder-480b" name="qwen-3-coder-480b" title="🧠 旗舰代码模型 Qwen 3 480B" />
   <ModelItem id="qwen-3-235b-a22b-thinking-2507" name="qwen-3-235b-thinking" title="🧠 旗舰混合推理模型 Qwen 3 235B" />
   <ModelItem id="qwen-3-235b-a22b-instruct-2507" name="qwen-3-235b-instruct" title="✨ 通义千问最新模型 Qwen 3 235B" />
   <ModelItem id="meta-llama/llama-4-maverick-17b-128e-instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
