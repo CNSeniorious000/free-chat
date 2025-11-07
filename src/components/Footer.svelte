@@ -14,11 +14,11 @@
     <span px-0.5 select-none op-20>|</span>
     <a b-slate-link href="https://tips.free-chat.asia/Free%20Chat%20%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE" data-umami-event="privacy-page">隐私协议</a>
   </p>
-  <p z-1 class="group">
-    <a class="flex items-center gap-1 rounded-full bg-$c-fg-5 px-2 py-1 transition-opacity -my-1 not-hover:op-80" href="https://muspimerol.site/" data-umami-event="tagline-clicked">
-      <span class="mr-0.4 size-1.6 rounded-full bg-current transition group-not-hover:(scale-80 op-25)"></span>
+  <p z-1 class="group sm:[&_*]:(duration-300)">
+    <a class="flex items-center gap-1 rounded-full px-2 py-1 transition -my-1 hover:bg-$c-fg-5 not-hover:op-80" href="https://muspimerol.site/" data-umami-event="tagline-clicked">
       <span op-30>Built by</span>
       <span>Muspi Merol</span>
+      <span class="ml-0.4 size-1.6 rounded-full bg-current transition-all group-not-hover:(op-0 -mr-4.7) <sm:hidden"></span>
     </a>
   </p>
 </footer>
