@@ -14,9 +14,9 @@
 </script>
 
 <script lang="ts">
-  import { ripple } from 'svelte-ripple-action'
-
   import { trackEvent } from '@/utils/track'
+
+  import { ripple } from '../../utils/ripple'
 
   interface Props {
     id: Model;

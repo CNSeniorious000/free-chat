@@ -1,15 +1,14 @@
 <script lang="ts">
   import openai from '@lobehub/icons-static-svg/icons/openai.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
-  import { ripple } from 'svelte-ripple-action'
   import { Toaster } from 'svelte-sonner'
 
+  import { ripple } from '../utils/ripple'
   import Ad from './Ad.svelte'
   import CheckStatus from './CheckStatus.svelte'
   import Inview from './Inview.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
-  import 'svelte-ripple-action/ripple.css'
 
   interface Props {
     dark: boolean | undefined;
