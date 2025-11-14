@@ -67,7 +67,7 @@ function removeEvent(element: HTMLElement, event: string, handler: EventListener
   element.removeEventListener(event, handler)
 }
 
-export const ripple: Action<HTMLElement, RippleOptions> = (el, options) => {
+export const ripple: Action<HTMLElement, RippleOptions | undefined> = (el, options: RippleOptions = {}) => {
   let maximumRadius = 0
 
   const addClassIfMissing = () => {
@@ -172,7 +172,7 @@ export const ripple: Action<HTMLElement, RippleOptions> = (el, options) => {
   }
 
   return {
-    update(newOptions: RippleOptions) {
+    update(newOptions: RippleOptions={}) {
       options = newOptions
       setOptions(newOptions)
     },
