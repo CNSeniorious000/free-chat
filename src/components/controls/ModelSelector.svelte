@@ -24,7 +24,9 @@
   <ModelItem id="gemini-2.0-flash-thinking-exp" name="gemini 2.0 flash thinking" title="Google 的推理模型" />
   <!-- <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" /> -->
   <ModelItem id="yi-lightning" name="yi-lightning" title="零一万物" />
-  <ModelItem id="THUDM/GLM-4-9B-0414" name="glm-4-9b-chat" title="✨ 智谱 AI 四月上新" />
+  <ModelItem id="kwaipilot/kat-coder-pro:free" name="Kat Coder Pro" title="✨ 快手出品的编程模型" />
+  <ModelItem id="meituan/longcat-flash-chat:free" name="LongCat Flash Chat" title="✨ 美团 LongCat 560B MoE" />
+  <ModelItem id="alibaba/tongyi-deepresearch-30b-a3b:free" name="Tongyi DeepResearch 30B" title="Tongyi DeepResearch 30B" />
   <Hr text="低可用性模型（延迟较大）" />
   <!-- <ModelItem id="azure:gpt-4o" name="gpt-4o" title="GPT 4o (Azure)" /> -->
   <!-- <ModelItem id="azure:gpt-4o-mini" name="gpt-4o-mini" title="GPT 4o mini (Azure)" /> -->
