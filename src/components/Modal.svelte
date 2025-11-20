@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Dialog } from 'bits-ui'
-  import { ripple } from 'svelte-ripple-action'
 
+  import { ripple } from '../utils/ripple'
   import { setThemeColor } from './ThemeColor.svelte'
 
   interface Props {
