@@ -68,6 +68,9 @@ importers:
       rehype-katex:
         specifier: ^7.0.1
         version: 7.0.1
+      rehype-stringify:
+        specifier: ^10.0.1
+        version: 10.0.1
       remark:
         specifier: ^15.0.1
         version: 15.0.1
@@ -2427,11 +2430,11 @@ packages:
     resolution: {integrity: sha512-/BqffJYRIbX1HfNUZkPvtiSloC3QCvxAYC82g0uo3ruiJ44GOiCGH1q/XWF0/l5tWBvFsgX5VBA8l7IhQkCNfA==}
     engines: {node: '>=18.0.0'}
 
-  '@xsai/shared-chat@0.4.0-beta.8':
-    resolution: {integrity: sha512-M24U0vt/zIcAfLLsED+nlf8n7DXxR+KfiSBWfAmwV8lYjtOAWV0hGBCmEanxNioIZLo1j2mxud8RR1BNpunTCw==}
+  '@xsai/shared-chat@0.4.0-beta.9':
+    resolution: {integrity: sha512-wOmWggxW6H0DuV6k8aXUx+m3MzfE9pmSfR2VnnB4jdlRBKSt3i4vNv9yMQC1FVdBW9PtxgqlHHtSPDPQ9Jr41A==}
 
-  '@xsai/shared@0.4.0-beta.8':
-    resolution: {integrity: sha512-z/2s+PPYTYHAZxiFSGFmAIYxZHUUqQlBIxlzTW1LzOz8YF2XNLBSy8GuOI9qQMV+Wh2D851drSIO/vnObEN+OA==}
+  '@xsai/shared@0.4.0-beta.9':
+    resolution: {integrity: sha512-AH9d7MkqBAqWCDTY6FVjenaMUBnOVdfG3tLQ8ORo0KsX70moMeu6CLzyt1z7tmsrcis3jHgYmw+StuK0VFtytg==}
 
   '@xsai/stream-text@0.2.2':
     resolution: {integrity: sha512-GTVGuKEpYBOglPQ7cjO18/v8jiZxY/lejXMt+KsZqyMQo/WmH6gUkYkRME/cTyxlQEUiF0L/0CqRjQvtaDlB+Q==}
@@ -9037,15 +9040,15 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@xsai/shared-chat@0.4.0-beta.8':
+  '@xsai/shared-chat@0.4.0-beta.9':
     dependencies:
-      '@xsai/shared': 0.4.0-beta.8
+      '@xsai/shared': 0.4.0-beta.9
 
-  '@xsai/shared@0.4.0-beta.8': {}
+  '@xsai/shared@0.4.0-beta.9': {}
 
   '@xsai/stream-text@0.2.2':
     dependencies:
-      '@xsai/shared-chat': 0.4.0-beta.8
+      '@xsai/shared-chat': 0.4.0-beta.9
 
   abbrev@3.0.1: {}
 
