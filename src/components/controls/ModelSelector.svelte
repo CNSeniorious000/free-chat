@@ -4,8 +4,8 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
-  <ModelItem id="grok-4-fast-non-reasoning" name="grok-4-fast" title="xAI 最新的旗舰模型" />
-  <ModelItem id="grok-code-fast-1" name="grok-code-fast-1" title="xAI 的编程模型" />
+  <ModelItem id="x-ai/grok-4.1-fast:free" name="grok-4.1-fast" title="xAI 最新的旗舰模型" />
+  <ModelItem id="qwen/qwen3-coder:free" name="qwen-coder-480b" title="Qwen 编程模型" />
   <ModelItem id="glm-4.5-flash" name="glm-4.5-flash" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="z-ai/glm-4.5-air:free" name="glm-4.5-air" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="moonshotai/kimi-k2-instruct-0905" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
