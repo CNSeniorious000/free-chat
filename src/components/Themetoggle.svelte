@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { ripple } from 'svelte-ripple-action'
 
   import { trackEvent } from '@/utils/track'
 
+  import { ripple } from '../utils/ripple'
   import ThemeColor, { setThemeColor } from './ThemeColor.svelte'
 
   let themeToggle = $state<HTMLButtonElement>()
