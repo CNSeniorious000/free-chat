@@ -27,6 +27,8 @@
   <ModelItem id="kwaipilot/kat-coder-pro:free" name="Kat Coder Pro" title="✨ 快手出品的编程模型" />
   <ModelItem id="meituan/longcat-flash-chat:free" name="LongCat Flash Chat" title="✨ 美团 LongCat 560B MoE" />
   <ModelItem id="alibaba/tongyi-deepresearch-30b-a3b:free" name="Tongyi DeepResearch 30B" title="Tongyi DeepResearch 30B" />
+  <Hr text="匿名测试模型（供应商可能也会收集用户数据）" />
+  <ModelItem id="openrouter/bert-nebulon-alpha" name="bert-nebulon" title="Bert-Nebulon Alpha" />
   <Hr text="低可用性模型（延迟较大）" />
   <!-- <ModelItem id="azure:gpt-4o" name="gpt-4o" title="GPT 4o (Azure)" /> -->
   <!-- <ModelItem id="azure:gpt-4o-mini" name="gpt-4o-mini" title="GPT 4o mini (Azure)" /> -->
