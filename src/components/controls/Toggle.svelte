@@ -9,6 +9,7 @@
 
   const { key, initial = true }: Props = $props()
 
+  // svelte-ignore state_referenced_locally
   const checked = persisted(key, initial, {
     beforeWrite: (value) => {
       // Trigger custom event before writing to localStorage

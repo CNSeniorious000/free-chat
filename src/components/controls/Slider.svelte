@@ -9,6 +9,7 @@
 
   const { key, initial }: Props = $props()
 
+  // svelte-ignore state_referenced_locally
   const value = persisted(key, initial)
 
   $effect(() => {
