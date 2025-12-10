@@ -9,24 +9,24 @@
   <ModelItem id="glm-4.5-flash" name="glm-4.5-flash" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="z-ai/glm-4.5-air:free" name="glm-4.5-air" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="moonshotai/kimi-k2-instruct-0905" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
-  <ModelItem id="DeepSeek-V3.1-Terminus" name="deepseek-v3.1-terminus" title="🐋 最新 DeepSeek v3.1 Terminus" />
-  <ModelItem id="MiniMax-M2" name="MiniMax-M2" title="MiniMax 高效率编码模型" />
-  <ModelItem id="deepseek-ai/DeepSeek-V3.2-Exp" name="deepseek-v3.2-exp" title="🐋 DeepSeek 实验模型" />
+  <ModelItem id="tngtech/tng-r1t-chimera:free" name="tng-r1t-chimera" title="💞 创意故事与角色互动实验模型 (较慢)" />
   <ModelItem id="zai-glm-4.6" name="glm-4.6" title="🚀 智谱清言开源巨作 GLM 4.6" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
   <ModelItem id="qwen-3-32b" name="qwen-3-32b" title="🧠 Qwen 通义千问推理模型 Qwen 3 32B" />
   <ModelItem id="qwen-3-235b-a22b-instruct-2507" name="qwen-3-235b-instruct" title="✨ 通义千问最新模型 Qwen 3 235B" />
   <ModelItem id="meta-llama/llama-4-maverick-17b-128e-instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
-  <ModelItem id="deepseek/deepseek-chat-v3.1:free" name="deepseek-v3.1" title="🐋 八月下旬更新的 DeepSeek v3.1" />
+  <ModelItem id="DeepSeek-V3.1-Terminus" name="deepseek-v3.1-terminus" title="🐋 最新 DeepSeek v3.1 Terminus" />
+  <ModelItem id="deepseek-ai/DeepSeek-V3.2-Exp" name="deepseek-v3.2-exp" title="🐋 DeepSeek 最新款" />
   <ModelItem id="gemma-3-27b-it" name="gemma 3" title="Google 最新的开源模型" />
   <ModelItem id="gemini-2.5-flash-lite" name="gemini 2.5 flash lite" title="Google 最新一代 Gemini" />
-  <ModelItem id="gemini-2.0-flash-thinking-exp" name="gemini 2.0 flash thinking" title="Google 的推理模型" />
+  <ModelItem id="nex-agi/deepseek-v3.1-nex-n1:free" name="deepseek-v3.1-nex-n1" title="DeepSeek 上海创智学院后训练版" />
   <!-- <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" /> -->
   <ModelItem id="yi-lightning" name="yi-lightning" title="零一万物" />
   <ModelItem id="kwaipilot/kat-coder-pro:free" name="Kat Coder Pro" title="✨ 快手出品的编程模型" />
-  <ModelItem id="meituan/longcat-flash-chat:free" name="LongCat Flash Chat" title="✨ 美团 LongCat 560B MoE" />
-  <ModelItem id="alibaba/tongyi-deepresearch-30b-a3b:free" name="Tongyi DeepResearch 30B" title="Tongyi DeepResearch 30B" />
+  <ModelItem id="allenai/olmo-3-32b-think:free" name="olmo-3-32b-think" title="🧠 开源的深度推理模型" />
+  <ModelItem id="amazon/nova-2-lite-v1:free" name="nova-2-lite-v1" title="适用于日常任务 / 长上下文" />
+  <ModelItem id="arcee-ai/trinity-mini:free" name="trinity-mini" title="arcee-ai 高效的开源模型" />
   <Hr text="低可用性模型（延迟较大）" />
   <!-- <ModelItem id="azure:gpt-4o" name="gpt-4o" title="GPT 4o (Azure)" /> -->
   <!-- <ModelItem id="azure:gpt-4o-mini" name="gpt-4o-mini" title="GPT 4o mini (Azure)" /> -->
