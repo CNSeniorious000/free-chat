@@ -18,8 +18,8 @@ importers:
         specifier: ~5.1.0
         version: 5.1.3(@types/node@24.10.1)(jiti@2.6.1)(solid-js@1.9.10)(terser@5.44.1)(yaml@2.8.2)
       '@astrojs/svelte':
-        specifier: ~7.2.0
-        version: 7.2.2(@types/node@24.10.1)(astro@5.16.4(@netlify/blobs@10.4.1)(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.45.8)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
+        specifier: ~7.2.3
+        version: 7.2.3(@types/node@24.10.1)(astro@5.16.4(@netlify/blobs@10.4.1)(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.45.8)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
       '@astrojs/vercel':
         specifier: ~9.0.0
         version: 9.0.2(astro@5.16.4(@netlify/blobs@10.4.1)(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))(rollup@2.79.2)(svelte@5.45.8)
@@ -278,8 +278,8 @@ packages:
       solid-devtools:
         optional: true
 
-  '@astrojs/svelte@7.2.2':
-    resolution: {integrity: sha512-Eb9ahZ2BD2kPx5u7c/U6+FVNLxtuUcx0vL6kkGPP0hEikoSy0PavdjwYfZiuOtPCE7ZpQHGikGZMzrIFpjH9pQ==}
+  '@astrojs/svelte@7.2.3':
+    resolution: {integrity: sha512-45D9xKOvYBQ/Z7lgt/g8Mli1cD5rJxnnz44i6MDSa2oKxMVocT6pHT/+Uou1a3Ch3yGZ5KpJRyJC6HWCOzreqg==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       astro: ^5.0.0
@@ -6559,7 +6559,7 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/svelte@7.2.2(@types/node@24.10.1)(astro@5.16.4(@netlify/blobs@10.4.1)(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.45.8)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)':
+  '@astrojs/svelte@7.2.3(@types/node@24.10.1)(astro@5.16.4(@netlify/blobs@10.4.1)(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.45.8)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.45.8)(vite@6.4.1(@types/node@24.10.1)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
       astro: 5.16.4(@netlify/blobs@10.4.1)(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
