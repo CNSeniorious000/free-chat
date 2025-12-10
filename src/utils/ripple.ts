@@ -172,7 +172,7 @@ export const ripple: Action<HTMLElement, RippleOptions | undefined> = (el, optio
   }
 
   return {
-    update(newOptions: RippleOptions={}) {
+    update(newOptions: RippleOptions = {}) {
       options = newOptions
       setOptions(newOptions)
     },
