@@ -4,7 +4,7 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
-  <ModelItem id="grok-code-fast-1" name="grok-code" title="xAI 最新的编程模型" />
+  <ModelItem id="grok-4-1-fast-non-reasoning" name="grok-4.1" title="xAI 旗舰的通用模型" />
   <ModelItem id="mistralai/devstral-2512:free" name="devstral-2512" title="Mistral 的编程模型" />
   <ModelItem id="glm-4.5-flash" name="glm-4.5-flash" title="✨ 智谱清言开源巨作 GLM 4.5" />
   <ModelItem id="z-ai/glm-4.5-air:free" name="glm-4.5-air" title="✨ 智谱清言开源巨作 GLM 4.5" />
