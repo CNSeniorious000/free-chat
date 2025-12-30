@@ -2,7 +2,7 @@
   import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
   import { persisted } from 'svelte-persisted-store'
 
-  type Model = 'gpt-oss-120b' | 'glm-4.5-flash' | 'z-ai/glm-4.5-air:free' | 'zai-glm-4.6' | 'qwen-3-32b' | 'qwen-3-235b-a22b-instruct-2507' | 'DeepSeek-V3.1-Terminus' | 'Llama-4-Maverick-17B-128E-Instruct' | 'llama-3.3-70b' | 'Phi-4' | 'Mistral-medium-2505' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-code-fast-1' | 'mistralai/devstral-2512:free' | 'gemma-3-27b-it' | 'gemini-2.5-flash' | 'nex-agi/deepseek-v3.1-nex-n1:free' | 'Cohere-command-a' | 'moonshotai/kimi-k2-instruct-0905' | 'tngtech/tng-r1t-chimera:free' | 'deepseek-ai/DeepSeek-V3.2-Exp' | 'kwaipilot/kat-coder-pro:free' | 'arcee-ai/trinity-mini:free' | 'allenai/olmo-3-32b-think:free' | 'amazon/nova-2-lite-v1:free' | 'azure:gpt-5-chat' | 'azure:gpt-4.1' | 'azure:o3' | 'azure:o4-mini'
+  type Model = 'gpt-oss-120b' | 'glm-4.5-flash' | 'z-ai/glm-4.5-air:free' | 'zai-glm-4.6' | 'qwen-3-32b' | 'qwen-3-235b-a22b-instruct-2507' | 'DeepSeek-V3.1-Terminus' | 'Llama-4-Maverick-17B-128E-Instruct' | 'llama-3.3-70b' | 'Phi-4' | 'Mistral-medium-2505' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-4-1-fast-non-reasoning' | 'mistralai/devstral-2512:free' | 'gemma-3-27b-it' | 'gemini-2.5-flash' | 'nex-agi/deepseek-v3.1-nex-n1:free' | 'Cohere-command-a' | 'moonshotai/kimi-k2-instruct-0905' | 'tngtech/tng-r1t-chimera:free' | 'deepseek-ai/DeepSeek-V3.2-Exp' | 'kwaipilot/kat-coder-pro:free' | 'arcee-ai/trinity-mini:free' | 'allenai/olmo-3-32b-think:free' | 'amazon/nova-2-lite-v1:free' | 'azure:gpt-5-chat' | 'azure:gpt-4.1' | 'azure:o3' | 'azure:o4-mini' | 'xiaomi/mimo-v2-flash:free' | 'nvidia/nemotron-3-nano-30b-a3b:free'
 
   const defaultModel = PUBLIC_DEFAULT_MODEL as Model
 

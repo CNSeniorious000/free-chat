@@ -15,6 +15,8 @@
 
   let { show = $bindable() }: Props = $props()
 
+  let previousFocus = $state<HTMLElement | null>()
+
   function handleKeydown({ altKey, code }: KeyboardEvent) {
     if (altKey && code === 'KeyO')
       show = !show
@@ -22,10 +24,10 @@
 
   $effect(() => {
     if (show) {
+      previousFocus = document.activeElement as HTMLElement | null
       trackEvent('open-settings')
     } else {
-      const input = document.querySelector('textarea.gen-textarea') as HTMLElement
-      input?.focus()
+      previousFocus?.focus()
     }
   })
 </script>
