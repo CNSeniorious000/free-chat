@@ -27,7 +27,6 @@ export const POST: APIRoute = async(context) => {
       ],
       model,
       temperature: 0,
-      // @ts-expect-error - response_format is supported but not in types
       response_format: TITLE_GEN_JSON_MODE ? { type: 'json_object' } : undefined,
       ...openaiApiParams,
     })
