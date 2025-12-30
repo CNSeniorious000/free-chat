@@ -1,19 +1,15 @@
 import type { Accessor } from 'solid-js'
 
 import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
-import rehypeKatex from 'rehype-katex'
-import remarkBreaks from 'remark-breaks'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
 import { createMemo, Index, Show } from 'solid-js'
-import { SolidMarkdown } from 'solid-markdown'
 
 import type { ChatMessage } from '@/types'
 
 import { splitReasoningPart } from '@/utils/deepseek'
 
-import CodeBlock from './CodeBlock'
 import IconRefresh from './icons/Refresh'
+import { processLatexBrackets } from './markdown/llm-math-hack'
+import SimpleMarkdown from './markdown/SimpleMarkdown'
 
 interface Props {
   role: ChatMessage['role']
@@ -34,7 +30,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
 
   const result = createMemo(() => splitReasoningPart(typeof message === 'function' ? message() : message))
   const reasoningContent = () => result()[0]
-  const content = createMemo(() => incomplete ? heuristicPatch(result()[1]) : result()[1])
+  const content = createMemo(() => processLatexBrackets(incomplete ? heuristicPatch(result()[1]) : result()[1]))
 
   function heuristicPatch(markdown: string) {
     const lastNewlineIndex = markdown.lastIndexOf('\n')
@@ -77,19 +73,9 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
                 </Index>
               </div>
             </Show>
-            <SolidMarkdown
-              remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
-              rehypePlugins={[rehypeKatex]}
-              class="message relative max-w-full overflow-hidden prose <sm:text-3.6"
-              components={{
-                code: CodeBlock,
-                pre({ children }) {
-                  return <pre class="group overflow-hidden">{children}</pre>
-                },
-              }}
-            >
-              {content()}
-            </SolidMarkdown>
+            <div class="message relative max-w-full overflow-hidden prose <sm:text-3.6">
+              <SimpleMarkdown text={content()} />
+            </div>
           </div>
         </div>
         {showRetry?.() && onRetry && (
