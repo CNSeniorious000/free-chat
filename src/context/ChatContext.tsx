@@ -44,6 +44,7 @@ interface ChatContextType {
   inview: () => boolean
   title: () => string | undefined
   md: (markdown: string) => string
+  userAgent: string
 
   // Setters
   setInputValue: Setter<string>
@@ -64,7 +65,7 @@ interface ChatContextType {
 
 const ChatContext = createContext<ChatContextType>()
 
-export const ChatProvider: ParentComponent = (props) => {
+export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => {
   const [inputRef, setInputRef] = createSignal<HTMLTextAreaElement | undefined>(undefined)
   const isFieldSizingSupported = false
 
@@ -425,6 +426,7 @@ export const ChatProvider: ParentComponent = (props) => {
     inview,
     title,
     md,
+    userAgent: props.userAgent ?? '',
     setInputValue,
     setSystemRoleEditing,
     setStick,
