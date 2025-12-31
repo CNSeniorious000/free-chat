@@ -1,6 +1,6 @@
 import type { Setter } from 'solid-js'
 
-import { createEffect, Match, onMount, Switch } from 'solid-js'
+import { createEffect, Match, onMount, Show, Switch } from 'solid-js'
 import { Toaster } from 'solid-toast'
 
 import { useChat } from '@/context/ChatContext'
@@ -115,7 +115,9 @@ export default () => {
         setCurrentSystemRoleSettings={setCurrentSystemRoleSettings as Setter<string>}
       />
       <div class="w-full flex flex-grow items-center justify-center">
-        <Tips />
+        <Show when={!streaming() && messageList().length === 0 && !systemRoleEditing()}>
+          <Tips />
+        </Show>
       </div>
       <MessageList />
 
