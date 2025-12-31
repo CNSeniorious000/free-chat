@@ -33,3 +33,19 @@
 .message table tbody tr:last-of-type {
   border-bottom: 2px solid #64748b40;
 }
+
+/* [![]()]() [![]()]() */
+.message a > img:only-child {
+  display: inline;
+}
+
+/* ![]()
+   ![]() */
+.message :not(:has(:not(img, br))) {
+  img {
+    display: inline;
+  }
+  br {
+    display: none;
+  }
+}
