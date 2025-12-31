@@ -43,6 +43,7 @@ interface ChatContextType {
   mounted: () => boolean
   inview: () => boolean
   title: () => string | undefined
+  backgroundPattern: () => 'endless' | 'classic'
   md: (markdown: string) => string
   userAgent: string
 
@@ -94,6 +95,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   const [suggestionFeatureOn, setSuggestionFeature] = createSignal(true)
   const [inview, setInview] = createSignal(true)
   const [title, setTitle] = createSignal<string>()
+  const [backgroundPattern, setBackgroundPattern] = createSignal<'endless' | 'classic'>('endless')
 
   const moderationInterval = PUBLIC_MODERATION_INTERVAL
 
@@ -425,6 +427,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     mounted,
     inview,
     title,
+    backgroundPattern,
     md,
     userAgent: props.userAgent ?? '',
     setInputValue,
@@ -471,6 +474,9 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       // ignore
     }
 
+    const storedPattern = localStorage.getItem('pattern')
+    setBackgroundPattern(storedPattern === 'classic' ? 'classic' : 'endless')
+
     makeEventListener(document, 'localStorageSet', (event) => {
       const { detail: { key, value } } = event as LocalStorageSetEvent
       if (key === 'suggestion') {
@@ -479,6 +485,9 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
         } catch {
           setSuggestionFeature(true)
         }
+      }
+      if (key === 'pattern') {
+        setBackgroundPattern(value === 'classic' ? 'classic' : 'endless')
       }
     })
   })

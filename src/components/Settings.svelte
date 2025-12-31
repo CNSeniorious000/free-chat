@@ -2,6 +2,7 @@
   import { trackEvent } from '@/utils/track'
 
   import APIKeyInput from './controls/APIKeyInput.svelte'
+  import BackgroundSelector from './controls/BackgroundSelector.svelte'
   import Group from './controls/Group.svelte'
   import Selector from './controls/ModelSelector.svelte'
   import Section from './controls/Section.svelte'
@@ -39,6 +40,12 @@
     <div class="i-fluent-thumb-like-24-filled text-lg"></div>
   {/snippet}
   <div class="w-full flex flex-col gap-5 -translate-y-3">
+    <div class="hidden sm:inline">
+      <Section title="背景图形">
+        <BackgroundSelector />
+      </Section>
+    </div>
+
     <Section title="选择 LLM" tips="不同的模型响应速度也有区别，由供应商服务压力决定，可能会有波动">
       <Selector />
     </Section>

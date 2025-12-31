@@ -4,10 +4,11 @@ import { createEffect, createSignal, onMount } from 'solid-js'
 import { useChat } from '@/context/ChatContext'
 
 export default () => {
-  const { isStick, streaming, messageList, currentError } = useChat()
+  const { isStick, streaming, messageList, currentError, backgroundPattern } = useChat()
 
   let bgd!: HTMLDivElement
   const [bgdAnimating, setBgdAnimating] = createSignal(false)
+  const bgClass = () => backgroundPattern() === 'classic' ? 'bg-hero-topography-gray-500/15' : 'bg-hero-jigsaw-gray-500/10'
 
   onMount(() => {
     const damping = 0.5
@@ -78,7 +79,8 @@ export default () => {
   return (
     <div
       ref={bgd}
-      class="fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll animate-fade-in bg-top-center bg-hero-jigsaw-gray-500/10 <md:bg-none <md:hidden"
+      class="fixed left-0 top-0 z--1 h-1000vh w-full translate-y-$scroll animate-fade-in bg-top-center <md:bg-none <md:hidden"
+      classList={{ [bgClass()]: true }}
     />
   )
 }
