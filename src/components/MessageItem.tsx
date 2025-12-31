@@ -1,19 +1,18 @@
 import type { Accessor } from 'solid-js'
 
-import { writeClipboard } from '@solid-primitives/clipboard'
-import { createEventListener } from '@solid-primitives/event-listener'
-import { debounce } from '@solid-primitives/scheduled'
 import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
-import MarkdownIt from 'markdown-it'
-import mdHighlight from 'markdown-it-highlightjs'
-// @ts-expect-error missing types
-import mdKatex from 'markdown-it-katex'
-import { createMemo, createSignal, Index, Show } from 'solid-js'
+import rehypeKatex from 'rehype-katex'
+import remarkBreaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import { createMemo, Index, Show } from 'solid-js'
+import { SolidMarkdown } from 'solid-markdown'
 
 import type { ChatMessage } from '@/types'
 
 import { splitReasoningPart } from '@/utils/deepseek'
 
+import CodeBlock from './CodeBlock'
 import IconRefresh from './icons/Refresh'
 
 interface Props {
@@ -26,43 +25,12 @@ interface Props {
 
 const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
-const md = MarkdownIt({ linkify: true, breaks: true }).use(mdKatex).use(mdHighlight)
-
-const fence = md.renderer.rules.fence!
-
 export default ({ role, message, showRetry, onRetry, incomplete = false }: Props) => {
   const roleClass = {
     system: '',
     user: 'bg-$c-fg-30',
     assistant: 'bg-emerald-600/50 dark:bg-emerald-300 sm:(bg-gradient-to-br from-cyan-200 to-green-200)',
   }
-  const [copied, setCopied] = createSignal(false)
-
-  // Use debounce to reset copied state after 1000ms
-  const debouncedResetCopied = debounce(() => setCopied(false), 1000)
-
-  const copy = async(element: Element) => {
-    setCopied(true)
-
-    try {
-      await writeClipboard([
-        new ClipboardItem({ 'text/plain': element.textContent!, 'text/html': element.outerHTML }),
-      ])
-    } catch {
-      writeClipboard(element.textContent!)
-    }
-
-    debouncedResetCopied()
-  }
-
-  let htmlContainer!: HTMLDivElement
-
-  createEventListener(() => htmlContainer, 'click', ({ target: el }: MouseEvent) => {
-    if (el instanceof HTMLButtonElement && el.matches('button.gpt-copy-btn')) {
-      const pre = el.nextElementSibling!
-      pre.textContent && copy(pre)
-    }
-  })
 
   const result = createMemo(() => splitReasoningPart(typeof message === 'function' ? message() : message))
   const reasoningContent = () => result()[0]
@@ -94,21 +62,6 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
     }
   }
 
-  const htmlString = () => {
-    md.renderer.rules.fence = (...args) => {
-      const rawCode = fence(...args)
-
-      return `<div class="relative group">
-        <button class="gpt-copy-btn">
-          ${copied() ? '<div mr-1 text-sm pointer-events-none>Copied!</div><div i-mingcute-copy-2-fill></div>' : '<div i-mingcute-copy-2-line pointer-events-none></div>'}
-        </button>
-        ${rawCode}
-      </div>`
-    }
-
-    return md.render(content())
-  }
-
   return (
     <div class="px-2rem transition-colors -mx-2rem hover:bg-$c-fg-2 2xl:(px-2rem -mx-2rem) md:(px-5 transition-background-color -mx-5)">
       <div class="py-0.5 transition-padding 2xl:py-2 md:py-1">
@@ -124,7 +77,19 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
                 </Index>
               </div>
             </Show>
-            <div ref={htmlContainer} class="message relative max-w-full overflow-hidden prose <sm:text-3.6" innerHTML={htmlString()} />
+            <SolidMarkdown
+              remarkPlugins={[remarkGfm, remarkBreaks, remarkMath]}
+              rehypePlugins={[rehypeKatex]}
+              class="message relative max-w-full overflow-hidden prose <sm:text-3.6"
+              components={{
+                code: CodeBlock,
+                pre({ children }) {
+                  return <pre class="group overflow-hidden">{children}</pre>
+                },
+              }}
+            >
+              {content()}
+            </SolidMarkdown>
           </div>
         </div>
         {showRetry?.() && onRetry && (

@@ -3,7 +3,9 @@ import type { ParentComponent, Setter } from 'solid-js'
 import { makeEventListener } from '@solid-primitives/event-listener'
 import { throttle } from '@solid-primitives/scheduled'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
-import MarkdownIt from 'markdown-it'
+import rehypeStringify from 'rehype-stringify'
+import { remark } from 'remark'
+import remarkRehype from 'remark-rehype'
 import { batch, createContext, createEffect, createMemo, createSignal, onMount, untrack, useContext } from 'solid-js'
 import { toast } from 'solid-toast'
 
@@ -144,8 +146,8 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     else if (messageList().length === 0) setSuggestions([])
   })
 
-  const instance = new MarkdownIt({ html: false })
-  const md = (markdown: string) => instance.renderInline(markdown)
+  const processor = remark().use(remarkRehype).use(rehypeStringify)
+  const md = (markdown: string) => processor.processSync(markdown).toString().match(/<p>(.*)<\/p>/)![1]
 
   const setPageTitle = (title?: string) => {
     document.title = title ?? 'Endless Chat'
