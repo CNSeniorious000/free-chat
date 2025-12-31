@@ -1,5 +1,5 @@
 <script lang="ts">
-  import openai from '@lobehub/icons-static-svg/icons/openai.svg?raw'
+  import xiaomimimo from '@lobehub/icons-static-svg/icons/xiaomimimo-text.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
   import { Toaster } from 'svelte-sonner'
 
@@ -48,10 +48,12 @@
 </header>
 
 <div class="transition-opacity" class:op-0={!inView} class:duration-400={inView}>
-  <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&>svg]:-translate-y-0.1em">
-    已支持
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html openai} OpenAI 最新的 gpt-5 系列模型
+  <div class="mb-0.6 ml-0.2 mt-0.3 flex flex-row select-none items-center gap-0.7 text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8 [&_svg]:-translate-y-0.1em">
+    欢迎试用小米的开源模型
+    <a href="https://mimo.xiaomi.com/blog/mimo-v2-flash" target="_blank">
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+      {@html xiaomimimo}
+    </a>
   </div>
 </div>
 

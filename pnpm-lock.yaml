@@ -26,9 +26,6 @@ importers:
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.63
         version: 1.0.64
-      '@lobehub/icons-static-svg':
-        specifier: ^1.65.0
-        version: 1.73.0
       '@solid-primitives/clipboard':
         specifier: ^1.6.2
         version: 1.6.2(solid-js@1.9.10)
@@ -111,6 +108,9 @@ importers:
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.6)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)))
+      '@lobehub/icons-static-svg':
+        specifier: ^1.77.0
+        version: 1.77.0
       '@sveltejs/vite-plugin-svelte':
         specifier: ~6.2.1
         version: 6.2.1(svelte@5.46.1)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
@@ -1611,8 +1611,8 @@ packages:
     peerDependencies:
       unocss: '>= 0.31.13'
 
-  '@lobehub/icons-static-svg@1.73.0':
-    resolution: {integrity: sha512-ydKUCDoopdmulbjDZo/gppaODd5Ju5nPneVcN9A5dAz9IJZUMkLms8bqostMLrqcdMQ8resKjLuV9RhJaWhaag==}
+  '@lobehub/icons-static-svg@1.77.0':
+    resolution: {integrity: sha512-4pKm4h0oGq+ekHZgGcIjdgtduJxT+B7LEwZjCr2eWy7XkxQSEYCVg3wA4pTf9O26o3GH4tHe0nA9rQ+DSD2YEQ==}
 
   '@mapbox/node-pre-gyp@2.0.2':
     resolution: {integrity: sha512-pppEzxuUFmNoMb5YObyc4AAr/NrQGhNU/ZuSMLFxkC1JzrfZ4if2O0vI1JuD/oqxf+z/MNTARIekLmgL1PZg/A==}
@@ -8135,7 +8135,7 @@ snapshots:
       '@unocss/preset-mini': 65.5.0
       unocss: 66.4.2(postcss@8.5.6)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
 
-  '@lobehub/icons-static-svg@1.73.0': {}
+  '@lobehub/icons-static-svg@1.77.0': {}
 
   '@mapbox/node-pre-gyp@2.0.2':
     dependencies:
