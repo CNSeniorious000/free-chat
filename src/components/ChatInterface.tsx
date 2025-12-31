@@ -2,9 +2,9 @@ import { ChatProvider } from '@/context/ChatContext'
 
 import Generator from './Generator'
 
-export default function ChatInterface() {
+export default function ChatInterface(props: { userAgent?: string }) {
   return (
-    <ChatProvider>
+    <ChatProvider userAgent={props.userAgent}>
       <Generator />
     </ChatProvider>
   )
