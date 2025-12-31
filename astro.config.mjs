@@ -39,6 +39,8 @@ export default defineConfig({
       OPENAI_BASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
       OPENAI_API_BASE_URL: envField.string({ context: 'server', access: 'secret', default: 'https://api.openai.com' }),
       TRANSCRIPT_TARGET_LANG: envField.string({ context: 'server', access: 'secret', default: 'zh' }),
+      TRANSCRIPT_MODEL: envField.string({ context: 'server', access: 'secret', default: 'whisper-1' }),
+      TRANSCRIPT_BASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
       TRANSCRIPT_PROMPT: envField.string({ context: 'server', access: 'secret', optional: true }),
       DEEPL_AUTH_TOKEN: envField.string({ context: 'server', access: 'secret', optional: true }),
       DEEPL_API_HOST: envField.string({ context: 'server', access: 'secret', optional: true }),
