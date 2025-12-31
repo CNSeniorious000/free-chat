@@ -38,7 +38,7 @@
 
 <style>
   button {
-    --uno: relative flex-1 cursor-default rounded bg-$c-fg-5 p-1.5 outline-none transition active:scale-97;
+    --uno: relative flex-1 cursor-default rounded bg-$c-fg-5 p-1.5 outline-none transition duration-50 active:scale-98;
   }
 
   button.active, button:focus-visible, button:hover {

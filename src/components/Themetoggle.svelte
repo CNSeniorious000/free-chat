@@ -48,7 +48,7 @@
 
 <ThemeColor />
 
-<button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} bind:this={themeToggle} id="themeToggle" class="h-10 w-10 flex items-center justify-center rounded-md transition-colors @hover:bg-$c-fg-2" aria-label="toggle dark mode">
+<button use:ripple={{ color: 'var(--c-fg-10)', maxRadius: 60 }} bind:this={themeToggle} id="themeToggle" class="h-10 w-10 flex items-center justify-center rounded-md transition-colors @hover:bg-$c-fg-5" aria-label="toggle dark mode">
   <svg class="theme_toggle_svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" color="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor">
     <mask id="myMask">
       <rect x="0" y="0" width="100%" height="100%" fill="white" />
