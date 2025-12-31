@@ -42,8 +42,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2(solid-js@1.9.10)
       '@xsai/stream-text':
-        specifier: ^0.2.2
-        version: 0.2.2
+        specifier: ^0.4.0
+        version: 0.4.0
       astro:
         specifier: ~5.16.0
         version: 5.16.6(@netlify/blobs@10.4.1)(@types/node@25.0.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
@@ -2732,8 +2732,8 @@ packages:
   '@xsai/shared@0.4.0':
     resolution: {integrity: sha512-RUkHutaib4/LvwdFT59Vtbq9Nycjr273ehuSVVs8NXH5BmqRk4+QwC+Ioyw282cuQAUQd1ESVqMNxY4f4DtV/Q==}
 
-  '@xsai/stream-text@0.2.2':
-    resolution: {integrity: sha512-GTVGuKEpYBOglPQ7cjO18/v8jiZxY/lejXMt+KsZqyMQo/WmH6gUkYkRME/cTyxlQEUiF0L/0CqRjQvtaDlB+Q==}
+  '@xsai/stream-text@0.4.0':
+    resolution: {integrity: sha512-Di9Wi00KHIk/IxegVQDVGCPIeqgWG14WQQ8eVXd4ysZjVaBqttS4oyju2b8Wy7BXoEwu97iUU1an4XIOlq0Gzw==}
 
   abbrev@4.0.0:
     resolution: {integrity: sha512-a1wflyaL0tHtJSmLSOVybYhy22vRih4eduhhrkcjgrWGnRfrZtovJ2FRjxuTtkkj47O/baf0R86QU5OuYpz8fA==}
@@ -9558,8 +9558,9 @@ snapshots:
 
   '@xsai/shared@0.4.0': {}
 
-  '@xsai/stream-text@0.2.2':
+  '@xsai/stream-text@0.4.0':
     dependencies:
+      '@xsai/shared': 0.4.0
       '@xsai/shared-chat': 0.4.0
 
   abbrev@4.0.0: {}
