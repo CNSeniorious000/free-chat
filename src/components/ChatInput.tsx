@@ -74,6 +74,7 @@ export default () => {
         }}
         placeholder={recording() ? (recording() === 'processing' ? '正在转录语音' : '正在录音') : '与 LLM 对话'}
         autocomplete="off"
+        enterkeyhint="send"
         onInput={e => setInputValue((e.target as HTMLTextAreaElement).value)}
         rows="1"
         class="gen-textarea"
