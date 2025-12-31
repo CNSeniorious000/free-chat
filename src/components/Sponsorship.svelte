@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { toast } from 'svelte-sonner'
+  import { toast, Toaster } from 'svelte-sonner'
   import { quintIn, quintOut } from 'svelte/easing'
   import { fade, fly, slide } from 'svelte/transition'
 
@@ -47,6 +47,8 @@
   }
 
 </script>
+
+<Toaster position="top-center" />
 
 <Modal icon="i-fluent-emoji-folded-hands" bind:show={showModal}>
   {#if showModal}
