@@ -5,7 +5,7 @@ import { isMacOS } from '@/lib/platform'
 
 export default () => {
   const { streaming, messageList, systemRoleEditing } = useChat()
-  const modifierKey = isMacOS() ? '⌘' : 'Alt'
+  const modifierKey = isMacOS() ? '⌥ Opt' : '⌥ Alt'
   const pressedKeys = useKeyDownList()
   const altPressed = () => !isMacOS() && pressedKeys().includes('ALT')
 
