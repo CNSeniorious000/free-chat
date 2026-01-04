@@ -149,7 +149,7 @@ importers:
         version: 1.2.0(astro@5.16.6(@netlify/blobs@10.4.1)(@types/node@25.0.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2))(vite-plugin-pwa@1.2.0(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0))
       bits-ui:
         specifier: ~2.15.0
-        version: 2.15.1(@internationalized/date@3.10.0)(svelte@5.46.1)
+        version: 2.15.2(@internationalized/date@3.10.0)(svelte@5.46.1)
       eslint-plugin-astro:
         specifier: ~1.5.0
         version: 1.5.0(eslint@9.39.2(jiti@2.6.1))
@@ -2965,8 +2965,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@2.15.1:
-    resolution: {integrity: sha512-UISM/PZFTuZ6YmiafEPWhd7qrqIkUwm2ojaiEfiL7i4ZTU8FSqtV9Uh0p4qfGUeQbglCRN1ZJMRyGIa+lT8URQ==}
+  bits-ui@2.15.2:
+    resolution: {integrity: sha512-S8eDbFkZCN17kZ7J9fD3MRXziV9ozjdFt2D3vTr2bvXCl7BtrIqguYt2U/zrFgLdR2erwybvCKv0JXYn8uKLDQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -5929,8 +5929,8 @@ packages:
     resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
     engines: {node: '>=18'}
 
-  tabbable@6.3.0:
-    resolution: {integrity: sha512-EIHvdY5bPLuWForiR/AN2Bxngzpuwn1is4asboytXtpTgsArc+WmSJKVLlhdh71u7jFcryDqB2A8lQvj78MkyQ==}
+  tabbable@6.4.0:
+    resolution: {integrity: sha512-05PUHKSNE8ou2dwIxTngl4EzcnsCDZGJ/iCLtDflR/SHB/ny14rXc+qU5P4mG9JkusiV7EivzY9Mhm55AzAvCg==}
 
   tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
@@ -9908,7 +9908,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@2.15.1(@internationalized/date@3.10.0)(svelte@5.46.1):
+  bits-ui@2.15.2(@internationalized/date@3.10.0)(svelte@5.46.1):
     dependencies:
       '@floating-ui/core': 1.7.3
       '@floating-ui/dom': 1.7.4
@@ -9917,7 +9917,7 @@ snapshots:
       runed: 0.35.1(svelte@5.46.1)
       svelte: 5.46.1
       svelte-toolbelt: 0.10.6(svelte@5.46.1)
-      tabbable: 6.3.0
+      tabbable: 6.4.0
     transitivePeerDependencies:
       - '@sveltejs/kit'
 
@@ -13473,7 +13473,7 @@ snapshots:
 
   system-architecture@0.1.0: {}
 
-  tabbable@6.3.0: {}
+  tabbable@6.4.0: {}
 
   tapable@2.3.0: {}
 
