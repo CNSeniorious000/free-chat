@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { persistedState } from 'svelte-persisted-state'
   import { toast, Toaster } from 'svelte-sonner'
   import { quintIn, quintOut } from 'svelte/easing'
   import { fade, fly, slide } from 'svelte/transition'
@@ -7,6 +8,8 @@
   import { MessagesEvent } from '@/utils/events'
 
   import Modal from './Modal.svelte'
+
+  const lastTime = persistedState('lastTime', 0)
 
   let showModal = $state(false)
   let pngReady = $state(false)
@@ -34,7 +37,7 @@
   onMount(() => {
     document.addEventListener('clearMessages', (ev: Event) => {
       const { length } = (ev as MessagesEvent).detail
-      if (length >= 7 && Number(localStorage.getItem('lastTime') ?? '0') - Number(new Date()) < -1000 * 3600 * 24 * 7) showModal = true
+      if (length >= 7 && lastTime.current - Number(new Date()) < -1000 * 3600 * 24 * 7) showModal = true
     })
   })
 
@@ -42,7 +45,7 @@
     showModal = false
     showQR = false
     showButton = false
-    localStorage.setItem('lastTime', String(Number(new Date())))
+    lastTime.current = Number(new Date())
     toast.success('感谢您的支持！一周内将不会再弹窗~')
   }
 

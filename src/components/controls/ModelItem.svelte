@@ -1,6 +1,6 @@
 <script module lang="ts">
   import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
-  import { persisted } from 'svelte-persisted-store'
+  import { persistedState } from 'svelte-persisted-state'
 
   type Model = 'gpt-oss-120b' | 'glm-4.5-flash' | 'z-ai/glm-4.5-air:free' | 'zai-glm-4.6' | 'qwen-3-32b' | 'qwen-3-235b-a22b-instruct-2507' | 'DeepSeek-V3.1-Terminus' | 'THUDM/GLM-4-9B-0414' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'meta-llama/llama-4-maverick-17b-128e-instruct' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4o' | 'azure:gpt-4.1-mini' | 'azure:gpt-5-mini' | 'Phi-4' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-medium-2505' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-4-1-fast-non-reasoning' | 'mistralai/devstral-2512:free' | 'gemma-3-27b-it' | 'gemini-2.5-flash-lite' | 'nex-agi/deepseek-v3.1-nex-n1:free' | 'Cohere-command-a' | 'moonshotai/kimi-k2-instruct-0905' | 'tngtech/tng-r1t-chimera:free' | 'deepseek-ai/DeepSeek-V3.2-Exp' | 'kwaipilot/kat-coder-pro:free' | 'arcee-ai/trinity-mini:free' | 'allenai/olmo-3.1-32b-think:free' | 'nvidia/nemotron-3-nano-30b-a3b:free' | 'xiaomi/mimo-v2-flash:free' | 'nvidia/nemotron-3-nano-30b-a3b:free'
 
@@ -10,7 +10,7 @@
     return value
   }
 
-  export const model = persisted('model', defaultModel, { syncTabs: false, serializer: { stringify: asIs, parse: asIs } })
+  export const model = persistedState('model', defaultModel, { syncTabs: false, serializer: { parse: asIs, stringify: asIs } })
 </script>
 
 <script lang="ts">
@@ -27,12 +27,12 @@
   const { id, name, title }: Props = $props()
 
   function choose() {
-    $model = id
+    model.current = id
     trackEvent('model', { model: id })
   }
 </script>
 
-<input tabindex="-1" type="radio" name="model" {id} class="sr-only" onselect={choose} checked={$model === id} />
+<input tabindex="-1" type="radio" name="model" {id} class="sr-only" onselect={choose} checked={model.current === id} />
 
 <button use:ripple={{ color: 'var(--c-fg)' }} onclick={choose} class="cursor-auto text-left">
   <h4>{name}</h4>

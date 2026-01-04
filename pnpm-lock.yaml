@@ -89,6 +89,9 @@ importers:
       svelte:
         specifier: ~5.46.0
         version: 5.46.1
+      svelte-persisted-state:
+        specifier: ~1.2.0
+        version: 1.2.0(svelte@5.46.1)
       svelte-sonner:
         specifier: ~1.0.5
         version: 1.0.7(svelte@5.46.1)
@@ -162,9 +165,6 @@ importers:
       svelte-inview:
         specifier: ~4.0.4
         version: 4.0.4(svelte@5.46.1)
-      svelte-persisted-store:
-        specifier: ^0.12.0
-        version: 0.12.0(svelte@5.46.1)
       svelte-ripple-action:
         specifier: ~2.0.0
         version: 2.0.0(svelte@5.46.1)
@@ -5884,11 +5884,10 @@ packages:
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^5.0.0-next
 
-  svelte-persisted-store@0.12.0:
-    resolution: {integrity: sha512-BdBQr2SGSJ+rDWH8/aEV5GthBJDapVP0GP3fuUCA7TjYG5ctcB+O9Mj9ZC0+Jo1oJMfZUd1y9H68NFRR5MyIJA==}
-    engines: {node: '>=0.14'}
+  svelte-persisted-state@1.2.0:
+    resolution: {integrity: sha512-zNPfLNH3vG/e0JXYU+rEkDNXnD8OhE5IzJfMnWIFYRxOcg1Ngc0x5uP4RdJKUdRsVjNLL6zBYPiQdzrYbxLoMQ==}
     peerDependencies:
-      svelte: ^3.48.0 || ^4 || ^5
+      svelte: ^5.0.0-next.1
 
   svelte-ripple-action@2.0.0:
     resolution: {integrity: sha512-tig2QFHKN+XmPKVACz4EcFdVnYDI9Eme7Oiyr7RsjxQXVMZRD6JbEo713YExgDKe06OYllJWi5fAXf/H7N7SzQ==}
@@ -13410,7 +13409,7 @@ snapshots:
     dependencies:
       svelte: 5.46.1
 
-  svelte-persisted-store@0.12.0(svelte@5.46.1):
+  svelte-persisted-state@1.2.0(svelte@5.46.1):
     dependencies:
       svelte: 5.46.1
 

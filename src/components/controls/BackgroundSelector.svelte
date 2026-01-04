@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { persisted } from 'svelte-persisted-store'
+  import { persistedState } from 'svelte-persisted-state'
 
   import { ripple } from '../../utils/ripple'
 
@@ -7,7 +7,7 @@
     return value
   }
 
-  const pattern = persisted<'endless' | 'classic'>('pattern', 'endless', {
+  const pattern = persistedState<'endless' | 'classic'>('pattern', 'endless', {
     beforeWrite: (value) => {
       document.dispatchEvent(new CustomEvent('localStorageSet', {
         detail: { key: 'pattern', value: String(value) },
@@ -19,7 +19,7 @@
 </script>
 
 <div class="flex flex-row gap-1.5">
-  <button use:ripple={{ color: 'var(--c-fg-15)' }} class:active={$pattern === 'classic'} onclick={() => $pattern = 'classic'}>
+  <button use:ripple={{ color: 'var(--c-fg-15)' }} class:active={pattern.current === 'classic'} onclick={() => pattern.current = 'classic'}>
     <div role="presentation" class="bg-hero-topography-gray-500/15"></div>
     <div role="group">
       <h4>Topography</h4>
@@ -27,7 +27,7 @@
     </div>
   </button>
 
-  <button use:ripple={{ color: 'var(--c-fg-15)' }} class:active={$pattern === 'endless'} onclick={() => $pattern = 'endless'}>
+  <button use:ripple={{ color: 'var(--c-fg-15)' }} class:active={pattern.current === 'endless'} onclick={() => pattern.current = 'endless'}>
     <div role="presentation" class="bg-hero-jigsaw-gray-500/10"></div>
     <div role="group">
       <h4>Jigsaw</h4>
