@@ -21,7 +21,7 @@
   <div class="i-ci-redo"></div>
 </button>
 
-<Slider.Root type="single" min={0} max={1} step={0.05} class="relative mx-1 h-full w-full" value={value.current ?? 1} onValueChange={(v) => (value.current = v)}>
+<Slider.Root type="single" min={0} max={1} step={0.05} class="relative mx-1 h-full w-full" value={value.current ?? 1} onValueChange={v => (value.current = v)}>
   <div class="absolute top-1/2 h-0.8 rounded-full bg-$c-fg-10 -left-1 -right-1 -translate-y-1/2"></div>
   {#if value.current !== undefined}
     <Slider.Range class="top-1/2 h-0.8 rounded-full bg-$c-fg-30 -translate-y-1/2 !-left-1" />
