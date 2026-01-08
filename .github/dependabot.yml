@@ -9,6 +9,10 @@ updates:
       unocss:
         patterns:
           - "*unocss*"
+      xsai:
+        patterns:
+          - "xsfetch"
+          - "@xsai/*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
