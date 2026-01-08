@@ -42,8 +42,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2(solid-js@1.9.10)
       '@xsai/stream-text':
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.4.1
+        version: 0.4.1
       astro:
         specifier: ~5.16.0
         version: 5.16.7(@netlify/blobs@10.4.1)(@types/node@25.0.2)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.44.1)(typescript@5.9.3)(yaml@2.8.2)
@@ -2739,14 +2739,14 @@ packages:
     resolution: {integrity: sha512-QxI+HQfJeI/UscFNCTcSri6nrHP25mtyAMbhEri7W2ctdb3EsorPuJz7IovSgNjvKVs73dg9Fmayewx1O2xOxA==}
     engines: {node: '>=18.0.0'}
 
-  '@xsai/shared-chat@0.4.0':
-    resolution: {integrity: sha512-drsThk0RL737z+TZu461cv85ZFPwqRsMmnxsOfl/P+hqCHu7eOAm85LDyPXL3rC2a6YiZGNQDcI92+wNQ4vaNw==}
+  '@xsai/shared-chat@0.4.1':
+    resolution: {integrity: sha512-6pyjFs9oKi2jSjtZBk4QNF5RM5b63aUrSJ8e46xvaeMIpsK6hec3ay7X4r81annhb/HpMNOQrfbxCQsTcWalhA==}
 
-  '@xsai/shared@0.4.0':
-    resolution: {integrity: sha512-RUkHutaib4/LvwdFT59Vtbq9Nycjr273ehuSVVs8NXH5BmqRk4+QwC+Ioyw282cuQAUQd1ESVqMNxY4f4DtV/Q==}
+  '@xsai/shared@0.4.1':
+    resolution: {integrity: sha512-WptfJwv0ajc22UNvMgSbM2wCtJDWok6x3svljETMc3ycknHE3w5XQ6whbASdbeDJomb/MtGhFhaHYVQZQnqHIw==}
 
-  '@xsai/stream-text@0.4.0':
-    resolution: {integrity: sha512-Di9Wi00KHIk/IxegVQDVGCPIeqgWG14WQQ8eVXd4ysZjVaBqttS4oyju2b8Wy7BXoEwu97iUU1an4XIOlq0Gzw==}
+  '@xsai/stream-text@0.4.1':
+    resolution: {integrity: sha512-Eq+b3knPB0YEpL6lnW08RZETEgCm07Q1XaP6YUO4Y81FF0q8dztyLXxtmAck1t7GV5eI7fTBRMxP6iQzwabomA==}
 
   abbrev@3.0.1:
     resolution: {integrity: sha512-AO2ac6pjRB3SJmGJo+v5/aK6Omggp6fsLrs6wN9bd35ulu4cCwaAU9+7ZhXjeqHVkaHThLuzH0nZr0YpCDhygg==}
@@ -9541,16 +9541,16 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  '@xsai/shared-chat@0.4.0':
+  '@xsai/shared-chat@0.4.1':
     dependencies:
-      '@xsai/shared': 0.4.0
+      '@xsai/shared': 0.4.1
 
-  '@xsai/shared@0.4.0': {}
+  '@xsai/shared@0.4.1': {}
 
-  '@xsai/stream-text@0.4.0':
+  '@xsai/stream-text@0.4.1':
     dependencies:
-      '@xsai/shared': 0.4.0
-      '@xsai/shared-chat': 0.4.0
+      '@xsai/shared': 0.4.1
+      '@xsai/shared-chat': 0.4.1
 
   abbrev@3.0.1: {}
 
