@@ -113,7 +113,7 @@ importers:
         version: 6.7.3(@unocss/eslint-plugin@66.4.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.25)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.5.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-format@1.2.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-svelte@3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.46.1))(eslint@9.39.2(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.46.1))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
-        version: 2.2.425
+        version: 2.2.426
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)))
@@ -122,7 +122,7 @@ importers:
         version: 1.77.0
       '@sveltejs/vite-plugin-svelte':
         specifier: ~6.2.3
-        version: 6.2.3(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
+        version: 6.2.4(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
       '@types/markdown-it':
         specifier: ~14.1.2
         version: 14.1.2
@@ -1421,8 +1421,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.425':
-    resolution: {integrity: sha512-RJcJeoLFAmKPr7e7bP7gw33ASBSONuFsiCg35cEvrf/s8DDG5+C9eSqOvIiggNwZwwjYeGNKIJ7RduJTWgN0IQ==}
+  '@iconify/json@2.2.426':
+    resolution: {integrity: sha512-G0j9u9QtrCByVArRaqO9egzVsrs96yWk/CBareI/aFxCW9XkJHErIsAL8e7WMkT6gc+1o1hXp69OZiqpptwdOA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2195,8 +2195,8 @@ packages:
       svelte: ^5.0.0
       vite: ^6.0.0
 
-  '@sveltejs/vite-plugin-svelte@6.2.3':
-    resolution: {integrity: sha512-a+uxqQ9j6Lxmq4plbGaNdM9hgDCZyxAv/yvuyF5iWoA2H5icZkqD3rdK155ZQgFLX2lc3NvahHG4OgKpYqYPiQ==}
+  '@sveltejs/vite-plugin-svelte@6.2.4':
+    resolution: {integrity: sha512-ou/d51QSdTyN26D7h6dSpusAKaZkAiGM55/AKYi+9AGZw7q85hElbjK3kEyzXHhLSnRISHOYzVge6x0jRZ7DXA==}
     engines: {node: ^20.19 || ^22.12 || >=24}
     peerDependencies:
       svelte: ^5.0.0
@@ -7839,7 +7839,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.425':
+  '@iconify/json@2.2.426':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -8737,9 +8737,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte-inspector@5.0.2(@sveltejs/vite-plugin-svelte@6.2.3(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)))(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))':
+  '@sveltejs/vite-plugin-svelte-inspector@5.0.2(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)))(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 6.2.3(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
+      '@sveltejs/vite-plugin-svelte': 6.2.4(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
       obug: 2.1.1
       svelte: 5.46.1
       vite: 7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)
@@ -8757,9 +8757,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@6.2.3(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))':
+  '@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 5.0.2(@sveltejs/vite-plugin-svelte@6.2.3(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)))(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
+      '@sveltejs/vite-plugin-svelte-inspector': 5.0.2(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)))(svelte@5.46.1)(vite@7.3.1(@types/node@25.0.2)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
       deepmerge: 4.3.1
       magic-string: 0.30.21
       obug: 2.1.1
