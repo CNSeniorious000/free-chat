@@ -6,7 +6,10 @@
   "packageRules": [
     {
       "groupName": "xsai packages",
-      "matchPackagePatterns": ["^xsfetch$", "^@xsai/"]
+      "matchPackageNames": [
+        "/^xsfetch$/",
+        "/^@xsai//"
+      ]
     }
   ]
 }
