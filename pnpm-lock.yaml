@@ -110,7 +110,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ~6.7.0
-        version: 6.7.3(@unocss/eslint-plugin@66.4.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.25)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.5.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-format@1.2.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-svelte@3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.46.3))(eslint@9.39.2(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.46.3))(typescript@5.9.3)
+        version: 6.7.3(@unocss/eslint-plugin@66.4.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.25)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.5.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-format@1.3.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-svelte@3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.46.3))(eslint@9.39.2(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.46.3))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
         version: 2.2.427
@@ -157,8 +157,8 @@ importers:
         specifier: ~1.5.0
         version: 1.5.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-format:
-        specifier: ~1.2.0
-        version: 1.2.0(eslint@9.39.2(jiti@2.6.1))
+        specifier: ~1.3.0
+        version: 1.3.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-svelte:
         specifier: ~3.14.0
         version: 3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.46.3)
@@ -885,8 +885,8 @@ packages:
     resolution: {integrity: sha512-Y6+WUMsTFWE5jb20IFP4YGa5IrGY/+a/FbOSjDF/wz9gepU2hwCYSXRHP/vPwBvwcY3SVMASt4yXxbXNXigmZQ==}
     engines: {node: '>=18'}
 
-  '@dprint/formatter@0.4.1':
-    resolution: {integrity: sha512-IB/GXdlMOvi0UhQQ9mcY15Fxcrc2JPadmo6tqefCNV0bptFq7YBpggzpqYXldBXDa04CbKJ+rDwO2eNRPE2+/g==}
+  '@dprint/formatter@0.5.1':
+    resolution: {integrity: sha512-cdZUrm0iv/FnnY3CKE2dEcVhNEzrC551aE2h2mTFwQCRBrqyARLDnb7D+3PlXTUVp3s34ftlnGOVCmhLT9DeKA==}
 
   '@dprint/markdown@0.20.0':
     resolution: {integrity: sha512-qvynFdQZwul4Y+hoMP02QerEhM5VItb4cO8/qpQrSuQuYvDU+bIseiheVAetSpWlNPBU1JK8bQKloiCSp9lXnA==}
@@ -3594,8 +3594,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-format@1.2.0:
-    resolution: {integrity: sha512-46iOK4ROUPCEScJ29bWh5LFEkkbnap1LIFJG0sDjsCiNvM8zgY101Kk/OteZ1rpFf0nGxaRGkN6GAkGRE5BFZA==}
+  eslint-plugin-format@1.3.0:
+    resolution: {integrity: sha512-CDbN5WLFA83hoLbRAyGe4m2vV5HI2RD9CJTtjkDUSiRf+4oTJAQt7ZhYelrj8X1MIjwBhOas8eTZ7zVZYAXwDw==}
     peerDependencies:
       eslint: ^8.40.0 || ^9.0.0
 
@@ -6607,7 +6607,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
 
-  '@antfu/eslint-config@6.7.3(@unocss/eslint-plugin@66.4.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.25)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.5.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-format@1.2.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-svelte@3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.46.3))(eslint@9.39.2(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.46.3))(typescript@5.9.3)':
+  '@antfu/eslint-config@6.7.3(@unocss/eslint-plugin@66.4.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.25)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.5.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-format@1.3.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-svelte@3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.46.3))(eslint@9.39.2(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.46.3))(typescript@5.9.3)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 0.11.0
@@ -6650,7 +6650,7 @@ snapshots:
       '@unocss/eslint-plugin': 66.4.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       astro-eslint-parser: 1.2.2
       eslint-plugin-astro: 1.5.0(eslint@9.39.2(jiti@2.6.1))
-      eslint-plugin-format: 1.2.0(eslint@9.39.2(jiti@2.6.1))
+      eslint-plugin-format: 1.3.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-svelte: 3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.46.3)
       svelte-eslint-parser: 1.4.1(svelte@5.46.3)
     transitivePeerDependencies:
@@ -7631,7 +7631,7 @@ snapshots:
       gonzales-pe: 4.3.0
       node-source-walk: 7.0.1
 
-  '@dprint/formatter@0.4.1': {}
+  '@dprint/formatter@0.5.1': {}
 
   '@dprint/markdown@0.20.0': {}
 
@@ -10616,9 +10616,9 @@ snapshots:
       eslint: 9.39.2(jiti@2.6.1)
       eslint-compat-utils: 0.5.1(eslint@9.39.2(jiti@2.6.1))
 
-  eslint-plugin-format@1.2.0(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-format@1.3.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
-      '@dprint/formatter': 0.4.1
+      '@dprint/formatter': 0.5.1
       '@dprint/markdown': 0.20.0
       '@dprint/toml': 0.7.0
       eslint: 9.39.2(jiti@2.6.1)
