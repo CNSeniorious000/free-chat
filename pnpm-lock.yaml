@@ -10,19 +10,19 @@ importers:
     dependencies:
       '@astrojs/netlify':
         specifier: ~6.6.0
-        version: 6.6.4(@netlify/api@14.0.12)(@types/node@25.0.9)(@vercel/functions@2.2.13)(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(yaml@2.8.2)
+        version: 6.6.4(@netlify/api@14.0.12)(@types/node@25.0.9)(@vercel/functions@2.2.13)(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(yaml@2.8.2)
       '@astrojs/node':
         specifier: ~9.5.0
-        version: 9.5.2(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))
+        version: 9.5.2(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))
       '@astrojs/solid-js':
         specifier: ~5.1.0
         version: 5.1.3(@types/node@25.0.9)(jiti@2.6.1)(solid-js@1.9.11)(terser@5.46.0)(yaml@2.8.2)
       '@astrojs/svelte':
         specifier: ~7.2.0
-        version: 7.2.5(@types/node@25.0.9)(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.49.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+        version: 7.2.5(@types/node@25.0.9)(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.49.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       '@astrojs/vercel':
         specifier: ~9.0.0
-        version: 9.0.4(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@2.79.2)(svelte@5.49.2)
+        version: 9.0.4(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@2.79.2)(svelte@5.49.2)
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.63
         version: 1.0.64
@@ -45,8 +45,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.2
       astro:
-        specifier: ~5.16.0
-        version: 5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+        specifier: ~5.17.0
+        version: 5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       eslint:
         specifier: ~9.39.0
         version: 9.39.2(jiti@2.6.1)
@@ -149,7 +149,7 @@ importers:
         version: 66.4.2
       '@vite-pwa/astro':
         specifier: ~1.2.0
-        version: 1.2.0(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(vite-plugin-pwa@1.2.0(vite@7.3.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0))
+        version: 1.2.0(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(vite-plugin-pwa@1.2.0(vite@7.3.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0))
       bits-ui:
         specifier: ~2.15.0
         version: 2.15.5(@internationalized/date@3.10.0)(svelte@5.49.2)
@@ -2851,8 +2851,8 @@ packages:
     resolution: {integrity: sha512-JepyLROIad6f44uyqMF6HKE2QbunNzp3mYKRcPoDGt0QkxXmH222FAFC64WTyQu2Kg8NNEXHTN/sWuUId9sSxw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro@5.16.16:
-    resolution: {integrity: sha512-MFlFvQ84ixaHyqB3uGwMhNHdBLZ3vHawyq3PqzQS2TNWiNfQrxp5ag6S3lX+Cvnh0MUcXX+UnJBPMBHjP1/1ZQ==}
+  astro@5.17.1:
+    resolution: {integrity: sha512-oD3tlxTaVWGq/Wfbqk6gxzVRz98xa/rYlpe+gU2jXJMSD01k6sEDL01ZlT8mVSYB/rMgnvIOfiQQ3BbLdN237A==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -6794,7 +6794,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/netlify@6.6.4(@netlify/api@14.0.12)(@types/node@25.0.9)(@vercel/functions@2.2.13)(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(yaml@2.8.2)':
+  '@astrojs/netlify@6.6.4(@netlify/api@14.0.12)(@types/node@25.0.9)(@vercel/functions@2.2.13)(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(yaml@2.8.2)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@astrojs/underscore-redirects': 1.0.0
@@ -6802,7 +6802,7 @@ snapshots:
       '@netlify/functions': 5.1.2
       '@netlify/vite-plugin': 2.7.19(@netlify/api@14.0.12)(@vercel/functions@2.2.13)(rollup@2.79.2)(vite@6.4.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
       '@vercel/nft': 0.30.4(rollup@2.79.2)
-      astro: 5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       esbuild: 0.25.12
       tinyglobby: 0.2.15
       vite: 6.4.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2)
@@ -6844,10 +6844,10 @@ snapshots:
       - uploadthing
       - yaml
 
-  '@astrojs/node@9.5.2(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))':
+  '@astrojs/node@9.5.2(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
-      astro: 5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       send: 1.2.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -6877,10 +6877,10 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/svelte@7.2.5(@types/node@25.0.9)(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.49.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)':
+  '@astrojs/svelte@7.2.5(@types/node@25.0.9)(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(svelte@5.49.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.49.2)(vite@6.4.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))
-      astro: 5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       svelte: 5.49.2
       svelte2tsx: 0.7.46(svelte@5.49.2)(typescript@5.9.3)
       typescript: 5.9.3
@@ -6913,14 +6913,14 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.0': {}
 
-  '@astrojs/vercel@9.0.4(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@2.79.2)(svelte@5.49.2)':
+  '@astrojs/vercel@9.0.4(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@2.79.2)(svelte@5.49.2)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@vercel/analytics': 1.6.1(svelte@5.49.2)
       '@vercel/functions': 2.2.13
       '@vercel/nft': 0.30.4(rollup@2.79.2)
       '@vercel/routing-utils': 5.3.2
-      astro: 5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       esbuild: 0.25.12
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -7674,7 +7674,7 @@ snapshots:
       '@babel/code-frame': 7.27.1
       '@babel/generator': 7.28.5
       '@babel/helper-globals': 7.28.0
-      '@babel/parser': 7.28.5
+      '@babel/parser': 7.28.6
       '@babel/template': 7.27.2
       '@babel/types': 7.28.6
       debug: 4.4.3
@@ -9575,9 +9575,9 @@ snapshots:
     optionalDependencies:
       ajv: 6.12.6
 
-  '@vite-pwa/astro@1.2.0(astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(vite-plugin-pwa@1.2.0(vite@7.3.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0))':
+  '@vite-pwa/astro@1.2.0(astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(vite-plugin-pwa@1.2.0(vite@7.3.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0))':
     dependencies:
-      astro: 5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       vite-plugin-pwa: 1.2.0(vite@7.3.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0)
 
   '@vitest/eslint-plugin@1.6.6(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
@@ -9784,7 +9784,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@5.16.16(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2):
+  astro@5.17.1(@netlify/blobs@10.5.0)(@types/node@25.0.9)(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@2.79.2)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
