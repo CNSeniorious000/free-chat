@@ -64,7 +64,7 @@ importers:
         version: 1.3.17
       markdown-it:
         specifier: ~14.1.0
-        version: 14.1.0
+        version: 14.1.1
       markdown-it-highlightjs:
         specifier: ~4.2.0
         version: 4.2.0
@@ -113,7 +113,7 @@ importers:
         version: 7.2.0(@unocss/eslint-plugin@66.4.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.26)(astro-eslint-parser@1.2.2)(eslint-plugin-astro@1.5.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-format@1.3.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-svelte@3.14.0(eslint@9.39.2(jiti@2.6.1))(svelte@5.50.1))(eslint@9.39.2(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.50.1))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
-        version: 2.2.437
+        version: 2.2.438
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.9)(jiti@2.6.1)(terser@5.46.0)(yaml@2.8.2)))
@@ -1347,8 +1347,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.437':
-    resolution: {integrity: sha512-N/vAGFj0gSU4KQBCFlUur0Zo41KhqVFU3MlbuYcZVbQQR23aOPHgDNbrulucpsKsCnNFSTO4w/We0okJNbYhTQ==}
+  '@iconify/json@2.2.438':
+    resolution: {integrity: sha512-vDZEuUxqO9b29GBNQrblIH/sE4e1fwNuwZjm3q22w8sKv6bJnqtMw0nCDAf0RVlp+7IPPCRVkFnk6L78cXZ6cg==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4496,8 +4496,8 @@ packages:
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
 
-  jackspeak@4.2.1:
-    resolution: {integrity: sha512-GPBXyfcZSGujjddPeA+V34bW70ZJT7jzCEbloVasSH4yjiqWqXHX8iZQtZdVbOhc5esSeAIuiSmMutRZQB/olg==}
+  jackspeak@4.2.3:
+    resolution: {integrity: sha512-ykkVRwrYvFm1nb2AJfKKYPr0emF6IiXDYUaFx4Zn9ZuIH7MrzEZ3sD5RlqGXNRpHtvUHJyOnCEFxOlNDtGo7wg==}
     engines: {node: 20 || >=22}
 
   jake@10.9.4:
@@ -4723,6 +4723,10 @@ packages:
     resolution: {integrity: sha512-vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==}
     engines: {node: 20 || >=22}
 
+  lru-cache@11.2.6:
+    resolution: {integrity: sha512-ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==}
+    engines: {node: 20 || >=22}
+
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
@@ -4753,8 +4757,8 @@ packages:
   markdown-it-katex@2.0.3:
     resolution: {integrity: sha512-nUkkMtRWeg7OpdflamflE/Ho/pWl64Lk9wNBKOmaj33XkQdumhXAIYhI0WO03GeiycPCsxbmX536V5NEXpC3Ng==}
 
-  markdown-it@14.1.0:
-    resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
+  markdown-it@14.1.1:
+    resolution: {integrity: sha512-BuU2qnTti9YKgK5N+IeMubp14ZUKUUw7yeJbkjtosvHiP0AZ5c8IAgEMk79D0eC8F23r4Ac/q8cAIFdm2FtyoA==}
     hasBin: true
 
   markdown-table@3.0.4:
@@ -5739,8 +5743,9 @@ packages:
   slashes@3.0.12:
     resolution: {integrity: sha512-Q9VME8WyGkc7pJf6QEkj3wE+2CnvZMI+XJhwdTPR8Z/kWQRXi7boAWLDibRPyHRTUTPx5FaU7MsyrjI3yLB4HA==}
 
-  smob@1.5.0:
-    resolution: {integrity: sha512-g6T+p7QO8npa+/hNx9ohv1E5pVCmWrVCUzUXJyLdMmftX6ER0oiWY/w9knEonLpnOp6b6FenKnMfR8gqwWdwig==}
+  smob@1.6.1:
+    resolution: {integrity: sha512-KAkBqZl3c2GvNgNhcoyJae1aKldDW0LO279wF9bk1PnluRTETKBq0WyzRXxEhoQLk56yHaOY4JCBEKDuJIET5g==}
+    engines: {node: '>=20.0.0'}
 
   smol-toml@1.6.0:
     resolution: {integrity: sha512-4zemZi0HvTnYwLfrpk/CF9LOd9Lt87kAt50GnqhMpyF9U3poDAP2+iukq2bZsO/ufegbYehBkqINbsWxj4l4cw==}
@@ -8041,7 +8046,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.437':
+  '@iconify/json@2.2.438':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -8743,7 +8748,7 @@ snapshots:
   '@rollup/plugin-terser@0.4.4(rollup@2.79.2)':
     dependencies:
       serialize-javascript: 6.0.2
-      smob: 1.5.0
+      smob: 1.6.1
       terser: 5.46.0
     optionalDependencies:
       rollup: 2.79.2
@@ -11268,7 +11273,7 @@ snapshots:
   glob@11.1.0:
     dependencies:
       foreground-child: 3.3.1
-      jackspeak: 4.2.1
+      jackspeak: 4.2.3
       minimatch: 10.1.2
       minipass: 7.1.2
       package-json-from-dist: 1.0.1
@@ -11718,7 +11723,7 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  jackspeak@4.2.1:
+  jackspeak@4.2.3:
     dependencies:
       '@isaacs/cliui': 9.0.0
 
@@ -11928,6 +11933,8 @@ snapshots:
 
   lru-cache@11.2.5: {}
 
+  lru-cache@11.2.6: {}
+
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
@@ -11960,7 +11967,7 @@ snapshots:
     dependencies:
       katex: 0.6.0
 
-  markdown-it@14.1.0:
+  markdown-it@14.1.1:
     dependencies:
       argparse: 2.0.1
       entities: 4.5.0
@@ -12617,7 +12624,7 @@ snapshots:
 
   path-scurry@2.0.1:
     dependencies:
-      lru-cache: 11.2.5
+      lru-cache: 11.2.6
       minipass: 7.1.2
 
   path-to-regexp@6.1.0: {}
@@ -13276,7 +13283,7 @@ snapshots:
 
   slashes@3.0.12: {}
 
-  smob@1.5.0: {}
+  smob@1.6.1: {}
 
   smol-toml@1.6.0: {}
 
