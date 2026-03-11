@@ -4,6 +4,7 @@ import { onCleanup } from 'solid-js'
 
 import type { ChatMessage } from '@/types'
 
+import { getStoredApiKey } from './auth'
 import { promplateBaseUrl } from './constants'
 import { splitReasoningPart } from './deepseek'
 import { responseToAsyncIterator } from './streaming'
@@ -56,11 +57,12 @@ function retry(times: number) {
 class API {
   @retry(3)
   async* iterateTitle(input: string) {
+    const apiKey = getStoredApiKey()
     const res = await fetch('/api/title-gen', {
       signal: createAbortSignal(),
       method: 'POST',
       body: input,
-      headers: localStorage.getItem('apiKey') ? { authorization: `Bearer ${localStorage.getItem('apiKey')}` } : {},
+      headers: apiKey ? { authorization: `Bearer ${apiKey}` } : {},
     })
     if (!res.ok) throw new Error(await res.text())
     let whole = ''

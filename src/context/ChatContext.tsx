@@ -12,6 +12,7 @@ import type { LocalStorageSetEvent } from '@/utils/events'
 
 import { encoder } from '@/components/TokenCounter'
 import { createSmoothStreaming } from '@/hooks/createSmoothStreaming'
+import { getStoredApiKey } from '@/utils/auth'
 import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 import { splitReasoningPart } from '@/utils/deepseek'
 import { MessagesEvent } from '@/utils/events'
@@ -284,7 +285,8 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       systemMsg && requestMessageList.unshift(systemMsg)
 
       const headers: Record<string, any> = { 'content-type': 'application/json' }
-      if (localStorage.getItem('apiKey')) headers.authorization = `Bearer ${localStorage.getItem('apiKey')}`
+      const apiKey = getStoredApiKey()
+      if (apiKey) headers.authorization = `Bearer ${apiKey}`
 
       const t = localStorage.getItem('temperature') ?? 'undefined'
       const payload: Record<string, any> = { messages: requestMessageList, temperature: t === 'undefined' ? undefined : JSON.parse(t), model: localStorage.getItem('model') ?? PUBLIC_DEFAULT_MODEL }
