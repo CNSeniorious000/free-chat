@@ -4,6 +4,8 @@
 </script>
 
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
+  <ModelItem id="gpt-5.4" name="gpt-5.4" title="🧠 OpenAI 面向专业工作的最强高效模型" />
+  <ModelItem id="gpt-5.3-codex" name="gpt-5.3-codex" title="💻 OpenAI 最强 agentic 编程模型" />
   <ModelItem id="gpt-5.2" name="gpt-5.2" title="🧠 OpenAI 前沿模型，适合复杂专业工作" />
   <ModelItem id="gpt-5.2-codex" name="gpt-5.2-codex" title="💻 适合代码理解与编程对话" />
   <ModelItem id="xiaomi/mimo-v2-flash:free" name="MiMo-V2-Flash" title="🔥 小米开源 309B/15B 模型" />
