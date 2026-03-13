@@ -23,4 +23,10 @@ export default antfu({
     'unicorn/prefer-number-properties': 'off',
     'yaml/quotes': 'off',
   },
+}, {
+  files: ['**/*.md'],
+  rules: {
+    'perfectionist/sort-imports': 'off',
+    'svelte/html-quotes': 'off',
+  },
 })
