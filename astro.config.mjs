@@ -20,6 +20,9 @@ const envAdapter = () => {
 
 // https://astro.build/config
 export default defineConfig({
+  security: {
+    checkOrigin: false,
+  },
   env: {
     schema: {
       PUBLIC_DEFAULT_MODEL: envField.string({ context: 'client', access: 'public', default: 'gpt-4o-mini' }),
