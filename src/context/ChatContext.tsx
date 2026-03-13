@@ -403,7 +403,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     // setBgdAnimating(true) // UI concern
     if (messageList().length > 0) {
       trackEvent('retry', { lastMessage: messageList().at(-1)!.role })
-      const lastMessage = messageList()[messageList().length - 1]
+      const lastMessage = messageList().at(-1)!
       if (lastMessage.role === 'assistant')
         setMessageList(messageList().slice(0, -1))
 
