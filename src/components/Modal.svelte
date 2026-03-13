@@ -35,7 +35,7 @@
     if (transitioning)
       setThemeColor(color) // immediately
     else
-      timeoutId = setTimeout(() => setThemeColor(color), 200)
+      timeoutId = setTimeout(setThemeColor, 200, color)
   }
 
   $effect(() => {

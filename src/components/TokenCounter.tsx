@@ -56,7 +56,7 @@ export default (props: Props) => {
     setHide(false)
 
     clearTimeout(hideTimer!)
-    hideTimer = setTimeout(() => setHide(true), HIDE_TIMEOUT)
+    hideTimer = setTimeout(setHide, HIDE_TIMEOUT, true)
 
     return result
   })
