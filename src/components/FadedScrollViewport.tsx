@@ -1,14 +1,15 @@
-import type { JSX, ParentProps } from 'solid-js'
+import type { Accessor, JSX, ParentProps } from 'solid-js'
 
 import './FadedScrollViewport.css'
 
-import { createEffect, createSignal, mergeProps, onCleanup, splitProps } from 'solid-js'
+import { createEffect, createSignal, mergeProps, on, onCleanup, splitProps } from 'solid-js'
 
 interface Props extends ParentProps<JSX.HTMLAttributes<HTMLDivElement>> {
   edgeFade?: number
   lenisPrevent?: boolean
   maxHeight?: string
   stickToBottom?: boolean
+  watch?: Accessor<unknown>
 }
 
 interface ViewportVars {
@@ -31,6 +32,7 @@ export default (props: Props) => {
     'maxHeight',
     'stickToBottom',
     'style',
+    'watch',
   ])
   const [showTopFade, setShowTopFade] = createSignal(false)
   const [showBottomFade, setShowBottomFade] = createSignal(false)
@@ -39,6 +41,13 @@ export default (props: Props) => {
   let viewport!: HTMLDivElement
   let content!: HTMLDivElement
   let frame = 0
+
+  const syncNow = () => {
+    cancelAnimationFrame(frame)
+    if (local.stickToBottom && shouldStickToBottom())
+      viewport.scrollTop = viewport.scrollHeight
+    syncViewport()
+  }
 
   const syncViewport = () => {
     const maxScroll = viewport.scrollHeight - viewport.clientHeight
@@ -57,11 +66,7 @@ export default (props: Props) => {
 
   const scheduleSync = () => {
     cancelAnimationFrame(frame)
-    frame = requestAnimationFrame(() => {
-      if (local.stickToBottom && shouldStickToBottom())
-        viewport.scrollTop = viewport.scrollHeight
-      syncViewport()
-    })
+    frame = requestAnimationFrame(syncNow)
   }
 
   const maskImage = (): string => {
@@ -90,19 +95,16 @@ export default (props: Props) => {
     }
   }
 
+  createEffect(on(() => local.watch?.(), syncNow, { defer: true }))
+
   createEffect(() => {
     const handleResize = () => scheduleSync()
     const handleScroll = () => syncViewport()
-    const observer = typeof ResizeObserver === 'undefined'
-      ? undefined
-      : new ResizeObserver(() => scheduleSync())
 
     viewport.addEventListener('scroll', handleScroll)
     if (typeof window !== 'undefined')
       window.addEventListener('resize', handleResize)
 
-    observer?.observe(viewport)
-    observer?.observe(content)
     scheduleSync()
 
     onCleanup(() => {
@@ -110,7 +112,6 @@ export default (props: Props) => {
       viewport.removeEventListener('scroll', handleScroll)
       if (typeof window !== 'undefined')
         window.removeEventListener('resize', handleResize)
-      observer?.disconnect()
     })
   })
 

@@ -123,6 +123,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
                 <FadedScrollViewport
                   class="px-2.5 py-2 text-(0.8em $c-fg-70)"
                   stickToBottom={incomplete}
+                  watch={reasoningContent}
                 >
                   <div class="flex flex-col gap-1.3 ws-pre-wrap">
                     <Index each={reasoningContent().split('\n\n')}>
