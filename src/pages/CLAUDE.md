@@ -32,4 +32,6 @@ Frontmatter 中服务端数据获取，环境变量通过 `import.meta.env`，co
 
 ## NOTES
 
+With global Lenis on `index.astro`, nested scrollables should declare `data-lenis-prevent` or `data-lenis-prevent-*`.
+
 index.astro 有全局 CSS 变量用于主题（--c-fg-2, --c-fg-5 等），Lenis 平滑滚动用 requestAnimationFrame，PageUp/PageDown 键盘导航。

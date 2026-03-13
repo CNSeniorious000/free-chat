@@ -8,7 +8,7 @@ import MarkdownIt from 'markdown-it'
 import mdHighlight from 'markdown-it-highlightjs'
 // @ts-expect-error missing types
 import mdKatex from 'markdown-it-katex'
-import { createMemo, createSignal, Index, Show } from 'solid-js'
+import { createEffect, createMemo, createSignal, Index, onCleanup, Show } from 'solid-js'
 
 import type { ChatMessage } from '@/types'
 
@@ -37,6 +37,9 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
     assistant: 'bg-emerald-600/50 dark:bg-emerald-300 sm:(bg-gradient-to-br from-cyan-200 to-green-200)',
   }
   const [copied, setCopied] = createSignal(false)
+  const [showThinkingTopFade, setShowThinkingTopFade] = createSignal(false)
+  const [showThinkingBottomFade, setShowThinkingBottomFade] = createSignal(false)
+  const [shouldStickThinkingToBottom, setShouldStickThinkingToBottom] = createSignal(true)
 
   // Use debounce to reset copied state after 1000ms
   const debouncedResetCopied = debounce(() => setCopied(false), 1000)
@@ -56,6 +59,7 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
   }
 
   let htmlContainer!: HTMLDivElement
+  let thinkingContainer!: HTMLDivElement
 
   createEventListener(() => htmlContainer, 'click', ({ target: el }: MouseEvent) => {
     if (el instanceof HTMLButtonElement && el.matches('button.gpt-copy-btn')) {
@@ -64,9 +68,54 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
     }
   })
 
+  createEventListener(() => thinkingContainer, 'scroll', syncThinkingFade)
+  if (typeof window !== 'undefined')
+    createEventListener(window, 'resize', () => requestAnimationFrame(syncThinkingFade))
+
   const result = createMemo(() => splitReasoningPart(typeof message === 'function' ? message() : message))
   const reasoningContent = () => result()[0]
   const content = createMemo(() => incomplete ? heuristicPatch(result()[1]) : result()[1])
+
+  function syncThinkingFade() {
+    const container = thinkingContainer
+    if (!container) {
+      return
+    }
+
+    const canScroll = container.scrollHeight - container.clientHeight > 1
+    if (!canScroll) {
+      setShowThinkingTopFade(false)
+      setShowThinkingBottomFade(false)
+      setShouldStickThinkingToBottom(true)
+      return
+    }
+
+    const distanceToBottom = container.scrollHeight - container.clientHeight - container.scrollTop
+    setShowThinkingTopFade(container.scrollTop > 1)
+    setShowThinkingBottomFade(distanceToBottom > 1)
+    setShouldStickThinkingToBottom(distanceToBottom < 12)
+  }
+
+  const thinkingMaskImage = () => {
+    const edgeFade = 16
+    const top = showThinkingTopFade()
+      ? `transparent 0px, black ${edgeFade}px`
+      : `black 0px, black ${edgeFade}px`
+    const bottom = showThinkingBottomFade()
+      ? `black calc(100% - ${edgeFade}px), transparent 100%`
+      : `black calc(100% - ${edgeFade}px), black 100%`
+    return `linear-gradient(180deg, ${top}, ${bottom})`
+  }
+
+  createEffect(() => {
+    reasoningContent()
+    const frame = requestAnimationFrame(() => {
+      if (incomplete && thinkingContainer && shouldStickThinkingToBottom())
+        thinkingContainer.scrollTop = thinkingContainer.scrollHeight
+      syncThinkingFade()
+    })
+    onCleanup(() => cancelAnimationFrame(frame))
+  })
 
   function heuristicPatch(markdown: string) {
     const lastNewlineIndex = markdown.lastIndexOf('\n')
@@ -116,12 +165,21 @@ export default ({ role, message, showRetry, onRetry, incomplete = false }: Props
           <div class={`my-4 h-7 w-7 shrink-0 rounded-full op-80 ${roleClass[role]} <sm:(h-auto w-1) <md:transition-background-color`} />
           <div class="message break-words">
             <Show when={reasoningContent()}>
-              <div class="mt-1em flex flex-col gap-1.3 ws-pre-wrap rounded bg-$c-fg-2 px-2.5 py-2 text-(0.8em $c-fg-70) ring-(1 $c-fg-5 inset)">
-                <Index each={reasoningContent().split('\n\n')}>
-                  {line => (
-                    <div class="px-2.5 py-0.7 -mx-2.5 -my-0.7 hover:(bg-$c-fg-10)">{line()}</div>
-                  )}
-                </Index>
+              <div
+                class="mt-1em rounded bg-$c-fg-2 ring-(1 $c-fg-5 inset)"
+              >
+                <div
+                  ref={thinkingContainer}
+                  class="message-thinking flex flex-col gap-1.3 ws-pre-wrap px-2.5 py-2 text-(0.8em $c-fg-70)"
+                  style={{ '--thinking-mask-image': thinkingMaskImage() }}
+                  data-lenis-prevent
+                >
+                  <Index each={reasoningContent().split('\n\n')}>
+                    {line => (
+                      <div class="px-2.5 py-0.7 -mx-2.5 -my-0.7 hover:(bg-$c-fg-10)">{line()}</div>
+                    )}
+                  </Index>
+                </div>
               </div>
             </Show>
             <div ref={htmlContainer} class="message relative max-w-full overflow-hidden prose <sm:text-3.6" innerHTML={htmlString()} />
