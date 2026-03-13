@@ -16,12 +16,12 @@
   <ModelItem id="tngtech/tng-r1t-chimera:free" name="tng-r1t-chimera" title="💞 创意故事与角色互动实验模型 (较慢)" />
   <ModelItem id="zai-glm-4.7" name="glm-4.7" title="🚀 智谱清言开源巨作 GLM 4.7" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
-  <ModelItem id="qwen-3-32b" name="qwen-3-32b" title="🧠 Qwen 通义千问推理模型 Qwen 3 32B" />
-  <ModelItem id="qwen-3-235b-a22b-instruct-2507" name="qwen-3-235b-instruct" title="✨ 通义千问最新模型 Qwen 3 235B" />
+  <ModelItem id="Qwen3-32B" name="qwen-3-32b" title="🧠 Qwen 通义千问推理模型 Qwen 3 32B" />
+  <ModelItem id="Qwen3-235B" name="qwen-3-235b" title="✨ 通义千问最新模型 Qwen 3 235B" />
   <ModelItem id="meta-llama/llama-4-maverick-17b-128e-instruct" name="llama4-maverick" title="🚀 Meta 最新的 Llama 4 Maverick" />
   <ModelItem id="llama-3.3-70b" name="llama3.3-70b" title="🚀 超快的 Llama 3.3 70b" />
   <ModelItem id="DeepSeek-V3.1-Terminus" name="deepseek-v3.1-terminus" title="🐋 最新 DeepSeek v3.1 Terminus" />
-  <ModelItem id="deepseek-ai/DeepSeek-V3.2-Exp" name="deepseek-v3.2-exp" title="🐋 DeepSeek 最新款" />
+  <ModelItem id="DeepSeek-V3.2" name="deepseek-v3.2" title="🐋 DeepSeek 最新款" />
   <ModelItem id="gemma-3-27b-it" name="gemma 3" title="Google 最新的开源模型" />
   <ModelItem id="gemini-2.5-flash-lite" name="gemini 2.5 flash lite" title="Google 最新一代 Gemini" />
   <!-- <ModelItem id="internlm/internlm2_5-20b-chat" name="internlm2.5-20b" title="✨ 书生·浦语" /> -->
