@@ -8,6 +8,7 @@ export default antfu({
   lessOpinionated: true,
   formatters: { markdown: false },
   rules: {
+    'e18e/prefer-static-regex': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     'curly': 'off',
     'import/consistent-type-specifier-style': 'off',
