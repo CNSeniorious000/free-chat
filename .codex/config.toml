@@ -1,0 +1,11 @@
+project_doc_fallback_filenames = ["CLAUDE.md"]
+
+[mcp_servers.eslint]
+command = "pnpx"
+args = ["@eslint/mcp"]
+
+[mcp_servers.svelte]
+url = "https://mcp.svelte.dev/mcp"
+
+[mcp_servers.astro]
+url = "https://mcp.docs.astro.build/mcp"
