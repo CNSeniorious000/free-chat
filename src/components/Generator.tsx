@@ -88,9 +88,11 @@ export default () => {
         }
       }
       if (event.altKey && event.code === 'KeyC') {
+        event.preventDefault()
         clear()
       }
       if (event.altKey && event.code === 'Backspace') {
+        event.preventDefault()
         deleteLastMessage()
       }
     }, false)
