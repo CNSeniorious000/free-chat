@@ -28,14 +28,21 @@ export const POST: APIRoute = async(context) => {
       model,
       temperature: 0,
       response_format: TITLE_GEN_JSON_MODE ? { type: 'json_object' } : undefined,
+      abortSignal: context.request.signal,
       ...openaiApiParams,
     })
 
     const stream = new ReadableStream({
       async start(controller) {
-        for await (const chunk of textStream)
-          controller.enqueue(chunk)
-        controller.close()
+        try {
+          // Avoid canceling xsai's stream if the client disconnects mid-title.
+          for await (const chunk of textStream.values({ preventCancel: true }))
+            controller.enqueue(chunk)
+          controller.close()
+        } catch(error) {
+          if (!context.request.signal.aborted && !(error instanceof Error && error.message.includes('Controller is already closed')))
+            controller.error(error)
+        }
       },
     })
 
