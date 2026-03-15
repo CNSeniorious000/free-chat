@@ -3,6 +3,7 @@ import type { Plugin } from 'turndown'
 import { createEffect, Match, Show, Switch } from 'solid-js'
 
 import { useChat } from '@/context/ChatContext'
+import { isImeComposing } from '@/utils/keyboard'
 
 import IconClear from './icons/Clear'
 
@@ -10,7 +11,7 @@ export default () => {
   const { inputRef, setInputRef, inputValue, setInputValue, handleSubmit, recording, systemRoleEditing, messageList, clear, resetTextInputHeight } = useChat()
 
   const handleKeydown = (e: KeyboardEvent) => {
-    if (e.isComposing || e.shiftKey)
+    if (isImeComposing(e) || e.shiftKey)
       return
 
     if (e.key === 'Enter') {
