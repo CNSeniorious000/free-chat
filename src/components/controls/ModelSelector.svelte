@@ -8,12 +8,12 @@
   <ModelItem id="gpt-5.3-codex" name="gpt-5.3-codex" title="💻 OpenAI 最强 agentic 编程模型" />
   <ModelItem id="gpt-5.2" name="gpt-5.2" title="🧠 OpenAI 前沿模型，适合复杂专业工作" />
   <ModelItem id="gpt-5.2-codex" name="gpt-5.2-codex" title="💻 适合代码理解与编程对话" />
-  <ModelItem id="xiaomi/mimo-v2-flash:free" name="MiMo-V2-Flash" title="🔥 小米开源 309B/15B 模型" />
+  <ModelItem id="qwen/qwen3.6-plus-preview:free" name="qwen3.6-plus" title="🧠 通义千问 Qwen 3.6 Plus 预览版" />
   <ModelItem id="grok-4-1-fast-non-reasoning" name="grok-4.1" title="xAI 旗舰的通用模型" />
-  <ModelItem id="mistralai/devstral-2512:free" name="devstral-2512" title="Mistral 的编程模型" />
+  <ModelItem id="stepfun/step-3.5-flash:free" name="step-3.5-flash" title="⚡ 阶跃最新的 Step 3.5 Flash" />
   <ModelItem id="nvidia/nemotron-3-nano-30b-a3b:free" name="Nemotron-3-Nano" title="NVIDIA 最新的开源 agentic 小模型" />
   <ModelItem id="moonshotai/kimi-k2-instruct-0905" name="kimi-k2" title="🌚 月之暗面 Kimi K2" />
-  <ModelItem id="tngtech/tng-r1t-chimera:free" name="tng-r1t-chimera" title="💞 创意故事与角色互动实验模型 (较慢)" />
+  <ModelItem id="nvidia/nemotron-3-super-120b-a12b:free" name="Nemotron-3-Super" title="🚀 NVIDIA 更强的开源 agentic 120B 模型" />
   <ModelItem id="zai-glm-4.7" name="glm-4.7" title="🚀 智谱清言开源巨作 GLM 4.7" />
   <ModelItem id="gpt-oss-120b" name="gpt-oss-120b" title="🚀 OpenAI 最新开源的推理模型" />
   <ModelItem id="Qwen3-32B" name="qwen-3-32b" title="🧠 Qwen 通义千问推理模型 Qwen 3 32B" />
