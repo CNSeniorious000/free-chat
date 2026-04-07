@@ -2,12 +2,12 @@
   import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
   import { persistedState } from 'svelte-persisted-state'
 
-  type Model = 'gpt-oss-120b' | 'glm-4.5-flash' | 'z-ai/glm-4.5-air:free' | 'glm-4.5' | 'glm-4.5v' | 'glm-4.6' | 'glm-4.6v' | 'glm-4.7' | 'zai-glm-4.7' | 'Qwen3-32B' | 'Qwen3-235B' | 'DeepSeek-V3.1-Terminus' | 'THUDM/GLM-4-9B-0414' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'meta-llama/llama-4-maverick-17b-128e-instruct' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4o' | 'azure:gpt-4.1-mini' | 'azure:gpt-5-mini' | 'gpt-5.2' | 'gpt-5.2-codex' | 'gpt-5.4' | 'gpt-5.3-codex' | 'Phi-4' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-medium-2505' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-4-1-fast-non-reasoning' | 'qwen/qwen3.6-plus-preview:free' | 'gemma-3-27b-it' | 'gemini-2.5-flash-lite' | 'Cohere-command-a' | 'moonshotai/kimi-k2-instruct-0905' | 'stepfun/step-3.5-flash:free' | 'DeepSeek-V3.2' | 'arcee-ai/trinity-mini:free' | 'nvidia/nemotron-3-nano-30b-a3b:free' | 'nvidia/nemotron-3-super-120b-a12b:free'
+  type Model = 'gpt-oss-120b' | 'glm-4.5-flash' | 'z-ai/glm-4.5-air:free' | 'glm-4.5' | 'glm-4.5v' | 'glm-4.6' | 'glm-4.6v' | 'glm-4.7' | 'zai-glm-4.7' | 'Qwen3-32B' | 'Qwen3-235B' | 'DeepSeek-V3.1-Terminus' | 'THUDM/GLM-4-9B-0414' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'meta-llama/llama-4-maverick-17b-128e-instruct' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4o' | 'azure:gpt-4.1-mini' | 'azure:gpt-5-mini' | 'gpt-5.2' | 'gpt-5.2-codex' | 'gpt-5.4' | 'gpt-5.3-codex' | 'Phi-4' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-medium-2505' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-4-1-fast-non-reasoning' | 'qwen/qwen3.6-plus:free' | 'gemma-3-27b-it' | 'gemini-2.5-flash-lite' | 'Cohere-command-a' | 'moonshotai/kimi-k2-instruct-0905' | 'stepfun/step-3.5-flash:free' | 'DeepSeek-V3.2' | 'arcee-ai/trinity-mini:free' | 'nvidia/nemotron-3-nano-30b-a3b:free' | 'nvidia/nemotron-3-super-120b-a12b:free'
 
   const defaultModel = PUBLIC_DEFAULT_MODEL as Model
 
-  function asIs(value: Model) {
-    return value
+  function asIs(value: string) {
+    return (value === 'qwen/qwen3.6-plus-preview:free' ? 'qwen/qwen3.6-plus:free' : value) as Model
   }
 
   export const model = persistedState('model', defaultModel, { syncTabs: false, serializer: { parse: asIs, stringify: asIs } })

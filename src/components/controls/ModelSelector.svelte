@@ -8,7 +8,7 @@
   <ModelItem id="gpt-5.3-codex" name="gpt-5.3-codex" title="💻 OpenAI 最强 agentic 编程模型" />
   <ModelItem id="gpt-5.2" name="gpt-5.2" title="🧠 OpenAI 前沿模型，适合复杂专业工作" />
   <ModelItem id="gpt-5.2-codex" name="gpt-5.2-codex" title="💻 适合代码理解与编程对话" />
-  <ModelItem id="qwen/qwen3.6-plus-preview:free" name="qwen3.6-plus" title="🧠 通义千问 Qwen 3.6 Plus 预览版" />
+  <ModelItem id="qwen/qwen3.6-plus:free" name="qwen3.6-plus" title="🧠 通义千问 Qwen 3.6 Plus" />
   <ModelItem id="grok-4-1-fast-non-reasoning" name="grok-4.1" title="xAI 旗舰的通用模型" />
   <ModelItem id="stepfun/step-3.5-flash:free" name="step-3.5-flash" title="⚡ 阶跃最新的 Step 3.5 Flash" />
   <ModelItem id="nvidia/nemotron-3-nano-30b-a3b:free" name="Nemotron-3-Nano" title="NVIDIA 最新的开源 agentic 小模型" />
