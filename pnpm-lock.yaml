@@ -110,7 +110,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ~8.0.0
-        version: 8.0.0(@typescript-eslint/rule-tester@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/typescript-estree@8.58.2(typescript@5.9.3))(@typescript-eslint/utils@8.58.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.32)(astro-eslint-parser@1.4.0)(eslint-plugin-astro@1.6.0(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-format@2.0.1(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-svelte@3.17.0(eslint@9.39.4(jiti@2.6.1))(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(eslint@9.39.4(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(typescript@5.9.3)
+        version: 8.0.0(@typescript-eslint/rule-tester@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/typescript-estree@8.58.2(typescript@5.9.3))(@typescript-eslint/utils@8.58.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.32)(astro-eslint-parser@1.4.0)(eslint-plugin-astro@1.7.0(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-format@2.0.1(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-svelte@3.17.0(eslint@9.39.4(jiti@2.6.1))(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(eslint@9.39.4(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
         version: 2.2.462
@@ -154,8 +154,8 @@ importers:
         specifier: ~2.17.0
         version: 2.17.3(@internationalized/date@3.10.0)(svelte@5.55.4(@typescript-eslint/types@8.58.2))
       eslint-plugin-astro:
-        specifier: ~1.6.0
-        version: 1.6.0(eslint@9.39.4(jiti@2.6.1))
+        specifier: ~1.7.0
+        version: 1.7.0(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-format:
         specifier: ~2.0.0
         version: 2.0.1(eslint@9.39.4(jiti@2.6.1))
@@ -3853,8 +3853,8 @@ packages:
     peerDependencies:
       eslint: '*'
 
-  eslint-plugin-astro@1.6.0:
-    resolution: {integrity: sha512-yGIbLHuj5MOUXa0s4sZ6cVhv6ehb+WLF80tsrGaxMk6VTUExruMzubQDzhOYt8fbR1c9vILCCRSCsKI7M1whig==}
+  eslint-plugin-astro@1.7.0:
+    resolution: {integrity: sha512-89xpAn528UKCdmyysbg0AHHqi6sqcK89wXnJIpu4F0mFBN03zATEBNK7pRtMfl6gwtMOm5ECXs+Wz5qDHhwTFw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.57.0'
@@ -6879,7 +6879,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
 
-  '@antfu/eslint-config@8.0.0(@typescript-eslint/rule-tester@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/typescript-estree@8.58.2(typescript@5.9.3))(@typescript-eslint/utils@8.58.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.32)(astro-eslint-parser@1.4.0)(eslint-plugin-astro@1.6.0(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-format@2.0.1(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-svelte@3.17.0(eslint@9.39.4(jiti@2.6.1))(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(eslint@9.39.4(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(typescript@5.9.3)':
+  '@antfu/eslint-config@8.0.0(@typescript-eslint/rule-tester@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/typescript-estree@8.58.2(typescript@5.9.3))(@typescript-eslint/utils@8.58.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.32)(astro-eslint-parser@1.4.0)(eslint-plugin-astro@1.7.0(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-format@2.0.1(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-svelte@3.17.0(eslint@9.39.4(jiti@2.6.1))(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(eslint@9.39.4(jiti@2.6.1))(svelte-eslint-parser@1.4.1(svelte@5.55.4(@typescript-eslint/types@8.58.2)))(typescript@5.9.3)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 1.2.0
@@ -6921,7 +6921,7 @@ snapshots:
     optionalDependencies:
       '@unocss/eslint-plugin': 66.4.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       astro-eslint-parser: 1.4.0
-      eslint-plugin-astro: 1.6.0(eslint@9.39.4(jiti@2.6.1))
+      eslint-plugin-astro: 1.7.0(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-format: 2.0.1(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-svelte: 3.17.0(eslint@9.39.4(jiti@2.6.1))(svelte@5.55.4(@typescript-eslint/types@8.58.2))
       svelte-eslint-parser: 1.4.1(svelte@5.55.4(@typescript-eslint/types@8.58.2))
@@ -9368,8 +9368,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.57.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.57.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.57.0
+      '@typescript-eslint/tsconfig-utils': 8.58.2(typescript@5.9.3)
+      '@typescript-eslint/types': 8.58.2
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -9378,7 +9378,7 @@ snapshots:
   '@typescript-eslint/project-service@8.57.1(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.58.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.57.1
+      '@typescript-eslint/types': 8.58.2
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -10075,7 +10075,7 @@ snapshots:
     dependencies:
       '@astrojs/compiler': 3.0.1
       '@typescript-eslint/scope-manager': 8.58.0
-      '@typescript-eslint/types': 8.57.1
+      '@typescript-eslint/types': 8.58.2
       astrojs-compiler-sync: 1.1.1(@astrojs/compiler@3.0.1)
       debug: 4.4.3
       entities: 7.0.1
@@ -11019,16 +11019,16 @@ snapshots:
     dependencies:
       eslint: 9.39.4(jiti@2.6.1)
 
-  eslint-plugin-astro@1.6.0(eslint@9.39.4(jiti@2.6.1)):
+  eslint-plugin-astro@1.7.0(eslint@9.39.4(jiti@2.6.1)):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.4(jiti@2.6.1))
       '@jridgewell/sourcemap-codec': 1.5.5
-      '@typescript-eslint/types': 8.57.1
+      '@typescript-eslint/types': 8.58.2
       astro-eslint-parser: 1.4.0
       eslint: 9.39.4(jiti@2.6.1)
       eslint-compat-utils: 0.6.5(eslint@9.39.4(jiti@2.6.1))
       globals: 16.5.0
-      postcss: 8.5.8
+      postcss: 8.5.10
       postcss-selector-parser: 7.1.1
     transitivePeerDependencies:
       - supports-color
