@@ -9,11 +9,11 @@
   }
 
   const { text, children }: Props = $props()
+  const direction = $derived(text ? 1 : -1)
 </script>
 
 <div class="relative grid overflow-hidden v-middle">
   {#key text}
-    {@const direction = text ? 1 : -1}
     <span in:fly={{ y: 15 * direction }} out:fly={{ y: -15 * direction }}>
       {#if text}
         {text}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import qingyan from '@lobehub/icons-static-svg/icons/qingyan-color.svg?raw'
+  import xiaomimimo from '@lobehub/icons-static-svg/icons/xiaomimimo-text.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
   import { onMount } from 'svelte'
 
@@ -62,12 +62,12 @@
 <div class="transition-opacity" class:op-0={!inView} class:duration-400={inView}>
   <div class="mb-0.6 ml-0.2 mt-0.3 select-none overflow-hidden text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8">
     <FlipText text={status}>
-      <span class="flex flex-row items-center gap-0.7 [&_svg]:-translate-y-0.1em">
-        欢迎试用智谱的开源模型
-        <a href="https://huggingface.co/zai-org/GLM-4.7" target="_blank" class="fcc gap-0.5">
+      <span class="flex flex-row items-center gap-0.7">
+        欢迎试用小米的开源模型
+        <a href="https://mimo.xiaomi.com/mimo-v2-5-pro" target="_blank" class="fcc gap-0.5">
           <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-          {@html qingyan}
-          GLM 4.7
+          {@html xiaomimimo}
+          <span class="ml-0.15em">V2.5 Pro</span>
         </a>
       </span>
     </FlipText>
