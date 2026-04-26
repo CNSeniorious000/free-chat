@@ -6,7 +6,9 @@
 <div class="grid grid-cols-2 w-full justify-between gap-1.5 text-sm">
   <ModelItem id="mimo-v2.5-pro" name="mimo-v2.5-pro" title="🛠️ 长程 agent 与软件工程旗舰" />
   <ModelItem id="mimo-v2.5" name="mimo-v2.5" title="👁️ 多模态 + 1M 上下文，高性价比" />
+  <ModelItem id="gpt-5.5" name="gpt-5.5" title="🧠 OpenAI 最新旗舰模型" />
   <ModelItem id="gpt-5.4" name="gpt-5.4" title="🧠 OpenAI 面向专业工作的最强高效模型" />
+  <ModelItem id="gpt-5.4-mini" name="gpt-5.4-mini" title="⚡ OpenAI 最新高效小模型" />
   <ModelItem id="gpt-5.3-codex" name="gpt-5.3-codex" title="💻 OpenAI 最强 agentic 编程模型" />
   <ModelItem id="gpt-5.2" name="gpt-5.2" title="🧠 OpenAI 前沿模型，适合复杂专业工作" />
   <ModelItem id="gpt-5.2-codex" name="gpt-5.2-codex" title="💻 适合代码理解与编程对话" />
