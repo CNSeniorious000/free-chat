@@ -32,7 +32,9 @@
   <ModelItem id="yi-lightning" name="yi-lightning" title="零一万物" />
   <ModelItem id="arcee-ai/trinity-mini:free" name="trinity-mini" title="arcee-ai 高效的开源模型" />
   <Hr text="官方 GLM 专区" />
-  <ModelItem id="glm-4.7" name="glm-4.7" title="✨ 智谱 GLM 4.7 最新旗舰" />
+  <ModelItem id="glm-5.1" name="glm-5.1" title="✨ 长程 agent 编程" />
+  <ModelItem id="glm-5" name="glm-5" title="工程 agent 模型" />
+  <ModelItem id="glm-4.7" name="glm-4.7" title="智谱 GLM 4.7" />
   <ModelItem id="glm-4.6" name="glm-4.6" title="智谱 GLM 4.6" />
   <ModelItem id="glm-4.6v" name="glm-4.6v" title="智谱 GLM 4.6V 视觉模型" />
   <ModelItem id="glm-4.5v" name="glm-4.5v" title="智谱 GLM 4.5V 视觉模型" />
