@@ -113,7 +113,7 @@ importers:
         version: 8.0.0(@typescript-eslint/rule-tester@8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/typescript-estree@8.59.1(typescript@5.9.3))(@typescript-eslint/utils@8.58.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.33)(astro-eslint-parser@1.4.0)(eslint-plugin-astro@1.7.0(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-format@2.0.1(eslint@9.39.4(jiti@2.6.1)))(eslint-plugin-svelte@3.17.1(eslint@9.39.4(jiti@2.6.1))(svelte@5.55.5(@typescript-eslint/types@8.59.1)))(eslint@9.39.4(jiti@2.6.1))(svelte-eslint-parser@1.6.0(svelte@5.55.5(@typescript-eslint/types@8.59.1)))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
-        version: 2.2.468
+        version: 2.2.469
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.10)(vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.3)))
@@ -152,7 +152,7 @@ importers:
         version: 1.2.0(astro@6.2.1(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(rollup@2.80.0)(terser@5.46.2)(typescript@5.9.3)(yaml@2.8.3))(vite-plugin-pwa@1.2.0(vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(terser@5.46.2)(yaml@2.8.3))(workbox-build@7.4.0(@types/babel__core@7.20.5))(workbox-window@7.4.0))
       bits-ui:
         specifier: ~2.18.0
-        version: 2.18.0(@internationalized/date@3.10.0)(svelte@5.55.5(@typescript-eslint/types@8.59.1))
+        version: 2.18.1(@internationalized/date@3.10.0)(svelte@5.55.5(@typescript-eslint/types@8.59.1))
       eslint-plugin-astro:
         specifier: ~1.7.0
         version: 1.7.0(eslint@9.39.4(jiti@2.6.1))
@@ -1331,8 +1331,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.468':
-    resolution: {integrity: sha512-vfW6JQdYiHAFnCRZN6H5uzObcFBTaAguNaKqUpeazDLz5DO7R2UM8StyM/+v8d8KP15SfrQzG9aZy4uF9lViVQ==}
+  '@iconify/json@2.2.469':
+    resolution: {integrity: sha512-ARAC23HXrR1QpoR/z+tjGqI3kWgkYsYKJwezWLc8m47dvGpuvZTmQYXSIJVpnHGtUPKylC3jqWb0udXfoDLWeg==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3055,8 +3055,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@2.18.0:
-    resolution: {integrity: sha512-GLOBZRVy3hxNHIQ2MpD/+5aK9KcBFZRhUJtZ1UDABXdlVR4K6zFpgt4T+Rwuhf2sQzlc6yK1q/DprHPjwT4Pjw==}
+  bits-ui@2.18.1:
+    resolution: {integrity: sha512-KkemzKFH4T3gt3H+P86JcnAWExjByv/6vlwjm/BoCwTPHu03yiCdxbghdJLvFReQTe0acCAiRcKfmixxD6XvlA==}
     engines: {node: '>=20'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -8037,7 +8037,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.468':
+  '@iconify/json@2.2.469':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -10103,7 +10103,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@2.18.0(@internationalized/date@3.10.0)(svelte@5.55.5(@typescript-eslint/types@8.59.1)):
+  bits-ui@2.18.1(@internationalized/date@3.10.0)(svelte@5.55.5(@typescript-eslint/types@8.59.1)):
     dependencies:
       '@floating-ui/core': 1.7.5
       '@floating-ui/dom': 1.7.6
