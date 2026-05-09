@@ -25,7 +25,7 @@ importers:
         version: 10.0.6(astro@6.3.0(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@2.80.0)(terser@5.47.1)(yaml@2.8.3))(rollup@2.80.0)(svelte@5.55.5(@typescript-eslint/types@8.59.2))
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.63
-        version: 1.0.67
+        version: 1.0.64
       '@solid-primitives/clipboard':
         specifier: ^1.6.2
         version: 1.6.4(solid-js@1.9.12)
@@ -78,8 +78,8 @@ importers:
         specifier: ^0.1.7
         version: 0.1.7
       reveal.js:
-        specifier: ~5.2.1
-        version: 5.2.1
+        specifier: ~6.0.0
+        version: 6.0.1
       solid-js:
         specifier: ~1.9.9
         version: 1.9.12
@@ -1519,8 +1519,8 @@ packages:
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
 
-  '@joplin/turndown-plugin-gfm@1.0.67':
-    resolution: {integrity: sha512-FZfW5EZfidhzd1IaY1uxHnIZPTVOxAdleMZ4/1U6Nt5b7+Qj5JThDnaIomuJtetnUBzuRNbe9FWMuqD4B3dlWA==}
+  '@joplin/turndown-plugin-gfm@1.0.64':
+    resolution: {integrity: sha512-8GJ7f9OenE3zkSVII5B6qzIkvgF7C/a20gaASEjM6jWPLPJFFQ2nQ3Ou/kXH1mPUTs9dC9VYs8QXVPvZabKXBQ==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -5858,9 +5858,8 @@ packages:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  reveal.js@5.2.1:
-    resolution: {integrity: sha512-r7//6mIM5p34hFiDMvYfXgyjXqGRta+/psd9YtytsgRlrpRzFv4RbH76TXd2qD+7ZPZEbpBDhdRhJaFgfQ7zNQ==}
-    engines: {node: '>=18.0.0'}
+  reveal.js@6.0.1:
+    resolution: {integrity: sha512-9eacArNIgqO2HGWOK+93gJNn+gvdGDVbSq+i2u3Ja9kjiHps0XNLpgYTZTYjKRH91uXy3clGimeGiw4umHG/tg==}
 
   rolldown@1.0.0-rc.18:
     resolution: {integrity: sha512-phmyKBpuBdRYDf4hgyynGAYn/rDDe+iZXKVJ7WX5b1zQzpLkP5oJRPGsfJuHdzPMlyyEO/4sPW6yfSx2gf7lVg==}
@@ -8392,7 +8391,7 @@ snapshots:
     dependencies:
       minipass: 7.1.3
 
-  '@joplin/turndown-plugin-gfm@1.0.67': {}
+  '@joplin/turndown-plugin-gfm@1.0.64': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -9462,8 +9461,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.57.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.57.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.57.0
+      '@typescript-eslint/tsconfig-utils': 8.59.2(typescript@5.9.3)
+      '@typescript-eslint/types': 8.59.2
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -13503,7 +13502,7 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  reveal.js@5.2.1: {}
+  reveal.js@6.0.1: {}
 
   rolldown@1.0.0-rc.18:
     dependencies:
