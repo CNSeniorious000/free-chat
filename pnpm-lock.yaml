@@ -25,7 +25,7 @@ importers:
         version: 10.0.6(astro@6.3.1(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(rollup@2.80.0)(terser@5.47.1)(yaml@2.8.3))(rollup@2.80.0)(svelte@5.55.5(@typescript-eslint/types@8.59.2))
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.63
-        version: 1.0.64
+        version: 1.0.67
       '@solid-primitives/clipboard':
         specifier: ^1.6.2
         version: 1.6.4(solid-js@1.9.12)
@@ -1513,8 +1513,8 @@ packages:
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
 
-  '@joplin/turndown-plugin-gfm@1.0.64':
-    resolution: {integrity: sha512-8GJ7f9OenE3zkSVII5B6qzIkvgF7C/a20gaASEjM6jWPLPJFFQ2nQ3Ou/kXH1mPUTs9dC9VYs8QXVPvZabKXBQ==}
+  '@joplin/turndown-plugin-gfm@1.0.67':
+    resolution: {integrity: sha512-FZfW5EZfidhzd1IaY1uxHnIZPTVOxAdleMZ4/1U6Nt5b7+Qj5JThDnaIomuJtetnUBzuRNbe9FWMuqD4B3dlWA==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -8143,7 +8143,7 @@ snapshots:
     dependencies:
       minipass: 7.1.3
 
-  '@joplin/turndown-plugin-gfm@1.0.64': {}
+  '@joplin/turndown-plugin-gfm@1.0.67': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -9131,8 +9131,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.57.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.59.2(typescript@5.9.3)
-      '@typescript-eslint/types': 8.59.2
+      '@typescript-eslint/tsconfig-utils': 8.57.0(typescript@5.9.3)
+      '@typescript-eslint/types': 8.57.0
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
