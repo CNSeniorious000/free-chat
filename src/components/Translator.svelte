@@ -86,6 +86,7 @@
   <div class="w-full rounded-md bg-white/3 p-2 lg:p-4 sm:p-3">
     <div class="relative h-full w-full">
       <div whitespace-pre-line>
+        <!-- eslint-disable-next-line svelte/require-each-key -->
         {#each parsed as { translated }}
           {#if translated}
             <span class="animate-fade-in animate-duration-200"> {translated} </span>
