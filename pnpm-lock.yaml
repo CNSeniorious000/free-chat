@@ -31,7 +31,7 @@ importers:
         version: 1.6.4(solid-js@1.9.14)
       '@solid-primitives/event-listener':
         specifier: ^2.4.5
-        version: 2.4.5(solid-js@1.9.14)
+        version: 2.4.6(solid-js@1.9.14)
       '@solid-primitives/keyboard':
         specifier: ^1.3.5
         version: 1.3.5(solid-js@1.9.14)
@@ -113,7 +113,7 @@ importers:
         version: 9.0.0(@typescript-eslint/rule-tester@8.62.0(eslint@10.5.0(jiti@2.7.0))(typescript@5.9.3))(@typescript-eslint/typescript-estree@8.62.1(typescript@5.9.3))(@typescript-eslint/utils@8.62.1(eslint@10.5.0(jiti@2.7.0))(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@10.5.0(jiti@2.7.0))(typescript@5.9.3))(@vue/compiler-sfc@3.5.39)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.62.1(eslint@10.5.0(jiti@2.7.0))(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)))(eslint-plugin-svelte@3.19.0(eslint@10.5.0(jiti@2.7.0))(svelte@5.56.4(@typescript-eslint/types@8.62.1)))(eslint@10.5.0(jiti@2.7.0))(svelte-eslint-parser@1.8.0(svelte@5.56.4(@typescript-eslint/types@8.62.1)))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
-        version: 2.2.494
+        version: 2.2.495
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.16)(vite@7.3.6(@types/node@26.1.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0)))
@@ -1413,8 +1413,8 @@ packages:
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
 
-  '@iconify/json@2.2.494':
-    resolution: {integrity: sha512-ssY0bQgG+W2uAd4G+iK/FhjiUu4UG/wdCTIt6dqItBO6DFTtvkHo2nQqWOJTG0orNFl9eDxB+YgVUzXnpvAhkw==}
+  '@iconify/json@2.2.495':
+    resolution: {integrity: sha512-fMsuwnkXQwlcdiBe6U9eV1eO3JX7/4GzBPN5Etb6XKtpiJHNiZrtyCE3B32Mf+Qr2Q6FVmzhGF03SMEc1iOGwA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2547,6 +2547,11 @@ packages:
     peerDependencies:
       solid-js: ^1.6.12
 
+  '@solid-primitives/event-listener@2.4.6':
+    resolution: {integrity: sha512-5I0YJcTVYIWoMmgBSROBZGcz+ymhew/pGTg2dHW74BUjFKsV8Li4bOZYl0YAGP4mHw5o4UBd9/BEesqBci3wxw==}
+    peerDependencies:
+      solid-js: ^1.6.12
+
   '@solid-primitives/keyboard@1.3.5':
     resolution: {integrity: sha512-sav+l+PL+74z3yaftVs7qd8c2SXkqzuxPOVibUe5wYMt+U5Hxp3V3XCPgBPN2I6cANjvoFtz0NiU8uHVLdi9FQ==}
     peerDependencies:
@@ -2569,6 +2574,11 @@ packages:
 
   '@solid-primitives/utils@6.4.0':
     resolution: {integrity: sha512-AeGTBg8Wtkh/0s+evyLtP8piQoS4wyqqQaAFs2HJcFMMjYAtUgo+ZPduRXLjPlqKVc2ejeR544oeqpbn8Egn8A==}
+    peerDependencies:
+      solid-js: ^1.6.12
+
+  '@solid-primitives/utils@6.4.1':
+    resolution: {integrity: sha512-ISSB5QX1qP2ynrheIpYwc4oKR5Ny4siNuUyf1qZniy+Il+p/PtDB0QK1Dnle8noiHpwRD3gpPdubOC3qI/Zamg==}
     peerDependencies:
       solid-js: ^1.6.12
 
@@ -8373,7 +8383,7 @@ snapshots:
 
   '@iarna/toml@2.2.5': {}
 
-  '@iconify/json@2.2.494':
+  '@iconify/json@2.2.495':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -9431,6 +9441,11 @@ snapshots:
       '@solid-primitives/utils': 6.4.0(solid-js@1.9.14)
       solid-js: 1.9.14
 
+  '@solid-primitives/event-listener@2.4.6(solid-js@1.9.14)':
+    dependencies:
+      '@solid-primitives/utils': 6.4.1(solid-js@1.9.14)
+      solid-js: 1.9.14
+
   '@solid-primitives/keyboard@1.3.5(solid-js@1.9.14)':
     dependencies:
       '@solid-primitives/event-listener': 2.4.5(solid-js@1.9.14)
@@ -9452,6 +9467,10 @@ snapshots:
       solid-js: 1.9.14
 
   '@solid-primitives/utils@6.4.0(solid-js@1.9.14)':
+    dependencies:
+      solid-js: 1.9.14
+
+  '@solid-primitives/utils@6.4.1(solid-js@1.9.14)':
     dependencies:
       solid-js: 1.9.14
 
@@ -9639,8 +9658,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.62.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.62.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.62.0
+      '@typescript-eslint/tsconfig-utils': 8.62.1(typescript@5.9.3)
+      '@typescript-eslint/types': 8.62.1
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
