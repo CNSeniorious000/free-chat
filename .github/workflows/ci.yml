@@ -40,8 +40,11 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Install check tools
+        run: pnpm add -D svelte-check @astrojs/check
+
       - name: Astro check
-        run: pnpm astro sync && pnpx @astrojs/check
+        run: pnpm astro sync && pnpm exec astro-check
 
       - name: Svelte check
-        run: pnpx svelte-check
+        run: pnpm exec svelte-check

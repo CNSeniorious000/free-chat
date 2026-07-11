@@ -3,8 +3,8 @@
 
   import { ripple } from '../../utils/ripple'
 
-  function asIs(value: 'endless' | 'classic') {
-    return value
+  function asIs(value: string) {
+    return value as 'endless' | 'classic'
   }
 
   const pattern = persistedState<'endless' | 'classic'>('pattern', 'endless', {
