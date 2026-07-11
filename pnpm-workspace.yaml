@@ -1,4 +1,5 @@
 shellEmulator: true
+packages: [] # pnpm 9 (Vercel's version for lockfile v9) treats any pnpm-workspace.yaml as a monorepo and fails without this
 
 allowBuilds:
   '@parcel/watcher': true
