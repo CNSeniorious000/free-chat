@@ -15,6 +15,7 @@ export default antfu({
     'jsonc/sort-keys': 'off',
     'node/prefer-global/process': 'off',
     'perfectionist/sort-imports': ['error', { type: 'natural' }],
+    'pnpm/yaml-enforce-settings': 'off',
     'style/brace-style': ['error', '1tbs', { allowSingleLine: true }],
     'style/jsx-one-expression-per-line': 'off',
     'style/max-statements-per-line': 'off',
