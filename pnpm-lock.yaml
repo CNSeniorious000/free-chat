@@ -72,8 +72,8 @@ importers:
         specifier: ~2.0.3
         version: 2.0.3
       number-flow:
-        specifier: ^0.6.1
-        version: 0.6.1
+        specifier: ^0.6.2
+        version: 0.6.2
       partial-json:
         specifier: ^0.1.7
         version: 0.1.7
@@ -1837,8 +1837,8 @@ packages:
     resolution: {integrity: sha512-P6X+xS3glvhiTX6AAocYvnZtqXtWhvxMX4AdPgv2iw6cXjGL2criUveX7bSjp6DiyHfvQpNdG0ZRpeBEVAFf1g==}
     engines: {node: ^18.14.0 || >=20}
 
-  '@netlify/dev@4.18.7':
-    resolution: {integrity: sha512-BeXz9dis2Iid5EcOItVj2srdC30R4RwDhsk/N/h+T2WYrJbyhOj6b1IS+6fVGe5JbKe9fDiGANH1cujplX1+rw==}
+  '@netlify/dev@4.18.9':
+    resolution: {integrity: sha512-cHXktcJQuVHGukRhMkdfYvN8/bsvkILh5wEKeVRmmlML6oCZnxnii9mcNjhQbQ5NotsbW6/NShuuEH3caufG6Q==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/edge-bundler@14.10.3':
@@ -1848,16 +1848,16 @@ packages:
   '@netlify/edge-functions-bootstrap@2.16.0':
     resolution: {integrity: sha512-v8QQihSbBHj3JxtJsHoepXALpNumD9M7egHoc8z62FYl5it34dWczkaJoFFopEyhiBVKi4K/n0ZYpdzwfujd6g==}
 
-  '@netlify/edge-functions-dev@1.0.20':
-    resolution: {integrity: sha512-bk05M+nuafsc4JjYEhwTKI8kpnK7EPOf6sreUbdNCi+17JUNvl6D959Hxheq0Ke2nT5UPqIcJRuNvjvI+ocT+Q==}
+  '@netlify/edge-functions-dev@1.0.22':
+    resolution: {integrity: sha512-FmN7aikLn1fs+GUpcxgyM+MgEhwRfwz6XoGF+pAjDMO27eA3Vt8IeV/gx/hZfCeehMFHev4X2vENC1WXlmtKhQ==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/edge-functions@3.0.8':
     resolution: {integrity: sha512-ml1oCDsRTTRmZS2nUj8XRD1b6+foEiZT3lPk7qQ4nv/jnxylHJ20ooPzPDH+cJmGjXFrMeR14/91W1o6D2ftBg==}
     engines: {node: '>=18.0.0'}
 
-  '@netlify/functions-dev@1.3.0':
-    resolution: {integrity: sha512-3CMb4GDuh8vzc2F7bUFw73QtCA+TEfcS9RQ6Z8Zkz4oAdTLN8W/73QeY50eWslWqkA2cUj87OLEYaTnC4Rj8EA==}
+  '@netlify/functions-dev@1.3.1':
+    resolution: {integrity: sha512-zoJ/Q1ODjQLMQN2zvtPpDBqLUjE0gRCahQcj9w+IJ/5k9ys9bK0hb5a7ar/LjUsXWA5o9bNqHbJFy3a4RgDl6Q==}
     engines: {node: '>=20.6.1'}
 
   '@netlify/functions@5.3.0':
@@ -1912,8 +1912,8 @@ packages:
     resolution: {integrity: sha512-8/g0Pt6y6wXj5Ia5eeYLiXhRfWeqZXGXpGFeCiiQdUOem+FPtXdA4+YdGxqzWc7D0AvptKSO01KGeeVWHSu8Kg==}
     engines: {node: ^18.14.0 || >=20}
 
-  '@netlify/vite-plugin@2.12.8':
-    resolution: {integrity: sha512-NK5i+mR3onre/wUbs3Qf7XZpsJ3nuEtjFPI29D88B8Q/yNoYpk+NuT65hW6QaiIwUkL/MdadJfMqbrwIaI2i0w==}
+  '@netlify/vite-plugin@2.12.9':
+    resolution: {integrity: sha512-6c4OpF5EINlGU2ogxWhBdGQJcKUoupdns5AJnghcHw3q/32LqFDxvX4Gq6vR+Dgx6y4MCiVMyT9wgh2dpeCHDw==}
     engines: {node: ^20.6.1 || >=22}
     peerDependencies:
       vite: ^5 || ^6 || ^7 || ^8
@@ -5416,8 +5416,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  number-flow@0.6.1:
-    resolution: {integrity: sha512-5NUCwZA6J/kZeEzqApOyq7KOf1Wu/oxjpp/95HB0NBNBFlpK/Pp7i4jH8h0LIXyRDKSTewDAUaYHL7IBrk19Ew==}
+  number-flow@0.6.2:
+    resolution: {integrity: sha512-MCnImG4Q5vPwhSXnov56nOuyyKn6LC+Qd7II1UiKc+ACRtug5iAtn0+CwXNxM38AC5lSowEY+oYEtZX2qMnUyw==}
 
   object-deep-merge@2.0.1:
     resolution: {integrity: sha512-aKttDKcU3pyZqKcCkDhsMn70WmZFG2JGDQLP9EcLyTSIFQRCPWLAmBZRLJnrVUrhPG1jETEEbfdgbNtJf1LyMg==}
@@ -7139,7 +7139,7 @@ snapshots:
       '@astrojs/underscore-redirects': 1.0.3
       '@netlify/blobs': 10.7.9
       '@netlify/functions': 5.3.0
-      '@netlify/vite-plugin': 2.12.8(@vercel/functions@3.7.5)(rollup@4.62.2)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
+      '@netlify/vite-plugin': 2.12.9(@vercel/functions@3.7.5)(rollup@4.62.2)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
       '@vercel/nft': 1.10.2(rollup@4.62.2)
       astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(@netlify/blobs@10.7.9)(@types/node@26.1.1)(@vercel/functions@3.7.5)(jiti@2.7.0)(rollup@4.62.2)(terser@5.48.0)(yaml@2.9.0)
       esbuild: 0.28.1
@@ -8690,15 +8690,15 @@ snapshots:
       semver: 7.8.5
       tmp-promise: 3.0.3
 
-  '@netlify/dev@4.18.7(@vercel/functions@3.7.5)(rollup@4.62.2)':
+  '@netlify/dev@4.18.9(@vercel/functions@3.7.5)(rollup@4.62.2)':
     dependencies:
       '@netlify/ai': 0.4.2
       '@netlify/blobs': 10.7.9
       '@netlify/config': 24.6.0
       '@netlify/database-dev': 0.10.1
       '@netlify/dev-utils': 4.4.6
-      '@netlify/edge-functions-dev': 1.0.20
-      '@netlify/functions-dev': 1.3.0(rollup@4.62.2)
+      '@netlify/edge-functions-dev': 1.0.22
+      '@netlify/functions-dev': 1.3.1(rollup@4.62.2)
       '@netlify/headers': 2.1.11
       '@netlify/images': 1.3.10(@netlify/blobs@10.7.9)(@vercel/functions@3.7.5)
       '@netlify/redirects': 3.1.13
@@ -8758,7 +8758,7 @@ snapshots:
 
   '@netlify/edge-functions-bootstrap@2.16.0': {}
 
-  '@netlify/edge-functions-dev@1.0.20':
+  '@netlify/edge-functions-dev@1.0.22':
     dependencies:
       '@netlify/dev-utils': 4.4.6
       '@netlify/edge-bundler': 14.10.3
@@ -8771,7 +8771,7 @@ snapshots:
     dependencies:
       '@netlify/types': 2.8.0
 
-  '@netlify/functions-dev@1.3.0(rollup@4.62.2)':
+  '@netlify/functions-dev@1.3.1(rollup@4.62.2)':
     dependencies:
       '@netlify/blobs': 10.7.9
       '@netlify/dev-utils': 4.4.6
@@ -8884,9 +8884,9 @@ snapshots:
 
   '@netlify/types@2.8.0': {}
 
-  '@netlify/vite-plugin@2.12.8(@vercel/functions@3.7.5)(rollup@4.62.2)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))':
+  '@netlify/vite-plugin@2.12.9(@vercel/functions@3.7.5)(rollup@4.62.2)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))':
     dependencies:
-      '@netlify/dev': 4.18.7(@vercel/functions@3.7.5)(rollup@4.62.2)
+      '@netlify/dev': 4.18.9(@vercel/functions@3.7.5)(rollup@4.62.2)
       '@netlify/dev-utils': 4.4.6
       dedent: 1.7.2
       vite: 8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
@@ -12794,7 +12794,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  number-flow@0.6.1:
+  number-flow@0.6.2:
     dependencies:
       esm-env: 1.2.2
 
