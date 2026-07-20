@@ -13,7 +13,7 @@ jobs:
     outputs:
       updated: ${{ steps.set-output.outputs.updated }}
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
 
       - name: Install pnpm
         uses: pnpm/action-setup@v6
