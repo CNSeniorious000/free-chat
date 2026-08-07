@@ -20,7 +20,7 @@ export const POST: APIRoute = async(context) => {
   const content = await context.request.text()
 
   try {
-    const { textStream } = await streamText({
+    const { textStream } = streamText({
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: `"""\n${content}\n"""` },
