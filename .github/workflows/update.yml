@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: 0 0 * * *
 
+env:
+  pnpm_config_minimum_release_age: 0
+
 jobs:
   taze:
     runs-on: ubuntu-latest

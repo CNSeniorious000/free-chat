@@ -2,6 +2,9 @@ name: CI
 
 on: [push, fork, pull_request, workflow_dispatch, workflow_call]
 
+env:
+  pnpm_config_minimum_release_age: 0
+
 jobs:
 
   typos:
