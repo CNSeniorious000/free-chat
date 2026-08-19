@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/netlify':
-        specifier: ~8.0.0
-        version: 8.0.0(@parcel/watcher@2.5.6)(@types/node@26.2.0)(@vercel/functions@3.9.3)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.2.0)(@vercel/functions@3.9.3)(jiti@2.7.0)(rollup@4.62.4)(terser@5.48.0)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.62.4)(supports-color@7.2.0)(terser@5.48.0)(yaml@2.9.0)
+        specifier: ~8.1.0
+        version: 8.1.3(@parcel/watcher@2.5.6)(@types/node@26.2.0)(@vercel/functions@3.9.3)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.2.0)(@vercel/functions@3.9.3)(jiti@2.7.0)(rollup@4.62.4)(terser@5.48.0)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.62.4)(supports-color@7.2.0)(terser@5.48.0)(yaml@2.9.0)
       '@astrojs/node':
         specifier: ~11.0.3
         version: 11.0.3(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.2.0)(@vercel/functions@3.9.3)(jiti@2.7.0)(rollup@4.62.4)(terser@5.48.0)(yaml@2.9.0))(supports-color@7.2.0)
@@ -328,9 +328,6 @@ packages:
   '@astrojs/compiler@4.0.0':
     resolution: {integrity: sha512-eouss7G8ygdZqHuke033VMcVw5HTZUu+PXd/h06DGDUg/jt5btPYPqh66ENWw/mU78rBrf/oeC4oqoBwMtDMNA==}
 
-  '@astrojs/internal-helpers@0.10.0':
-    resolution: {integrity: sha512-Ry2R3VPeIN4uPCSA4xQc+e+vsJXkalKpEbDc07hV+a/o5Bs2N/s/uDcPJH/05L19DKh9tAy7e6JM3YZ6Cxfezw==}
-
   '@astrojs/internal-helpers@0.10.1':
     resolution: {integrity: sha512-5phcroT/vmOOrYuuAxtkbPixy5hePtlz9i8K4OeDv3dNK6/UQRuXPOSRTxIOBbUY5Sonw2UaxjbuVc43Mcir6Q==}
 
@@ -343,10 +340,10 @@ packages:
   '@astrojs/markdown-satteri@0.3.4':
     resolution: {integrity: sha512-6Lvt/bQZEBW+zzdhPblvfZEy5PGEYJaUsUqaCgwHeRPxZJL1gc9I+DRLKWJjjYTWDzVUTzXlMq4WwSK+X34CVw==}
 
-  '@astrojs/netlify@8.0.0':
-    resolution: {integrity: sha512-5sA38B8mXhEVO/45T+WpDOKmgVInsIV5n4tpID03Ddy+Mchqd5y+WK61uzypzUIPZDCX/EpCetEiCDbyM7ZNuQ==}
+  '@astrojs/netlify@8.1.3':
+    resolution: {integrity: sha512-i/R2v3/CXEFVZg8NVytUvniRzCkkTzVkDFKLPq3NPcA2VckWXdFB1TcGaekXFNUagoBZu7RUPsskEiWNiz7vPQ==}
     peerDependencies:
-      astro: ^7.0.0-alpha.0
+      astro: ^7.0.0
 
   '@astrojs/node@11.0.3':
     resolution: {integrity: sha512-T5BLn3gh9qpWpPK4vcpsnCmFyU3TL4u7m1n33D+h1uEuUVMjmald5QryZI7B/PwlM9fk09s+DQupy6a61wfi9A==}
@@ -7140,17 +7137,6 @@ snapshots:
 
   '@astrojs/compiler@4.0.0': {}
 
-  '@astrojs/internal-helpers@0.10.0':
-    dependencies:
-      '@types/hast': 3.0.5
-      '@types/mdast': 4.0.4
-      js-yaml: 4.3.1
-      picomatch: 4.0.5
-      retext-smartypants: 6.2.0
-      shiki: 4.4.3
-      smol-toml: 1.8.0
-      unified: 11.0.5
-
   '@astrojs/internal-helpers@0.10.1':
     dependencies:
       '@types/hast': 3.0.5
@@ -7192,9 +7178,9 @@ snapshots:
       hast-util-from-html: 2.0.3
       satteri: 0.9.5
 
-  '@astrojs/netlify@8.0.0(@parcel/watcher@2.5.6)(@types/node@26.2.0)(@vercel/functions@3.9.3)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.2.0)(@vercel/functions@3.9.3)(jiti@2.7.0)(rollup@4.62.4)(terser@5.48.0)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.62.4)(supports-color@7.2.0)(terser@5.48.0)(yaml@2.9.0)':
+  '@astrojs/netlify@8.1.3(@parcel/watcher@2.5.6)(@types/node@26.2.0)(@vercel/functions@3.9.3)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.2.0)(@vercel/functions@3.9.3)(jiti@2.7.0)(rollup@4.62.4)(terser@5.48.0)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.62.4)(supports-color@7.2.0)(terser@5.48.0)(yaml@2.9.0)':
     dependencies:
-      '@astrojs/internal-helpers': 0.10.0
+      '@astrojs/internal-helpers': 0.10.2
       '@astrojs/underscore-redirects': 1.0.3
       '@netlify/blobs': 10.7.13(supports-color@7.2.0)
       '@netlify/functions': 5.3.0
