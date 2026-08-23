@@ -4,7 +4,6 @@ import { writeClipboard } from '@solid-primitives/clipboard'
 import { createEventListener } from '@solid-primitives/event-listener'
 import { debounce } from '@solid-primitives/scheduled'
 import { PUBLIC_RIGHT_ALIGN_MY_MSG } from 'astro:env/client'
-import MarkdownIt from 'markdown-it'
 import mdHighlight from 'markdown-it-highlightjs'
 // @ts-expect-error missing types
 import mdKatex from 'markdown-it-katex'
@@ -13,6 +12,7 @@ import { createMemo, createSignal, Index, Show } from 'solid-js'
 import type { ChatMessage } from '@/types'
 
 import { splitReasoningPart } from '@/utils/deepseek'
+import { createMarkdownIt } from '@/utils/markdown'
 
 import FadedScrollViewport from './FadedScrollViewport'
 import IconRefresh from './icons/Refresh'
@@ -27,7 +27,7 @@ interface Props {
 
 const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
-const md = MarkdownIt({ linkify: true, breaks: true }).use(mdKatex).use(mdHighlight)
+const md = createMarkdownIt({ linkify: true, breaks: true }).use(mdKatex).use(mdHighlight)
 
 const fence = md.renderer.rules.fence!
 
