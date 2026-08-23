@@ -113,7 +113,7 @@ importers:
         version: 9.0.0(@typescript-eslint/typescript-estree@8.67.0(supports-color@7.2.0)(typescript@5.9.3))(@typescript-eslint/utils@8.67.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@vue/compiler-sfc@3.5.41)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.67.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-svelte@3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.67.0)))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.1(svelte@5.56.10(@typescript-eslint/types@8.67.0)))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
-        version: 2.2.518
+        version: 2.2.519
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.4.2(postcss@8.5.26)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.2.0)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.48.0)(yaml@2.9.0)))
@@ -1422,8 +1422,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/json@2.2.518':
-    resolution: {integrity: sha512-RhUkCc/lF+0hWiYLIMPOf4oy5owjN8r9PGqDQKb7bh76QiWHTerIApDhtOcEWe85VjUcsuU88Rg56Od+a64wMA==}
+  '@iconify/json@2.2.519':
+    resolution: {integrity: sha512-zwjQIYYLnT8b2SUELffIDzsfftTjdYTUfE+iaZGUg8jEckx69CU/tWqt65GZt7B3D2pKk7f651lbY9QYWIKOYA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3980,8 +3980,8 @@ packages:
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
 
-  eslint-plugin-jsonc@3.4.1:
-    resolution: {integrity: sha512-HHWkjAmVJ3QAffCkfo0XKl3CstLtgbIu5EGfFfVDLQT6vqPrxl4pFbUwFwY03nOlvyuDiiBixhHFrlbzn9u09Q==}
+  eslint-plugin-jsonc@3.4.2:
+    resolution: {integrity: sha512-q5xzjCYFQuhFomTbctXzd3STfDJ8XduvaigjQmMEbP2gzSKrc58y3Fv6D775/cIK1/sRUn+4kpljiU2iW8k0zw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     peerDependencies:
       eslint: '>=9.38.0'
@@ -7041,7 +7041,7 @@ snapshots:
       eslint-plugin-command: 3.5.3(@typescript-eslint/typescript-estree@8.67.0(supports-color@7.2.0)(typescript@5.9.3))(@typescript-eslint/utils@8.67.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-import-lite: 0.6.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-jsdoc: 62.9.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
-      eslint-plugin-jsonc: 3.4.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
+      eslint-plugin-jsonc: 3.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-n: 18.3.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(typescript@5.9.3)
       eslint-plugin-no-only-tests: 3.4.0
       eslint-plugin-perfectionist: 5.10.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
@@ -8370,7 +8370,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify/json@2.2.518':
+  '@iconify/json@2.2.519':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -11149,7 +11149,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-jsonc@3.4.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)):
+  eslint-plugin-jsonc@3.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)):
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
       '@eslint/core': 1.2.1
