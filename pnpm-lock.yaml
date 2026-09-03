@@ -110,7 +110,7 @@ importers:
     devDependencies:
       '@antfu/eslint-config':
         specifier: ~9.0.0
-        version: 9.0.0(@typescript-eslint/typescript-estree@8.69.0(supports-color@7.2.0)(typescript@5.9.3))(@typescript-eslint/utils@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@vue/compiler-sfc@3.5.42)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-svelte@3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.1(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(typescript@5.9.3)
+        version: 9.0.0(@typescript-eslint/typescript-estree@8.69.0(supports-color@7.2.0)(typescript@5.9.3))(@typescript-eslint/utils@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@vue/compiler-sfc@3.5.42)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-svelte@3.23.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.1(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
         version: 2.2.525
@@ -160,8 +160,8 @@ importers:
         specifier: ~2.0.1
         version: 2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-svelte:
-        specifier: ~3.19.0
-        version: 3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0))
+        specifier: ~3.23.0
+        version: 3.23.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0))
       svelte-inview:
         specifier: ~4.0.4
         version: 4.0.4(svelte@5.56.10(@typescript-eslint/types@8.69.0))
@@ -4005,8 +4005,8 @@ packages:
     peerDependencies:
       eslint: '>=9.38.0'
 
-  eslint-plugin-svelte@3.19.0:
-    resolution: {integrity: sha512-t3rNaZeXz4d2gG4uJyMEYfJCFKf22+SWbSizIIXIWKu4wM+XPLiMWuSSr/C5821JmFeN9ogK+eExbG+z+twyxw==}
+  eslint-plugin-svelte@3.23.0:
+    resolution: {integrity: sha512-n9jRklDqy0+W834568a4ZIZTK7DHXxvvHHxxGP8nNq7N//pOZMubttskHOquyGgfTR4Z05q2NdGNlsTpIEA48w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.1 || ^9.0.0 || ^10.0.0
@@ -6977,7 +6977,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
 
-  '@antfu/eslint-config@9.0.0(@typescript-eslint/typescript-estree@8.69.0(supports-color@7.2.0)(typescript@5.9.3))(@typescript-eslint/utils@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@vue/compiler-sfc@3.5.42)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-svelte@3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.1(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(typescript@5.9.3)':
+  '@antfu/eslint-config@9.0.0(@typescript-eslint/typescript-estree@8.69.0(supports-color@7.2.0)(typescript@5.9.3))(@typescript-eslint/utils@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@vue/compiler-sfc@3.5.42)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-svelte@3.23.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.1(svelte@5.56.10(@typescript-eslint/types@8.69.0)))(typescript@5.9.3)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 1.7.0
@@ -7020,7 +7020,7 @@ snapshots:
       '@unocss/eslint-plugin': 66.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
       eslint-plugin-astro: 2.0.0(@typescript-eslint/parser@8.69.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
       eslint-plugin-format: 2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
-      eslint-plugin-svelte: 3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0))
+      eslint-plugin-svelte: 3.23.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0))
       svelte-eslint-parser: 1.8.1(svelte@5.56.10(@typescript-eslint/types@8.69.0))
     transitivePeerDependencies:
       - '@eslint/json'
@@ -11153,7 +11153,7 @@ snapshots:
       regexp-ast-analysis: 0.7.1
       scslre: 0.3.0
 
-  eslint-plugin-svelte@3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0)):
+  eslint-plugin-svelte@3.23.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.69.0)):
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))
       '@jridgewell/sourcemap-codec': 1.6.0
