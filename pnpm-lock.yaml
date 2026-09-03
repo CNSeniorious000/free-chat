@@ -51,8 +51,8 @@ importers:
         specifier: ~10.5.0
         version: 10.5.0(jiti@2.7.0)(supports-color@7.2.0)
       eventsource-parser:
-        specifier: ~3.1.1
-        version: 3.1.1
+        specifier: ~4.1.0
+        version: 4.1.0
       highlight.js:
         specifier: ~11.11.2
         version: 11.11.2
@@ -4157,9 +4157,9 @@ packages:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
 
-  eventsource-parser@3.1.1:
-    resolution: {integrity: sha512-EKN1vKAMcZ8MlYMpaNuxN6R9yakzH6uajHcHVTqWJzvu5pWw9DyhbP35HH8MVBQ+dZjAfDxk+A8NiR9KWaXiyQ==}
-    engines: {node: '>=18.0.0'}
+  eventsource-parser@4.1.0:
+    resolution: {integrity: sha512-+DHvQ1wLO//MK+1OZgcuXCbZFKgu3YjKPJt7n98rxX8vezL0ni+7s3ZQiM8bJkUEOk7MsuCycrPLj0FzUNf7Og==}
+    engines: {node: '>=22.12'}
 
   execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
@@ -11345,7 +11345,7 @@ snapshots:
 
   events@3.3.0: {}
 
-  eventsource-parser@3.1.1: {}
+  eventsource-parser@4.1.0: {}
 
   execa@5.1.1:
     dependencies:
