@@ -3,7 +3,6 @@ import type { ParentComponent, Setter } from 'solid-js'
 import { makeEventListener } from '@solid-primitives/event-listener'
 import { throttle } from '@solid-primitives/scheduled'
 import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
-import MarkdownIt from 'markdown-it'
 import { batch, createContext, createEffect, createMemo, createSignal, onMount, untrack, useContext } from 'solid-js'
 import { toast } from 'solid-toast'
 
@@ -16,6 +15,7 @@ import { getStoredApiKey } from '@/utils/auth'
 import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 import { splitReasoningPart } from '@/utils/deepseek'
 import { MessagesEvent } from '@/utils/events'
+import { createMarkdownIt } from '@/utils/markdown'
 import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
@@ -145,7 +145,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     else if (messageList().length === 0) setSuggestions([])
   })
 
-  const instance = new MarkdownIt({ html: false })
+  const instance = createMarkdownIt({ html: false })
   const md = (markdown: string) => instance.renderInline(markdown)
 
   const setPageTitle = (title?: string) => {
