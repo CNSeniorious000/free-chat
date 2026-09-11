@@ -10,19 +10,19 @@ importers:
     dependencies:
       '@astrojs/netlify':
         specifier: ~8.1.3
-        version: 8.1.3(@vercel/functions@3.9.7)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.63.1)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)
+        version: 8.1.3(@types/node@26.5.1)(@vercel/functions@3.9.7)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.63.1)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)
       '@astrojs/node':
         specifier: ~11.0.3
-        version: 11.0.3(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(supports-color@7.2.0)
+        version: 11.0.3(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(supports-color@7.2.0)
       '@astrojs/solid-js':
         specifier: ~7.0.2
-        version: 7.0.2(esbuild@0.28.2)(jiti@2.7.0)(solid-js@1.9.15)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)
+        version: 7.0.2(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(solid-js@1.9.15)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)
       '@astrojs/svelte':
         specifier: ~9.0.1
-        version: 9.0.1(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(esbuild@0.28.2)(jiti@2.7.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))(terser@5.51.2)(typescript@5.9.3)(yaml@2.9.0)
+        version: 9.0.1(@types/node@26.5.1)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(esbuild@0.28.2)(jiti@2.7.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))(terser@5.51.2)(typescript@5.9.3)(yaml@2.9.0)
       '@astrojs/vercel':
         specifier: ~11.0.10
-        version: 11.0.10(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(rollup@4.63.1)(supports-color@7.2.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))
+        version: 11.0.10(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(rollup@4.63.1)(supports-color@7.2.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))
       '@joplin/turndown-plugin-gfm':
         specifier: ^1.0.68
         version: 1.0.68
@@ -46,7 +46,7 @@ importers:
         version: 0.4.4
       astro:
         specifier: ~7.0.9
-        version: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
+        version: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
       eslint:
         specifier: ~10.5.0
         version: 10.5.0(jiti@2.7.0)(supports-color@7.2.0)
@@ -81,8 +81,8 @@ importers:
         specifier: ^0.1.7
         version: 0.1.7
       reveal.js:
-        specifier: ~6.0.1
-        version: 6.0.1
+        specifier: ~6.0.2
+        version: 6.0.2
       solid-js:
         specifier: ~1.9.15
         version: 1.9.15
@@ -106,7 +106,7 @@ importers:
         version: 7.2.4
       vite:
         specifier: ~7.3.6
-        version: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+        version: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
       xsfetch:
         specifier: ^0.4.4
         version: 0.4.4
@@ -116,16 +116,16 @@ importers:
         version: 9.0.0(@typescript-eslint/typescript-estree@8.70.0(supports-color@7.2.0)(typescript@5.9.3))(@typescript-eslint/utils@8.70.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@unocss/eslint-plugin@66.4.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(@vue/compiler-sfc@3.5.42)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.70.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-svelte@3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.56.10(@typescript-eslint/types@8.70.0)))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.8.1(svelte@5.56.10(@typescript-eslint/types@8.70.0)))(typescript@5.9.3)
       '@iconify/json':
         specifier: latest
-        version: 2.2.526
+        version: 2.2.527
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
-        version: 2.0.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))
+        version: 2.0.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))
       '@lobehub/icons-static-svg':
         specifier: ^1.95.0
         version: 1.95.0
       '@sveltejs/vite-plugin-svelte':
         specifier: ~6.2.4
-        version: 6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+        version: 6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
       '@types/markdown-it':
         specifier: ~14.2.0
         version: 14.2.0
@@ -152,7 +152,7 @@ importers:
         version: 66.4.2
       '@vite-pwa/astro':
         specifier: ~1.2.0
-        version: 1.2.0(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1))
+        version: 1.2.0(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1))
       bits-ui:
         specifier: ~2.18.2
         version: 2.18.2(@internationalized/date@3.12.4)(svelte@5.56.10(@typescript-eslint/types@8.70.0))
@@ -176,16 +176,16 @@ importers:
         version: 5.9.3
       unocss:
         specifier: ~66.4.2
-        version: 66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+        version: 66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
       unocss-preset-scrollbar:
         specifier: ~3.2.0
-        version: 3.2.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))
+        version: 3.2.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))
       vite-plugin-devtools-json:
         specifier: ~1.1.0
-        version: 1.1.0(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+        version: 1.1.0(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
       vite-plugin-pwa:
         specifier: 1.3.0
-        version: 1.3.0(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1)
+        version: 1.3.0(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1)
 
 packages:
 
@@ -1432,8 +1432,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/json@2.2.526':
-    resolution: {integrity: sha512-DJ235CZST2dG8h9yOlL91Jhg+4rTHhE3cm5aHhpfrhwSEn/4ScHXZPwjKIFo4DOe05xhyRG0PQqDmRsVJzDiZQ==}
+  '@iconify/json@2.2.527':
+    resolution: {integrity: sha512-3NRdMve2biuS/y+Hm6e3xF2Ttx73pyZ8fn+zqXxWVOL/Q+KqgqYJwSpqiTDTRJ7q1XLevAJBzM3ykWYR5rM8nQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1812,8 +1812,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@napi-rs/wasm-runtime@1.2.3':
-    resolution: {integrity: sha512-UMduMbqO5s5zF2NkNacMT/yK5Y5QiKvWr2+50bzIIxFDwVJ2h49b+oyjaCGPhJxd2/gC2x39EHv/gHVuu36x2Q==}
+  '@napi-rs/wasm-runtime@1.2.4':
+    resolution: {integrity: sha512-AJxoUD2/15ESHbvpcyjU274nsAPLuOtPHCk0vKJM5pj//Fg/B1FXNWjPnXTT9PymCYYiHo4zPj0ZomXBKhoy7g==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=23.5.0}
     peerDependencies:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
@@ -3183,8 +3183,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  baseline-browser-mapping@2.11.21:
-    resolution: {integrity: sha512-uh8vpY/1/YyFkunIDFH/12p7/7VdPKA1hejMVEbdkEaWnUz0Hesvx5EbiU6XxjyHZIOju+ZMbQJkRh+es3/spQ==}
+  baseline-browser-mapping@2.11.22:
+    resolution: {integrity: sha512-pWc4w51fBFd7mav43/zKRC+RI6f4yfzQoVlfvE8dECePyfkn1bzLp01Fj0QACcyCZyFhiEMyD2qScfKRWgWibA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -3692,8 +3692,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.425:
-    resolution: {integrity: sha512-QvPtl41EUOnuT1HBvMKgxXRIaHNcagBPs50u7VULzhZXaGfqTbZyE16LQsctZ/RQHlGu+FOWeDTR4mY6YbeF1g==}
+  electron-to-chromium@1.5.427:
+    resolution: {integrity: sha512-n14zb3FdsChZ2BNobqNHAJMcP3ifFv4paox2LvCrfVAQcqGiSURgbJl+PfMpHVCNFkStnNc+RRVtPBTVW5PDgw==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -5015,8 +5015,8 @@ packages:
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
-  magic-string@1.2.3:
-    resolution: {integrity: sha512-Bpb0W2TbLKOZ7vJnOUnVRGq3WL2p+ISV29M6hYPL1AFCpyKZpdr5ytiXoTSSxRVhg8YW7f65+6gbG8WG6PCa/g==}
+  magic-string@1.3.1:
+    resolution: {integrity: sha512-rm91zr2Ou+XueDTohjQQjdQEcYM6zVi8KVUCG8Ec3vHwUEKrhSdCNyfuIywkA6hcCAteIn0ZOtAHA6eGpiX+Pg==}
 
   magicast@0.5.4:
     resolution: {integrity: sha512-llBEhWm1SacoRwgHUoQJYtwp4PBLF4faQi5TCpIGyGs9n4y5+juI0tDgyKIfpqxckRHaHzouUEph3THklWh03w==}
@@ -5271,8 +5271,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  nanoid@3.3.18:
-    resolution: {integrity: sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w==}
+  nanoid@3.3.19:
+    resolution: {integrity: sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -5843,8 +5843,8 @@ packages:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  reveal.js@6.0.1:
-    resolution: {integrity: sha512-9eacArNIgqO2HGWOK+93gJNn+gvdGDVbSq+i2u3Ja9kjiHps0XNLpgYTZTYjKRH91uXy3clGimeGiw4umHG/tg==}
+  reveal.js@6.0.2:
+    resolution: {integrity: sha512-JYIg5D9aoxoaLeb84O+OvAwsKWdIavVgEDScxtYEXFCT6t6TQrhNtSgogcjdCpdLsWglhJn3zyE3fUOwiH5KEg==}
 
   rolldown@1.2.8:
     resolution: {integrity: sha512-Z67nTmhZe7anqnM/EjI392w5i/ANUinjip7QYsOyN37oayduxt3ksdX0hf5OOamkAd53BiIHfbfSzfUmzKFQqQ==}
@@ -6541,8 +6541,8 @@ packages:
     resolution: {integrity: sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==}
     engines: {node: '>=4'}
 
-  update-browserslist-db@1.3.2:
-    resolution: {integrity: sha512-UQ+MSxlhRm1bzjhU+DcuXfjFO1FzNtqhK5+9Yvlp90ItDLk5vT932A0rFu619nf7RVS+Y/VeaUW1jaRDqZ8VJw==}
+  update-browserslist-db@1.3.3:
+    resolution: {integrity: sha512-pJ2sYawQS0R/WI928Gj5GlPhTGzbMelq0+4INtSYNDV9ErKJcX6xjGWkoG/VnB3dpUm00zALaqkrUD77pO5TDQ==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -6653,13 +6653,13 @@ packages:
       yaml:
         optional: true
 
-  vite@8.2.2:
-    resolution: {integrity: sha512-cFKLV/PRgAUlIRm5WjMjJ86jrftzpqcgH+Us+DS8mI3CDNiH30Whrz8uHL3+MOLPAgqbMBAqWdAHAphOAM+z/Q==}
+  vite@8.3.0:
+    resolution: {integrity: sha512-lhZBVvEHefgE+HQZC9O7EBJgCU/nVzFNl7vkS4RE0APtWLP02/8QVIkQtzBxPquh7lq5/78NHipTj7ODQ6XuyQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
       '@types/node': ^20.19.0 || >=22.12.0
-      '@vitejs/devtools': ^0.4.0 || ^0.5.0
+      '@vitejs/devtools': ^0.7.1
       esbuild: ^0.27.0 || ^0.28.0
       jiti: '>=1.21.0'
       less: ^4.0.0
@@ -6898,8 +6898,8 @@ packages:
   zod@4.1.11:
     resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
 
-  zod@4.6.1:
-    resolution: {integrity: sha512-341aRWQsve0rvronKNTqZpjmzdbUDlFuzHaI/XLg/Ej82qffDJRRfBTCuv7+9q/rMjB6LSLyEBnW4InJeMtt/Q==}
+  zod@4.6.2:
+    resolution: {integrity: sha512-lh5RCAGFa1Cm2hjtNwLQhSs/AsqdWnTQaBER9fEwN/88pSh7KOtJavtBx/0VlkN/uFd61SwYmljLMDAsHlvzBQ==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -7003,7 +7003,7 @@ snapshots:
 
   '@astrojs/compiler-binding-wasm32-wasi@0.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)':
     dependencies:
-      '@napi-rs/wasm-runtime': 1.2.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)
+      '@napi-rs/wasm-runtime': 1.2.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)
     transitivePeerDependencies:
       - '@emnapi/core'
       - '@emnapi/runtime'
@@ -7080,18 +7080,18 @@ snapshots:
       hast-util-from-html: 2.0.3
       satteri: 0.9.5
 
-  '@astrojs/netlify@8.1.3(@vercel/functions@3.9.7)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.63.1)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)':
+  '@astrojs/netlify@8.1.3(@types/node@26.5.1)(@vercel/functions@3.9.7)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(jiti@2.7.0)(rollup@4.63.1)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.2
       '@astrojs/underscore-redirects': 1.0.3
       '@netlify/blobs': 10.7.13(supports-color@7.2.0)
       '@netlify/functions': 5.3.0
-      '@netlify/vite-plugin': 2.12.9(@vercel/functions@3.9.7)(rollup@4.63.1)(supports-color@7.2.0)(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      '@netlify/vite-plugin': 2.12.9(@vercel/functions@3.9.7)(rollup@4.63.1)(supports-color@7.2.0)(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
       '@vercel/nft': 1.11.0(rollup@4.63.1)(supports-color@7.2.0)
-      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
+      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
       esbuild: 0.28.2
       tinyglobby: 0.2.17
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -7132,10 +7132,10 @@ snapshots:
       - uploadthing
       - yaml
 
-  '@astrojs/node@11.0.3(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(supports-color@7.2.0)':
+  '@astrojs/node@11.0.3(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(supports-color@7.2.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.2
-      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
+      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
       send: 1.2.1(supports-color@7.2.0)
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -7145,12 +7145,12 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/solid-js@7.0.2(esbuild@0.28.2)(jiti@2.7.0)(solid-js@1.9.15)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)':
+  '@astrojs/solid-js@7.0.2(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(solid-js@1.9.15)(supports-color@7.2.0)(terser@5.51.2)(yaml@2.9.0)':
     dependencies:
       solid-js: 1.9.15
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
-      vite-plugin-solid: 2.11.14(solid-js@1.9.15)(supports-color@7.2.0)(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
-      vitefu: 1.1.3(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vite-plugin-solid: 2.11.14(solid-js@1.9.15)(supports-color@7.2.0)(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      vitefu: 1.1.3(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - '@types/node'
@@ -7167,15 +7167,15 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/svelte@9.0.1(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(esbuild@0.28.2)(jiti@2.7.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))(terser@5.51.2)(typescript@5.9.3)(yaml@2.9.0)':
+  '@astrojs/svelte@9.0.1(@types/node@26.5.1)(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(esbuild@0.28.2)(jiti@2.7.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))(terser@5.51.2)(typescript@5.9.3)(yaml@2.9.0)':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 7.3.0(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
-      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
+      '@sveltejs/vite-plugin-svelte': 7.3.0(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
       svelte: 5.56.10(@typescript-eslint/types@8.70.0)
       svelte2tsx: 0.7.61(svelte@5.56.10(@typescript-eslint/types@8.70.0))(typescript@5.9.3)
       typescript: 5.9.3
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@types/node'
       - '@vitejs/devtools'
@@ -7199,14 +7199,14 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.3': {}
 
-  '@astrojs/vercel@11.0.10(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(rollup@4.63.1)(supports-color@7.2.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))':
+  '@astrojs/vercel@11.0.10(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(rollup@4.63.1)(supports-color@7.2.0)(svelte@5.56.10(@typescript-eslint/types@8.70.0))':
     dependencies:
       '@astrojs/internal-helpers': 0.11.0
       '@vercel/analytics': 2.0.1(svelte@5.56.10(@typescript-eslint/types@8.70.0))
       '@vercel/functions': 3.9.7
       '@vercel/nft': 1.11.0(rollup@4.63.1)(supports-color@7.2.0)
       '@vercel/routing-utils': 6.5.0
-      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
+      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
       esbuild: 0.28.2
       tinyglobby: 0.2.17
     transitivePeerDependencies:
@@ -7918,7 +7918,7 @@ snapshots:
     dependencies:
       '@emnapi/core': 1.11.1
       '@emnapi/runtime': 1.11.1
-      '@napi-rs/wasm-runtime': 1.2.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
+      '@napi-rs/wasm-runtime': 1.2.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
     optional: true
 
   '@bruits/satteri-win32-arm64-msvc@0.9.5':
@@ -8269,7 +8269,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify/json@2.2.526':
+  '@iconify/json@2.2.527':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -8520,10 +8520,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@julr/unocss-preset-heropatterns@2.0.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))':
+  '@julr/unocss-preset-heropatterns@2.0.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))':
     dependencies:
       '@unocss/preset-mini': 65.5.0
-      unocss: 66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      unocss: 66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
 
   '@lobehub/icons-static-svg@1.95.0': {}
 
@@ -8545,14 +8545,14 @@ snapshots:
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true
 
-  '@napi-rs/wasm-runtime@1.2.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
+  '@napi-rs/wasm-runtime@1.2.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
     dependencies:
       '@emnapi/core': 1.11.1
       '@emnapi/runtime': 1.11.1
       '@tybys/wasm-util': 0.10.3
     optional: true
 
-  '@napi-rs/wasm-runtime@1.2.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)':
+  '@napi-rs/wasm-runtime@1.2.4(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)':
     dependencies:
       '@emnapi/core': 1.11.1
       '@emnapi/runtime': 1.11.3
@@ -8608,7 +8608,7 @@ snapshots:
       validate-npm-package-name: 5.0.1
       yaml: 2.9.0
       yargs: 17.7.3
-      zod: 4.6.1
+      zod: 4.6.2
 
   '@netlify/database-dev@0.10.1':
     dependencies:
@@ -8836,12 +8836,12 @@ snapshots:
 
   '@netlify/types@2.8.0': {}
 
-  '@netlify/vite-plugin@2.12.9(@vercel/functions@3.9.7)(rollup@4.63.1)(supports-color@7.2.0)(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))':
+  '@netlify/vite-plugin@2.12.9(@vercel/functions@3.9.7)(rollup@4.63.1)(supports-color@7.2.0)(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))':
     dependencies:
       '@netlify/dev': 4.18.13(@vercel/functions@3.9.7)(rollup@4.63.1)(supports-color@7.2.0)
       '@netlify/dev-utils': 4.4.7
       dedent: 1.7.2
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -8905,7 +8905,7 @@ snapshots:
       unixify: 1.0.0
       urlpattern-polyfill: 8.0.2
       yargs: 17.7.3
-      zod: 4.6.1
+      zod: 4.6.2
     transitivePeerDependencies:
       - bare-abort-controller
       - bare-buffer
@@ -9324,31 +9324,31 @@ snapshots:
     dependencies:
       acorn: 8.18.0
 
-  '@sveltejs/vite-plugin-svelte-inspector@5.0.2(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
+  '@sveltejs/vite-plugin-svelte-inspector@5.0.2(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      '@sveltejs/vite-plugin-svelte': 6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
       obug: 2.2.1
       svelte: 5.56.10(@typescript-eslint/types@8.70.0)
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
 
-  '@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
+  '@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 5.0.2(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      '@sveltejs/vite-plugin-svelte-inspector': 5.0.2(@sveltejs/vite-plugin-svelte@6.2.4(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)))(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
       deepmerge: 4.3.1
       magic-string: 0.30.21
       obug: 2.2.1
       svelte: 5.56.10(@typescript-eslint/types@8.70.0)
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
 
-  '@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))':
+  '@sveltejs/vite-plugin-svelte@7.3.0(svelte@5.56.10(@typescript-eslint/types@8.70.0))(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))':
     dependencies:
       deepmerge: 4.3.1
-      magic-string: 1.2.3
+      magic-string: 1.3.1
       obug: 2.2.1
       svelte: 5.56.10(@typescript-eslint/types@8.70.0)
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
 
   '@swc/helpers@0.5.23':
     dependencies:
@@ -9549,13 +9549,13 @@ snapshots:
 
   '@ungap/structured-clone@1.4.0': {}
 
-  '@unocss/astro@66.4.2(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
+  '@unocss/astro@66.4.2(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
     dependencies:
       '@unocss/core': 66.4.2
       '@unocss/reset': 66.4.2
-      '@unocss/vite': 66.4.2(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      '@unocss/vite': 66.4.2(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
     optionalDependencies:
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
 
   '@unocss/cli@66.4.2':
     dependencies:
@@ -9724,7 +9724,7 @@ snapshots:
     dependencies:
       '@unocss/core': 66.4.2
 
-  '@unocss/vite@66.4.2(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
+  '@unocss/vite@66.4.2(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@unocss/config': 66.4.2
@@ -9735,7 +9735,7 @@ snapshots:
       pathe: 2.0.3
       tinyglobby: 0.2.17
       unplugin-utils: 0.2.5
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
 
   '@vercel/analytics@2.0.1(svelte@5.56.10(@typescript-eslint/types@8.70.0))':
     optionalDependencies:
@@ -9805,10 +9805,10 @@ snapshots:
     optionalDependencies:
       ajv: 6.15.0
 
-  '@vite-pwa/astro@1.2.0(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1))':
+  '@vite-pwa/astro@1.2.0(astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0))(vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1))':
     dependencies:
-      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
-      vite-plugin-pwa: 1.3.0(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1)
+      astro: 7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0)
+      vite-plugin-pwa: 1.3.0(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1)
 
   '@vitest/eslint-plugin@1.6.27(@typescript-eslint/eslint-plugin@8.70.0(@typescript-eslint/parser@8.70.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
@@ -10010,7 +10010,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0):
+  astro@7.0.9(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.5.1)(@vercel/functions@3.9.7)(jiti@2.7.0)(rollup@4.63.1)(terser@5.51.2)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler-rs': 0.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)
       '@astrojs/internal-helpers': 0.10.1
@@ -10060,13 +10060,13 @@ snapshots:
       ultrahtml: 1.7.0
       unifont: 0.7.5
       unstorage: 1.17.5(@netlify/blobs@10.7.13(supports-color@7.2.0))(@vercel/functions@3.9.7)
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
       xxhash-wasm: 1.1.0
       yargs-parser: 22.0.0
-      zod: 4.6.1
+      zod: 4.6.2
     optionalDependencies:
-      sharp: 0.35.4
+      sharp: 0.35.4(@types/node@26.5.1)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -10205,7 +10205,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  baseline-browser-mapping@2.11.21: {}
+  baseline-browser-mapping@2.11.22: {}
 
   better-ajv-errors@1.2.0(ajv@8.20.0):
     dependencies:
@@ -10251,11 +10251,11 @@ snapshots:
 
   browserslist@4.28.9:
     dependencies:
-      baseline-browser-mapping: 2.11.21
+      baseline-browser-mapping: 2.11.22
       caniuse-lite: 1.0.30001810
-      electron-to-chromium: 1.5.425
+      electron-to-chromium: 1.5.427
       node-releases: 2.0.55
-      update-browserslist-db: 1.3.2(browserslist@4.28.9)
+      update-browserslist-db: 1.3.3(browserslist@4.28.9)
 
   buffer-crc32@0.2.13: {}
 
@@ -10673,7 +10673,7 @@ snapshots:
     dependencies:
       jake: 10.9.4
 
-  electron-to-chromium@1.5.425: {}
+  electron-to-chromium@1.5.427: {}
 
   emoji-regex@8.0.0: {}
 
@@ -12158,7 +12158,7 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  magic-string@1.2.3:
+  magic-string@1.3.1:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.6.0
 
@@ -12614,7 +12614,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  nanoid@3.3.18: {}
+  nanoid@3.3.19: {}
 
   natural-compare@1.4.0: {}
 
@@ -12959,7 +12959,7 @@ snapshots:
 
   postcss@8.5.28:
     dependencies:
-      nanoid: 3.3.18
+      nanoid: 3.3.19
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -13185,7 +13185,7 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  reveal.js@6.0.1: {}
+  reveal.js@6.0.2: {}
 
   rolldown@1.2.8:
     dependencies:
@@ -13393,7 +13393,7 @@ snapshots:
       '@img/sharp-win32-ia32': 0.34.5
       '@img/sharp-win32-x64': 0.34.5
 
-  sharp@0.35.4:
+  sharp@0.35.4(@types/node@26.5.1):
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
@@ -13424,6 +13424,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.4
       '@img/sharp-win32-ia32': 0.35.4
       '@img/sharp-win32-x64': 0.35.4
+      '@types/node': 26.5.1
     optional: true
 
   shebang-command@2.0.0:
@@ -13994,14 +13995,14 @@ snapshots:
     dependencies:
       normalize-path: 2.1.1
 
-  unocss-preset-scrollbar@3.2.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))):
+  unocss-preset-scrollbar@3.2.0(unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))):
     dependencies:
       '@unocss/preset-mini': 65.5.0
-      unocss: 66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      unocss: 66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
 
-  unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)):
+  unocss@66.4.2(postcss@8.5.28)(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)):
     dependencies:
-      '@unocss/astro': 66.4.2(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      '@unocss/astro': 66.4.2(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
       '@unocss/cli': 66.4.2
       '@unocss/core': 66.4.2
       '@unocss/postcss': 66.4.2(postcss@8.5.28)
@@ -14019,9 +14020,9 @@ snapshots:
       '@unocss/transformer-compile-class': 66.4.2
       '@unocss/transformer-directives': 66.4.2
       '@unocss/transformer-variant-group': 66.4.2
-      '@unocss/vite': 66.4.2(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
+      '@unocss/vite': 66.4.2(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))
     optionalDependencies:
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
     transitivePeerDependencies:
       - postcss
       - supports-color
@@ -14049,7 +14050,7 @@ snapshots:
 
   upath@1.2.0: {}
 
-  update-browserslist-db@1.3.2(browserslist@4.28.9):
+  update-browserslist-db@1.3.3(browserslist@4.28.9):
     dependencies:
       browserslist: 4.28.9
       escalade: 3.2.0
@@ -14093,23 +14094,23 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-devtools-json@1.1.0(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)):
+  vite-plugin-devtools-json@1.1.0(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)):
     dependencies:
       uuid: 14.0.2
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
 
-  vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1):
+  vite-plugin-pwa@1.3.0(supports-color@7.2.0)(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0))(workbox-build@7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0))(workbox-window@7.4.1):
     dependencies:
       debug: 4.4.3(supports-color@7.2.0)
       pretty-bytes: 6.1.1
       tinyglobby: 0.2.17
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
       workbox-build: 7.4.1(@types/babel__core@7.20.5)(supports-color@7.2.0)
       workbox-window: 7.4.1
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-solid@2.11.14(solid-js@1.9.15)(supports-color@7.2.0)(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)):
+  vite-plugin-solid@2.11.14(solid-js@1.9.15)(supports-color@7.2.0)(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)):
     dependencies:
       '@babel/core': 7.29.7(supports-color@7.2.0)
       '@types/babel__core': 7.20.5
@@ -14117,12 +14118,12 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.15
       solid-refresh: 0.6.3(solid-js@1.9.15)(supports-color@7.2.0)
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
     transitivePeerDependencies:
       - supports-color
 
-  vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0):
+  vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0):
     dependencies:
       esbuild: 0.28.2
       fdir: 6.5.0(picomatch@4.0.7)
@@ -14131,13 +14132,14 @@ snapshots:
       rollup: 4.63.1
       tinyglobby: 0.2.17
     optionalDependencies:
+      '@types/node': 26.5.1
       fsevents: 2.3.3
       jiti: 2.7.0
       lightningcss: 1.33.0
       terser: 5.51.2
       yaml: 2.9.0
 
-  vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0):
+  vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -14145,19 +14147,20 @@ snapshots:
       rolldown: 1.2.8
       tinyglobby: 0.2.17
     optionalDependencies:
+      '@types/node': 26.5.1
       esbuild: 0.28.2
       fsevents: 2.3.3
       jiti: 2.7.0
       terser: 5.51.2
       yaml: 2.9.0
 
-  vitefu@1.1.3(vite@7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)):
+  vitefu@1.1.3(vite@7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)):
     optionalDependencies:
-      vite: 7.3.6(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 7.3.6(@types/node@26.5.1)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
 
-  vitefu@1.1.3(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)):
+  vitefu@1.1.3(vite@8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)):
     optionalDependencies:
-      vite: 8.2.2(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
+      vite: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0)
 
   vue-eslint-parser@10.4.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
@@ -14442,6 +14445,6 @@ snapshots:
 
   zod@4.1.11: {}
 
-  zod@4.6.1: {}
+  zod@4.6.2: {}
 
   zwitch@2.0.4: {}
