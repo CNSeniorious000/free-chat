@@ -9,7 +9,27 @@ export default defineConfig({
     presetAttributify(),
     presetIcons({ scale: 1.1 }),
     presetWebFonts({ provider: 'google', fonts: { mono: 'JetBrains Mono', fira: 'Fira Code:400,500,600,700' }, timeouts: { warning: 5000, failure: 30000 } }),
-    presetTypography({ cssExtend: { 'ul,ol': { 'padding-left': '2.25em', 'position': 'relative' } } }),
+    // unocss 66.5 rewrote preset-typography after Tailwind Typography (unocss/unocss#4882); this restores the 66.4 look
+    presetTypography({
+      // `prose` now always applies the gray palette, which is unreadable in dark mode; `inherit` keeps the page colors
+      colorScheme: { 'body': 'inherit', 'headings': 'inherit', 'links': 'inherit', 'bullets': 'inherit', 'quotes': 'inherit', 'pre-code': 'inherit' },
+      cssExtend: {
+        'ul,ol': { 'padding-left': '2.25em', 'position': 'relative' },
+        'p,ul,ol,pre': { 'margin': '1em 0', 'line-height': '1.75' },
+        'pre,code': { 'white-space': 'pre', 'overflow-wrap': 'normal', 'tab-size': '4', 'hyphens': 'none' },
+        'pre code': { 'font-size': '.875em' },
+        'h1,h2,h3,h4,h5,h6': { 'font-weight': '600', 'line-height': '1.25' },
+        'h1': { 'margin': '1rem 0', 'font-size': '2.25em' },
+        'h2': { 'margin': '1.75em 0 .5em', 'font-size': '1.75em' },
+        'h3': { 'margin': '1.5em 0 .5em', 'font-size': '1.375em' },
+        'h4': { 'margin': '1em 0', 'font-size': '1.125em' },
+        'blockquote': { 'margin': '1em 0', 'font-weight': 'inherit', 'border-inline-start-width': '0' },
+        'table': { 'display': 'block', 'width': 'auto', 'margin': '1em 0', 'line-height': 'inherit', 'overflow-x': 'auto' },
+        'hr': { 'margin': '2em 0', 'border-top-width': '0' },
+        // `null` drops the preset's own rule for that key (unocss/unocss#5115)
+        ...Object.fromEntries(['font-size', 'line-height', 'strong', 'h2 strong', 'h3 strong', 'h4 strong', 'h3 code', 'img', 'thead', 'thead th', 'tbody tr', 'tbody td', 'th, td', 'hr + *', 'h2 + *', 'h3 + *', 'h4 + *', 'blockquote p:first-of-type::before', 'blockquote p:last-of-type::after'].map(key => [key, null])),
+      },
+    }),
     presetHeroPatterns(),
     presetScrollbar(),
   ],

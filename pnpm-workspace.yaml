@@ -10,8 +10,4 @@ strictPeerDependencies: true
 peerDependencyRules:
   allowedVersions:
     '@antfu/eslint-config>eslint-plugin-astro': ^2.0.0
-    # unocss stays on 66.4 because 66.5 rewrote preset-typography; astro 7 already runs it on vite 8
-    '@unocss/astro>vite': ^8.0.0
-    '@unocss/vite>vite': ^8.0.0
     '@vite-pwa/astro>astro': ^7.0.0
-    unocss>vite: ^8.0.0
