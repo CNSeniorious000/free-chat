@@ -10,6 +10,16 @@
         "/^xsfetch$/",
         "/^@xsai//"
       ]
+    },
+    {
+      "description": "typescript-eslint, svelte-check, svelte2tsx and @astrojs/check only support TypeScript < 7",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
+    },
+    {
+      "description": "Keep in step with the vite-plugin-pwa that @vite-pwa/astro depends on (^1.2.0)",
+      "matchPackageNames": ["vite-plugin-pwa"],
+      "allowedVersions": "<2"
     }
   ]
 }
