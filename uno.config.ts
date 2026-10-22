@@ -16,7 +16,9 @@ export default defineConfig({
       cssExtend: {
         'ul,ol': { 'padding-left': '2.25em', 'position': 'relative' },
         'p,ul,ol,pre': { 'margin': '1em 0', 'line-height': '1.75' },
-        'pre,code': { 'white-space': 'pre', 'overflow-wrap': 'normal', 'tab-size': '4', 'hyphens': 'none' },
+        // inline code must stay wrappable, or long paths and commands get clipped by the `overflow-hidden` message box
+        'pre': { 'white-space': 'pre', 'overflow-wrap': 'normal', 'tab-size': '4', 'hyphens': 'none' },
+        'code': { 'overflow-wrap': 'break-word' },
         'pre code': { 'font-size': '.875em' },
         'h1,h2,h3,h4,h5,h6': { 'font-weight': '600', 'line-height': '1.25' },
         'h1': { 'margin': '1rem 0', 'font-size': '2.25em' },
