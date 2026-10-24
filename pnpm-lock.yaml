@@ -181,8 +181,8 @@ importers:
         specifier: ~66.11.0
         version: 66.11.0(@oxc-project/types@0.155.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.2.15)(rollup@4.65.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       unocss-preset-scrollbar:
-        specifier: ~3.2.0
-        version: 3.2.0(unocss@66.11.0(@oxc-project/types@0.155.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.2.15)(rollup@4.65.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))
+        specifier: ~4.0.0
+        version: 4.0.0(unocss@66.11.0(@oxc-project/types@0.155.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.2.15)(rollup@4.65.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))
       vite-plugin-devtools-json:
         specifier: ~1.1.2
         version: 1.1.2(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
@@ -6609,10 +6609,10 @@ packages:
     resolution: {integrity: sha512-6bc58dPYhCMHHuwxldQxO3RRNZ4eCogZ/st++0+fcC1nr0jiGUtAdBJ2qzmLQWSxbtz42pWt4QQMiZ9HvZf5cg==}
     engines: {node: '>=0.10.0'}
 
-  unocss-preset-scrollbar@3.2.0:
-    resolution: {integrity: sha512-j8BOoh2RgPm2U8XqEjMQ+XQk4YWYPH4T+yzv3fndxS+VpdizQinMvHmfsZGLN3yMv7I4O5Qi8fVTlQDhETyzbA==}
+  unocss-preset-scrollbar@4.0.0:
+    resolution: {integrity: sha512-wPePkUCOvWsA1kOeImQtBzUnBuWhFvo2gOdWsPpmBke+z2zWbW4p9KfOPtGch+WrgnwnpmM4d4BxoVulC+1xhA==}
     peerDependencies:
-      unocss: '>= 0.31.13'
+      unocss: '>=66.0.0'
 
   unocss@66.11.0:
     resolution: {integrity: sha512-fUhpMwVzMVxy4IcaL2sXjJV5Q3UpEKv3U4wfYioHmv7+C07Y8WAmjVgROoXKAUKs+pWlQKwtPMw4ZjMpQX8blA==}
@@ -14246,9 +14246,9 @@ snapshots:
     dependencies:
       normalize-path: 2.1.1
 
-  unocss-preset-scrollbar@3.2.0(unocss@66.11.0(@oxc-project/types@0.155.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.2.15)(rollup@4.65.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))):
+  unocss-preset-scrollbar@4.0.0(unocss@66.11.0(@oxc-project/types@0.155.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.2.15)(rollup@4.65.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))):
     dependencies:
-      '@unocss/preset-mini': 65.5.0
+      '@unocss/preset-mini': 66.11.0
       unocss: 66.11.0(@oxc-project/types@0.155.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.2.15)(rollup@4.65.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
 
   unocss@66.11.0(@oxc-project/types@0.155.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.2.15)(rollup@4.65.0)(srvx@1.0.7)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)):
