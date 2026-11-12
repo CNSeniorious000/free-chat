@@ -42,8 +42,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2(solid-js@1.9.19)
       '@xsai/stream-text':
-        specifier: ^0.4.4
-        version: 0.4.4
+        specifier: ^0.5.0
+        version: 0.5.1
       astro:
         specifier: ~7.3.8
         version: 7.3.8(@netlify/blobs@10.7.13(supports-color@7.2.0))(@types/node@26.6.6)(@vercel/functions@3.11.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
@@ -108,15 +108,15 @@ importers:
         specifier: ~8.3.8
         version: 8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)
       xsfetch:
-        specifier: ^0.4.4
-        version: 0.4.4
+        specifier: ^0.5.0
+        version: 0.5.1
     devDependencies:
       '@antfu/eslint-config':
         specifier: ~9.0.0
         version: 9.0.0(@typescript-eslint/typescript-estree@8.72.2(supports-color@7.2.0)(typescript@6.0.3))(@typescript-eslint/utils@8.72.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(@unocss/eslint-plugin@66.11.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(@vue/compiler-sfc@3.5.45)(eslint-plugin-astro@2.0.0(@typescript-eslint/parser@8.72.2(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0))(eslint-plugin-format@2.0.1(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint-plugin-svelte@3.19.0(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(svelte@5.57.3(@typescript-eslint/types@8.72.2)))(eslint@10.5.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(svelte-eslint-parser@1.10.1(svelte@5.57.3(@typescript-eslint/types@8.72.2)))(typescript@6.0.3)
       '@iconify/json':
         specifier: latest
-        version: 2.2.555
+        version: 2.2.556
       '@julr/unocss-preset-heropatterns':
         specifier: ~2.0.0
         version: 2.0.0(unocss@66.11.0(@oxc-project/types@0.156.0)(@unocss/astro@66.11.0(cac@7.1.0)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(cac@7.1.0)(rolldown@1.3.2)(rollup@4.68.2)(srvx@1.0.8)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))
@@ -1471,8 +1471,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify/json@2.2.555':
-    resolution: {integrity: sha512-ZUDnGWRayaBwXW8YuzxWFrvbBy620zjWqMAp4aPwb3mwsjO9gyWiTX0knK3spKZCFOpOfuWc8KXlCmU27LogNw==}
+  '@iconify/json@2.2.556':
+    resolution: {integrity: sha512-qSG9FGaQHdlt5qEwctDiFToYMmVCl5hN0BGju0aAyyRe75j9Nw49tmb1xLglkUi8GfInBrHj5PJ2W8Cko9yJ3Q==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3215,14 +3215,17 @@ packages:
     resolution: {integrity: sha512-VSdkwnJRr8Yv9UgB2aXB3VUPWwd6Oqnn0hycFwhg9pZgWxJXb7JmhsiXe9tmpMwjHFxli12PGcz9aI63YYloGQ==}
     engines: {node: '>=18.0.0'}
 
-  '@xsai/shared-chat@0.4.4':
-    resolution: {integrity: sha512-R/lJDt6SnENVaJcUCO1USVuO/G6qtCbJqopPqARF1n20KWDbchLwW/nvkuZH1TM9vMxaywVNmO9sNJ+uoWJEPA==}
+  '@xsai/shared-chat@0.5.1':
+    resolution: {integrity: sha512-BUGPc9JBgY+72AklrXG/6BTd9mX1tbn/Xbmjm3a83fXAA1ooAYhevfmCO8yUudeeuhPNHNYzOGwPVc27BJgc3w==}
 
-  '@xsai/shared@0.4.4':
-    resolution: {integrity: sha512-ZrOeRJ0fqV8YRDwyQbYJx1N8Fe2UTl2psjV7ucYJ+gMr3oWzrmNfTX9zrpV9zwzBMUe6VvqhK/iJzz8p4jYlsw==}
+  '@xsai/shared-stream@0.5.1':
+    resolution: {integrity: sha512-+yOgmQgFFJsUVAqoU44cunraSTEJWyONHBkidW+tHvA3vGRxE5R17lIaf3uJ7vNuvBf3mlUVRkUEuMJ9AE+gUg==}
 
-  '@xsai/stream-text@0.4.4':
-    resolution: {integrity: sha512-NaJF7PrZzlAtSGP5fIWuTOY5mc4LymwrRvTfdUR+0paJRu66qIP7CGCsDJGpKRBcRdpLakb4/8qn3vqeKG9r8A==}
+  '@xsai/shared@0.5.1':
+    resolution: {integrity: sha512-Zj27Q46a85zTwWgLz8e+l+/Ajja70LYdLu4FHlwMTaY9OzcAAnpFTgtvpEAmqpnJjW92QmwiYOJg/mEBP3gfNA==}
+
+  '@xsai/stream-text@0.5.1':
+    resolution: {integrity: sha512-wNPYnIl4V88mkos80JoaZHmOElFGz7NnEz4R/OiJ6bHEko9qXXLvXHWk5DSGs6B/fjDvlNg+hEqCnYNtrqGShg==}
 
   abbrev@3.0.1:
     resolution: {integrity: sha512-AO2ac6pjRB3SJmGJo+v5/aK6Omggp6fsLrs6wN9bd35ulu4cCwaAU9+7ZhXjeqHVkaHThLuzH0nZr0YpCDhygg==}
@@ -7102,8 +7105,8 @@ packages:
     resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==}
     engines: {node: '>=18'}
 
-  xsfetch@0.4.4:
-    resolution: {integrity: sha512-cTlLSV9VrhTGSxl97gqcLwxThw/6DBgqNRd6pvYaZNQabnCO3j+3lv6ekhLvE5XlD2XPlll/0nhtnRu0Kw0lEw==}
+  xsfetch@0.5.1:
+    resolution: {integrity: sha512-cpvTaCNagmf1nOKQAB33GNpcDz4RgIxntmdh3O0MAu2OOzVJ6G89OEP9Kx1zqOzJJhG7/pV9AahnPISEwoEVVA==}
 
   xss@1.0.17:
     resolution: {integrity: sha512-+SEr5IDSgTBnhT6bnnf0mVRHT91+HU517zkahLNhkWLz8retCgeR1YDT4OknLiExA5+chn2Wy7z3KyjvnD8A2w==}
@@ -8585,7 +8588,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify/json@2.2.555':
+  '@iconify/json@2.2.556':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 2.0.3
@@ -10365,16 +10368,21 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.9.1
 
-  '@xsai/shared-chat@0.4.4':
+  '@xsai/shared-chat@0.5.1':
     dependencies:
-      '@xsai/shared': 0.4.4
+      '@xsai/shared': 0.5.1
 
-  '@xsai/shared@0.4.4': {}
-
-  '@xsai/stream-text@0.4.4':
+  '@xsai/shared-stream@0.5.1':
     dependencies:
-      '@xsai/shared': 0.4.4
-      '@xsai/shared-chat': 0.4.4
+      '@xsai/shared': 0.5.1
+
+  '@xsai/shared@0.5.1': {}
+
+  '@xsai/stream-text@0.5.1':
+    dependencies:
+      '@xsai/shared': 0.5.1
+      '@xsai/shared-chat': 0.5.1
+      '@xsai/shared-stream': 0.5.1
 
   abbrev@3.0.1: {}
 
@@ -14896,7 +14904,7 @@ snapshots:
 
   xml-name-validator@5.0.0: {}
 
-  xsfetch@0.4.4: {}
+  xsfetch@0.5.1: {}
 
   xss@1.0.17:
     dependencies:
