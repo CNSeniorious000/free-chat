@@ -1,4 +1,11 @@
 minimumReleaseAge: 0
+
+peerDependencyRules:
+  allowedVersions:
+    '@antfu/eslint-config>eslint-plugin-astro': ^2.0.0
+    '@vite-pwa/astro>astro': ^7.0.0
+
+strictPeerDependencies: true
 shellEmulator: true
 packages: [] # pnpm 9 (Vercel's version for lockfile v9) treats any pnpm-workspace.yaml as a monorepo and fails without this
 
@@ -6,8 +13,3 @@ allowBuilds:
   '@parcel/watcher': true
   esbuild: true
   sharp: true
-strictPeerDependencies: true
-peerDependencyRules:
-  allowedVersions:
-    '@antfu/eslint-config>eslint-plugin-astro': ^2.0.0
-    '@vite-pwa/astro>astro': ^7.0.0
