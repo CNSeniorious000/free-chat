@@ -6,6 +6,7 @@ on:
   pull_request_review:
   pull_request_review_comment:
   workflow_dispatch:
+  push:
   issues:
   issue_comment:
 
@@ -20,7 +21,10 @@ jobs:
 
   agent:
     needs: authorize
-    if: needs.authorize.outputs.writer == 'true'
+    # Pushes are filtered here because `on.push` cannot name the repository's current default branch.
+    if: >
+      needs.authorize.outputs.writer == 'true'
+      && (github.event_name != 'push' || github.ref_name == github.event.repository.default_branch)
     cache-mode: write
     concurrency:
       group: code-review-${{ github.event.pull_request.number || github.event.issue.number || github.ref }}
