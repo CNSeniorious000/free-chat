@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
   push:
   issues:
+    types: [opened, closed, reopened]
   issue_comment:
 
 permissions:
