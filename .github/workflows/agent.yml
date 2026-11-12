@@ -17,6 +17,7 @@ permissions:
 
 jobs:
   authorize:
+    permissions: {}
     uses: promplate/code-review/.github/workflows/authorize.yml@main
 
   agent:
