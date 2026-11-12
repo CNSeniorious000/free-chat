@@ -3,7 +3,7 @@ import node from '@astrojs/node'
 import solidJs from '@astrojs/solid-js'
 import svelte, { vitePreprocess } from '@astrojs/svelte'
 import vercel from '@astrojs/vercel'
-import AstroPWA from '@vite-pwa/astro'
+import { AstroPWAIntegration as AstroPWA } from '@vite-pwa/astro'
 import { defineConfig, envField } from 'astro/config'
 import unocss from 'unocss/astro'
 import devtoolsJson from 'vite-plugin-devtools-json'
@@ -61,7 +61,7 @@ export default defineConfig({
     solidJs(),
     AstroPWA({
       registerType: 'autoUpdate',
-      injectRegister: 'inline',
+      injectRegister: 'script',
       workbox: {
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
       },
