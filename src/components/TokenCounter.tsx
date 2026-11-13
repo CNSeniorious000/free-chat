@@ -20,7 +20,7 @@ export const [encoder, setEncoder] = createSignal<Tiktoken | null>(null)
 
 export default (props: Props) => {
   const [isHide, setHide] = createSignal(true)
-  let hideTimer: NodeJS.Timeout | null = null
+  let hideTimer: ReturnType<typeof setTimeout> | null = null
 
   const { currentSystemRoleSettings, messageList, textAreaValue, currentAssistantMessage } = props
 
