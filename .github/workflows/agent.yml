@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   authorize:
-    name: Check ${{ github.event.sender.login }} may steer the agent
+    name: Authorize
     permissions: {}
     uses: promplate/code-review/.github/workflows/authorize.yml@main
 
