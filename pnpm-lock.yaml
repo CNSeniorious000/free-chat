@@ -155,7 +155,7 @@ importers:
         version: 66.13.0
       '@vite-pwa/astro':
         specifier: ~2.0.3
-        version: 2.0.3(astro@7.4.13(@netlify/blobs@11.1.9(supports-color@7.2.0))(@vercel/functions@3.11.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 2.0.4(astro@7.4.13(@netlify/blobs@11.1.9(supports-color@7.2.0))(@vercel/functions@3.11.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       bits-ui:
         specifier: ~2.21.0
         version: 2.21.0(@internationalized/date@3.12.4)(svelte@5.59.0(@typescript-eslint/types@8.73.0))
@@ -2904,8 +2904,8 @@ packages:
     peerDependencies:
       vite: ^5.0.0-0 || ^6.0.0-0 || ^7.0.0-0 || ^8.0.0-0
 
-  '@unplugin-pwa/core@0.0.7':
-    resolution: {integrity: sha512-tuuYolkSHpziF8mi7+J+NgVvA5XMMgMSzhaXmSxUPheYnP8U4b19NSwsJX5YsDvbniHGY3ty6E2MFEre1uEHbg==}
+  '@unplugin-pwa/core@0.0.8':
+    resolution: {integrity: sha512-2DTx1YE4VYMZ+Vz7idpFD3tgD7rp5T/Yw6KfwitkF0wkVGhgapPmNx+nysWx7N1tOCztOl11incecCASjqFsPA==}
     engines: {node: '>=22.14.0'}
     peerDependencies:
       '@vite-pwa/assets-generator': ^1.0.0 || ^2.0.0
@@ -2919,12 +2919,12 @@ packages:
       vite:
         optional: true
 
-  '@unplugin-pwa/inspector@0.0.7':
-    resolution: {integrity: sha512-DOF0pfjNy7tQHWwk+dwnqPoD76jRGJkt7JKE8WqePYe0VH+tFbS+UqIiG/bd6JEzcHwXAKXlXQW4nMSM5e7Mtw==}
+  '@unplugin-pwa/inspector@0.0.8':
+    resolution: {integrity: sha512-jCBGYa0W5j/5ayO/wjfIGBN1HSP9/LNQtwvpGG1D9+ucfCZYWRHs6xWPVp5TpAsO+fwKI4N+fh0npvUylZBUJg==}
     engines: {node: '>=22.14.0'}
 
-  '@unplugin-pwa/vite@0.0.7':
-    resolution: {integrity: sha512-5CbTqqFEhg80BCuON+i0IuIuozsLvzzSNZIUPvNojyZ/4dtcpwVKipkcKcrpL0tvfuYh9gfjt+XPiBZXYdq81Q==}
+  '@unplugin-pwa/vite@0.0.8':
+    resolution: {integrity: sha512-k+mSZL/Mk+dUZmPfi5HjdSmYPpuS3Lnj9nIl9UUpV9dlEnTiRJOj9hdbtG6lIZ0pCDKFtp6AaHFVGvbr17iGYA==}
     engines: {node: '>=22.14.0'}
     peerDependencies:
       '@vite-pwa/assets-generator': ^1.0.0 || ^2.0.0
@@ -3006,8 +3006,8 @@ packages:
   '@vercel/routing-utils@6.6.1':
     resolution: {integrity: sha512-rIVybdiezAVE4KZVjXRrKHUEoUNW1RzNTkcUR/0v1rsOnxn2EqNjleNP7HFoPlr0vfWvXUUtUKPTM7AFxIcJnw==}
 
-  '@vite-pwa/astro@2.0.3':
-    resolution: {integrity: sha512-V883BgGiN6KM20lr+ve2agJR33C0wMwLoOmbXdb52s3BSpsfbdmHOo10LSB7JgIemx8Z36BXXTzjnuWZfh1VtQ==}
+  '@vite-pwa/astro@2.0.4':
+    resolution: {integrity: sha512-/zdZwhncotIGNcWZy8w7Z8dFWnIj58nDL+lVnLap7coxmwrR5Ru2ngr8iliks0B4NhusLCklIloYZF2EmYDTJg==}
     engines: {node: '>=22.14.0'}
     peerDependencies:
       '@vite-pwa/assets-generator': ^1.0.0 || ^2.0.0
@@ -9883,7 +9883,7 @@ snapshots:
       - ocache
       - srvx
 
-  '@unplugin-pwa/core@0.0.7(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@unplugin-pwa/core@0.0.8(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@vite-pwa/workbox-build': 8.0.15(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       '@vite-pwa/workbox-window': 8.0.15
@@ -9897,13 +9897,13 @@ snapshots:
       - typescript
       - webpack
 
-  '@unplugin-pwa/inspector@0.0.7': {}
+  '@unplugin-pwa/inspector@0.0.8': {}
 
-  '@unplugin-pwa/vite@0.0.7(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@unplugin-pwa/vite@0.0.8(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@rolldown/pluginutils': 1.1.1
-      '@unplugin-pwa/core': 0.0.7(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
-      '@unplugin-pwa/inspector': 0.0.7
+      '@unplugin-pwa/core': 0.0.8(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      '@unplugin-pwa/inspector': 0.0.8
       '@vite-pwa/workbox-build': 8.0.15(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       '@vite-pwa/workbox-swkit': 8.0.15
       '@vite-pwa/workbox-window': 8.0.15
@@ -9984,11 +9984,11 @@ snapshots:
     optionalDependencies:
       ajv: 6.15.0
 
-  '@vite-pwa/astro@2.0.3(astro@7.4.13(@netlify/blobs@11.1.9(supports-color@7.2.0))(@vercel/functions@3.11.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@vite-pwa/astro@2.0.4(astro@7.4.13(@netlify/blobs@11.1.9(supports-color@7.2.0))(@vercel/functions@3.11.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
-      '@unplugin-pwa/core': 0.0.7(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
-      '@unplugin-pwa/inspector': 0.0.7
-      '@unplugin-pwa/vite': 0.0.7(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      '@unplugin-pwa/core': 0.0.8(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      '@unplugin-pwa/inspector': 0.0.8
+      '@unplugin-pwa/vite': 0.0.8(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       '@vite-pwa/workbox-build': 8.0.15(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
       '@vite-pwa/workbox-swkit': 8.0.15
       '@vite-pwa/workbox-window': 8.0.15
