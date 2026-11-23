@@ -28,6 +28,7 @@ interface Props {
 const alignRightMine = PUBLIC_RIGHT_ALIGN_MY_MSG
 
 const md = createMarkdownIt({ linkify: true, breaks: true }).use(mdKatex).use(mdHighlight)
+md.linkify.set({ fuzzyLink: true })
 
 const fence = md.renderer.rules.fence!
 
