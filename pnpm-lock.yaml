@@ -157,8 +157,8 @@ importers:
         specifier: ~2.0.4
         version: 2.0.4(astro@7.4.13(@netlify/blobs@11.1.10(supports-color@7.2.0))(@vercel/functions@3.11.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.4)(yaml@2.9.1))(magicast@0.5.5)(rolldown@1.2.19)(typescript@6.0.3)(vite@8.3.8(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.4)(yaml@2.9.1))
       bits-ui:
-        specifier: ~2.21.0
-        version: 2.21.0(@internationalized/date@3.12.4)(svelte@5.59.1(@typescript-eslint/types@8.74.0))
+        specifier: ~2.22.0
+        version: 2.22.0(@internationalized/date@3.12.4)(svelte@5.59.1(@typescript-eslint/types@8.74.0))
       eslint-plugin-astro:
         specifier: ~3.2.1
         version: 3.2.1(@typescript-eslint/parser@8.74.0(eslint@10.15.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint@10.15.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
@@ -3352,8 +3352,8 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
-  bits-ui@2.21.0:
-    resolution: {integrity: sha512-kfJonux4r+XOnqGCBQaqFfhRUvDbuZQgyjXADfk0/QJGc8LlQchkrGc6rCd+ldo1EixCJEXlM7znKVIUtuf7OQ==}
+  bits-ui@2.22.0:
+    resolution: {integrity: sha512-NTQJBYKGdqd8QrnwZcOcGs90Ybt1aFe3xF+rrq7RXNAJPo01VCfTZctKQ27RVloDyb/pQhw4CvnEoce1JFZ8Mg==}
     engines: {node: '>=20'}
     peerDependencies:
       '@internationalized/date': ^3.8.1
@@ -10437,7 +10437,7 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bits-ui@2.21.0(@internationalized/date@3.12.4)(svelte@5.59.1(@typescript-eslint/types@8.74.0)):
+  bits-ui@2.22.0(@internationalized/date@3.12.4)(svelte@5.59.1(@typescript-eslint/types@8.74.0)):
     dependencies:
       '@floating-ui/core': 1.8.0
       '@floating-ui/dom': 1.8.0
