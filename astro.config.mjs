@@ -62,6 +62,7 @@ export default defineConfig({
     AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: 'script',
+      generateSW: { navigateFallback: null },
       maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
       manifest: {
         id: '/',
