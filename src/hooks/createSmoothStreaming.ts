@@ -17,12 +17,11 @@ export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothSt
 
   createEffect(() => {
     const length = displayedLength()
-    setCurrentAssistantMessage(realValue().slice(0, length))
+    const fullMessage = realValue()
+    setCurrentAssistantMessage(fullMessage.slice(0, length))
 
-    if (done() && length >= realValue().length) {
-      if (currentAssistantMessage()) {
-        onDone(currentAssistantMessage())
-      }
+    if (done() && length >= fullMessage.length) {
+      if (fullMessage) onDone(fullMessage)
       // Reset internal state after archiving
       batch(() => {
         setCurrentAssistantMessage('')
