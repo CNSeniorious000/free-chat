@@ -5,6 +5,7 @@ import { createRoot } from 'solid-js'
 
 import { createSmoothStreaming } from '../src/hooks/createSmoothStreaming.ts'
 
+let time = 0
 let frameId = 0
 const frames = new Map()
 
@@ -18,6 +19,8 @@ globalThis.cancelAnimationFrame = (id) => {
 }
 
 function setup(t) {
+  time = 0
+  t.mock.method(performance, 'now', () => time)
   const archived = []
   const stream = createRoot((dispose) => {
     t.after(() => {
@@ -30,7 +33,6 @@ function setup(t) {
 }
 
 function advanceFrames() {
-  let time = performance.now()
   for (let i = 0; i < 240 && frames.size; i++) {
     time += 1000 / 60
     const callbacks = [...frames.values()]
@@ -44,7 +46,11 @@ test('archives consecutive chunks including trailing whitespace on normal finish
   stream.start()
   stream.append('hello')
   stream.append(' world')
+  advanceFrames()
+  assert.equal(stream.currentAssistantMessage(), 'hello world')
   stream.append('  \n')
+  advanceFrames()
+  assert.equal(stream.currentAssistantMessage(), 'hello world')
   stream.finish()
   assert.deepEqual(archived, [])
   advanceFrames()
@@ -52,21 +58,27 @@ test('archives consecutive chunks including trailing whitespace on normal finish
   assert.equal(stream.currentAssistantMessage(), '')
 })
 
-test('archives interrupted streams once and resets the buffer for the next request', (t) => {
+test('archives an interrupted stream immediately and only once', (t) => {
   const { stream, archived } = setup(t)
   stream.start()
   stream.append('partial')
   stream.append(' reply')
   stream.finish(true)
   assert.deepEqual(archived, ['partial reply'])
-  stream.start()
-  stream.append('discarded')
-  stream.clear()
-  stream.start()
-  stream.append('new')
-  stream.append(' reply')
-  stream.finish(true)
   advanceFrames()
-  assert.deepEqual(archived, ['partial reply', 'new reply'])
+  assert.deepEqual(archived, ['partial reply'])
   assert.equal(stream.currentAssistantMessage(), '')
 })
+
+for (const reset of ['start', 'clear']) {
+  test(`${reset} discards buffered content`, (t) => {
+    const { stream, archived } = setup(t)
+    stream.start()
+    stream.append('discarded')
+    stream[reset]()
+    stream.append('new reply')
+    stream.finish(true)
+    advanceFrames()
+    assert.deepEqual(archived, ['new reply'])
+  })
+}
