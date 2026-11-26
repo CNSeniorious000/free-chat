@@ -320,15 +320,9 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       while (true) {
         const { value, done } = await reader.read()
         if (activeRequest !== controller) return
-        if (value) {
-          const delta = decoder.decode(value)
-          if (delta) {
-            appendStreaming(delta)
-          }
-        }
-        if (done) {
-          break
-        }
+        const delta = decoder.decode(value, { stream: !done })
+        if (delta) appendStreaming(delta)
+        if (done) break
       }
     } catch(e) {
       if (activeRequest !== controller) return
