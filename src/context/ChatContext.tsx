@@ -259,6 +259,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     setStreaming(true)
     startStreaming()
     setCurrentError(null)
+    let interrupted = false
     try {
       const controller = new AbortController()
       setController(controller)
@@ -326,12 +327,13 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
         }
       }
     } catch(e) {
+      interrupted = true
       console.error(e)
       if ((e instanceof Error && e.name === 'AbortError'))
         return
       setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     } finally {
-      finishStreaming()
+      finishStreaming(interrupted)
     }
   }
 

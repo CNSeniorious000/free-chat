@@ -50,9 +50,9 @@ export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothSt
     })
   }
 
-  const finish = () => {
+  const finish = (immediate = false) => {
     batch(() => {
-      setDisplayedLength(realValue().length + 7)
+      setDisplayedLength(realValue().length + 7, { hard: immediate })
       setDone(true)
     })
   }
