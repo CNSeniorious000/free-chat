@@ -1,5 +1,5 @@
 import { createSpring } from '@solid-primitives/spring'
-import { batch, createEffect, createMemo, createSignal } from 'solid-js'
+import { batch, createEffect, createMemo, createSignal, untrack } from 'solid-js'
 
 interface CreateSmoothStreamingParams {
   onDone: (content: string) => void
@@ -8,7 +8,7 @@ interface CreateSmoothStreamingParams {
 
 export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothStreamingParams) {
   const [realValue, setRealValue] = createSignal('')
-  const [done, setDone] = createSignal(true)
+  const [done, setDone] = createSignal(false)
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
 
   const stiffness = (damping ** 2) / 4.1
@@ -21,12 +21,12 @@ export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothSt
     setCurrentAssistantMessage(fullMessage.slice(0, length))
 
     if (done() && length >= fullMessage.length) {
-      if (fullMessage) onDone(fullMessage)
-      // Reset internal state after archiving
       batch(() => {
+        setDone(false)
         setCurrentAssistantMessage('')
         setDisplayedLength(0, { hard: true })
         setRealValue('')
+        untrack(() => onDone(fullMessage))
       })
     }
   })
@@ -62,7 +62,7 @@ export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothSt
       setCurrentAssistantMessage('')
       setDisplayedLength(0, { hard: true })
       setRealValue('')
-      setDone(true)
+      setDone(false)
     })
   }
 

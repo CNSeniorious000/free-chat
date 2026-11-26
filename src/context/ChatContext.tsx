@@ -327,7 +327,6 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       }
     } catch(e) {
       console.error(e)
-      setStreaming(false)
       if ((e instanceof Error && e.name === 'AbortError'))
         return
       setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
@@ -337,13 +336,13 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   }
 
   const archiveCurrentMessage = (content: string) => {
-    const messages: ChatMessage[] = [...messageList(), { role: 'assistant', content }]
+    const messages: ChatMessage[] | undefined = content ? [...messageList(), { role: 'assistant', content }] : undefined
     batch(() => {
-      setMessageList(messages)
+      if (messages) setMessageList(messages)
       setStreaming(false)
       setController(null)
     })
-    syncMessageList(messages)
+    if (messages) syncMessageList(messages)
   }
 
   const clear = () => {
