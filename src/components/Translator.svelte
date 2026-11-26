@@ -19,8 +19,9 @@
     try {
       while (true) {
         const { done, value } = await reader.read()
+        const chunk = decoder.decode(value, { stream: !done })
+        if (chunk) yield chunk
         if (done) break
-        yield decoder.decode(value)
       }
     } catch(e) {
       console.error('Error reading from stream', e)
