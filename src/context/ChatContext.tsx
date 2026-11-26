@@ -333,6 +333,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
         return
       setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     } finally {
+      setController(null)
       finishStreaming(interrupted)
     }
   }
@@ -342,7 +343,6 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     batch(() => {
       if (messages) setMessageList(messages)
       setStreaming(false)
-      setController(null)
     })
     if (messages) syncMessageList(messages)
   }
@@ -386,7 +386,11 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     syncMessageList(messages)
   }
 
-  const stopStreamFetch = () => controller()?.abort()
+  const stopStreamFetch = () => {
+    const active = controller()
+    if (active) active.abort()
+    else finishStreaming(true)
+  }
 
   const retryLastFetch = () => {
     const history = messageList()
