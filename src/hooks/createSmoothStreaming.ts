@@ -7,6 +7,7 @@ interface CreateSmoothStreamingParams {
 }
 
 export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothStreamingParams) {
+  let bufferedValue = ''
   const [realValue, setRealValue] = createSignal('')
   const [done, setDone] = createSignal(false)
   const [currentAssistantMessage, setCurrentAssistantMessage] = createSignal('')
@@ -15,6 +16,14 @@ export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothSt
   const [_displayedLength, setDisplayedLength] = createSpring(0, { stiffness, damping, precision: 0.001 })
   const displayedLength = createMemo(() => Math.round(_displayedLength()))
 
+  const reset = () => {
+    bufferedValue = ''
+    setDone(false)
+    setCurrentAssistantMessage('')
+    setDisplayedLength(0, { hard: true })
+    setRealValue('')
+  }
+
   createEffect(() => {
     const length = displayedLength()
     const fullMessage = realValue()
@@ -22,53 +31,31 @@ export function createSmoothStreaming({ onDone, damping = 0.25 }: CreateSmoothSt
 
     if (done() && length >= fullMessage.length) {
       batch(() => {
-        setDone(false)
-        setCurrentAssistantMessage('')
-        setDisplayedLength(0, { hard: true })
-        setRealValue('')
+        reset()
         untrack(() => onDone(fullMessage))
       })
     }
   })
 
-  const start = () => {
-    batch(() => {
-      setCurrentAssistantMessage('')
-      setRealValue('')
-      setDone(false)
-      setDisplayedLength(0, { hard: true })
-    })
-  }
-
   const append = (delta: string) => {
-    setRealValue((prev) => {
-      const next = prev + delta
-      if (delta.trim())
-        setDisplayedLength(next.length)
-
-      return next
-    })
+    bufferedValue += delta
+    if (delta.trim())
+      setDisplayedLength(bufferedValue.length)
+    setRealValue(bufferedValue)
   }
 
   const finish = (immediate = false) => {
     batch(() => {
-      setDisplayedLength(realValue().length + 7, { hard: immediate })
+      setDisplayedLength(bufferedValue.length + 7, { hard: immediate })
       setDone(true)
     })
   }
 
-  const clear = () => {
-    batch(() => {
-      setCurrentAssistantMessage('')
-      setDisplayedLength(0, { hard: true })
-      setRealValue('')
-      setDone(false)
-    })
-  }
+  const clear = () => batch(reset)
 
   return {
     currentAssistantMessage,
-    start,
+    start: clear,
     append,
     finish,
     clear,
