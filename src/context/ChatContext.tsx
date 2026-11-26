@@ -105,7 +105,8 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   createEffect(() => currentError() && trackEvent('error', { code: currentError()!.code }))
 
   const setCurrentSystemRoleSettings = (systemRole: string) => {
-    _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
+    _setCurrentSystemRoleSettings(systemRole)
+    systemRole ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
     return systemRole
   }
 
@@ -114,7 +115,8 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   }
 
   const setStick = (stick: boolean) => {
-    _setStick(stick) ? localStorage.setItem('stickToBottom', 'stick') : localStorage.removeItem('stickToBottom')
+    _setStick(stick)
+    stick ? localStorage.setItem('stickToBottom', 'stick') : localStorage.removeItem('stickToBottom')
     return stick
   }
 
