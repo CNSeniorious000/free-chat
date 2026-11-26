@@ -45,8 +45,14 @@
       },
     })
 
+    const controller = new AbortController()
     try {
-      const { body } = await fetch(`${promplateBaseUrl}/stream/translate`, { method: 'POST', body: JSON.stringify({ text, language }), headers })
+      const { body } = await fetch(`${promplateBaseUrl}/stream/translate`, {
+        method: 'POST',
+        body: JSON.stringify({ text, language }),
+        headers,
+        signal: controller.signal,
+      })
       if (!body) return
 
       for await (const chunk of streamAsyncIterator(body)) {
@@ -56,6 +62,7 @@
     } catch(e) {
       console.error('Error translating text', e)
     } finally {
+      controller.abort()
       loading = false
     }
   }
