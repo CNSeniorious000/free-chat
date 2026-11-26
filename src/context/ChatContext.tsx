@@ -87,7 +87,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     },
   })
   const [streaming, setStreaming] = createSignal(false)
-  const [controller, setController] = createSignal<AbortController | null>(null)
+  let activeRequest: AbortController | null = null
   const [inputValue, setInputValue] = createSignal('')
   const [isStick, _setStick] = createSignal(false)
   const [mounted, setMounted] = createSignal(false)
@@ -256,13 +256,14 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   }
 
   const requestMessages = async(messages: ChatMessage[]) => {
+    const controller = new AbortController()
+    activeRequest?.abort()
+    activeRequest = controller
     setStreaming(true)
     startStreaming()
     setCurrentError(null)
     let interrupted = false
     try {
-      const controller = new AbortController()
-      setController(controller)
       const requestMessageList = messages.map(withoutReasoning)
 
       let limit = maxTokens
@@ -294,8 +295,10 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
         signal: controller.signal,
         headers,
       })
+      if (activeRequest !== controller) return
       if (!res.ok) {
         const message = await res.text()
+        if (activeRequest !== controller) return
         console.error(message)
         setCurrentError({ code: `${res.status} ${res.statusText}`, message })
         throw new Error('Request failed')
@@ -316,6 +319,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
 
       while (true) {
         const { value, done } = await reader.read()
+        if (activeRequest !== controller) return
         if (value) {
           const delta = decoder.decode(value)
           if (delta) {
@@ -327,14 +331,17 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
         }
       }
     } catch(e) {
+      if (activeRequest !== controller) return
       interrupted = true
       console.error(e)
       if ((e instanceof Error && e.name === 'AbortError'))
         return
       setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     } finally {
-      setController(null)
-      finishStreaming(interrupted)
+      if (activeRequest === controller) {
+        activeRequest = null
+        finishStreaming(interrupted)
+      }
     }
   }
 
@@ -387,8 +394,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   }
 
   const stopStreamFetch = () => {
-    const active = controller()
-    if (active) active.abort()
+    if (activeRequest) activeRequest.abort()
     else finishStreaming(true)
   }
 
