@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createParser } from 'eventsource-parser'
+  import { onDestroy } from 'svelte'
 
   import { promplateBaseUrl } from '@/utils/constants'
 
@@ -7,10 +8,19 @@
 
   const placeholder = 'type or paste your text here'
   let text = $state('')
-  let loading = $state(false)
+  let activeController = $state<AbortController>()
+  const loading = $derived(!!activeController)
   let parsed: { translated: string; original: string }[] = $state([])
   const language = 'native English'
   const headers = { 'Content-Type': 'application/json' }
+
+  function cancel() {
+    const controller = activeController
+    activeController = undefined
+    controller?.abort()
+  }
+
+  onDestroy(cancel)
 
   async function* streamAsyncIterator(stream: ReadableStream<Uint8Array>) {
     const reader = stream.getReader()
@@ -19,18 +29,19 @@
     try {
       while (true) {
         const { done, value } = await reader.read()
+        const chunk = decoder.decode(value, { stream: !done })
+        if (chunk) yield chunk
         if (done) break
-        yield decoder.decode(value)
       }
-    } catch(e) {
-      console.error('Error reading from stream', e)
     } finally {
       reader.releaseLock()
     }
   }
 
   async function sync() {
-    loading = true
+    if (activeController || !text) return
+    const controller = new AbortController()
+    activeController = controller
     let finished = false
     const parser = createParser({
       onEvent(event) {
@@ -45,7 +56,6 @@
       },
     })
 
-    const controller = new AbortController()
     try {
       const { body } = await fetch(`${promplateBaseUrl}/stream/translate`, {
         method: 'POST',
@@ -53,17 +63,18 @@
         headers,
         signal: controller.signal,
       })
-      if (!body) return
+      if (!body || activeController !== controller) return
 
       for await (const chunk of streamAsyncIterator(body)) {
+        if (activeController !== controller) break
         parser.feed(chunk)
         if (finished) break
       }
     } catch(e) {
-      console.error('Error translating text', e)
+      if (!controller.signal.aborted) console.error('Error translating text', e)
     } finally {
       controller.abort()
-      loading = false
+      if (activeController === controller) activeController = undefined
     }
   }
 </script>
@@ -89,11 +100,11 @@
           </button>
         {/snippet}
       </UseCopy>
-      <button onclick={sync} class="not-disabled:(active:scale-95 not-focus-visible:bg-$c-fg not-focus-visible:text-$c-bg hover:op-85)" disabled={!text || loading}>
+      <button onclick={loading ? cancel : sync} class="not-disabled:(active:scale-95 not-focus-visible:bg-$c-fg not-focus-visible:text-$c-bg hover:op-85)" disabled={!text && !loading}>
         <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
           {#if loading}
             <div i-svg-spinners-ring-resize text-xs></div>
-            <span class="text-sm">Generating</span>
+            <span class="text-sm">Cancel</span>
           {:else}
             <div i-fluent-translate-auto-24-regular></div>
             <span class="text-sm">Translate to {language}</span>
