@@ -13,6 +13,7 @@ const platformOrigin = platformUrl && (platformHttps || platformLoopback) && pla
 const connectionCookie = '__Host-free-chat-codex'
 const cookieOptions = { path: '/', secure: true, httpOnly: true, sameSite: 'strict' } as const
 const verificationUri = 'https://auth.openai.com/codex/device'
+const platformTimeoutMs = 7500
 
 type CodexPath = '' | '/device' | '/device/token' | '/v1/models' | '/v1/responses'
 
@@ -29,7 +30,8 @@ export async function fetchHostedCodex(connection: string, path: CodexPath, meth
   if (!platformOrigin || !appKey) throw new Error('Hosted Codex is not configured.')
   const headers = new Headers({ 'Authorization': `Bearer ${appKey}`, 'X-Codex-Connection': connection, 'Accept': payload ? 'text/event-stream' : 'application/json' })
   if (payload) headers.set('Content-Type', 'application/json')
-  return fetch(`${platformOrigin}/connect/codex${path}`, { method, headers, signal, body: payload ? JSON.stringify(payload) : undefined, redirect: 'error', cache: 'no-store' })
+  const requestSignal = path === '/v1/responses' ? signal : AbortSignal.any([signal, AbortSignal.timeout(platformTimeoutMs)])
+  return fetch(`${platformOrigin}/connect/codex${path}`, { method, headers, signal: requestSignal, body: payload ? JSON.stringify(payload) : undefined, redirect: 'error', cache: 'no-store' })
 }
 
 async function responseJson(response: Response): Promise<Record<string, unknown>> {
@@ -52,10 +54,12 @@ export async function startHostedCodexDevice(context: APIContext) {
   const { userCode, interval, expiresAt } = result
   if (result.verificationUri !== verificationUri || typeof userCode !== 'string' || !/^[a-z\d-]{4,32}$/i.test(userCode)
     || typeof interval !== 'number' || !Number.isSafeInteger(interval) || interval < 1 || interval > 900
-    || typeof expiresAt !== 'number' || !Number.isSafeInteger(expiresAt) || expiresAt * 1000 <= Date.now()) throw new Error('Invalid Platform device authorization.')
+    || typeof expiresAt !== 'number' || !Number.isSafeInteger(expiresAt)) throw new Error('Invalid Platform device authorization.')
+  const expiresInMs = expiresAt * 1000 - Date.now()
+  if (expiresInMs <= 0) throw new Error('Expired Platform device authorization.')
 
   if (!previous) context.cookies.set(connectionCookie, connection, { ...cookieOptions, maxAge: 7 * 24 * 60 * 60 })
-  return { verificationUri, userCode, interval, expiresAt }
+  return { verificationUri, userCode, interval, expiresInMs }
 }
 
 function retryAfterSeconds(value: string | null) {

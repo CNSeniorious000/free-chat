@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro'
 
+import { ChatError } from '@/lib/server/chat-providers'
 import { hostedCodexConnected, isHostedCodexRequest, pollHostedCodex, signOutHostedCodex, startHostedCodexDevice } from '@/lib/server/codex-platform'
 import { getSiwcAccounts, isLocalSiwcRequest, isSameOriginChatRequest, selectSiwcAccount, signOutSiwc, SiwcAccountError, siwcHeaders, startSiwcLogin } from '@/lib/server/siwc'
 import { readSiwcRequestJson } from '@/lib/server/siwc-request'
@@ -29,11 +30,11 @@ export const POST: APIRoute = async(context) => {
   if (!hosted && !isLocalSiwcRequest(context)) return unavailable()
   if (!isSameOriginChatRequest(context)) return forbidden()
   if (context.request.headers.get('content-type')?.split(';')[0].trim().toLowerCase() !== 'application/json') return fail(415, 'invalid_content_type', 'Expected JSON.')
-  const body: unknown = await (hosted ? readSiwcRequestJson(context.request, 4096) : context.request.json()).catch(() => null)
-  if (!body || typeof body !== 'object' || !('action' in body)) return invalidAction()
-  const accountId = 'accountId' in body ? body.accountId : undefined
-  if (accountId !== undefined && (typeof accountId !== 'string' || !accountId)) return fail(400, 'invalid_account', 'Invalid account ID.')
   try {
+    const body: unknown = hosted ? await readSiwcRequestJson(context.request, 4096) : await context.request.json().catch(() => null)
+    if (!body || typeof body !== 'object' || !('action' in body)) return invalidAction()
+    const accountId = 'accountId' in body ? body.accountId : undefined
+    if (accountId !== undefined && (typeof accountId !== 'string' || !accountId)) return fail(400, 'invalid_account', 'Invalid account ID.')
     if (hosted) {
       if (body.action === 'login') return json({ device: await startHostedCodexDevice(context) })
       if (body.action === 'logout') return json(await signOutHostedCodex(context))
@@ -51,6 +52,7 @@ export const POST: APIRoute = async(context) => {
     }
     return invalidAction()
   } catch(error) {
+    if (error instanceof ChatError) return fail(error.status, error.code, error.message)
     if (error instanceof SiwcAccountError) return fail(400, 'invalid_account', error.message)
     return fail(500, 'siwc_unavailable', 'Could not update your ChatGPT account.')
   }

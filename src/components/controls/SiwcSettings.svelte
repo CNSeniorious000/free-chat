@@ -14,7 +14,7 @@
   interface Device {
     userCode: string;
     interval: number;
-    expiresAt: number;
+    deadline: number;
   }
 
   let accounts = $state<Account[]>([])
@@ -81,13 +81,13 @@
   }
 
   function schedulePoll(challenge: Device, controller: AbortController, interval = challenge.interval) {
-    const remaining = Math.max(0, challenge.expiresAt * 1000 - Date.now())
+    const remaining = Math.max(0, challenge.deadline - performance.now())
     pollTimer = setTimeout(() => void pollDevice(challenge, controller), Math.min(interval * 1000, remaining))
   }
 
   async function pollDevice(challenge: Device, controller: AbortController) {
     if (controller.signal.aborted) return
-    if (challenge.expiresAt * 1000 <= Date.now()) {
+    if (challenge.deadline <= performance.now()) {
       stopPolling()
       notice = '设备代码已过期，请重试。'
       return
@@ -121,12 +121,12 @@
     }
   }
 
-  async function manage(action: 'login' | 'logout' | 'select', accountId?: string) {
+  async function manage(action: 'login' | 'logout' | 'select' | 'cancel', accountId?: string) {
     busy = true
     problem = ''
     if (hosted) notice = ''
     try {
-      const response = await sendAction(action, accountId)
+      const response = await sendAction(action === 'cancel' ? 'logout' : action, accountId)
       if (lifetime.signal.aborted) return
       if (action === 'select' && accountId !== activeAccountId) {
         activeAccountId = accountId
@@ -137,7 +137,8 @@
       if (lifetime.signal.aborted) return
       if (action === 'login') {
         if (hosted) {
-          const challenge = result.device as Device
+          const { userCode, interval, expiresInMs } = result.device
+          const challenge = { userCode, interval, deadline: performance.now() + expiresInMs }
           device = challenge
           polling = new AbortController()
           schedulePoll(challenge, polling)
@@ -145,7 +146,9 @@
           window.location.assign(result.url)
         }
       } else {
-        notice = hosted ? '已断开连接。你也可在 ChatGPT 设置中撤销授权。' : result.revoked === false ? '已在本机退出，远端撤销未确认。请在 ChatGPT 设置中断开此应用。' : ''
+        if (action === 'cancel') notice = '已取消登录。'
+        else if (hosted) notice = '已断开连接。你也可在 ChatGPT 设置中撤销授权。'
+        else notice = result.revoked === false ? '已在本机退出，远端撤销未确认。请在 ChatGPT 设置中断开此应用。' : ''
         await refresh()
       }
     } catch(error) {
@@ -213,7 +216,7 @@
     {:else if device}
       <p class="w-full" role="status">在 OpenAI 输入设备代码：<code class="select-all font-mono">{device.userCode}</code></p>
       <a class="rounded bg-$c-fg px-2 py-1 text-$c-bg" href="https://auth.openai.com/codex/device" target="_blank" rel="noopener noreferrer">打开 OpenAI 验证页</a>
-      <button type="button" class="rounded bg-$c-fg-5 px-2 py-1 hover:bg-$c-fg-10" onclick={() => { stopPolling(); void manage('logout') }}>取消</button>
+      <button type="button" class="rounded bg-$c-fg-5 px-2 py-1 hover:bg-$c-fg-10" onclick={() => { stopPolling(); void manage('cancel') }}>取消</button>
     {:else}
       <button type="button" data-oai-siwc-button="" class="rounded bg-$c-fg px-2 py-1 text-$c-bg disabled:op-50" disabled={busy} onclick={() => manage('login', activeAccount?.id)}>Continue with ChatGPT</button>
     {/if}
