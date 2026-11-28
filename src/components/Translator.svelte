@@ -32,21 +32,40 @@
 
   async function sync() {
     loading = true
+    let finished = false
     const parser = createParser({
       onEvent(event) {
-        if (event.event === 'finish') return (loading = false)
-        if (event.event === 'error') {
-          console.error(event.data)
-          return (loading = false)
+        if (finished) return
+        if (event.event === 'finish' || event.event === 'error') {
+          finished = true
+          if (event.event === 'error') console.error(event.data)
+          return
         }
 
         parsed = JSON.parse(event.data)
       },
     })
 
-    const body = await fetch(`${promplateBaseUrl}/stream/translate`, { method: 'POST', body: JSON.stringify({ text, language }), headers }).then(r => r.body)
+    const controller = new AbortController()
+    try {
+      const { body } = await fetch(`${promplateBaseUrl}/stream/translate`, {
+        method: 'POST',
+        body: JSON.stringify({ text, language }),
+        headers,
+        signal: controller.signal,
+      })
+      if (!body) return
 
-    for await (const chunk of streamAsyncIterator(body!)) parser.feed(chunk)
+      for await (const chunk of streamAsyncIterator(body)) {
+        parser.feed(chunk)
+        if (finished) break
+      }
+    } catch(e) {
+      console.error('Error translating text', e)
+    } finally {
+      controller.abort()
+      loading = false
+    }
   }
 </script>
 
