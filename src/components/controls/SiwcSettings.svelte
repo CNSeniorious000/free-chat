@@ -20,6 +20,7 @@
   let ready = $state(false)
   let notice = $state('')
   let problem = $state('')
+  let disposed = false
 
   function chooseModel(value: string) {
     model = value
@@ -42,7 +43,9 @@
     models = []
     if (accounts.some(account => account.id === activeAccountId && account.connected)) {
       const catalog = await requireSiwcResponse(await fetch('/api/siwc/chat', { cache: 'no-store' }))
-      models = (await catalog.json()).models
+      const result = await catalog.json()
+      if (disposed) return
+      models = result.models
       const saved = localStorage.getItem(siwcModelKey)
       chooseModel(models.find(entry => entry.id === saved)?.id ?? models[0]?.id ?? '')
       if (!models.length) await refreshAccounts()
@@ -86,6 +89,7 @@
       window.history.replaceState(null, '', url)
     }
     refresh().catch((error) => { problem = error.message }).finally(() => { busy = false })
+    return () => { disposed = true }
   })
 </script>
 
