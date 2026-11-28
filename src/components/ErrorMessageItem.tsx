@@ -16,8 +16,8 @@ export default ({ data, onRetry }: Props) => {
   const [description, setDescription] = createSignal(data.message)
 
   onMount(() => {
-    fetchTranslation(data.code).then(setTitle)
-    fetchTranslation(data.message).then(setDescription)
+    fetchTranslation(data.code).then(setTitle).catch(() => {})
+    fetchTranslation(data.message).then(setDescription).catch(() => {})
   })
 
   return (
