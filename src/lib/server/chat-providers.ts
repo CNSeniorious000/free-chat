@@ -163,8 +163,14 @@ function readUpstreamEvent({ data, event }: EventSourceMessage, provider: ChatPr
 
 export async function streamChat(config: ProviderConfig, input: ChatInput, signal: AbortSignal) {
   if (config.provider === 'preview-fixture') {
-    const frames = [...previewReplies[input.purpose].map(delta => encodeEvent({ delta })), encodeEvent({ done: true })]
-    return new Response(ReadableStream.from(frames), { headers: streamHeaders })
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        for (const delta of previewReplies[input.purpose]) controller.enqueue(encodeEvent({ delta }))
+        controller.enqueue(encodeEvent({ done: true }))
+        controller.close()
+      },
+    })
+    return new Response(stream, { headers: streamHeaders })
   }
   const siwc = config.provider === 'siwc'
   if (siwc && !config.token) throw new ChatError(401, 'sign_in_required', '请登录 ChatGPT 并授权使用订阅额度。')
