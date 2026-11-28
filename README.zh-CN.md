@@ -37,7 +37,9 @@
 
 默认仍是 Promplate。在浏览器所在的电脑运行 `pnpm install --frozen-lockfile`，再运行 `pnpm dev --host 127.0.0.1 --port 43761`。打开 `http://127.0.0.1:43761`（不要用 `localhost`），在设置里选 **ChatGPT 订阅**，点击 **Continue with ChatGPT**，登录后选择账号可用的模型。SIWC 不需要 API Key。
 
-SIWC 聊天记录独立存放，不把内容发送到原有的标题、建议或审核接口。凭证仅保存在本机私有目录（默认 `~/.config/free-chat`，可用进程环境变量 `FREE_CHAT_SIWC_DIR` 覆盖）。[开源订阅授权流程](https://developers.openai.com/siwc/token-sharing-open-source)要求本机回调；Vercel Preview 保留默认供应商。
+SIWC 聊天记录独立存放，不把内容发送到原有的标题、建议或审核接口。凭证仅保存在本机私有目录。设置了 `XDG_CONFIG_HOME` 时，默认目录为 `$XDG_CONFIG_HOME/free-chat`，否则为 `~/.config/free-chat`。可用进程环境变量 `FREE_CHAT_SIWC_DIR` 覆盖该路径。每个凭证目录只供一个进程使用，以免并发刷新令牌。
+
+[开源订阅授权流程](https://developers.openai.com/siwc/token-sharing-open-source)适用于本机登录，需要通过回环地址接收回调。使用此流程时，请将服务绑定至 `127.0.0.1`。Vercel Preview 保留默认供应商。
 
 ## 参与贡献
 

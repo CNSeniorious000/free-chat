@@ -61,7 +61,11 @@
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ action, accountId }),
       }))
-      if (action === 'select' && accountId !== activeAccountId) chooseModel('')
+      if (action === 'select' && accountId !== activeAccountId) {
+        activeAccountId = accountId
+        models = []
+        chooseModel('')
+      }
       const result = await response.json()
       if (action === 'login') window.location.assign(result.url)
       else {
@@ -75,8 +79,9 @@
     }
   }
 
-  const handleAccountChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    const account = accounts.find(entry => entry.id === event.currentTarget.value)
+  const handleAccountChange: ChangeEventHandler<HTMLSelectElement> = ({ currentTarget }) => {
+    const account = accounts.find(entry => entry.id === currentTarget.value)
+    currentTarget.value = activeAccountId ?? ''
     if (account) void manage(account.connected ? 'select' : 'login', account.id)
   }
 

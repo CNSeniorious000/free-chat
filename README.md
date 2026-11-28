@@ -37,7 +37,9 @@ You can control the website through environment variables.
 
 Promplate remains the default. On the computer running your browser, run `pnpm install --frozen-lockfile` and `pnpm dev --host 127.0.0.1 --port 43761`. Open `http://127.0.0.1:43761` (not `localhost`), select **ChatGPT 订阅** in Settings, then click **Continue with ChatGPT**. The model picker shows the signed-in account's available models. No API key is needed for SIWC.
 
-The SIWC history stays separate and does not send prompts to the legacy title, suggestion, or moderation endpoints. Credentials stay in a private local directory (`~/.config/free-chat` by default; the `FREE_CHAT_SIWC_DIR` process variable overrides it). The [OSS plan-usage flow](https://developers.openai.com/siwc/token-sharing-open-source) requires a local callback; Vercel Preview retains the default provider.
+The SIWC history stays separate and does not send prompts to the legacy title, suggestion, or moderation endpoints. Credentials stay in a private local directory. Set `FREE_CHAT_SIWC_DIR` to override the path, which defaults to `$XDG_CONFIG_HOME/free-chat` when `XDG_CONFIG_HOME` is set and `~/.config/free-chat` otherwise. Use each credential directory from only one process to avoid concurrent refreshes.
+
+The [OSS plan-usage flow](https://developers.openai.com/siwc/token-sharing-open-source) is for local sign-in with a loopback callback. Keep the server bound to `127.0.0.1` when using this flow. Vercel Preview retains the default provider.
 
 ## Contributing
 

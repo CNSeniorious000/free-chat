@@ -349,7 +349,8 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       if (siwc) {
         clearStreaming()
         setController(null)
-        setCurrentError({ code: `siwc:${e instanceof SiwcChatError ? e.code : 'request_failed'}`, message: e instanceof Error ? e.message : String(e) })
+        const { code, message } = e instanceof SiwcChatError ? e : { code: 'request_failed', message: 'ChatGPT 请求失败，请重试。' }
+        setCurrentError({ code: `siwc:${code}`, message })
         return
       }
       setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })

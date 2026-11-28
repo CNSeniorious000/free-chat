@@ -26,18 +26,22 @@
   let localSiwc = $state(false)
   let siwc = $state(false)
   let providerProblem = $state('')
+  let reopening = false
 
   onMount(() => {
     localSiwc = isSiwcOrigin()
     if (!localSiwc) return
     siwc = isSiwcEnabled()
     const url = new URL(window.location.href)
-    if (url.searchParams.has('provider-settings')) {
+    const switchingProvider = url.searchParams.has('provider-settings')
+    if (switchingProvider) {
       url.searchParams.delete('provider-settings')
       window.history.replaceState(null, '', url)
+    }
+    if (switchingProvider || (siwc && url.searchParams.has('siwc'))) {
+      reopening = true
       show = true
     }
-    if (siwc && url.searchParams.has('siwc')) show = true
   })
 
   const handleProviderChange: ChangeEventHandler<HTMLSelectElement> = ({ currentTarget }) => {
@@ -63,7 +67,8 @@
   $effect(() => {
     if (show) {
       previousFocus = document.activeElement as HTMLElement | null
-      trackEvent('open-settings')
+      if (!reopening) trackEvent('open-settings')
+      reopening = false
     } else {
       previousFocus?.focus()
     }
