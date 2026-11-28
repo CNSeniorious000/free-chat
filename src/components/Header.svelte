@@ -1,8 +1,13 @@
 <script lang="ts">
+  import xiaomimimo from '@lobehub/icons-static-svg/icons/xiaomimimo-text.svg?raw'
   import { PUBLIC_IFRAME_URL } from 'astro:env/client'
+  import { onMount } from 'svelte'
+
+  import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 
   import { ripple } from '../utils/ripple'
   import Ad from './Ad.svelte'
+  import FlipText from './FlipText.svelte'
   import Inview from './Inview.svelte'
   import Settings from './Settings.svelte'
   import Themetoggle from './Themetoggle.svelte'
@@ -17,6 +22,19 @@
 
   let inView = $state(true)
 
+  let status = $state('Checking backend status...')
+
+  onMount(async() => {
+    try {
+      const res = await fetch(`${baseUrl}/heartbeat`)
+      await res.text()
+      status = 'Receive backend greeting.'
+      setTimeout(() => status = '', 1000)
+    } catch(e) {
+      status = `Error: ${(e as Error).message}`
+      setTimeout(() => status = '', 5000)
+    }
+  })
 </script>
 
 <Inview bind:inView class="absolute left-0 right-0 top-0 h-2rem md:h-3rem" />
@@ -43,7 +61,16 @@
 
 <div class="transition-opacity" class:op-0={!inView} class:duration-400={inView}>
   <div class="mb-0.6 ml-0.2 mt-0.3 select-none overflow-hidden text-2.6 tracking-wider transition-font-size md:text-3 sm:text-2.8">
-    <button type="button" onclick={() => { showSettings = true }}>在设置中选择模型</button>
+    <FlipText text={status}>
+      <span class="flex flex-row items-center gap-0.7">
+        欢迎试用小米的开源模型
+        <a href="https://mimo.xiaomi.com/mimo-v2-5-pro" target="_blank" class="fcc gap-0.5">
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+          {@html xiaomimimo}
+          <span class="ml-0.15em">V2.5 Pro</span>
+        </a>
+      </span>
+    </FlipText>
   </div>
 </div>
 

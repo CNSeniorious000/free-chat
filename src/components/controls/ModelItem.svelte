@@ -1,0 +1,66 @@
+<script module lang="ts">
+  import { PUBLIC_DEFAULT_MODEL } from 'astro:env/client'
+  import { persistedState } from 'svelte-persisted-state'
+
+  type Model = 'gpt-oss-120b' | 'glm-4.5-flash' | 'z-ai/glm-4.5-air:free' | 'glm-4.5' | 'glm-4.5v' | 'glm-4.6' | 'glm-4.6v' | 'glm-4.7' | 'glm-5' | 'glm-5.1' | 'zai-glm-4.7' | 'Qwen3-32B' | 'Qwen3-235B' | 'DeepSeek-V3.1-Terminus' | 'THUDM/GLM-4-9B-0414' | 'internlm/internlm2_5-20b-chat' | 'gemma2-9b-it' | 'nous-hermes-2-mixtral-8x7b-dpo' | 'meta-llama/llama-4-maverick-17b-128e-instruct' | 'llama-3.3-70b' | 'llama3.1-70b' | 'azure:gpt-4o' | 'azure:gpt-4.1-mini' | 'azure:gpt-5-mini' | 'gpt-5.2' | 'gpt-5.2-codex' | 'gpt-5.6-sol' | 'gpt-5.6-terra' | 'gpt-5.6-luna' | 'gpt-5.5' | 'gpt-5.4' | 'gpt-5.4-mini' | 'gpt-5.3-codex' | 'Phi-4' | 'Meta-Llama-3.1-405B-Instruct' | 'Mistral-medium-2505' | 'Mistral-large-2411' | 'yi-lightning' | 'grok-4-1-fast-non-reasoning' | 'qwen/qwen3.6-plus:free' | 'gemma-3-27b-it' | 'gemini-2.5-flash-lite' | 'Cohere-command-a' | 'moonshotai/kimi-k2-instruct-0905' | 'stepfun/step-3.5-flash:free' | 'DeepSeek-V3.2' | 'arcee-ai/trinity-mini:free' | 'nvidia/nemotron-3-nano-30b-a3b:free' | 'nvidia/nemotron-3-super-120b-a12b:free' | 'mimo-v2.5' | 'mimo-v2.5-pro'
+
+  const defaultModel = PUBLIC_DEFAULT_MODEL as Model
+
+  function asIs(value: string) {
+    return (value === 'qwen/qwen3.6-plus-preview:free' ? 'qwen/qwen3.6-plus:free' : value) as Model
+  }
+
+  export const model = persistedState('model', defaultModel, { syncTabs: false, serializer: { parse: asIs, stringify: asIs } })
+</script>
+
+<script lang="ts">
+  import { trackEvent } from '@/utils/track'
+
+  import { ripple } from '../../utils/ripple'
+
+  interface Props {
+    id: Model;
+    name: string;
+    title: string;
+  }
+
+  const { id, name, title }: Props = $props()
+
+  function choose() {
+    model.current = id
+    trackEvent('model', { model: id })
+  }
+</script>
+
+<input tabindex="-1" type="radio" name="model" {id} class="sr-only" onselect={choose} checked={model.current === id} />
+
+<button use:ripple={{ color: 'var(--c-fg)' }} onclick={choose} class="cursor-auto text-left">
+  <h4>{name}</h4>
+  <h5>{title}</h5>
+</button>
+
+<style>
+  h4 {
+    --uno: rounded-sm text-xs tracking-widest font-mono uppercase op-50;
+  }
+
+  h5 {
+    --uno: text-3.1 line-height-1.4em -translate-y-0.5;
+  }
+
+  button {
+    --uno: w-full flex flex-col gap-0.5 rounded bg-$c-fg-5 p-1.5 outline-none ring-($c-fg inset) transition-all duration-100 ease-out active:scale-97 @hover:(bg-$c-fg-15 ring-1.2) focus-visible:ring-1.2;
+  }
+
+  :checked + button {
+    --uno: \!bg-$c-fg text-$c-bg @hover:op-80;
+  }
+
+  button > :global(.ripple) {
+    --uno: op-15;
+  }
+
+  :checked + button > :global(.ripple) {
+    --ripple-color: var(--c-bg);
+  }
+</style>

@@ -1,6 +1,5 @@
 import type { APIContext } from 'astro'
 
-import { CHAT_PROVIDER, FREE_CHAT_SIWC_DIR } from 'astro:env/server'
 import { Buffer } from 'node:buffer'
 import { createHash, createPublicKey, randomBytes, randomUUID, verify } from 'node:crypto'
 import { constants } from 'node:fs'
@@ -58,7 +57,7 @@ export const siwcHeaders = { 'Cache-Control': 'no-store', 'Referrer-Policy': 'no
 
 export class SiwcAccountError extends Error {}
 
-export function isLocalChatRequest(context: APIContext): boolean {
+export function isLocalSiwcRequest(context: APIContext): boolean {
   if (process.env.OUTPUT === 'netlify' || process.env.OUTPUT === 'vercel' || process.env.NETLIFY || process.env.VERCEL) return false
   const { headers } = context.request
   const url = new URL(context.request.url)
@@ -74,10 +73,6 @@ export function isLocalChatRequest(context: APIContext): boolean {
   }
 }
 
-export function isLocalSiwcRequest(context: APIContext): boolean {
-  return CHAT_PROVIDER === 'siwc' && isLocalChatRequest(context)
-}
-
 export function isSameOriginChatRequest(context: APIContext): boolean {
   return context.request.headers.get('origin') === context.url.origin
 }
@@ -91,7 +86,7 @@ function hasScope(scope: string): boolean {
 }
 
 async function profilePath() {
-  const directory = resolve(FREE_CHAT_SIWC_DIR || join(process.env.XDG_CONFIG_HOME || join(homedir(), '.config'), 'free-chat'))
+  const directory = resolve(process.env.FREE_CHAT_SIWC_DIR || join(process.env.XDG_CONFIG_HOME || join(homedir(), '.config'), 'free-chat'))
   await mkdir(directory, { recursive: true, mode: 0o700 })
   const info = await lstat(directory)
   if (!info.isDirectory() || (process.getuid && (info.uid !== process.getuid() || (info.mode & 0o077) !== 0))) throw new Error('SIWC needs a private data directory.')

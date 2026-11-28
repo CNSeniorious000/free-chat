@@ -4,14 +4,14 @@ import { getSiwcAccounts, isLocalSiwcRequest, isSameOriginChatRequest, selectSiw
 
 const json = (body: object, status = 200) => Response.json(body, { status, headers: siwcHeaders })
 const fail = (status: number, code: string, message: string) => json({ error: { code, message } }, status)
-const unavailable = () => fail(404, 'siwc_unavailable', 'ChatGPT sign-in is available only on the local free-chat server with the SIWC provider.')
+const unavailable = () => fail(404, 'siwc_unavailable', 'ChatGPT sign-in is available only on the local free-chat server at 127.0.0.1.')
 const forbidden = () => fail(403, 'origin_denied', 'Cross-origin request denied.')
 const invalidAction = () => fail(400, 'invalid_action', 'Invalid action.')
 
 export const GET: APIRoute = async(context) => {
   if (!isLocalSiwcRequest(context)) return unavailable()
   const fetchSite = context.request.headers.get('sec-fetch-site')
-  if (fetchSite === 'cross-site' || fetchSite === 'same-site') return forbidden()
+  if (fetchSite === 'cross-site' || fetchSite === 'same-site' || (context.request.headers.has('origin') && !isSameOriginChatRequest(context))) return forbidden()
   try {
     return json(await getSiwcAccounts())
   } catch {

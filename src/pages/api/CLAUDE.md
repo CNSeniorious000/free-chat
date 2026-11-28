@@ -5,23 +5,19 @@
 ```
 src/pages/api/
 ├── transcript.ts    # audio transcription (whisper/audio API)
-├── chat.ts          # configured chat provider, model catalog and SSE inference
-├── siwc.ts          # local ChatGPT account authorization and selection
-├── title-gen.ts     # legacy title generation endpoint
+├── title-gen.ts     # generate chat titles from message history
 ├── translate.ts     # text translation service
 └── moderate.ts      # content moderation (OpenAI moderation API)
 ```
 
 ## WHERE TO LOOK
 
-| Task                         | Location      | Notes                           |
-| ---------------------------- | ------------- | ------------------------------- |
-| Chat, titles and suggestions | chat.ts       | stream from configured provider |
-| Beta translator              | chat.ts       | stream English translation      |
-| Manage ChatGPT accounts       | siwc.ts       | local sign-in and selection     |
-| Transcribe audio             | transcript.ts | handle audio file uploads       |
-| Translate utility text       | translate.ts  | multi-language support          |
-| Moderate content             | moderate.ts   | OpenAI moderation API           |
+| Task             | Location      | Notes                     |
+| ---------------- | ------------- | ------------------------- |
+| Transcribe audio | transcript.ts | handle audio file uploads |
+| Generate titles  | title-gen.ts  | summarize conversation    |
+| Translate text   | translate.ts  | multi-language support    |
+| Moderate content | moderate.ts   | OpenAI moderation API     |
 
 ## CONVENTIONS
 
@@ -31,8 +27,19 @@ src/pages/api/
 
 ## NOTES
 
-仅后端路由（无需 SSR hydration），无测试覆盖率手动验证，集成 OpenAI API 用于内容审查和旧版标题生成。
+仅后端路由（无需 SSR hydration），无测试覆盖率手动验证，集成 OpenAI API 用于内容审查和标题生成。
 
-## CHAT BFF
+## PROMPLATE DEMO BACKEND
 
-`GET /api/chat` returns the configured provider and model choices. `POST /api/chat` streams chat, title, suggestion, and translation results. ChatGPT plan credentials are kept by the server and must never enter client modules.
+Backend: promplate/demo (FastAPI + promplate) at https://github.com/promplate/demo
+
+用 GitHub GraphQL 工具查看 promplate/demo 源码了解 endpoint 实现：
+
+- `GET /heartbeat` - health check
+- `GET /models` - list available LLM models (OpenAI-compatible)
+- `POST /chat/completions` - OpenAI-compatible chat API
+- `POST /prompts/render/{template}` - render template with context (sync/async)
+- `GET /prompts/{template}` - show raw template source
+- `POST /invoke/{template}` - invoke template (non-streaming)
+- `POST /stream/{template}` - invoke template (SSE streaming)
+- `PUT /single/{template}` - single-step template run

@@ -1,44 +1,58 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte'
+  import { createParser } from 'eventsource-parser'
 
-  import { iterateChat } from '@/utils/chat-provider'
+  import { promplateBaseUrl } from '@/utils/constants'
 
   import UseCopy from './UseCopy.svelte'
 
   const placeholder = 'type or paste your text here'
   let text = $state('')
   let loading = $state(false)
-  let translated = $state('')
-  let error = $state('')
-  let controller: AbortController | undefined
+  let parsed: { translated: string; original: string }[] = $state([])
   const language = 'native English'
+  const headers = { 'Content-Type': 'application/json' }
 
-  onDestroy(() => controller?.abort())
+  async function* streamAsyncIterator(stream: ReadableStream<Uint8Array>) {
+    const reader = stream.getReader()
+    const decoder = new TextDecoder()
+
+    try {
+      while (true) {
+        const { done, value } = await reader.read()
+        const chunk = decoder.decode(value, { stream: !done })
+        if (chunk) yield chunk
+        if (done) break
+      }
+    } catch(e) {
+      console.error('Error reading from stream', e)
+    } finally {
+      reader.releaseLock()
+    }
+  }
 
   async function sync() {
-    if (loading || !text.trim()) return
     loading = true
-    translated = ''
-    error = ''
-    controller = new AbortController()
-    const { signal } = controller
-    try {
-      for await (const delta of iterateChat([{ role: 'user', content: text }], 'translate', signal))
-        translated += delta
-    } catch(cause) {
-      if (!signal.aborted)
-        error = cause instanceof Error ? cause.message : 'Translation failed'
-    } finally {
-      loading = false
-      controller = undefined
-    }
+    const parser = createParser({
+      onEvent(event) {
+        if (event.event === 'finish') return (loading = false)
+        if (event.event === 'error') {
+          console.error(event.data)
+          return (loading = false)
+        }
+
+        parsed = JSON.parse(event.data)
+      },
+    })
+
+    const body = await fetch(`${promplateBaseUrl}/stream/translate`, { method: 'POST', body: JSON.stringify({ text, language }), headers }).then(r => r.body)
+
+    for await (const chunk of streamAsyncIterator(body!)) parser.feed(chunk)
   }
 </script>
 
 <header>
   <nav class="mb-5 mt-7 flex flex-row items-center justify-center gap-1.5 tracking-wide">
-    <a href="/">Free Chat</a>
-    <strong class="from-emerald-200 to-sky-200 bg-(gradient-to-r clip-text) text-transparent">Translator</strong>
+    Free Chat <strong class="from-emerald-200 to-sky-200 bg-(gradient-to-r clip-text) text-transparent">Translator</strong>
     <div class="rounded-lg bg-white/5 px-1.5 py-1 text-xs tracking-wider uppercase">beta</div>
   </nav>
 </header>
@@ -57,7 +71,7 @@
           </button>
         {/snippet}
       </UseCopy>
-      <button onclick={sync} class="not-disabled:(active:scale-95 not-focus-visible:bg-$c-fg not-focus-visible:text-$c-bg hover:op-85)" disabled={!text.trim() || loading}>
+      <button onclick={sync} class="not-disabled:(active:scale-95 not-focus-visible:bg-$c-fg not-focus-visible:text-$c-bg hover:op-85)" disabled={!text || loading}>
         <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
           {#if loading}
             <div i-svg-spinners-ring-resize text-xs></div>
@@ -72,20 +86,20 @@
   </div>
   <div class="w-full rounded-md bg-white/3 p-2 lg:p-4 sm:p-3">
     <div class="relative h-full w-full">
-      <div class="whitespace-pre-wrap break-words" aria-busy={loading}>
-        {#if translated}
-          <span class="animate-fade-in animate-duration-200">{translated}</span>
-        {:else if !error}
+      <div whitespace-pre-line>
+        <!-- eslint-disable-next-line svelte/require-each-key -->
+        {#each parsed as { translated }}
+          {#if translated}
+            <span class="animate-fade-in animate-duration-200"> {translated} </span>
+          {/if}
+        {:else}
           <span op-30 select-none>translated text will display here</span>
-        {/if}
-        {#if error}
-          <p role="alert">{error}</p>
-        {/if}
+        {/each}
       </div>
       <div class="absolute bottom-0 right-0 justify-end gap-3 [&>button:disabled]:op-40">
-        <UseCopy text={translated}>
+        <UseCopy text={parsed.reduce((acc, { translated }) => acc + (translated ?? ''), '')}>
           {#snippet children({ handleClick, displayText })}
-            <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!translated}>
+            <button onclick={handleClick} class="not-disabled:(active:scale-95 hover:!ring-white/50 not-focus-visible:!ring-white/10)" disabled={!parsed.length}>
               <div class="min-h-4.5 min-w-4.5 flex flex-row items-center justify-center gap-1">
                 <div i-iconamoon-copy-duotone></div>
                 <span class="text-sm">{displayText}</span>
