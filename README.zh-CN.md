@@ -39,7 +39,9 @@
 
 SIWC 聊天记录独立存放，不把内容发送到原有的标题、建议或审核接口。凭证仅保存在本机私有目录。设置了 `XDG_CONFIG_HOME` 时，默认目录为 `$XDG_CONFIG_HOME/free-chat`，否则为 `~/.config/free-chat`。可用进程环境变量 `FREE_CHAT_SIWC_DIR` 覆盖该路径。每个凭证目录只供一个进程使用，以免并发刷新令牌。
 
-[开源订阅授权流程](https://developers.openai.com/siwc/token-sharing-open-source)适用于本机登录，需要通过回环地址接收回调。使用此流程时，请将服务绑定至 `127.0.0.1`。Vercel Preview 保留默认供应商。
+[开源订阅授权流程](https://developers.openai.com/siwc/token-sharing-open-source)适用于本机登录，需要通过回环地址接收回调。使用此流程时，请将服务绑定至 `127.0.0.1`。
+
+拿到获批的托管 Codex 客户端后，HTTPS 部署可在服务端将 `FREE_CHAT_CODEX_PLATFORM_URL` 设为 Platform 的 HTTPS origin，并设置 `FREE_CHAT_CODEX_APP_KEY`。只在有访问保护的预览，或设备码签发有鉴权和限流的部署中启用。设置中可主动切换到设备码登录，使用自己的 ChatGPT 订阅；默认仍是 Promplate。OpenAI 凭证留在 Platform，每个浏览器的连接独立，最长保留七天；在设置中断开连接不会撤销 OpenAI 端授权。HTTP 回环 Platform 地址仅用于 `http://127.0.0.1` 上测试托管登录。
 
 ## 参与贡献
 

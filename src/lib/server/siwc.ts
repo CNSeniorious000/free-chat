@@ -57,7 +57,7 @@ export const siwcHeaders = { 'Cache-Control': 'no-store', 'Referrer-Policy': 'no
 
 export class SiwcAccountError extends Error {}
 
-export function isLocalSiwcRequest(context: APIContext): boolean {
+export function isLocalSiwcRequest(context: Pick<APIContext, 'request' | 'url' | 'clientAddress'>): boolean {
   if (process.env.OUTPUT === 'netlify' || process.env.OUTPUT === 'vercel' || process.env.NETLIFY || process.env.VERCEL) return false
   const { headers } = context.request
   const url = new URL(context.request.url)

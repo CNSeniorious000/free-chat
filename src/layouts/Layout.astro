@@ -1,6 +1,7 @@
 ---
 import { pwaInfo } from 'virtual:pwa-info'
 import { HEAD_SCRIPTS } from 'astro:env/client'
+import { isHostedCodexRequest } from '@/lib/server/codex-platform'
 
 export interface Props {
   title: string;
@@ -11,7 +12,7 @@ const origin = Astro.request.headers.get('host')
 ---
 
 <!DOCTYPE html>
-<html class="transition-background-color duration-200 ease-out" class:list={Astro.cookies.get('dark')?.boolean() ? ['dark'] : []}>
+<html class="transition-background-color duration-200 ease-out" class:list={Astro.cookies.get('dark')?.boolean() ? ['dark'] : []} data-hosted-codex={isHostedCodexRequest(Astro) ? 'true' : undefined}>
   <head>
     <meta charset="UTF-8" />
     <meta name="X-Frame-Options" content="sameorigin">

@@ -2,14 +2,24 @@ import { EventSourceParserStream } from 'eventsource-parser/stream'
 
 import type { ChatMessage, ErrorMessage } from '@/types'
 
-export const siwcModelKey = 'siwc:model'
+export function isHostedSiwc() {
+  return typeof document !== 'undefined' && document.documentElement.hasAttribute('data-hosted-codex')
+}
+
+export function siwcStorageKey(key: string) {
+  return isHostedSiwc() ? `siwc:hosted:${key}` : `siwc:${key}`
+}
 
 export function isSiwcOrigin() {
-  return typeof window !== 'undefined' && window.location.protocol === 'http:' && window.location.hostname === '127.0.0.1'
+  return typeof window !== 'undefined' && (isHostedSiwc() || (window.location.protocol === 'http:' && window.location.hostname === '127.0.0.1'))
 }
 
 export function isSiwcEnabled() {
-  return isSiwcOrigin() && localStorage.getItem('siwc:enabled') === 'true'
+  try {
+    return isSiwcOrigin() && localStorage.getItem(siwcStorageKey('enabled')) === 'true'
+  } catch {
+    return false
+  }
 }
 
 export class SiwcChatError extends Error {
@@ -29,7 +39,7 @@ export async function* iterateSiwcChat(messages: ChatMessage[], signal: AbortSig
   const response = await requireSiwcResponse(await fetch('/api/siwc/chat', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ messages, model: localStorage.getItem(siwcModelKey) || undefined }),
+    body: JSON.stringify({ messages, model: localStorage.getItem(siwcStorageKey('model')) || undefined }),
     signal,
   }))
   if (!response.body) throw new SiwcChatError('empty_stream', '模型未返回内容。')

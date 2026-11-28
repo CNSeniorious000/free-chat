@@ -36,6 +36,8 @@ export default defineConfig({
       HEAD_SCRIPTS: envField.string({ context: 'client', access: 'public', optional: true }),
       UNDICI_UA: envField.string({ context: 'server', access: 'secret', optional: true }),
       OPENAI_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      FREE_CHAT_CODEX_PLATFORM_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
+      FREE_CHAT_CODEX_APP_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       SUGGEST_MODEL: envField.string({ context: 'client', access: 'public', default: 'Qwen/Qwen2.5-7B-Instruct' }),
       TITLE_GEN_MODEL: envField.string({ context: 'server', access: 'secret', optional: true }),
       TITLE_GEN_JSON_MODE: envField.boolean({ context: 'server', access: 'secret', default: true }),

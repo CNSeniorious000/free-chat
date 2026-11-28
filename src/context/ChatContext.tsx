@@ -19,7 +19,7 @@ import { MessagesEvent } from '@/utils/events'
 import { createMarkdownIt } from '@/utils/markdown'
 import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
-import { isSiwcEnabled, iterateSiwcChat, SiwcChatError } from '@/utils/siwc'
+import { isSiwcEnabled, iterateSiwcChat, SiwcChatError, siwcStorageKey } from '@/utils/siwc'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { trackEvent } from '@/utils/track'
 
@@ -71,7 +71,7 @@ const ChatContext = createContext<ChatContextType>()
 
 export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => {
   const siwc = isSiwcEnabled()
-  const chatStorageKey = (key: string) => siwc ? `siwc:${key}` : key
+  const chatStorageKey = (key: string) => siwc ? siwcStorageKey(key) : key
   const [inputRef, setInputRef] = createSignal<HTMLTextAreaElement | undefined>(undefined)
   const isFieldSizingSupported = false
 

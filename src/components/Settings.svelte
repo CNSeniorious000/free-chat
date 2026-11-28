@@ -3,7 +3,7 @@
 
   import { onMount } from 'svelte'
 
-  import { isSiwcEnabled, isSiwcOrigin } from '@/utils/siwc'
+  import { isSiwcEnabled, isSiwcOrigin, siwcStorageKey } from '@/utils/siwc'
   import { trackEvent } from '@/utils/track'
 
   import APIKeyInput from './controls/APIKeyInput.svelte'
@@ -23,14 +23,14 @@
   let { show = $bindable() }: Props = $props()
 
   let previousFocus = $state<HTMLElement | null>()
-  let localSiwc = $state(false)
+  let siwcAvailable = $state(false)
   let siwc = $state(false)
   let providerProblem = $state('')
   let reopening = false
 
   onMount(() => {
-    localSiwc = isSiwcOrigin()
-    if (!localSiwc) return
+    siwcAvailable = isSiwcOrigin()
+    if (!siwcAvailable) return
     siwc = isSiwcEnabled()
     const url = new URL(window.location.href)
     const switchingProvider = url.searchParams.has('provider-settings')
@@ -46,8 +46,8 @@
 
   const handleProviderChange: ChangeEventHandler<HTMLSelectElement> = ({ currentTarget }) => {
     try {
-      if (currentTarget.value === 'siwc') localStorage.setItem('siwc:enabled', 'true')
-      else localStorage.removeItem('siwc:enabled')
+      if (currentTarget.value === 'siwc') localStorage.setItem(siwcStorageKey('enabled'), 'true')
+      else localStorage.removeItem(siwcStorageKey('enabled'))
     } catch {
       currentTarget.value = siwc ? 'siwc' : 'promplate'
       providerProblem = '无法保存供应商选择。'
@@ -89,7 +89,7 @@
     </div>
 
     <Section title="选择 LLM" tips="不同的模型响应速度也有区别，由供应商服务压力决定，可能会有波动">
-      {#if localSiwc}
+      {#if siwcAvailable}
         <label class="flex items-center gap-2 text-sm">
           供应商
           <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={siwc ? 'siwc' : 'promplate'} onchange={handleProviderChange}>

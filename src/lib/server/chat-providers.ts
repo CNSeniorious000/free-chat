@@ -4,12 +4,15 @@ import { EventSourceParserStream } from 'eventsource-parser/stream'
 
 import type { ChatMessage, ErrorMessage } from '@/types'
 
+import { fetchHostedCodex } from './codex-platform'
+
 export interface SiwcChatInput {
   messages: ChatMessage[]
   model?: string
 }
 
 type ChatEvent = { delta: string } | { done: true } | { error: ErrorMessage }
+export type SiwcAccess = { token: string } | { connection: string }
 
 const siwcBaseUrl = 'https://api.openai.com/v1'
 const streamHeaders = { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-store', 'X-Accel-Buffering': 'no' }
@@ -53,15 +56,19 @@ function upstreamError(status: number, code?: unknown, requestId?: string) {
   return new ChatError(status, 'upstream_error', 'OpenAI 未能完成请求。', requestId)
 }
 
-async function fetchUpstream(token: string, path: '/models' | '/responses', signal: AbortSignal, payload?: object) {
-  const headers = new Headers({ Accept: payload ? 'text/event-stream' : 'application/json', Authorization: `Bearer ${token}` })
-  if (payload) headers.set('Content-Type', 'application/json')
-
+async function fetchUpstream(access: SiwcAccess, path: '/models' | '/responses', signal: AbortSignal, payload?: object) {
+  const method = payload ? 'POST' : 'GET'
   let response: Response
   try {
-    response = await fetch(`${siwcBaseUrl}${path}`, { method: payload ? 'POST' : 'GET', body: payload ? JSON.stringify(payload) : undefined, headers, redirect: 'error', signal })
+    if ('connection' in access) {
+      response = await fetchHostedCodex(access.connection, `/v1${path}`, method, signal, payload)
+    } else {
+      const headers = new Headers({ Accept: payload ? 'text/event-stream' : 'application/json', Authorization: `Bearer ${access.token}` })
+      if (payload) headers.set('Content-Type', 'application/json')
+      response = await fetch(`${siwcBaseUrl}${path}`, { method, body: payload ? JSON.stringify(payload) : undefined, headers, redirect: 'error', signal })
+    }
   } catch {
-    throw new ChatError(502, 'upstream_unreachable', '无法连接 OpenAI。')
+    throw new ChatError(502, 'upstream_unreachable', 'connection' in access ? '无法连接 Platform。' : '无法连接 OpenAI。')
   }
 
   const id = response.headers.get('x-request-id')
@@ -73,10 +80,15 @@ async function fetchUpstream(token: string, path: '/models' | '/responses', sign
   return { response, requestId }
 }
 
-export async function listSiwcModels(token: string | undefined, signal: AbortSignal) {
-  if (!token) return []
+export async function listSiwcModels(access: SiwcAccess | undefined, signal: AbortSignal) {
+  if (!access) return []
 
-  const { response, requestId } = await fetchUpstream(token, '/models', signal)
+  const { response, requestId } = await fetchUpstream(access, '/models', signal)
+  if ('connection' in access) {
+    const result = await response.json().catch(() => null) as { data?: { id?: unknown }[] } | null
+    if (!Array.isArray(result?.data)) throw new ChatError(502, 'invalid_catalog', 'Platform 未返回可用的模型列表。', requestId)
+    return result.data.flatMap(model => typeof model?.id === 'string' && model.id ? [{ id: model.id, name: model.id }] : [])
+  }
   const result = await response.json().catch(() => null) as { models?: { visibility?: unknown, slug?: unknown, display_name?: unknown }[] } | null
   if (!Array.isArray(result?.models)) throw new ChatError(502, 'invalid_catalog', 'OpenAI 未返回可用的模型列表。', requestId)
 
@@ -103,13 +115,13 @@ function readUpstreamEvent({ data, event }: EventSourceMessage): ChatEvent | und
   if ((type === 'response.output_text.delta' || type === 'response.refusal.delta') && typeof chunk.delta === 'string') return { delta: chunk.delta }
 }
 
-export async function streamSiwcChat(token: string | undefined, chat: SiwcChatInput, signal: AbortSignal) {
-  if (!token) throw new ChatError(401, 'sign_in_required', '请登录 ChatGPT 并授权使用订阅额度。')
-  const model = chat.model ?? (await listSiwcModels(token, signal))[0]?.id
+export async function streamSiwcChat(access: SiwcAccess | undefined, chat: SiwcChatInput, signal: AbortSignal) {
+  if (!access) throw new ChatError(401, 'sign_in_required', '请登录 ChatGPT 并授权使用订阅额度。')
+  const model = chat.model ?? (await listSiwcModels(access, signal))[0]?.id
   if (!model) throw new ChatError(403, 'no_models', '此 ChatGPT 账号没有可用模型。')
 
   const input = chat.messages.map(({ role, content }) => ({ role: role === 'system' ? 'developer' : role, content }))
-  const { response, requestId } = await fetchUpstream(token, '/responses', signal, { model, input, store: false, stream: true })
+  const { response, requestId } = await fetchUpstream(access, '/responses', signal, { model, input, store: false, stream: true })
   if (!response.body) throw new ChatError(502, 'missing_stream', 'OpenAI 未返回回复流。', requestId)
 
   const reader = response.body.pipeThrough(new TextDecoderStream()).pipeThrough(new EventSourceParserStream({ maxBufferSize: 1024 * 1024 })).getReader()

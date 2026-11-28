@@ -4,17 +4,21 @@ import type { SiwcChatInput } from '@/lib/server/chat-providers'
 import type { ChatMessage } from '@/types'
 
 import { ChatError, listSiwcModels, streamSiwcChat } from '@/lib/server/chat-providers'
+import { getHostedCodexConnection, isHostedCodexRequest } from '@/lib/server/codex-platform'
 import { getSiwcAccessToken, isLocalSiwcRequest, isSameOriginChatRequest, siwcHeaders } from '@/lib/server/siwc'
+import { readSiwcRequestJson } from '@/lib/server/siwc-request'
 import { MAX_SIWC_MESSAGES } from '@/types'
 
 function checkAccess(context: APIContext) {
-  if (!isLocalSiwcRequest(context))
+  const hosted = isHostedCodexRequest(context)
+  if (!hosted && !isLocalSiwcRequest(context))
     throw new ChatError(403, 'local_provider_only', 'ChatGPT 登录仅可通过本机的 127.0.0.1 使用。')
 
   const { method, headers } = context.request
   const sameOriginGet = method === 'GET' && !headers.has('origin') && headers.get('sec-fetch-site') === 'same-origin'
   if (!sameOriginGet && !isSameOriginChatRequest(context))
     throw new ChatError(403, 'invalid_origin', '请在 Free Chat 页面内访问此接口。')
+  return hosted
 }
 
 function errorResponse(error: unknown) {
@@ -24,32 +28,13 @@ function errorResponse(error: unknown) {
   return Response.json({ error: failure.data }, { status: failure.status, headers })
 }
 
-async function readJson(request: Request): Promise<unknown> {
-  if (request.headers.get('content-type')?.split(';', 1)[0].trim().toLowerCase() !== 'application/json')
-    throw new ChatError(415, 'invalid_content_type', '请以 JSON 发送对话请求。')
-  const reader = request.body?.getReader()
-  if (!reader) throw new ChatError(400, 'invalid_json', '缺少对话请求。')
-
-  const decoder = new TextDecoder()
-  let text = ''
-  let size = 0
-  try {
-    while (true) {
-      const { value, done } = await reader.read()
-      if (done) return JSON.parse(text + decoder.decode())
-      size += value.byteLength
-      if (size > 512 * 1024) {
-        await reader.cancel().catch(() => {})
-        throw new ChatError(413, 'request_too_large', '对话请求过大。')
-      }
-      text += decoder.decode(value, { stream: true })
-    }
-  } catch(error) {
-    if (error instanceof ChatError) throw error
-    throw new ChatError(400, 'invalid_json', '无法解析对话请求。')
-  } finally {
-    reader.releaseLock()
+async function getAccess(context: APIContext, hosted: boolean) {
+  if (hosted) {
+    const connection = getHostedCodexConnection(context)
+    return connection ? { connection } : undefined
   }
+  const token = await getSiwcAccessToken()
+  return token ? { token } : undefined
 }
 
 function isChatMessage(value: unknown): value is ChatMessage {
@@ -57,7 +42,7 @@ function isChatMessage(value: unknown): value is ChatMessage {
 }
 
 async function readChatInput(request: Request): Promise<SiwcChatInput> {
-  const payload = await readJson(request)
+  const payload = await readSiwcRequestJson(request)
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw new ChatError(400, 'invalid_request', '无效的对话请求。')
   const { messages, model } = payload as Record<string, unknown>
 
@@ -70,8 +55,8 @@ async function readChatInput(request: Request): Promise<SiwcChatInput> {
 
 export const GET: APIRoute = async(context) => {
   try {
-    checkAccess(context)
-    const models = await listSiwcModels(await getSiwcAccessToken(), context.request.signal)
+    const hosted = checkAccess(context)
+    const models = await listSiwcModels(await getAccess(context, hosted), context.request.signal)
     return Response.json({ models }, { headers: siwcHeaders })
   } catch(error) {
     return errorResponse(error)
@@ -80,9 +65,9 @@ export const GET: APIRoute = async(context) => {
 
 export const POST: APIRoute = async(context) => {
   try {
-    checkAccess(context)
+    const hosted = checkAccess(context)
     const input = await readChatInput(context.request)
-    return await streamSiwcChat(await getSiwcAccessToken(), input, context.request.signal)
+    return await streamSiwcChat(await getAccess(context, hosted), input, context.request.signal)
   } catch(error) {
     return errorResponse(error)
   }
