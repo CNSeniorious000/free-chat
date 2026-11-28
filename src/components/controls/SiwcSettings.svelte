@@ -58,6 +58,7 @@
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ action, accountId }),
       }))
+      if (action === 'select' && accountId !== activeAccountId) chooseModel('')
       const result = await response.json()
       if (action === 'login') window.location.assign(result.url)
       else {

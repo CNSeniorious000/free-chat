@@ -25,6 +25,7 @@
   let previousFocus = $state<HTMLElement | null>()
   let localSiwc = $state(false)
   let siwc = $state(false)
+  let providerProblem = $state('')
 
   onMount(() => {
     localSiwc = isSiwcOrigin()
@@ -39,16 +40,20 @@
     if (siwc && url.searchParams.has('siwc')) show = true
   })
 
-  function switchProvider(provider: string) {
-    if (provider === 'siwc') localStorage.setItem('siwc:enabled', 'true')
-    else localStorage.removeItem('siwc:enabled')
+  const handleProviderChange: ChangeEventHandler<HTMLSelectElement> = ({ currentTarget }) => {
+    try {
+      if (currentTarget.value === 'siwc') localStorage.setItem('siwc:enabled', 'true')
+      else localStorage.removeItem('siwc:enabled')
+    } catch {
+      currentTarget.value = siwc ? 'siwc' : 'promplate'
+      providerProblem = '无法保存供应商选择。'
+      return
+    }
     // The chat island keeps one provider and one history for the lifetime of the page.
     const url = new URL(window.location.href)
     url.searchParams.set('provider-settings', '1')
     window.location.replace(url)
   }
-
-  const handleProviderChange: ChangeEventHandler<HTMLSelectElement> = event => switchProvider(event.currentTarget.value)
 
   function handleKeydown({ altKey, code }: KeyboardEvent) {
     if (altKey && code === 'KeyO')
@@ -87,6 +92,7 @@
             <option value="siwc">ChatGPT 订阅</option>
           </select>
         </label>
+        {#if providerProblem}<p class="text-sm" role="alert">{providerProblem}</p>{/if}
       {/if}
       {#if siwc}
         {#if show}<SiwcSettings />{/if}
