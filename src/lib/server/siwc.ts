@@ -243,16 +243,18 @@ export async function completeSiwcLogin(context: APIContext): Promise<'connected
   const pending = attempt
   if (!pending || pending.expiresAt <= Date.now() || pending.redirectUri !== `${origin}${pathname}`
     || pending.binding !== context.cookies.get(callbackCookie)?.value || pending.state !== searchParams.get('state')) return 'error'
-  attempt = undefined
-  context.cookies.delete(callbackCookie, { path: callbackPath, httpOnly: true, sameSite: 'lax' })
-  const error = searchParams.get('error')
-  if (error) return error === 'access_denied' ? 'denied' : 'error'
-  const code = searchParams.get('code')
-  const returnedClient = searchParams.get('client_id')
-  const clientId = pending.clientId === dynamicClient ? returnedClient : pending.clientId
-  if (!code || !clientId || !/^[\w-]{1,200}$/.test(clientId) || clientId === dynamicClient || (returnedClient !== null && returnedClient !== clientId)) return 'error'
 
   return withProfile(async(profile, save) => {
+    if (attempt !== pending) return 'error'
+    attempt = undefined
+    context.cookies.delete(callbackCookie, { path: callbackPath, httpOnly: true, sameSite: 'lax' })
+    const error = searchParams.get('error')
+    if (error) return error === 'access_denied' ? 'denied' : 'error'
+    const code = searchParams.get('code')
+    const returnedClient = searchParams.get('client_id')
+    const clientId = pending.clientId === dynamicClient ? returnedClient : pending.clientId
+    if (!code || !clientId || !/^[\w-]{1,200}$/.test(clientId) || clientId === dynamicClient || (returnedClient !== null && returnedClient !== clientId)) return 'error'
+
     const response = await tokenRequest({ grant_type: 'authorization_code', client_id: clientId, redirect_uri: pending.redirectUri, code, code_verifier: pending.verifier })
     if (!response.ok) return 'error'
     const identity = await verifyIdentity(response.data.id_token, clientId, pending.nonce)
