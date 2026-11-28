@@ -18,11 +18,18 @@ const envAdapter = () => {
   }
 }
 
+const hostedPublicOrigin = URL.parse(process.env.FREE_CHAT_CODEX_PUBLIC_ORIGIN ?? '')
+const hostedPublicDomains = hostedPublicOrigin?.protocol === 'https:'
+  && hostedPublicOrigin.href === `${hostedPublicOrigin.origin}/`
+  && !hostedPublicOrigin.hostname.includes('*')
+  ? [{ hostname: hostedPublicOrigin.hostname, protocol: 'https', port: hostedPublicOrigin.port || '443' }]
+  : []
+
 // https://astro.build/config
 export default defineConfig({
   security: {
     checkOrigin: false,
-    allowedDomains: ['vercel', 'netlify'].includes(process.env.OUTPUT ?? '') ? [] : [{ hostname: '127.0.0.1', protocol: 'http' }],
+    allowedDomains: ['vercel', 'netlify'].includes(process.env.OUTPUT ?? '') ? [] : [{ hostname: '127.0.0.1', protocol: 'http' }, ...hostedPublicDomains],
   },
   env: {
     schema: {

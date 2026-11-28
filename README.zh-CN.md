@@ -41,7 +41,9 @@ SIWC 聊天记录独立存放，不把内容发送到原有的标题、建议或
 
 [开源订阅授权流程](https://developers.openai.com/siwc/token-sharing-open-source)适用于本机登录，需要通过回环地址接收回调。使用此流程时，请将服务绑定至 `127.0.0.1`。
 
-拿到获批的托管 Codex 客户端后，HTTPS 部署可在服务端将 `FREE_CHAT_CODEX_PLATFORM_URL` 设为 Platform 的 HTTPS origin，并设置 `FREE_CHAT_CODEX_APP_KEY`。只在有访问保护的预览，或设备码签发有鉴权和限流的部署中启用。设置中可主动切换到设备码登录，使用自己的 ChatGPT 订阅；默认仍是 Promplate。OpenAI 凭证留在 Platform，每个浏览器的连接独立，最长保留七天；在设置中断开连接不会撤销 OpenAI 端授权。HTTP 回环 Platform 地址仅用于 `http://127.0.0.1` 上测试托管登录。
+拿到获批的托管 Codex 客户端后，HTTPS 部署可在服务端将 `FREE_CHAT_CODEX_PLATFORM_URL` 设为 Platform 的 HTTPS origin，并设置 `FREE_CHAT_CODEX_APP_KEY`。只在有访问保护的预览，或设备码签发有鉴权和限流的部署中启用。设置中可主动切换到设备码登录，使用自己的 ChatGPT 订阅；默认仍是 Promplate。OpenAI 凭证留在 Platform。每个浏览器有独立的连接 Cookie，最长有效期为七天。在设置中断开连接不会撤销 OpenAI 端授权。HTTP 回环 Platform 地址仅用于 `http://127.0.0.1` 上测试托管登录。
+
+独立 Node 服务若由反向代理终止 TLS，请在构建环境中将 `FREE_CHAT_CODEX_PUBLIC_ORIGIN` 设为浏览器访问的 HTTPS origin，例如 `https://chat.example.com`。让代理转发主机（包括端口）和 HTTPS 协议，并限制对 Node 监听端口的直接访问，确保请求经过代理的访问控制。
 
 ## 参与贡献
 

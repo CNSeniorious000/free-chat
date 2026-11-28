@@ -41,7 +41,9 @@ The SIWC history stays separate and does not send prompts to the legacy title, s
 
 The [OSS plan-usage flow](https://developers.openai.com/siwc/token-sharing-open-source) is for local sign-in with a loopback callback. Keep the server bound to `127.0.0.1` when using this flow.
 
-For an HTTPS deployment with an approved hosted Codex client, set `FREE_CHAT_CODEX_PLATFORM_URL` to the Platform HTTPS origin and `FREE_CHAT_CODEX_APP_KEY` to its server-only app key. Enable this only on access-protected previews or behind authenticated, rate-limited device issuance. Settings then offers opt-in device login for your own ChatGPT subscription; Promplate is still the default. Platform keeps the OpenAI credentials, and each browser has a separate connection for up to seven days. Disconnection from Settings does not revoke the authorization on OpenAI. Use an HTTP loopback Platform origin only to test hosted sign-in from `http://127.0.0.1`.
+For an HTTPS deployment with an approved hosted Codex client, set `FREE_CHAT_CODEX_PLATFORM_URL` to the Platform HTTPS origin and `FREE_CHAT_CODEX_APP_KEY` to its server-only app key. Enable this only on access-protected previews or behind authenticated, rate-limited device issuance. Settings then offers opt-in device login for your own ChatGPT subscription; Promplate is still the default. Platform keeps the OpenAI credentials. Each browser has its own connection cookie with a maximum age of seven days. Disconnection from Settings does not revoke the authorization on OpenAI. Use an HTTP loopback Platform origin only to test hosted sign-in from `http://127.0.0.1`.
+
+For standalone Node behind a TLS-terminating proxy, set `FREE_CHAT_CODEX_PUBLIC_ORIGIN` in the build environment to the browser-facing HTTPS origin, such as `https://chat.example.com`. Have the proxy forward the host, including any port, and the HTTPS scheme. Restrict direct access to the Node listener so requests go through the proxy’s access controls.
 
 ## Contributing
 
