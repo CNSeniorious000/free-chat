@@ -31,7 +31,7 @@
   let notice = $state('')
   let problem = $state('')
   let refreshProblem = $state('')
-  const providerProblem = $derived(problem || provider?.error?.message || refreshProblem)
+  const providerProblem = $derived(refreshProblem || provider?.error?.message)
 
   function chooseModel(model: string) {
     selectedModel = model
@@ -143,6 +143,9 @@
       {/if}
       {#if providerProblem}
         <p class="text-sm" role="alert">{providerProblem}</p>
+      {/if}
+      {#if problem}
+        <p class="text-sm" role="alert">{problem}</p>
       {/if}
       {#if notice}
         <p class="text-sm" role="status">{notice}</p>

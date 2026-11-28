@@ -34,7 +34,7 @@ export async function getChatProvider(): Promise<ChatProviderInfo> {
 
 export async function* iterateChat(messages: ChatMessage[], purpose: ChatPurpose = 'chat', signal?: AbortSignal) {
   const selection = getChatSelection()
-  const savedTemperature = selection?.provider === 'openai-compatible' && purpose === 'chat' ? localStorage.getItem('temperature') : null
+  const savedTemperature = purpose === 'chat' ? localStorage.getItem('temperature') : null
   const temperature = savedTemperature?.trim() ? Number(savedTemperature) : Number.NaN
   const response = await fetch('/api/chat', {
     method: 'POST',
