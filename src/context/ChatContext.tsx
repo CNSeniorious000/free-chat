@@ -280,6 +280,8 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
 
       while (requestMessageList.length > minMessages && countTokens(encoder()!, requestMessageList)!.total > limit)
         requestMessageList.shift()
+      while (requestMessageList[0]?.role === 'assistant')
+        requestMessageList.shift()
 
       systemMsg && requestMessageList.unshift(systemMsg)
 

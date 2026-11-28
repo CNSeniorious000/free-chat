@@ -30,6 +30,8 @@
   let loading = $state(false)
   let notice = $state('')
   let problem = $state('')
+  let refreshProblem = $state('')
+  const providerProblem = $derived(problem || provider?.error?.message || refreshProblem)
 
   function chooseModel(model: string) {
     selectedModel = model
@@ -40,6 +42,7 @@
 
   async function refreshProvider() {
     loading = true
+    refreshProblem = ''
     try {
       const info = await getChatProvider()
       provider = info
@@ -48,13 +51,18 @@
       const savedModel = selection?.provider === info.provider ? selection.model : undefined
       if (info.provider === 'siwc') {
         const response = await fetch('/api/siwc', { cache: 'no-store' })
-        accounts = response.ok ? await response.json() : undefined
+        if (!response.ok) {
+          accounts = undefined
+          refreshProblem = '无法读取 ChatGPT 账号。'
+          return
+        }
+        accounts = await response.json()
         if (models.length) chooseModel(models.find(model => model.id === savedModel)?.id ?? models[0].id)
       } else {
         chooseModel(savedModel || models[0]?.id || '')
       }
     } catch {
-      problem = '无法读取模型供应商配置。'
+      refreshProblem = '无法读取模型供应商配置。'
     } finally {
       loading = false
     }
@@ -133,8 +141,8 @@
       {#if loading}
         <p class="text-sm" role="status">正在读取供应商配置…</p>
       {/if}
-      {#if problem || provider?.error}
-        <p class="text-sm" role="alert">{problem || provider?.error?.message}</p>
+      {#if providerProblem}
+        <p class="text-sm" role="alert">{providerProblem}</p>
       {/if}
       {#if notice}
         <p class="text-sm" role="status">{notice}</p>

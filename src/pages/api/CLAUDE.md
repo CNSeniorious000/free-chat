@@ -7,19 +7,21 @@ src/pages/api/
 ├── transcript.ts    # audio transcription (whisper/audio API)
 ├── chat.ts          # configured chat provider, model catalog and SSE inference
 ├── siwc.ts          # local ChatGPT account authorization and selection
-├── title-gen.ts     # generate chat titles from message history
+├── title-gen.ts     # legacy title generation endpoint
 ├── translate.ts     # text translation service
 └── moderate.ts      # content moderation (OpenAI moderation API)
 ```
 
 ## WHERE TO LOOK
 
-| Task             | Location      | Notes                     |
-| ---------------- | ------------- | ------------------------- |
-| Transcribe audio | transcript.ts | handle audio file uploads |
-| Generate titles  | title-gen.ts  | summarize conversation    |
-| Translate text   | translate.ts  | multi-language support    |
-| Moderate content | moderate.ts   | OpenAI moderation API     |
+| Task                         | Location      | Notes                           |
+| ---------------------------- | ------------- | ------------------------------- |
+| Chat, titles and suggestions | chat.ts       | stream from configured provider |
+| Beta translator              | chat.ts       | stream English translation      |
+| Manage ChatGPT accounts       | siwc.ts       | local sign-in and selection     |
+| Transcribe audio             | transcript.ts | handle audio file uploads       |
+| Translate utility text       | translate.ts  | multi-language support          |
+| Moderate content             | moderate.ts   | OpenAI moderation API           |
 
 ## CONVENTIONS
 
@@ -29,7 +31,7 @@ src/pages/api/
 
 ## NOTES
 
-仅后端路由（无需 SSR hydration），无测试覆盖率手动验证，集成 OpenAI API 用于内容审查和标题生成。
+仅后端路由（无需 SSR hydration），无测试覆盖率手动验证，集成 OpenAI API 用于内容审查和旧版标题生成。
 
 ## CHAT BFF
 
