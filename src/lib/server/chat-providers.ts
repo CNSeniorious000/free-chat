@@ -34,7 +34,7 @@ const taskPrompts = {
 
 const siwcErrors: Record<string, string> = {
   subscription_sharing_user_not_eligible: '此 ChatGPT 账号或工作区无法使用订阅额度。',
-  subscription_sharing_usage_limit_exceeded: '已达到 ChatGPT 订阅使用限制。查看用量：https://chatgpt.com/settings/usage',
+  subscription_sharing_usage_limit_exceeded: '已达到 ChatGPT 订阅使用限制。',
   subscription_sharing_usage_unavailable: '暂时无法查询 ChatGPT 订阅用量，请稍后重试。',
   subscription_sharing_unsupported_capability: 'ChatGPT 订阅不支持当前模型或请求。',
   subscription_sharing_route_not_supported: 'ChatGPT 订阅不支持此接口。',

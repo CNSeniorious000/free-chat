@@ -288,6 +288,7 @@ export async function selectSiwcAccount(accountId: string) {
 
 async function revoke(clientId: string, refreshToken: string) {
   for (let tries = 0; tries < 2; tries++) {
+    if (tries) await new Promise(resolveWait => setTimeout(resolveWait, 500))
     try {
       const discovery = await openaiFetch(`${issuer}/.well-known/openid-configuration`)
       if (!discovery.ok) {
@@ -304,7 +305,6 @@ async function revoke(clientId: string, refreshToken: string) {
     } catch {
       // The local session is cleared even when OpenAI cannot confirm revocation.
     }
-    if (!tries) await new Promise(resolveWait => setTimeout(resolveWait, 500))
   }
   return false
 }

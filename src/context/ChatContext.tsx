@@ -11,6 +11,7 @@ import type { LocalStorageSetEvent } from '@/utils/events'
 
 import { encoder } from '@/components/TokenCounter'
 import { createSmoothStreaming } from '@/hooks/createSmoothStreaming'
+import { MAX_CHAT_MESSAGES } from '@/types'
 import { ChatProviderError, getChatSelection, iterateChat } from '@/utils/chat-provider'
 import { splitReasoningPart } from '@/utils/deepseek'
 import { MessagesEvent } from '@/utils/events'
@@ -265,8 +266,6 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     const controller = new AbortController()
     setController(controller)
     try {
-      const requestMessageList = [...messagesWithoutReasoning()]
-
       let limit = maxTokens
 
       const systemMsg = currentSystemRoleSettings()
@@ -275,6 +274,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
             content: currentSystemRoleSettings(),
           } as ChatMessage
         : null
+      const requestMessageList = messagesWithoutReasoning().slice(-(MAX_CHAT_MESSAGES - Number(Boolean(systemMsg))))
 
       systemMsg && (limit -= countTokens(encoder()!, [systemMsg])!.total)
 

@@ -34,16 +34,17 @@ export async function getChatProvider(): Promise<ChatProviderInfo> {
 
 export async function* iterateChat(messages: ChatMessage[], purpose: ChatPurpose = 'chat', signal?: AbortSignal) {
   const selection = getChatSelection()
-  const temperature = selection?.provider === 'openai-compatible' && purpose === 'chat' ? localStorage.getItem('temperature') : null
+  const savedTemperature = selection?.provider === 'openai-compatible' && purpose === 'chat' ? localStorage.getItem('temperature') : null
+  const temperature = savedTemperature?.trim() ? Number(savedTemperature) : Number.NaN
   const response = await fetch('/api/chat', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ messages, purpose, selection, temperature: temperature ? Number(temperature) : undefined }),
+    body: JSON.stringify({ messages, purpose, selection, temperature: Number.isFinite(temperature) ? temperature : undefined }),
     signal,
   })
   if (!response.ok) {
     const result = await response.json().catch(() => undefined) as { error?: ErrorMessage } | undefined
-    throw new ChatProviderError(result?.error?.code ?? String(response.status), result?.error?.message ?? response.statusText)
+    throw new ChatProviderError(result?.error?.code ?? String(response.status), result?.error?.message || response.statusText || '对话请求失败。')
   }
   if (!response.body) throw new ChatProviderError('empty_stream', '模型未返回内容。')
 

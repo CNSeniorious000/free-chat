@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { ChangeEventHandler } from 'svelte/elements'
+
   import { onMount } from 'svelte'
 
   import type { ChatProviderInfo } from '@/utils/chat-provider'
@@ -33,6 +35,8 @@
     selectedModel = model
     if (provider) setChatSelection(provider.provider, model.trim())
   }
+
+  const handleModelChange: ChangeEventHandler<HTMLSelectElement | HTMLInputElement> = event => chooseModel(event.currentTarget.value)
 
   async function refreshProvider() {
     loading = true
@@ -78,6 +82,11 @@
     } finally {
       busy = false
     }
+  }
+
+  const handleAccountChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
+    const account = accounts?.accounts.find(entry => entry.id === event.currentTarget.value)
+    if (account) void manageAccount(account.connected ? 'select' : 'login', account.id)
   }
 
   onMount(() => {
@@ -139,10 +148,7 @@
           {#if accounts.accounts.length}
             <label class="flex items-center gap-2 text-sm">
               ChatGPT 账号
-              <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={accounts.activeAccountId ?? ''} disabled={busy || loading} onchange={(event) => {
-                const account = accounts?.accounts.find(entry => entry.id === event.currentTarget.value)
-                if (account) void manageAccount(account.connected ? 'select' : 'login', account.id)
-              }}>
+              <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={accounts.activeAccountId ?? ''} disabled={busy || loading} onchange={handleAccountChange}>
                 {#if !accounts.activeAccountId}<option value="" disabled>选择账号</option>{/if}
                 {#each accounts.accounts as account (account.id)}
                   <option value={account.id}>{account.label}{account.connected ? '' : ' · 已退出'}</option>
@@ -153,7 +159,7 @@
           {#if provider.models?.length}
             <label class="flex items-center gap-2 text-sm">
               模型
-              <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={selectedModel} onchange={event => chooseModel(event.currentTarget.value)} disabled={busy || loading}>
+              <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={selectedModel} onchange={handleModelChange} disabled={busy || loading}>
                 {#each provider.models as model (model.id)}
                   <option value={model.id}>{model.name}</option>
                 {/each}
@@ -177,7 +183,7 @@
         <p class="text-sm">OpenAI-compatible</p>
         <label class="flex items-center gap-2 text-sm">
           模型
-          <input class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" type="text" value={selectedModel} placeholder={provider.models?.[0]?.id} onchange={event => chooseModel(event.currentTarget.value)} />
+          <input class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" type="text" value={selectedModel} placeholder={provider.models?.[0]?.id} onchange={handleModelChange} />
         </label>
         <Group title="Temperature">
           <Slider key="temperature" initial={undefined} />

@@ -3,6 +3,7 @@ import { onCleanup } from 'solid-js'
 import type { ChatMessage } from '@/types'
 
 import { iterateChat } from './chat-provider'
+import { splitReasoningPart } from './deepseek'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
   return obj?.constructor?.name === 'AsyncGeneratorFunction'
@@ -53,8 +54,8 @@ class API {
   async* iterateTitle(input: string) {
     let whole = ''
     for await (const delta of iterateChat([{ role: 'user', content: input }], 'title', createAbortSignal())) whole += delta
-    const result = JSON.parse(whole.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, ''))
-    if (typeof result?.title === 'string') yield result.title
+    const result = JSON.parse(splitReasoningPart(whole)[1].replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, ''))
+    if (typeof result?.title === 'string' && result.title.trim()) yield result.title
   }
 
   async* iterateSuggestion(messages: ChatMessage[]) {
@@ -62,7 +63,7 @@ class API {
 
     let whole = ''
     for await (const delta of iterateChat(messages.slice(-8), 'suggest', createAbortSignal())) whole += delta
-    const result = JSON.parse(whole.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, ''))
+    const result = JSON.parse(splitReasoningPart(whole)[1].replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, ''))
     if (Array.isArray(result) && result.every(value => typeof value === 'string')) yield result as string[]
   }
 

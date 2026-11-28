@@ -5,6 +5,7 @@ import type { ChatMessage, ChatModelSelection } from '@/types'
 
 import { ChatError, chatProvider, getProviderConfig, listChatModels, requiresLocalChat, streamChat } from '@/lib/server/chat-providers'
 import { getSiwcAccessToken, isLocalChatRequest, isSameOriginChatRequest } from '@/lib/server/siwc'
+import { MAX_CHAT_MESSAGES } from '@/types'
 
 function checkAccess(context: APIContext) {
   if (requiresLocalChat && !isLocalChatRequest(context))
@@ -61,7 +62,7 @@ async function readChatInput(request: Request): Promise<ChatInput> {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw new ChatError(400, 'invalid_request', '无效的对话请求。')
   const { messages, purpose = 'chat', selection, temperature } = payload as Record<string, unknown>
 
-  if (!Array.isArray(messages) || messages.length > 256 || !messages.every(isChatMessage) || !messages.some(message => message.role === 'user' && message.content.trim()))
+  if (!Array.isArray(messages) || messages.length > MAX_CHAT_MESSAGES || !messages.every(isChatMessage) || !messages.some(message => message.role === 'user' && message.content.trim()))
     throw new ChatError(400, 'invalid_messages', '请提供有效的对话消息。')
   if (purpose !== 'chat' && purpose !== 'suggest' && purpose !== 'title' && purpose !== 'translate')
     throw new ChatError(400, 'invalid_purpose', '不支持此对话用途。')
