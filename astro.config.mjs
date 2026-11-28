@@ -18,18 +18,23 @@ const envAdapter = () => {
   }
 }
 
-const hostedPublicOrigin = URL.parse(process.env.FREE_CHAT_CODEX_PUBLIC_ORIGIN ?? '')
+const managedAdapter = ['vercel', 'netlify'].includes(process.env.OUTPUT ?? '')
+const hostedPublicOriginValue = process.env.FREE_CHAT_CODEX_PUBLIC_ORIGIN?.trim() ?? ''
+const hostedPublicOrigin = URL.parse(hostedPublicOriginValue)
 const hostedPublicDomains = hostedPublicOrigin?.protocol === 'https:'
   && hostedPublicOrigin.href === `${hostedPublicOrigin.origin}/`
-  && !hostedPublicOrigin.hostname.includes('*')
+  && /^[\w-]+(?:\.[\w-]+)*$/.test(hostedPublicOrigin.hostname)
   ? [{ hostname: hostedPublicOrigin.hostname, protocol: 'https', port: hostedPublicOrigin.port || '443' }]
   : []
+
+if (!managedAdapter && hostedPublicOriginValue && !hostedPublicDomains.length)
+  console.warn('Ignoring FREE_CHAT_CODEX_PUBLIC_ORIGIN. Set it to an HTTPS origin with a DNS name or IPv4 address and an optional port.')
 
 // https://astro.build/config
 export default defineConfig({
   security: {
     checkOrigin: false,
-    allowedDomains: ['vercel', 'netlify'].includes(process.env.OUTPUT ?? '') ? [] : [{ hostname: '127.0.0.1', protocol: 'http' }, ...hostedPublicDomains],
+    allowedDomains: managedAdapter ? [] : [{ hostname: '127.0.0.1', protocol: 'http' }, ...hostedPublicDomains],
   },
   env: {
     schema: {
