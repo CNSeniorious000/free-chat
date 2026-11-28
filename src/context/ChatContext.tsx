@@ -11,6 +11,7 @@ import type { LocalStorageSetEvent } from '@/utils/events'
 
 import { encoder } from '@/components/TokenCounter'
 import { createSmoothStreaming } from '@/hooks/createSmoothStreaming'
+import { MAX_SIWC_MESSAGES } from '@/types'
 import { getStoredApiKey } from '@/utils/auth'
 import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 import { splitReasoningPart } from '@/utils/deepseek'
@@ -269,8 +270,6 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     try {
       const controller = new AbortController()
       setController(controller)
-      const requestMessageList = [...messagesWithoutReasoning()]
-
       let limit = maxTokens
 
       const systemMsg = currentSystemRoleSettings()
@@ -279,6 +278,9 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
             content: currentSystemRoleSettings(),
           } as ChatMessage
         : null
+
+      const messages = messagesWithoutReasoning()
+      const requestMessageList = siwc ? messages.slice(-(MAX_SIWC_MESSAGES - Number(Boolean(systemMsg)))) : [...messages]
 
       systemMsg && (limit -= countTokens(encoder()!, [systemMsg])!.total)
 

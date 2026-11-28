@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { ChangeEventHandler } from 'svelte/elements'
+
   import { onMount } from 'svelte'
 
   import { requireSiwcResponse, siwcModelKey } from '@/utils/siwc'
@@ -25,18 +27,25 @@
     else localStorage.removeItem(siwcModelKey)
   }
 
-  async function refresh() {
+  const handleModelChange: ChangeEventHandler<HTMLSelectElement> = event => chooseModel(event.currentTarget.value)
+
+  async function refreshAccounts() {
     const status = await requireSiwcResponse(await fetch('/api/siwc', { cache: 'no-store' }))
     const result = await status.json() as { accounts: Account[]; activeAccountId?: string }
     accounts = result.accounts
     activeAccountId = result.activeAccountId
     ready = true
+  }
+
+  async function refresh() {
+    await refreshAccounts()
     models = []
     if (accounts.some(account => account.id === activeAccountId && account.connected)) {
       const catalog = await requireSiwcResponse(await fetch('/api/siwc/chat', { cache: 'no-store' }))
       models = (await catalog.json()).models
       const saved = localStorage.getItem(siwcModelKey)
       chooseModel(models.find(entry => entry.id === saved)?.id ?? models[0]?.id ?? '')
+      if (!models.length) await refreshAccounts()
     }
   }
 
@@ -62,6 +71,11 @@
     }
   }
 
+  const handleAccountChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
+    const account = accounts.find(entry => entry.id === event.currentTarget.value)
+    if (account) void manage(account.connected ? 'select' : 'login', account.id)
+  }
+
   onMount(() => {
     const url = new URL(window.location.href)
     const result = url.searchParams.get('siwc')
@@ -85,10 +99,7 @@
   {#if accounts.length}
     <label class="flex items-center gap-2 text-sm">
       ChatGPT 账号
-      <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={activeAccountId ?? ''} disabled={busy} onchange={(event) => {
-        const account = accounts.find(entry => entry.id === event.currentTarget.value)
-        if (account) void manage(account.connected ? 'select' : 'login', account.id)
-      }}>
+      <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={activeAccountId ?? ''} disabled={busy} onchange={handleAccountChange}>
         {#if !activeAccountId}<option value="" disabled>选择账号</option>{/if}
         {#each accounts as account (account.id)}
           <option value={account.id}>{account.label}{account.connected ? '' : ' · 已退出'}</option>
@@ -99,7 +110,7 @@
   {#if models.length}
     <label class="flex items-center gap-2 text-sm">
       模型
-      <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={model} onchange={event => chooseModel(event.currentTarget.value)} disabled={busy}>
+      <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={model} onchange={handleModelChange} disabled={busy}>
         {#each models as entry (entry.id)}
           <option value={entry.id}>{entry.name}</option>
         {/each}

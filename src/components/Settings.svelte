@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { ChangeEventHandler } from 'svelte/elements'
+
   import { onMount } from 'svelte'
 
   import { isSiwcEnabled, isSiwcOrigin } from '@/utils/siwc'
@@ -46,6 +48,8 @@
     window.location.replace(url)
   }
 
+  const handleProviderChange: ChangeEventHandler<HTMLSelectElement> = event => switchProvider(event.currentTarget.value)
+
   function handleKeydown({ altKey, code }: KeyboardEvent) {
     if (altKey && code === 'KeyO')
       show = !show
@@ -78,7 +82,7 @@
       {#if localSiwc}
         <label class="flex items-center gap-2 text-sm">
           供应商
-          <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={siwc ? 'siwc' : 'promplate'} onchange={event => switchProvider(event.currentTarget.value)}>
+          <select class="min-w-0 flex-1 rounded bg-$c-fg-5 p-1.5" value={siwc ? 'siwc' : 'promplate'} onchange={handleProviderChange}>
             <option value="promplate">Promplate（默认）</option>
             <option value="siwc">ChatGPT 订阅</option>
           </select>

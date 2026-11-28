@@ -5,6 +5,7 @@ import type { ChatMessage } from '@/types'
 
 import { ChatError, listSiwcModels, streamSiwcChat } from '@/lib/server/chat-providers'
 import { getSiwcAccessToken, isLocalSiwcRequest, isSameOriginChatRequest, siwcHeaders } from '@/lib/server/siwc'
+import { MAX_SIWC_MESSAGES } from '@/types'
 
 function checkAccess(context: APIContext) {
   if (!isLocalSiwcRequest(context))
@@ -60,7 +61,7 @@ async function readChatInput(request: Request): Promise<SiwcChatInput> {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw new ChatError(400, 'invalid_request', '无效的对话请求。')
   const { messages, model } = payload as Record<string, unknown>
 
-  if (!Array.isArray(messages) || messages.length > 256 || !messages.every(isChatMessage) || !messages.some(message => message.role === 'user' && message.content.trim()))
+  if (!Array.isArray(messages) || messages.length > MAX_SIWC_MESSAGES || !messages.every(isChatMessage) || !messages.some(message => message.role === 'user' && message.content.trim()))
     throw new ChatError(400, 'invalid_messages', '请提供有效的对话消息。')
   if (model !== undefined && (typeof model !== 'string' || !model.trim() || model.length > 256))
     throw new ChatError(400, 'invalid_model', '请选择有效的模型。')
