@@ -2,7 +2,7 @@ import type { ParentComponent, Setter } from 'solid-js'
 
 import { makeEventListener } from '@solid-primitives/event-listener'
 import { throttle } from '@solid-primitives/scheduled'
-import { PUBLIC_DEFAULT_MODEL, PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
+import { PUBLIC_MAX_TOKENS, PUBLIC_MIN_MESSAGES, PUBLIC_MODERATION_INTERVAL } from 'astro:env/client'
 import { batch, createContext, createEffect, createMemo, createSignal, onMount, untrack, useContext } from 'solid-js'
 import { toast } from 'solid-toast'
 
@@ -11,8 +11,7 @@ import type { LocalStorageSetEvent } from '@/utils/events'
 
 import { encoder } from '@/components/TokenCounter'
 import { createSmoothStreaming } from '@/hooks/createSmoothStreaming'
-import { getStoredApiKey } from '@/utils/auth'
-import { promplateBaseUrl as baseUrl } from '@/utils/constants'
+import { ChatProviderError, getChatSelection, iterateChat } from '@/utils/chat-provider'
 import { splitReasoningPart } from '@/utils/deepseek'
 import { MessagesEvent } from '@/utils/events'
 import { createMarkdownIt } from '@/utils/markdown'
@@ -141,7 +140,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   }
 
   createEffect(() => {
-    if (messageList().at(-1)?.role === 'assistant') updateSuggestions()
+    if (messageList().at(-1)?.role === 'assistant') updateSuggestions().catch(console.warn)
     else if (messageList().length === 0) setSuggestions([])
   })
 
@@ -193,7 +192,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   const firstMessage = createMemo(() => messageList()[0]?.content)
 
   createEffect(() => {
-    if (firstMessage() && untrack(() => !title())) {
+    if (messageList().at(-1)?.role === 'assistant' && firstMessage() && untrack(() => !title())) {
       updatePageTitle(firstMessage()).catch(console.warn)
     }
   })
@@ -263,9 +262,9 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     setStreaming(true)
     startStreaming()
     setCurrentError(null)
+    const controller = new AbortController()
+    setController(controller)
     try {
-      const controller = new AbortController()
-      setController(controller)
       const requestMessageList = [...messagesWithoutReasoning()]
 
       let limit = maxTokens
@@ -284,53 +283,29 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
 
       systemMsg && requestMessageList.unshift(systemMsg)
 
-      const headers: Record<string, any> = { 'content-type': 'application/json' }
-      const apiKey = getStoredApiKey()
-      if (apiKey) headers.authorization = `Bearer ${apiKey}`
-
-      const t = localStorage.getItem('temperature') ?? 'undefined'
-      const payload: Record<string, any> = { messages: requestMessageList, temperature: t === 'undefined' ? undefined : JSON.parse(t), model: localStorage.getItem('model') ?? PUBLIC_DEFAULT_MODEL }
-
-      const res = await fetch(`${baseUrl}/single/chat_messages`, {
-        method: 'PUT',
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-        headers,
-      })
-      if (!res.ok) {
-        const message = await res.text()
-        console.error(message)
-        setCurrentError({ code: `${res.status} ${res.statusText}`, message })
-        throw new Error('Request failed')
-      }
-
       trackEvent('send', {
-        model: payload.model,
-        temperature: payload.temperature,
+        model: getChatSelection()?.model,
         originalTokenCont: _messageList().length ? formatTokenCount((systemMsg ? [systemMsg, ..._messageList()] : _messageList())) : undefined,
         tokenCount: formatTokenCount(requestMessageList),
       })
-      const data = res.body
-      if (!data)
-        throw new Error('No data')
-
-      const reader = data.getReader()
-      const decoder = new TextDecoder('utf-8')
-
-      while (true) {
-        const { value, done } = await reader.read()
-        const delta = decoder.decode(value, { stream: !done })
-        if (delta) appendStreaming(delta)
-        if (done) break
+      let hasText = false
+      for await (const delta of iterateChat(requestMessageList, 'chat', controller.signal)) {
+        appendStreaming(delta)
+        hasText ||= Boolean(delta.trim())
       }
-    } catch(e) {
-      console.error(e)
-      setStreaming(false)
-      if ((e instanceof Error && e.name === 'AbortError'))
-        return
-      setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
-    } finally {
+      if (!hasText) throw new ChatProviderError('empty_response', '模型未返回内容。')
       finishStreaming()
+    } catch(e) {
+      if (controller.signal.aborted) {
+        finishStreaming()
+        setStreaming(false)
+        setController(null)
+        return
+      }
+      clearStreaming()
+      setStreaming(false)
+      setController(null)
+      setCurrentError({ code: e instanceof ChatProviderError ? e.code : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     }
   }
 

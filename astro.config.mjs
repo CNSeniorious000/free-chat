@@ -10,8 +10,9 @@ import devtoolsJson from 'vite-plugin-devtools-json'
 
 import disableBlocks from './plugins/disableBlocks'
 
+const output = process.env.OUTPUT
 const envAdapter = () => {
-  switch (process.env.OUTPUT) {
+  switch (output) {
     case 'vercel': return vercel()
     case 'netlify': return netlify()
     default: return node({ mode: 'standalone' })
@@ -22,23 +23,26 @@ const envAdapter = () => {
 export default defineConfig({
   security: {
     checkOrigin: false,
+    allowedDomains: output === 'vercel' || output === 'netlify' ? [] : [{ hostname: '127.0.0.1', protocol: 'http' }],
   },
   env: {
     schema: {
-      PUBLIC_DEFAULT_MODEL: envField.string({ context: 'client', access: 'public', default: 'gpt-4o-mini' }),
       PUBLIC_MIN_MESSAGES: envField.number({ context: 'client', access: 'public', default: 3 }),
       PUBLIC_MAX_TOKENS: envField.number({ context: 'client', access: 'public', default: 3000 }),
-      PUBLIC_MODERATION_INTERVAL: envField.number({ context: 'client', access: 'public', default: 2000 }),
+      PUBLIC_MODERATION_INTERVAL: envField.number({ context: 'client', access: 'public', default: 0 }),
       PUBLIC_IFRAME_URL: envField.string({ context: 'client', access: 'public', optional: true }),
-      PUBLIC_PROMPLATE_DEMO_BASE_URL: envField.string({ context: 'client', access: 'public', default: 'https://demo.promplate.dev' }),
       PUBLIC_RIGHT_ALIGN_MY_MSG: envField.boolean({ context: 'client', access: 'public', default: false }),
       HEAD_SCRIPTS: envField.string({ context: 'client', access: 'public', optional: true }),
       UNDICI_UA: envField.string({ context: 'server', access: 'secret', optional: true }),
       OPENAI_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
-      SUGGEST_MODEL: envField.string({ context: 'client', access: 'public', default: 'Qwen/Qwen2.5-7B-Instruct' }),
+      CHAT_PROVIDER: envField.enum({ values: ['siwc', 'openai-compatible', 'preview-fixture'], context: 'server', access: 'secret', default: 'siwc' }),
+      CHAT_BASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
+      CHAT_MODEL: envField.string({ context: 'server', access: 'secret', optional: true }),
+      CHAT_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      FREE_CHAT_SIWC_DIR: envField.string({ context: 'server', access: 'secret', optional: true }),
       TITLE_GEN_MODEL: envField.string({ context: 'server', access: 'secret', optional: true }),
       TITLE_GEN_JSON_MODE: envField.boolean({ context: 'server', access: 'secret', default: true }),
-      OPENAI_API_MODEL: envField.string({ context: 'server', access: 'secret' }),
+      OPENAI_API_MODEL: envField.string({ context: 'server', access: 'secret', default: 'gpt-4o-mini' }),
       OPENAI_BASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
       OPENAI_API_BASE_URL: envField.string({ context: 'server', access: 'secret', default: 'https://api.openai.com' }),
       TRANSCRIPT_TARGET_LANG: envField.string({ context: 'server', access: 'secret', default: 'zh' }),
@@ -90,7 +94,7 @@ export default defineConfig({
   output: 'server',
   adapter: envAdapter(),
   vite: {
-    plugins: [(process.env.OUTPUT === 'vercel' || process.env.OUTPUT === 'netlify') && disableBlocks(), devtoolsJson()],
+    plugins: [(output === 'vercel' || output === 'netlify') && disableBlocks(), devtoolsJson()],
     build: {
       sourcemap: true,
     },

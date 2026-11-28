@@ -10,7 +10,16 @@
 
 - `main`: the base branch containing all the styles
 - `endless`: includes token-based message list trimming
-- `promplate-demo`: active developed, for demonstrating the usage of [`promplate`](http://promplate.dev/)
+- `promplate-demo`: active development branch
+
+## Chat Providers
+
+Chat, titles, reply suggestions, and the beta translator call the Free Chat BFF directly. Set `CHAT_PROVIDER` on the server:
+
+- `siwc` (default): uses the signed-in account's ChatGPT plan and available models, without an API key. Run `pnpm dev --host 127.0.0.1 --port 43761`, open `http://127.0.0.1:43761`, and choose **Continue with ChatGPT** in Settings. Use `127.0.0.1`, not `localhost`, and keep the Node server private and bound to loopback. The [OSS SIWC flow](https://developers.openai.com/siwc/token-sharing-open-source) is not for public or hosted sign-in. Credentials stay in a private server directory (`$XDG_CONFIG_HOME/free-chat` or `~/.config/free-chat` by default; override with `FREE_CHAT_SIWC_DIR`, outside the repo). Run only one process per directory so token refreshes stay serialized.
+- `openai-compatible`: set `CHAT_BASE_URL` to the upstream API prefix (for example `http://127.0.0.1:11434/v1`) and `CHAT_MODEL` to the default model. `CHAT_API_KEY` is optional and server-only; when set, the chat BFF accepts only direct loopback traffic.
+
+Titles and suggestions also use the configured provider's quota. Transcription is configured separately; ChatGPT plan usage does not include transcription through this integration. Separate moderation is disabled by default (`PUBLIC_MODERATION_INTERVAL=0`).
 
 ## Environment Variables
 
@@ -25,7 +34,7 @@ You can control the website through environment variables.
 | `HEAD_SCRIPTS` | Inject analytics or other scripts before `</head>` of the page | `null` |
 | `PUBLIC_SECRET_KEY` | Secret string for the project. Use for generating signatures for API calls | `null` |
 | `SITE_PASSWORD` | Set password for site. If not set, site will be public | `null` |
-| `OPENAI_API_MODEL` | ID of the model to use. [Model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility) | `gpt-4o-mini` |
+| `OPENAI_API_MODEL` | Default model for the legacy `/api/title-gen` route. | `gpt-4o-mini` |
 | `TUTORIAL_MD_URL` | url of the tutorial markdown file | `null` |
 | `PUBLIC_IFRAME_URL` | url of the advertisement iframe | `null` |
 | `UNDICI_UA` | user-agent for backend requests | `(forward)` |

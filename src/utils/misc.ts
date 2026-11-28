@@ -1,13 +1,8 @@
-import { SUGGEST_MODEL } from 'astro:env/client'
-import { Allow, parse } from 'partial-json'
 import { onCleanup } from 'solid-js'
 
 import type { ChatMessage } from '@/types'
 
-import { getStoredApiKey } from './auth'
-import { promplateBaseUrl } from './constants'
-import { splitReasoningPart } from './deepseek'
-import { responseToAsyncIterator } from './streaming'
+import { iterateChat } from './chat-provider'
 
 function isAsyncGeneratorFunction(obj: any): obj is AsyncGeneratorFunction {
   return obj?.constructor?.name === 'AsyncGeneratorFunction'
@@ -55,50 +50,20 @@ function retry(times: number) {
 }
 
 class API {
-  @retry(3)
   async* iterateTitle(input: string) {
-    const apiKey = getStoredApiKey()
-    const res = await fetch('/api/title-gen', {
-      signal: createAbortSignal(),
-      method: 'POST',
-      body: input,
-      headers: apiKey ? { authorization: `Bearer ${apiKey}` } : {},
-    })
-    if (!res.ok) throw new Error(await res.text())
     let whole = ''
-    for await (const delta of responseToAsyncIterator(res)) {
-      whole += delta
-      let json = splitReasoningPart(whole)[1]
-      if (!json) continue
-      if (!json.startsWith('{')) {
-        if (json.includes('{'))
-          json = json.slice(json.indexOf('{'))
-        else
-          continue
-      }
-      const { title }: { title?: string } = parse(json)
-      if (title) yield title
-    }
+    for await (const delta of iterateChat([{ role: 'user', content: input }], 'title', createAbortSignal())) whole += delta
+    const result = JSON.parse(whole.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, ''))
+    if (typeof result?.title === 'string') yield result.title
   }
 
   async* iterateSuggestion(messages: ChatMessage[]) {
     if (messages.length === 0 || messages.at(-1)?.role === 'user') return
 
-    const res = await fetch(`${promplateBaseUrl}/single/suggest`, {
-      signal: createAbortSignal(),
-      method: 'PUT',
-      body: JSON.stringify({ messages, model: SUGGEST_MODEL }),
-      headers: { 'content-type': 'application/json' },
-    })
-
     let whole = ''
-
-    for await (const delta of responseToAsyncIterator(res)) {
-      whole += delta
-      const json = splitReasoningPart(whole)[1]
-      if (json)
-        yield parse(json, Allow.ARR) as string[]
-    }
+    for await (const delta of iterateChat(messages.slice(-8), 'suggest', createAbortSignal())) whole += delta
+    const result = JSON.parse(whole.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, ''))
+    if (Array.isArray(result) && result.every(value => typeof value === 'string')) yield result as string[]
   }
 
   @retry(3)
