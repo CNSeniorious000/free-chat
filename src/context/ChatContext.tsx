@@ -11,6 +11,7 @@ import type { LocalStorageSetEvent } from '@/utils/events'
 
 import { encoder } from '@/components/TokenCounter'
 import { createSmoothStreaming } from '@/hooks/createSmoothStreaming'
+import { MAX_SIWC_MESSAGES } from '@/types'
 import { getStoredApiKey } from '@/utils/auth'
 import { promplateBaseUrl as baseUrl } from '@/utils/constants'
 import { splitReasoningPart } from '@/utils/deepseek'
@@ -18,6 +19,7 @@ import { MessagesEvent } from '@/utils/events'
 import { createMarkdownIt } from '@/utils/markdown'
 import { fetchModeration, fetchTranslation, iterateSuggestion, iterateTitle } from '@/utils/misc'
 import { audioChunks, getAudioBlob, startRecording, stopRecording } from '@/utils/record'
+import { isSiwcEnabled, iterateSiwcChat, SiwcChatError } from '@/utils/siwc'
 import { countTokens, tokenCountCache } from '@/utils/tiktoken'
 import { trackEvent } from '@/utils/track'
 
@@ -68,6 +70,8 @@ interface ChatContextType {
 const ChatContext = createContext<ChatContextType>()
 
 export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => {
+  const siwc = isSiwcEnabled()
+  const chatStorageKey = (key: string) => siwc ? `siwc:${key}` : key
   const [inputRef, setInputRef] = createSignal<HTMLTextAreaElement | undefined>(undefined)
   const isFieldSizingSupported = false
 
@@ -105,12 +109,12 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   createEffect(() => currentError() && trackEvent('error', { code: currentError()!.code }))
 
   const setCurrentSystemRoleSettings = (systemRole: string) => {
-    _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
+    _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem(chatStorageKey('systemRoleSettings'), systemRole) : localStorage.removeItem(chatStorageKey('systemRoleSettings'))
     return systemRole
   }
 
   const syncMessageList = () => {
-    localStorage.setItem('messageList', JSON.stringify(_messageList()))
+    localStorage.setItem(chatStorageKey('messageList'), JSON.stringify(_messageList()))
   }
 
   const setStick = (stick: boolean) => {
@@ -134,7 +138,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   }))
 
   const updateSuggestions = async() => {
-    if (messageList().length === 0 || !suggestionFeatureOn()) return
+    if (siwc || messageList().length === 0 || !suggestionFeatureOn()) return
     setSuggestions([])
     for await (const suggestions of iterateSuggestion([...messagesWithoutReasoning()]))
       setSuggestions(suggestions)
@@ -154,7 +158,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     titleRef && (titleRef.innerHTML = title ? md(title!) : 'Endless Chat')
     const subTitleRef: HTMLSpanElement | null = document.querySelector('span.gpt-subtitle')
     subTitleRef?.classList.toggle('hidden', !!title)
-    title ? localStorage.setItem('title', title) : localStorage.removeItem('title')
+    title ? localStorage.setItem(chatStorageKey('title'), title) : localStorage.removeItem(chatStorageKey('title'))
   }
 
   createEffect(() => {
@@ -166,7 +170,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   let hasBeenInformed = 0
 
   const moderate = async(input: string) => {
-    if (!input.length) return
+    if (siwc || !input.length) return
     if (!moderationInterval) return
     const flags = moderationCache[input] ?? (await fetchModeration(input)).flags
     moderationCache[input] = flags
@@ -193,7 +197,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   const firstMessage = createMemo(() => messageList()[0]?.content)
 
   createEffect(() => {
-    if (firstMessage() && untrack(() => !title())) {
+    if (!siwc && firstMessage() && untrack(() => !title())) {
       updatePageTitle(firstMessage()).catch(console.warn)
     }
   })
@@ -266,8 +270,6 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     try {
       const controller = new AbortController()
       setController(controller)
-      const requestMessageList = [...messagesWithoutReasoning()]
-
       let limit = maxTokens
 
       const systemMsg = currentSystemRoleSettings()
@@ -277,12 +279,28 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
           } as ChatMessage
         : null
 
+      const messages = messagesWithoutReasoning()
+      const requestMessageList = siwc ? messages.slice(-(MAX_SIWC_MESSAGES - Number(Boolean(systemMsg)))) : [...messages]
+
       systemMsg && (limit -= countTokens(encoder()!, [systemMsg])!.total)
 
       while (requestMessageList.length > minMessages && countTokens(encoder()!, requestMessageList)!.total > limit)
         requestMessageList.shift()
 
+      if (siwc) {
+        while (requestMessageList[0]?.role === 'assistant') requestMessageList.shift()
+      }
       systemMsg && requestMessageList.unshift(systemMsg)
+
+      if (siwc) {
+        let hasText = false
+        for await (const delta of iterateSiwcChat(requestMessageList, controller.signal)) {
+          appendStreaming(delta)
+          hasText ||= Boolean(delta.trim())
+        }
+        if (!hasText) throw new SiwcChatError('empty_response', '模型未返回内容。')
+        return
+      }
 
       const headers: Record<string, any> = { 'content-type': 'application/json' }
       const apiKey = getStoredApiKey()
@@ -328,6 +346,13 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       setStreaming(false)
       if ((e instanceof Error && e.name === 'AbortError'))
         return
+      if (siwc) {
+        clearStreaming()
+        setController(null)
+        const { code, message } = e instanceof SiwcChatError ? e : { code: 'request_failed', message: 'ChatGPT 请求失败，请重试。' }
+        setCurrentError({ code: `siwc:${code}`, message })
+        return
+      }
       setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     } finally {
       finishStreaming()
@@ -442,20 +467,20 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
 
   onMount(() => {
     try {
-      if (localStorage.getItem('messageList')) {
-        const messageListFromStorage = JSON.parse(localStorage.getItem('messageList')!)
+      if (localStorage.getItem(chatStorageKey('messageList'))) {
+        const messageListFromStorage = JSON.parse(localStorage.getItem(chatStorageKey('messageList'))!)
         if (messageListFromStorage.length) {
           setMessageList(messageListFromStorage)
-          if (localStorage.getItem('title'))
-            setTitle(localStorage.getItem('title')!)
+          if (localStorage.getItem(chatStorageKey('title')))
+            setTitle(localStorage.getItem(chatStorageKey('title'))!)
         }
       }
 
       if (localStorage.getItem('stickToBottom') === 'stick')
         setStick(true)
 
-      if (localStorage.getItem('systemRoleSettings'))
-        setCurrentSystemRoleSettings(localStorage.getItem('systemRoleSettings') ?? '')
+      if (localStorage.getItem(chatStorageKey('systemRoleSettings')))
+        setCurrentSystemRoleSettings(localStorage.getItem(chatStorageKey('systemRoleSettings')) ?? '')
     } catch(err) {
       console.error(err)
     }

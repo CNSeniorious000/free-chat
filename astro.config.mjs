@@ -22,6 +22,7 @@ const envAdapter = () => {
 export default defineConfig({
   security: {
     checkOrigin: false,
+    allowedDomains: ['vercel', 'netlify'].includes(process.env.OUTPUT ?? '') ? [] : [{ hostname: '127.0.0.1', protocol: 'http' }],
   },
   env: {
     schema: {
