@@ -87,7 +87,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     },
   })
   const [streaming, setStreaming] = createSignal(false)
-  const [controller, setController] = createSignal<AbortController | null>(null)
+  let activeRequest: AbortController | null = null
   const [inputValue, setInputValue] = createSignal('')
   const [isStick, _setStick] = createSignal(false)
   const [mounted, setMounted] = createSignal(false)
@@ -105,16 +105,18 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
   createEffect(() => currentError() && trackEvent('error', { code: currentError()!.code }))
 
   const setCurrentSystemRoleSettings = (systemRole: string) => {
-    _setCurrentSystemRoleSettings(systemRole) ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
+    _setCurrentSystemRoleSettings(systemRole)
+    systemRole ? localStorage.setItem('systemRoleSettings', systemRole) : localStorage.removeItem('systemRoleSettings')
     return systemRole
   }
 
-  const syncMessageList = () => {
-    localStorage.setItem('messageList', JSON.stringify(_messageList()))
+  const syncMessageList = (messages: ChatMessage[]) => {
+    localStorage.setItem('messageList', JSON.stringify(messages))
   }
 
   const setStick = (stick: boolean) => {
-    _setStick(stick) ? localStorage.setItem('stickToBottom', 'stick') : localStorage.removeItem('stickToBottom')
+    _setStick(stick)
+    stick ? localStorage.setItem('stickToBottom', 'stick') : localStorage.removeItem('stickToBottom')
     return stick
   }
 
@@ -127,16 +129,12 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     el.style.height = `${el.scrollHeight}px`
   }
 
-  const messagesWithoutReasoning = createMemo(() => messageList().map((msg) => {
-    if (msg.role === 'assistant')
-      return { ...msg, content: splitReasoningPart(msg.content)[1] }
-    return msg
-  }))
+  const withoutReasoning = (msg: ChatMessage) => msg.role === 'assistant' ? { ...msg, content: splitReasoningPart(msg.content)[1] } : msg
 
   const updateSuggestions = async() => {
     if (messageList().length === 0 || !suggestionFeatureOn()) return
     setSuggestions([])
-    for await (const suggestions of iterateSuggestion([...messagesWithoutReasoning()]))
+    for await (const suggestions of iterateSuggestion(messageList().map(withoutReasoning)))
       setSuggestions(suggestions)
   }
 
@@ -202,8 +200,23 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     return toast.error(String(e), { position: 'top-center' })
   }
 
+  const sendMessage = (input: string) => {
+    setSuggestions([])
+    moderate(input)
+
+    const messages: ChatMessage[] = [...messageList(), { role: 'user', content: input }]
+    batch(() => {
+      setMessageList(messages)
+      setInputValue('')
+    })
+
+    requestMessages(messages)
+    syncMessageList(messages)
+  }
+
   const handleSubmit = async() => {
-    !inputValue() && trackEvent(`${recording() ? 'end' : 'start'}-record`)
+    const input = inputValue()
+    !input && trackEvent(`${recording() ? 'end' : 'start'}-record`)
 
     if (recording()) {
       stopRecording()
@@ -219,38 +232,23 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       if (!res.ok) {
         errorHelper(`Error processing audio: ${res.statusText}`)
       } else if (text) {
-        setInputValue(text)
-        handleSubmit()
+        sendMessage(text)
       }
+      return
+    }
 
+    if (input) {
+      sendMessage(input)
       return
     }
 
     setSuggestions([])
-
-    const input = inputValue()
-
-    if (!input) {
-      try {
-        await startRecording()
-        setRecording('recording')
-      } catch(e) {
-        errorHelper(e)
-      }
-      return
+    try {
+      await startRecording()
+      setRecording('recording')
+    } catch(e) {
+      errorHelper(e)
     }
-
-    moderate(input)
-
-    batch(() => {
-      setMessageList([...messageList(), { role: 'user', content: input }])
-      setInputValue('')
-    })
-
-    // This needs to be handled in the UI component
-    // smoothToBottom()
-    requestWithLatestMessage()
-    syncMessageList()
   }
 
   const formatTokenCount = (messages: ChatMessage[]) => {
@@ -259,14 +257,16 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     return result ? `<=${Math.ceil(result.total / 1000)}k` : undefined
   }
 
-  const requestWithLatestMessage = async() => {
+  const requestMessages = async(messages: ChatMessage[]) => {
+    const controller = new AbortController()
+    activeRequest?.abort()
+    activeRequest = controller
     setStreaming(true)
     startStreaming()
     setCurrentError(null)
+    let interrupted = false
     try {
-      const controller = new AbortController()
-      setController(controller)
-      const requestMessageList = [...messagesWithoutReasoning()]
+      const requestMessageList = messages.map(withoutReasoning)
 
       let limit = maxTokens
 
@@ -297,8 +297,10 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
         signal: controller.signal,
         headers,
       })
+      if (activeRequest !== controller) return
       if (!res.ok) {
         const message = await res.text()
+        if (activeRequest !== controller) return
         console.error(message)
         setCurrentError({ code: `${res.status} ${res.statusText}`, message })
         throw new Error('Request failed')
@@ -307,7 +309,7 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
       trackEvent('send', {
         model: payload.model,
         temperature: payload.temperature,
-        originalTokenCont: _messageList().length ? formatTokenCount((systemMsg ? [systemMsg, ..._messageList()] : _messageList())) : undefined,
+        originalTokenCont: messages.length ? formatTokenCount(systemMsg ? [systemMsg, ...messages] : messages) : undefined,
         tokenCount: formatTokenCount(requestMessageList),
       })
       const data = res.body
@@ -319,28 +321,33 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
 
       while (true) {
         const { value, done } = await reader.read()
+        if (activeRequest !== controller) return
         const delta = decoder.decode(value, { stream: !done })
         if (delta) appendStreaming(delta)
         if (done) break
       }
     } catch(e) {
+      if (activeRequest !== controller) return
+      interrupted = true
       console.error(e)
-      setStreaming(false)
       if ((e instanceof Error && e.name === 'AbortError'))
         return
       setCurrentError({ code: e instanceof Error ? e.name : 'FETCH_ERROR', message: e instanceof Error ? e.message : String(e) })
     } finally {
-      finishStreaming()
+      if (activeRequest === controller) {
+        activeRequest = null
+        finishStreaming(interrupted)
+      }
     }
   }
 
   const archiveCurrentMessage = (content: string) => {
+    const messages: ChatMessage[] | undefined = content ? [...messageList(), { role: 'assistant', content }] : undefined
     batch(() => {
-      setMessageList([...messageList(), { role: 'assistant', content }])
+      if (messages) setMessageList(messages)
       setStreaming(false)
-      setController(null)
     })
-    syncMessageList()
+    if (messages) syncMessageList(messages)
   }
 
   const clear = () => {
@@ -360,50 +367,45 @@ export const ChatProvider: ParentComponent<{ userAgent?: string }> = (props) => 
     trackEvent('clear', { totalTokenCount: formatTokenCount(messageList()) })
 
     tokenCountCache.clear()
-    if (streaming()) {
-      // Clear history but do not interrupt current streaming
-      batch(() => {
-        setInputValue('')
-        setMessageList([])
-        setCurrentError(null)
-        setTitle()
-      })
-      syncMessageList()
-    } else {
-      // Not streaming: clear everything including streaming state
-      batch(() => {
-        setInputValue('')
-        setMessageList([])
-        setCurrentError(null)
-        setTitle()
-        clearStreaming()
-      })
-      syncMessageList()
-    }
+    const messages: ChatMessage[] = []
+    batch(() => {
+      setInputValue('')
+      setMessageList(messages)
+      setCurrentError(null)
+      setTitle()
+      if (!streaming()) clearStreaming()
+    })
+    syncMessageList(messages)
   }
 
   const deleteLastMessage = () => {
-    if (streaming() || !messageList().length) return
+    const history = messageList()
+    const lastMessage = history.at(-1)
+    if (streaming() || !lastMessage) return
 
-    const lastMessage = messageList().pop()!
+    const messages = history.slice(0, -1)
     tokenCountCache.delete(lastMessage.content)
-    setMessageList(messageList())
-    syncMessageList()
+    setMessageList(messages)
+    syncMessageList(messages)
   }
 
-  const stopStreamFetch = () => controller()?.abort()
+  const stopStreamFetch = () => {
+    if (activeRequest) activeRequest.abort()
+    else finishStreaming(true)
+  }
 
   const retryLastFetch = () => {
-    // setBgdAnimating(true) // UI concern
-    if (messageList().length > 0) {
-      trackEvent('retry', { lastMessage: messageList().at(-1)!.role })
-      const lastMessage = messageList().at(-1)!
-      if (lastMessage.role === 'assistant')
-        setMessageList(messageList().slice(0, -1))
+    const history = messageList()
+    const lastMessage = history.at(-1)
+    if (!lastMessage) return
 
-      requestWithLatestMessage()
-      syncMessageList()
-    }
+    trackEvent('retry', { lastMessage: lastMessage.role })
+    const replaceAssistant = lastMessage.role === 'assistant'
+    const messages = replaceAssistant ? history.slice(0, -1) : history
+    const storedMessages = replaceAssistant ? messages : _messageList()
+    if (replaceAssistant) setMessageList(messages)
+    requestMessages(messages)
+    syncMessageList(storedMessages)
   }
 
   const value: ChatContextType = {

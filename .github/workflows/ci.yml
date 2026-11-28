@@ -43,6 +43,9 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Test
+        run: pnpm test
+
       - name: Install check tools
         run: pnpm add -D svelte-check @astrojs/check
 
