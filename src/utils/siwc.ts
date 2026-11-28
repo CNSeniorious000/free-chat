@@ -34,12 +34,18 @@ export async function* iterateSiwcChat(messages: ChatMessage[], signal: AbortSig
   }))
   if (!response.body) throw new SiwcChatError('empty_stream', '模型未返回内容。')
 
-  const stream = response.body.pipeThrough(new TextDecoderStream()).pipeThrough(new EventSourceParserStream())
-  for await (const { data } of stream) {
-    const event = JSON.parse(data) as { delta?: string, done?: true, error?: ErrorMessage }
-    if (event.error) throw new SiwcChatError(event.error.code, event.error.message)
-    if (event.done) return
-    if (event.delta) yield event.delta
+  const reader = response.body.pipeThrough(new TextDecoderStream()).pipeThrough(new EventSourceParserStream()).getReader()
+  try {
+    while (true) {
+      const { value, done } = await reader.read()
+      if (done) throw new SiwcChatError('incomplete_stream', '模型的响应意外中断。')
+      const event = JSON.parse(value.data) as { delta?: string, done?: true, error?: ErrorMessage }
+      if (event.error) throw new SiwcChatError(event.error.code, event.error.message)
+      if (event.done) return
+      if (event.delta) yield event.delta
+    }
+  } finally {
+    await reader.cancel().catch(() => {})
+    reader.releaseLock()
   }
-  throw new SiwcChatError('incomplete_stream', '模型的响应意外中断。')
 }
